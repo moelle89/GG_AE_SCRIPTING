@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GG | moelles mojo AE addon</title>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            font-weight: bolder;
+            margin: 0;
+            padding: 0;
+        }
+
+        .block {
+            padding: 20px;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin-bottom: 20px;
+            margin: 0 auto;
+            display: grid;
+            grid-gap: 1rem;
+        }
+
+        .block img,
+        .block video {
+            max-width: 100%;
+            width: -webkit-fill-available;
+            height: auto;
+        }
+
+        .desktop {
+            display: none;
+        }
+
+        .mobile {
+            display: block;
+        }
+
+        .column-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .column {
+            width: 48%;
+            /* Set to 48% to allow for a small gap between columns */
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive styles for devices with a width of 1280px and larger */
+        @media (min-width: 1080px) {
+
+            .column-container {
+                flex-direction: row;
+                /* Change to row to display columns side by side */
+            }
+
+            .column {
+                width: 48%;
+                /* Still using 48% for a small gap between columns */
+            }
+        }
+
+        /* Screen larger than 600px? 2 column */
+        @media (max-width: 600px) {
+            .column-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .column {
+                width: 100%;
+                /* Still using 48% for a small gap between columns */
+            }
+        }
+
+        /* Screen larger than 900px? 3 columns */
+        @media (min-width: 700px) {
+            .desktop {
+                display: block;
+            }
+
+            .mobile {
+                display: none;
+            }
+        }
+
+        /* Screen larger than 900px? 3 columns */
+        @media (min-width: 600px) {
+            .block {
+                grid-template-columns: repeat(1, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="block">
+        <div>
+            <h2>Installation nun ohne Adminrechte möglich</h2>
+            <p>Gilt ebefalls für zukünftige Updates. </p>
+        </div>
+        <video class="desktop" width="1200" height="500" autoplay loop muted>
+            <source src="assets/desktop_01.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+        <video class="mobile" width="800" height="600" autoplay loop muted>
+            <source src="assets/mobile_01.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="block">
+        <div>
+            <h2>After Effects nach Import des Addons neustarten.</h2>
+            <p>Preset-Scripte wurden ins addon implementiert somit keine extra Dateien mehr nötig</p>
+        </div>
+        <video class="desktop" width="1200" height="500" autoplay loop muted>
+            <source src="assets/desktop_02.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+        <video class="mobile" width="800" height="600" autoplay loop muted>
+            <source src="assets/mobile_02.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="block">
+        <div>
+            <h2>Untere Hotkey-Leiste wurde um folgende Punkte erweitert:</h2>
+            <p>- Öffne Projekt Ordner in Explorer - Öffne Footage Ordner im Explorer - Öffne JSON Ordner im Explorer</p>
+        </div>
+        <video class="desktop" width="1200" height="500" autoplay loop muted>
+            <source src="assets/desktop_03.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+        <video class="mobile" width="800" height="600" autoplay loop muted>
+            <source src="assets/mobile_03.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="block">
+        <div>
+            <h2>Falls nicht vorhanden, wird dieser auf Wunsch angelegt und anschließend geöffnet</h2>
+        </div>
+        <video class="desktop" width="1200" height="500" autoplay loop muted>
+            <source src="assets/desktop_04.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+        <video class="mobile" width="800" height="600" autoplay loop muted>
+            <source src="assets/mobile_04.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div class="block">
+        <div>
+            <h2>Datei-Import: PSDs oder andere Dateien können importiert- <br> und als Kopie, direkt in den Footage Ordner importiert werden.</h2>
+            <p>Kein "Collect-Files" mehr notwendig</p>
+        </div>
+        <video class="desktop" width="1200" height="500" autoplay loop muted>
+            <source src="assets/desktop_05.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+        <video class="mobile" width="800" height="600" autoplay loop muted>
+            <source src="assets/mobile_05.webm" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <!-- Add more blocks as needed -->
+
+</body>
+
+</html>
