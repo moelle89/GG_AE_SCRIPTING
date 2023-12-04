@@ -250,28 +250,42 @@ tab_tools.text = "TOOLS";
 tab_tools.orientation = "column";
 tab_tools.alignChildren = ["fill", "top"];
 tab_tools.spacing = 0;
-tab_tools.margins = 0;
+tab_tools.margins = [12,0,12,0];
 
 
 // tools_wrapper
 // ======
+var tools_txt_wrapper = tab_tools.add("group", undefined, { name: "tools_txt_wrapper" });
+tools_txt_wrapper.orientation = "column";
+tools_txt_wrapper.alignChildren = ["left", "fill"];
+tools_txt_wrapper.spacing = 10;
+tools_txt_wrapper.margins = 10;
+tools_txt_wrapper.alignment = ["fill", "top"];
+
 var tools_wrapper = tab_tools.add("group", undefined, { name: "tools_wrapper" });
-tools_wrapper.orientation = "column";
+tools_wrapper.orientation = "row";
 tools_wrapper.alignChildren = ["left", "fill"];
-tools_wrapper.spacing = 0;
-tools_wrapper.margins = 12;
+tools_wrapper.spacing = 10;
+tools_wrapper.margins = 0;
 tools_wrapper.alignment = ["fill", "top"];
 
-tools_wrapper.add("statictext", undefined, "Open __SETTINGS - debug_layer");
-tools_wrapper.add("statictext", undefined, "");
-tools_wrapper.add("statictext", undefined, "Change colors and click the button");
-tools_wrapper.add("statictext", undefined, "");
+tools_txt_wrapper.add("statictext", undefined, "Open __SETTINGS - debug_layer");
+tools_txt_wrapper.add("statictext", undefined, "Change colors and click the button");
 
 var btn_debug_colors = tools_wrapper.add("iconbutton", undefined, undefined, { name: "btn_debug_colors", style: "button" });
 btn_debug_colors.alignment = ["left", "top"];
 btn_debug_colors.preferredSize.height = 30;
-btn_debug_colors.preferredSize.width = 240;
+btn_debug_colors.preferredSize.width = 200;
 btn_debug_colors.text = "MODIFY JSON COLORS";
+
+var revert_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%12%00%00%0B%12%01%C3%92%C3%9D~%C3%BC%00%00%024IDATH%C2%89b%C3%B8%C3%BF%C3%BF%3F%3E%1C%C3%B0%C3%BF%C3%BF%C3%BF%05%C3%BF%C3%BF%C3%BF%7F%C3%B0%1F%13%C2%80%C3%84%40r%205%C3%98%C3%8D%C3%B8%C3%BF%C2%9F%01%00%00%00%C3%BF%C3%BF%C3%82%25%C3%A1%C2%80%C3%83P%5C%00%C2%A4%16%C2%A4%07%C3%95%C2%9C%C3%BF%C3%BF%19%00%00%00%00%C3%BF%C3%BF%C3%82f%C3%B8%04%12%0CF%07%20%C2%BD%08%C2%B3%C3%BE%C3%BFg%00%00%00%00%C3%BF%C3%BFB7%1C%C3%A4eJ%01%C3%88%0C%C2%88y%C3%BF%C3%BF3%00%00%00%00%C3%BF%C3%BF%22%C3%85%C3%A5%17H%086%C2%88O%C3%BE%C3%BFg%00%00%00%00%C3%BF%C3%BFB%0Esl%C3%A0%C3%83%C3%BF%C3%BF%C3%BF%1B%C3%BE%C3%BF%C3%BF%C2%AF%00U%07b%13%0B%1C%C3%BE%C3%BF%C3%BF%C3%8F%00%00%00%00%C3%BF%C3%BF%C2%82Y%C2%80%C3%8De%20%17%1B%C2%A0%05!)%16%3C%C3%B8%C3%BF%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%82%25Et%00r%C2%B9%00%C3%94P%10%0D2%18d!i%C3%A0%C3%BF%C3%BF%00%00%00%00%00%C3%BF%C3%BFl%C3%8A1%0D%00%20%0C%00%C3%81%1B%C3%98%C3%81%09V*%05%C2%89%C2%95%04%0EXI%C3%8A%C2%8D%C2%9Fo%08%C3%95%C3%82%C3%86%40b~%C2%9E%C3%97A%2F%C2%95%C2%B8%00%00%00%C3%BF%C3%BF%C3%82%16%3C%60%C2%AFA%C3%B1%01%22%C2%9C%0C%C3%B2-((%130d%C3%BE%C3%BF%7F%00%00%00%00%C3%BF%C3%BF%02%19%C2%82%0E%60)%00%14%C2%B1%C3%84%1A%C2%8E%3D%C2%8E%C3%BE%C3%BF%C3%BF%0F%00%00%00%C3%BF%C3%BFb%C3%82%C3%A2-P%C3%90%C2%80%C2%80%02%C2%81%60%01%C2%81%064%3E(8%2F%C3%82y%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C3%82f%01)%C2%A0%1F%1A_%20%00%C2%8A%C2%AF%C3%BD(%C3%B1%C3%85%C3%80%C3%80%00%00%00%00%C3%BF%C3%BF%C3%82f%01H!%08%3C%20%C3%92%C2%A6%0BP%C3%9A%00C%C2%86%C2%81%C2%81%01%00%00%00%C3%BF%C3%BF%C2%A24%C2%92%C2%91%C2%933fI%C3%B0%C3%BF%C3%BF%03%00%00%00%00%C3%BF%C3%BF%C3%82U%C3%BE%C2%80R%04%2C%0F%C3%A0J%C3%BF%20%C3%83aE5H%1D%C2%88%C2%8F%0A%C3%BE%C3%BF_%00%00%00%00%C3%BF%C3%BF%22%25%C2%A3%C3%81%7C%0A%C2%92%039%0A9%C3%B5l%C3%80%C3%AA%C2%84%C3%BF%C3%BF%03%00%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%A8%40%C3%87%20%C3%8Bq%C2%95%C3%80%0F%C3%BE%C3%BF%C3%BF%C3%8F%00%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%B0C%C3%86%C2%A0%60%C3%84W%C2%BA%3A%C3%BC%C3%BF%C3%BF%C2%9F%01%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%B8%06E%3A1%C2%B9%1B%C2%92Y%C3%BF%C3%BFg%00%00%00%00%C3%BF%C3%BF%C2%A2m%C2%85%C3%B3%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%95%C3%B9%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%A5%C3%BF%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%B3%C3%A5%C3%BF%7F%06%00%00%00%00%C3%BF%C3%BF%03%00Pt%C3%9D%C2%86%C2%88%C2%A9%05_%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+
+var btn_revert_json = tools_wrapper.add("iconbutton", undefined, File.decode(revert_imgString), { name: "btn_revert_json", style: "toolbutton" });
+btn_revert_json.alignment = ["left", "top"];
+btn_revert_json.preferredSize.height = 30;
+btn_revert_json.preferredSize.width = 40;
+btn_revert_json.text = "";
+btn_revert_json.helpTip = "Restore Default JSON";
 
 
 // TPANEL1
@@ -815,7 +829,7 @@ function importAndCopyFile() {
     // Get the extension of the fileToImport
     var fileExtension = (fileToImport.name.split('.').pop()).toLowerCase();
     // Get the footage folder
-    var footageFolder = new Folder(projectFolder.fullName + "/(Footage)/Footage/" + fileExtension);
+    var footageFolder = new Folder(projectFolder.fullName + "/(footage)/Footage/" + fileExtension);
 
     // Check if the footage folder exists, create it if not
     if (!footageFolder.exists) {
@@ -849,17 +863,45 @@ function importAndCopyFile() {
   }
 }
 
+function findCompIndex(compName) { // name of item you're looking for
+
+  var myComp = null;
+  var myCompIndex = null;
+
+  for (var i = 1; i <= app.project.numItems; i++) {
+
+    if ((app.project.item(i) instanceof CompItem) && (app.project.item(i).name == compName)) {
+
+      myComp = app.project.item(i);
+      myCompIndex = i;
+      myCompID = myComp.id;
+
+      break;
+    }
+  }
+  if (myComp != null) {
+
+    // do stuff with the comp
+    return i;
+  } else {
+    alert("Can't find comp '" + compName + "'");
+
+  }
+}
+
 function modifyJSONdata() {
+  var compIndex = findCompIndex("__SETTINGS");
+  app.beginUndoGroup("modifyJSONdata");
   // Get the colors from the color fill effect on the layer
-  var accentColor = app.project.item(35).layer("debug_layer").effect("debug_SETTINGS")("accent_color").value;
-  var titleColor = app.project.item(35).layer("debug_layer").effect("debug_SETTINGS")("title_color").value;
-  var subtextColor = app.project.item(35).layer("debug_layer").effect("debug_SETTINGS")("subtext_color").value;
-  var bgColor = app.project.item(35).layer("debug_layer").effect("debug_SETTINGS")("bg_color").value;
-  var logoBgColor = app.project.item(35).layer("debug_layer").effect("debug_SETTINGS")("logo_bg_color").value;
-  var call2a_color = app.project.item(35).layer("debug_layer").effect("debug_SETTINGS")("c2a_color").value;
-  var cursor_color = app.project.item(35).layer("debug_layer").effect("debug_SETTINGS")("cursor_color").value;
-  var c2a_link_color = app.project.item(35).layer("debug_layer").effect("debug_SETTINGS")("c2a_link_color").value;
-  var source_color = app.project.item(35).layer("debug_layer").effect("debug_SETTINGS")("source_color").value;
+  var accentColor = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("accent_color").value;
+  var titleColor = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("title_color").value;
+  var subtextColor = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("subtext_color").value;
+  var bgColor = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("bg_color").value;
+  var logoBgColor = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("logo_bg_color").value;
+  var call2a_color = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("c2a_color").value;
+  var cursor_color = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("cursor_color").value;
+  var c2a_link_color = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("c2a_link_color").value;
+  var source_color = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("source_color").value;
 
   // JSON-Datei aktualisieren
   var projectPath = app.project.file.path; // Get the path of the After Effects project
@@ -908,6 +950,181 @@ function modifyJSONdata() {
   file.write(jsonString);
   file.close();
   alert("JSON DATA UPDATED ");
+  app.endUndoGroup();
+}
+
+// Function to revert the JSON file
+function revertJson() {
+  // JSON data to revert to
+  var jsonData = {
+    "Comp": {
+      "logo": 1,
+      "logo_bg_auto_color": 0,
+      "logo_bg_color": "#FFFFFF",
+      "darkmode": 0,
+      "intro": 0,
+      "video": 0,
+      "audio_muted": 0,
+      "audio_track": 10,
+      "text2voice": 0,
+      "fx_effects": 0,
+      "accent": {
+        "color": "#B28E3B",
+        "color_dark": "#B28E3B"
+      },
+      "region": {
+        "text": "Tennis",
+        "color": "#ffffff",
+        "color_dark": "#080808",
+        "bg_color": "#080808",
+        "bg_color_dark": "#ffffff",
+        "position": "bottom-right"
+      },
+      "title": {
+        "text": "Introducing the revolutionary social media AI-tool",
+        "color": "#080808",
+        "color_dark": "#ffffff",
+        "font": "Archivo-Bold"
+      },
+      "subtext": {
+        "text": "It has never been easier to generate content for blogs and social media.",
+        "color": "#242424",
+        "color_dark": "#ffffff",
+        "font": ""
+      },
+      "call2action": {
+        "text": "Visit now:",
+        "color": "#080808",
+        "color_dark": "#FFFFFF",
+        "cursor_color": "#B28E3B",
+        "cursor_color_dark": "#B28E3B",
+        "cursor_stroke": "#000000",
+        "cursor_stroke_dark": "#FFFFFF",
+        "font": ""
+      },
+      "call2action_link": {
+        "text": "GetGenius.AI",
+        "color": "#080808",
+        "color_dark": "#FFFFFF",
+        "link_highlight": 0,
+        "font": ""
+      },
+      "source": {
+        "text": "GetGenius.AI",
+        "color": "#FFFFFF",
+        "color_dark": "#FFFFFF",
+        "bg_color": "#B28E3B",
+        "bg_color_dark": "#B28E3B",
+        "avatar": 0,
+        "font": ""
+      },
+      "bg": {
+        "color": "#ffffff",
+        "color_dark": "#111219"
+      },
+      "gallery": [{
+        "src": "gallery_01",
+        "video": 1,
+        "loop": 0,
+        "muted": 0,
+        "text": "Create Social Content, including Video, Image, Captions and Hashtags and shedule them in a fully automated way.",
+        "font": "Poppins"
+      },
+      {
+        "src": "gallery_02",
+        "video": 1,
+        "loop": 0,
+        "muted": 0,
+        "text": "",
+        "font": "Poppins"
+      },
+      {
+        "src": "gallery_03",
+        "video": 1,
+        "loop": 0,
+        "muted": 0,
+        "text": "",
+        "font": "Poppins"
+      },
+      {
+        "src": "gallery_04",
+        "video": 1,
+        "loop": 1,
+        "muted": 0,
+        "text": "",
+        "font": "Poppins"
+      },
+      {
+        "src": "",
+        "video": 1,
+        "loop": 0,
+        "muted": 0,
+        "text": "",
+        "font": "Poppins"
+      },
+      {
+        "src": "",
+        "video": 0,
+        "loop": 0,
+        "muted": 0,
+        "text": "",
+        "font": "Poppins"
+      }
+      ],
+      "slides": [{
+        "from": "0",
+        "to": "5",
+        "elements": [{
+          "x": "left",
+          "y": "bottom",
+          "text": "",
+          "font": "Arial",
+          "font-size": "15px"
+        },
+        {
+          "x": "left",
+          "y": "bottom",
+          "text": "",
+          "font": "Arial",
+          "font-size": "15px"
+        }
+        ]
+      },
+      {
+        "from": "0",
+        "to": "5",
+        "elements": [{
+          "x": "left",
+          "y": "bottom",
+          "text": "",
+          "font": "Arial",
+          "font-size": "15px"
+        },
+        {
+          "x": "left",
+          "y": "bottom",
+          "text": "",
+          "font": "Arial",
+          "font-size": "15px"
+        }
+        ]
+      }
+      ]
+      // ... (rest of the JSON data)
+    }
+  };
+
+  // Path to the JSON file
+  var projectPath = app.project.file.path; // Get the path of the After Effects project
+  var jsonFilePath = projectPath + "/(footage)/footage/json/input_template.json"; // Adjust the JSON file path
+
+  // Write the JSON data to the file
+  var jsonString = JSON.stringify(jsonData, null, 2);
+  var file = new File(jsonFilePath);
+  file.open("w");
+  file.write(jsonString);
+  file.close();
+  alert("JSON file reverted successfully!");
 }
 
 // Testing and debugging function
@@ -1025,11 +1242,11 @@ openProjectInExplorer.onClick = function () {
 };
 
 openFootageFolder.onClick = function () {
-  openSubfolderInProject("(Footage)/Footage");
+  openSubfolderInProject("(footage)/Footage");
 };
 
 openJSONFolder.onClick = function () {
-  openSubfolderInProject("(Footage)/Footage/json");
+  openSubfolderInProject("(footage)/Footage/json");
 };
 
 btn_import.onClick = function () {
@@ -1037,7 +1254,8 @@ btn_import.onClick = function () {
 };
 
 btn_debug_colors.onClick = function () {
-  app.beginUndoGroup("modifyJSONdata");
   modifyJSONdata();
-  app.endUndoGroup();
+};
+btn_revert_json.onClick = function () {
+  revertJson();
 };
