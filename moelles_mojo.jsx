@@ -282,11 +282,11 @@ tools_wrapper.margins = 0;
 tools_wrapper.alignment = ["fill", "top"];
 
 var statictext2 = tools_txt_wrapper.add("statictext", undefined, undefined, { name: "statictext2" });
-statictext2.text = "Go to the Settings, open Effect Controls";
+statictext2.text = "Click Pick Colors first";
 statictext2.preferredSize.height = 20;
 
 var statictext3 = tools_txt_wrapper.add("statictext", undefined, undefined, { name: "statictext3" });
-statictext3.text = "adjust colors and click MODIFY";
+statictext3.text = "adjust colors and click apply";
 statictext3.preferredSize.height = 20;
 
 var statictext4 = tools_txt_wrapper.add("statictext", undefined, undefined, { name: "statictext4" });
@@ -377,7 +377,9 @@ textLayer.alignment = ["left", "top"];
 textLayer.preferredSize.height = 24;
 textLayer.preferredSize.width = 24;
 
-var solidLayer = addObj.add("iconbutton", undefined, File.decode(openJSONFolder_imgString), { name: "solidLayer", style: "toolbutton" });
+var solidLayer_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%00%C2%BEIDATH%C2%89%C3%AD%C2%951%0A%C3%820%18F_%C3%ACR%1C%1D%C3%9C%C2%BD%C2%82%C2%A7%C3%B0R%0E%3D%C2%8A%C3%9E%C3%81%C3%99%C3%81%7B%C3%B4%00uq%C2%A9%C2%A2%1D%3E%C2%87%C2%9APc%03%C3%92%26%C2%88%C3%90%0F%02-)%C3%AFA%C3%BA%C3%B3%C3%85H%22efI%C3%A9%C2%BF%12%C3%A4%40%01%C2%94%C2%80%C2%BE%5CW%C3%A0%00%C2%AC%3Fh%C2%92%C2%BA%2B%C2%97t%C3%92%C3%B0%C3%9C%25m%C2%BAL_P%C2%8C%C2%80%C3%9BT%C2%922%C3%8B4z%C2%9F%C2%A2%12XE8%C3%BA%25p%C3%AE%C3%BB%071%C3%A0%00s%C3%BB%C2%90j%C2%8ALj%C2%81%C3%8B%24%C2%98%04%7F(%C2%B8E%C3%A26!%C3%811%C2%92%C3%A0%12%12l%C2%81%C3%87H%C3%B8%1E%C2%A8%C3%9D%C2%9BW%C3%97%C2%BC%C3%BA%C2%BC%1AX%C3%95%3B%C2%B5w%C2%8A%C3%A3%C3%B9um%C2%93%01%0B%C3%9AV4%7D%1Fxih%C2%8F%C2%A5%C3%B67B%C2%82hI%3E%C2%A6OI%0D%2C%C2%91j%07%C2%B3%06%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+
+var solidLayer = addObj.add("iconbutton", undefined, File.decode(solidLayer_imgString), { name: "solidLayer", style: "toolbutton" });
 solidLayer.helpTip = "Create a Solid layer in active comp";
 solidLayer.alignment = ["left", "top"];
 solidLayer.preferredSize.height = 24;
@@ -391,13 +393,17 @@ shapeLayer.alignment = ["left", "top"];
 shapeLayer.preferredSize.height = 24;
 shapeLayer.preferredSize.width = 24;
 
-var adjustmentsLayer = addObj.add("iconbutton", undefined, File.decode(openJSONFolder_imgString), { name: "adjustmentsLayer", style: "toolbutton" });
+var adjustmentsLayer_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01%03IDATH%C2%89%C2%BD%C2%95%C2%BD%C2%AD%C3%820%14%C2%85O(%C2%A8%C3%A8%C2%A1a%0Bv%C2%A0Co%C2%87H%5E%C2%81%C2%82Y%C2%A8%C2%B2%00%15%12%3B0%03%3Dy%C2%99%C2%80%C3%A6%C2%A3%C2%B9%06%1B%C2%9C%1F%04%C3%8E%C2%91%C2%ACkY%C2%BE%C3%9FQ%C3%AC%C3%A4%C2%A4%00%C2%94S%C2%93%C2%AC%C3%B4%01%063IN%C3%92QR-%09%1B%C2%B5%C2%AD9%C3%9B%C3%93.%C2%A0m%C2%94%40C%C2%BF%1A%C3%9B%C2%9B%C3%A4%C2%A4%16%C2%A7%40%15%00.%C3%80%0EX%01%C3%B3%0E%C2%A3%C3%8Az%7B%0D%3C%C3%BC%06l%13M%5D%C2%AA%C3%BA%0C%C3%8A%00%C2%BEiy%C3%AC%3EE%C3%87%156%C3%8Ex%C2%9E%C3%B9%C2%B6%05%3E%C3%84%C2%A01%C3%96%C2%9B%C2%81%C2%B3%0D%17%12g%C3%B9%C2%81%01%C3%86%12%10%C2%BD%C2%A6%7FV%C3%B7%C2%92n%1F%C2%BF%C3%B0%C2%B1%3C%2B2XY%3D%7D%09%0FY*xF%C2%85%C2%9F%2C%24%5D%3B%C2%9A%C2%87fK!%C2%8D%1C%15%C3%BFV%C2%97%3F%C3%A0zVdp%C2%B6%C2%BA%C3%BE%C2%81%C2%81gE%06%07%C2%AB%C2%A5%C2%A4%C3%A9%C2%97%06%C2%87%C3%87l%C3%8C%0F-%7BT%C2%8C%12v%C2%A3%C3%84u%C3%B6%1F%C3%8E%C3%AB%C3%85%3B%C3%A0%08%C3%94%01%C2%B4%C2%B65Gp%C2%A1%C2%A9%11FE%16e%C2%8F%C2%8A%3B%40%C3%B7%C3%B6%C3%AF%C2%B5A%C2%91%C2%9B%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+
+var adjustmentsLayer = addObj.add("iconbutton", undefined, File.decode(adjustmentsLayer_imgString), { name: "adjustmentsLayer", style: "toolbutton" });
 adjustmentsLayer.helpTip = "Create an Adjustment layer in active comp";
 adjustmentsLayer.alignment = ["left", "top"];
 adjustmentsLayer.preferredSize.height = 24;
 adjustmentsLayer.preferredSize.width = 24;
 
-var nullLayer = addObj.add("iconbutton", undefined, File.decode(openJSONFolder_imgString), { name: "nullLayer", style: "toolbutton" });
+var nullLayer_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%00%C3%8FIDATH%C2%89%C3%AD%C3%95%C3%89%0D%C3%820%10%05%C3%90%3F%C2%88%3Bt%02%1D%40'%C2%84%0EH%07%C2%94%C3%A0%12%C2%A0%03J%08%1D%C2%A4%04J0%15%7C.%0E%C2%B1l%C3%B0*sb%24K%C2%91%C2%97yR%C3%86%C3%96%08I%C2%B4%C2%8CE%C3%93%C3%AC%C2%BF%00%C2%96%C3%96wg%C2%86%1D'%11%19C%09H*%00%5Bgzoo%C2%98%C3%86%C2%99~h%C2%92%C3%AEa%17%18%3E%C2%9C%7B%C3%A7%C2%8D%C3%BD%C2%A2%15%C2%80!%C2%86%C2%84%22%C2%A5%06UHj%C2%91'd%C3%9D%0A(Fr%C2%AF%C3%A9%26%17)y%07YH%0C%C3%A8%01%3Ck%C2%90%180%C3%82%7F%7C6%C2%A2j%01%C2%88%C3%88%0D%C3%80%C3%B1%C3%8B%C3%B2%01%C3%80%C2%AE%0A0%C3%88%25%C2%80%04%23%C2%B9%C3%88%C2%A5H%C3%96-2H%C3%9F%0C0%C2%88%02pm%06%18%C2%A4KE%C2%8A%1BN*b7%C2%9C%07%C2%80%C2%BB%C2%B3%C2%AEc%08I%0D%C2%BF%C3%A1%C3%8C%7B%C3%BEM%3F%16%2F3%00w%60Z%02%C3%ACT%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+
+var nullLayer = addObj.add("iconbutton", undefined, File.decode(nullLayer_imgString), { name: "nullLayer", style: "toolbutton" });
 nullLayer.helpTip = "Create a Null layer in active comp";
 nullLayer.alignment = ["left", "top"];
 nullLayer.preferredSize.height = 24;
@@ -976,7 +982,6 @@ function openCompInViewer(compName, layerName) {
 
 function modifyJSONdata() {
   var compIndex = findCompIndex("__SETTINGS");
-  app.beginUndoGroup("modifyJSONdata");
   // Get the colors from the color fill effect on the layer
   var accentColor = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("accent_color").value;
   var titleColor = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("title_color").value;
@@ -987,10 +992,6 @@ function modifyJSONdata() {
   var cursor_color = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("cursor_color").value;
   var c2a_link_color = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("c2a_link_color").value;
   var source_color = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("source_color").value;
-
-  // JSON-Datei aktualisieren
-  var projectPath = app.project.file.path; // Get the path of the After Effects project
-  var jsonFilePath = projectPath + "/(footage)/footage/json/input_template.json"; // Adjust the JSON file path
 
   // Function to convert RGB to Hex
   function rgbToHex(theColor) {
@@ -1003,20 +1004,25 @@ function modifyJSONdata() {
     return "#" + r + g + b;
   }
 
-  // Read existing JSON file
-  var existingJson = {};
-  var file = new File(jsonFilePath);
-  if (file.exists) {
-    file.open("r");
-    var existingJsonString = file.read();
-    file.close();
+  // Check if JSON file exists
+  var jsonFile = new File(jsonFilePath);
+  if (!jsonFile.exists) {
+    alert("JSON file does not exist at path: " + jsonFilePath);
+  } else {
+    // Read existing JSON file
+    var existingJson = {};
+    var file = new File(jsonFilePath);
+    if (file.exists) {
+      file.open("r");
+      var existingJsonString = file.read();
+      file.close();
 
-    try {
-      existingJson = JSON.parse(existingJsonString);
-    } catch (e) {
-      alert("Error parsing existing JSON file: " + e.toString());
+      try {
+        existingJson = JSON.parse(existingJsonString);
+      } catch (e) {
+        alert("Error parsing existing JSON file: " + e.toString());
+      }
     }
-  }
 
   // Update specific color values
   existingJson.Comp.logo_bg_color = rgbToHex(logoBgColor);
@@ -1039,7 +1045,6 @@ function modifyJSONdata() {
   myItem.mainSource.reload();
 
   alert("JSON DATA UPDATED!");
-  app.endUndoGroup();
 }
 
 // Function to revert the JSON file
@@ -1060,14 +1065,6 @@ function revertJson() {
       "accent": {
         "color": "#B28E3B",
         "color_dark": "#B28E3B"
-      },
-      "region": {
-        "text": "Tennis",
-        "color": "#ffffff",
-        "color_dark": "#080808",
-        "bg_color": "#080808",
-        "bg_color_dark": "#ffffff",
-        "position": "bottom-right"
       },
       "title": {
         "text": "Introducing the revolutionary social media AI-tool",
@@ -1158,45 +1155,6 @@ function revertJson() {
         "muted": 0,
         "text": "",
         "font": "Poppins"
-      }
-      ],
-      "slides": [{
-        "from": "0",
-        "to": "5",
-        "elements": [{
-          "x": "left",
-          "y": "bottom",
-          "text": "",
-          "font": "Arial",
-          "font-size": "15px"
-        },
-        {
-          "x": "left",
-          "y": "bottom",
-          "text": "",
-          "font": "Arial",
-          "font-size": "15px"
-        }
-        ]
-      },
-      {
-        "from": "0",
-        "to": "5",
-        "elements": [{
-          "x": "left",
-          "y": "bottom",
-          "text": "",
-          "font": "Arial",
-          "font-size": "15px"
-        },
-        {
-          "x": "left",
-          "y": "bottom",
-          "text": "",
-          "font": "Arial",
-          "font-size": "15px"
-        }
-        ]
       }
       ]
       // ... (rest of the JSON data)
@@ -1337,4 +1295,51 @@ btn_debug_colors.onClick = function () {
 };
 btn_revert_json.onClick = function () {
   revertJson();
+};
+
+
+textLayer.onClick = function () {
+  var comp = app.project.activeItem;
+  // Check if a composition is active
+  if (comp != null && comp instanceof CompItem) {
+    app.executeCommand(2836);//TEXT
+  } else {
+    alert("No active composition.");
+  }
+};
+solidLayer.onClick = function () {
+  var comp = app.project.activeItem;
+  // Check if a composition is active
+  if (comp != null && comp instanceof CompItem) {
+    app.executeCommand(2038);//SOLID
+  } else {
+    alert("No active composition.");
+  }
+};
+shapeLayer.onClick = function () {
+  var comp = app.project.activeItem;
+  // Check if a composition is active
+  if (comp != null && comp instanceof CompItem) {
+    app.executeCommand(3736);//SHAPE
+  } else {
+    alert("No active composition.");
+  }
+};
+adjustmentsLayer.onClick = function () {
+  var comp = app.project.activeItem;
+  // Check if a composition is active
+  if (comp != null && comp instanceof CompItem) {
+    app.executeCommand(2279);//ADJUSTMENT
+  } else {
+    alert("No active composition.");
+  }
+};
+nullLayer.onClick = function () {
+  var comp = app.project.activeItem;
+  // Check if a composition is active
+  if (comp != null && comp instanceof CompItem) {
+    app.executeCommand(2767);//NULL
+  } else {
+    alert("No active composition.");
+  }
 };
