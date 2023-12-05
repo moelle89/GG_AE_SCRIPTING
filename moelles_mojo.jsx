@@ -358,6 +358,12 @@ var openJSONFolder = shortcuts.add("iconbutton", undefined, File.decode(openJSON
 openJSONFolder.helpTip = "Open JSON Folder";
 openJSONFolder.alignment = ["center", "top"];
 
+var purgeAll_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01%C2%98IDATH%C2%89%C2%B5%C3%95%3BkTA%14%07%C3%B0%C3%9F%C3%B5%11%C2%85%C2%88Z%C2%88%C2%85%C2%95%C2%96%C2%82%C2%82%C2%8D%C2%A5%20X%C3%BA%19D%C2%B0%17%5B%C2%ADS%C3%B8%11%C3%94%2F%10%0BK%1B%05%C2%B1%C2%B3%C3%93F%12%C2%88%C2%82%C2%85%C3%A0%C2%8B%C3%B8%00%C3%B1%C2%95d%C3%9D%1D%C2%8B%3Bkf%C2%8Fsw%C3%97M%C3%B2%C2%87%C3%83%C2%9D%C3%B3%C2%BFs%C3%8E%7F%5Eg%C2%A6I)%C3%99I%C3%AC%C3%9A%C3%91%C3%ACS%0A%5C%C3%80%0A%5EW%C3%AC%25.%C2%8E%0Bn*K%C3%94%60O%C3%A1%3F%C3%842nW%C3%A2%2F%C3%A1%3C%C3%8E%15%5C%1F%C2%83.%C2%81%2B%C2%B8%C2%8A%C2%B9%C2%82%3B%C2%81U%7C%C2%A9%08%1C%C3%861%C2%BC*%C2%B8%1E%C3%AE%C3%A0VM%C3%A0%2B%0EV%12%C3%BD%2F~%C3%A0%00%C3%BF%C3%AE%C3%81%C2%83mH%0E%C2%8F%C2%86%C2%8D8%C2%839%C2%9C%C3%86%C3%AE-%24%1F%60%09k%C2%8Cn%26l%C3%A0l%C2%B6Y%C3%B1%1CO%C3%BFz)%C2%A5h%C3%B7%C3%93%C3%96%C3%B0%C2%B8%C3%8CW%C2%AB%C2%83%17%C3%81_%C3%87M%2C%06%C3%BE%1E%16%C3%B0%2B%C3%B0%2B%23%5Ee%06%C3%97%C3%82%C2%88%C2%9Ee%C3%BEhJ%C3%A9g%C3%A66RJ%C3%873%C3%BF%24%C3%B4%C2%BF1i%06o%C2%83%C3%9F%C3%8B%C3%9F%C2%BD6%0Bh%60s%C3%BFz%C2%A1%C3%BFH%7CM%C3%A0%7D%C3%B0%C2%9B%C3%B0%C2%9D%C3%84O%14X%C3%95%C2%9E%C2%A6Y%C3%90%C3%8F%C3%B1c%05%3Ei%2Bz%16%7C%C2%9FF%C3%A0%1B%3E%C3%8E(%C3%B0Y%18%5CM%C3%A0w%18%C3%85pc%C3%BB(%C3%8B%C2%BE%1F%C3%BE%C3%8Bqk%C2%93%04%C3%A0%5D%C3%91%1E%5E~%C3%B3%C3%9A%C2%93D%7B%C2%95%C3%8C%C3%A7%C3%B6%C2%A1%C2%A2%C3%AF%C2%87%C2%98(%5E%15C%C2%BC)%C3%9A'%C2%B5%C2%97%C3%97%11%C3%AC%2B%C3%A2%16%C3%B3%40%C3%8Et%C3%84%C2%8D%15(%C2%8FZ%C2%A3%7D%C3%95%22Ne%C3%AB%C2%8AC%C3%B7%12-w%C3%B0%C2%93%C2%B0%14%C2%89%C3%9A%C2%93I%C2%BB%C3%86%0B%C2%B8%C2%8C%C3%BDS%24%5E%C3%87%5D%5C%17*%C2%BBK%60%C3%9B%C3%B0%07E2%0B%C3%9C%C3%BC%C3%AEK%C3%BD%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+
+var purgeAll = shortcuts.add("iconbutton", undefined, File.decode(purgeAll_imgString), { name: "purgeAll", style: "toolbutton" });
+purgeAll.helpTip = "Purge DiscCache";
+purgeAll.alignment = ["center", "top"];
+
 // add Obj
 // ======
 var addObj = root.add("group", undefined, { name: "addObj" });
@@ -1343,4 +1349,7 @@ nullLayer.onClick = function () {
   } else {
     alert("No active composition.");
   }
+};
+purgeAll.onClick = function () {
+  app.executeCommand(10200);//AllMemoryDiskCache
 };
