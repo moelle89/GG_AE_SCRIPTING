@@ -258,8 +258,8 @@ tab_tools.margins = [12,0,12,0];
 var tools_txt_wrapper = tab_tools.add("group", undefined, { name: "tools_txt_wrapper" });
 tools_txt_wrapper.orientation = "column";
 tools_txt_wrapper.alignChildren = ["left", "fill"];
-tools_txt_wrapper.spacing = 10;
-tools_txt_wrapper.margins = 10;
+tools_txt_wrapper.spacing = 0;
+tools_txt_wrapper.margins = [0, 5, 0, 10];
 tools_txt_wrapper.alignment = ["fill", "top"];
 
 var tools_wrapper = tab_tools.add("group", undefined, { name: "tools_wrapper" });
@@ -269,8 +269,25 @@ tools_wrapper.spacing = 10;
 tools_wrapper.margins = 0;
 tools_wrapper.alignment = ["fill", "top"];
 
-tools_txt_wrapper.add("statictext", undefined, "Open __SETTINGS - debug_layer");
-tools_txt_wrapper.add("statictext", undefined, "Change colors and click the button");
+var statictext2 = tools_txt_wrapper.add("statictext", undefined, undefined, { name: "statictext2" });
+statictext2.text = "Go to the Settings, open Effect Controls";
+statictext2.preferredSize.height = 20; 
+
+var statictext3 = tools_txt_wrapper.add("statictext", undefined, undefined, { name: "statictext3" });
+statictext3.text = "adjust colors and click MODIFY";
+statictext3.preferredSize.height = 20; 
+
+var statictext4 = tools_txt_wrapper.add("statictext", undefined, undefined, { name: "statictext4" });
+statictext4.text = "";
+statictext4.preferredSize.height = 10; 
+
+
+var btn_openAndSelect = tools_txt_wrapper.add("iconbutton", undefined, undefined, { name: "btn_openAndSelect", style: "button" });
+btn_openAndSelect.alignment = ["left", "top"];
+btn_openAndSelect.preferredSize.height = 30;
+btn_openAndSelect.preferredSize.width = 200;
+btn_openAndSelect.text = "Go to Settings";
+
 
 var btn_debug_colors = tools_wrapper.add("iconbutton", undefined, undefined, { name: "btn_debug_colors", style: "button" });
 btn_debug_colors.alignment = ["left", "top"];
@@ -283,7 +300,7 @@ var revert_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%
 var btn_revert_json = tools_wrapper.add("iconbutton", undefined, File.decode(revert_imgString), { name: "btn_revert_json", style: "toolbutton" });
 btn_revert_json.alignment = ["left", "top"];
 btn_revert_json.preferredSize.height = 30;
-btn_revert_json.preferredSize.width = 40;
+btn_revert_json.preferredSize.width = 30;
 btn_revert_json.text = "";
 btn_revert_json.helpTip = "Restore Default JSON";
 
@@ -391,6 +408,7 @@ function GetItemsByName(nameString) {
       matches.push(crnt);
     }
   }
+  alert(matches);
   return matches;
 };
 
@@ -875,19 +893,24 @@ function findCompIndex(compName) { // name of item you're looking for
       myComp = app.project.item(i);
       myCompIndex = i;
       myCompID = myComp.id;
-
       break;
     }
   }
   if (myComp != null) {
-
-    // do stuff with the comp
     return i;
   } else {
     alert("Can't find comp '" + compName + "'");
 
   }
 }
+
+function openCompInViewer(compName, layerName) {
+  compIndex = findCompIndex(compName)
+  app.project.item(compIndex).openInViewer();
+  app.executeCommand(2004); // “Deselect All”
+  app.project.activeItem.layer(layerName).selected = true;
+}
+
 
 function modifyJSONdata() {
   var compIndex = findCompIndex("__SETTINGS");
@@ -949,7 +972,8 @@ function modifyJSONdata() {
   file.open("w");
   file.write(jsonString);
   file.close();
-  alert("JSON DATA UPDATED ");
+
+  alert("JSON DATA UPDATED!");
   app.endUndoGroup();
 }
 
@@ -1251,6 +1275,9 @@ openJSONFolder.onClick = function () {
 
 btn_import.onClick = function () {
   importAndCopyFile();
+};
+btn_openAndSelect.onClick = function () {
+  openCompInViewer("__SETTINGS", "debug_layer");
 };
 
 btn_debug_colors.onClick = function () {
