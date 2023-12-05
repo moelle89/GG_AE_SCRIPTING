@@ -17,7 +17,7 @@ function createDockableUI(thisObj) {
 
 
 function showWindow(myWindow) {
-  if (myWindow instanceof Window) {  
+  if (myWindow instanceof Window) {
     myWindow.show();
   }
   if (myWindow instanceof Panel) {
@@ -28,24 +28,36 @@ function showWindow(myWindow) {
 //Paste code here
 // WIN
 // ===
-
 var win = createDockableUI(this);
 
 win.orientation = "column";
-win.alignChildren = ["fill", "fill"];
+win.alignChildren = ["fill", "top"];
 win.alignment = ["fill", "fill"];
 win.minimumSize.width = 274;
 win.spacing = 0;
 win.margins = 0;
 
+
+// GROUP1
+// ======
+var root = win.add("group", undefined, { name: "root" });
+root.orientation = "row";
+root.minimumSize.width = 284;
+root.alignChildren = ["fill", "top"];
+root.maximumSize.height = 210;
+root.spacing = 0;
+root.margins = 0;
+
 // TPANEL1
 // =======
-var tpanel1 = win.add("tabbedpanel", undefined, undefined, { name: "tpanel1" });
+var tpanel1 = root.add("tabbedpanel", undefined, undefined, { name: "tpanel1" });
 tpanel1.alignChildren = ["left", "top"];
 tpanel1.margins = 0;
+tpanel1.spacing = 0;
 tpanel1.alignment = ["fill", "top"];
-tpanel1.preferredSize.width = 284;
-tpanel1.minimumSize.width = 274;
+tpanel1.maximumSize.width = 275;
+tpanel1.minimumSize.width = 275;
+tpanel1.maximumSize.height = 164;
 
 
 // tab_template
@@ -250,7 +262,7 @@ tab_tools.text = "CONFIG";
 tab_tools.orientation = "column";
 tab_tools.alignChildren = ["fill", "top"];
 tab_tools.spacing = 0;
-tab_tools.margins = [12,0,12,0];
+tab_tools.margins = [12, 0, 12, 0];
 
 
 // tools_wrapper
@@ -271,15 +283,15 @@ tools_wrapper.alignment = ["fill", "top"];
 
 var statictext2 = tools_txt_wrapper.add("statictext", undefined, undefined, { name: "statictext2" });
 statictext2.text = "Go to the Settings, open Effect Controls";
-statictext2.preferredSize.height = 20; 
+statictext2.preferredSize.height = 20;
 
 var statictext3 = tools_txt_wrapper.add("statictext", undefined, undefined, { name: "statictext3" });
 statictext3.text = "adjust colors and click MODIFY";
-statictext3.preferredSize.height = 20; 
+statictext3.preferredSize.height = 20;
 
 var statictext4 = tools_txt_wrapper.add("statictext", undefined, undefined, { name: "statictext4" });
 statictext4.text = "";
-statictext4.preferredSize.height = 10; 
+statictext4.preferredSize.height = 10;
 
 
 var btn_openAndSelect = tools_txt_wrapper.add("iconbutton", undefined, undefined, { name: "btn_openAndSelect", style: "button" });
@@ -295,7 +307,7 @@ btn_debug_colors.preferredSize.height = 30;
 btn_debug_colors.preferredSize.width = 200;
 btn_debug_colors.text = "STEP 2   |   APPLY COLORS";
 
-var revert_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%12%00%00%0B%12%01%C3%92%C3%9D~%C3%BC%00%00%024IDATH%C2%89b%C3%B8%C3%BF%C3%BF%3F%3E%1C%C3%B0%C3%BF%C3%BF%C3%BF%05%C3%BF%C3%BF%C3%BF%7F%C3%B0%1F%13%C2%80%C3%84%40r%205%C3%98%C3%8D%C3%B8%C3%BF%C2%9F%01%00%00%00%C3%BF%C3%BF%C3%82%25%C3%A1%C2%80%C3%83P%5C%00%C2%A4%16%C2%A4%07%C3%95%C2%9C%C3%BF%C3%BF%19%00%00%00%00%C3%BF%C3%BF%C3%82f%C3%B8%04%12%0CF%07%20%C2%BD%08%C2%B3%C3%BE%C3%BFg%00%00%00%00%C3%BF%C3%BFB7%1C%C3%A4eJ%01%C3%88%0C%C2%88y%C3%BF%C3%BF3%00%00%00%00%C3%BF%C3%BF%22%C3%85%C3%A5%17H%086%C2%88O%C3%BE%C3%BFg%00%00%00%00%C3%BF%C3%BFB%0Esl%C3%A0%C3%83%C3%BF%C3%BF%C3%BF%1B%C3%BE%C3%BF%C3%BF%C2%AF%00U%07b%13%0B%1C%C3%BE%C3%BF%C3%BF%C3%8F%00%00%00%00%C3%BF%C3%BF%C2%82Y%C2%80%C3%8De%20%17%1B%C2%A0%05!)%16%3C%C3%B8%C3%BF%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%82%25Et%00r%C2%B9%00%C3%94P%10%0D2%18d!i%C3%A0%C3%BF%C3%BF%00%00%00%00%00%C3%BF%C3%BFl%C3%8A1%0D%00%20%0C%00%C3%81%1B%C3%98%C3%81%09V*%05%C2%89%C2%95%04%0EXI%C3%8A%C2%8D%C2%9Fo%08%C3%95%C3%82%C3%86%40b~%C2%9E%C3%97A%2F%C2%95%C2%B8%00%00%00%C3%BF%C3%BF%C3%82%16%3C%60%C2%AFA%C3%B1%01%22%C2%9C%0C%C3%B2-((%130d%C3%BE%C3%BF%7F%00%00%00%00%C3%BF%C3%BF%02%19%C2%82%0E%60)%00%14%C2%B1%C3%84%1A%C2%8E%3D%C2%8E%C3%BE%C3%BF%C3%BF%0F%00%00%00%C3%BF%C3%BFb%C3%82%C3%A2-P%C3%90%C2%80%C2%80%02%C2%81%60%01%C2%81%064%3E(8%2F%C3%82y%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C3%82f%01)%C2%A0%1F%1A_%20%00%C2%8A%C2%AF%C3%BD(%C3%B1%C3%85%C3%80%C3%80%00%00%00%00%C3%BF%C3%BF%C3%82f%01H!%08%3C%20%C3%92%C2%A6%0BP%C3%9A%00C%C2%86%C2%81%C2%81%01%00%00%00%C3%BF%C3%BF%C2%A24%C2%92%C2%91%C2%933fI%C3%B0%C3%BF%C3%BF%03%00%00%00%00%C3%BF%C3%BF%C3%82U%C3%BE%C2%80R%04%2C%0F%C3%A0J%C3%BF%20%C3%83aE5H%1D%C2%88%C2%8F%0A%C3%BE%C3%BF_%00%00%00%00%C3%BF%C3%BF%22%25%C2%A3%C3%81%7C%0A%C2%92%039%0A9%C3%B5l%C3%80%C3%AA%C2%84%C3%BF%C3%BF%03%00%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%A8%40%C3%87%20%C3%8Bq%C2%95%C3%80%0F%C3%BE%C3%BF%C3%BF%C3%8F%00%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%B0C%C3%86%C2%A0%60%C3%84W%C2%BA%3A%C3%BC%C3%BF%C3%BF%C2%9F%01%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%B8%06E%3A1%C2%B9%1B%C2%92Y%C3%BF%C3%BFg%00%00%00%00%C3%BF%C3%BF%C2%A2m%C2%85%C3%B3%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%95%C3%B9%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%A5%C3%BF%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%B3%C3%A5%C3%BF%7F%06%00%00%00%00%C3%BF%C3%BF%03%00Pt%C3%9D%C2%86%C2%88%C2%A9%05_%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+var revert_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%12%00%00%0B%12%01%C3%92%C3%9D~%C3%BC%00%00%024IDATH%C2%89b%C3%B8%C3%BF%C3%BF%3F%3E%1C%C3%B0%C3%BF%C3%BF%C3%BF%05%C3%BF%C3%BF%C3%BF%7F%C3%B0%1F%13%C2%80%C3%84%40r%205%C3%98%C3%8D%C3%B8%C3%BF%C2%9F%01%00%00%00%C3%BF%C3%BF%C3%82%25%C3%A1%C2%80%C3%83P%5C%00%C2%A4%16%C2%A4%07%C3%95%C2%9C%C3%BF%C3%BF%19%00%00%00%00%C3%BF%C3%BF%C3%82f%C3%B8%04%12%0CF%07%20%C2%BD%08%C2%B3%C3%BE%C3%BFg%00%00%00%00%C3%BF%C3%BFB7%1C%C3%A4eJ%01%C3%88%0C%C2%88y%C3%BF%C3%BF3%00%00%00%00%C3%BF%C3%BF%22%C3%85%C3%A5%17H%086%C2%88O%C3%BE%C3%BFg%00%00%00%00%C3%BF%C3%BFB%0Esl%C3%A0%C3%83%C3%BF%C3%BF%C3%BF%1B%C3%BE%C3%BF%C3%BF%C2%AF%00U%07b%13%0B%1C%C3%BE%C3%BF%C3%BF%C3%8F%00%00%00%00%C3%BF%C3%BF%C2%82Y%C2%80%C3%8De%20%17%1B%C2%A0%05!)%16%3C%C3%B8%C3%BF%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%82%25Et%00r%C2%B9%00%C3%94P%10%0D2%18d!i%C3%A0%C3%BF%C3%BF%00%00%00%00%00%C3%BF%C3%BFl%C3%8A1%0D%00%20%0C%00%C3%81%1B%C3%98%C3%81%09V*%05%C2%89%C2%95%04%0EXI%C3%8A%C2%8D%C2%9Fo%08%C3%95%C3%82%C3%86%40b~%C2%9E%C3%97A%2F%C2%95%C2%B8%00%00%00%C3%BF%C3%BF%C3%82%16%3C%60%C2%AFA%C3%B1%01%22%C2%9C%0C%C3%B2-((%130d%C3%BE%C3%BF%7F%00%00%00%00%C3%BF%C3%BF%02%19%C2%82%0E%60)%00%14%C2%B1%C3%84%1A%C2%8E%3D%C2%8E%C3%BE%C3%BF%C3%BF%0F%00%00%00%C3%BF%C3%BFb%C3%82%C3%A2-P%C3%90%C2%80%C2%80%02%C2%81%60%01%C2%81%064%3E(8%2F%C3%82y%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C3%82f%01)%C2%A0%1F%1A_%20%00%C2%8A%C2%AF%C3%BD(%C3%B1%C3%85%C3%80%C3%80%00%00%00%00%C3%BF%C3%BF%C3%82f%01H!%08%3C%20%C3%92%C2%A6%0BP%C3%9A%00C%C2%86%C2%81%C2%81%01%00%00%00%C3%BF%C3%BF%C2%A24%C2%92%C2%91%C2%933fI%C3%B0%C3%BF%C3%BF%03%00%00%00%00%C3%BF%C3%BF%C3%82U%C3%BE%C2%80R%04%2C%0F%C3%A0J%C3%BF%20%C3%83aE5H%1D%C2%88%C2%8F%0A%C3%BE%C3%BF_%00%00%00%00%C3%BF%C3%BF%22%25%C2%A3%C3%81%7C%0A%C2%92%039%0A9%C3%B5l%C3%80%C3%AA%C2%84%C3%BF%C3%BF%03%00%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%A8%40%C3%87%20%C3%8Bq%C2%95%C3%80%0F%C3%BE%C3%BF%C3%BF%C3%8F%00%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%B0C%C3%86%C2%A0%60%C3%84W%C2%BA%3A%C3%BC%C3%BF%C3%BF%C2%9F%01%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%B8%06E%3A1%C2%B9%1B%C2%92Y%C3%BF%C3%BFg%00%00%00%00%C3%BF%C3%BF%C2%A2m%C2%85%C3%B3%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%95%C3%B9%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%A5%C3%BF%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%B3%C3%A5%C3%BF%7F%06%00%00%00%00%C3%BF%C3%BF%03%00Pt%C3%9D%C2%86%C2%88%C2%A9%05_%00%00%00%00IEND%C2%AEB%60%C2%82";
 
 var btn_revert_json = tools_wrapper.add("iconbutton", undefined, File.decode(revert_imgString), { name: "btn_revert_json", style: "toolbutton" });
 btn_revert_json.alignment = ["left", "top"];
@@ -314,8 +326,9 @@ var shortcuts = win.add("group", undefined, { name: "shortcuts" });
 shortcuts.orientation = "row";
 shortcuts.alignChildren = ["left", "top"];
 shortcuts.alignment = ["left", "top"];
-shortcuts.spacing = 6;
-shortcuts.margins = 12;
+shortcuts.spacing = 10;
+shortcuts.margins = [10,0,0,0];
+shortcuts.preferredSize.height = 40;
 
 var fitView_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%12%00%00%0B%12%01%C3%92%C3%9D~%C3%BC%00%00%01%C3%B3IDATH%C2%89b%C3%BC%C3%BF%C3%BF%3F%03%C3%8D%00%03%03%03%00%00%00%C3%BF%C3%BFb%C2%A2%C2%A9%C3%A9%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%AD%05%0C%0C%0C%00%00%00%00%C3%BF%C3%BFb!S_%03%03%03%C2%83%02%14%C2%83%C2%80%01%03%03%03%3F%C2%94%7D%11%C3%8Ag%60%60%60%60%00%00%00%00%C3%BF%C3%BF%22'%0E%40%C2%9A%C3%8F%13P%C3%83%08%26%19%18%18%00%00%00%00%C3%BF%C3%BF%22'%C2%88%3E%40%5DI%18000%00%00%00%00%C3%BF%C3%BF%227%15%09000%5C%60%60%60%C2%90%C3%87!%0F%C3%B1%01%03%03%03%00%00%00%C3%BF%C3%BF%227%C2%92%03%C3%B0%18~%10%C3%8Eb%60%60%00%00%00%00%C3%BF%C3%BF%22%C3%87%C2%82%04%06%06%C2%86%C3%B9D%C2%A9d%60%60%00%00%00%00%C3%BF%C3%BF%22%C3%95%02P%C2%AA%C3%81f%C3%B8G%C2%AC%C2%AA%19%18%18%00%00%00%00%C3%BF%C3%BF%22%C3%95%C2%82%07%0C%0C%0C%C2%89hb%20%C2%BE%03%C2%92%25%07%C3%A02%0C%0C%0C%00%00%00%00%C3%BF%C3%BFb%00E2%198%C3%A1%3F%04%C2%80h%C2%98~%C2%85%C3%BF%C3%BF%C3%BF%3B%C2%A0%C2%98%C3%B5%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C3%82f8H%11H1%C2%8C%0F2%C3%A4%C3%83%C3%BF%C3%BF%C3%BF%0D%C3%90%C3%94!%C2%AB%C3%81%C2%8E%C3%BF%C3%BFg%00%00%00%00%C3%BF%C3%BFB%C2%97h%C2%80%C2%BA%0Cf%20%C3%8C%C2%A5%C3%88b%C3%84%C3%BB%C3%B8%C3%BF%7F%06%00%00%00%00%C3%BF%C3%BFB%178%C2%80f%20%3A%00%C2%89%11o%C3%81%C3%BF%C3%BF%0C%00%00%00%00%C3%BF%C3%BF%C3%82%17%C3%89%C2%B0%C2%B2%05%19%14%C2%90%C2%94%24%18%18%18%00%00%00%00%C3%BF%C3%BF%22%25%15%C2%81R%C3%8B%02%C2%92Lg%60%60%00%00%00%00%C3%BF%C3%BFB%2F*p%C2%95%1B%0F%C2%A1%C2%85%1C%C2%A8%1C%22%1E000%00%00%00%00%C3%BF%C3%BF%22%C3%96%07%C2%A0b%01%C2%94%C2%BEa%C3%853q%C2%80%C2%81%C2%81%01%00%00%00%C3%BF%C3%BF%22%25%C2%88%C3%B4%C2%A1%C2%85%1C%C3%B1%C2%80%C2%81%C2%81%01%00%00%00%C3%BF%C3%BFB%C2%AFp%40%C3%850%C3%88%20%10%00%C3%A5LP%C2%89%09%02%C2%A0%1C%0C%C3%820%3Eq%C2%80%C2%81%C2%81%01%00%00%00%C3%BF%C3%BF%C2%A2m%C2%A5%C3%8F%C3%80%C3%80%00%00%00%00%C3%BF%C3%BF%C2%A2m%C2%9D%C3%8C%C3%80%C3%80%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%AD%05%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%03%00s2Y%20%C3%B3%C2%9AM%5D%00%00%00%00IEND%C2%AEB%60%C2%82";
 var fitView = shortcuts.add("iconbutton", undefined, File.decode(fitView_imgString), { name: "fitView", style: "toolbutton" });
@@ -345,12 +358,50 @@ var openJSONFolder = shortcuts.add("iconbutton", undefined, File.decode(openJSON
 openJSONFolder.helpTip = "Open JSON Folder";
 openJSONFolder.alignment = ["center", "top"];
 
+// add Obj
+// ======
+var addObj = root.add("group", undefined, { name: "addObj" });
+addObj.orientation = "column";
+addObj.alignChildren = ["left", "top"];
+addObj.alignment = ["left", "top"];
+addObj.minimumSize.width = 50;
+addObj.spacing = 0;
+addObj.margins = 10;
+
+var textLayer = addObj.add("iconbutton", undefined, File.decode(openJSONFolder_imgString), { name: "textLayer", style: "toolbutton" });
+textLayer.helpTip = "Create a Text layer in active comp";
+textLayer.alignment = ["left", "top"];
+textLayer.preferredSize.height = 30;
+textLayer.preferredSize.width = 30;
+
+var solidLayer = addObj.add("iconbutton", undefined, File.decode(openJSONFolder_imgString), { name: "solidLayer", style: "toolbutton" });
+solidLayer.helpTip = "Create a Solid layer in active comp";
+solidLayer.alignment = ["left", "top"];
+solidLayer.preferredSize.height = 30;
+solidLayer.preferredSize.width = 30;
+
+var shapeLayer = addObj.add("iconbutton", undefined, File.decode(openJSONFolder_imgString), { name: "shapeLayer", style: "toolbutton" });
+shapeLayer.helpTip = "Create a Shape layer in active comp";
+shapeLayer.alignment = ["left", "top"];
+shapeLayer.preferredSize.height = 30;
+shapeLayer.preferredSize.width = 30;
+
+var adjustmentsLayer = addObj.add("iconbutton", undefined, File.decode(openJSONFolder_imgString), { name: "adjustmentsLayer", style: "toolbutton" });
+adjustmentsLayer.helpTip = "Create an Adjustment layer in active comp";
+adjustmentsLayer.alignment = ["left", "top"];
+adjustmentsLayer.preferredSize.height = 30;
+adjustmentsLayer.preferredSize.width = 30;
+
+var nullLayer = addObj.add("iconbutton", undefined, File.decode(openJSONFolder_imgString), { name: "nullLayer", style: "toolbutton" });
+nullLayer.helpTip = "Create a Null layer in active comp";
+nullLayer.alignment = ["left", "top"];
+nullLayer.preferredSize.height = 30;
+nullLayer.preferredSize.width = 30;
+
 
 showWindow(win);
 
 // Function to find the index of a composition by name
-// COPY LAYER INTO COMP
-// ====
 
 function findComp(theName) {
   for (var i = 1; i <= app.project.numItems; i++) {
@@ -361,6 +412,8 @@ function findComp(theName) {
   return null;
 }
 
+// Function to find the index of an item by name
+
 function getItem(theName) {
   for (var i = 1; i <= app.project.numItems; i++) {
     if ((app.project.item(i)) && (app.project.item(i).name == theName)) {
@@ -369,7 +422,6 @@ function getItem(theName) {
   }
   return null;
 }
-
 
 // Function to find the index of a layer by name in a composition with a specific name
 function indexOfLayer(compName, layerName) {
@@ -394,13 +446,12 @@ function indexOfLayer(compName, layerName) {
       return -1;
     }
   }
-
   // If the composition with the specified name is not found, return -1
   return -1;
 }
 
 // Loops through the After-Effects project items and returns an array of items that match the name
-function GetItemsByName(nameString) {
+function getItemsByName(nameString) {
   // returns array of found matches
   if (!nameString) {
     return false;
@@ -643,7 +694,6 @@ function createTextBox() {
   app.endUndoGroup();
 }
 
-
 // Function to remove expressions from specific properties of a layer (Position, Scale, Opacity, Anchor Point, Rotation)
 function removeSpecificExpressions() {
 
@@ -688,7 +738,6 @@ function removeSpecificExpressions() {
   }
 }
 
-
 // Function to add specific expressions to properties of a layer (Anchor Point, Position, Scale)
 function scaleToFillComp() {
   // Check if a composition is active
@@ -730,7 +779,6 @@ function scaleToFillComp() {
     alert("Please open a composition.");
   }
 }
-
 
 // Function to add colorFill via script instead of preset file
 function setColorFill() {
@@ -807,7 +855,7 @@ function openSubfolderInProject(subfolderName) {
 
       // Add a text label to the dialog
       var text = noFolderDialog.add("statictext", undefined, "Subfolder '" + subfolderName + "' does not exist.");
-      
+
       var textLabel = noFolderDialog.add("statictext", undefined, "Do you want me to create the folder for you?");
 
       // Add an "Accept" button to the dialog
@@ -1165,22 +1213,6 @@ function revertJson() {
   alert("JSON file reverted successfully!");
 }
 
-// Testing and debugging function
-function testAndDebug() {
-  // Call the function to get active layer information
-  removeSpecificExpressions();
-  // Function to remove expressions from all properties of a layer
-  // Call the function
-  // You can add additional test and debug code here
-  // For example, you can log messages to the JavaScript Console
-  $.writeln("Testing and debugging...");
-
-  // You can also use the alert function to display messages
-  // alert("Testing and debugging...");
-
-  // Add more test and debug code as needed
-}
-
 
 btn_createComps.onClick = function () {
   var duration = 15; // Set the duration of the composition in seconds
@@ -1292,6 +1324,7 @@ btn_import.onClick = function () {
 };
 btn_openAndSelect.onClick = function () {
   openCompInViewer("__SETTINGS", "debug_layer");
+  app.executeCommand(2163);//EffectControls
 };
 
 btn_debug_colors.onClick = function () {
