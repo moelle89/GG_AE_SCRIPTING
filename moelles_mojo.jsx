@@ -43,10 +43,10 @@ win.margins = 0;
 var root = win.add("group", undefined, { name: "root" });
 root.orientation = "row";
 root.minimumSize.width = 284;
-root.alignChildren = ["fill", "top"];
-root.maximumSize.height = 210;
+root.alignChildren = ["fill", "fill"];
+root.maximumSize.height = 215;
 root.spacing = 0;
-root.margins = 0;
+root.margins = 5;
 
 // TPANEL1
 // =======
@@ -55,9 +55,9 @@ tpanel1.alignChildren = ["left", "top"];
 tpanel1.margins = 0;
 tpanel1.spacing = 0;
 tpanel1.alignment = ["fill", "top"];
-tpanel1.maximumSize.width = 275;
-tpanel1.minimumSize.width = 275;
-tpanel1.maximumSize.height = 164;
+tpanel1.maximumSize.width = 276;
+tpanel1.minimumSize.width = 276;
+tpanel1.maximumSize.height = 178;
 
 
 // tab_template
@@ -65,7 +65,7 @@ tpanel1.maximumSize.height = 164;
 var tab_template = tpanel1.add("tab", undefined, undefined, { name: "tab_template" });
 tab_template.text = "TEMPLATE";
 tab_template.orientation = "column";
-tab_template.alignChildren = ["fill", "top"];
+tab_template.alignChildren = ["fill", "fill"];
 tab_template.spacing = 0;
 tab_template.margins = 0;
 
@@ -73,7 +73,7 @@ tab_template.margins = 0;
 // ======
 var group1 = tab_template.add("group", undefined, { name: "group1" });
 group1.orientation = "row";
-group1.alignChildren = ["fill", "top"];
+group1.alignChildren = ["fill", "fill"];
 group1.spacing = 10;
 group1.margins = 12;
 group1.alignment = ["fill", "top"];
@@ -98,9 +98,9 @@ btn_createIMGComps.preferredSize.height = 30;
 // TPANEL2
 // =======
 var tpanel2 = tab_template.add("tabbedpanel", undefined, undefined, { name: "tpanel2" });
-tpanel2.alignChildren = ["fill", "top"];
-tpanel2.alignment = ["fill", "top"];
-tpanel2.minimumSize.width = 274;
+tpanel2.alignChildren = ["fill", "fill"];
+tpanel2.alignment = ["fill", "fill"];
+tpanel2.minimumSize.width = 276;
 tpanel2.margins = 0;// 
 
 eval("@JSXBIN@ES@2.1@MyBn0DzABByB");
@@ -111,7 +111,7 @@ tpanel2.spacing = 0;
 var tab2 = tpanel2.add("tab", undefined, undefined, { name: "tab2" });
 tab2.text = "ELEMENTS";
 tab2.orientation = "column";
-tab2.alignChildren = ["left", "top"];
+tab2.alignChildren = ["left", "fill"];
 tab2.spacing = 12;
 tab2.margins = 10;
 
@@ -365,38 +365,43 @@ addObj.orientation = "column";
 addObj.alignChildren = ["left", "top"];
 addObj.alignment = ["left", "top"];
 addObj.minimumSize.width = 50;
-addObj.spacing = 0;
+addObj.spacing = 10;
 addObj.margins = 10;
 
-var textLayer = addObj.add("iconbutton", undefined, File.decode(openJSONFolder_imgString), { name: "textLayer", style: "toolbutton" });
+var textLayer_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01aIDATH%C2%89%C3%AD%C2%96%3D%2FfQ%14%C2%85%1F%5E%C2%BC%18%C3%95%24%C2%A6T%08%22%3A%C3%85T%23%C2%98B%C2%A7%C3%91(t%C3%BE%C2%84%C3%9F%C2%81N%C2%A3%C3%B5%0BDD%C2%83I%26%C2%A3%C2%98%0C%C3%89%C3%94b%12%1F%C2%99%C2%88%10!%C2%88%C2%8FG%C3%A1%C3%9E%C3%8C%C2%9E%13%C3%AE%C3%AB%C3%AB-%24Vr%C2%92s%C3%B6%C2%BA%7B%C2%ADs%C3%B7%3E%C3%A7%C3%A6%C3%96%C2%A8T%13%C2%B5UU%07%C3%AA%C3%82%C2%BC%05%C3%B8%0AL%00%1F%C2%81%C2%9B'j%C3%95%02G%C3%80%24%C2%B0%0A%C3%BCM%0D%C2%86%C2%80q%C2%A0%C3%AFY%5B%C3%BD%C2%87%C3%A3Lw%0E%005%1F%3F%7D%3D%C2%AC%C3%A7%C2%BA%C2%B1%07%C3%8D%2F%C3%9CyDS%3E%C2%89%25*%25%0F%09%C3%BC%0E%09m%40C%C2%B6%C2%BE%04%C2%B6%C2%81%C2%93l%C3%9D%11E%C3%BF%C3%93%0A%25ZN%5Es%3Ep%5D%C3%AAf%C3%A0v%C3%94%C3%8F%C2%81%C2%9FNr%C2%BF%C3%A7%5C4%C3%B8%C2%A2N%C2%A9%07%C3%AA%C2%92%C3%9A%13%C2%B8%5E%C3%B5O%10%C3%98S%07%02%C3%9F%C2%A9.%C2%AA%C2%87%C3%AA%C2%8C%C3%9A%7F%C2%9F%01j)K%C3%BC%C2%94%C3%84%2B%19%C2%A0%C2%B6%C2%AA%C2%83jc%C2%8C%C3%87%1E%00%5C%03%2B%C3%8Fh*%C3%80%3E%C2%B0%C2%9C%06%C2%AB~%C2%93%C3%9F%0D%C3%9E%C2%8E%C3%81%09w'%2C%C3%87%0Dp%C3%BA%C2%A8%C3%8C%C3%A4%2C%C2%A7%C2%A3%5E%1DVW%C3%95%C2%8Bp%0F.%C3%95%1F%C3%AA%C2%A8Z.%C3%92%C2%A8d0%C2%AA%C2%9E%C3%B90%C3%8E%C3%95%C2%B1%22%C2%8DJ%25j%07%1A%0B%C3%B82%C3%90%5D%24P%C3%89%60%0D%C3%98*%C3%A0w%C2%81oE%02%C3%A9%C2%A7%22%C3%85%060%0B%C2%8C%00%1F%C2%80%C2%AB%2C%5E%02.%C2%80%05%C3%A0W%C2%91%40%C2%8Do%C3%BD%C2%AF%C3%A2%16%C2%99Q%0F%02%C2%B5%C3%86%C2%BE%C2%B4%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+
+
+var textLayer = addObj.add("iconbutton", undefined, File.decode(textLayer_imgString), { name: "textLayer", style: "toolbutton" });
 textLayer.helpTip = "Create a Text layer in active comp";
 textLayer.alignment = ["left", "top"];
-textLayer.preferredSize.height = 30;
-textLayer.preferredSize.width = 30;
+textLayer.preferredSize.height = 24;
+textLayer.preferredSize.width = 24;
 
 var solidLayer = addObj.add("iconbutton", undefined, File.decode(openJSONFolder_imgString), { name: "solidLayer", style: "toolbutton" });
 solidLayer.helpTip = "Create a Solid layer in active comp";
 solidLayer.alignment = ["left", "top"];
-solidLayer.preferredSize.height = 30;
-solidLayer.preferredSize.width = 30;
+solidLayer.preferredSize.height = 24;
+solidLayer.preferredSize.width = 24;
 
-var shapeLayer = addObj.add("iconbutton", undefined, File.decode(openJSONFolder_imgString), { name: "shapeLayer", style: "toolbutton" });
+var shapeLayer_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%02%24IDATH%C2%89%C2%B5%C2%95MoMQ%14%C2%86%C2%9F%C3%95V%C2%A3%C3%9A%C3%92%C2%90T%07%0Ch4%22%C3%81P%C2%8A%0433%C3%86L%18%C2%9AI%C3%BC%02i%22%C2%9DuD%07%C3%BE%C2%80Y%051BB%C3%92%C2%B9%C2%94%C3%84%C3%94%C2%A4f%C2%A5%C3%AD%C3%AD%C3%87E%C3%9B%C3%87%60%C3%AF%C2%B2%C3%9D%C3%9C%C3%A3%C2%9EF%C2%BA%C2%93%C2%93%7B%C3%AE%C3%99%C3%AFz%C2%9F%C2%B5%C3%8F%5E%C3%AB%C3%ACP%C3%99%C3%8D%C3%91%03%10%11%C2%A8%C3%A3%C3%809%60o%C3%8D%C3%98M%60%0Dx%14%11m%C2%B3T%C2%89%C2%BC%C2%82q%C3%A0%25%C3%90%07t%C3%97%04%08l%00%C3%8B%111R%05%C3%A8%C3%89%C3%B7%C2%97%C2%80%01%C2%A0%0Bh%C3%94%04t%C3%A7%C2%98n%C3%B5%40D%2C%C2%B5%13%C3%B5%C2%B4%C3%BCo%00%C2%B7k%02%26%C2%81%C2%B1%C2%9C%C3%94%C3%8F*Q%2B%00%C2%80%C2%88%C2%98%C3%A9%C3%A4%C2%AEN%C3%96%C3%89%C2%A2%C2%AB%C2%8E%C2%A8b%C2%AC%17%1E%C2%95%2B%C3%98%11%40%C2%BD%C2%A0%C3%8E%C2%AA%C2%AB%C3%80%C2%B1%C3%BCx%15x%C3%B8_%00uH%C2%9D%05%5E%00%C3%A7%C2%81%7D%C3%80%C3%BE%3C%3D%08%C3%9CT%C2%9B%C3%AA%C3%BD%C3%96%C3%98%C2%B6%7B%C3%90b%C2%BE%1F%C3%B8%08%C2%8C%C2%90*g%C2%91%C3%94%2B_%C2%80%C3%BE%0C%C3%A8%C3%8D%5Ew%C3%95%C2%81%C2%88%C2%B8%C2%B7%C2%93%15%3C%07%0E%03%C2%91%C3%8D%C2%AFGD_D%C2%8C%C3%A6%C3%BA%1F%03%5E%03KyUw%C3%94%C3%9F%7D%C3%B1O%C2%80%3A%01%C2%9C%C3%89%C3%99-%00%C2%A3%11%C3%B1%C2%B6%C3%94D%C3%84%7CD%5C%05%C2%9E%02%2B%C2%A4f%7DVw%05%C2%97%C2%81%C2%A1%C2%9C%C3%B9%C2%8D%C2%88%C3%B8Z%25%C2%8C%C2%88%5B%C2%A4%C3%8E%068%C2%A5%1E%C2%AD%02l%15%C3%B7g%C3%B3ooD%C2%BC%C3%AA%C2%90%0C%C3%80%0C%C2%A9d%C2%B7%C2%80%C2%8B%25%60%C2%8B%C3%B4m%C3%A9%02%26%C3%949u%C2%AE%08%C2%9C%C2%AFa%0Ei%C3%A3%C2%9B%C2%A4M%1F%C2%86%3FU%C2%B4%C3%BD5%1C%04N%C2%B7%09%C3%AC%C2%AF%09%C3%A8%25U%C3%9A%26%C3%B0%3D9%2Bj%C2%BF%C2%BA%C2%90ky%C2%BD%C2%B8%16McM%1D%C3%AE%C3%A4%C2%AE%C2%BE%C3%8B%C3%BAo%C3%AA%155%01%0A%C3%81A%C3%B5PqMehS%7D%C3%92%C3%81%C3%BC%C2%A4%C2%BA%C2%9C%01%2B%C3%9B%C3%89%C3%BF%05h%13%C2%B4G%C3%9D(%C2%B2%C2%9A%C2%AE%C3%90%1DQ%1BY%C3%97%C3%98%C3%96u%04d%C3%91%C2%83%C3%A2U-%C2%A9%C2%9F%C3%95i%C3%B5Z%C2%9E%7B%C2%A3%C2%AE%C3%A4%C3%B9%1F%C3%AA%C3%BB%22%C2%B63%20%0B%C2%A7%C2%8A%0C-%C3%B6g%C2%B9x%C3%96%C3%88%C3%957%C2%B0c%40%16%1FW%3Fd%C3%93F%C3%8Ev%3D%C2%BF%C2%BA%C2%A6%C3%BA%C2%B8ML%3A%C2%93%23%C2%A2%16%24%07%C2%9D%20%C2%9D%C3%A1%23%C2%A43%C3%A1SU%13Z%1C%C3%BA%C2%BB6~%01%3C%C2%BF%C2%B0%C3%BC%C2%BC%C2%A1%C3%BA%C3%99%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+
+var shapeLayer = addObj.add("iconbutton", undefined, File.decode(shapeLayer_imgString), { name: "shapeLayer", style: "toolbutton" });
 shapeLayer.helpTip = "Create a Shape layer in active comp";
 shapeLayer.alignment = ["left", "top"];
-shapeLayer.preferredSize.height = 30;
-shapeLayer.preferredSize.width = 30;
+shapeLayer.preferredSize.height = 24;
+shapeLayer.preferredSize.width = 24;
 
 var adjustmentsLayer = addObj.add("iconbutton", undefined, File.decode(openJSONFolder_imgString), { name: "adjustmentsLayer", style: "toolbutton" });
 adjustmentsLayer.helpTip = "Create an Adjustment layer in active comp";
 adjustmentsLayer.alignment = ["left", "top"];
-adjustmentsLayer.preferredSize.height = 30;
-adjustmentsLayer.preferredSize.width = 30;
+adjustmentsLayer.preferredSize.height = 24;
+adjustmentsLayer.preferredSize.width = 24;
 
 var nullLayer = addObj.add("iconbutton", undefined, File.decode(openJSONFolder_imgString), { name: "nullLayer", style: "toolbutton" });
 nullLayer.helpTip = "Create a Null layer in active comp";
 nullLayer.alignment = ["left", "top"];
-nullLayer.preferredSize.height = 30;
-nullLayer.preferredSize.width = 30;
+nullLayer.preferredSize.height = 24;
+nullLayer.preferredSize.width = 24;
 
 
 showWindow(win);
