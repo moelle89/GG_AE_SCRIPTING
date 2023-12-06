@@ -358,7 +358,7 @@ var openJSONFolder = shortcuts.add("iconbutton", undefined, File.decode(openJSON
 openJSONFolder.helpTip = "Open JSON Folder";
 openJSONFolder.alignment = ["center", "top"];
 
-var purgeAll_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01%C2%98IDATH%C2%89%C2%B5%C3%95%3BkTA%14%07%C3%B0%C3%9F%C3%B5%11%C2%85%C2%88Z%C2%88%C2%85%C2%95%C2%96%C2%82%C2%82%C2%8D%C2%A5%20X%C3%BA%19D%C2%B0%17%5B%C2%ADS%C3%B8%11%C3%94%2F%10%0BK%1B%05%C2%B1%C2%B3%C3%93F%12%C2%88%C2%82%C2%85%C3%A0%C2%8B%C3%B8%00%C3%B1%C2%95d%C3%9D%1D%C2%8B%3Bkf%C2%8Fsw%C3%97M%C3%B2%C2%87%C3%83%C2%9D%C3%B3%C2%BFs%C3%8E%7F%5Eg%C2%A6I)%C3%99I%C3%AC%C3%9A%C3%91%C3%ACS%0A%5C%C3%80%0A%5EW%C3%AC%25.%C2%8E%0Bn*K%C3%94%60O%C3%A1%3F%C3%842nW%C3%A2%2F%C3%A1%3C%C3%8E%15%5C%1F%C2%83.%C2%81%2B%C2%B8%C2%8A%C2%B9%C2%82%3B%C2%81U%7C%C2%A9%08%1C%C3%861%C2%BC*%C2%B8%1E%C3%AE%C3%A0VM%C3%A0%2B%0EV%12%C3%BD%2F~%C3%A0%00%C3%BF%C3%AE%C3%81%C2%83mH%0E%C2%8F%C2%86%C2%8D8%C2%839%C2%9C%C3%86%C3%AE-%24%1F%60%09k%C2%8Cn%26l%C3%A0l%C2%B6Y%C3%B1%1CO%C3%BFz)%C2%A5h%C3%B7%C3%93%C3%96%C3%B0%C2%B8%C3%8CW%C2%AB%C2%83%17%C3%81_%C3%87M%2C%06%C3%BE%1E%16%C3%B0%2B%C3%B0%2B%23%5Ee%06%C3%97%C3%82%C2%88%C2%9Ee%C3%BEhJ%C3%A9g%C3%A66RJ%C3%873%C3%BF%24%C3%B4%C2%BF1i%06o%C2%83%C3%9F%C3%8B%C3%9F%C2%BD6%0Bh%60s%C3%BFz%C2%A1%C3%BFH%7CM%C3%A0%7D%C3%B0%C2%9B%C3%B0%C2%9D%C3%84O%14X%C3%95%C2%9E%C2%A6Y%C3%90%C3%8F%C3%B1c%05%3Ei%2Bz%16%7C%C2%9FF%C3%A0%1B%3E%C3%8E(%C3%B0Y%18%5CM%C3%A0w%18%C3%85pc%C3%BB(%C3%8B%C2%BE%1F%C3%BE%C3%8Bqk%C2%93%04%C3%A0%5D%C3%91%1E%5E~%C3%B3%C3%9A%C2%93D%7B%C2%95%C3%8C%C3%A7%C3%B6%C2%A1%C2%A2%C3%AF%C2%87%C2%98(%5E%15C%C2%BC)%C3%9A'%C2%B5%C2%97%C3%97%11%C3%AC%2B%C3%A2%16%C3%B3%40%C3%8Et%C3%84%C2%8D%15(%C2%8FZ%C2%A3%7D%C3%95%22Ne%C3%AB%C2%8AC%C3%B7%12-w%C3%B0%C2%93%C2%B0%14%C2%89%C3%9A%C2%93I%C2%BB%C3%86%0B%C2%B8%C2%8C%C3%BDS%24%5E%C3%87%5D%5C%17*%C2%BBK%60%C3%9B%C3%B0%07E2%0B%C3%9C%C3%BC%C3%AEK%C3%BD%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+var purgeAll_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01%C2%98IDATH%C2%89%C2%B5%C3%95%3BkTA%14%07%C3%B0%C3%9F%C3%B5%11%C2%85%C2%88Z%C2%88%C2%85%C2%95%C2%96%C2%82%C2%82%C2%8D%C2%A5%20X%C3%BA%19D%C2%B0%17%5B%C2%ADS%C3%B8%11%C3%94%2F%10%0BK%1B%05%C2%B1%C2%B3%C3%93F%12%C2%88%C2%82%C2%85%C3%A0%C2%8B%C3%B8%00%C3%B1%C2%95d%C3%9D%1D%C2%8B%3Bkf%C2%8Fsw%C3%97M%C3%B2%C2%87%C3%83%C2%9D%C3%B3%C2%BFs%C3%8E%7F%5Eg%C2%A6I)%C3%99I%C3%AC%C3%9A%C3%91%C3%ACS%0A%5C%C3%80%0A%5EW%C3%AC%25.%C2%8E%0Bn*K%C3%94%60O%C3%A1%3F%C3%842nW%C3%A2%2F%C3%A1%3C%C3%8E%15%5C%1F%C2%83.%C2%81%2B%C2%B8%C2%8A%C2%B9%C2%82%3B%C2%81U%7C%C2%A9%08%1C%C3%861%C2%BC*%C2%B8%1E%C3%AE%C3%A0VM%C3%A0%2B%0EV%12%C3%BD%2F~%C3%A0%00%C3%BF%C3%AE%C3%81%C2%83mH%0E%C2%8F%C2%86%C2%8D8%C2%839%C2%9C%C3%86%C3%AE-%24%1F%60%09k%C2%8Cn%26l%C3%A0l%C2%B6Y%C3%B1%1CO%C3%BFz)%C2%A5h%C3%B7%C3%93%C3%96%C3%B0%C2%B8%C3%8CW%C2%AB%C2%83%17%C3%81_%C3%87M%2C%06%C3%BE%1E%16%C3%B0%2B%C3%B0%2B%23%5Ee%06%C3%97%C3%82%C2%88%C2%9Ee%C3%BEhJ%C3%A9g%C3%A66RJ%C3%873%C3%BF%24%C3%B4%C2%BF1i%06o%C2%83%C3%9F%C3%8B%C3%9F%C2%BD6%0Bh%60s%C3%BFz%C2%A1%C3%BFH%7CM%C3%A0%7D%C3%B0%C2%9B%C3%B0%C2%9D%C3%84O%14X%C3%95%C2%9E%C2%A6Y%C3%90%C3%8F%C3%B1c%05%3Ei%2Bz%16%7C%C2%9FF%C3%A0%1B%3E%C3%8E(%C3%B0Y%18%5CM%C3%A0w%18%C3%85pc%C3%BB(%C3%8B%C2%BE%1F%C3%BE%C3%8Bqk%C2%93%04%C3%A0%5D%C3%91%1E%5E~%C3%B3%C3%9A%C2%93D%7B%C2%95%C3%8C%C3%A7%C3%B6%C2%A1%C2%A2%C3%AF%C2%87%C2%98(%5E%15C%C2%BC)%C3%9A'%C2%B5%C2%97%C3%97%11%C3%AC%2B%C3%A2%16%C3%B3%40%C3%8Et%C3%84%C2%8D%15(%C2%8FZ%C2%A3%7D%C3%95%22Ne%C3%AB%C2%8AC%C3%B7%12-w%C3%B0%C2%93%C2%B0%14%C2%89%C3%9A%C2%93I%C2%BB%C3%86%0B%C2%B8%C2%8C%C3%BDS%24%5E%C3%87%5D%5C%17*%C2%BBK%60%C3%9B%C3%B0%07E2%0B%C3%9C%C3%BC%C3%AEK%C3%BD%00%00%00%00IEND%C2%AEB%60%C2%82";
 
 var purgeAll = shortcuts.add("iconbutton", undefined, File.decode(purgeAll_imgString), { name: "purgeAll", style: "toolbutton" });
 purgeAll.helpTip = "Purge DiscCache";
@@ -417,6 +417,24 @@ nullLayer.preferredSize.width = 24;
 
 
 showWindow(win);
+
+function isSecurityPrefSet() {
+  try {
+    var securitySetting = app.preferences.getPrefAsLong("Main Pref Section", "Pref_SCRIPTING_FILE_NETWORK_SECURITY");
+    return (securitySetting == 1);
+  } catch (err) {
+    alert("Error in isSecurityPrefSet function\n" + err.toString());
+  }
+}
+
+if (!(isSecurityPrefSet())) {
+  alert("This script requires access to write files.\n" +
+    "Go to the \"Scripting & Expressions\" panel of the application preferences and make sure\n" +
+    "\"Allow Scripts to Write Files and Access Network\" is checked.\n" + 
+    "Consider also to uncheck \"Warn User When Executing Files\" ");
+  app.executeCommand(2359);
+}
+
 
 // Function to find the index of a composition by name
 
@@ -511,7 +529,7 @@ function areNamesUsed(name1, name2, name3) {
 
     // Check if the name matches any of the given names
     if (curItem.name === name1 || curItem.name === name2 || curItem.name === name3) {
-        return true; // Name already exists for some project item
+      return true; // Name already exists for some project item
     }
   }
 
@@ -589,7 +607,7 @@ function createCompSet(duration, name, type) {
 
   // Example usage:
   var name1 = reelName;
-  var name2 = squareName; 
+  var name2 = squareName;
   var name3 = fullHDName;
 
   // Check if names are already used
@@ -992,75 +1010,92 @@ function findCompIndex(compName) { // name of item you're looking for
 }
 
 function openCompInViewer(compName, layerName) {
-  compIndex = findCompIndex(compName)
-  app.project.item(compIndex).openInViewer();
-  app.executeCommand(2004); // “Deselect All”
-  app.project.activeItem.layer(layerName).selected = true;
-}
+  // Find the index of the composition
+  var compIndex = findCompIndex(compName);
 
+  if (compIndex != null) {
+    // Open the composition in viewer
+    app.project.item(compIndex).openInViewer();
+
+    // Deselect all layers
+    app.executeCommand(2004); // “Deselect All”
+
+    // Find the layer index in the active composition
+    var layerIndex = findLayerIndex(compIndex, layerName);
+
+    if (layerIndex !== -1) {
+      // Select the specified layer
+      app.project.activeItem.layer(layerIndex).selected = true;
+    } else {
+      alert("Layer '" + layerName + "' not found in composition '" + compName + "'.");
+    }
+  }
+}
 
 function modifyJSONdata() {
   var compIndex = findCompIndex("__SETTINGS");
-  // Get the colors from the color fill effect on the layer
-  var layer = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS");
+  if (compIndex != null) {
+    // Get the colors from the color fill effect on the layer
+    var layer = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS");
 
-  var accentColor = layer("accent_color").value;
-  var titleColor = layer("title_color").value;
-  var subtextColor = layer("subtext_color").value;
-  var bgColor = layer("bg_color").value;
-  var logoBgColor = layer("logo_bg_color").value;
-  var call2a_color = layer("c2a_color").value;
-  var cursor_color = layer("cursor_color").value;
-  var c2a_link_color = layer("c2a_link_color").value;
-  var source_color = layer("source_color").value;
+    var accentColor = layer("accent_color").value;
+    var titleColor = layer("title_color").value;
+    var subtextColor = layer("subtext_color").value;
+    var bgColor = layer("bg_color").value;
+    var logoBgColor = layer("logo_bg_color").value;
+    var call2a_color = layer("c2a_color").value;
+    var cursor_color = layer("cursor_color").value;
+    var c2a_link_color = layer("c2a_link_color").value;
+    var source_color = layer("source_color").value;
 
-  // Function to convert RGB to Hex
-  function rgbToHex(theColor) {
-    return "#" + ((1 << 24) + (theColor[0] << 16) + (theColor[1] << 8) + theColor[2]).toString(16).slice(1);
-  }
-
-  // Check if JSON file exists
-  // Path to the JSON file
-  var projectPath = app.project.file.path; // Get the path of the After Effects project
-  var jsonFilePath = projectPath + "/(footage)/footage/json/input_template.json"; // Adjust the JSON file path
-  var jsonFile = new File(jsonFilePath);
-  if (!jsonFile.exists) {
-    alert("JSON file does not exist at path: " + jsonFilePath);
-  } else {
-    // Read existing JSON file
-    var existingJson = {};
-    var file = new File(jsonFilePath);
-    if (file.exists) {
-      file.open("r");
-      var existingJsonString = file.read();
-      file.close();
-
-      try {
-        existingJson = JSON.parse(existingJsonString);
-      } catch (e) {
-        alert("Error parsing existing JSON file: " + e.toString());
-      }
+    // Function to convert RGB to Hex
+    function rgbToHex(theColor) {
+      return "#" + ((1 << 24) + (theColor[0] << 16) + (theColor[1] << 8) + theColor[2]).toString(16).slice(1);
     }
 
-    // Update specific color values
-    existingJson.Comp.logo_bg_color = rgbToHex(logoBgColor);
-    existingJson.Comp.accent.color = rgbToHex(accentColor);
-    existingJson.Comp.title.color = rgbToHex(titleColor);
-    existingJson.Comp.subtext.color = rgbToHex(subtextColor);
-    existingJson.Comp.bg.color = rgbToHex(bgColor);
-    existingJson.Comp.call2action.color = rgbToHex(call2a_color);
-    existingJson.Comp.call2action.cursor_color.color = rgbToHex(cursor_color);
-    existingJson.Comp.call2action_link.color = rgbToHex(c2a_link_color);
-    existingJson.Comp.source.color = rgbToHex(source_color);
+    // Check if JSON file exists
+    // Path to the JSON file
+    var projectPath = app.project.file.path; // Get the path of the After Effects project
+    var jsonFilePath = projectPath + "/(footage)/footage/json/input_template.json"; // Adjust the JSON file path
+    var jsonFile = new File(jsonFilePath);
+    if (!jsonFile.exists) {
+      alert("JSON file does not exist at path: " + jsonFilePath);
+    } else {
+      // Read existing JSON file
+      var existingJson = {};
+      var file = new File(jsonFilePath);
+      if (file.exists) {
+        file.open("r");
+        var existingJsonString = file.read();
+        file.close();
 
-    // Write updated JSON back to the file
-    var jsonString = JSON.stringify(existingJson, null, 2);
-    file.open("w");
-    file.write(jsonString);
-    file.close();
-    var myItem = getItem("input_template.json");
-    myItem.mainSource.reload();
-    alert("JSON DATA UPDATED!");
+        try {
+          existingJson = JSON.parse(existingJsonString);
+        } catch (e) {
+          alert("Error parsing existing JSON file: " + e.toString());
+        }
+      }
+
+      // Update specific color values
+      existingJson.Comp.logo_bg_color = rgbToHex(logoBgColor);
+      existingJson.Comp.accent.color = rgbToHex(accentColor);
+      existingJson.Comp.title.color = rgbToHex(titleColor);
+      existingJson.Comp.subtext.color = rgbToHex(subtextColor);
+      existingJson.Comp.bg.color = rgbToHex(bgColor);
+      existingJson.Comp.call2action.color = rgbToHex(call2a_color);
+      existingJson.Comp.call2action.cursor_color.color = rgbToHex(cursor_color);
+      existingJson.Comp.call2action_link.color = rgbToHex(c2a_link_color);
+      existingJson.Comp.source.color = rgbToHex(source_color);
+
+      // Write updated JSON back to the file
+      var jsonString = JSON.stringify(existingJson, null, 2);
+      file.open("w");
+      file.write(jsonString);
+      file.close();
+      var myItem = getItem("input_template.json");
+      myItem.mainSource.reload();
+      alert("JSON DATA UPDATED!");
+    }
   }
 }
 
