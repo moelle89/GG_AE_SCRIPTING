@@ -26,4 +26,23 @@ for /d %%i in ("%searchDir%\*") do (
     )
 )
 
+rem set "pluginTargetFolder=C:\Program Files\Common Files\Adobe\CEP\extensions"
+rem set "pluginString=AEColorPicker"
+rem set "pickerPlugin=AEColorPicker.aex"
+
+rem Delete files containing the search string
+rem for %%f in ("%pluginTargetFolder%\*%pluginString%*") do (
+rem     echo Deleting: "%%f"
+rem     del "%%f"
+rem )
+
+rem Copy the specified file to the target folder
+rem if exist "%~dp0%pickerPlugin%" (
+rem     echo Copying: %pickerPlugin% to "%pluginTargetFolder%"
+rem    copy /Y "%~dp0%pickerPlugin%" "%pluginTargetFolder%"
+rem ) else (
+rem     echo Warning: Source file %pickerPlugin% not found.
+rem )
+
+
 pause

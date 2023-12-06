@@ -500,24 +500,25 @@ function getItemsByName(nameString) {
   return matches;
 };
 
-
 // Function to check if names are already used in the project
-function areNamesUsed(names) {
-  // Get the root folder of the project
-  var folder = app.project.rootFolder;
+function areNamesUsed(name1, name2, name3) {
+  // Get the current project
+  var curProject = app.project;
 
-  // Iterate through project items
-  for (var i = 1; i <= folder.items.length; i++) {
-    var currentItem = folder.items[i];
+  // Loop through each item in the project
+  for (var i = 1; i <= curProject.numItems; i++) {
+    var curItem = curProject.item(i);
 
-    // Check if the item's name is in the array of names
-    if (currentItem && names.indexOf(currentItem.name) !== -1) {
-      return true; // Name is already used
+    // Check if the name matches any of the given names
+    if (curItem.name === name1 || curItem.name === name2 || curItem.name === name3) {
+        return true; // Name already exists for some project item
     }
   }
 
-  return false; // None of the names are used
+  return false; // None of the given names exist in the project
 }
+
+
 
 // Function to copy a layer from a source composition to the active composition
 function copyLayerToActiveComp(sourceCompName, layerName) {
@@ -587,10 +588,12 @@ function createCompSet(duration, name, type) {
   // Check if a composition with the new name already exists
 
   // Example usage:
-  var namesToCheck = [reelName, squareName, fullHDName];
+  var name1 = reelName;
+  var name2 = squareName; 
+  var name3 = fullHDName;
 
   // Check if names are already used
-  var areUsed = areNamesUsed(namesToCheck);
+  var areUsed = areNamesUsed(name1, name2, name3);
 
   if (areUsed) {
     // Prompt the user for a different name or handle the situation accordingly
@@ -1302,6 +1305,7 @@ btn_import.onClick = function () {
 btn_openAndSelect.onClick = function () {
   openCompInViewer("__SETTINGS", "debug_layer");
   app.executeCommand(2163);//EffectControls
+  app.executeCommand(3734);//EffectControls
 };
 
 btn_debug_colors.onClick = function () {
@@ -1357,6 +1361,68 @@ nullLayer.onClick = function () {
     alert("No active composition.");
   }
 };
+
+function GoodBoyNinjaColorPicker(startValue) {
+  if (!startValue || startValue.length != 3) {
+    startValue = [1, 1, 1]; // default value
+  }
+
+  var comp = app.project.activeItem;
+  if (!comp || !(comp instanceof CompItem)) {
+    alert("No comp is selected");
+    return null;
+  }
+  //Store the layers which are selected
+  var selectedLayers = []
+  for (var i = 1; i <= comp.numLayers; i++) {
+    if (comp.layer(i).selected) selectedLayers.push(i)
+  }
+
+  // add a temp null;
+  var newNull = comp.layers.addNull();
+  var newColorControl = newNull.property("ADBE Effect Parade").addProperty("ADBE Color Control");
+  var theColorProp = newColorControl.property("ADBE Color Control-0001");
+
+  // shy and turn eyeball off
+  var origShyCondition = comp.hideShyLayers;
+  if (origShyCondition == false) comp.hideShyLayers = true;
+  newNull.shy = true;
+  newNull.enabled = false;
+
+  // set the value given by the function arguments
+  theColorProp.setValue(startValue);
+
+  // prepare to execute
+  var editValueID = 2240
+  theColorProp.selected = true;
+  app.executeCommand(editValueID);
+
+  // harvest the result
+  var result = theColorProp.value;
+
+  // remove the null
+  if (newNull) {
+    newNull.remove();
+  }
+
+  // get shy condition back to original
+  comp.hideShyLayers = origShyCondition;
+
+  // restore Layer Selection
+  for (var i = 0; i < selectedLayers.length; i++) {
+    comp.layer(selectedLayers[i]).selected = true;
+  }
+
+  // if the user click cancel, the function will return the start value but as RGBA. In that case, return null
+  var startValueInRgba = [startValue[0], startValue[1], startValue[2], 1];
+  return (result.toString() == startValueInRgba.toString()) ? null : result;
+}
+
+
+
+
 purgeAll.onClick = function () {
-  app.executeCommand(10200);//AllMemoryDiskCache
+  //app.executeCommand(10200);//AllMemoryDiskCache
+  app.executeCommand(3039);//AllMemoryDiskCache
+  alert(GoodBoyNinjaColorPicker([1, 1, 1]));
 };

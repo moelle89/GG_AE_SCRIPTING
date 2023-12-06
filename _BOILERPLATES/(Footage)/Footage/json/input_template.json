@@ -2,7 +2,7 @@
   "Comp": {
     "logo": 1,
     "logo_bg_auto_color": 0,
-    "logo_bg_color": "#FFFFFF",
+    "logo_bg_color": "#010101",
     "darkmode": 0,
     "intro": 0,
     "video": 0,
@@ -11,32 +11,24 @@
     "text2voice": 0,
     "fx_effects": 0,
     "accent": {
-      "color": "#B28E3B",
+      "color": "#000001",
       "color_dark": "#B28E3B"
-    },
-    "region": {
-      "text": "Tennis",
-      "color": "#ffffff",
-      "color_dark": "#080808",
-      "bg_color": "#080808",
-      "bg_color_dark": "#ffffff",
-      "position": "bottom-right"
     },
     "title": {
       "text": "Introducing the revolutionary social media AI-tool",
-      "color": "#080808",
+      "color": "#010101",
       "color_dark": "#ffffff",
       "font": "Archivo-Bold"
     },
     "subtext": {
       "text": "It has never been easier to generate content for blogs and social media.",
-      "color": "#242424",
+      "color": "#000000",
       "color_dark": "#ffffff",
       "font": ""
     },
     "call2action": {
       "text": "Visit now:",
-      "color": "#080808",
+      "color": "#010101",
       "color_dark": "#FFFFFF",
       "cursor_color": "#B28E3B",
       "cursor_color_dark": "#B28E3B",
@@ -46,14 +38,14 @@
     },
     "call2action_link": {
       "text": "GetGenius.AI",
-      "color": "#080808",
+      "color": "#010000",
       "color_dark": "#FFFFFF",
       "link_highlight": 0,
       "font": ""
     },
     "source": {
       "text": "GetGenius.AI",
-      "color": "#FFFFFF",
+      "color": "#010101",
       "color_dark": "#FFFFFF",
       "bg_color": "#B28E3B",
       "bg_color_dark": "#B28E3B",
@@ -61,7 +53,7 @@
       "font": ""
     },
     "bg": {
-      "color": "#ffffff",
+      "color": "#000000",
       "color_dark": "#111219"
     },
     "gallery": [
@@ -112,48 +104,6 @@
         "muted": 0,
         "text": "",
         "font": "Poppins"
-      }
-    ],
-    "slides": [
-      {
-        "from": "0",
-        "to": "5",
-        "elements": [
-          {
-            "x": "left",
-            "y": "bottom",
-            "text": "",
-            "font": "Arial",
-            "font-size": "15px"
-          },
-          {
-            "x": "left",
-            "y": "bottom",
-            "text": "",
-            "font": "Arial",
-            "font-size": "15px"
-          }
-        ]
-      },
-      {
-        "from": "0",
-        "to": "5",
-        "elements": [
-          {
-            "x": "left",
-            "y": "bottom",
-            "text": "",
-            "font": "Arial",
-            "font-size": "15px"
-          },
-          {
-            "x": "left",
-            "y": "bottom",
-            "text": "",
-            "font": "Arial",
-            "font-size": "15px"
-          }
-        ]
       }
     ]
   }
