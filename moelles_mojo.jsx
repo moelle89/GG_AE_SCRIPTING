@@ -429,8 +429,19 @@ function findComp(theName) {
   return null;
 }
 
-// Function to find the index of an item by name
+// Check if a layer is selected
+function isLayerSelected(layerName) {
+  var selectedLayer = app.project.activeItem.selectedLayers[0];
 
+  if (selectedLayer && selectedLayer.name === layerName) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+
+// Function to find the index of an item by name
 function getItem(theName) {
   for (var i = 1; i <= app.project.numItems; i++) {
     if ((app.project.item(i)) && (app.project.item(i).name == theName)) {
@@ -974,7 +985,6 @@ function findCompIndex(compName) { // name of item you're looking for
     return i;
   } else {
     alert("Can't find comp '" + compName + "'");
-
   }
 }
 
@@ -989,28 +999,27 @@ function openCompInViewer(compName, layerName) {
 function modifyJSONdata() {
   var compIndex = findCompIndex("__SETTINGS");
   // Get the colors from the color fill effect on the layer
-  var accentColor = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("accent_color").value;
-  var titleColor = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("title_color").value;
-  var subtextColor = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("subtext_color").value;
-  var bgColor = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("bg_color").value;
-  var logoBgColor = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("logo_bg_color").value;
-  var call2a_color = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("c2a_color").value;
-  var cursor_color = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("cursor_color").value;
-  var c2a_link_color = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("c2a_link_color").value;
-  var source_color = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS")("source_color").value;
+  var layer = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS");
+
+  var accentColor = layer("accent_color").value;
+  var titleColor = layer("title_color").value;
+  var subtextColor = layer("subtext_color").value;
+  var bgColor = layer("bg_color").value;
+  var logoBgColor = layer("logo_bg_color").value;
+  var call2a_color = layer("c2a_color").value;
+  var cursor_color = layer("cursor_color").value;
+  var c2a_link_color = layer("c2a_link_color").value;
+  var source_color = layer("source_color").value;
 
   // Function to convert RGB to Hex
   function rgbToHex(theColor) {
-    r = Math.round(theColor[0] * 255).toString(16)
-    if (r.length < 2) r = "0" + r;
-    g = Math.round(theColor[1] * 255).toString(16)
-    if (g.length < 2) g = "0" + g;
-    b = Math.round(theColor[2] * 255).toString(16)
-    if (b.length < 2) b = "0" + b;
-    return "#" + r + g + b;
+    return "#" + ((1 << 24) + (theColor[0] << 16) + (theColor[1] << 8) + theColor[2]).toString(16).slice(1);
   }
 
   // Check if JSON file exists
+  // Path to the JSON file
+  var projectPath = app.project.file.path; // Get the path of the After Effects project
+  var jsonFilePath = projectPath + "/(footage)/footage/json/input_template.json"; // Adjust the JSON file path
   var jsonFile = new File(jsonFilePath);
   if (!jsonFile.exists) {
     alert("JSON file does not exist at path: " + jsonFilePath);
@@ -1046,10 +1055,8 @@ function modifyJSONdata() {
     file.open("w");
     file.write(jsonString);
     file.close();
-
     var myItem = getItem("input_template.json");
     myItem.mainSource.reload();
-
     alert("JSON DATA UPDATED!");
   }
 }
