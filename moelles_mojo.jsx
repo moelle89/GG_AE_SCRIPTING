@@ -1032,6 +1032,23 @@ function openCompInViewer(compName, layerName) {
   }
 }
 
+// Function to convert RGB to Hex
+function rgbToHex(theColor) {
+  return "#" + ((1 << 24) + (theColor[0] << 16) + (theColor[1] << 8) + theColor[2]).toString(16).slice(1);
+}
+
+// Function to convert RGB to Hex
+function rgbToHex_ebberts(theColor) {
+  r = Math.round(theColor[0] * 255).toString(16)
+  if (r.length < 2) r = "0" + r;
+  g = Math.round(theColor[1] * 255).toString(16)
+  if (g.length < 2) g = "0" + g;
+  b = Math.round(theColor[2] * 255).toString(16)
+  if (b.length < 2) b = "0" + b;
+  return "#" + r + g + b;
+}
+
+
 function modifyJSONdata() {
   var compIndex = findCompIndex("__SETTINGS");
   if (compIndex != null) {
@@ -1047,11 +1064,6 @@ function modifyJSONdata() {
     var cursor_color = layer("cursor_color").value;
     var c2a_link_color = layer("c2a_link_color").value;
     var source_color = layer("source_color").value;
-
-    // Function to convert RGB to Hex
-    function rgbToHex(theColor) {
-      return "#" + ((1 << 24) + (theColor[0] << 16) + (theColor[1] << 8) + theColor[2]).toString(16).slice(1);
-    }
 
     // Check if JSON file exists
     // Path to the JSON file
@@ -1433,11 +1445,11 @@ function GoodBoyNinjaColorPicker(startValue) {
   app.executeCommand(editValueID);
 
   // harvest the result
-  var result = theColorProp.value;
-
+  var result = rgbToHex (theColorProp.value);
+   
   // remove the null
   if (newNull) {
-    newNull.remove();
+    //newNull.remove();
   }
 
   // get shy condition back to original
@@ -1453,11 +1465,20 @@ function GoodBoyNinjaColorPicker(startValue) {
   return (result.toString() == startValueInRgba.toString()) ? null : result;
 }
 
-
-
+// Initiates color picker, returns RGB array
+function colorPicker() {
+  var initialRGB = [1, 1, 1];
+  var colorInt = 255 * (65536 * initialRGB[0] + 256 * initialRGB[1] + initialRGB[2]);
+  var c = $.colorPicker(colorInt);
+  if (c == -1) return;
+  var r = ((c >> 16) & 0xFF);
+  var g = ((c >> 8) & 0xFF);
+  var b = (c & 0xFF);
+  return [r, g, b]
+} // End colorPicker() function
 
 purgeAll.onClick = function () {
-  //app.executeCommand(10200);//AllMemoryDiskCache
-  app.executeCommand(3039);//AllMemoryDiskCache
-  alert(GoodBoyNinjaColorPicker([1, 1, 1]));
+  app.executeCommand(10200);//AllMemoryDiskCache
+  //result = alert(GoodBoyNinjaColorPicker([1, 1, 1]));
+  //colorPicker();
 };
