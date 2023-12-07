@@ -297,23 +297,22 @@ statictext4.preferredSize.height = 10;
 var btn_openAndSelect = tools_txt_wrapper.add("iconbutton", undefined, undefined, { name: "btn_openAndSelect", style: "button" });
 btn_openAndSelect.alignment = ["left", "top"];
 btn_openAndSelect.preferredSize.height = 30;
-btn_openAndSelect.preferredSize.width = 200;
+btn_openAndSelect.preferredSize.width = 190;
 btn_openAndSelect.text = "STEP 1   |   PICK COLORS";
 
 
 var btn_debug_colors = tools_wrapper.add("iconbutton", undefined, undefined, { name: "btn_debug_colors", style: "button" });
 btn_debug_colors.alignment = ["left", "top"];
 btn_debug_colors.preferredSize.height = 30;
-btn_debug_colors.preferredSize.width = 200;
+btn_debug_colors.preferredSize.width = 190;
 btn_debug_colors.text = "STEP 2   |   APPLY COLORS";
 
 var revert_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%12%00%00%0B%12%01%C3%92%C3%9D~%C3%BC%00%00%024IDATH%C2%89b%C3%B8%C3%BF%C3%BF%3F%3E%1C%C3%B0%C3%BF%C3%BF%C3%BF%05%C3%BF%C3%BF%C3%BF%7F%C3%B0%1F%13%C2%80%C3%84%40r%205%C3%98%C3%8D%C3%B8%C3%BF%C2%9F%01%00%00%00%C3%BF%C3%BF%C3%82%25%C3%A1%C2%80%C3%83P%5C%00%C2%A4%16%C2%A4%07%C3%95%C2%9C%C3%BF%C3%BF%19%00%00%00%00%C3%BF%C3%BF%C3%82f%C3%B8%04%12%0CF%07%20%C2%BD%08%C2%B3%C3%BE%C3%BFg%00%00%00%00%C3%BF%C3%BFB7%1C%C3%A4eJ%01%C3%88%0C%C2%88y%C3%BF%C3%BF3%00%00%00%00%C3%BF%C3%BF%22%C3%85%C3%A5%17H%086%C2%88O%C3%BE%C3%BFg%00%00%00%00%C3%BF%C3%BFB%0Esl%C3%A0%C3%83%C3%BF%C3%BF%C3%BF%1B%C3%BE%C3%BF%C3%BF%C2%AF%00U%07b%13%0B%1C%C3%BE%C3%BF%C3%BF%C3%8F%00%00%00%00%C3%BF%C3%BF%C2%82Y%C2%80%C3%8De%20%17%1B%C2%A0%05!)%16%3C%C3%B8%C3%BF%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%82%25Et%00r%C2%B9%00%C3%94P%10%0D2%18d!i%C3%A0%C3%BF%C3%BF%00%00%00%00%00%C3%BF%C3%BFl%C3%8A1%0D%00%20%0C%00%C3%81%1B%C3%98%C3%81%09V*%05%C2%89%C2%95%04%0EXI%C3%8A%C2%8D%C2%9Fo%08%C3%95%C3%82%C3%86%40b~%C2%9E%C3%97A%2F%C2%95%C2%B8%00%00%00%C3%BF%C3%BF%C3%82%16%3C%60%C2%AFA%C3%B1%01%22%C2%9C%0C%C3%B2-((%130d%C3%BE%C3%BF%7F%00%00%00%00%C3%BF%C3%BF%02%19%C2%82%0E%60)%00%14%C2%B1%C3%84%1A%C2%8E%3D%C2%8E%C3%BE%C3%BF%C3%BF%0F%00%00%00%C3%BF%C3%BFb%C3%82%C3%A2-P%C3%90%C2%80%C2%80%02%C2%81%60%01%C2%81%064%3E(8%2F%C3%82y%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C3%82f%01)%C2%A0%1F%1A_%20%00%C2%8A%C2%AF%C3%BD(%C3%B1%C3%85%C3%80%C3%80%00%00%00%00%C3%BF%C3%BF%C3%82f%01H!%08%3C%20%C3%92%C2%A6%0BP%C3%9A%00C%C2%86%C2%81%C2%81%01%00%00%00%C3%BF%C3%BF%C2%A24%C2%92%C2%91%C2%933fI%C3%B0%C3%BF%C3%BF%03%00%00%00%00%C3%BF%C3%BF%C3%82U%C3%BE%C2%80R%04%2C%0F%C3%A0J%C3%BF%20%C3%83aE5H%1D%C2%88%C2%8F%0A%C3%BE%C3%BF_%00%00%00%00%C3%BF%C3%BF%22%25%C2%A3%C3%81%7C%0A%C2%92%039%0A9%C3%B5l%C3%80%C3%AA%C2%84%C3%BF%C3%BF%03%00%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%A8%40%C3%87%20%C3%8Bq%C2%95%C3%80%0F%C3%BE%C3%BF%C3%BF%C3%8F%00%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%B0C%C3%86%C2%A0%60%C3%84W%C2%BA%3A%C3%BC%C3%BF%C3%BF%C2%9F%01%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%B8%06E%3A1%C2%B9%1B%C2%92Y%C3%BF%C3%BFg%00%00%00%00%C3%BF%C3%BF%C2%A2m%C2%85%C3%B3%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%95%C3%B9%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%A5%C3%BF%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%B3%C3%A5%C3%BF%7F%06%00%00%00%00%C3%BF%C3%BF%03%00Pt%C3%9D%C2%86%C2%88%C2%A9%05_%00%00%00%00IEND%C2%AEB%60%C2%82";
 
 var btn_revert_json = tools_wrapper.add("iconbutton", undefined, File.decode(revert_imgString), { name: "btn_revert_json", style: "toolbutton" });
 btn_revert_json.alignment = ["left", "top"];
-btn_revert_json.preferredSize.height = 30;
-btn_revert_json.preferredSize.width = 30;
-btn_revert_json.text = "";
+btn_revert_json.preferredSize.height = 32;
+btn_revert_json.minimumSize.width = 32;
 btn_revert_json.helpTip = "Restore Default JSON";
 
 // TPANEL1
@@ -1010,26 +1009,10 @@ function findCompIndex(compName) { // name of item you're looking for
 }
 
 function openCompInViewer(compName, layerName) {
-  // Find the index of the composition
-  var compIndex = findCompIndex(compName);
-
-  if (compIndex != null) {
-    // Open the composition in viewer
-    app.project.item(compIndex).openInViewer();
-
-    // Deselect all layers
-    app.executeCommand(2004); // “Deselect All”
-
-    // Find the layer index in the active composition
-    var layerIndex = findLayerIndex(compIndex, layerName);
-
-    if (layerIndex !== -1) {
-      // Select the specified layer
-      app.project.activeItem.layer(layerIndex).selected = true;
-    } else {
-      alert("Layer '" + layerName + "' not found in composition '" + compName + "'.");
-    }
-  }
+  compIndex = findCompIndex(compName)
+  app.project.item(compIndex).openInViewer();
+  app.executeCommand(2004); // “Deselect All”
+  app.project.activeItem.layer(layerName).selected = true;
 }
 
 // Function to convert RGB to Hex
@@ -1089,15 +1072,15 @@ function modifyJSONdata() {
       }
 
       // Update specific color values
-      existingJson.Comp.logo_bg_color = rgbToHex(logoBgColor);
-      existingJson.Comp.accent.color = rgbToHex(accentColor);
-      existingJson.Comp.title.color = rgbToHex(titleColor);
-      existingJson.Comp.subtext.color = rgbToHex(subtextColor);
-      existingJson.Comp.bg.color = rgbToHex(bgColor);
-      existingJson.Comp.call2action.color = rgbToHex(call2a_color);
-      existingJson.Comp.call2action.cursor_color.color = rgbToHex(cursor_color);
-      existingJson.Comp.call2action_link.color = rgbToHex(c2a_link_color);
-      existingJson.Comp.source.color = rgbToHex(source_color);
+      existingJson.Comp.logo_bg_color = rgbToHex_ebberts(logoBgColor);
+      existingJson.Comp.accent.color = rgbToHex_ebberts(accentColor);
+      existingJson.Comp.title.color = rgbToHex_ebberts(titleColor);
+      existingJson.Comp.subtext.color = rgbToHex_ebberts(subtextColor);
+      existingJson.Comp.bg.color = rgbToHex_ebberts(bgColor);
+      existingJson.Comp.call2action.color = rgbToHex_ebberts(call2a_color);
+      existingJson.Comp.call2action.cursor_color.color = rgbToHex_ebberts(cursor_color);
+      existingJson.Comp.call2action_link.color = rgbToHex_ebberts(c2a_link_color);
+      existingJson.Comp.source.color = rgbToHex_ebberts(source_color);
 
       // Write updated JSON back to the file
       var jsonString = JSON.stringify(existingJson, null, 2);
@@ -1351,6 +1334,8 @@ btn_import.onClick = function () {
 };
 btn_openAndSelect.onClick = function () {
   openCompInViewer("__SETTINGS", "debug_layer");
+
+
   app.executeCommand(2163);//EffectControls
   app.executeCommand(3734);//EffectControls
 };
