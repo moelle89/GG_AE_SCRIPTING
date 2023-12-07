@@ -1017,11 +1017,6 @@ function openCompInViewer(compName, layerName) {
 
 // Function to convert RGB to Hex
 function rgbToHex(theColor) {
-  return "#" + ((1 << 24) + (theColor[0] << 16) + (theColor[1] << 8) + theColor[2]).toString(16).slice(1);
-}
-
-// Function to convert RGB to Hex
-function rgbToHex_ebberts(theColor) {
   r = Math.round(theColor[0] * 255).toString(16)
   if (r.length < 2) r = "0" + r;
   g = Math.round(theColor[1] * 255).toString(16)
@@ -1030,7 +1025,6 @@ function rgbToHex_ebberts(theColor) {
   if (b.length < 2) b = "0" + b;
   return "#" + r + g + b;
 }
-
 
 function modifyJSONdata() {
   var compIndex = findCompIndex("__SETTINGS");
@@ -1072,15 +1066,15 @@ function modifyJSONdata() {
       }
 
       // Update specific color values
-      existingJson.Comp.logo_bg_color = rgbToHex_ebberts(logoBgColor);
-      existingJson.Comp.accent.color = rgbToHex_ebberts(accentColor);
-      existingJson.Comp.title.color = rgbToHex_ebberts(titleColor);
-      existingJson.Comp.subtext.color = rgbToHex_ebberts(subtextColor);
-      existingJson.Comp.bg.color = rgbToHex_ebberts(bgColor);
-      existingJson.Comp.call2action.color = rgbToHex_ebberts(call2a_color);
-      existingJson.Comp.call2action.cursor_color.color = rgbToHex_ebberts(cursor_color);
-      existingJson.Comp.call2action_link.color = rgbToHex_ebberts(c2a_link_color);
-      existingJson.Comp.source.color = rgbToHex_ebberts(source_color);
+      existingJson.Comp.logo_bg_color = rgbToHex(logoBgColor);
+      existingJson.Comp.accent.color = rgbToHex(accentColor);
+      existingJson.Comp.title.color = rgbToHex(titleColor);
+      existingJson.Comp.subtext.color = rgbToHex(subtextColor);
+      existingJson.Comp.bg.color = rgbToHex(bgColor);
+      existingJson.Comp.call2action.color = rgbToHex(call2a_color);
+      existingJson.Comp.call2action.cursor_color.color = rgbToHex(cursor_color);
+      existingJson.Comp.call2action_link.color = rgbToHex(c2a_link_color);
+      existingJson.Comp.source.color = rgbToHex(source_color);
 
       // Write updated JSON back to the file
       var jsonString = JSON.stringify(existingJson, null, 2);
@@ -1204,7 +1198,6 @@ function revertJson() {
         "font": "Poppins"
       }
       ]
-      // ... (rest of the JSON data)
     }
   };
 
