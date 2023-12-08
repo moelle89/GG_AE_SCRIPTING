@@ -15,7 +15,6 @@ function createDockableUI(thisObj) {
   return dialog;
 }
 
-
 function showWindow(myWindow) {
   if (myWindow instanceof Window) {
     myWindow.show();
@@ -253,8 +252,6 @@ btn_import.preferredSize.height = 30;
 btn_import.preferredSize.width = 240;
 btn_import.text = "IMPORT A FILE AS FOOTAGE";
 
-
-
 // tab_tools
 // ====
 var tab_tools = tpanel1.add("tab", undefined, undefined, { name: "tab_tools" });
@@ -263,7 +260,6 @@ tab_tools.orientation = "column";
 tab_tools.alignChildren = ["fill", "top"];
 tab_tools.spacing = 0;
 tab_tools.margins = [12, 0, 12, 0];
-
 
 // tools_wrapper
 // ======
@@ -299,7 +295,6 @@ btn_openAndSelect.alignment = ["left", "top"];
 btn_openAndSelect.preferredSize.height = 30;
 btn_openAndSelect.preferredSize.width = 190;
 btn_openAndSelect.text = "STEP 1   |   PICK COLORS";
-
 
 var btn_debug_colors = tools_wrapper.add("iconbutton", undefined, undefined, { name: "btn_debug_colors", style: "button" });
 btn_debug_colors.alignment = ["left", "top"];
@@ -374,7 +369,6 @@ addObj.spacing = 10;
 addObj.margins = 10;
 
 var textLayer_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01aIDATH%C2%89%C3%AD%C2%96%3D%2FfQ%14%C2%85%1F%5E%C2%BC%18%C3%95%24%C2%A6T%08%22%3A%C3%85T%23%C2%98B%C2%A7%C3%91(t%C3%BE%C2%84%C3%9F%C2%81N%C2%A3%C3%B5%0BDD%C2%83I%26%C2%A3%C2%98%0C%C3%89%C3%94b%12%1F%C2%99%C2%88%10!%C2%88%C2%8FG%C3%A1%C3%9E%C3%8C%C2%9E%13%C3%AE%C3%AB%C3%AB-%24Vr%C2%92s%C3%B6%C2%BA%7B%C2%ADs%C3%B7%3E%C3%A7%C3%A6%C3%96%C2%A8T%13%C2%B5UU%07%C3%AA%C3%82%C2%BC%05%C3%B8%0AL%00%1F%C2%81%C2%9B'j%C3%95%02G%C3%80%24%C2%B0%0A%C3%BCM%0D%C2%86%C2%80q%C2%A0%C3%AFY%5B%C3%BD%C2%87%C3%A3Lw%0E%005%1F%3F%7D%3D%C2%AC%C3%A7%C2%BA%C2%B1%07%C3%8D%2F%C3%9CyDS%3E%C2%89%25*%25%0F%09%C3%BC%0E%09m%40C%C2%B6%C2%BE%04%C2%B6%C2%81%C2%93l%C3%9D%11E%C3%BF%C3%93%0A%25ZN%5Es%3Ep%5D%C3%AAf%C3%A0v%C3%94%C3%8F%C2%81%C2%9FNr%C2%BF%C3%A7%5C4%C3%B8%C2%A2N%C2%A9%07%C3%AA%C2%92%C3%9A%13%C2%B8%5E%C3%B5O%10%C3%98S%07%02%C3%9F%C2%A9.%C2%AA%C2%87%C3%AA%C2%8C%C3%9A%7F%C2%9F%01j)K%C3%BC%C2%94%C3%84%2B%19%C2%A0%C2%B6%C2%AA%C2%83jc%C2%8C%C3%87%1E%00%5C%03%2B%C3%8Fh*%C3%80%3E%C2%B0%C2%9C%06%C2%AB~%C2%93%C3%9F%0D%C3%9E%C2%8E%C3%81%09w'%2C%C3%87%0Dp%C3%BA%C2%A8%C3%8C%C3%A4%2C%C2%A7%C2%A3%5E%1DVW%C3%95%C2%8Bp%0F.%C3%95%1F%C3%AA%C2%A8Z.%C3%92%C2%A8d0%C2%AA%C2%9E%C3%B90%C3%8E%C3%95%C2%B1%22%C2%8DJ%25j%07%1A%0B%C3%B82%C3%90%5D%24P%C3%89%60%0D%C3%98*%C3%A0w%C2%81oE%02%C3%A9%C2%A7%22%C3%85%060%0B%C2%8C%00%1F%C2%80%C2%AB%2C%5E%02.%C2%80%05%C3%A0W%C2%91%40%C2%8Do%C3%BD%C2%AF%C3%A2%16%C2%99Q%0F%02%C2%B5%C3%86%C2%BE%C2%B4%00%00%00%00IEND%C2%AEB%60%C2%82";
-
 
 var textLayer = addObj.add("iconbutton", undefined, File.decode(textLayer_imgString), { name: "textLayer", style: "toolbutton" });
 textLayer.helpTip = "Create a Text layer in active comp";
@@ -467,6 +461,15 @@ function getItem(theName) {
   }
   return null;
 }
+
+function getThingName() {
+  var comp = app.project.activeItem;
+  var layer = comp.selectedLayers[0];
+  var props = comp.selectedProperties;
+  var prop = props[0];
+
+  alert(prop.name + " - " + prop.matchName);
+};
 
 // Function to find the index of a layer by name in a composition with a specific name
 function indexOfLayer(compName, layerName) {
@@ -620,7 +623,7 @@ function createCompSet(duration, name, type) {
     createComposition(1080, 1080, duration, 30, squareName, 1);
     createComposition(1920, 1080, duration, 30, fullHDName, 1);
     // Alert to indicate successful creation
-    alert("Compositions created successfully as " + reelName + ", " + squareName + " and " + fullHDName);
+    //alert("Compositions created successfully as " + reelName + ", " + squareName + " and " + fullHDName);
   }
 }
 
@@ -838,8 +841,7 @@ function setColorFill() {
   var pseudoEffect = applyPseudoEffect(pseudoEffectData, app.project.activeItem.selectedLayers[0].property("ADBE Effect Parade"));
   var layer = app.project.activeItem.layer(1);
   layer.applyPreset(File("~/Desktop/__COLOR_FILL.ffx"));
-  alert("COLOR_FILL added!");
-
+  //alert("COLOR_FILL added!");
 
   function applyPseudoEffect(pseudoEffectData, effectsProp) {
     var pseudoEffect,
@@ -1213,17 +1215,115 @@ function revertJson() {
   file.close();
   var myItem = getItem("input_template.json");
   myItem.mainSource.reload();
-  alert("JSON file reverted successfully!");
+  alert("JSON file reverted to default!");
 }
+
+
+/////////
+
+// Function to replace compositions within a precomposition based on equal suffixes
+function replaceCompositionsBySuffix(newName) {
+  // Replace these with the actual names of your precomposition and target compositions
+  var precompName = "__SETTINGS";
+  var comp1Suffix = "BPLATE";
+  var comp2Suffix = "BPLATE_square";
+  var comp3Suffix = "BPLATE_1920";
+
+  // Find the precomposition
+  var precomp = findItemByName(precompName);
+
+  if (!precomp) {
+    alert("Precomposition not found: " + precompName);
+    return;
+  }
+
+  // Store the layers with replaced compositions
+  var replacedLayers = [];
+
+  // Iterate through layers in the precomposition
+  for (var j = 1; j <= precomp.layers.length; j++) {
+    var layer = precomp.layers[j];
+    var layerName = layer.name;
+
+    // Check if the layer name has the specified suffix
+    if (layerName.indexOf(comp1Suffix) !== -1) {
+      // Replace comp1 and store the layer
+      replacedLayers.push(replaceComposition(layer, comp1Suffix, newName));
+    } else if (layerName.indexOf(comp2Suffix) !== -1) {
+      // Replace comp2 and store the layer
+      replacedLayers.push(replaceComposition(layer, comp2Suffix, newName));
+    } else if (layerName.indexOf(comp3Suffix) !== -1) {
+      // Replace comp3 and store the layer
+      replacedLayers.push(replaceComposition(layer, comp3Suffix, newName));
+    }
+  }
+
+  // Select the replaced layers
+  selectLayers(replacedLayers);
+
+  // Execute the "Time-Reverse Layer" command
+  app.executeCommand(3695);
+}
+
+// Function to replace a composition within a layer
+function replaceComposition(layer, suffix, newName) {
+  // Construct the new composition name based on the suffix
+  var newCompName = layer.name.replace(suffix, newName);
+
+  // Find the replacement composition
+  var newComp = findItemByName(newCompName);
+
+  if (!newComp) {
+    alert("Replacement composition not found: " + newCompName);
+    return null;
+  }
+
+  // Replace the layer's source with the new composition
+  layer.replaceSource(newComp, true);
+
+  // Set hold keyframes for timeRemap property in the new composition
+  if (newComp.layers.length > 0) {
+    var timeRemap = newComp.layers[1].timeRemap;
+    timeRemap.enabled = true;
+    timeRemap.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
+  }
+
+  return layer;
+}
+
+// Function to find an item by name
+function findItemByName(name) {
+  for (var i = 1; i <= app.project.rootFolder.items.length; i++) {
+    if (app.project.rootFolder.items[i].name === name) {
+      return app.project.rootFolder.items[i];
+    }
+  }
+  return null;
+}
+
+// Function to select layers in the timeline
+function selectLayers(layers) {
+  app.beginUndoGroup("Select Layers");
+  for (var i = 0; i < layers.length; i++) {
+    layers[i].selected = true;
+  }
+  app.endUndoGroup();
+}
+
+
+//////////////
+
 
 
 btn_createComps.onClick = function () {
   var duration = 15; // Set the duration of the composition in seconds
   var name = prompt("What should the new template be called?", ""); // Set the name of the composition
   var type = "comp_";
+  var newName = type + name;
   // Check if the user entered a name
   if (name !== null && name !== "") {
     createCompSet(duration, name, type);
+    replaceCompositionsBySuffix(newName);
   } else {
     // Alert the user that a name is required
     alert("A name is required for the new template");
@@ -1234,9 +1334,11 @@ btn_createIMGComps.onClick = function () {
   var duration = 1 / 30; // Set the duration of the composition in seconds
   var name = prompt("What should the new template be called?", ""); // Set the name of the composition
   var type = "post_";
+  var newName = type + name;
   // Check if the user entered a name
   if (name !== null && name !== "") {
     createCompSet(duration, name, type);
+    replaceCompositionsBySuffix(newName);
   } else {
     // Alert the user that a name is required
     alert("A name is required for the new template");
@@ -1459,4 +1561,5 @@ purgeAll.onClick = function () {
   app.executeCommand(10200);//AllMemoryDiskCache
   //result = alert(GoodBoyNinjaColorPicker([1, 1, 1]));
   //colorPicker();
+  //getThingName();
 };
