@@ -56,7 +56,7 @@ tpanel1.spacing = 0;
 tpanel1.alignment = ["fill", "top"];
 tpanel1.maximumSize.width = 276;
 tpanel1.minimumSize.width = 276;
-tpanel1.maximumSize.height = 178;
+tpanel1.preferredSize.height = 178;
 
 
 // tab_template
@@ -207,7 +207,7 @@ btn_addGallery.text = "ADD";
 // ====
 var tab_fx = tpanel2.add("tab", undefined, undefined, { name: "tab_fx" });
 tab_fx.text = "FX";
-tab_fx.orientation = "row";
+tab_fx.orientation = "column";
 tab_fx.alignChildren = ["left", "top"];
 tab_fx.spacing = 12;
 tab_fx.margins = 10;
@@ -216,13 +216,23 @@ tab_fx.margins = 10;
 // =======
 tpanel2.selection = tab2;
 
-var colorFill = tab_fx.add("iconbutton", undefined, undefined, { name: "colorFill", style: "button" });
+
+// GROUP2
+// ======
+var groupFx = tab_fx.add("group", undefined, { name: "groupFx" });
+groupFx.orientation = "row";
+groupFx.alignChildren = ["left", "top"];
+groupFx.spacing = 12;
+groupFx.margins = 0;
+groupFx.alignment = ["fill", "top"];
+
+var colorFill = groupFx.add("iconbutton", undefined, undefined, { name: "colorFill", style: "button" });
 colorFill.preferredSize.height = 30;
 colorFill.preferredSize.width = 110;
 colorFill.alignment = ["left", "top"];
 colorFill.text = "COLOR FILL";
 
-var scale2fill = tab_fx.add("iconbutton", undefined, undefined, { name: "scale2fill", style: "button" });
+var scale2fill = groupFx.add("iconbutton", undefined, undefined, { name: "scale2fill", style: "button" });
 scale2fill.preferredSize.height = 30;
 scale2fill.preferredSize.width = 110;
 scale2fill.alignment = ["left", "top"];
