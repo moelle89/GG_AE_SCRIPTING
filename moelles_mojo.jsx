@@ -1314,7 +1314,6 @@ function selectLayers(layers) {
 //////////////
 
 
-
 btn_createComps.onClick = function () {
   var duration = 15; // Set the duration of the composition in seconds
   var name = prompt("What should the new template be called?", ""); // Set the name of the composition
@@ -1324,11 +1323,42 @@ btn_createComps.onClick = function () {
   if (name !== null && name !== "") {
     createCompSet(duration, name, type);
     replaceCompositionsBySuffix(newName);
+    // Save Project with New Name in Same Path
+    // Get the current project file
+    var currentProject = app.project.file;
+
+    // Check if a project is open
+    if (currentProject) {
+      // Get the current project's path
+      var projectPath = currentProject.parent.fsName;
+
+      // Prompt the user for a new project namemusch
+      var newProjectName = newName;
+
+      // Check if the user entered a name
+      if (newProjectName) {
+        // Create the new project file path
+        var newProjectPath = projectPath + "/" + newProjectName + ".aep";
+        var newProjectFile = new File(newProjectPath);
+        // Save the project with the new name
+        app.project.save(newProjectFile);
+
+        // Alert the user that the project has been saved
+        alert("Project saved with a new name: " + newProjectName);
+      } else {
+        // Alert the user that no name was entered
+        alert("No project name entered. The project was not saved with a new name.");
+      }
+    } else {
+      // Alert the user that no project is open
+      alert("No project is currently open.");
+    }
   } else {
     // Alert the user that a name is required
     alert("A name is required for the new template");
   }
 };
+
 
 btn_createIMGComps.onClick = function () {
   var duration = 1 / 30; // Set the duration of the composition in seconds
@@ -1339,6 +1369,36 @@ btn_createIMGComps.onClick = function () {
   if (name !== null && name !== "") {
     createCompSet(duration, name, type);
     replaceCompositionsBySuffix(newName);
+    // Save Project with New Name in Same Path
+    // Get the current project file
+    var currentProject = app.project.file;
+
+    // Check if a project is open
+    if (currentProject) {
+      // Get the current project's path
+      var projectPath = currentProject.parent.fsName;
+
+      // Prompt the user for a new project namemusch
+      var newProjectName = newName;
+
+      // Check if the user entered a name
+      if (newProjectName) {
+        // Create the new project file path
+        var newProjectPath = projectPath + "/" + newProjectName + ".aep";
+        var newProjectFile = new File(newProjectPath);
+        // Save the project with the new name
+        app.project.save(newProjectFile);
+
+        // Alert the user that the project has been saved
+        alert("Project saved with a new name: " + newProjectName);
+      } else {
+        // Alert the user that no name was entered
+        alert("No project name entered. The project was not saved with a new name.");
+      }
+    } else {
+      // Alert the user that no project is open
+      alert("No project is currently open.");
+    }
   } else {
     // Alert the user that a name is required
     alert("A name is required for the new template");
