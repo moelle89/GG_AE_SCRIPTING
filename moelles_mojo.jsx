@@ -283,42 +283,76 @@ tools_txt_wrapper.alignment = ["fill", "top"];
 var tools_wrapper = tab_tools.add("group", undefined, { name: "tools_wrapper" });
 tools_wrapper.orientation = "row";
 tools_wrapper.alignChildren = ["left", "fill"];
-tools_wrapper.spacing = 10;
+tools_wrapper.spacing = 5;
 tools_wrapper.margins = 0;
 tools_wrapper.alignment = ["fill", "top"];
 
+var tools_wrapper_l = tools_wrapper.add("group", undefined, { name: "tools_wrapper_l" });
+tools_wrapper_l.orientation = "column";
+tools_wrapper_l.alignChildren = ["left", "fill"];
+tools_wrapper_l.spacing = 10;
+tools_wrapper_l.margins = 0;
+tools_wrapper_l.alignment = ["fill", "top"];
+
+var tools_wrapper_r = tools_wrapper.add("group", undefined, { name: "tools_wrapper_r" });
+tools_wrapper_r.orientation = "column";
+tools_wrapper_r.alignChildren = ["left", "fill"];
+tools_wrapper_r.spacing = 10;
+tools_wrapper_r.margins = 0;
+tools_wrapper_r.alignment = ["fill", "top"];
+
 var statictext2 = tools_txt_wrapper.add("statictext", undefined, undefined, { name: "statictext2" });
-statictext2.text = "Click Pick Colors first";
+statictext2.text = "click edit colors first (if you dont";
 statictext2.preferredSize.height = 20;
 
 var statictext3 = tools_txt_wrapper.add("statictext", undefined, undefined, { name: "statictext3" });
-statictext3.text = "adjust colors and click apply";
+statictext3.text = "see the effect controls, hit F3)";
 statictext3.preferredSize.height = 20;
 
 var statictext4 = tools_txt_wrapper.add("statictext", undefined, undefined, { name: "statictext4" });
 statictext4.text = "";
 statictext4.preferredSize.height = 10;
 
+var edit_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%14%08%06%00%00%00%C2%97%C2%B5%C3%BD%C2%83%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%00%C3%82IDAT8%C2%8D%C2%B5%C2%95%C2%A1%0E%C3%820%14E%C3%8F%C2%90s84%C3%A9%C2%87%C3%B0%C2%87%C3%BB%0A%C3%A4%C2%82%C2%9CC%C2%80%07%C2%81E%0E~%01%C2%B3%C3%A4bF2%C2%BA%C2%B6%C3%A9%C3%9A%C3%AE%26M%C2%93%C3%A6%C3%B5%C2%9C%C3%B4%C2%89%C3%97J%12kf%C2%B3*%C2%BD%C2%80%C3%80%007%60%00Z%C2%A0%C2%9EUHJ%5DFR%C2%AF%C3%BF%C2%9C%25%C3%95%C3%93%C2%BA%1CA%23w%C3%9A%5C%C2%81%C2%91%C3%94I%C3%9AI%3A%3A%04C%C2%8E%60%C3%9A%C2%96%C2%87GrO%15%C2%B8znK%C3%BA%C2%B1n%C2%B1%C3%80%05%C2%B7%25%C2%8D%0D%C2%8F%15%C2%84%C3%A0%C2%BFt%C2%BE%C3%BB%25%C3%A0%C2%B3%C2%B6%C3%84%0A%C2%B2%C3%A1!A%11xHp)%01%C2%97%C3%A4%C2%9DE%C3%BB%C3%80%C3%BCy%01%07%C3%A0%193%C2%AC%7C%C2%82m%098%40%259%C3%BF%03%C3%97%C3%A1b8%C3%B8_p%1A%C3%B7%0F%C3%B0%06%C2%AE)p%C3%B0%C2%BF%C2%A0XV%C3%BF%C3%91%C2%BE%C2%B4%1B%C2%81%2B%C3%97.%C2%B3%C2%9C%00%00%00%00IEND%C2%AEB%60%C2%82"; 
 
-var btn_openAndSelect = tools_txt_wrapper.add("iconbutton", undefined, undefined, { name: "btn_openAndSelect", style: "button" });
+var btn_openAndSelect = tools_wrapper_l.add("iconbutton", undefined, File.decode(edit_imgString), { name: "btn_openAndSelect", style: "button" });
 btn_openAndSelect.alignment = ["left", "top"];
 btn_openAndSelect.preferredSize.height = 30;
-btn_openAndSelect.preferredSize.width = 190;
-btn_openAndSelect.text = "STEP 1   |   PICK COLORS";
+btn_openAndSelect.preferredSize.width = 130;
+btn_openAndSelect.helpTip = "Clicking this button will bring up the __SETTINGS comp and select the layer with the color-edit effects. If you dont see the color-edit effect, click F3 on your keyboard";
+btn_openAndSelect.text = "EDIT COLORS   ";
 
-var btn_debug_colors = tools_wrapper.add("iconbutton", undefined, undefined, { name: "btn_debug_colors", style: "button" });
+
+var apply_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%14%08%06%00%00%00%C2%97%C2%B5%C3%BD%C2%83%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%00%C3%96IDAT8%C2%8D%C3%95%C3%951%0A%C3%820%14%C2%80%C3%A1W%05W'%07%C2%A1Wprpwt%C3%B0%02%C2%82%20%C2%B8x!G%11%C2%BCAo%C3%A1%C3%A4%C3%A0*%C2%AE%0EN%0E%C3%AD%20%C3%88%C3%AFb0%C2%86%C2%A4iH%3A%C3%B8%C2%A0CI%C3%B3%7F%C3%89%C3%94%0C%C2%906%C2%A7%C3%93j%3D!%C2%90%C2%8B%C3%88UD%0E%22%C3%92%C3%BDY%01b%C2%9F%1C%C2%B8%C3%B0%C2%9D%3D%C2%90%C2%A9%C3%B5%C3%94q5%C3%9B%14%C3%80%C3%90%11%07%C2%B8%C3%85%02%03%C3%A0%C3%AC%C2%88%C3%9F%C2%81Q%1D%C2%B0%06v%40%2F6n%03V%C3%9A%C3%87%C2%85%05%09%C2%8A%C2%9B%C3%80%02x%19%C2%9Bt%C2%A4%0F%C2%9C%1C%C3%B1%070%C2%B6%C3%9DX%7F)%1D%C2%9B%C2%8B%C3%8F%C3%89%C2%8F5%C3%B1%C2%89-%C3%9E%C3%A4%06z%248n%02%3E%C3%84%C2%9C%C3%92%17%C2%B7%01M%C2%91%0A%C2%98%C3%BA%C3%A2.%40%C2%80e%C2%8Ax%1D%20%C3%80%266%C3%AE%03L%C3%A4%09%C3%8CB%C3%A2M%00%C2%85T%C3%80%3C4%0EH%06%7F%C3%BEG%7B%03%C2%B6%23%C2%B3L%116%7CR%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+
+var btn_debug_colors = tools_wrapper_l.add("iconbutton", undefined, File.decode(apply_imgString), { name: "btn_debug_colors", style: "button" });
 btn_debug_colors.alignment = ["left", "top"];
 btn_debug_colors.preferredSize.height = 30;
-btn_debug_colors.preferredSize.width = 190;
-btn_debug_colors.text = "STEP 2   |   APPLY COLORS";
+btn_debug_colors.preferredSize.width = 130;
+btn_debug_colors.helpTip = "Apply the colors, defined on the color-edit effects, to be used globally within the whole project";
+btn_debug_colors.text = "APPLY COLORS  ";
 
-var revert_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%12%00%00%0B%12%01%C3%92%C3%9D~%C3%BC%00%00%024IDATH%C2%89b%C3%B8%C3%BF%C3%BF%3F%3E%1C%C3%B0%C3%BF%C3%BF%C3%BF%05%C3%BF%C3%BF%C3%BF%7F%C3%B0%1F%13%C2%80%C3%84%40r%205%C3%98%C3%8D%C3%B8%C3%BF%C2%9F%01%00%00%00%C3%BF%C3%BF%C3%82%25%C3%A1%C2%80%C3%83P%5C%00%C2%A4%16%C2%A4%07%C3%95%C2%9C%C3%BF%C3%BF%19%00%00%00%00%C3%BF%C3%BF%C3%82f%C3%B8%04%12%0CF%07%20%C2%BD%08%C2%B3%C3%BE%C3%BFg%00%00%00%00%C3%BF%C3%BFB7%1C%C3%A4eJ%01%C3%88%0C%C2%88y%C3%BF%C3%BF3%00%00%00%00%C3%BF%C3%BF%22%C3%85%C3%A5%17H%086%C2%88O%C3%BE%C3%BFg%00%00%00%00%C3%BF%C3%BFB%0Esl%C3%A0%C3%83%C3%BF%C3%BF%C3%BF%1B%C3%BE%C3%BF%C3%BF%C2%AF%00U%07b%13%0B%1C%C3%BE%C3%BF%C3%BF%C3%8F%00%00%00%00%C3%BF%C3%BF%C2%82Y%C2%80%C3%8De%20%17%1B%C2%A0%05!)%16%3C%C3%B8%C3%BF%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%82%25Et%00r%C2%B9%00%C3%94P%10%0D2%18d!i%C3%A0%C3%BF%C3%BF%00%00%00%00%00%C3%BF%C3%BFl%C3%8A1%0D%00%20%0C%00%C3%81%1B%C3%98%C3%81%09V*%05%C2%89%C2%95%04%0EXI%C3%8A%C2%8D%C2%9Fo%08%C3%95%C3%82%C3%86%40b~%C2%9E%C3%97A%2F%C2%95%C2%B8%00%00%00%C3%BF%C3%BF%C3%82%16%3C%60%C2%AFA%C3%B1%01%22%C2%9C%0C%C3%B2-((%130d%C3%BE%C3%BF%7F%00%00%00%00%C3%BF%C3%BF%02%19%C2%82%0E%60)%00%14%C2%B1%C3%84%1A%C2%8E%3D%C2%8E%C3%BE%C3%BF%C3%BF%0F%00%00%00%C3%BF%C3%BFb%C3%82%C3%A2-P%C3%90%C2%80%C2%80%02%C2%81%60%01%C2%81%064%3E(8%2F%C3%82y%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C3%82f%01)%C2%A0%1F%1A_%20%00%C2%8A%C2%AF%C3%BD(%C3%B1%C3%85%C3%80%C3%80%00%00%00%00%C3%BF%C3%BF%C3%82f%01H!%08%3C%20%C3%92%C2%A6%0BP%C3%9A%00C%C2%86%C2%81%C2%81%01%00%00%00%C3%BF%C3%BF%C2%A24%C2%92%C2%91%C2%933fI%C3%B0%C3%BF%C3%BF%03%00%00%00%00%C3%BF%C3%BF%C3%82U%C3%BE%C2%80R%04%2C%0F%C3%A0J%C3%BF%20%C3%83aE5H%1D%C2%88%C2%8F%0A%C3%BE%C3%BF_%00%00%00%00%C3%BF%C3%BF%22%25%C2%A3%C3%81%7C%0A%C2%92%039%0A9%C3%B5l%C3%80%C3%AA%C2%84%C3%BF%C3%BF%03%00%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%A8%40%C3%87%20%C3%8Bq%C2%95%C3%80%0F%C3%BE%C3%BF%C3%BF%C3%8F%00%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%B0C%C3%86%C2%A0%60%C3%84W%C2%BA%3A%C3%BC%C3%BF%C3%BF%C2%9F%01%00%00%00%C3%BF%C3%BF%22%C2%B5%C2%B8%06E%3A1%C2%B9%1B%C2%92Y%C3%BF%C3%BFg%00%00%00%00%C3%BF%C3%BF%C2%A2m%C2%85%C3%B3%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%95%C3%B9%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%A5%C3%BF%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%A2m%C2%B3%C3%A5%C3%BF%7F%06%00%00%00%00%C3%BF%C3%BF%03%00Pt%C3%9D%C2%86%C2%88%C2%A9%05_%00%00%00%00IEND%C2%AEB%60%C2%82";
+var refresh_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%14%08%06%00%00%00%C2%97%C2%B5%C3%BD%C2%83%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01%C2%A2IDAT8%C2%8D%C2%A5%C2%94%C2%BFK%C2%95a%14%C3%87%3F%C3%97%C3%BB%03%C2%B7%26%23J%C3%87%C2%86%20P%C3%94%C2%88h%10%C2%82%C2%B6%C3%84%C2%A5%C2%A9%C2%A9!%C2%87%C2%A0%C3%95ppt%0C%C3%9A%5B%2C%08%C3%811%C2%A1%C2%A1h%C2%A8%C3%99%C2%BF%40%08Q%C2%AC)!%2C(%2F%C2%A8%C2%9F%C2%86%7B%C3%AE%C3%A5%C3%BAp%C2%9F%C3%87%C3%AB%C3%9B%C2%81%C2%87%C3%B3p%C2%9Es%C2%BE%C3%9F%C3%B7%3D%C2%BFj*%15%C2%A5%06%C3%94%C2%81%C3%A3%C2%92ScH%C2%B0%06p%1D%18%07%C2%9A%C3%80%01%C2%B0%00%2C%01%C3%B3%C3%80%C2%87l%C2%A4Z%3A%C2%93%C3%AAk%C3%B5%C2%A7y%C3%B9%C2%A3%C3%9E%C3%89a%C3%942)j%01%2F%C2%80g%C2%91%C2%8A%13%60%0B%C3%98%C2%8E%C2%94L%013%7D%C3%BE%C2%87%C3%804%C2%B03%C3%8C%1F%C2%B4%C3%94O%C3%B1uG%C3%AA%C2%AA%3A%C2%96%C3%B8%C2%BC%C2%8C%C3%B7%C3%9F%C3%A1%3B%C3%88%07u%20%C3%81%C2%AB%08%C3%BE%C2%A1%C3%8Ef~%7DB%C2%BD%C2%A9%C2%8E%24%C3%B6kj%C2%B3Dp%2B%C3%80O%C3%95%C2%B9s%C3%AA%C2%93%C2%9E%7BQ%C2%8F%C3%A5%12%C3%81Z%10%C2%AC_%10%1Cu1b%C2%BF%C2%95%08%C3%B6%C3%82%C3%A9A%05%C2%82K%C3%AAI%C3%847%C2%BA%C3%B6%C2%91%C2%A4%C3%A6%13%C2%A1%C2%B7%0B3%C2%91%C2%93C%C3%A0%7B%C3%9C%C3%AB%5DcJ%C3%90%C2%9D%C3%8AV%05%02%C3%A8%0C!%40%C2%AF%C3%B7S%C2%82%C2%AF%C2%A1oW%00%1F%07%C2%AE%C3%84%C2%BD%C2%B7%3ER%C2%82%C3%8D%C3%90%C2%8F*%10%3C%0D%C2%BD%05%C2%9C%C3%B6%C2%ACI%C2%A1%C2%AE%C2%AA%C2%BB%C3%AA%C3%BD%0B%16xFmG%C2%81%1F%C2%96%C2%BA(%3D5%C3%B5%C2%86%C3%BAX%7D%C2%92%C3%B1%C2%99%C2%B33%C2%94%C2%AA%1B%C3%A9%7B%0E%C2%B8%C2%A5nzv%C3%89%7D%C3%AE%7Bo%C2%A8w%C3%95%C2%B7v%C2%86R%C3%B5%C2%A3%3A%3A%2C%01%C3%AA%1B%C3%8F%C3%8A%C2%B1%C2%BA%1F)%3C%C3%AA%C2%B3%C3%BFUW%C3%94%C3%BA%20%C2%9C%12A%5D%7D%17%20m%C3%B5%C2%A0%0F%C3%B4%C2%97%C3%BAE%7D%C2%AE%5E.%C2%A59%C2%B7%C2%AE%C2%BB2%0A%C2%BC%C2%A7%C2%B3%C2%86%17%C2%A3%C3%AB%C2%9A%40%7B%C3%98%C3%96%3A%C2%8F%C3%A0%C2%BF%C3%A5%1F%C2%9Fe%7B%C2%AD%C2%9Dr%08d%00%00%00%00IEND%C2%AEB%60%C2%82"; 
 
-var btn_revert_json = tools_wrapper.add("iconbutton", undefined, File.decode(revert_imgString), { name: "btn_revert_json", style: "toolbutton" });
+var revert_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%14%08%06%00%00%00%C2%97%C2%B5%C3%BD%C2%83%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01%C2%9CIDAT8%C2%8D%C2%B5%C2%95%C2%BDJ%03A%14%C2%85%C3%AF*%C2%AC%0A1%04%C2%A2%C2%98F%11%12%C2%AD%C2%B4V%C2%AC%C2%AD%C2%AD%C2%92%C3%8E%C2%9FG%C3%B0%C2%AF%C2%88%C3%98%07%1F%C3%80%C3%867%10%11%C3%85%C3%92%07%C3%B0%3D%0CD%C3%91%60%02%06%C2%B5%C3%90D%3F%C2%8B%C2%BDC%26%C2%9B%C3%99%1F%0B%0F%5Cvv%C3%8E%C2%9C%7Bf%C2%87%3Bw%3D%40%C3%BE%C2%80%11%0D4~%C3%92%08%C2%920%23%22'%22%C3%92%10%C2%91o%11%C3%A9%C2%8AHO%C3%87u%C3%A5%0A%C2%91j%20.v%C2%807%06%C3%91%C3%93%C2%B0%C3%91%01%C2%B6%5C9%C3%A2%C2%92%1F%5B%09%1A%C3%80%3EP%C2%B4%C3%B8%22p%C2%A0%C2%9C%C3%81QZ%C2%83%C2%8A%25%3A%072%16%C2%97%C3%970%C3%AF%19%C3%A0%C3%82Z_N2%C3%88%02%2F%C2%BA%C3%B8%0A%C3%B0%2C%C3%8E%07Z%40%1B%18%C2%B3%C3%A6%3D%C3%A0Z5M%602%C3%8E%C3%A0P%17%C2%B6%C2%80%5C%C2%88%C3%8BY%3B%0Dsy%C3%95%00%C3%AC%C2%9AyW%15%C2%95%C3%B5y%26%22%C2%AF)%C2%AA%C3%8C%C2%A0%C2%AD%1A%11%C2%91J%C2%B8%C2%8A%7C%C3%9D%C3%914%C3%90%C3%95%5D%C2%AC%C3%AB%C3%9Cx%C3%8A%2F%10%60U%C2%B9n%C3%B8%C2%88%1E%C2%89%C3%86%3B0%C3%AF0Xr%18L%5B%C3%BC%C3%80%11M%C3%84%7C%C2%BA%2F%C3%BD%0B%C3%B9!%22%C3%8F%3A%C2%BE%15%C2%91R%C3%A2%C3%81%C2%A9%C3%93%0A%C3%81e%09%C3%A3%0B%C3%98%08%C3%ADr%C2%99~%C2%95%3D%00%25%C2%8B%5B%C2%B3tCU%146q%25w%C2%994%C3%A8%C3%9F%C2%93%C2%9A%C3%8E%C3%9D%C2%B9%0Cl%C2%93%C2%B8%C3%A4a%C2%93O%C2%A0%C3%80%60%C2%99%C3%AEE%19%080%0B%2C%24%2471EP%00%C2%A3%C3%80%C2%8D%26o%12%5C%C3%96%C3%84%5E%C3%A4%13%C2%B4%C2%80S%5B%C3%A0%C2%88%2Cpi%1Dmb%C2%AB01g%C2%89%C2%9E%C2%80*%C2%B0H%C3%90%16%3C%1DW%C2%953H%C3%9D%C3%ACLl2%C3%9C%C2%AE%5D%C3%A8%00%C3%9B%C2%AE%1Ci%C3%8F%C2%B9%06%C3%9C%3B%12%C3%97%C2%95%2BD%C3%A9%3D%C3%B8%C3%9F_%C3%A6%2F%C2%AD%C2%96%C3%84r%C2%92%26%02%C2%9B%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+
+
+var btn_reload_json = tools_wrapper_r.add("iconbutton", undefined, File.decode(refresh_imgString), { name: "btn_reload_json", style: "toolbutton" });
+btn_reload_json.alignment = ["left", "top"];
+btn_reload_json.preferredSize.height = 32;
+btn_reload_json.minimumSize.width = 32;
+btn_reload_json.preferredSize.width = 100;
+btn_reload_json.text = "REFRESH ";
+btn_reload_json.helpTip = "reload JSON, if edits wont show up";
+
+var btn_revert_json = tools_wrapper_r.add("iconbutton", undefined, File.decode(revert_imgString), { name: "btn_revert_json", style: "toolbutton" });
 btn_revert_json.alignment = ["left", "top"];
 btn_revert_json.preferredSize.height = 32;
 btn_revert_json.minimumSize.width = 32;
-btn_revert_json.helpTip = "Restore Default JSON";
+btn_revert_json.preferredSize.width = 100;
+btn_revert_json.text = "REVERT ";
+btn_revert_json.helpTip = "restore the Default JSON";
+
 
 // TPANEL1
 // =======
@@ -571,13 +605,13 @@ function copyLayerToActiveComp(sourceCompName, layerName) {
         sourceComp.layer(layerName).copyToComp(activeComp);
 
         var copiedLayer = activeComp.layer(layerName);
-        copiedLayer.enabled = true;
         var offsetX = (activeComp.width / 2);
         var offsetY = (activeComp.height / 2);
         if (layerName !== "LOGO") {
           copiedLayer.position.setValue([offsetX, offsetY]);
         }
-
+        copiedLayer.enabled = true;
+        copiedLayer.selected = true;
         // Alert to notify that the layer has been copied
         //alert("Layer copied to active composition!");
 
@@ -588,7 +622,7 @@ function copyLayerToActiveComp(sourceCompName, layerName) {
     } else {
       alert("Source composition not found.");
     }
-  } else { }
+  } else { alert("Open a composition"); }
 
   // Return null if the layer couldn't be copied
   return null;
@@ -1043,7 +1077,8 @@ function modifyJSONdata() {
   if (compIndex != null) {
     // Get the colors from the color fill effect on the layer
     var layer = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS");
-
+    if (layer != null) {
+    var video = layer("VIDEO").value;
     var accentColor = layer("accent_color").value;
     var titleColor = layer("title_color").value;
     var subtextColor = layer("subtext_color").value;
@@ -1078,15 +1113,26 @@ function modifyJSONdata() {
       }
 
       // Update specific color values
+      existingJson.Comp.darkmode = 0;
+      existingJson.Comp.video = video;
       existingJson.Comp.logo_bg_color = rgbToHex(logoBgColor);
+      existingJson.Comp.logo_bg_color_dark = rgbToHex(logoBgColor);
       existingJson.Comp.accent.color = rgbToHex(accentColor);
+      existingJson.Comp.accent.color_dark = rgbToHex(accentColor);
       existingJson.Comp.title.color = rgbToHex(titleColor);
+      existingJson.Comp.title.color_dark = rgbToHex(titleColor);
       existingJson.Comp.subtext.color = rgbToHex(subtextColor);
+      existingJson.Comp.subtext.color_dark = rgbToHex(subtextColor);
       existingJson.Comp.bg.color = rgbToHex(bgColor);
+      existingJson.Comp.bg.color_dark = rgbToHex(bgColor);
       existingJson.Comp.call2action.color = rgbToHex(call2a_color);
+      existingJson.Comp.call2action.color_dark = rgbToHex(call2a_color);
       existingJson.Comp.call2action.cursor_color.color = rgbToHex(cursor_color);
+      existingJson.Comp.call2action.cursor_color.color_dark = rgbToHex(cursor_color);
       existingJson.Comp.call2action_link.color = rgbToHex(c2a_link_color);
+      existingJson.Comp.call2action_link.color_dark = rgbToHex(c2a_link_color);
       existingJson.Comp.source.color = rgbToHex(source_color);
+      existingJson.Comp.source.color_dark = rgbToHex(source_color);
 
       // Write updated JSON back to the file
       var jsonString = JSON.stringify(existingJson, null, 2);
@@ -1095,9 +1141,11 @@ function modifyJSONdata() {
       file.close();
       var myItem = getItem("input_template.json");
       myItem.mainSource.reload();
+      openCompInViewer("__SETTINGS", "SETTINGS");
       alert("JSON DATA UPDATED!");
     }
-  }
+    } else {alert("debug_layer wasnt found")};
+  } else { alert("comp __SETTINGS wasnt found") }
 }
 
 // Function to revert the JSON file
@@ -1225,6 +1273,7 @@ function revertJson() {
   file.close();
   var myItem = getItem("input_template.json");
   myItem.mainSource.reload();
+  openCompInViewer("__SETTINGS", "SETTINGS");
   alert("JSON file reverted to default!");
 }
 
@@ -1515,10 +1564,8 @@ btn_import.onClick = function () {
 };
 btn_openAndSelect.onClick = function () {
   openCompInViewer("__SETTINGS", "debug_layer");
-
-
-  app.executeCommand(2163);//EffectControls
-  app.executeCommand(3734);//EffectControls
+  //app.executeCommand(2163);//EffectControls
+  //app.executeCommand(3734);//EffectControls
 };
 
 btn_debug_colors.onClick = function () {
@@ -1526,6 +1573,10 @@ btn_debug_colors.onClick = function () {
 };
 btn_revert_json.onClick = function () {
   revertJson();
+};
+btn_reload_json.onClick = function () {
+  var myItem = getItem("input_template.json");
+  myItem.mainSource.reload();
 };
 
 
