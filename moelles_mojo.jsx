@@ -1217,6 +1217,30 @@ function modifyJSONdata() {
     var c2a_link_color = layer("c2a_link_color").value;
     var source_color = layer("source_color").value;
 
+    var oneVideo = layer("1.VIDEO").value;
+    var oneLoop = layer("1.LOOP").value;
+    var oneMuted = layer("1.MUTED").value;
+
+    var twoVideo = layer("2.VIDEO").value;
+    var twoLoop = layer("2.LOOP").value;
+    var twoMuted = layer("2.MUTED").value;
+
+    var threeVideo = layer("3.VIDEO").value;
+    var threeLoop = layer("3.LOOP").value;
+    var threeMuted = layer("3.MUTED").value;
+
+    var fourVideo = layer("4.VIDEO").value;
+    var fourLoop = layer("4.LOOP").value;
+    var fourMuted = layer("4.MUTED").value;
+
+    var fiveVideo = layer("5.VIDEO").value;
+    var fiveLoop = layer("5.LOOP").value;
+    var fiveMuted = layer("5.MUTED").value;
+
+    var sixVideo = layer("6.VIDEO").value;
+    var sixLoop = layer("6.LOOP").value;
+    var sixMuted = layer("6.MUTED").value;
+
     // Check if JSON file exists
     // Path to the JSON file
     var projectPath = app.project.file.path; // Get the path of the After Effects project
@@ -1243,12 +1267,27 @@ function modifyJSONdata() {
       // Update specific color values
       existingJson.Comp.darkmode = 0;
       existingJson.Comp.video = video;
-      existingJson.Comp.gallery[0].video = video;
-      existingJson.Comp.gallery[1].video = video;
-      existingJson.Comp.gallery[2].video = video;
-      existingJson.Comp.gallery[3].video = video;
-      existingJson.Comp.gallery[4].video = video;
-      existingJson.Comp.gallery[5].video = video;
+      existingJson.Comp.gallery[0].video = oneVideo;
+      existingJson.Comp.gallery[1].video = twoVideo;
+      existingJson.Comp.gallery[2].video = threeVideo;
+      existingJson.Comp.gallery[3].video = fourVideo;
+      existingJson.Comp.gallery[4].video = fiveVideo;
+      existingJson.Comp.gallery[5].video = sixVideo;
+
+      existingJson.Comp.gallery[0].loop = oneLoop;
+      existingJson.Comp.gallery[1].loop = twoLoop;
+      existingJson.Comp.gallery[2].loop = threeLoop;
+      existingJson.Comp.gallery[3].loop = fourLoop;
+      existingJson.Comp.gallery[4].loop = fiveLoop;
+      existingJson.Comp.gallery[5].loop = sixLoop;
+
+      existingJson.Comp.gallery[0].muted = oneMuted;
+      existingJson.Comp.gallery[1].muted = twoMuted;
+      existingJson.Comp.gallery[2].muted = threeMuted;
+      existingJson.Comp.gallery[3].muted = fourMuted;
+      existingJson.Comp.gallery[4].muted = fiveMuted;
+      existingJson.Comp.gallery[5].muted = sixMuted;
+
       existingJson.Comp.logo_bg_color = rgbToHex(logoBgColor);
       existingJson.Comp.logo_bg_color_dark = rgbToHex(logoBgColor);
       existingJson.Comp.accent.color = rgbToHex(accentColor);
