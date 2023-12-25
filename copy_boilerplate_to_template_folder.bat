@@ -25,6 +25,12 @@ if not exist "%fullFootageSource%" (
     exit /b 1
 )
 
+REM Check if the destination folder exists, create it if not
+if not exist "%destinationFolder%" (
+    mkdir "%destinationFolder%"
+    echo Destination folder "%destinationFolder%" created.
+)
+
 REM Copy the file with silent overwrite
 copy /y "%fullSourcePath%" "%fullDestinationPath%" >nul
 
@@ -36,10 +42,11 @@ if errorlevel 1 (
     echo File "%fileName%" copied to "%destinationFolder%" with silent overwrite.
 )
 
-REM Copy the "(Footage)" folder and its contents
-xcopy /s /y "%fullFootageSource%" "%fullFootageDestination%" >nul
+REM Copy the "(Footage)" folder and its contents with quiet mode using robocopy
+robocopy "%fullFootageSource%" "%fullFootageDestination%" /s /e /np /njh /njs /ndl /nc /ns /nc /ndl /np /nfl /ndl /mt:8 >nul
 
-if errorlevel 1 (
+rem Check if robocopy reported any failures
+if not %errorlevel% leq 7 (
     echo Failed to copy "%footageFolder%" folder to "%destinationFolder%".
     pause
     exit /b 1
