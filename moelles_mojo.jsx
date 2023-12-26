@@ -1,14 +1,7 @@
 ﻿// HELPER PANEL FOR ADOBE AFTER EFFECTS TO WORK WITH THE GG TEMPLATE SYSTEM
 
 function createDockableUI(thisObj) {
-  var dialog =
-    thisObj instanceof Panel
-      ? thisObj
-      : new Window("window", undefined, undefined, {
-        su1PanelCoordinates: false,
-        borderless: false,
-        resizeable: true,
-      });
+  var dialog = thisObj instanceof Panel ? thisObj : new Window("palette", "moelles mojo", undefined, { resizeable: true });
   dialog.onResizing = dialog.onResize = function () {
     this.layout.resize();
   };
@@ -31,7 +24,6 @@ var win = createDockableUI(this);
 
 win.orientation = "column";
 win.alignChildren = ["fill", "top"];
-win.alignment = ["fill", "fill"];
 win.minimumSize.width = 284;
 win.maximumSize.width = 484;
 win.spacing = 0;
@@ -517,24 +509,37 @@ nullLayer.alignment = ["left", "top"];
 nullLayer.preferredSize.height = 24;
 nullLayer.preferredSize.width = 24;
 
+(function () {
+  if (!checkSecurityPrefSet()) {
+    return false;
+  } else {
+    showWindow(win);
+  }
+})();
 
-showWindow(win);
-
+function checkSecurityPrefSet() {
+  if (!isSecurityPrefSet()) {
+    if (parseFloat(app.version) >= 16.1) {
+      alert("This script requires access to write files.\nOpen After Effects \'Preferences\' -> \'Scripting and Expressions\' and make sure \'Allow Scripts to Write Files and Access Network\' is checked.");
+      app.executeCommand(3131);
+    }
+    else {
+      alert("This script requires access to write files.\nGo to the \'General\' panel of the application \'Preferences\' and make sure \'Allow Scripts to Write Files and Access Network\' is checked.");
+      app.executeCommand(2359);
+    }
+    if (!isSecurityPrefSet()) {
+      return null;
+    }
+  }
+  return true;
+}
 function isSecurityPrefSet() {
   try {
     var securitySetting = app.preferences.getPrefAsLong("Main Pref Section", "Pref_SCRIPTING_FILE_NETWORK_SECURITY");
-    return (securitySetting == 1);
-  } catch (err) {
-    alert("Error in isSecurityPrefSet function\n" + err.toString());
+    return securitySetting == 1;
+  } catch (e) {
+    return securitySetting = 1;
   }
-}
-
-if (!(isSecurityPrefSet())) {
-  alert("This script requires access to write files.\n" +
-    "Go to the \"Scripting & Expressions\" panel of the application preferences and make sure\n" +
-    "\"Allow Scripts to Write Files and Access Network\" is checked.\n" +
-    "Consider also to uncheck \"Warn User When Executing Files\" ");
-  try { app.executeCommand(2359) } catch (err) { }
 }
 
 
@@ -1341,7 +1346,7 @@ function rgbToHex(theColor) {
 
 function modifyJSONdata() {
   var compIndex = findCompIndex("__SETTINGS");
-  if (compIndex != null) {
+  if (compIndex) {
     // Get the colors from the color fill effect on the layer
     var layer = app.project.item(compIndex).layer("debug_layer").effect("debug_SETTINGS");
     if (layer != null) {
@@ -1457,11 +1462,15 @@ function modifyJSONdata() {
         alert("JSON DATA UPDATED!");
       }
     } else { alert("debug_layer wasnt found") };
-  } else { alert("comp __SETTINGS wasnt found") }
+  }
 }
 
 // Function to revert the JSON file
 function revertJson() {
+      var myItem = getItem("input_template.json");
+
+  // Check if myItem and myItem.mainSource are defined before attempting to reload
+  if (myItem) {
   // JSON data to revert to
   var jsonData = {
     "Comp": {
@@ -1591,6 +1600,9 @@ function revertJson() {
     app.purge(PurgeTarget.IMAGE_CACHES);
     openCompInViewer("__SETTINGS", "SETTINGS");
     alert("JSON file reverted to default!");
+  }
+} else {
+    alert("JSON file doesnt exist");
   }
 }
 
@@ -1888,26 +1900,81 @@ btn_openAndSelect.onClick = function () {
 
 btn_title.onClick = function () {
   var text = edittext1.text;
+  // Check if the text is empty
+  if (text === "") {
+    // Ask the user if they are sure to use an empty string
+    var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
+
+    // If the user clicks Cancel, return null
+    if (!confirmation) {
+      return;
+    }
+  }
+  // Execute changeJSONTEXT function with the provided text
   changeJSONTEXT(text,"title");
 };
 
 btn_subtext.onClick = function () {
   var text = edittext1.text;
-  changeJSONTEXT(text,"subtext");
+  // Check if the text is empty
+  if (text === "") {
+    // Ask the user if they are sure to use an empty string
+    var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
+
+    // If the user clicks Cancel, return null
+    if (!confirmation) {
+      return;
+    }
+  }
+  // Execute changeJSONTEXT function with the provided text
+  changeJSONTEXT(text, "subtext");
 };
 
 btn_source.onClick = function () {
   var text = edittext1.text;
+  // Check if the text is empty
+  if (text === "") {
+    // Ask the user if they are sure to use an empty string
+    var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
+
+    // If the user clicks Cancel, return null
+    if (!confirmation) {
+      return;
+    }
+  }
+  // Execute changeJSONTEXT function with the provided text
   changeJSONTEXT(text,"source");
 };
 
 btn_c2a.onClick = function () {
   var text = edittext1.text;
+  // Check if the text is empty
+  if (text === "") {
+    // Ask the user if they are sure to use an empty string
+    var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
+
+    // If the user clicks Cancel, return null
+    if (!confirmation) {
+      return;
+    }
+  }
+  // Execute changeJSONTEXT function with the provided text
   changeJSONTEXT(text,"call2action");
 };
 
 btn_c2alink.onClick = function () {
   var text = edittext1.text;
+  // Check if the text is empty
+  if (text === "") {
+    // Ask the user if they are sure to use an empty string
+    var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
+
+    // If the user clicks Cancel, return null
+    if (!confirmation) {
+      return;
+    }
+  }
+  // Execute changeJSONTEXT function with the provided text
   changeJSONTEXT(text,"call2action_link");
 };
 
@@ -1922,8 +1989,14 @@ btn_revert_json.onClick = function () {
 
 btn_reload_json.onClick = function () {
   var myItem = getItem("input_template.json");
-  myItem.mainSource.reload();
-  app.purge(PurgeTarget.IMAGE_CACHES);
+
+  // Check if myItem and myItem.mainSource are defined before attempting to reload
+  if (myItem && myItem.mainSource) {
+    myItem.mainSource.reload();
+    app.purge(PurgeTarget.IMAGE_CACHES);
+  } else {
+    alert("JSON file doesnt exist");
+  }
 };
 
 
@@ -2049,3 +2122,7 @@ purgeAll.onClick = function () {
   //colorPicker();
   //getThingName();
 };
+
+
+/////////////////////////////////
+
