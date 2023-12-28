@@ -29,6 +29,7 @@ function elementsDialog() {
     var sourceCompName = "_ELEMENTS";
     app.executeCommand(2004); // “Deselect All”
     copyLayerToActiveComp(sourceCompName, result);
+    secondaryDialog.close();
   };
 
   var Btn_LOGOV2 = grp_logo.add('iconbutton', undefined, undefined, { name: 'Btn_LOGOV2', style: "button" });
@@ -38,6 +39,7 @@ function elementsDialog() {
     var sourceCompName = "_ELEMENTS";
     app.executeCommand(2004); // “Deselect All”
     copyLayerToActiveComp(sourceCompName, result);
+    secondaryDialog.close();
   };
 
   // GRP_TEXTELEMENT
@@ -55,6 +57,7 @@ function elementsDialog() {
     var sourceCompName = "_ELEMENTS";
     app.executeCommand(2004); // “Deselect All”
     copyLayerToActiveComp(sourceCompName, result);
+    secondaryDialog.close();
   };
 
   // GRP_MEDIA
@@ -72,6 +75,7 @@ function elementsDialog() {
     var sourceCompName = "_ELEMENTS";
     app.executeCommand(2004); // “Deselect All”
     copyLayerToActiveComp(sourceCompName, result);
+    secondaryDialog.close();
   };
 
   var Btn_MEDIASQR = grp_media.add('iconbutton', undefined, undefined, { name: 'Btn_MEDIASQR', style: "button" });
@@ -81,6 +85,7 @@ function elementsDialog() {
     var sourceCompName = "_ELEMENTS";
     app.executeCommand(2004); // “Deselect All”
     copyLayerToActiveComp(sourceCompName, result);
+    secondaryDialog.close();
   };
 
   var Btn_MEDIA1920 = grp_media.add('iconbutton', undefined, undefined, { name: 'Btn_MEDIA1920', style: "button" });
@@ -90,6 +95,7 @@ function elementsDialog() {
     var sourceCompName = "_ELEMENTS";
     app.executeCommand(2004); // “Deselect All”
     copyLayerToActiveComp(sourceCompName, result);
+    secondaryDialog.close();
   };
 
   // Show the secondary dialog
