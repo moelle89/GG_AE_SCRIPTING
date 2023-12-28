@@ -123,19 +123,19 @@ grouptab2.spacing = 10;
 grouptab2.margins = 3;
 grouptab2.alignment = ["fill", "top"];
 
-var elementsDropDown_array = ["LOGO_NEW", "LOGO", "TEXT-ELEMENT", "-", "MEDIA", "MEDIA-SQR", "MEDIA-1920"];
-var elementsDropDown_result = ["LOGO_NEW", "LOGO", "TEXT_el", "-", "_MEDIA", "_MEDIA_SQUARE", "_MEDIA_1920"];
-var elementsDropDown = grouptab2.add("dropdownlist", undefined, undefined, { name: "elementsDropDown", items: elementsDropDown_array, });
-elementsDropDown.selection = 0;
-elementsDropDown.preferredSize.height = 30;
-elementsDropDown.preferredSize.width = 175;
-var option = elementsDropDown.selection;
+//var elementsDropDown_array = ["LOGO_NEW", "LOGO", "TEXT-ELEMENT", "-", "MEDIA", "MEDIA-SQR", "MEDIA-1920"];
+//var elementsDropDown_result = ["LOGO_NEW", "LOGO", "TEXT_el", "-", "_MEDIA", "_MEDIA_SQUARE", "_MEDIA_1920"];
+//var elementsDropDown = grouptab2.add("dropdownlist", undefined, undefined, { name: "elementsDropDown", items: elementsDropDown_array, });
+//elementsDropDown.selection = 0;
+//elementsDropDown.preferredSize.height = 30;
+//elementsDropDown.preferredSize.width = 175;
+//var option = elementsDropDown.selection;
 
 var btn_addElement = grouptab2.add("iconbutton", undefined, undefined, { name: "btn_addElement", style: "button" });
 btn_addElement.preferredSize.height = 30;
-btn_addElement.preferredSize.width = 50;
-btn_addElement.alignment = ["left", "top"];
-btn_addElement.text = "ADD";
+btn_addElement.preferredSize.width = 150;
+btn_addElement.alignment = ["fill", "top"];
+btn_addElement.text = "ADD ELEMENT";
 
 // tab_gallery
 // ====
