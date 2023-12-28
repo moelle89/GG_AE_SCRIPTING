@@ -518,7 +518,7 @@ nullLayer.preferredSize.width = 24;
 
 /// INCLUDES
 
-#include _scripts/Rectangle-Wizard.jsx;
+#include _scripts/rectangleWizard.jsx;
 #include _scripts/elementsDialog.jsx;
 
 /// INCLUDES END
