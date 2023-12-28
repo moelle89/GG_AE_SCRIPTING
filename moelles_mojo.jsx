@@ -250,9 +250,9 @@ tab_files.margins = 0;
 // files_wrapper
 // ======
 var files_wrapper = tab_files.add("group", undefined, { name: "files_wrapper" });
-files_wrapper.orientation = "row";
+files_wrapper.orientation = "column";
 files_wrapper.alignChildren = ["left", "fill"];
-files_wrapper.spacing = 0;
+files_wrapper.spacing = 10;
 files_wrapper.margins = 12;
 files_wrapper.alignment = ["fill", "top"];
 
@@ -261,6 +261,12 @@ btn_import.alignment = ["left", "top"];
 btn_import.preferredSize.height = 30;
 btn_import.preferredSize.width = 240;
 btn_import.text = "IMPORT A FILE AS FOOTAGE";
+
+var btn_organize = files_wrapper.add("iconbutton", undefined, undefined, { name: "btn_organize", style: "button" });
+btn_organize.alignment = ["left", "top"];
+btn_organize.preferredSize.height = 30;
+btn_organize.preferredSize.width = 240;
+btn_organize.text = "Organize Project Assets";
 
 // tab_tools
 // ====
@@ -520,6 +526,7 @@ nullLayer.preferredSize.width = 24;
 
 #include _scripts/rectangleWizard.jsx;
 #include _scripts/elementsDialog.jsx;
+#include _scripts/organizeProjectAssets.jsx;
 
 /// INCLUDES END
 
@@ -1903,6 +1910,16 @@ openJSONFolder.onClick = function () {
 
 btn_import.onClick = function () {
   importAndCopyFile();
+};
+
+btn_organize.onClick = function () {
+
+  if (app.project.file != null) {
+    progressBarPopup();
+  }
+  else {
+    alert("Please open a project or save the current project first.");
+  }
 };
 btn_openAndSelect.onClick = function () {
   openCompInViewer("__SETTINGS", "debug_layer");
