@@ -519,6 +519,7 @@ nullLayer.preferredSize.width = 24;
 /// INCLUDES
 
 #include _scripts/Rectangle-Wizard.jsx;
+#include _scripts/elementsDialog.jsx;
 
 /// INCLUDES END
 
@@ -1827,11 +1828,12 @@ scale2fill.onClick = function () {
 };
 
 btn_addElement.onClick = function () {
-  var selectedIndex = elementsDropDown.selection.index;
-  var result = elementsDropDown_result[selectedIndex];
-  var sourceCompName = "_ELEMENTS";
-  app.executeCommand(2004); // “Deselect All”
-  copyLayerToActiveComp(sourceCompName, result);
+  //var selectedIndex = elementsDropDown.selection.index;
+  //var result = elementsDropDown_result[selectedIndex];
+  //var sourceCompName = "_ELEMENTS";
+  //app.executeCommand(2004); // “Deselect All”
+  //copyLayerToActiveComp(sourceCompName, result);
+  elementsDialog();
 };
 
 btn_addGallery.onClick = function () {
