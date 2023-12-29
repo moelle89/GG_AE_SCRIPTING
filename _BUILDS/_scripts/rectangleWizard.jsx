@@ -10,7 +10,6 @@ function RectangleWizardffx() {
   var pseudoEffect = savePseudoEffect(pseudoEffectData);
 }
 
-
 function activateCompViewer() {
   var A = (app.activeViewer) && (app.activeViewer.type === ViewerType.VIEWER_COMPOSITION);
   if (A) {

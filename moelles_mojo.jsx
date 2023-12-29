@@ -215,6 +215,34 @@ tab_fx.alignChildren = ["fill", "fill"];
 tab_fx.spacing = 12;
 tab_fx.margins = 10;
 
+// tab_AP
+// ====
+var tab_ap = tpanel2.add("tab", undefined, undefined, { name: "tab_ap" });
+tab_ap.text = "AP";
+tab_ap.orientation = "row";
+tab_ap.spacing = 12;
+tab_ap.margins = 10;
+
+// groupAP
+// ======
+var groupAP = tab_ap.add("group", undefined, { name: "groupAP" });
+groupAP.orientation = "column";
+groupAP.spacing = 10;
+groupAP.margins = 3;
+
+// groupAP2
+// ======
+var groupAP2 = tab_ap.add("group", undefined, { name: "groupAP" });
+groupAP2.orientation = "column";
+groupAP2.alignChildren = ["left", "top"];
+groupAP2.alignment = ["left", "top"];
+groupAP2.spacing = 10;
+groupAP2.margins = 3;
+
+var apText = groupAP2.add("statictext", undefined, undefined, { name: "apText" });
+apText.text = "Lock Anchor Point:";
+apText.preferredSize.height = 20;
+
 // TPANEL2
 // =======
 tpanel2.selection = tab2;
@@ -225,8 +253,8 @@ tpanel2.selection = tab2;
 var groupFx = tab_fx.add("group", undefined, { name: "groupFx" });
 groupFx.orientation = "row";
 groupFx.alignChildren = ["left", "top"];
-groupFx.spacing = 12;
-groupFx.margins = 0;
+groupFx.spacing = 10;
+groupFx.margins = 3;
 groupFx.alignment = ["fill", "top"];
 
 var colorFill = groupFx.add("iconbutton", undefined, undefined, { name: "colorFill", style: "button" });
@@ -567,6 +595,7 @@ nullLayer.preferredSize.width = 24;
 #include _scripts/elementsDialog.jsx;
 #include _scripts/organizeProjectAssets.jsx;
 #include _scripts/projectCleanup.jsx;
+#include _scripts/moveAnchorPoint.jsx;
 
 /// INCLUDES END
 
@@ -2268,7 +2297,3 @@ purgeAll.onClick = function () {
   //colorPicker();
   //getThingName();
 };
-
-
-/////////////////////////////////
-
