@@ -80,7 +80,7 @@ group1.alignment = ["fill", "top"];
 var btn_createComps_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%1C%00%00%00%14%08%06%00%00%00%C2%9E%5E%5D%C3%B9%00%00%00%09pHYs%00%00%0B%12%00%00%0B%12%01%C3%92%C3%9D~%C3%BC%00%00%01bIDATH%C2%89b%C3%BC%C3%BF%C3%BF%3F%03%C3%9D%00%03%03%03%00%00%00%C3%BF%C3%BFb%C2%A2%C2%ABm%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%AF%C2%85%0C%0C%0C%00%00%00%00%C3%BF%C3%BFb!A%C2%AD%01%03%03%C2%83%00%11%C3%AA.000%7C%C3%80*%C3%83%C3%80%C3%80%00%00%00%00%C3%BF%C3%BFb%00%C3%85!%11x%C3%81%7F%C3%A2%C3%81%C2%87%C3%BF%C3%BF%C3%BF%3B%601S%C3%A0%C3%BF%C3%BF%C3%BF%0C%00%00%00%00%C3%BF%C3%BF%22%C3%86%C2%B2%04%12%2C%C2%83%01%C2%90%C2%A50%C3%BD%0Ap%07%C3%BF%C3%BF%7F%00%00%00%00%C3%BF%C3%BF%22%26H%15H%08v%18%C3%A0g%60%60p%C2%80FC%3F%5C%C2%94%C2%81%C3%81%1E%00%00%00%C3%BF%C3%BF%C2%A2u%C2%A2%09%40%C3%A1100%00%00%00%00%C3%BF%C3%BF%C2%A2o*e%60%60%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%AF%C2%85%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%AF%C2%85%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%AF%C2%85%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%AF%C2%85%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%A5%C2%85%0F%18%18%186%C2%A0%C2%88000%00%00%00%00%C3%BF%C3%BF%22%26%C3%A3%C2%832.%C2%A9%60%03%C3%96%C2%8C%C3%BF%C3%BF%C3%BF%01%00%00%00%00%C3%BF%C3%BF%22%C2%B6hk%C2%80%C2%96%1E%C3%84%C2%80%0B%C3%BF%C3%BF%C3%BF7%C3%80Z%C2%B4%C3%BD%C3%BF%C3%8F%00%00%00%00%C3%BF%C3%BF%22%C2%B5%3E%04%C2%95%1E%C2%84%C2%82%11%C2%84%C2%B1%03%06%06%06%00%00%00%00%C3%BF%C3%BF%C2%A2o%05%C3%8C%C3%80%C3%80%00%00%00%00%C3%BF%C3%BF%C2%A2o*e%60%60%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%AF%C2%85%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%03%00%C2%83%C3%9F%C2%95x%C2%A6%14%C3%9A'%00%00%00%00IEND%C2%AEB%60%C2%82";
 var btn_createComps = group1.add("iconbutton", undefined, File.decode(btn_createComps_imgString), { name: "btn_createComps", style: "button" });
 btn_createComps.helpTip = "create all required compositions\nto start working on a new template";
-btn_createComps.text = "Video-Templ.";
+btn_createComps.text = "VID-Templ.";
 btn_createComps.alignment = ["left", "top"];
 btn_createComps.minimumSize.width = 118;
 btn_createComps.preferredSize.height = 30;
@@ -89,7 +89,7 @@ btn_createComps.preferredSize.height = 30;
 var btn_createIMGComps_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%1C%00%00%00%14%08%06%00%00%00%C2%9E%5E%5D%C3%B9%00%00%00%09pHYs%00%00%0B%12%00%00%0B%12%01%C3%92%C3%9D~%C3%BC%00%00%01%C2%B6IDATH%C2%89b%C3%BC%C3%BF%C3%BF%3F%03%C3%9D%00%03%03%03%00%00%00%C3%BF%C3%BFb%C2%A2%C2%ABm%0C%0C%0C%00%00%00%00%C3%BF%C3%BFb!Q%7D%02%03%03%C2%83%02%C2%99v-%60%60%60x%00%00%00%00%C3%BF%C3%BFb%00%05)%C2%91x%C3%82%7F%C3%8A%C3%80%C2%87%C3%BF%C3%BF%C3%BF%0B%00%00%00%00%C3%BF%C3%BF%22%25HA%C2%BE%23%16%7Cd%60%60%08d%60%60pd%60%60%C2%B8%08%C3%95%C3%84%C3%8F%C3%80%C3%80%10%00%00%00%00%C3%BF%C3%BF%22%25HA%1AHq%C3%9C%06(%C3%9B%01%1C%C2%94%20%C3%BD%0C%0C%0A%00%00%00%00%C3%BF%C3%BF%C2%A2U%C2%A2%C2%B9%C2%80%C3%84%C3%BE%00%C3%85%0C%0C%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C2%A2%C3%94%C3%82%C2%8D%0C%0C%0C%13%C2%B1%C2%887%20%C2%B1A%C2%BE%C2%95%07%C2%B3%18%18%18%00%00%00%00%C3%BF%C3%BF%22%25%C3%91%60%03%02P%C2%B9%03X%24%1F%C3%BC%C3%BF%C3%BF%C3%BF%02%C2%8A%C3%88%C3%BF%C3%BF%0D%00%00%00%00%C3%BF%C3%BF%C2%A2%C3%84%C2%87%0B%C2%91%C2%82%0A%C3%A4%0BPB%C2%81%01%10%1B%C3%A4%2B%7D%14%1D%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C2%A2%C3%84%C3%82%09HlP%C2%A2%C2%80%05%23%C3%88!%02H%C2%A9%13%01%18%18%18%00%00%00%00%C3%BF%C3%BF%227HAA%C2%85MM%02%12%1B%14%C3%9C%C2%A8A%C3%BA%C3%BF%7F%03%00%00%00%C3%BF%C3%BF%22%C3%97%C2%87%C3%88%C2%BEC%06%C2%A0%C3%92%04%06%40%C3%81%5D%C2%80%22%C3%8B%C3%80%C3%80%00%00%00%00%C3%BF%C3%BF%22%C3%87BP%C3%BC%20%1B%C2%8C%0F%1C%40I%C3%85%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%22%C3%87Bb-%C2%83%01D%16a%60%60%00%00%00%00%C3%BF%C3%BF%22%C2%A5%C2%A4%01%C3%B9%0CTZ%C2%80J%C2%8E%00%C3%A4%C3%8CL%00%C2%80%C3%94C%00%03%C3%83%03%00%00%00%00%C3%BF%C3%BF%C2%A2o%C3%A1%C3%BD%C3%BF%C2%BF%00%00%00%00%C3%BF%C3%BF%22%C2%B5%02%C2%A6%C2%ACzb%60x%00%00%00%00%C3%BF%C3%BF%C2%A2o%C2%8D%C3%8F%C3%80%C3%80%00%00%00%00%C3%BF%C3%BF%C2%A2o%C2%8D%C3%8F%C3%80%C3%80%00%00%00%00%C3%BF%C3%BF%03%00%C2%B4%C3%91%C2%B0%C2%91(4%3C%06%00%00%00%00IEND%C2%AEB%60%C2%82";
 var btn_createIMGComps = group1.add("iconbutton", undefined, File.decode(btn_createIMGComps_imgString), { name: "btn_createIMGComps", style: "button" });
 btn_createIMGComps.helpTip = "create all required compositions\nto start working on a new template";
-btn_createIMGComps.text = "Image-Templ.";
+btn_createIMGComps.text = "IMG-Templ.";
 btn_createIMGComps.alignment = ["left", "top"];
 btn_createIMGComps.minimumSize.width = 118;
 btn_createIMGComps.preferredSize.height = 30;
@@ -131,11 +131,13 @@ grouptab2.alignment = ["fill", "top"];
 //elementsDropDown.preferredSize.width = 175;
 //var option = elementsDropDown.selection;
 
-var btn_addElement = grouptab2.add("iconbutton", undefined, undefined, { name: "btn_addElement", style: "button" });
+var addel_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01%C2%80IDATH%C2%89%C3%8D%C3%95%3DkTA%14%06%C3%A0g6%2B~%04%3F%10bga%C2%A1%C2%90%20%08%C2%A9%24%C2%95%C2%A5%C2%B5%3F%C3%82%C3%9E%C3%8A%C3%8E%C2%9F%C2%A2%C3%BF%20%C2%88%C2%85%60%C2%A5%C2%BF%40%02%C2%82%10%C2%95DE%11DS)hL%C3%B6X%C3%8C%C2%ACN6%C3%B7%C3%AE%C3%9E%1BX%C3%88%0B%C3%83%7C%C2%BD3%C3%AF%3Dg%C3%8E97E%C2%84ybP%C3%BAu%C3%AC!%1A%C3%9A%3E%C2%9E%C3%A2Lun%05o%5B%C3%B8%C2%81%C2%9F%C2%B8%0F%22Bt%C3%83Z%C3%A1%C2%8A%C2%88%07%1D%C3%B8%C3%9B%11%C3%B1%C3%8F%C2%82.8%C3%9D2n%C3%83B%C3%AD%C2%A2.%C2%A8%1Fk%C3%94%C2%81%3F%C3%AA%2Bp%24%1C%2B%C2%81%C3%94%C3%B3%5C%C3%AA%2B%C3%B0%C2%BBe%C3%9C%C2%86%C2%A8%05%C2%9E%C3%8D%20%C2%BF%C3%80F5_%C3%87%C2%A7)%C3%BC%3D%3C%C2%82T2y%C2%88U%C2%9Cu0Z%C2%92%C2%9C4%2F%C2%B1%3Bq%C3%89%C2%92%C2%9Cp%0B%13%C3%AB%09_%C3%B1%C2%AA%16%C2%98%1B%C3%A6%1EE%C3%83%C3%92_%C3%86%1D%5Cj%C3%A0%7C%C3%83clO%C2%B9%C3%A7%C2%AA%C3%BC%C3%B0%1F%0F%C3%AD%C2%94%C3%9A%C3%B2zF%5D%C3%99%C2%8A%C2%88%C2%8BU-%C2%AA%C3%9B%C2%A9%C2%88%C3%B8%10%11%C3%8F%C2%9B%C3%B6%C3%87.Z%C2%9Ea%C3%A9%15%5C%C2%9F%C3%A2%C2%85%0BXl%C3%9A%C3%AC%C3%B3%06'%26%C3%A6%C2%A9%C2%AC%C2%9D%C2%94Kz%14%C2%B1%03%C2%BC%C2%A1%C3%AE%C2%A8%C3%83%C3%AD%1A%C2%9E%C3%88U5%C3%A1%3Cn%C3%A0%C2%9D%C3%BFaz%1B%C3%9F%C3%BB%08%C3%94%C3%98%C3%85%C2%8E%C3%AC%C2%9AA%11%1F%C3%899%C2%93%C3%A4%C3%80%C3%98%C3%AFkA%C2%8D%C3%B7X%2B%C3%A3se%C3%BE%067'%C2%89G-v5B%C3%B6%7B%C3%A3%C3%87%C2%8E%05%C2%BA%C3%BC%40%3E%C2%B7%C2%AC%C3%BF%C2%91%C3%A3%C3%BFK%C3%93%C3%A6X%C3%B5%1E%C3%AE%C3%8A%C3%A6%C3%96b%03%C3%BC%C3%80Cl%C2%B6%08%C3%BC%C3%82%C2%AD%22t%08s%C2%AFE%7F%01lW%C3%BD%C2%B6%3AL%C2%9C%08%00%00%00%00IEND%C2%AEB%60%C2%82";
+
+var btn_addElement = grouptab2.add("iconbutton", undefined, File.decode(addel_imgString), { name: "btn_addElement", style: "button" });
 btn_addElement.preferredSize.height = 30;
 btn_addElement.preferredSize.width = 150;
 btn_addElement.alignment = ["fill", "top"];
-btn_addElement.text = "ADD ELEMENT";
+btn_addElement.text = "ADD ELEMENT   ";
 
 // tab_gallery
 // ====
@@ -262,11 +264,22 @@ btn_import.preferredSize.height = 30;
 btn_import.preferredSize.width = 240;
 btn_import.text = "IMPORT A FILE AS FOOTAGE";
 
-var btn_organize = files_wrapper.add("iconbutton", undefined, undefined, { name: "btn_organize", style: "button" });
+var divider2 = files_wrapper.add("panel", undefined, undefined, { name: "divider2" });
+divider2.alignment = "fill"; 
+
+var btn_organize = files_wrapper.add("iconbutton", undefined, File.decode(openProjectInExplorer_imgString), { name: "btn_organize", style: "button" });
 btn_organize.alignment = ["left", "top"];
 btn_organize.preferredSize.height = 30;
 btn_organize.preferredSize.width = 240;
-btn_organize.text = "Organize Project Assets";
+btn_organize.text = "ORGANIZE PROJECT   ";
+
+var cleanup_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%04%C3%AEiTXtXML%3Acom.adobe.xmp%00%00%00%00%00%3C%3Fxpacket%20begin%3D%22%C3%AF%C2%BB%C2%BF%22%20id%3D%22W5M0MpCehiHzreSzNTczkc9d%22%3F%3E%20%3Cx%3Axmpmeta%20xmlns%3Ax%3D%22adobe%3Ans%3Ameta%2F%22%20x%3Axmptk%3D%22Adobe%20XMP%20Core%209.1-c001%2079.1462899%2C%202023%2F06%2F25-20%3A01%3A55%20%20%20%20%20%20%20%20%22%3E%20%3Crdf%3ARDF%20xmlns%3Ardf%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2F02%2F22-rdf-syntax-ns%23%22%3E%20%3Crdf%3ADescription%20rdf%3Aabout%3D%22%22%20xmlns%3Axmp%3D%22http%3A%2F%2Fns.adobe.com%2Fxap%2F1.0%2F%22%20xmlns%3Adc%3D%22http%3A%2F%2Fpurl.org%2Fdc%2Felements%2F1.1%2F%22%20xmlns%3Aphotoshop%3D%22http%3A%2F%2Fns.adobe.com%2Fphotoshop%2F1.0%2F%22%20xmlns%3AxmpMM%3D%22http%3A%2F%2Fns.adobe.com%2Fxap%2F1.0%2Fmm%2F%22%20xmlns%3AstEvt%3D%22http%3A%2F%2Fns.adobe.com%2Fxap%2F1.0%2FsType%2FResourceEvent%23%22%20xmp%3ACreatorTool%3D%22Adobe%20Photoshop%2025.0%20(Windows)%22%20xmp%3ACreateDate%3D%222023-12-29T00%3A59%3A35%2B01%3A00%22%20xmp%3AModifyDate%3D%222023-12-29T01%3A01%3A12%2B01%3A00%22%20xmp%3AMetadataDate%3D%222023-12-29T01%3A01%3A12%2B01%3A00%22%20dc%3Aformat%3D%22image%2Fpng%22%20photoshop%3AColorMode%3D%223%22%20xmpMM%3AInstanceID%3D%22xmp.iid%3A0b38117f-bd3c-ba44-a9d0-972e7006ee6c%22%20xmpMM%3ADocumentID%3D%22xmp.did%3A0b38117f-bd3c-ba44-a9d0-972e7006ee6c%22%20xmpMM%3AOriginalDocumentID%3D%22xmp.did%3A0b38117f-bd3c-ba44-a9d0-972e7006ee6c%22%3E%20%3CxmpMM%3AHistory%3E%20%3Crdf%3ASeq%3E%20%3Crdf%3Ali%20stEvt%3Aaction%3D%22created%22%20stEvt%3AinstanceID%3D%22xmp.iid%3A0b38117f-bd3c-ba44-a9d0-972e7006ee6c%22%20stEvt%3Awhen%3D%222023-12-29T00%3A59%3A35%2B01%3A00%22%20stEvt%3AsoftwareAgent%3D%22Adobe%20Photoshop%2025.0%20(Windows)%22%2F%3E%20%3C%2Frdf%3ASeq%3E%20%3C%2FxmpMM%3AHistory%3E%20%3C%2Frdf%3ADescription%3E%20%3C%2Frdf%3ARDF%3E%20%3C%2Fx%3Axmpmeta%3E%20%3C%3Fxpacket%20end%3D%22r%22%3F%3E%C3%BCA%11G%00%00%01%C2%ADIDATH%C2%89%C2%B5%C2%94%3FHVQ%18%C2%87%C2%9Fk_%C2%91%C3%99%1E%C2%81%2045%04%C2%AE%C2%B6E%C2%A4%C2%B4dK%C3%9A%22%C3%A4%C3%AA%C3%96%10%19D%5B%C2%8BJ%C2%B5%C2%89%10%C2%A1%10D%0D%06~J%C2%B4%C2%84%C2%A0D%C2%83%C2%A6)%C2%81AmNAP%0A%0EJ%C3%B84x%3F%3C%5E%C3%AE%C3%B5%C3%9C%C3%A4%C3%BA%C3%82%C3%8B%3D%C3%9C%C3%BB%C2%9E%C3%9F%C3%AFy%C3%AF%C3%B9%C2%93%C2%A8%1Cg4%1D%C2%83%C3%A6Y%C2%A0%0E%C3%BC%00%40%C2%AD2%5B%C3%94%C3%B7%C3%AEG%C2%A5%06g%C3%94w%C2%81%C3%B8X%C2%95%06%C3%8D%C3%AAL%20%C3%BE%C2%BC%C3%B1%C2%AD%0A%C3%B1%C3%93j%3D%10%7F%C2%A1%26U%19%C2%B4%C3%A4%C2%887%C2%855G%11%C2%BD%C2%A5%3EJ%C3%87o%03%C3%B1%C3%B1%C2%90%C3%BC%C2%A8%06%C3%B7%03%C3%81%C2%87j%C2%BF%C3%BAW%7D%C2%99%25odb%C3%BC%C2%A05%03%C2%BD%C3%80%05%60%15%C2%98H%C3%B7%3A%C3%80%200%07%2C%03%C3%9B%C2%B9%C2%B3%C3%95%C2%939%C2%8B%C3%96%C2%AA%5EW%C2%9F%C2%A8k%01%C3%B5%C2%B0zU%C3%9D%08%C3%9E%C3%9D%2B%C2%A2o%C3%BC%C2%A2%01uQ%C3%BD%C2%A8.%C2%A8%C3%9F%C3%95M%C2%8BcD%C2%BD%C2%96%C2%A9i%3F%C3%8C%C3%A0%C3%8A!bE1%C2%A4v%C2%AA%C3%9B%C3%AA%C2%92z%C2%AA%C3%88%20Qk%C3%80%3C%C3%90%01%7C%03%3E%01w%C2%88%C3%9FSC%C3%80%12%C2%90%00o%0A%C2%ABR%C2%A7v%C3%B5%C2%B6%C3%9A%C2%A5%C2%8E%C2%AA%C2%BB%25%3By%5CD%C3%9E%C3%88Z%C3%AA%C2%B3%02%3C%00z%C2%80%13%11%C3%B2%03%7C%C3%B1%C2%8A%7D%C2%B7nuG%5DW%C2%9F%C2%AA%C2%AF%23%C3%B4%C2%BF%C3%95se%3B%C2%80%C2%BD%3B%C2%BC%03hK%C2%B3%3B%C3%82%C3%B6%0A%C3%B8%C3%B9%3F%1D%C2%A0%C3%96%C3%94%C3%99%0C%C3%A9z%0E%C3%BD%C2%8Ez)Fo%C3%81In%05%C2%9E%01%7F%C2%80i%C3%A0%22%7B%3B%26%C2%8C%3Ap3J%C2%9F%C3%93A%C2%987%C3%94%C3%8F%19%C3%B2%C2%AD%C3%B4%C3%99Y%C2%86%3E%C2%BB%06%C3%99X%06%C2%BE%C2%A4%C3%A3%C2%AF%C3%80%24p%178%0F%7C(E%1F%C3%A9%20%C3%8C%C3%8B%C3%AA%C2%94%C3%BAK%C3%AD%2BK_%C2%B4%06%C2%95%C3%86%3FP%C2%8F%C3%84%C2%A7%C3%96vRR%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+
+var btn_cleanup = files_wrapper.add("iconbutton", undefined, File.decode(cleanup_imgString), { name: "btn_cleanup", style: "button" });
+btn_cleanup.alignment = ["left", "top"];
+btn_cleanup.preferredSize.height = 30;
+btn_cleanup.preferredSize.width = 240;
+btn_cleanup.text = "PROJECT CLEANUP   ";
 
 // tab_tools
 // ====
@@ -527,6 +540,7 @@ nullLayer.preferredSize.width = 24;
 #include _scripts/rectangleWizard.jsx;
 #include _scripts/elementsDialog.jsx;
 #include _scripts/organizeProjectAssets.jsx;
+#include _scripts/projectCleanup.jsx;
 
 /// INCLUDES END
 
@@ -1921,6 +1935,73 @@ btn_organize.onClick = function () {
     alert("Please open a project or save the current project first.");
   }
 };
+
+btn_cleanup.onClick = function () {
+  if (app.project.file != null) {
+    (function buildUI(thisObj) {
+      var compCleaner = thisObj instanceof Panel ? thisObj : new Window("palette", "Clean Up Project");
+      compCleaner.orientation = "column";
+      compCleaner.alignChildren = ["left", "top"];
+      compCleaner.spacing = 3;
+      compCleaner.margins = 16;
+      var panel1 = compCleaner.add("panel", undefined, undefined, { name: "panel1" });
+      panel1.text = "Tweaks";
+      panel1.orientation = "column";
+      panel1.alignChildren = ["left", "top"];
+      panel1.spacing = 5;
+      panel1.margins = [10, 14, 10, 10];
+      panel1.preferredSize.width = 200;
+      var checkbox1 = panel1.add("checkbox", undefined, undefined, { name: "checkbox1" });
+      checkbox1.text = "Remove unused items";
+      var checkbox2 = panel1.add("checkbox", undefined, undefined, { name: "checkbox2" });
+      checkbox2.text = "Remove disabled effects *";
+      var checkbox3 = panel1.add("checkbox", undefined, undefined, { name: "checkbox3" });
+      checkbox3.text = "Remove disabled expressions *";
+      var checkbox4 = panel1.add("checkbox", undefined, undefined, { name: "checkbox5" });
+      checkbox4.text = "Clear render queue";
+      var checkbox5 = panel1.add("checkbox", undefined, undefined, { name: "checkbox6" });
+      checkbox5.text = "Purge all memory & cache";
+      var panel2 = compCleaner.add("panel", undefined, undefined, { name: "panel2" });
+      panel2.text = "* Scope";
+      panel2.preferredSize.width = 200;
+      panel2.orientation = "row";
+      panel2.alignChildren = ["left", "top"];
+      panel2.spacing = 10;
+      panel2.margins = 10;
+      var radiobutton1 = panel2.add("radiobutton", undefined, undefined, { name: "radiobutton1" });
+      radiobutton1.text = "Current Comp";
+      radiobutton1.value = true;
+      var radiobutton2 = panel2.add("radiobutton", undefined, undefined, { name: "radiobutton2" });
+      radiobutton2.text = "All Comps";
+      var group1 = compCleaner.add("group", undefined, { name: "group1" });
+      group1.orientation = "row";
+      group1.alignChildren = ["left", "center"];
+      group1.spacing = 10;
+      group1.margins = [0, 7, 0, 0];
+      var button1 = group1.add("button", undefined, undefined, { name: "button1" });
+      button1.text = "Clean Up";
+      button1.preferredSize.width = 200;
+      button1.alignment = ["left", "center"];
+      button1.onClick = function () {
+        compCleaner.close();
+        clean(checkbox1.value, checkbox2.value, checkbox3.value, checkbox4.value, checkbox5.value, radiobutton2.value);
+      };
+      compCleaner.layout.resize();
+      compCleaner.onResizing = compCleaner.onResize = function () {
+        this.layout.resize();
+      };
+      if (compCleaner instanceof Window) {
+        compCleaner.show();
+      }
+    })();
+  }
+  else {
+    alert("Please open a project or save the current project first.");
+  }
+};
+
+
+
 btn_openAndSelect.onClick = function () {
   openCompInViewer("__SETTINGS", "debug_layer");
   //app.executeCommand(2163);//EffectControls

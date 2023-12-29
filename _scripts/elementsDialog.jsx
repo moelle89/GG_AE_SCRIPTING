@@ -51,7 +51,7 @@ function elementsDialog() {
   grp_textelement.alignment = ['fill', 'center'];
 
   var Btn_TextElement = grp_textelement.add('iconbutton', undefined, undefined, { name: 'Btn_TextElement', style: "button" });
-  Btn_TextElement.text = 'Text-Element';
+  Btn_TextElement.text = 'TEXT-ELEMENT';
   Btn_TextElement.onClick = function () {
     var result = "TEXT_el";
     var sourceCompName = "_ELEMENTS";
