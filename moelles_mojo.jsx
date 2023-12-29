@@ -140,18 +140,12 @@ btn_addElement.preferredSize.width = 150;
 btn_addElement.alignment = ["fill", "top"];
 btn_addElement.text = "ADD ELEMENT   ";
 
-// tab_gallery
-// ====
-var tab_gallery = tpanel2.add("tab", undefined, undefined, { name: "tab_gallery" });
-tab_gallery.text = "GALLERY";
-tab_gallery.orientation = "column";
-tab_gallery.alignChildren = ["fill", "fill"];
-tab_gallery.spacing = 12;
-tab_gallery.margins = 10;
 
+var divider3 = tab2.add("panel", undefined, undefined, { name: "divider3" });
+divider3.alignment = "fill"; 
 // GROUP2
 // ======
-var group2 = tab_gallery.add("group", undefined, { name: "group2" });
+var group2 = tab2.add("group", undefined, { name: "group2" });
 group2.orientation = "row";
 group2.alignChildren = ["fill", "fill"];
 group2.spacing = 10;
@@ -206,19 +200,10 @@ btn_addGallery.preferredSize.width = 50;
 btn_addGallery.alignment = ["left", "top"];
 btn_addGallery.text = "ADD";
 
-// tab_fx
-// ====
-var tab_fx = tpanel2.add("tab", undefined, undefined, { name: "tab_fx" });
-tab_fx.text = "FX";
-tab_fx.orientation = "column";
-tab_fx.alignChildren = ["fill", "fill"];
-tab_fx.spacing = 12;
-tab_fx.margins = 10;
-
 // tab_AP
 // ====
 var tab_ap = tpanel2.add("tab", undefined, undefined, { name: "tab_ap" });
-tab_ap.text = "AP";
+tab_ap.text = "ANCHOR POINT";
 tab_ap.orientation = "row";
 tab_ap.spacing = 12;
 tab_ap.margins = 10;
@@ -242,6 +227,15 @@ groupAP2.margins = 3;
 var apText = groupAP2.add("statictext", undefined, undefined, { name: "apText" });
 apText.text = "Lock Anchor Point:";
 apText.preferredSize.height = 20;
+
+// tab_fx
+// ====
+var tab_fx = tpanel2.add("tab", undefined, undefined, { name: "tab_fx" });
+tab_fx.text = "FX";
+tab_fx.orientation = "column";
+tab_fx.alignChildren = ["fill", "fill"];
+tab_fx.spacing = 12;
+tab_fx.margins = 10;
 
 // TPANEL2
 // =======

@@ -175,6 +175,9 @@ function setAnchorPoint(option) {
                         property.expression = propertiesToAdd[propertyName];
                         //property.expressionEnabled = true;
                     }
+                    var anchorpoint = selectedLayer.anchorPoint.value;
+                    // Set the anchor point to the position
+                    selectedLayer.property("Position").setValue(anchorpoint);
                 }
             }
         } else {
@@ -200,7 +203,6 @@ function moveAnchor(row, col, ignoreMasks) {
     // has a length of 0, it does not contain any layers, meaning there
     // are no layers selected
     if (theLayers.length == 0) {
-        alert("You do not have any layers selected");
         // return will cause the script to exit the function
         return;
     }
@@ -443,5 +445,8 @@ function moveAnchor(row, col, ignoreMasks) {
             // remove the duplicate layer that was used for parenting
             dupLayer.remove();
         }
+        var anchorpoint = theLayer.anchorPoint.value;
+        // Set the anchor point to the position
+        theLayer.property("Position").setValue(anchorpoint);
     }
 }
