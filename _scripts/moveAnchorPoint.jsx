@@ -5,7 +5,7 @@
 // I would like to thank Oplique  for helping me to test and improve this script
 
 
-//var w = (this instanceof Panel) ? this : new Window("palette", "Move Anchor Point", undefined, {resizeable: true}); // Check if the call is from the Window menu, otherwise create the window
+// modified by Manuel Moellmann
 
 // create a group
 w.g = groupAP;
