@@ -8,6 +8,7 @@ function createDockableUI(thisObj) {
         su1PanelCoordinates: false,
         borderless: false,
         resizeable: true,
+        minimizeButton: true
       });
   dialog.onResizing = dialog.onResize = function () {
     this.layout.resize();
@@ -290,18 +291,46 @@ tab_tools.text = "CONFIG";
 tab_tools.orientation = "column";
 tab_tools.alignChildren = ["fill", "top"];
 tab_tools.spacing = 0;
-tab_tools.margins = [10, 0, 0, 0];
+tab_tools.margins = [0, 0, 0, 0];
+
+// CONFIGPANEL
+// ===========
+var configPanel = tab_tools.add("tabbedpanel", undefined, undefined, {name: "configPanel"}); 
+  configPanel.alignChildren = ["fill", "fill"];
+  configPanel.alignment = ["fill", "fill"];
+  configPanel.minimumSize.width = 280;
+  configPanel.margins = 0;// 
+
+// CONFIGCOLORS
+// ============
+var configColors = configPanel.add("tab", undefined, undefined, {name: "configColors"}); 
+    configColors.text = "COLORS"; 
+    configColors.orientation = "column"; 
+    configColors.alignChildren = ["left","top"]; 
+    configColors.spacing = 10; 
+    configColors.margins = 12; 
+
+// CONFIGTEXT
+// ==========
+var configText = configPanel.add("tab", undefined, undefined, {name: "configText"}); 
+    configText.text = "TEXT"; 
+    configText.orientation = "column"; 
+    configText.alignChildren = ["left","top"]; 
+    configText.spacing = 10; 
+    configText.margins = 12; 
+
+
 
 // tools_wrapper
 // ======
-var tools_txt_wrapper = tab_tools.add("group", undefined, { name: "tools_txt_wrapper" });
+var tools_txt_wrapper = configColors.add("group", undefined, { name: "tools_txt_wrapper" });
 tools_txt_wrapper.orientation = "column";
 tools_txt_wrapper.alignChildren = ["fill", "fill"];
 tools_txt_wrapper.spacing = 0;
-tools_txt_wrapper.margins = [0, 5, 0, 10];
+tools_txt_wrapper.margins = [0, 0, 0, 0];
 tools_txt_wrapper.alignment = ["fill", "top"];
 
-var tools_wrapper = tab_tools.add("group", undefined, { name: "tools_wrapper" });
+var tools_wrapper = configColors.add("group", undefined, { name: "tools_wrapper" });
 tools_wrapper.orientation = "row";
 tools_wrapper.alignChildren = ["fill", "fill"];
 tools_wrapper.spacing = 5;
@@ -317,15 +346,12 @@ tools_wrapper_l.alignment = ["fill", "top"];
 
 // EDIT_TEXT_WRAPPER
 // =================
-var edit_text_wrapper = tab_tools.add("group", undefined, { name: "edit_text_wrapper" });
+var edit_text_wrapper = configText.add("group", undefined, { name: "edit_text_wrapper" });
 edit_text_wrapper.orientation = "column";
 edit_text_wrapper.alignChildren = ["fill", "top"];
 edit_text_wrapper.spacing = 10;
-edit_text_wrapper.margins = [0, 15, 0, 10];
+edit_text_wrapper.margins = [0, 0, 0, 0];
 edit_text_wrapper.alignment = ["fill", "top"];
-
-var divider1 = edit_text_wrapper.add("panel", undefined, undefined, { name: "divider1" });
-divider1.alignment = "fill";
 
 var editTextTxt = edit_text_wrapper.add("statictext", undefined, undefined, { name: "editTextTxt" });
 editTextTxt.text = "Add a custom text and apply it to an element";
