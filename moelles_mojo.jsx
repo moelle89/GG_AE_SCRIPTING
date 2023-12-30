@@ -86,12 +86,10 @@ group1.spacing = 10;
 group1.margins = 12;
 group1.alignment = ["fill", "top"];
 
-var img_vid_temp_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00l%00%00%00%1E%08%06%00%00%00%C3%89%C2%8C%C3%BB%07%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%02%C3%AFIDATh%C2%81%C3%AD%C2%981o%131%14%C3%87%7F%C2%A5%11%2C%08%C2%94%C2%AF%10%C2%86%C2%B2%C2%81%C2%94%C3%B2%0D%C2%8E%C2%85%C3%BD%C3%B8%08)%1B%03R%C2%AF%13%12%02%C2%A4%C2%84%C2%91%C2%AD%11B%2C%2C%C3%8D%C3%82%C3%84%C3%92%7C%C2%84f%60%02!5%1F!i%25%06(Bf%C3%B0%3Brqm%C3%A7%C2%9CkhN%C3%B5O%C2%B2%C3%9A%7B%3E%3F%C3%9B%C3%B9%C3%BB%3D%C3%9B%C2%B7%C2%A1%C2%94%22R%1F%C2%AE%5D%C3%B6%00%22aD%C3%81jF%14%C2%ACfD%C3%81jF%14%C2%ACfD%C3%81j%C2%86K%C2%B0%06%C3%90%03N%01%15P%C2%BE%02%C2%8F%3C%C3%BDm%5E%C3%88%C2%A8%C2%AF0.%C3%81%5E%01%C2%BB%C3%80%C2%AD%40%7Fw%C2%81O%C3%80%3D%C3%83%C2%BE%05%1C%01%C2%BF%C2%80%C3%A7%C2%81%3E%23%056%1C%17%C3%A7%13%C3%A0v%05%C2%BFo%C2%81%C2%A7%C3%B2%7F%0A%C2%BC%07n%C3%8A%C3%B3%19p%C2%A3%C2%82%C3%AF%2BM%C3%83a%C2%AF%22V%C2%B1%C3%BD.%3A%C2%B5%16%C2%B9%C2%BE%C2%A0%C3%AD!%C3%90%04%1E%02S%C2%A3%C3%AE%00h%01%C2%8F%C3%91%0B!%05%06%C3%92G%26%C3%8F%26%23%C2%A9%1F%3B%C3%BAjy%C3%86%C2%B2'c%C3%89%3C%C3%AFl%C3%8B8%C2%BB%C2%85%C2%B1%C3%99%C3%98%07%C3%9A%C3%B2%3E%40%C3%87%C3%A3w%0F%3D%C2%AF%C3%B3(%C2%A5l%C2%A5*%1F%C3%84%C3%8FwG%C2%BD%C2%AB_%C2%94R%07%C3%B2Nf%C3%98%C3%9Bb%3F%C2%94%C3%A7%C2%AE%3Cw%C2%8D%C3%A7c%C2%A5%C3%94%C2%91%C2%94c%C2%B1M%C2%A4%C2%BD%C2%AF%C3%9FL%C3%BA.k%C2%B7%C2%8D%7B%C2%A2%C2%94J-uM%C2%A9%C2%9B%C2%94%C3%B0%C2%9B%C3%8A%7BM%5B%3F%C2%AB%3E%25.%C2%8A%26%1B%C3%B9%C3%8AJ%0C%7BG%C3%BE%0EK%C2%B4%C3%9F%C2%96r%C2%87Y%C2%94t%C2%97%18K(S%C3%ACQ%C3%9E%C3%81%1E%C3%A16%06%C3%A8%C2%AC%C3%90%C2%B1U%C2%AE%C3%A3%C2%B1~%C2%80%C2%9E%5C%C3%82%7C%C2%BAJ%C3%90%3FH%3F%C3%90_%0F%C3%BD%03%24%C3%A8%C2%94%C2%B4J%C3%BA%C3%92O%C3%93%C2%B0wp%C2%A587%C3%A6v%00%C2%AC%C2%A7%600%C2%8B%C2%A2%7C%C2%B5%C3%A6%C3%A2%0DqL%C2%A4%24%C2%BE%C3%BD%C3%8AG%1B%C2%BD%7F%C2%9A%C3%85%C2%B6%07%0D%C2%99%C2%8F%C2%8E%C2%B4%60%2FC%C2%8A%1E%C2%A7U%60%C3%97%C2%A1%C3%A3%C2%B2%C3%A9%C2%A3'%C2%9D%C2%A2%23%24t%C3%92%17%C3%8D%14%1D%C2%A5%266%5B%1F%7D%C3%80%C3%88%0F%5B)%C3%AE%C2%AC%C2%90%00%13K_%3B8%16%C3%A6%C2%BA%0A6%C2%92%C3%92%C2%96%C2%92%C2%A0%C3%93dh%3A4Y6%3A%C3%87%C2%9C%3F%C3%AD%C2%BA%C3%88%C2%B3%40%C3%8A%2C%15%C3%AF%60%C2%8F%C3%AE%C2%A1%C3%85%C2%AFm%11%C3%BCc%C3%95%C2%82%C2%9DUh%3B%40%C2%8B%C2%95%C2%A1'%C2%BB%C2%ACX%1D%C3%B13%C3%A6%C3%BFE%C3%A8%40%C3%BA%1D%C2%A1%C3%87%C3%AD%5B(%5E%C2%81LV%C2%BD%C2%87%C2%BD%C2%AB%C3%906%C3%8F%C3%A1%C2%A9%C3%B1%C2%BC%C2%886%C3%BAD%C3%98E%7F%5D%C3%99%17%7B%C3%99%08%C2%B9%08z%C3%8C2C%C3%A8a%C3%83%C2%8BK%C2%B0%C3%93%C2%8A~%C3%B3%C3%B6o%C3%90%17%C3%89%1F%C2%85%C2%BA%C2%9F%25%7D%14%23bD%C3%B9%C3%A8H%C3%90Q%C2%99%C2%A1%7F%C2%B4%C2%A1%C2%8C%C2%A1J%3A%C3%8D%C3%B7%1A%5B%C2%B1%1E%C2%BF%0B%C3%BD%05E%C3%90%22%5C%C2%9F%C2%A6%C2%BA%C3%B8o%C3%B7%3E~%03%0F%C2%80%2F%05%C3%9B%16%C3%B0%11%C2%B8%0F%C2%BC%04%5E%04%C3%B8k%C3%A2N)f%C2%9Dy%C2%9C%C3%86%C3%936%C2%A4%2F%C3%9Fu%20%17%C3%84%C3%96%C3%96%C2%B4%C2%B5%C2%98%C2%BF%C2%8F%C3%B9%C3%A6f%C3%85%25X%03x%0D%3C!%C3%AC%03%C3%B07%C3%A0%19%C3%B0%C3%99Q%C2%BF%09%C3%BC%09%19%60d%1E%C2%97%60%C2%915e%5D%2F%C3%8E%11%07Q%C2%B0%C2%9A%11%05%C2%AB%19Q%C2%B0%C2%9A%11%05%C2%AB%19Q%C2%B0%C2%9A%11%05%C2%AB%19%7F%01%05v%0C%C2%8C%0D%C2%9A%C3%A2B%00%00%00%00IEND%C2%AEB%60%C2%82"; 
-
-
+var addel_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00l%00%00%00%1E%08%06%00%00%00%C3%89%C2%8C%C3%BB%07%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%02%C3%9AIDATh%C2%81%C3%AD%C2%98%3F%C2%8E%131%14%C2%87%C2%BF%C2%B0%08%C2%A4%C3%95R%C2%A4%C2%A2%40B(%5C%00%11z%40%1A%C2%8E0%5BQ%20%C2%8Ap%C2%84p%C2%84%C2%A4%C3%9E%C2%8A%C2%91%C2%B8%40RQo%24%C2%A0O%C2%848%40%22Jh%12%C2%89%0Ev%C3%81%14~%C2%A38%C3%8Ex%C3%86N4%C2%BB%19%C3%A1OzJl%C2%8F%C2%9F%3D%C3%B3%C2%B3%C2%9F%C3%BF%C2%B4%C2%94RD%C2%9A%C3%83%C2%8D%C3%AB%C3%AE%40%24%C2%8C(X%C3%83%C2%88%C2%825%C2%8C(X%C3%83%C2%88%C2%825%C2%8C(X%C3%83%C2%88%C2%825%C2%8C*%C3%81%C2%8E%C2%81%C3%B7%C3%80%2F%40y%C3%9A'%C3%A0%C2%81%C3%83%C3%9F%C3%91%C2%BE%1D%C3%BE%C3%9F%C2%A9%12l%08%C2%BC%06n%05%C3%B8%7C%0A%7C%00ZF%C3%9E%090%02.%C3%84gdGZ%157%1D%3F%C2%81%3B%3B%C3%BA~%0C%7C%01%C3%AE%C2%A3%05%7C%24%C3%B9%17%C2%B8%07%C3%809%C3%90%06%5E%00%2B%C2%ABl%04t%C2%80S%20%15%1B%C2%A3%07%40_%C3%9263)_8%C3%9A%C3%AA%C2%94%C3%B4%C3%BF%C2%AD%C3%B8m%3B%C3%8A3%C3%B1%3D5%C3%BAQ%C3%84%14%C2%98%C2%88%C2%BF%C2%9E%C3%B8t%C2%B57.%C3%A9%C2%8FF)Uf%C3%BB%C3%B0L)uO)%C3%B5%C2%BD%C2%A0%C3%8C%C3%95%C3%9EH%C3%8A%C3%BBV~W%C3%B2%C3%8F%25%3D%C2%90%C3%B4%C3%80J%C3%8F%C2%95RS%C2%B1%C2%B9%C3%A4-%C2%A5~%C3%99%7B%C3%B6%C2%A5m%3B%C3%9F%C2%A7%C3%AER%C2%AC%5DP%C2%96J%C3%99%C2%A8%C2%A2%C2%9D%C2%B4%C3%84%C3%87%C2%86%C3%95%C2%BD%C3%A9x%0E%C3%9C%0Dx%3E%1Fa%C2%89%C2%95%C3%9F%C2%93%C3%9F%C2%89G%C3%BD'b%0F%C3%91%C2%A3%C2%B6%0D%0C%02%C3%BA%C2%B0%0B%2B%C3%96%7D4%C3%A9Q%3C%C2%BBm%C3%86%C3%A8hP%C3%A4c%C2%83%C2%BA%05%C2%BB%19%C3%B8%C3%BC%18%C3%BD%C2%82%09%C2%9B%C3%A1*A%7F%C2%94%2C%C3%90%C3%9F%10%C3%BD!%12%C2%A0%1BX7%C2%84%C2%8C%C3%AD%C2%90%C3%9C%C2%916%C2%AB%C3%83%C3%9C%1A%7B%19%C3%98%C3%A2%10%C2%B7%C3%B5%C3%B9%2C%C3%8A%3F%40.%C3%9E%04%C2%8F%17*%C2%A1l%C2%BD*%C2%A3%C2%8F%5E%3Fm3%C3%97%C2%B6%C2%89%C2%A4%C3%8D%C3%88%C3%90%C3%83_%C2%ACT%C3%BAW%C3%B9%7C%C3%A8%0C%C2%B8%0A2%C3%B4%C3%8B%C2%A6%C3%A8%19%C2%92%0BW%15%0E%C3%ABb%C3%A6%C3%88%C2%B7%07O%C3%9Eos%C3%80%C2%9D%C2%B2%1D%C3%9E%13%60Y%C3%A0%C3%ABM%C2%81%C3%8F-%0EQ%C2%B0%C2%99XW%2CA%C2%87%C3%89%C3%90ph%C2%B3%C3%AB%C3%AC%C2%9C%C3%A0%16%C3%8D%24%03%C3%A6%C3%A8%C2%99%C2%96J%7By8%C2%B6%C3%BD%C3%99%3BJ%1F%C3%BF%C3%80a%0A%06%3A4t%C3%91%C3%A1%C2%A8%C3%83%C3%AEb%C3%B5%C3%84%C3%8F%C2%82%C3%BAg%C3%A8J%C3%9A0%C2%A3%C2%83%0Bo%C2%81l%C3%AA%16%C3%ACr%C3%87zc%C3%B4%C3%8E.5%C3%92%3EtY%C3%AF%08%C3%8D%C2%8D%C3%86U%1D%C3%963%C3%A0%C2%9D%C3%BC%0F%C3%99lxS%C2%B7%60%1F%C2%81%1F%C2%84m%C3%ADa%3D%23%12%C3%B4h%C3%B4%C2%9D%1D%09%C2%9B!h%C2%82%C3%BE%C2%88%C3%BB%7C%C2%BCsG%C3%BE%02%7D%7C0%C3%897F%C2%B5%C3%8D%C3%A6%C3%AB%C2%B8%C3%A9%C3%B8%0D%C3%9C%C3%B6%C3%B4%C3%91%C3%86%C2%BD%C3%B6%C3%98eE7%12!%C3%ABVQ%5B%1D%C2%87%C3%9F%C3%9C%C3%B7B%C2%9E1%C3%8FZE~%C3%8C%C2%BC%C2%B2w%C2%AA%C2%A6%C3%A2d%7DVpK%C3%A1%C3%83W%C2%A5T%C3%8B%C3%B0s%22'%C3%BC%C2%BFJ%C2%A9a%C3%95i%3E%C2%9A%C3%9B%C2%AAf%C3%981p%06%C2%BC%C3%84%C3%BF%02%C3%B83%C3%B0%0A%C3%B8VPv%04%C3%BC%C3%B1%1FN%11%C2%9B*%C3%81%22%07%C3%86!%C3%9EtDJ%C2%88%C2%825%C2%8C(X%C3%83%C2%88%C2%825%C2%8C(X%C3%83%C2%88%C2%825%C2%8C%7F%C3%ABYTc%C3%A1T%C3%8A%C2%9B%00%00%00%00IEND%C2%AEB%60%C2%82";
 
 var btn_createComps_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%1C%00%00%00%14%08%06%00%00%00%C2%9E%5E%5D%C3%B9%00%00%00%09pHYs%00%00%0B%12%00%00%0B%12%01%C3%92%C3%9D~%C3%BC%00%00%01bIDATH%C2%89b%C3%BC%C3%BF%C3%BF%3F%03%C3%9D%00%03%03%03%00%00%00%C3%BF%C3%BFb%C2%A2%C2%ABm%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%AF%C2%85%0C%0C%0C%00%00%00%00%C3%BF%C3%BFb!A%C2%AD%01%03%03%C2%83%00%11%C3%AA.000%7C%C3%80*%C3%83%C3%80%C3%80%00%00%00%00%C3%BF%C3%BFb%00%C3%85!%11x%C3%81%7F%C3%A2%C3%81%C2%87%C3%BF%C3%BF%C3%BF%3B%601S%C3%A0%C3%BF%C3%BF%C3%BF%0C%00%00%00%00%C3%BF%C3%BF%22%C3%86%C2%B2%04%12%2C%C2%83%01%C2%90%C2%A50%C3%BD%0Ap%07%C3%BF%C3%BF%7F%00%00%00%00%C3%BF%C3%BF%22%26H%15H%08v%18%C3%A0g%60%60p%C2%80FC%3F%5C%C2%94%C2%81%C3%81%1E%00%00%00%C3%BF%C3%BF%C2%A2u%C2%A2%09%40%C3%A1100%00%00%00%00%C3%BF%C3%BF%C2%A2o*e%60%60%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%AF%C2%85%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%AF%C2%85%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%AF%C2%85%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%AF%C2%85%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%A5%C2%85%0F%18%18%186%C2%A0%C2%88000%00%00%00%00%C3%BF%C3%BF%22%26%C3%A3%C2%832.%C2%A9%60%03%C3%96%C2%8C%C3%BF%C3%BF%C3%BF%01%00%00%00%00%C3%BF%C3%BF%22%C2%B6hk%C2%80%C2%96%1E%C3%84%C2%80%0B%C3%BF%C3%BF%C3%BF7%C3%80Z%C2%B4%C3%BD%C3%BF%C3%8F%00%00%00%00%C3%BF%C3%BF%22%C2%B5%3E%04%C2%95%1E%C2%84%C2%82%11%C2%84%C2%B1%03%06%06%06%00%00%00%00%C3%BF%C3%BF%C2%A2o%05%C3%8C%C3%80%C3%80%00%00%00%00%C3%BF%C3%BF%C2%A2o*e%60%60%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%AF%C2%85%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%03%00%C2%83%C3%9F%C2%95x%C2%A6%14%C3%9A'%00%00%00%00IEND%C2%AEB%60%C2%82";
-var btn_createComps = group1.add("iconbutton", undefined, File.decode(img_vid_temp_imgString), {
+var btn_createComps = group1.add("iconbutton", undefined, File.decode(addel_imgString), {
     name: "btn_createComps",
     style: "button"
 });
@@ -100,8 +98,7 @@ btn_createComps.alignment = ["left", "top"];
 btn_createComps.minimumSize.width = 118;
 btn_createComps.preferredSize.height = 30;
 
-var btn_createIMGComps_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00l%00%00%00%1E%08%06%00%00%00%C3%89%C2%8C%C3%BB%07%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%03%C2%85IDATh%C2%81%C3%AD%C2%9A%C2%BFk%C2%93A%18%C3%87%3F%15%05uKq%C3%A9%C3%A0%60%5C%04%17!J%C3%BF%003%09%C2%82K%C2%8A%C2%9B(%C2%98%C3%BE%07%C2%A6%C2%9B%20%16SA%C3%84%C2%B1A%C2%ACX%C2%85%C2%92n%C2%8A%206%C2%B3RH6%1D%1C%1A%14%C2%91%0EbB%3B%C3%B9%0B%C3%8F%C3%A1%C3%AE%7C%2F%C2%97%C3%B7%C3%AE%C3%8D%25i%C3%B5%C2%B5%C3%AF%07%5E%C2%92%C3%B7%C2%B9%C2%BB%C3%A7~%7C%C3%AF%C2%B9%1Fi'%C2%84%10d%C2%A4%C2%87%7D%7F%C2%BB%01%19ad%C2%82%C2%A5%C2%8CL%C2%B0%C2%94%C2%91%09%C2%9622%C3%81RF%C2%92%60S%C3%80%12%C2%B0%05%C2%88%C3%80gK%C2%95%C2%9D%C3%9A%C2%89%C2%86%C3%AFU%26%3C%C3%87%C3%BA)%60%1D8%3Ab%1D%1F%C2%81i%60sD%3F%19%C3%B8%23l%C2%9E%C3%91%C3%85B%C3%B9%C2%98%1F%C2%83%C2%9F%0C%C3%BC%C2%82%5D%08%C3%B4%C3%B5%018%03%1C%02.%01%C2%BFF%C3%B05%0Er%C3%AA%C3%B9%C2%AF%C3%B0%09%16%C3%9A%C3%99%C2%9B%40%13%C3%B8%0A%3C%02%C2%9E%06%C3%B8*%C2%AA%C2%B2%C2%8B%C3%96%7B%13Xs%C3%A45%C3%B3k%C3%B2%40%1D%C3%A8%18O%13%C2%A88%C3%AA%C2%AD%00%1B%C2%9EG%C2%97k%0E%C2%90'%C2%AF%C3%AA%2B%3A%C3%AA*%C2%A8%C3%B4%C2%B2as%C3%B9%C2%AD%3B%7C%C2%80%10%C3%82%C3%B5%C2%84r%C3%91*%C3%BF%C3%84J%C3%B7%C3%95URy%C2%9A%C3%96%C2%BB%C2%A6%60%C3%A4%5D4%C3%ACM%C3%83%5E%10Bt%0C%7BU%08Q7l%C2%8B%09m%C3%90%C3%A5%C3%A3%C3%92%3AV%1B%7C%C3%A5%C2%9B%C2%8E%C3%B4%C2%AAJ%C2%AF%24%C3%B8%C3%8D%0B!%C3%96T%C3%BE%3E%3F%C3%83%1C%C3%AB%C2%97%C2%81%13%C3%80%0D%C3%8B%5E%01%26%C3%95%C3%B7i%C3%86%C2%B3%0C6%C3%94%C2%A79k%0B%40%2B%26o%15%19%C3%89s%C3%80i%C3%B59%03%1C%07%C3%9A%C3%88%C2%99%C3%AD%C2%9A%C3%BD%C3%A3%24%C2%AF%C3%9AhSV%C3%ADH%C2%A2%0D%2C%C3%90%1B%C2%89%7F%08%15l%03%C2%B8%0A%C2%BC%03%C2%AE%03%C3%8F%C2%8C%C2%B4S%C3%80'U%C3%A1k%C3%A0p%C2%A0%C3%AF8Z%40%C2%97h%C2%A0%0B%C3%AAiX%C3%B9%C3%B2*%C2%8F%C3%AE%C2%ACI%17)%C2%9Em%C3%9F)j%40%C3%89%C2%B2i%C2%B1%06%11L%C3%93%C2%8D3%C3%AE%0Fl%C3%8C%3D%C3%A0%C2%9B%C3%B1%5E%05%C3%8E%1B%C3%AF%07%C2%81c%C2%81%3E%7D%C3%A8h*%22%C2%A3G%0BgG%C2%98%C2%9E%C3%91f'u%19M%C2%8B%C2%B0%01%C2%B3q%C3%AD%C2%83%C2%B3V%C2%BD%C2%AB%C3%88%7Dw%C3%8E%C2%B0%C2%95%C2%91B%0E%12%C3%A19UW-.1D%C2%B0%C2%9F%C3%80%C2%8Ae%7B%05%C2%BC%05N%C2%AA%C3%B7%C2%8A%C3%8Aw'%C3%80%C2%AF%C2%8F%1Cr%00%C2%8A%C3%88Y%C2%AB%C2%A3%C3%88%C2%8E%C2%B08%C2%AA%C3%B4%2FM%0B%C3%B4%0Ed%08q%C3%8B0%C3%B4GBK%3D%15U_%01%C3%99%0F%C2%97%60%C3%B6%C2%A1%0Ad%C2%9FcW%C2%84%10%C3%81%5E%00%C2%9Fc%C3%AC%C2%8F%C2%81%5B%C3%80K%C3%A0%C2%B6%C2%B2%C2%9D%05%C3%8E%05%C3%B8%C3%B6%C2%A1%C3%85q-%C2%87%10%1F9sD%11V%C2%A2%7F%C2%99%1A%C2%A6%1D.%C3%91ljD%C2%82%C2%95%C2%91%02%C2%B8%C2%98%C2%A5%C2%B7%C3%BDm%1C%C3%8B!%C2%84%C3%ADa%C3%8B%0E%C3%BB%0A%C3%B0%05%C2%B8k%C3%98%C3%AE%07%C3%B8MB%C3%8FX%C2%BD%C3%84%C3%85%09%C2%A6%C2%97%C2%BB%02%C3%91%2Cn%20%07j%15%C2%B9%C3%87%C3%AD%26%C2%AB%C3%88%C2%B6%C3%AA%C2%89%C3%A2%C3%9B%3F%C3%9BD%7D%C3%94%7B%C2%B6%C2%93A%23l%C2%9B%C3%9E%7B%C2%95%C3%89%7B%C3%A0%C2%88e%7B%C2%8E%C2%BCsL%C3%B6%C3%A5%1E%C2%8E%16%C3%91%C2%A9%C3%89%C2%B5%1C.%20%C3%AFeu%C3%A4%C2%80%C3%A9%C2%8E%C2%97%C3%98%7D%C3%81%20%C2%8A%C2%B2%06%09%22%C2%840h%C2%84%C2%AD%23%2F%C3%84%C2%83%C3%B2%1D%C2%B7%C3%80%C3%83%C2%A0E%C3%B2%1D%1CjD%07%C2%802r%C2%B0%C3%B4Aaf%0CmX%C2%A3%C3%B7Bn%5E%C3%8C%5D%C3%AD%C3%89%C3%A3_%0E%C2%83%C3%B1%C3%BD%C3%B8%C3%9B!%C3%9A%03~%20%C3%AF%5Do%06%C3%B4%7B%00%C2%B8%C2%86%C2%BC%0F%C2%81%1C%C3%84%C2%A4h%C3%8B%C3%91%3B%13C%C3%9FM%C3%B4%5DH%2F7I%C3%B9%C3%8Drq%13%22%C2%8F%C3%BB%C3%97%C2%9A%C2%AEQ%C3%86.o%C2%BF%C3%9Bmp%C3%95%C3%A7%C3%84'%C3%98%03%C3%A0r%C2%883%0FK%C3%80%C2%951%C3%B9%C3%9A%C3%93d%7F%5EI%19%C2%BE%3Dl%139%C3%90%0F%C2%91%C2%87%C2%8EP%C2%B6U%C3%99L%C2%AC1%C3%A2%C2%8B%C2%B0%C2%8C%7F%C2%90%C3%AC%7F%3ARF%26X%C3%8A%C3%88%04K%19%C2%99%60)%23%13%2Ce%C3%BC%06%5C%C2%B9QE%18V%0C%C3%BD%00%00%00%00IEND%C2%AEB%60%C2%82"; 
-
+var btn_createIMGComps_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00l%00%00%00%1E%08%06%00%00%00%C3%89%C2%8C%C3%BB%07%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%03%5CIDATh%C2%81%C3%AD%C2%99%C2%BFk%14A%14%C3%87%3F%11%7F%C2%80%C2%85p%C3%B8%07(%C2%91X%C2%88U.%C2%85%60%C2%93%C3%80%C2%A5%11%C3%9B%13%2C%C3%AC%24iL!(%17%10A%C2%AC%C3%AE%C3%80%C3%86%C3%B2%0ER)%22I%15%C2%90%20x%C2%A0%C2%95%C2%88%C3%9C%C3%99)6%C2%B9%C3%92J%2F%C2%9AB%C3%94%C2%80c13%C3%99%C2%B9%C3%89%C3%8C%C3%8E%C3%AEz%C2%92%C2%AC%C3%8C%07%C2%96%C3%8D%C2%BC%7D%C3%BBfv%C2%BE%C3%BB%C3%9E%C3%8C%5E%26%C2%84%10D%C3%8A%C3%83%C2%A1%C3%BD%1E%40%24%1FQ%C2%B0%C2%92%11%05%2B%19Q%C2%B0%C2%92%11%05%2B%19Q%C2%B0%C2%92q8%C2%83%C3%8Fq%C3%A0%1Ap%018%C2%911%C3%AE6%C3%B0%06x%04%7C%2F6%C2%B4%C2%88%C2%8B%C2%89%C3%80w%C3%98%11%C3%A4%C3%84O%17%C2%8C%C3%BF%0E)%C3%B4N%C3%81%C3%BB%23%16%C2%A1%C2%92x%C2%91%7Cb%C2%BD%07%C2%BE%18%C3%ADi%15c%3F%C2%A8%C2%A8%C3%A3%C2%BF%22%24%C3%98T%C2%8EX7%C2%80%C3%B3%C3%80i%C3%A0m%C3%8E%185%C2%A0%07%C2%B4%C2%ADv%0Fx%C3%A1%C3%B15%C3%BD5%C2%93%C3%80*04%C2%8E%1E%C3%90%C3%B0%C3%B4%C3%9B%006S%C2%8E%06%C3%90L%C2%B9%C2%AE%C3%87%C3%96T%C3%BD%C3%BAh%C2%ABq%C3%A81%C2%BAb%0DS%C3%86%C2%99%20%C2%84H%3B%C2%96Dv%C2%8E%19%C3%B7%C3%9D2%C3%ACK%C2%81%3E%10B%C3%94%C2%95o%C3%8Fjk%C2%AA%C2%86o%C3%9B%C2%B0%C3%B7%0C%7BU%0814%C3%ACM!%C3%84%C2%AAak%07%C3%86%C2%A0%C3%AF%C2%B7%C3%AD%C2%ABB%C2%88F%C3%A0%5E%C3%9DO%C3%9Dq%C2%AD%C2%A2%C2%AE%0D%03%C3%BD%C3%94%C2%84%10%C2%9B%C2%9E%18%C2%BBG%C3%91%5D%C3%A2%0A%C2%B0a%C3%99f%C3%95y%02%C2%98%2B%18%C3%97%C2%A6%C2%AB%C3%8E5%C3%83V%05%C3%BA%0E%C3%9F%26%C2%B2%04.%033%C3%AA%7C%058%03%0C%C2%80%05%2B%C3%8E%C2%B8%C3%99%02%C3%AA%0E%C3%BB%C2%82%C3%AA%3FD%17%C3%A8xb%C3%ACRD%C2%B0%07%C3%80u%C3%A02%C2%A3%C3%A5j%1Dx%C2%82%C3%9C%C2%A4%5C*%10%C3%97E%1F9%11z%C2%A2%C2%AB%C3%AA%C3%A8Z~%C2%93%C3%8Ag%00%C2%B4%C2%ACk%5BH%C3%B1l%C3%BB%C2%B8%C3%A9%C2%A81%C3%98%C3%AB%C3%A6%02%C2%B0%C2%96%23%C3%8EV%C3%9A%C3%85%2C%C3%9Bz%C2%93_%24%0F.%C2%80%7B%C3%80%C2%BCj%1F%03%C2%AE%C3%A6%C2%8C%17Bg%C2%93%C2%9E%08-%C2%9C%C2%9DaUu6%1F%C3%96%C2%9E%C2%BC%3E%C3%99%C3%9Et%17u%C2%A3%0F%C2%93%0E%C2%A3%2FO%17)%C2%90%C2%9E%C2%A3%C2%BAa%0F%C2%ADOUu%C3%AFb%C2%9AS%5E%C3%816%C2%80%C3%8FF%C3%BB5%C3%B0%018%07%7C%04n%02%0F%C2%81%C2%B39%C3%A3%C3%BA%C2%A8%20%C3%9F%C3%8E%1A%C3%B2%C3%A1u%16%C3%99%19%C3%A6%C2%A2%C3%89%C3%9EIn!%C2%B3-%2F%3E%C2%B1m%5B%07%C2%B9%C3%810%05%C3%ABxb%0E%1D%C2%B6%16%C2%81g%C3%8B%2B%C3%98c%C2%87%C3%AD)p%1F%C2%B8%0D%3C%07%C3%AE%C2%90%C2%AF%04%C2%84%C3%90%0F%C3%A0%2B%C2%87%C3%A0%C2%9E%C3%8Ce%C2%92%0C%C2%AB%13X%1B%02%C2%B8J%C2%AD%C2%8B.%C3%89Z%C2%A6%2B%C3%83%22%C2%B2d%C3%9B%C3%8C%5Bm%C3%97%C2%BA%C2%BC%C2%87%3C%C2%82%7D%05%C2%9E9%C3%AC%2B%C3%80Q%C2%92M%C3%88%3A%C3%B2%5B%C3%ACd%C2%8E%C3%98i%C3%B4%19-%C2%8B.%C3%81t%06T%C2%95_%C3%97%C3%B2%0Bo%C2%97%C3%87%C3%87%1A%C2%B2%C2%B4%C3%B5%C2%91%C3%99%C3%A5%5B%C2%932%09d%C2%93g%C3%93%C2%B1%0E%C3%BCt%C3%98%3F%01w%C2%81%C3%9F%C2%AA%C2%BD%C2%83%C3%8C%C2%BAq%C3%92'yK%7D%25Cg%C3%80*%C2%B2%2C5I%C2%BE%C2%A1%5C%C3%AB%C3%8F%C2%BF%C2%A2E%C3%B2%C3%A2%C2%8C%C2%B3%C3%92%00%C3%A1%0C%C3%BBa%C3%BC%3D%05%C2%9C%02%C2%BEe%C2%88%C2%BB%C3%AD%C2%89Q%14%C2%BD%C2%98%C3%ABLr%C3%BD%C2%82%C2%A1%C3%97%C2%8A%C2%86%C3%B2%C3%95%0C%C2%90%C3%9B%C3%BB%C2%B4%0F%C3%9B%10%0D%C3%BCY%3A%C3%A3%19K%C2%8D%C2%82Y%C2%94F%C3%A8%C2%B7%C3%84Y%C3%A0%C3%A5_%C3%B61%07%C2%BC%C3%8A%C3%A0Wa%C2%B4%7C%C3%A4m%C2%9BL%22%C3%9F%C3%B2%01%C3%89%C2%A4%C2%A5%C3%B9%C2%9B%C3%B7%C3%99%C3%ABa%05%C3%B7%1A%C2%A4%C3%A9%7Bb%C3%9B63%C2%B6%C2%AB%C2%9FL%C3%84%1F%7FKFH0%C2%88%C3%BF%5E9Pd%11%2Cr%C2%80%C2%88%C3%BFq.%19Q%C2%B0%C2%92%11%05%2B%19Q%C2%B0%C2%92%11%05%2B%19Q%C2%B0%C2%92%C3%B1%07%C3%92%600%5C%0A%C3%BD%C2%80%15%00%00%00%00IEND%C2%AEB%60%C2%82";
 
 var btn_createIMGComps = group1.add("iconbutton", undefined, File.decode(btn_createIMGComps_imgString), {
     name: "btn_createIMGComps",
@@ -153,7 +150,7 @@ grouptab2.alignment = ["fill", "top"];
 //elementsDropDown.preferredSize.width = 175;
 //var option = elementsDropDown.selection;
 
-var addel_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%C2%9A%00%00%00%1E%08%06%00%00%00%C3%94%C3%9E%07%C3%99%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%04%C2%97IDATx%C2%9C%C3%AD%C2%9B%C2%BF%C2%8B%24E%14%C3%87%3F3%C3%B7%C3%83%C3%8B%C2%A4OLD%0CF.%C3%93hD%C3%A4%12%03g%03%C3%A5N%04%C2%99%03A%C3%93Y%C3%BF%02wS%C2%8DfC1%C2%BA%C3%B9%13v%04%C2%95C%04oO%C3%A5%12Av%02%03%13%C3%81%C3%81%C3%84%40%C3%A4f%10%0F%C3%B4%0Ev%C2%9F%C3%81%C2%AB%C2%A2k%C2%AB%C2%BB%C2%BAzkwG%C3%86%C2%AD%0F4%3D%C3%9D%C3%AFUWu%C3%B5%C2%B7_%C2%BD%C2%AA%C2%99%C3%A9%C2%88%08%C2%99%C3%8CY%C3%93%C3%BD%C2%AF%1B%C2%909%1Fd%C2%A1eVB%16Zf%25d%C2%A1eVB%C2%AA%C3%90%C2%BE%02%0E%03%C3%9B%C3%8F%C3%80%0B%C2%8E%C3%AF%C3%AB%C3%80%22%C3%A0%7B%00%7C%C2%9C%C3%98%C2%86%C3%8C%1A%C2%91*%C2%B4%0D%C2%A0%13%C3%98%C2%AE%01%C2%AF%18%C2%BFK%C3%80M%C2%A0%08%C3%B8v%C2%81w%12%C3%9B%C2%90Y%23R%C2%85v%10%C2%B1_4%C3%BB%0Ep!%C3%A2%7B%C2%98%C3%98%C2%86%C3%8C%1AqV9%C2%9A8%C3%BB%C3%98B%5D%5E%C3%88%3B%07%C3%A4%C3%89%40f%25%5C%C2%8C%C2%BB%24%C3%91q%C3%B6%C2%9D%26%C3%87%13%C2%B0%05%C2%8C%C2%80M%60%C3%8F%C2%B3%C2%8D%C2%81%C2%A1wni%C3%BC%C2%B6%C2%BD%C3%B3%C3%BBh%0Ei)%C2%80%C2%99%C3%B1%C3%9Di%C2%A8%C3%9B%C2%BF%C2%BE%C3%8B%C2%B6)%7F%1B%C3%A8%3B%C3%87%3E%C3%96%1E%C3%A2%25%C2%A7%C2%8D%C2%96%5B%C3%80%C3%9C9vmu%C3%BE%3E3%C2%B4%C3%8F%06h%3F-%C3%8D5%C2%975%C3%AD%C3%9A6%C3%BB%C2%A6%7B%C2%B5%C3%97k%245%C2%A2%5D%C2%8E%C3%98%5Dq%C3%85r%C2%B4%2B%C2%89m%18%C2%A179%C2%AA%C2%B1%C3%B5%C2%80%09%C3%B0%C2%BC%C3%996%C3%90N%C3%AB%01wk%7Coy%C2%BE%13%C2%B4s%C3%87%C2%81%C2%BA%0B%C3%B4%01%14%01%C2%BB%C2%A5%1F%C3%B1%C2%B3%C3%B6%26%0A%C3%87%C3%8F%7F%C3%A8%23%C3%8FVx%C3%BEm%C2%AEk%05%C3%97%C2%B6%C3%9Dm%C3%AE%C2%BB%C2%8A%C2%88%C2%A4l%3FI%C2%98%C2%87%22r%C3%9D%C3%B8uD%C3%A4%C2%BD%06_%11%C2%91%C3%8F%12%C3%AA%1F%C2%8A%C3%88%2F%22%C3%92%13%C2%91%C2%85%C2%88%14%C2%9E%7DWD%C2%B6%02e%C3%B7%3D%C3%9BBD%C3%BA5~E%C2%83ml%C3%9A%3E%C2%8E%C2%B4s%C3%9F%C3%B8%0D%13%C3%AD%C2%B6%1Db%7C%17%22r%C3%97%C2%B1%C3%9Dvlb%7C%C2%AD%C2%BF%3Dn%C3%AAC%C2%97Q%C2%8Bv%C3%992%C2%B1%C3%BB%C2%AEl%C2%A9C%C3%A7M%C3%A0%3A%1A%C2%8D%C3%AC%C2%AC%C2%B1k%3E%C3%BFh6%C3%90D%C3%BFS%C3%A074r%C2%B83%C3%8C%0B%C3%80%C2%9F%C3%80%C3%BD%C2%84%C3%BA%C2%87h%C3%94%C2%99SF%C2%B5%C3%900%C3%A73i%C3%A9%C2%BF%04%C2%A6%C2%A6%C2%AEYB%1B%C3%8F%C2%82%19G%23%C3%95%00%1D%C2%92%C2%8F%1FaJ%C2%96%C2%A6%C3%BC%18%C2%BD%C3%9Fe%C2%B3%7B%1A%C2%A9B%C2%9Bs4Oh%C3%A2o%C3%A0%1B%C3%A0%5Bs%2C%C2%94Ck%C3%8A%C2%8C%C2%B3%40%3B%C3%98%C3%A6%05%13%C2%B4%C2%93%C3%9A%0Am%C2%86%C2%8A%C2%BE%0Ds%C2%9A%C2%87%C2%A0%C2%A1i%C2%8B%7F%C3%BDh%C3%8E%C3%A2%C2%B1e6%C2%97)G%C3%AF%C2%A9g%C2%8E%07%C2%A6%C3%9E9e%C2%8A%10%C3%8A%C2%A1%C3%BC4%01%C2%AA%C3%B9%C2%A2%C3%BB%C2%B2%C3%AE%C2%A2%C2%A9%C3%83%C2%A9s%C2%92Y%C3%A7e%C3%A0%09g%C2%BBb%C3%B6!%C3%9C%C2%A5%C2%8E6%C3%8B%1E!FhG%C3%997oj%C3%B6M%09%C3%AB%C3%BF%01%3BI%01%15%C2%9B%15x%C3%9D%24%C3%A3%C2%B8l%C2%9Ak%C3%97%C3%A5k%C2%A7BjD%7B%15x%0Bx%C2%92R0%1D%C3%A01%C3%B0%1D%C3%B09%C3%B0OM%C2%B9%C3%A7%C2%80%17%C2%81%1F%C2%80%3F%12%C3%AB%1E%C2%A1%22%C3%9B%C3%B5%C3%8E%0F)E%C3%97D%C2%9F%C3%B6%C3%83C%2F%C3%A2%3B%C2%A5%3A%C2%8BMa%C2%87vm%C2%9FQF%C3%99%1Ee4%0A%C2%B1A%C3%BB%7B%C3%9DD%23%C3%A0%16%C3%ADG%C2%AB%C3%96%C2%A4%0Am%0A%3C%1D%C2%B0m%C2%A27X%C3%B7%C2%A6%C2%BD%09%7Cb%C3%B6w%12%C3%AA%C2%B5Q%C3%8B%7F(3%C2%B4%C2%83%0A%C3%A2%1D%3B%C2%A8)%C3%9F%C3%A4%7B%1AB%3AM%C3%B6%C3%90%C2%97m%C3%8E%C3%A9D3%C3%8B%0C%15%C3%BC%C2%98%C3%B6%C2%A9EkR%C2%85v5b%C2%BF%06%C3%9C%C2%A3%3A%3C%C3%9A(%C3%B7Wb%C2%BDv%12P%C2%97%C2%8F%C3%B5iN%C3%B2%7B%C2%A8%18%C3%BB%C3%84s%C2%A8%01%C3%A5%C2%9B%C3%9D%24%C3%8A%3E%C3%B5C%C2%8D%C2%9D%C2%A8X%C2%86Ts%C2%BDI%C3%84%0E%C3%B5%22%C2%B7%11%C2%ACG%7C%C2%92%C3%A2%C3%A7%7D%C2%A0%2Fb%C2%A8%C2%8Fv%C2%88%C2%AF%C2%9B%25%C2%91*%C2%B4%03%C2%9A%C3%97%C3%87%5C%C2%81%3D%0B%C2%BCa%C3%8A%C2%BCf%C3%8E%C2%BD%C2%8D%C2%AEY%09%C3%B0%05%C3%B0%C2%A0E%C2%9D%C3%BE%24%C3%80g%C3%8A%C3%91IA%5D%C2%82%C2%BD%C2%87.j%C3%BAQ%C2%AF.i%C3%9E!%3E%C3%81ps%25%17%3B%C3%84Y%C3%AA%1E%C3%9C%2Cb%C2%B7m%C3%B0%C2%99%C2%A2%0B%C2%AA%C3%B6s%13uB%C2%B3%C2%91%2B%C2%84%5D%C3%8C%3D%C3%89L%C2%B6BG%C3%92%C3%BE3%C3%B0%C2%88%C3%A6E%C3%9B%C3%B7%C3%917V%C3%90a%C3%B4%C3%AB%C2%80%C3%9Fc%C3%A0e%C3%8A%C3%A5%C2%90%186%2F%09%C3%91G%3B%C2%B2%C2%A0%1A%C3%BECo%7F%C2%8Fj%C2%A7%C2%B6Y%C3%8Ehz%10%C2%AE%C2%90C~%C3%8B%C2%88%C2%BD%C3%8E'tl%C3%8F%1D%C3%A7%C2%9A~%19%C2%9F%C2%90%C2%ADMzRa%15B%7B%0A%C3%BD%C3%99P%17%C2%B8%C2%81%0Eo%1F%C2%A1_%C2%93%3C%02%C2%BE'%7D(%C3%8D%C2%AC%09g%C3%B5%5D%C2%A7%3B%C2%AC%3E%00%C2%BE4%C2%9F%C2%9F1%C3%BB%C3%BBh%0E%C2%979'%C2%A4%C2%AE%C2%A3%C3%85%04%C2%BA%C2%A0~%C2%9D%C3%AC%10%C2%9D%10%5CJ%C2%AC7%C2%B3%C2%A6%C2%A4%0E%C2%9D%1F%02%C3%AF%C2%A2%0B%C2%B4%C3%AEWP%5D4%C2%B1%C3%BE%00%C3%B8%C2%BD%C2%A6%C3%9CU4%C2%AA%C3%BD%0A%3CL%C2%A98%C2%B3%C2%9E%C2%A4%0A-%C2%939%16%C3%B9%C2%87%C2%8F%C2%99%C2%95%C2%90%C2%85%C2%96Y%09Yh%C2%99%C2%95%C2%90%C2%85%C2%96Y%09%C3%BF%02%C2%81%3D%C3%B3%C2%96%0D%1D%5B%C3%B5%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+var addel_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%C2%9A%00%00%00%1E%08%06%00%00%00%C3%94%C3%9E%07%C3%99%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%04%C2%97IDATx%C2%9C%C3%AD%C2%9B%C2%BF%C2%8B%24E%14%C3%87%3F3%C3%B7%C3%83%C3%8B%C2%A4OLD%0CF.%C3%93hD%C3%A4%12%03g%03%C3%A5N%04%C2%99%03A%C3%93Y%C3%BF%02wS%C2%8DfC1%C2%BA%C3%B9%13v%04%C2%95C%04oO%C3%A5%12Av%02%03%13%C3%81%C3%81%C3%84%40%C3%A4f%10%0F%C3%B4%0Ev%C2%9F%C3%81%C2%AB%C2%A2k%C2%AB%C2%BB%C2%BAzkwG%C3%86%C2%AD%0F4%3D%C3%9D%C3%AFUWu%C3%B5%C2%B7_%C2%BD%C2%AA%C2%99%C3%A9%C2%88%08%C2%99%C3%8CY%C3%93%C3%BD%C2%AF%1B%C2%909%1Fd%C2%A1eVB%16Zf%25d%C2%A1eVB%C2%AA%C3%90%C2%BE%02%0E%03%C3%9B%C3%8F%C3%80%0B%C2%8E%C3%AF%C3%AB%C3%80%22%C3%A0%7B%00%7C%C2%9C%C3%98%C2%86%C3%8C%1A%C2%91*%C2%B4%0D%C2%A0%13%C3%98%C2%AE%01%C2%AF%18%C2%BFK%C3%80M%C2%A0%08%C3%B8v%C2%81w%12%C3%9B%C2%90Y%23R%C2%85v%10%C2%B1_4%C3%BB%0Ep!%C3%A2%7B%C2%98%C3%98%C2%86%C3%8C%1AqV9%C2%9A8%C3%BB%C3%98B%5D%5E%C3%88%3B%07%C3%A4%C3%89%40f%25%5C%C2%8C%C2%BB%24%C3%91q%C3%B6%C2%9D%26%C3%87%13%C2%B0%05%C2%8C%C2%80M%60%C3%8F%C2%B3%C2%8D%C2%81%C2%A1wni%C3%BC%C2%B6%C2%BD%C3%B3%C3%BBh%0Ei)%C2%80%C2%99%C3%B1%C3%9Di%C2%A8%C3%9B%C2%BF%C2%BE%C3%8B%C2%B6)%7F%1B%C3%A8%3B%C3%87%3E%C3%96%1E%C3%A2%25%C2%A7%C2%8D%C2%96%5B%C3%80%C3%9C9vmu%C3%BE%3E3%C2%B4%C3%8F%06h%3F-%C3%8D5%C2%975%C3%AD%C3%9A6%C3%BB%C2%A6%7B%C2%B5%C3%97k%245%C2%A2%5D%C2%8E%C3%98%5Dq%C3%85r%C2%B4%2B%C2%89m%18%C2%A179%C2%AA%C2%B1%C3%B5%C2%80%09%C3%B0%C2%BC%C3%996%C3%90N%C3%AB%01wk%7Coy%C2%BE%13%C2%B4s%C3%87%C2%81%C2%BA%0B%C3%B4%01%14%01%C2%BB%C2%A5%1F%C3%B1%C2%B3%C3%B6%26%0A%C3%87%C3%8F%7F%C3%A8%23%C3%8FVx%C3%BEm%C2%AEk%05%C3%97%C2%B6%C3%9Dm%C3%AE%C2%BB%C2%8A%C2%88%C2%A4l%3FI%C2%98%C2%87%22r%C3%9D%C3%B8uD%C3%A4%C2%BD%06_%11%C2%91%C3%8F%12%C3%AA%1F%C2%8A%C3%88%2F%22%C3%92%13%C2%91%C2%85%C2%88%14%C2%9E%7DWD%C2%B6%02e%C3%B7%3D%C3%9BBD%C3%BA5~E%C2%83ml%C3%9A%3E%C2%8E%C2%B4s%C3%9F%C3%B8%0D%13%C3%AD%C2%B6%1Db%7C%17%22r%C3%97%C2%B1%C3%9Dvlb%7C%C2%AD%C2%BF%3Dn%C3%AAC%C2%97Q%C2%8Bv%C3%992%C2%B1%C3%BB%C2%AEl%C2%A9C%C3%A7M%C3%A0%3A%1A%C2%8D%C3%AC%C2%AC%C2%B1k%3E%C3%BFh6%C3%90D%C3%BFS%C3%A074r%C2%B83%C3%8C%0B%C3%80%C2%9F%C3%80%C3%BD%C2%84%C3%BA%C2%87h%C3%94%C2%99SF%C2%B5%C3%900%C3%A73i%C3%A9%C2%BF%04%C2%A6%C2%A6%C2%AEYB%1B%C3%8F%C2%82%19G%23%C3%95%00%1D%C2%92%C2%8F%1FaJ%C2%96%C2%A6%C3%BC%18%C2%BD%C3%9Fe%C2%B3%7B%1A%C2%A9B%C2%9Bs4Oh%C3%A2o%C3%A0%1B%C3%A0%5Bs%2C%C2%94Ck%C3%8A%C2%8C%C2%B3%40%3B%C3%98%C3%A6%05%13%C2%B4%C2%93%C3%9A%0Am%C2%86%C2%8A%C2%BE%0Ds%C2%9A%C2%87%C2%A0%C2%A1i%C2%8B%7F%C3%BDh%C3%8E%C3%A2%C2%B1e6%C2%97)G%C3%AF%C2%A9g%C2%8E%07%C2%A6%C3%9E9e%C2%8A%10%C3%8A%C2%A1%C3%BC4%01%C2%AA%C3%B9%C2%A2%C3%BB%C2%B2%C3%AE%C2%A2%C2%A9%C3%83%C2%A9s%C2%92Y%C3%A7e%C3%A0%09g%C2%BBb%C3%B6!%C3%9C%C2%A5%C2%8E6%C3%8B%1E!FhG%C3%997oj%C3%B6M%09%C3%AB%C3%BF%01%3BI%01%15%C2%9B%15x%C3%9D%24%C3%A3%C2%B8l%C2%9Ak%C3%97%C3%A5k%C2%A7BjD%7B%15x%0Bx%C2%92R0%1D%C3%A01%C3%B0%1D%C3%B09%C3%B0OM%C2%B9%C3%A7%C2%80%17%C2%81%1F%C2%80%3F%12%C3%AB%1E%C2%A1%22%C3%9B%C3%B5%C3%8E%0F)E%C3%97D%C2%9F%C3%B6%C3%83C%2F%C3%A2%3B%C2%A5%3A%C2%8BMa%C2%87vm%C2%9FQF%C3%99%1Ee4%0A%C2%B1A%C3%BB%7B%C3%9DD%23%C3%A0%16%C3%ADG%C2%AB%C3%96%C2%A4%0Am%0A%3C%1D%C2%B0m%C2%A27X%C3%B7%C2%A6%C2%BD%09%7Cb%C3%B6w%12%C3%AA%C2%B5Q%C3%8B%7F(3%C2%B4%C2%83%0A%C3%A2%1D%3B%C2%A8)%C3%9F%C3%A4%7B%1AB%3AM%C3%B6%C3%90%C2%97m%C3%8E%C3%A9D3%C3%8B%0C%15%C3%BC%C2%98%C3%B6%C2%A9EkR%C2%85v5b%C2%BF%06%C3%9C%C2%A3%3A%3C%C3%9A(%C3%B7Wb%C2%BDv%12P%C2%97%C2%8F%C3%B5iN%C3%B2%7B%C2%A8%18%C3%BB%C3%84s%C2%A8%01%C3%A5%C2%9B%C3%9D%24%C3%8A%3E%C3%B5C%C2%8D%C2%9D%C2%A8X%C2%86Ts%C2%BDI%C3%84%0E%C3%B5%22%C2%B7%11%C2%ACG%7C%C2%92%C3%A2%C3%A7%7D%C2%A0%2Fb%C2%A8%C2%8Fv%C2%88%C2%AF%C2%9B%25%C2%91*%C2%B4%03%C2%9A%C3%97%C3%87%5C%C2%81%3D%0B%C2%BCa%C3%8A%C2%BCf%C3%8E%C2%BD%C2%8D%C2%AEY%09%C3%B0%05%C3%B0%C2%A0E%C2%9D%C3%BE%24%C3%80g%C3%8A%C3%91IA%5D%C2%82%C2%BD%C2%87.j%C3%BAQ%C2%AF.i%C3%9E!%3E%C3%81ps%25%17%3B%C3%84Y%C3%AA%1E%C3%9C%2Cb%C2%B7m%C3%B0%C2%99%C2%A2%0B%C2%AA%C3%B6s%13uB%C2%B3%C2%91%2B%C2%84%5D%C3%8C%3D%C3%89L%C2%B6BG%C3%92%C3%BE3%C3%B0%C2%88%C3%A6E%C3%9B%C3%B7%C3%917V%C3%90a%C3%B4%C3%AB%C2%80%C3%9Fc%C3%A0e%C3%8A%C3%A5%C2%90%186%2F%09%C3%91G%3B%C2%B2%C2%A0%1A%C3%BECo%7F%C2%8Fj%C2%A7%C2%B6Y%C3%8Ehz%10%C2%AE%C2%90C~%C3%8B%C2%88%C2%BD%C3%8E'tl%C3%8F%1D%C3%A7%C2%9A~%19%C2%9F%C2%90%C2%ADMzRa%15B%7B%0A%C3%BD%C3%99P%17%C2%B8%C2%81%0Eo%1F%C2%A1_%C2%93%3C%02%C2%BE'%7D(%C3%8D%C2%AC%09g%C3%B5%5D%C2%A7%3B%C2%AC%3E%00%C2%BE4%C2%9F%C2%9F1%C3%BB%C3%BBh%0E%C2%979'%C2%A4%C2%AE%C2%A3%C3%85%04%C2%BA%C2%A0~%C2%9D%C3%AC%10%C2%9D%10%5CJ%C2%AC7%C2%B3%C2%A6%C2%A4%0E%C2%9D%1F%02%C3%AF%C2%A2%0B%C2%B4%C3%AEWP%5D4%C2%B1%C3%BE%00%C3%B8%C2%BD%C2%A6%C3%9CU4%C2%AA%C3%BD%0A%3CL%C2%A98%C2%B3%C2%9E%C2%A4%0A-%C2%939%16%C3%B9%C2%87%C2%8F%C2%99%C2%95%C2%90%C2%85%C2%96Y%09Yh%C2%99%C2%95%C2%90%C2%85%C2%96Y%09%C3%BF%02%C2%81%3D%C3%B3%C2%96%0D%1D%5B%C3%B5%00%00%00%00IEND%C2%AEB%60%C2%82";
 
 var btn_addElement = grouptab2.add("iconbutton", undefined, File.decode(addel_imgString), {
     name: "btn_addElement",
@@ -226,7 +223,7 @@ gallery.selection = 0;
 gallery.preferredSize.height = 30;
 gallery.preferredSize.width = 112;
 
-var addGal_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%001%00%00%00%16%08%06%00%00%00i5t%C2%92%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01PIDATX%C2%85%C3%AD%C2%96AN%C3%830%10E_%11%5B%22%C3%81%C3%96%5C%C2%A0k%C2%A2p%C2%81%C3%ACQ%2Bu%C2%898%00p%0D.%40%C3%8F%C2%81%C3%A8%3EG%C2%A0%C3%AB%C3%B4%02YWj%0F%C2%90.%3CV%C3%81%22%C2%B1'%C2%800(_%1A9%C2%9E%3F%C2%8E%C3%BD%C3%AD%C3%B1%24%C2%93%C2%B6m%C3%B9%C3%AB8%C3%B9%C3%AD%05%7C%07F%11%C2%A9%20E%11%C2%A5X4%26%09%5E%C3%AC7i%C3%B3%C3%98%01)%C2%9E%C2%84%1A%C2%A7%03%C3%86%C3%9C%01%06%C3%98%00%2F%C3%A2%C3%8B%C2%80%07%2Fn%2F%7C%13%C3%81%C2%97%C3%80%C2%B9%C3%87%2F%C2%A4%C3%9D%02U%C3%9F%C2%82%C2%B4%C3%A9%C2%94%01%C2%AF%C3%B2%C3%9C%00%C2%B7%C3%B2l%C2%80%15%C2%B0%C2%93%C3%85%01%C2%9CI%C3%ABb%C3%BA%C3%B8%15p%C3%951%C3%A7%C2%9A%40ji%C3%93i%C2%86%15R%01S%C2%A0%C3%B0%C3%B8%0A%C2%B8%11%C2%BB%17%C3%9Fc%04%C2%9F%03%17bk1%C3%97%0F%C3%9E%0D%C2%AD%C2%88%12%C2%A8%C2%81%25vW%C3%A7%3D%C2%B15v%C3%97%C2%A7%C2%91%C3%BCV%C2%8C%C2%8E~'4%22%0A%C2%99%C2%B0%C3%82%0A%C3%98%C2%88%2FS%C2%BC%C3%A3G%C2%A0%11q-%C3%AD%1C%C2%9B%C3%83%06%2B%60%C3%96%11%C2%9Fa%C3%B3~%C2%A7%C3%A4s%14%C3%A5%15%C3%A2%C2%AB%C2%93%5Bl-%C3%A6%C3%A0%3EL%C2%AEz%5CrL%C2%B1R%C3%86-%C3%9F%C3%85%C2%87%C3%B8A%C2%88%15%C3%A1%26%7C%C3%A2c%C2%B9%C3%9BcK%C2%AE%3B%C2%A5%C2%82%C3%A3eo%C2%80gl%195%01%C3%BEK%C2%88-%C2%B1%C3%AE%C3%A8%C2%9BO8%23~%C3%A3%C3%B9%C3%BD%C3%98%10%3F%18)%C3%BEv%C2%A8%C3%B1%2F~%3BF%11%C2%A9%60%14%C2%91%0A%0E%16YQm%C2%84U%C3%BFU%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+var addGal_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%001%00%00%00%16%08%06%00%00%00i5t%C2%92%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01PIDATX%C2%85%C3%AD%C2%96AN%C3%830%10E_%11%5B%22%C3%81%C3%96%5C%C2%A0k%C2%A2p%C2%81%C3%ACQ%2Bu%C2%898%00p%0D.%40%C3%8F%C2%81%C3%A8%3EG%C2%A0%C3%AB%C3%B4%02YWj%0F%C2%90.%3CV%C3%81%22%C2%B1'%C2%800(_%1A9%C2%9E%3F%C2%8E%C3%BD%C3%AD%C3%B1%24%C2%93%C2%B6m%C3%B9%C3%AB8%C3%B9%C3%AD%05%7C%07F%11%C2%A9%20E%11%C2%A5X4%26%09%5E%C3%AC7i%C3%B3%C3%98%01)%C2%9E%C2%84%1A%C2%A7%03%C3%86%C3%9C%01%06%C3%98%00%2F%C3%A2%C3%8B%C2%80%07%2Fn%2F%7C%13%C3%81%C2%97%C3%80%C2%B9%C3%87%2F%C2%A4%C3%9D%02U%C3%9F%C2%82%C2%B4%C3%A9%C2%94%01%C2%AF%C3%B2%C3%9C%00%C2%B7%C3%B2l%C2%80%15%C2%B0%C2%93%C3%85%01%C2%9CI%C3%ABb%C3%BA%C3%B8%15p%C3%951%C3%A7%C2%9A%40ji%C3%93i%C2%86%15R%01S%C2%A0%C3%B0%C3%B8%0A%C2%B8%11%C2%BB%17%C3%9Fc%04%C2%9F%03%17bk1%C3%97%0F%C3%9E%0D%C2%AD%C2%88%12%C2%A8%C2%81%25vW%C3%A7%3D%C2%B15v%C3%97%C2%A7%C2%91%C3%BCV%C2%8C%C2%8E~'4%22%0A%C2%99%C2%B0%C3%82%0A%C3%98%C2%88%2FS%C2%BC%C3%A3G%C2%A0%11q-%C3%AD%1C%C2%9B%C3%83%06%2B%60%C3%96%11%C2%9Fa%C3%B3~%C2%A7%C3%A4s%14%C3%A5%15%C3%A2%C2%AB%C2%93%5Bl-%C3%A6%C3%A0%3EL%C2%AEz%5CrL%C2%B1R%C3%86-%C3%9F%C3%85%C2%87%C3%B8A%C2%88%15%C3%A1%26%7C%C3%A2c%C2%B9%C3%9BcK%C2%AE%3B%C2%A5%C2%82%C3%A3eo%C2%80gl%195%01%C3%BEK%C2%88-%C2%B1%C3%AE%C3%A8%C2%9BO8%23~%C3%A3%C3%B9%C3%BD%C3%98%10%3F%18)%C3%BEv%C2%A8%C3%B1%2F~%3BF%11%C2%A9%60%14%C2%91%0A%0E%16YQm%C2%84U%C3%BFU%00%00%00%00IEND%C2%AEB%60%C2%82";
 
 var btn_addGallery = group2.add("iconbutton", undefined, File.decode(addGal_imgString), {
     name: "btn_addGallery",
@@ -1387,13 +1384,13 @@ function removeSpecificExpressions() {
                 }
 
                 // Alert when expressions are removed
-                $.writeln("removeExpressions - finished");
                 alert("Expressions removed from specified properties (Position, Scale, Opacity, Anchor Point, Rotation) of the selected layer.");
             } else {
-                $.writeln("removeExpressions - no active layer");
                 alert("Please select a layer.");
             }
-        }
+        } else {
+                alert("Please open a composition.");
+            }
     } catch (error) {
         $.writeln(error);
         // Expected output: ReferenceError: nonExistentFunction is not defined
@@ -2033,112 +2030,131 @@ function selectLayers(layers) {
 
 
 btn_createComps.onClick = function() {
-    var duration = 15; // Set the duration of the composition in seconds
-    var type = "comp_";
+    var compIndex = findCompIndex("__SETTINGS");
+    if (compIndex) {
+        var duration = 15; // Set the duration of the composition in seconds
+        var type = "comp_";
 
-    function askForName() {
-        var name = prompt("Please enter a name for the template (without spaces, special characters, capital letters, or dashes):");
-        if (name) {
-            var isValid = /^[a-z0-9_]+$/.test(name);
-            if (isValid) {
-                var newName = type + name;
-                createCompSet(duration, name, type);
-                replaceCompositionsBySuffix(newName);
-                // Save Project with New Name in Same Path
-                // Get the current project file
-                var currentProject = app.project.file;
+        function askForName() {
+            var name = prompt("Please enter a name for the template (without spaces, special characters, capital letters, or dashes):");
+            if (name) {
+                var isValid = /^[a-z0-9_]+$/.test(name);
+                if (isValid) {
+                    var newName = type + name;
+                    createCompSet(duration, name, type);
+                    replaceCompositionsBySuffix(newName);
+                    // Save Project with New Name in Same Path
+                    // Get the current project file
+                    var currentProject = app.project.file;
 
-                // Check if a project is open
-                if (currentProject) {
-                    // Get the current project's path
-                    var projectPath = currentProject.parent.fsName;
+                    // Check if a project is open
+                    if (currentProject) {
+                        // Get the current project's path
+                        var projectPath = currentProject.parent.fsName;
 
-                    // Prompt the user for a new project namemusch
-                    var newProjectName = newName;
+                        // Prompt the user for a new project namemusch
+                        var newProjectName = newName;
 
-                    // Check if the user entered a name
-                    if (newProjectName) {
-                        // Create the new project file path
-                        var newProjectPath = projectPath + "/" + newProjectName + ".aep";
-                        var newProjectFile = new File(newProjectPath);
-                        // Save the project with the new name
-                        app.project.save(newProjectFile);
+                        // Check if the user entered a name
+                        if (newProjectName) {
+                            // Create the new project file path
+                            var newProjectPath = projectPath + "/" + newProjectName + ".aep";
+                            var newProjectFile = new File(newProjectPath);
+                            // Save the project with the new name
+                            app.project.save(newProjectFile);
 
-                        // Alert the user that the project has been saved
-                        alert("Project saved with a new name: " + newProjectName);
+                            // Alert the user that the project has been saved
+                            alert("Project saved with a new name: " + newProjectName);
+                        } else {
+                            // Alert the user that no name was entered
+                            alert("No project name entered. The project was not saved with a new name.");
+                        }
                     } else {
-                        // Alert the user that no name was entered
-                        alert("No project name entered. The project was not saved with a new name.");
+                        // Alert the user that no project is open
+                        alert("No project is currently open.");
                     }
                 } else {
-                    // Alert the user that no project is open
-                    alert("No project is currently open.");
+                    alert("Invalid name! The name should only contain lowercase letters, numbers, and underscores (_) with no spaces, special characters, capital letters, or dashes.");
+
+
+                    if (result !== null) {
+                        askForName();
+                    } else {
+                        // User canceled the input, handle accordingly or exit
+                        alert("User canceled the input.");
+                    }
                 }
             } else {
-                alert("Invalid name! The name should only contain lowercase letters, numbers, and underscores (_) with no spaces, special characters, capital letters, or dashes.");
-                askForName(); // Prompt again if the input is invalid
+                alert("No input provided. Please enter a valid name.");
             }
-        } else {
-            alert("No input provided. Please enter a valid name.");
-            askForName(); // Prompt again if no input is provided
         }
+        var result = askForName();
     }
-    askForName();
 };
 
 
 btn_createIMGComps.onClick = function() {
-    var duration = 1 / 30; // Set the duration of the composition in seconds
-    var type = "post_";
+    var compIndex = findCompIndex("__SETTINGS");
+    if (compIndex) {
 
-    function askForName() {
-        var name = prompt("Please enter a name for the template (without spaces, special characters, capital letters, or dashes):");
-        if (name) {
-            var isValid = /^[a-z0-9_]+$/.test(name);
-            if (isValid) {
-                var newName = type + name;
-                createCompSet(duration, name, type);
-                replaceCompositionsBySuffix(newName);
-                // Save Project with New Name in Same Path
-                // Get the current project file
-                var currentProject = app.project.file;
+        var duration = 1 / 30; // Set the duration of the composition in seconds
+        var type = "post_";
 
-                // Check if a project is open
-                if (currentProject) {
-                    // Get the current project's path
-                    var projectPath = currentProject.parent.fsName;
+        function askForName() {
+            var name = prompt("Please enter a name for the template (without spaces, special characters, capital letters, or dashes):");
+            if (name) {
+                var isValid = /^[a-z0-9_]+$/.test(name);
+                if (isValid) {
+                    var newName = type + name;
+                    createCompSet(duration, name, type);
+                    replaceCompositionsBySuffix(newName);
+                    // Save Project with New Name in Same Path
+                    // Get the current project file
+                    var currentProject = app.project.file;
 
-                    // Prompt the user for a new project namemusch
-                    var newProjectName = newName;
+                    // Check if a project is open
+                    if (currentProject) {
+                        // Get the current project's path
+                        var projectPath = currentProject.parent.fsName;
 
-                    // Check if the user entered a name
-                    if (newProjectName) {
-                        // Create the new project file path
-                        var newProjectPath = projectPath + "/" + newProjectName + ".aep";
-                        var newProjectFile = new File(newProjectPath);
-                        // Save the project with the new name
-                        app.project.save(newProjectFile);
+                        // Prompt the user for a new project namemusch
+                        var newProjectName = newName;
 
-                        // Alert the user that the project has been saved
-                        alert("Project saved with a new name: " + newProjectName);
+                        // Check if the user entered a name
+                        if (newProjectName) {
+                            // Create the new project file path
+                            var newProjectPath = projectPath + "/" + newProjectName + ".aep";
+                            var newProjectFile = new File(newProjectPath);
+                            // Save the project with the new name
+                            app.project.save(newProjectFile);
+
+                            // Alert the user that the project has been saved
+                            alert("Project saved with a new name: " + newProjectName);
+                        } else {
+                            // Alert the user that no name was entered
+                            alert("No project name entered. The project was not saved with a new name.");
+                        }
                     } else {
-                        // Alert the user that no name was entered
-                        alert("No project name entered. The project was not saved with a new name.");
+                        // Alert the user that no project is open
+                        alert("No project is currently open.");
                     }
                 } else {
-                    // Alert the user that no project is open
-                    alert("No project is currently open.");
+                    alert("Invalid name! The name should only contain lowercase letters, numbers, and underscores (_) with no spaces, special characters, capital letters, or dashes.");
+
+
+                    if (result !== null) {
+                        askForName();
+                    } else {
+                        // User canceled the input, handle accordingly or exit
+                        alert("User canceled the input.");
+                    }
                 }
             } else {
-                alert("Invalid name! The name should only contain lowercase letters, numbers, and underscores (_) with no spaces, special characters, capital letters, or dashes.");
-                askForName(); // Prompt again if the input is invalid
+                alert("No input provided. Please enter a valid name.");
             }
-        } else {
-            alert("No input provided. Please enter a valid name.");
-            askForName(); // Prompt again if no input is provided
         }
+        var result = askForName();
     }
-    askForName();
 };
 
 colorFill.onClick = function() {
@@ -2155,17 +2171,23 @@ btn_addElement.onClick = function() {
     //var sourceCompName = "_ELEMENTS";
     //app.executeCommand(2004); // “Deselect All”
     //copyLayerToActiveComp(sourceCompName, result);
-    elementsDialog();
+    var compIndex = findCompIndex("_ELEMENTS");
+    if (compIndex) {
+        elementsDialog();
+    };
 };
 
 btn_addGallery.onClick = function() {
-    var ratioIndex = ratio.selection.index;
-    var ratioresult = ratio_result[ratioIndex];
-    var ratioAdd = ratio_resultIndexAdd[ratioIndex];
-    var selectedIndex = gallery.selection.index + ratioAdd;
-    var result = gallery_result[selectedIndex];
-    app.executeCommand(2004); // “Deselect All”
-    copyLayerToActiveComp(ratioresult, result);
+    var compIndex = findCompIndex("_ELEMENTS");
+    if (compIndex) {
+        var ratioIndex = ratio.selection.index;
+        var ratioresult = ratio_result[ratioIndex];
+        var ratioAdd = ratio_resultIndexAdd[ratioIndex];
+        var selectedIndex = gallery.selection.index + ratioAdd;
+        var result = gallery_result[selectedIndex];
+        app.executeCommand(2004); // “Deselect All”
+        copyLayerToActiveComp(ratioresult, result);
+    };
 };
 
 fitView.onClick = function() {
@@ -2330,83 +2352,108 @@ btn_openAndSelect.onClick = function() {
 };
 
 btn_title.onClick = function() {
-    var text = edittext1.text;
-    // Check if the text is empty
-    if (text === "") {
-        // Ask the user if they are sure to use an empty string
-        var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
+    var myItem = getItem("input_template.json");
+    if (myItem && myItem.mainSource) {
+        var text = edittext1.text;
+        // Check if the text is empty
+        if (text === "") {
+            // Ask the user if they are sure to use an empty string
+            var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
 
-        // If the user clicks Cancel, return null
-        if (!confirmation) {
-            return;
+            // If the user clicks Cancel, return null
+            if (!confirmation) {
+                return;
+            }
         }
+        // Execute changeJSONTEXT function with the provided text
+        changeJSONTEXT(text, "title");
+    } else {
+        alert("JSON file doesnt exist");
     }
-    // Execute changeJSONTEXT function with the provided text
-    changeJSONTEXT(text, "title");
 };
 
 btn_subtext.onClick = function() {
-    var text = edittext1.text;
-    // Check if the text is empty
-    if (text === "") {
-        // Ask the user if they are sure to use an empty string
-        var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
+    var myItem = getItem("input_template.json");
+    if (myItem && myItem.mainSource) {
+        var text = edittext1.text;
+        // Check if the text is empty
+        if (text === "") {
+            // Ask the user if they are sure to use an empty string
+            var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
 
-        // If the user clicks Cancel, return null
-        if (!confirmation) {
-            return;
+            // If the user clicks Cancel, return null
+            if (!confirmation) {
+                return;
+            }
         }
+        // Execute changeJSONTEXT function with the provided text
+        changeJSONTEXT(text, "subtext");
+    } else {
+        alert("JSON file doesnt exist");
     }
-    // Execute changeJSONTEXT function with the provided text
-    changeJSONTEXT(text, "subtext");
 };
 
 btn_source.onClick = function() {
-    var text = edittext1.text;
-    // Check if the text is empty
-    if (text === "") {
-        // Ask the user if they are sure to use an empty string
-        var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
+    var myItem = getItem("input_template.json");
+    if (myItem && myItem.mainSource) {
+        var text = edittext1.text;
+        // Check if the text is empty
+        if (text === "") {
+            // Ask the user if they are sure to use an empty string
+            var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
 
-        // If the user clicks Cancel, return null
-        if (!confirmation) {
-            return;
+            // If the user clicks Cancel, return null
+            if (!confirmation) {
+                return;
+            }
         }
+        // Execute changeJSONTEXT function with the provided text
+        changeJSONTEXT(text, "source");
+    } else {
+        alert("JSON file doesnt exist");
     }
-    // Execute changeJSONTEXT function with the provided text
-    changeJSONTEXT(text, "source");
 };
 
 btn_c2a.onClick = function() {
-    var text = edittext1.text;
-    // Check if the text is empty
-    if (text === "") {
-        // Ask the user if they are sure to use an empty string
-        var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
+    var myItem = getItem("input_template.json");
+    if (myItem && myItem.mainSource) {
+        var text = edittext1.text;
+        // Check if the text is empty
+        if (text === "") {
+            // Ask the user if they are sure to use an empty string
+            var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
 
-        // If the user clicks Cancel, return null
-        if (!confirmation) {
-            return;
+            // If the user clicks Cancel, return null
+            if (!confirmation) {
+                return;
+            }
         }
+        // Execute changeJSONTEXT function with the provided text
+        changeJSONTEXT(text, "call2action");
+    } else {
+        alert("JSON file doesnt exist");
     }
-    // Execute changeJSONTEXT function with the provided text
-    changeJSONTEXT(text, "call2action");
 };
 
 btn_c2alink.onClick = function() {
-    var text = edittext1.text;
-    // Check if the text is empty
-    if (text === "") {
-        // Ask the user if they are sure to use an empty string
-        var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
+    var myItem = getItem("input_template.json");
+    if (myItem && myItem.mainSource) {
+        var text = edittext1.text;
+        // Check if the text is empty
+        if (text === "") {
+            // Ask the user if they are sure to use an empty string
+            var confirmation = confirm("The text is empty. Are you sure you want to use an empty string?");
 
-        // If the user clicks Cancel, return null
-        if (!confirmation) {
-            return;
+            // If the user clicks Cancel, return null
+            if (!confirmation) {
+                return;
+            }
         }
+        // Execute changeJSONTEXT function with the provided text
+        changeJSONTEXT(text, "call2action_link");
+    } else {
+        alert("JSON file doesnt exist");
     }
-    // Execute changeJSONTEXT function with the provided text
-    changeJSONTEXT(text, "call2action_link");
 };
 
 
@@ -2420,8 +2467,6 @@ btn_revert_json.onClick = function() {
 
 btn_reload_json.onClick = function() {
     var myItem = getItem("input_template.json");
-
-    // Check if myItem and myItem.mainSource are defined before attempting to reload
     if (myItem && myItem.mainSource) {
         myItem.mainSource.reload();
         app.purge(PurgeTarget.IMAGE_CACHES);
