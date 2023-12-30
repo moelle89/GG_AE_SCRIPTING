@@ -1,5 +1,10 @@
 # AE_SCRIPTING
 
+![01](https://github.com/moelle89/GG_AE_SCRIPTING/assets/10669665/6ca9e011-5679-45f2-a143-66b2065b7d6b)
+![02](https://github.com/moelle89/GG_AE_SCRIPTING/assets/10669665/49631e8d-e5e5-44df-99ad-095bdbf0719a)
+![03](https://github.com/moelle89/GG_AE_SCRIPTING/assets/10669665/792f16c3-e14e-40bd-a9b8-59ebd6be4007)
+
+
 The majority of this panels features only work with the boilerplate.aep
 
 # TEMPLATE
