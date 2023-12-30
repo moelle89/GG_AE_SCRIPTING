@@ -10,6 +10,7 @@ function RectangleWizardffx() {
   var pseudoEffect = savePseudoEffect(pseudoEffectData);
 }
 
+
 function activateCompViewer() {
   var A = (app.activeViewer) && (app.activeViewer.type === ViewerType.VIEWER_COMPOSITION);
   if (A) {
@@ -815,6 +816,7 @@ function RectangleWizardInit() {
       else {
         createRect(parseInt(editWidth.text), parseInt(editHeight.text), chkFill.value, fillColor, chkStroke.value, strokeColor, editStroke.text);
       }
+      setColorFill();
     };
     btn1ColorUpdate(fillColor);
     btn2ColorUpdate(strokeColor);

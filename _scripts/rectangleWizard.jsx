@@ -816,6 +816,7 @@ function RectangleWizardInit() {
       else {
         createRect(parseInt(editWidth.text), parseInt(editHeight.text), chkFill.value, fillColor, chkStroke.value, strokeColor, editStroke.text);
       }
+      setColorFill();
     };
     btn1ColorUpdate(fillColor);
     btn2ColorUpdate(strokeColor);
