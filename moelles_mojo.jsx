@@ -2818,8 +2818,8 @@ function colorPicker() {
 addTooltipToButton(purgeAll, "purge DiscCache", 85);
 
 purgeAll.onClick = function() {
-    //app.executeCommand(10200);//AllMemoryDiskCache
-    app.purge(PurgeTarget.ALL_CACHES);
+    app.purge(PurgeTarget.IMAGE_CACHES);
+    //app.purge(PurgeTarget.ALL_CACHES);
     //result = alert(GoodBoyNinjaColorPicker([1, 1, 1]));
     //colorPicker();
     //getThingName();
