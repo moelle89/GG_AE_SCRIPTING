@@ -1272,13 +1272,16 @@ function createCompSet(duration, name, type) {
 
     if (areUsed) {
         // Prompt the user for a different name or handle the situation accordingly
-        alert("That name already exists exists. Please choose a different name.");
+        alert("That name already exists. Please choose a different name.");
+        return false;
+
     } else {
         createComposition(1080, 1920, duration, 30, reelName, 1);
         createComposition(1080, 1080, duration, 30, squareName, 1);
         createComposition(1920, 1080, duration, 30, fullHDName, 1);
         // Alert to indicate successful creation
         //alert("Compositions created successfully as " + reelName + ", " + squareName + " and " + fullHDName);
+        return true;
     }
 }
 
@@ -2189,7 +2192,8 @@ btn_createComps.onClick = function() {
                 var isValid = /^[a-z0-9_]+$/.test(name);
                 if (isValid) {
                     var newName = type + name;
-                    createCompSet(duration, name, type);
+                    var worked = createCompSet(duration, name, type);
+                    if (worked){
                     replaceCompositionsBySuffix(newName);
                     // Save Project with New Name in Same Path
                     // Get the current project file
@@ -2212,7 +2216,8 @@ btn_createComps.onClick = function() {
                             app.project.save(newProjectFile);
 
                             // Alert the user that the project has been saved
-                            alert("Project saved with a new name: " + newProjectName);
+                            alert("Project saved as: " + newProjectName);
+                            // Optional: Redraw the UI to reflect the changes
                         } else {
                             // Alert the user that no name was entered
                             alert("No project name entered. The project was not saved with a new name.");
@@ -2221,6 +2226,7 @@ btn_createComps.onClick = function() {
                         // Alert the user that no project is open
                         alert("No project is currently open.");
                     }
+                    };
                 } else {
                     alert("Invalid name! The name should only contain lowercase letters, numbers, and underscores (_) with no spaces, special characters, capital letters, or dashes.");
 
@@ -2255,7 +2261,8 @@ btn_createIMGComps.onClick = function() {
                 var isValid = /^[a-z0-9_]+$/.test(name);
                 if (isValid) {
                     var newName = type + name;
-                    createCompSet(duration, name, type);
+                    var worked = createCompSet(duration, name, type);
+                    if(worked){
                     replaceCompositionsBySuffix(newName);
                     // Save Project with New Name in Same Path
                     // Get the current project file
@@ -2271,6 +2278,11 @@ btn_createIMGComps.onClick = function() {
 
                         // Check if the user entered a name
                         if (newProjectName) {
+                            // change duration of settings comp
+                            var newDuration = 1 / app.project.item(compIndex).frameRate;
+
+                            app.project.item(compIndex).duration = newDuration;
+                            app.project.item(compIndex).workAreaDuration = newDuration;
                             // Create the new project file path
                             var newProjectPath = projectPath + "/" + newProjectName + ".aep";
                             var newProjectFile = new File(newProjectPath);
@@ -2278,7 +2290,8 @@ btn_createIMGComps.onClick = function() {
                             app.project.save(newProjectFile);
 
                             // Alert the user that the project has been saved
-                            alert("Project saved with a new name: " + newProjectName);
+                            alert("Project saved as: " + newProjectName);
+                            // Optional: Redraw the UI to reflect the changes
                         } else {
                             // Alert the user that no name was entered
                             alert("No project name entered. The project was not saved with a new name.");
@@ -2287,6 +2300,7 @@ btn_createIMGComps.onClick = function() {
                         // Alert the user that no project is open
                         alert("No project is currently open.");
                     }
+                    };
                 } else {
                     alert("Invalid name! The name should only contain lowercase letters, numbers, and underscores (_) with no spaces, special characters, capital letters, or dashes.");
 
