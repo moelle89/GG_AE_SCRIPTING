@@ -812,11 +812,11 @@ function RectangleWizardInit() {
     btnCreate.onClick = function () {
       if (chkCont.value) {
         createRectControl(parseInt(editWidth.text), parseInt(editHeight.text), chkFill.value, fillColor, chkStroke.value, strokeColor, editStroke.text);
+        setColorFill();
       }
       else {
         createRect(parseInt(editWidth.text), parseInt(editHeight.text), chkFill.value, fillColor, chkStroke.value, strokeColor, editStroke.text);
       }
-      setColorFill();
     };
     btn1ColorUpdate(fillColor);
     btn2ColorUpdate(strokeColor);
