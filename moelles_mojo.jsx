@@ -3,14 +3,14 @@
 function createDockableUI(thisObj) {
     var dialog =
         thisObj instanceof Panel ?
-        thisObj :
-        new Window("window", undefined, undefined, {
-            su1PanelCoordinates: false,
-            borderless: false,
-            resizeable: true,
-            minimizeButton: true
-        });
-    dialog.onResizing = dialog.onResize = function() {
+            thisObj :
+            new Window("window", undefined, undefined, {
+                su1PanelCoordinates: false,
+                borderless: false,
+                resizeable: true,
+                minimizeButton: true
+            });
+    dialog.onResizing = dialog.onResize = function () {
         this.layout.resize();
     };
     return dialog;
@@ -35,7 +35,6 @@ var buttonsSizeHeight = 25;
 var buttonsSizeWidth = 65;
 
 var tooltipWin = null;
-var font = ScriptUI.newFont("Archivo", ScriptUI.FontStyle.BOLD, 20);
 
 win.orientation = "column";
 win.alignChildren = ["fill", "top"];
@@ -149,16 +148,7 @@ grouptab2.spacing = 10;
 grouptab2.margins = 3;
 grouptab2.alignment = ["fill", "top"];
 
-//var elementsDropDown_array = ["LOGO_NEW", "LOGO", "TEXT-ELEMENT", "-", "MEDIA", "MEDIA-SQR", "MEDIA-1920"];
-//var elementsDropDown_result = ["LOGO_NEW", "LOGO", "TEXT_el", "-", "_MEDIA", "_MEDIA_SQUARE", "_MEDIA_1920"];
-//var elementsDropDown = grouptab2.add("dropdownlist", undefined, undefined, { name: "elementsDropDown", items: elementsDropDown_array, });
-//elementsDropDown.selection = 0;
-//elementsDropDown.preferredSize.height = 30;
-//elementsDropDown.preferredSize.width = 175;
-//var option = elementsDropDown.selection;
-
 var addel_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%C2%9A%00%00%00%1E%08%06%00%00%00%C3%94%C3%9E%07%C3%99%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%04%C2%9BIDATx%C2%9C%C3%AD%C2%9B1l%23E%14%C2%86%C2%BF%5C%C3%A0%24%C2%84%0EX%0E%09h%402B%C2%A2%C2%A2%C3%B1%C2%81%04%12P%C3%A0%C2%A3%C2%81%C3%96WQ%3B%20!%C3%91%C2%91%C3%94%40%C3%A1H%C2%B4%14%C3%A7%16%01R%02%0D%20(.T%C2%9C%C2%84%00%C2%BBC%20%0A%2C%C2%8A%3B%02w%C2%91-(%C2%90%C3%88%25~%14oF%C2%BB%19%C3%8F%C3%AC%C2%AE%3D%3E%C3%9F%C2%85%C3%8C'%C2%8D%C3%A2%C2%9D%C3%B7vgv%C3%BC%C3%AF%C3%9B7%C3%8F%C3%8A%C2%8A%C2%88%C2%90H%C3%9ClN%C3%9D%C3%AA%09%24N%06Ih%C2%89%C2%A5%C2%90%C2%84%C2%96X%0AIh%C2%89%C2%A5%C2%90%C2%84%C2%96X%0A%C2%B1B%C3%BB%08%C3%98%03%C2%AE%17%C3%9A%1E%C3%B0-%C3%B0%C2%B8%C3%B1y%00%C3%986%C3%BD%7B%C2%8E%C3%9F%C3%97%C2%91%C3%A3'%C2%8E%09%2B%C2%91%C3%A5%C2%8D%3F%C2%80%07%03%C2%B6%C2%97%C2%81%2F%C2%81%C2%A7%C2%80%C3%8F%C2%80%C2%87Bs%C2%88%C2%99%40%C3%A2x%10%1B%C3%91B%C3%A7%1F%00g%C3%8C%C3%A7%7BHb%3A%C3%B1%C3%84%0A%C3%AD0%C3%90%3F1%0DTt%C2%93%C2%80_%C3%A2%C2%84p%C3%87%C2%AD%C2%9E%40%04%C3%AB%40%07X%03v%1C%5B%17h%3B%7Dc%C3%A3%C2%B7%C3%A1%C3%B4%C3%B7%C2%81%C2%ACp%C2%9C%01%03%C3%A3%C2%BBY2%C2%B6%7B%C3%BD%22%1B%C3%A6%C3%BC%C2%8B%40%C2%B3p%C3%ACb%C3%AD!%C3%8E%15%C3%A6h%C2%B9%00%0C%0B%C3%87E%C2%9B%C3%8F%C3%9Fe%C2%80%C2%AEY%0B%5D%C2%A7%C2%B1%C2%B9%C3%A6%C3%983%C2%AF%0D%C3%B3%C2%B7%C3%AC%5E%C3%AD%C3%B5J%C2%89%C2%8Dh%C2%A7%03%C3%BD%2B%C3%A4%22%3E%C3%8D%C3%8D%11t%07%C2%BD%C3%89%C2%8E%C3%87%C3%96%00z%C3%80c%C2%A6%C2%9DG%17%C2%AD%01%5C%C3%B2%C3%B8%5Ep%7C%7B%C3%A8%C3%A2v%03cg%C3%A8%17%C2%90%05%C3%AC%C2%96f%C2%85%C2%9F%C2%B5%C2%97%C2%91%15%C3%BC%C3%9C%2F%C2%BD%C3%A3%C3%982%C3%87%C2%BF%C3%8Eu%C2%AD%C3%A0%C3%AA%C3%8E%C2%BB%C3%8E%7DO%23%221%C3%AD%C2%AA%C2%84y%C3%91%C3%B8%3C)%22W%02%3E%C3%BBs%C2%8E%C3%9B%16%C2%91_E%C2%A4!%22%23%11%C3%89%1C%C3%BB%C2%96%C2%88%C2%AC%07%C3%8E%C3%AD%3B%C2%B6%C2%91%C2%884%3D~Y%C2%89%C2%ADk%C3%A6%C3%9F%C2%AD%C2%98g%C3%9F%C3%B8%C2%B5%C3%A7%C2%B4%C3%9By%C2%88%C3%B1%1D%C2%89%C3%88%C2%A5%C2%82%C3%ADb%C3%81%26%C3%86%C3%97%C3%BA%C3%9B%C3%A3%C2%B25%2C%C3%92%C2%A91%2F%7BN%C3%95%7DO%C2%B5%C3%98H%C3%B3%1A%C3%B0%02%1A%C2%B1%26h%24%5B%01~%04%C2%BE3%3E%3F%01o%02%C3%8F%02%C2%AB%C3%86%C3%AF%C2%94%C3%B1%2B%0B%C3%B1e%C2%B4%C3%91%C2%A83%24%C2%8Fj%C2%A1%C3%97%C2%9CK%C2%AF%C2%A6%C3%BF%18-%C3%8B%C2%B4%C3%8D%18%C2%B7%03%03%C2%8EF%C2%AA%16%C3%BAJ%C2%9E%3D%C3%82%C3%A4%C2%8C%C3%8D%C3%B9%5D%C3%B4~%C3%87%C3%A5%C3%AE%C3%B3%11%2B%C2%B4%C3%8F%C2%81%2FP%C3%91%08%C3%B9%C3%AE%C2%B2%C2%98%C3%BC%1F%00%C2%9F%C2%A2%25%0Ek%5B5%C2%9F%C3%B7%C3%A7%183C%17%C3%98%C3%A6%05%3Dt%C2%91%C3%AA%0Am%C2%80%C2%BE.%C3%AB0%C2%A4%C3%BC%15%C3%946sq%C2%AF_%C2%99%C2%B38%C2%AC%C2%9BVd%C2%9B%C2%A3%C3%B7%C3%940%C3%87-3%C3%AE%C2%90%3CE%08%C3%A5Pn%C2%9A%00%C3%93%C3%B9b%C3%B1a%C3%9DBS%C2%87%C2%85%C2%B3%C2%88_%06%C3%AEE%C2%BF%C3%BC%C3%BBM%C2%BB%C2%8F%5CHEn%C2%98v%C2%88%0Al%1E%C2%91%C2%81.%C3%88%0E%C3%B9%C2%93%C2%B7m%C3%BE%C2%96%25%C2%AC%C3%BF%07%C3%AC%26%05TlV%C3%A0%C2%BEM%C3%86%C2%AC%C2%AC%C2%99k%C3%BB%C3%B2%C2%B5%C2%85%10%1B%C3%91%5E%07%5E%01%C3%AE%22%7FuN%C2%80%C3%AF%C2%81%C3%B7%C2%98%0E%C3%83%C3%A7%C2%80%C3%A7%C2%80%0F%C2%81ks%C2%8E%C3%991%C3%97%C3%9Dr%C3%BA%C3%9B%C3%A4%C2%A2%2B%C2%A3%C3%A9%C2%99W%C2%88F%C2%85%C3%AF6%C3%93%C2%BB%C3%98y%C3%98%C2%A4%C3%9E%C3%9C%07%C3%A4Q%C2%B6A%1E%C2%8DB%C2%9C%C2%A7%C3%BE%C2%BD%C2%AE%C2%A1%11p%C2%9D%C2%A3%C2%BB%C3%9A%C2%85%10%2B%C2%B4w%C3%91(%C3%A6%C3%92%02.%03_9%C3%BDO%03%C3%AF%C2%A0%C2%AF%C3%91y%C2%84f%C2%A3%C2%96%C3%BB%C2%A5%0C%C3%90%05%C3%8A%C2%A8%5E%C3%98%C2%96%C3%A7%C3%BC2%C3%9FE%08i%C2%91%C3%AC%C2%A0%0F%C3%9B%C2%90%C3%85D3%C3%8B%00%15%7C%C2%97%C3%BA%C2%A9Emb%C2%85v%10%C3%A8%C3%9F'OPW%C2%81G%C2%81%C2%BB%C2%81%C2%87%C2%81%7F%C2%80'%C3%90(x%1D%C3%B8s%C2%86%C3%B1%C3%AC%26%C3%80%C2%97%C2%8F5)O%C3%B2%1B%C2%A8%18%C2%9BT%C3%A7P-%C3%B2'%C2%BBL%C2%94M%C3%BC%C2%AF%1A%C2%BBQ%C2%B1%C2%B4%C2%99%C3%8E%C3%B5z%15v%C3%B0%C2%8B%C3%9CF%C2%B0%06%C3%95%C2%9B%147%C3%AF%03%7D%10Ck%C2%B4Iu%C3%9Dl%3Ef%C3%9D%C2%A6%3AmW%C3%BC%C3%BC%5B%C3%98%1A%C2%9F%11%C2%91OD%C3%A4w%11%C3%B9KD%0EE%C3%A4%C2%9A9~k%C2%86%C2%B1l%C2%B9!%C2%B4e%C2%B7%25%0F%5B%C3%9E%18y%C3%9A%C2%96%C3%A7%7C%C2%9F%C3%9FH%C3%82%C3%A5%C2%91by%23%C2%84%C2%BD%C3%B7~%C2%85O%C2%99%5D%C3%84_%C2%AE%C3%B0%C2%95%2FB%C3%A5%0D%1F%7D9Z%C2%AA%C2%B0%C3%87%C3%AE%3A%C3%9B9.%C2%A4%C2%BC%11%C3%BB%C2%A3%C3%BA.%C3%BE%1F%C3%8B%C3%B7%C2%81W%C3%91hp'%C3%BA%03%C3%BB%23%C3%80%C3%B3%C3%80K%C3%80%C3%BB%C3%80U%C2%B4%04%C3%B2%C3%83%0C%C3%A3%C3%99%C2%BC%24D%13%7D%C3%8A3%C2%A6%C3%83%7F%C3%A8%C3%A9o0%5D%1E%C2%A8S%C3%8E(%2B)%14_%C3%9F!%C2%BFq%C2%85%C3%9D%C3%A7%13%3A%C2%B6%7D%C2%B3%5C%C3%93%3D%C3%87%25d%C2%AB%C2%93%C2%9EL%11%2B%C2%B4%3D%C3%A0%C2%AC%C2%A7%7F%C2%82%0A%C3%ADc%C2%A7%C3%BF%0D%C3%A0m%C3%A0%19%C3%A0%C2%97%C2%98%C2%81%13%C3%87%C2%8B%C3%98%C3%B2%C3%86(%C3%90%C3%BF7p%C3%85%C3%93%C2%BF%C2%8BF%C2%B1%1B%C2%91%C3%A3%26%C2%8E%19%C2%B1%C2%9B%C2%81%0F%C3%90%C3%84%C3%91V%C3%BC%C3%ADo%C2%9C%C3%9F%00%3F%7B%C3%BC%2F%03%C2%BF%C2%A1%C2%82K%C2%9C%20b_%C2%9D%C2%89D-%C3%92%C3%BF%0C%24%C2%96B%12Zb)%24%C2%A1%25%C2%96B%12Zb)%24%C2%A1%25%C2%96%C3%82%7FD%C3%BC%C3%AA%C2%87%1D%C3%A9g%7B%00%00%00%00IEND%C2%AEB%60%C2%82";
-
 
 var btn_addElement = grouptab2.add("iconbutton", undefined, File.decode(addel_imgString), {
     name: "btn_addElement",
@@ -285,7 +275,6 @@ w.orientation = "row";
 
 var ap_circ_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%00%C2%98IDATH%C2%89%C3%AD%C3%941%0E%C2%830%0C%C2%85%C3%A1%3F%15W%C2%A0c%C3%A1%00%C2%A5j%C2%87%C3%9E%7Fg%C2%8A%04%07%20%2B%3DD%18%C2%9A%C2%A5Cb%0B%0BU%08%C2%BCEy%C3%B1'Eq%5C%C2%8C%C2%91-%C3%AB%C2%B2i%C3%B7%138%06P)27%C3%A0%01%5C%C3%93z%06%06%20h%00'%C3%8C%C3%81%1Bxe%C3%B6%3C%C3%90K%40%C3%A9%C2%8A%C2%9ABs%C2%80g%C3%8A%C2%AC%06%3A%C3%A9%C2%B0%26S%02j%05%20f%C2%AC%C2%AF%C3%88Y%C2%80%C2%8F%02%C2%98-%C3%80%C2%A0%00F%0B%10%C3%B8%3E%C3%85%5Cy%60%C2%92%00i%0E%00Z%C3%A0%C3%8E%C3%AF%C2%A0%C2%8D%C2%9A%C3%A6Z%C3%80T%C3%BB%C3%BF%C3%ACN%C3%A0%C3%BF%C3%80%02%25%C2%9B%1C%24tY%5B%0D%00%00%00%00IEND%C2%AEB%60%C2%82";
 
-
 var tli = File.decode(ap_circ_imgString);
 var tmi = File.decode(ap_circ_imgString);
 var tri = File.decode(ap_circ_imgString);
@@ -342,10 +331,8 @@ w.im = 0;
 apCheck = groupAP2.add("checkbox", undefined, undefined, {
     name: "apCheck"
 });
-apCheck.helpTip = "Check if you want to set the anchor point  for elements, that change its size. Just like text layers for example.";
-apCheck.text = "Expression based";
-
-
+apCheck.helpTip = "Check if you want to set the anchor point for elements, that change its size. Just like text layers for example.";
+apCheck.text = "set expression";
 
 // tab_fx
 // ====
@@ -361,7 +348,6 @@ tab_fx.margins = 10;
 // TPANEL2
 // =======
 tpanel2.selection = tab2;
-
 
 // GROUP2
 // ======
@@ -385,7 +371,6 @@ colorFill.preferredSize.width = 110;
 colorFill.alignment = ["left", "top"];
 
 var scale2fill_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%60%00%00%00%1E%08%06%00%00%00%C3%93%C2%B0%1B%C2%89%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%03%C2%8AIDATh%C2%81%C3%AD%C2%99%3Dh%14A%14%C3%87%7F%17%15%3F%12%C3%91%C3%ABDlL%C2%B4U%C3%A4D%C2%B0%C2%95%0B%C2%A4%C2%B3%C2%90S%2C%C3%84F%13%C3%90%C3%86%C3%8A%04D%1B%C2%9B%C2%B3%C2%B2V%0B%C2%B1%11%C2%8C6v%C3%91%1C%C2%A8h%C2%99C%C3%AC%C3%8D%C2%B5%C3%86%C2%AF%C2%9C%C3%A8%C2%A9%C2%A8%C2%89%C3%8F%C3%A2%C2%BDa%C3%A76%7B%C2%97I%C3%B6t%C3%81%C3%AC%0F%C2%86%C2%9D%C2%9Dy3%3B%C3%BB%C3%BE3of%C3%AF%0A%22BNv%C3%B4e%3D%C2%80%C2%B5N.%40%C3%86%C3%A4%02dL.%40%C3%86%C3%A4%02dL.%40%C3%86%C2%AC_%C2%A1%C3%BD%16%60%13P%C3%B0%C3%8A~%03%C2%9F%C2%81E%60%03%C3%90%C3%AF%C3%95%C3%BD%02%C2%BE%C2%A6%19%C3%A0%C3%BFN%C3%A8%0A(%00O%C2%81%0F%C3%80G%C2%BB%C2%BA4%0FT%C3%8D%C3%AE1%C3%90%C3%B4%C3%92%1B%C3%9A%C3%85%C3%8A%C2%89Q%08%C3%BC%10%C3%9B%07%C3%94%C2%81Y%C3%A0%06%C3%B0%C3%83%C2%AB%C3%BB%05%C3%9CCW%C3%81N%C3%A0(p%05%C3%98%01%7CGWD%C3%BE%C2%B5%C3%97%C2%81%C3%90%10%C2%B4%17%C3%B8%09%C2%9C%04%5Ev%C2%B1%C3%BB%06%C2%9C%03%C2%B6%01%C3%AF%C2%80%C2%AD%C2%A9F%C3%97%3B%C3%86%C3%ADz%1Fh%04%C3%98%0FX%C2%8A%C3%93%C2%B2%C3%AB%08%C3%B0%00%C3%98ci%C3%8A%C3%8A%5E%5B%0A%26T%C2%80u%C3%A8Lov%C2%B1%C3%99%0E%3C%07%C2%86%C2%80%C2%9B%C2%A8%C3%B3O%04%C3%B4%5DDC%C3%98%C2%A8W%C3%96%00%26P%C2%87%C3%B5%02%17%22%C3%AB%C2%84%09p%1D%5D%C3%81q%C2%A6%C2%80%3B%C3%80~%22%01%C2%86%C2%AC%C3%8E%5D%C3%BF%C2%8A%00Il%04%16%C3%90%C3%8Dw%3B%C3%AD%C3%8E%C2%BF%60%C3%B99%C2%96%0F%3F%C2%93%40%19%15%C2%B7nee%2B%1F%06j)%C3%86%C2%98%C2%86%3B%C3%80%C2%8BXY%C3%8B%C3%92%C3%A5%5E%3D%24%C3%8D1%C3%B4%25p%C2%97d%C3%A7%C2%83%C3%AE%17%C2%97%02%C3%BA)%C3%9B%C3%B5%1A%C3%AA%C3%B0a%C3%8B%C3%97%C2%80A%C2%AB%2B%C2%A2%C2%82%C2%88%C2%A5Y%C2%A2%C2%B0%C3%A2%C3%BA%C2%98%C2%89%C3%95%C3%BB%2B*N%09%C2%98%C3%B6%C3%ACg%C2%80J%C3%8C%C2%A6%C2%85N%20%3F%C2%B5%C3%90%C3%90t5%C3%A0%C2%BD%C2%82H%C2%B3%02%C2%B6%C2%A0%C3%8B4%C3%89%C3%B9%C2%A01%C3%B1%22pd%C2%99~%1A%C2%A8%C2%A3%C2%AB%C2%A8%23k%C2%96%26%3C%C2%9B%C3%89X%C3%9D%C2%B8%C3%997%C3%AD%C2%B9%C2%93%C2%A8H%C3%97%C3%8C~%1C%3D%2C%C3%94%C2%89V%C2%95%C2%A3%C2%88%3A%3Fn%3Fi%C3%AF%C3%A1B%C3%94%00K%C3%83%C3%90%5C%C2%87%C3%B2U%C2%93F%00%C3%90%C2%99%C3%94%C3%87R%C3%A7%03%C2%9C%01%0E%5B%C3%BD%C3%AF.%7D%1CG%C2%9DUB%C2%9D%C3%ACVD%1D%18%C2%B3%7C%C3%99%C2%B3uG%C3%9C%0A%C3%AADW%C3%AE%C3%9A%C2%B8~J%5E%C2%BD%C3%8F%C2%A8%C2%95%C3%97%C2%89%C3%82%C2%9BkS!%12%C3%A5%C2%B4%25%C2%9F%C2%B3%5D%C3%9EcU%C2%A4%15%C2%A0%1F%C3%B8%C2%84%C3%8E%C3%B6%C2%87%C3%A8%11%C3%94'%C3%A4%1B%C2%A0%0E%1C%C2%A4%C3%9Dq%15%C2%BB%C2%8E%C2%A3%C3%A2%3A%C3%9C!%C3%A0f%C2%AC%C3%9C%C3%99%269%C2%BC%13.%0Cu%22i%0F%C2%98%C2%A3%C2%87%C2%B3%1F%C3%92%C3%AD%01%C3%8F%C2%81g%C3%80%2Bt%60oW%C3%91G%C2%99(%0E7%C3%91%C3%99w%C2%9C%C3%88%C2%B9E%C2%92O%5Ee%C3%94yU%C3%94%C2%91%C3%AE%C2%943%C2%8C%C2%8A%1E%0F%3BI%C3%94%C3%8C%C2%B6%60%C3%AD%26b%C3%AD%C2%92%C3%B6%C2%80%C2%9E%C2%93f%05%C2%9C%C3%AA%C3%81%C3%B3kD%7B%C3%80%C2%B4%C3%9D%17%C2%896%C3%84%1A%C3%91%C3%91q%10%C2%8D%C3%93u%C2%A2%15%C3%A2%C3%AC%1DEt%25%C2%94%C3%AC%C2%BE%C3%82%C3%92c%C3%A7%7D%C2%A2%C3%BDf%14%15%C2%B8j%C3%BD%C2%8F%C3%B1%C2%AF%11%C2%91%C2%90tLD%C2%BE%C2%8A%C3%88%C2%81%40%7BD%C3%A4%C2%91%C2%88%7C%11%C2%91%C2%BEe%C3%ACJ%222-%C3%AD%C3%8C%C2%8BH5f3%1B%C2%B3q%C3%B5E%11%C2%99%C3%B1%C3%8Ag%C2%AD%C3%8EQ%C2%8E%C3%A5%11%C2%91J%C2%97%C3%BE%10%C2%91%5B%222%C3%92a%C2%BC%3B%C2%AC%1E%C2%B39o%C3%B9%C3%B3%5D%C3%9AtL%C2%BD%C3%B8)%22%C2%89%C3%9D%C3%A8%06%C3%B6%13%C3%98%C2%B5%C2%82%C3%B9PBgd%C2%A7%C2%8F%C2%A5%22%C3%91%C3%8C%C2%8F%C3%A3%C2%8E%C2%AC%C2%8D%0E%C3%B7I%0C%12m%C3%88%3E%03D_%C2%BDI%C3%B8%C3%B5.%C2%BF%5C%C2%9BDB%05(%00O%C2%80C%C3%80%C3%A6%C3%80%C2%BE%C3%9F%C2%A3%C3%A1%C3%A0%C3%B6J%07%C2%B5%C2%96%08%15%C3%80%C2%91%C3%B4st%12%C2%8B%C3%A8lXX%C3%A5%C2%B8%C3%96%0C%2B%15%20%C2%A7%C3%87%C3%A4%C3%BF%C2%88eL.%40%C3%86%C3%A4%02dL.%40%C3%86%C3%A4%02dL.%40%C3%86%C3%BC%01%C3%84%1C%10%C2%84'%C3%BAu%0F%00%00%00%00IEND%C2%AEB%60%C2%82";
-
 
 var scale2fill = groupFx.add("iconbutton", undefined, File.decode(scale2fill_imgString), {
     name: "scale2fill",
@@ -457,7 +442,7 @@ btn_cleanup.preferredSize.width = 240;
 var tab_tools = tpanel1.add("tab", undefined, undefined, {
     name: "tab_tools"
 });
-tab_tools.text = "CONFIG";
+tab_tools.text = "CONFIG JSON";
 tab_tools.orientation = "column";
 tab_tools.alignChildren = ["fill", "top"];
 tab_tools.spacing = 0;
@@ -496,8 +481,6 @@ configText.orientation = "column";
 configText.alignChildren = ["left", "top"];
 configText.spacing = 10;
 configText.margins = 12;
-
-
 
 // tools_wrapper
 // ======
@@ -560,26 +543,32 @@ edit_text_group.alignChildren = ["fill", "fill"];
 edit_text_group.spacing = 10;
 edit_text_group.margins = 0;
 
-var btn_title = edit_text_group.add("button", undefined, undefined, {
+var title_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00F%00%00%00%1E%08%06%00%00%00%C2%91%C3%B3h%1E%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01%C2%B0IDATh%C2%81%C3%AD%C2%97%C3%A1%C2%91%C2%820%10F%C3%9F%C3%9E%5C%03%5C%09%5C%09%C2%B4%00%25%5C%0B%C2%B6%C2%80%25%60%0B%C2%B6%60%09%C3%92%02%25%C2%9C-P%C3%82%C3%9E%C2%8F%24%C2%82%1E%C2%AB%C2%A8%19%C3%A5n%C3%B2f%18%C2%B3%C2%B8%C2%84%C3%A4%C2%9B%7C%C2%9B%20%C2%AAJ%C3%A27o%C2%AF%1E%C3%80RI%C3%82%18%24a%0C%C2%920%06I%18%C2%83%24%C2%8CA%12%C3%86%20%09c%C3%B0%1E%C2%AB%23%11%C2%99%C2%95%C2%A7%C2%AA%19P%C3%B8%C2%B0%13%C2%91%C3%BEBn%C3%A9%C2%9B%07%119%C3%8C%C3%A8%7B%C3%96%18%C3%A6%20%11%3B%2B%19%26l%C2%B1%03r%60%C3%AF%C3%A3JDZ%00U%5D%01%C2%99%C2%88lB%C2%B2%0E%C2%83%5B%C2%8F%C3%AF%5B%C3%84%14%26%C3%9A%C2%8A%C3%81%C2%89%C3%92%5C%C3%89%C3%A9%C2%80%1Eh%7D%3C%5E-%0D%C2%90%01W%05x%061%C2%85%C3%A9%C2%80%C2%B5o%C3%A7%C3%80%C3%8A%C2%B7%C2%B7%40%C2%B0A%C3%B8%3D%0A%C2%A3%C2%AA9%C3%B0%C2%85%13%05U%C2%ADq%16%0B9'x%2B%1E%C3%B3q6%C3%9B%C3%85%C2%9A%C3%84%C3%B8EQ%C2%AE%C2%B3%3EK%1D(%2F%C3%BDw%16%07j%C2%9F%7B%1E%C3%A7%C2%AA%C3%BA%3D%C2%91%C2%BF%C2%8F9%17U%5D%C3%84%C2%AE4%5Ei%00%15%C2%AE%16M%C3%91%C3%A0Vc%0B%7C%00%C2%9F8%3B%C2%96%C2%BEFE%23%C2%A6%C2%95%C3%AEBDzU%C3%ADF%C3%B1%C2%A4%C2%85%3Ca%C3%B5%C3%B5%0CV%C3%ADq%C2%B6%C3%8A%26%C2%9F%C2%B8%C2%93%C2%97%0Bs%23a%C3%B2%C3%B9%C2%A8%7D%C3%B0WTa%C2%96%60%C2%A5%5B%08%C3%85%7B'%22%C2%95%C2%88TL%C3%AFp%0F%C2%B3%C2%B8%15%C2%A3%C2%AA%0D%C3%90%1A%C2%96%C3%9A%C3%A2%C3%AAL%C3%AD%0B~%C2%86%C2%B3T%C2%86%5D%C2%97%C3%AEb%11%C3%82%C2%88H%C3%AB%C3%ABL%01%C3%94%C2%9C%C2%9Eu%C3%86y%1B%C2%BF%5D%C2%AF%18%C3%8EL%3D%C2%B0%11%C2%91%C3%AD%22O%C2%BEs%3F%09.%C2%A1%C2%AA%05%C3%90%C3%8F%3C%C3%BE%17%C3%BE%C2%BD%C3%9D%C3%A8%C3%9E%C3%83c%08%C3%84%C3%BC%24%C3%B8W%C3%BC%C2%B5%C3%A2%C3%BB4%C2%920%06I%18%C2%83%24%C2%8CA%12%C3%86%20%09c%C2%90%C2%841H%C3%82%18%C3%BC%00z%3AF%C2%B71%0Eu%C3%96%00%00%00%00IEND%C2%AEB%60%C2%82";
+
+var btn_title = edit_text_group.add("iconbutton", undefined, File.decode(title_imgString), {
     name: "btn_title"
 });
-btn_title.text = "Title";
 btn_title.alignment = ["left", "fill"];
 btn_title.preferredSize.width = 60;
+btn_title.preferredSize.height = 30;
 
-var btn_subtext = edit_text_group.add("button", undefined, undefined, {
+var subtext_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00P%00%00%00%1E%08%06%00%00%00%C2%BBC%C2%99%C2%B1%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%02wIDATh%C2%81%C3%ADX%C3%91%C2%91%C2%9B%40%0C%7D%C3%8A%C2%A4%01Z%20%25%C3%90%02W%02-%C3%90%02)%C2%81%C2%94%60%C2%97%C3%80%C2%95%C2%80K%C3%A0J%C2%B0K%20%25%C2%BC%7C%20%C2%9D%C3%85%1E%C3%B6%01k%C3%9FMf%C3%B6%C3%8D0%06%C2%A1%C3%95j%1F%C3%92%5B%C2%B0%C2%90D%C3%82~%C3%BC%C3%B8%C3%AE%04%C3%BEw%24%02%23%C2%91%08%C2%8CD%220%12%C2%89%C3%80H%24%02%23%C2%91%08%C2%8CD%220%12%3F%C2%B78%C2%8B%C3%88C''Y%00%C3%88%00%5CD%C3%A4%C3%B2%C3%90%C3%A0%11%C3%98%C3%B4qAr%C3%B5%C3%A1%C3%86%C3%94%24%3B%C2%92%C2%BD%1E%07%C2%92%C3%A5%C2%8ED%7BNh%3E%C3%B1%C2%AB%3F%C3%B3%C2%89%01%C3%89%C2%86d%C3%AD%C2%AE%C3%97s%C2%B2%C2%95%40%25%C3%AB%16%C3%AA%C2%9BY.'%C2%BE%C2%96%C3%80%C2%91O%C3%BA%C3%A6%24Yh%0E%C2%BD%C2%B3%C2%AD%3E6%C2%B50%C3%89%1C%C2%80%C2%91%C3%B4G%C2%8F%0C%40%0B%C2%A0%02%C3%90%008%C2%AA%C2%AF%C2%91%C3%B2j%C3%AD%C2%B9ds%C2%B1k%C2%8D%05%00G%11%C3%B9%C2%AB%C3%B3Uf%C3%97%C3%B1o%22rr%C3%B9T.%C3%8CID%C3%9E%C2%8C%18%00%C2%A5%C2%B7%C2%93%C3%8C%5C%C3%BE'%C2%8Dk%C3%A3s%C2%8D%C3%BF%0A%60%C2%BD%C2%9Cla%C3%9B%3D-j%C3%B5%14%C2%B6%10%C2%92%C2%A5oc%C3%A7w%C3%93%C3%A6*p%0C*y%C3%90%C3%BB%C3%A5B%C2%957z%C2%AFZ%18%C3%B7~_%7D%C2%86%20%5E%C2%AB%C3%97g%C2%92%19%C2%A7%C3%96%0DQ%C2%AE%C3%A4bw%0B%0F%C2%9Cc%C3%A4%C2%A4%C2%87%C2%B3%C3%B6%C3%B5%09%C2%AD%20%C3%B0%C2%AC%C2%84%C3%B8%05%C3%95%0B%C2%8B%2C9U%C3%9D%7B%5B%C2%93l%1D%C2%A1%06%C3%B3%C3%89%C2%9D%C2%9F%C2%97%1E%C3%BF%C3%A0%C3%8D%3Eh%C3%BC%C3%AC%C3%99%04%C3%9A%C2%A2%C3%8E%C3%BC%C2%88%C3%83N%02%7D%C3%95%C3%8CltU%C3%A8%7C%7C'%C2%B4%C2%9A%C3%8F%C2%8Ch%C3%A7%5B%079%C3%8E%C3%B4%C3%96%C2%8D%C3%BB2%0D%C3%8C1%C3%A9%C3%90%2F%C2%BD.1i_%0E%C2%A0%26y4%1Dz%222w%5E%C2%B8%C3%B3%C2%93%C3%BE%C3%A6%C3%8E%16%C3%A6%C3%B2%C3%90%C3%9C%C2%B6%C2%BEH%17%00z%00%3D%C3%89BD.%22r%C2%84n%1Cw%C3%86%C2%80du%C3%87%C3%87%13%C2%92%C3%9F%C3%B4%C2%BA%C3%82%C2%8B%C3%BCo%11y%11%C2%91%17g%C2%B7M%2B%03p%08%C3%86tj%7F%0C%C2%B6%C2%94%C2%AB%C2%B6%C2%AFi%C3%8A%C3%88%C3%AB%7B%C2%A0apq%C2%87%C3%80%C3%8F%0B~%C3%98%C3%82%C3%94s%C2%AF%C2%AFF%C2%BC%C3%9FH%C3%9A%C2%85%C2%B1%C2%83%C2%B6%C2%A1%C3%978%C3%93%C3%80%C3%96%C3%B9d%C2%BC%C3%8AN%C3%A7%C3%B2%C2%B4%16%1E%C3%B5%3C%C3%9F%C3%82%C3%89%1E%0D%2C%C2%82%C2%85%1B%3AK%5C%C3%BD%C3%82%5D%C2%B2q%C3%A3%3Eh%60%C3%A8%1B%3C%C3%A4!%C2%BC%C2%A7%C2%84tA%0Eg%C3%AAf%C3%86%C2%B9%C3%B6%C3%99%7C%C3%BEa%C2%98%C2%9F%C3%9Fh%C3%88g%C3%AF%C3%82%C3%81%C3%82%0Aj%C2%A5%C3%9C%C2%A9%C3%B0%C3%95_(%C2%9A%C3%BCb%7B%C3%A9%5C%C2%8B%C3%ADM%C2%B7%3B%C3%AF%C2%85%C2%9F%7B%0B'%C2%B2DL%C3%82z%C2%A4%7Fc%22%C2%91%08%C2%8CD%220%12%C2%89%C3%80H%24%02%23%C2%91%08%C2%8CD%220%12%C2%89%C3%80H%C3%BC%03%C2%90%15%5B%24%C2%87%C2%8EsV%00%00%00%00IEND%C2%AEB%60%C2%82";
+
+var btn_subtext = edit_text_group.add("iconbutton", undefined, File.decode(subtext_imgString), {
     name: "btn_subtext"
 });
-btn_subtext.text = "Subtext";
 btn_subtext.alignment = ["left", "fill"];
 btn_subtext.preferredSize.width = 80;
+btn_subtext.preferredSize.height = 30;
 
-var btn_source = edit_text_group.add("button", undefined, undefined, {
+var source_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00P%00%00%00%1E%08%06%00%00%00%C2%BBC%C2%99%C2%B1%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%02*IDATh%C2%81%C3%AD%C2%98%C3%A1q%C3%9B0%0CF%C2%81%5E%17%C3%A0%0AZA%2B8%23h%05%7B%04u%04e%04%7B%04w%04y%04%7B%04w%04g%C2%84%C2%AF%3F%04F%C2%9FY%C2%A9q%C2%884%C2%B9%C3%9E%C3%A1%C3%9D%C3%A5%2C%C3%930%03%3E%C2%81%C2%A0%12%05%20A%3D%C3%9F%C2%BE%3A%C2%81%C3%BF%C2%9D%10%C3%A8%24%04%3A%09%C2%81NB%C2%A0%C2%93%10%C3%A8%24%04%3A%09%C2%81NB%C2%A0%C2%93%C3%AF%C2%B5_TU%01%C2%90Dd%2B%22%1B%C3%BA%C3%A8%22%22%07U%C3%BD%C3%A5M%C3%AE3%C2%A9%C3%BE%C2%8B%0C%40%C3%ADO%02p%C3%8627%00%C3%AD%C3%87.%C3%B1%C3%9FR%C3%AB%C2%A1%C2%BA%02E%C2%A4%13%C2%91%2Ci%C2%A7%C2%AA%07%C2%93v%14%C2%91F%C2%A6%C3%8A%C3%9CQ%C2%82%C2%AD%C3%9CW%C3%AAO%C2%AER%00%7D9%5E%C2%8E%C3%A5%C3%B7%C2%AA%C3%BAl%C3%97%2F%C2%AAz%C2%B0%C3%98%C3%86r%C3%8A%C2%9CT%C3%B5RHz3%C3%A6%C3%9D8*%C2%B0%C2%A7%C2%8A%1B%2C9%01%C3%90%02%C3%98p%05%16%C2%B1%C3%8C%C2%96b2%C2%9B%C2%B51z%7F%C2%B4%C3%97%C3%91%C3%86%C2%BB%C2%95%C3%B9%07%C2%9A%C2%AB%C3%83%C2%B43Jz%C2%8F%07%C2%8F%C3%80f!%C2%A1%2B%C2%80%7D!%C2%A1%C3%A1d1%09f%C2%A1%C2%A9B%200I%C3%9C%C3%9Ax%C3%8Ec%C2%8F%C2%A9%C2%B5%C3%B0%C3%BCM%113%2CHoj%3D%C3%94%C2%9B%C2%9F%C3%A5%C3%AC%C2%B1%7Cg%C3%B3%C3%A2%C3%B2b%C2%AEE%C3%A5%C2%AF%C3%89yD%20WV%5B%C3%8A%C2%A2%C3%9F%C3%9B%5B%C2%8E%1C3%C3%90g%C2%AF%C3%B3%C3%97z%C2%A8%C3%AE%C2%81%C2%98%C2%B6h%C2%92%C3%A9%C3%84%C3%9Da%C3%AEq%C2%BD%C2%8D%0F%22r%C2%A0%C2%AF%7C%C3%A4%C2%A9%C3%BCB%C3%97)_pOU%C3%95g%C3%8A%C2%95%7B%2F%1Fn'%7Bm%C2%A4%12%C3%8Fs%60'%22%C2%A3%C2%88%1C%01%24U%C2%BDX%C3%92%C2%A7%22.%2F%C2%96%2B%2B%C3%89%3A%C2%AD%C3%85t%7F%C2%89a%C3%B8%20Z%C2%AB%5E%C2%BEy%3FT%C3%B5IU%C2%9Fh%C2%BC%C3%BE%C3%A6%C3%96%C2%96%C2%AE%C2%95%7D%C3%A6%0A%60%C3%84%C3%BDcM%C3%AE5%09%C3%B3%16%1Fm%C3%AB%C3%A4%C2%B8%2B%C3%A5%C2%91%C3%87n%16%C3%87m%C2%A1%C3%9C%C3%82%7D%C2%B1%C2%86%C2%91%C3%B2%C3%A81%1F2%C2%B7%C2%85%C2%98%C2%B3%C3%85%C3%ACi%C2%BE%2F%C3%AB%C2%81%C2%9D%25%C3%8D%C3%9C0%C3%B5%C2%99D%C3%89%C2%B7%C3%B8%C3%B3%C2%99q%C3%84%C3%BDI%5D%C2%9E%C2%92%3D-%C3%BA-%C2%81%C2%89b3%C3%A7b%C3%BEDb3W%C3%8C%C2%BD%C3%BA%C3%B3%05%16%C2%8B%C3%98%C2%80%C2%9A%C3%B8J%C2%B5'%C2%8B%5B%C3%9D%C3%82%C2%B8%C3%AFW%C3%AF%C3%A2%C2%91%C3%B9%C3%97r%C2%AD%C3%B5%C2%A0K2%C2%82%C3%87%C2%89%7F%268%09%C2%81NB%C2%A0%C2%93%10%C3%A8%24%04%3A%09%C2%81NB%C2%A0%C2%93%10%C3%A8%C3%A47a-%C3%B2%24pFo%11%00%00%00%00IEND%C2%AEB%60%C2%82";
+
+var btn_source = edit_text_group.add("iconbutton", undefined, File.decode(source_imgString), {
     name: "btn_source"
 });
-btn_source.text = "Source";
 btn_source.alignment = ["left", "fill"];
 btn_source.preferredSize.width = 80;
+btn_source.preferredSize.height = 30;
 
 // EDIT_TEXT_GROUP1
 // ================
@@ -591,21 +580,23 @@ edit_text_group1.alignChildren = ["fill", "fill"];
 edit_text_group1.spacing = 10;
 edit_text_group1.margins = 0;
 
-var btn_c2a = edit_text_group1.add("button", undefined, undefined, {
+var c2a_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00F%00%00%00%1E%08%06%00%00%00%C2%91%C3%B3h%1E%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01%C2%BBIDATh%C2%81%C3%AD%C2%97%C3%A1q%C2%830%0C%C2%85%C2%9Fz%5D%C2%80%15X%C2%81%15%C3%A8%08d%C2%84%C2%AC%C3%80%0A%C3%AD%08d%C2%84t%04%18!%19!%19!%19%C3%A1%C3%B5G%C3%A4%C2%A2%C2%B8(%C2%BFL%C2%9B%C3%AB%C3%A9%C2%BB%C3%A3r%C3%88FX%C3%8F%C2%92L%C2%84%24%C2%82%C2%9F%C2%BC%C3%BC%C3%B5%02%C2%9E%C2%95%10%C3%86!%C2%84q%08a%1CB%18%C2%87%10%C3%86!%C2%84q%08a%1CB%18%C2%87%C3%97%C3%92%0EE%04%00%40%C2%B2%05%C3%90%01%C2%A8u%C3%A8%0C%C3%A0SD%26%3B%C2%9Fd%0D%60%0B%C2%A0Q%C3%93%11%C3%80ND%C3%8E%C2%B9o%C2%92%C2%BD%C2%B9%C2%9DD%C3%A4h%C3%86J%C2%850%3B%2Cy%C2%A9%C3%8F%C2%81%3E%5B%C3%B3%C3%AE%C2%86%C3%A4ea%C3%8E%C2%85d%C2%95%C2%AD%C2%B3%C3%89%C3%A6%0C%C2%AB%C3%86Q%C3%9A!%C3%89%C2%ADY%C3%BC%C2%9Ed%C2%AB%C3%97%C3%81%C3%98%C3%ABL%C3%80%C2%BD%C3%9EWF%C2%A8%3E%0B%C3%BC%5D%C3%AD'%C3%A3%C2%A7ZK%C2%985zL%C2%AB%C2%BFg%11%C3%99%C2%88%C3%88%C2%A4%C3%A5%C2%B3Y%C2%98s%050%C3%A9%05%11%C2%B9%C2%AAm%C2%89%C2%94i%1F%C3%86%C3%96%C2%95Y%C3%B2%02%2Bd%C3%8C%C2%A8%C2%BB9.%C2%BC%2BeO%C3%AD%C2%AC%C3%85%C2%96%60m%C3%AC%C2%9D%C3%8D%12%C3%8DD%C2%92%3C%C2%AC%15%C3%87%C2%AF%0A%C3%B3%60sl%C2%B0%C2%A4%C3%A9C%3A%C2%9E%C3%86R%C3%89%C3%99rMe%C3%B9%C3%B4%C2%A5%C2%94%C2%A8r%C2%83%C2%8A62k%C3%80%00%0E%C2%B8%C2%95%C3%85%15%C3%80%C2%9B%C2%88%C3%AC%C3%8Cx%C2%85%C2%B9d*%C3%9Ez%C2%8F%C3%8D%C2%B8%3B%11%C2%8B%C2%B1B%C3%86%C3%B4f7%3B%C3%B3%1E%C2%BB%C3%8B%C2%AD%C3%9Aj%C3%8E%C3%8Dv%C3%8F%C3%AC%24%C3%929%C3%96%C3%9F%12%C2%A75%C3%A2XC%18%7B%C2%B2%C2%90%C2%B7%C3%93%C3%88%C2%9EH%C2%B6%2F%3C%3A%C3%96%7B%C2%9D%C2%93%C2%9E%1D9%C3%B7%C2%A86%13%C2%AC%7BzaL%26%C3%98%C2%9E%C2%91%18x%7F%C3%84%C2%8E%0Bs%C2%BE%C2%85Q%01%12y%C3%9F%C2%B1%1B0%C2%94%C2%8ECR0%C2%A5H_%C2%BE%26%C2%80F%C3%AD%C3%87%C3%85%07%0AQ%3C%C2%8E%C3%92%0E%C3%BF%0B%C3%B1'%C3%92!%C2%84q%08a%1CB%18%C2%87%10%C3%86!%C2%84q%08a%1CB%18%C2%87%2F%0B%C2%9C%C2%B4%C2%91r%1D%C2%BE%C2%BB%00%00%00%00IEND%C2%AEB%60%C2%82";
+
+var btn_c2a = edit_text_group1.add("iconbutton", undefined, File.decode(c2a_imgString), {
     name: "btn_c2a"
 });
-btn_c2a.text = "C2A";
 btn_c2a.alignment = ["left", "fill"];
 btn_c2a.preferredSize.width = 60;
+btn_c2a.preferredSize.height = 30;
 
-var btn_c2alink = edit_text_group1.add("button", undefined, undefined, {
+var c2alink_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00P%00%00%00%1E%08%06%00%00%00%C2%BBC%C2%99%C2%B1%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%03%C3%85IDATh%C2%81%C3%AD%C2%99%5Bh%5DE%14%C2%86%C2%BF%C2%93%C2%A6mj%C2%92V%C2%8DI%14%2C%15%2F%C2%B4%C3%9E%11%2C%5E%C2%A0%C3%BA%C2%A0VD%C2%84%C2%AA%C2%A8xW%04%C2%9Fl%C2%8B%C2%82E%C2%AA%C3%B8%C2%A2%60%05%C2%AF%C2%A0%2F%C2%86%C2%8A%C2%B4%C2%8A%C2%8AibE%C3%91R%7C%C2%AC%C2%8Ax!%C3%95%C3%96%5E%C3%B0%C2%86%C2%82Ml%25%C3%9Eb%C3%9A%C2%A4%C3%B9%7C%C2%98%15%C2%B299%C3%A7%C2%A4%C3%A7%C3%AC%07%11%C3%B6%0F%C3%83%C3%ACY%7B%C3%8D%C2%9A%C2%B5%C3%BFYk%C3%8D%C2%9C%C2%A4%C2%A4R%C2%A0q4%C3%BD%C3%97%0E%C3%BC%C3%9FQ%10%C2%98%13%05%C2%819Q%10%C2%98%13%05%C2%819Q%10%C2%98%13%05%C2%819Q%10%C2%98%13%05%C2%819%C3%91%C3%9C%C3%A0%C2%BC%C2%85%C3%80J%60)p%7C%C3%88%06%C2%80M%C3%80%5B%19%C2%BD%0E%C3%A0A%C3%A0%12%C3%A0%04%60%1F%C3%B0%1E%C3%B0%140%C2%9A%C3%91%C2%9B%05%C3%9C%01%C2%AC%00%04%C2%B6%00%2F%03%07%C2%AB%C2%AC%7FJ%C3%98%1E(%C3%93i%07%C3%AE%07%0E%00%2F%C3%96%C3%B0%7F6p%0Bp4%C3%90%03%C2%8C%C3%94%C3%90%C2%AD%0D%C2%B5%C3%9E%C3%96%C2%A1~%C3%A2%14%C3%B6%C2%A8%C3%BB%C3%A3%C3%B9%0F%C3%B5%C3%86%C3%90%5B%C2%A0%C2%BE%14%C3%B2!%C2%B5_%1D%C2%8E%C3%B1Z%C2%B59cs%C2%91%C3%BAU%C3%86%C3%A6%C2%A0%C3%9A%5D%C3%83%C2%87%C3%A7%C3%95%0F%C3%94%C3%8E2y%C2%BB%C3%BA%C2%98%C2%BAj%C2%86ohU%C2%B7%C2%AA%C2%BB%2B%C3%98%C2%A8%C2%AB52iu%C2%86%C2%94%C3%BB%C3%94%C2%93%C3%953%C3%95wC~%20%C3%B4%16%C3%87xX%C2%BDN%C2%9D%C2%AF%3E%11%C2%B2O%C3%95y%19%C2%9B%C3%97%C2%A8c%C3%AAN%C3%B5%C2%A7%C3%90%C2%B9Mm%C2%AA%C3%A2C%C2%BF%C2%BA%C2%BD%02%C3%89%C2%A5X%C3%B7%C2%B4%18%C2%9F%11%C3%BD2%C3%B5nuy%C2%86%C3%80%5ES%20t%C2%84%C3%ACt%C3%B5%C2%82z%C3%B9h%24%C2%85WD%3F%00%C2%BC%C2%90%C2%91%C3%B7DJ%C2%B4%03'%02%C2%83%C3%80jR%C3%9An%05%C3%BE%04%C3%A6%C2%86n6e%C3%A6%03%C3%97%C2%92%C3%8A%C3%89FR%C2%AA%C2%AF%04%C2%AE%26%C2%95%C2%84%7F*%C3%B8p(Z%C3%B9_B%C2%8E%05%C2%9E%06%C3%B6%00%C2%8F%00%C3%8F%00%C2%AD%C3%80%04%C2%B0%C2%80Tn%1E%026d%C3%A6%C3%BC%06%5C%1F%C3%B3n%C2%AE%C3%B5%C3%A1%15%C3%91%40%04~%14%11%C3%92_%26%C2%9F%15%3B%C3%9B%C3%A6Tz%C2%96%C2%A2oR%1FPG%C3%95%09S%C2%9AO%C2%BE%5B%12Q%C3%BA%C2%BBz%C2%91zU%C2%8C%0Ff%22%C2%A9%C2%BC%C2%BD%C2%A9~%C2%A6v%C2%95%C3%89%C2%BB%C3%95%01uc%C3%B8%C2%B1C%C3%9D%16v%C2%BA%22%C3%A2%C3%9E%09%C3%9D%5ES%1A%C3%9F%C2%AE~%17%C3%BE5WY%C2%AFjk%C3%A4%14%C2%9E%C2%88%C2%BET%26%2F%01-%C3%80Q%C3%99%C3%BD%01%3A%C2%81%C3%B5%C2%A4%1D%1E%03%1E%05%C3%9E%C2%8Ew%25%60%19)%3A%C3%B6%C2%92%C2%8A%C3%BF%0F%C3%80%100%C2%87%14%19%C3%B5%40%60%1C8%1C%C3%A3%26%C3%A0%0B%C3%A0%C3%BB%C2%B0%C3%B9%25pj%C3%98%1E%01%16%03O%02%C3%9F%C2%92%0E%C2%AD%C3%B1%3A%C3%97k%C2%88%C3%80_%C2%A3%3F%C2%8E%C2%A9%C2%94%04%C2%B8%09%C3%B8%C2%99%C2%94%C2%BA%0BC%C2%B6%08x%1D%C2%B8%0B%C3%B8%06%C2%B8%15x%3C%C3%A3h%2BpC%3C%C2%9F%05l%06%5E%C2%8By%00w%C2%92N%C3%8CJ%C2%98%24%C3%ABHP%C3%A9%3B%C3%87H)%C3%BD%0Bp%1Ep%C3%AE%11%C3%9A%C2%9A%C3%91%C3%B0L%C3%A8%C2%8B~)%C2%89%C2%8C%C3%8B%C2%81%C3%A5%C3%80*R%04n'E%C3%91%7CR%C3%94%5DF%C2%BA%C2%B2%7CH%22%C3%B6a%60-%C3%A9%C3%AAr%12pE%C2%BC%C3%BF%C2%91%14%C3%9D-%C2%A4%C2%8D8%0C%2C%01%C3%8E%C2%AF%C3%A2G3%C2%A9%C3%9E%C3%8E%23mD%0B%C3%93kb-%C2%B4%01%3B%C2%80%2B%C2%81m%C3%80%C2%BA%C2%B0S%1F%1A%C2%A8%C2%81s%C3%94%C3%B5%C3%AA_N%C3%87%C3%97%C3%AA%C2%A5%C2%A1wv%C2%85%C3%B7Yt%C2%AA%1B%C3%A2yw%C2%A6Nu%C2%A9%C3%A7%C2%98NsM%C2%A7%7B%C2%A5SX%C3%93U%C2%A6O%C3%9D%C2%AC%C3%B6%C2%A8%17%C2%AB%7B%C3%95M%C2%A6%2B%C3%8D%C2%A0%C3%BA%C2%8A%3A7%C3%A6%C2%BD%C2%AA%C3%AE%C2%8B%C3%B1%16u%C2%97%3A%C3%9BT%7B%C3%87%C3%955%C3%B5%C3%B2%C3%91%C3%88)%7C%08%C2%B8%07x%1F%C2%B8%C2%90t%C3%A2%C3%BEM%C2%8A%C2%BA%C2%BE%C3%98UH5g%1D%C3%95%C2%A3b%14%C3%B8%C2%9C%14m%3BI5p%12C%C3%80%1A%C3%92%C2%85y%7F%C2%85%C2%B9o%C3%84%C2%BC6%C2%A6%C2%B2h%24%C3%BCx%0E%18%26%5D%C2%B0%C2%9F%05v1%C2%95%C3%AA%C2%BD%C3%A1%C3%9F8%C2%A9T%1CC*%11%1F%03%C3%B7%02%C3%9D%C2%B5%3F%7D%3AJZ%C3%BCO%24%0F%C2%8A%C3%9F%C3%829Q%10%C2%98%13%05%C2%819Q%10%C2%98%13%05%C2%819Q%10%C2%98%13%05%C2%819Q%10%C2%98%13%05%C2%819%C3%B1%2F%C2%92%C3%94%C2%94V%40!%3FY%00%00%00%00IEND%C2%AEB%60%C2%82";
+
+var btn_c2alink = edit_text_group1.add("iconbutton", undefined, File.decode(c2alink_imgString), {
     name: "btn_c2alink"
 });
-btn_c2alink.text = "C2A Link";
 btn_c2alink.alignment = ["left", "fill"];
 btn_c2alink.preferredSize.width = 80;
-
-
+btn_c2alink.preferredSize.height = 30;
 
 var tools_wrapper_r = tools_wrapper.add("group", undefined, {
     name: "tools_wrapper_r"
@@ -683,7 +674,6 @@ btn_revert_json.preferredSize.width = 100;
 btn_revert_json.text = "REVERT ";
 btn_revert_json.helpTip = "restore the Default JSON";
 
-
 // TPANEL1
 // =======
 tpanel1.selection = tab_template;
@@ -713,7 +703,6 @@ var delExp = shortcuts.add("iconbutton", undefined, File.decode(delExp_imgString
     style: "toolbutton"
 });
 delExp.alignment = ["center", "top"];
-
 
 var openProjectInExplorer_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%12%00%00%0B%12%01%C3%92%C3%9D~%C3%BC%00%00%02%1CIDATH%C2%89b%C3%BC%C3%BF%C3%BF%3F%03%C3%8D%00%03%03%03%00%00%00%C3%BF%C3%BFb%C2%A2%C2%A9%C3%A9%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C2%82Y%60%C3%80%C3%80%C3%80%C3%B0%C2%80%C2%81%C2%81%01%C3%A4%1Dd%C3%BC%C2%81%C2%81%C2%81%C2%A1%C2%81%C2%81%C2%81A%C2%80%2C%C3%93%19%18%18%00%00%00%00%C3%BF%C3%BF%C2%82%05%11%C3%88py%06%06%C2%86%C2%87P6%0C%C2%80%2C%C3%A6g%60%60%C3%B8%C3%88%C3%80%C3%800%01j%19%C3%B1%C2%80%C2%81%C2%81%01%00%00%00%C3%BF%C3%BFb%C3%B8%C3%BF%C3%BF%C2%BF%C3%81%7F%08%C2%B8%C3%B0%C3%BF%C3%BF%7F%01%C2%90%C2%85H%18%C3%84%C2%9F%00%C2%95'%04%3E%C3%BC%C3%BF%C3%BF%C2%BF%01E%C3%BF%C3%BF%C3%BF%0C%00%00%00%00%C3%BF%C3%BF%02%C3%B9%C3%80%C2%81%C2%81%C2%81a%3F%03%03C%23%1E%17*%40%C3%A5%4046%00%0AB%7D%C2%A8%C2%84%23%03%03%C3%83%010%C2%8B%C2%81%C2%81%01%00%00%00%C3%BF%C3%BFb!%C3%82%C2%BF%20%07%C2%80%C3%80%02%06%06%C2%86%0B%C3%90x%C3%81%06%40%C3%B2%C3%B1%0C%0C%0C%09p%0B%18%18%18%00%00%00%00%C3%BF%C3%BF%02y%C3%83%01%C3%AAwt%C3%AF%25%40%C2%BDM%0E%00%C3%A9K%C3%B8%C3%BF%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C3%82%C2%95LA%5E%06E*(%C2%82%C3%89%01%20%7D%13%18%18%18%18%00%00%00%00%C3%BF%C3%BF%C3%82e%01%2C%C3%B5P%02%C3%B8%19%18%18%0C%00%00%00%00%C3%BF%C3%BF%C3%82e%01%2C%C3%9C)%03%0C%0C%17%00%00%00%00%C3%BF%C3%BF%C3%82e%01%C2%AE%C3%94B%0A%C2%B8%C3%88%C3%80%C3%80%C3%80%00%00%00%00%C3%BF%C3%BF%C3%82%17D%C2%94%C2%82%0D%0C%0C%0C%0C%00%00%00%00%C3%BF%C3%BF%C3%82e%01%2CMS%02%0E0000%00%00%00%00%C3%BF%C3%BF%C3%82f%015%5C%0F*Z%0E0000%00%00%00%00%C3%BF%C3%BF%C3%82f%015%C3%82%1F%C2%92%C3%91%18%18%18%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%95%0F%20%16000%00%00%00%00%C3%BF%C3%BF%C2%A2%C2%95%05%C3%A0%08f%60%60%60%00%00%00%00%C3%BF%C3%BFB%C2%B6%00V%C3%A6S%1AD%C2%88%22%C2%9F%C2%81%C2%81%01%00%00%00%C3%BF%C3%BF%02%C2%959%0A%C3%90%C3%82%06T~%C3%80%C3%8A%25J%C3%80%02xy%C3%B6%C3%BF%3F%03%00%00%00%C3%BF%C3%BF%C2%821%1EP%C3%81%60%18%009%12b%C3%AE%C3%BF%C3%BF%0C%00%00%00%00%C3%BF%C3%BF%C2%821%40%C2%95%0E5%2C%01UN%C2%88%12%C3%B9%C3%BF%7F%06%00%00%00%00%C3%BF%C3%BF%C2%A2m%C2%AB%C2%82%C2%81%C2%81%01%00%00%00%C3%BF%C3%BF%C2%A2m%C2%AB%C2%82%C2%81%C2%81%01%00%00%00%C3%BF%C3%BF%03%00%C3%A5%C3%A5%C3%A9%0ET%C3%A5%C3%95%C3%96%00%00%00%00IEND%C2%AEB%60%C2%82";
 
@@ -778,24 +767,25 @@ var buttonArray = [
     addObj.add("iconbutton", undefined, File.decode(parent2null_imgString), { name: "parent2null", style: "toolbutton" })
 ];
 
-
-
 /// INCLUDES
 
-#include _scripts/rectangleWizard.jsx;
+try {
+    #include _scripts/rectangleWizard.jsx;
 
-#include _scripts/elementsDialog.jsx;
+    #include _scripts/elementsDialog.jsx;
 
-#include _scripts/organizeProjectAssets.jsx;
+    #include _scripts/organizeProjectAssets.jsx;
 
-#include _scripts/projectCleanup.jsx;
+    #include _scripts/projectCleanup.jsx;
 
-#include _scripts/moveAnchorPoint.jsx;
+    #include _scripts/moveAnchorPoint.jsx;
+} catch (e) {
+}
 
 /// INCLUDES END
 
 
-(function() {
+(function () {
     if (!checkSecurityPrefSet()) {
         return false;
     } else {
@@ -838,17 +828,16 @@ function refreshCurrentFrame() {
 
 ////
 
-function getCurrentMousePosition(event,width) {
+function getCurrentMousePosition(event, width) {
     var customWidth;
-    if(width){customWidth = width} else {customWidth = buttonsSize};
-    var cSpacing = customWidth*.5;
+    if (width) { customWidth = width } else { customWidth = buttonsSize };
+    var cSpacing = customWidth * .5;
     return win.orientation == "column" ? [(event.screenX - event.clientX) + customWidth + cSpacing, (event.screenY - event.clientY) - buttonsSize] : [event.screenX - event.clientX, (event.screenY - event.clientY) + buttonsSize + cSpacing];
 }
 
 function showCustomTooltip(text, coordinates, width) {
     var customWidth; var negativX;
     if (width) { customWidth = width * 0.75; negativX = width * 1.5 } else { customWidth = buttonsSize; negativX = 0 };
-    var font = ScriptUI.newFont("Archivo", ScriptUI.FontStyle.BOLD, 20);
     var tooltipWin = new Window("palette", "tooltip", undefined, { borderless: true, closeButton: false, maximizeButton: false, minimizeButton: false, resizeable: false, title: "tooltip" });
     tooltipWin.margins = 0;
     tooltipWin.spacing = 0;
@@ -860,7 +849,6 @@ function showCustomTooltip(text, coordinates, width) {
     panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]); // RGB color [R, G, B] 
 
     var staticText = panel.add("statictext", undefined, text);
-    staticText.graphics.font = font;
     // Customize text color
     staticText.graphics.foregroundColor = staticText.graphics.newPen(staticText.graphics.PenType.SOLID_COLOR, [0.73, 0.84, 0.97, 0.85], 1);
     //staticText.graphics.foregroundColor = staticText.graphics.newPen(staticText.graphics.PenType.SOLID_COLOR, [1, 1, 1]); // RGB color [R, G, B]
@@ -875,7 +863,7 @@ function showCustomTooltip(text, coordinates, width) {
 
 function addTooltipToButton(button, tooltipText, width) {
     button.addEventListener("mouseover", function (e) {
-        var coordinates = getCurrentMousePosition(e,width);
+        var coordinates = getCurrentMousePosition(e, width);
         tooltipWin = showCustomTooltip(tooltipText, coordinates, width);
     });
 
@@ -918,7 +906,7 @@ for (var i = 0; i < buttonArray.length; i++) {
 function savePseudoEffect(pseudoEffectData) {
     var pseudoEffect,
         ffxFile,
-        writeFile = function(pathToFile, content, encoding) {
+        writeFile = function (pathToFile, content, encoding) {
             var fileObject = new File(pathToFile);
             fileObject.encoding = encoding || "utf-8";
             fileObject.open("w");
@@ -926,7 +914,7 @@ function savePseudoEffect(pseudoEffectData) {
             fileObject.close();
             return fileObject;
         },
-        makePseudoEffectLive = function(ffxFile) {
+        makePseudoEffectLive = function (ffxFile) {
             var tempComp, tempLayer;
             tempComp = app.project.items.addComp("tempComp", 100, 100, 1, 1, 24);
             tempLayer = tempComp.layers.addShape();
@@ -1061,7 +1049,7 @@ value\
     function applyPseudoEffect(pseudoEffectData, effectsProp) {
         var pseudoEffect,
             ffxFile,
-            writeFile = function(pathToFile, content, encoding) {
+            writeFile = function (pathToFile, content, encoding) {
                 var fileObject = new File(pathToFile);
                 fileObject.encoding = encoding || "utf-8";
                 fileObject.open("w");
@@ -1069,7 +1057,7 @@ value\
                 fileObject.close();
                 return fileObject;
             },
-            makePseudoEffectLive = function(ffxFile) {
+            makePseudoEffectLive = function (ffxFile) {
                 var tempComp, tempLayer;
                 tempComp = app.project.items.addComp("tempComp", 100, 100, 1, 1, 24);
                 tempLayer = tempComp.layers.addShape();
@@ -1198,14 +1186,38 @@ function areNamesUsed(name1, name2, name3) {
     return false; // None of the given names exist in the project
 }
 
+// Create Solid Layer
+function createSolid(layerName) {
+    app.beginUndoGroup("New Solid");
+    var activeComp = app.project.activeItem;
+    if (checkComp(activeComp)) {
+        if (layerName == "default") {
+            solidName = "mojo Solid";
+        }
+        else {
+            solidName = layerName;
+        }
+        var newSolid = activeComp.layers.addSolid([0, 0, 0], solidName, activeComp.width, activeComp.height, 1);
+        var myItem = getItem("input_template.json");
+        if (myItem && myItem.mainSource) {
+            setColorFill();
+        } else {
+            var fillSolid = newSolid.property("ADBE Effect Parade").addProperty("ADBE Fill");
+            fillSolid.property("ADBE Fill-0002").setValue([0, 0, 0]);
+        }
+    }
+    else {
+        return;
+    }
+    app.endUndoGroup();
+}
 
 // Function to copy a layer from a source composition to the active composition
 function copyLayerToActiveComp(sourceCompName, layerName) {
+    app.beginUndoGroup("Copy Layer to Comp");
     // Get the active composition
     var activeComp = app.project.activeItem;
-
-    // Check if the active item is a composition
-    if (activeComp !== null && activeComp instanceof CompItem) {
+    if (checkComp(activeComp)) {
         // Get the source composition by name
         var sourceComp = findComp(sourceCompName);
 
@@ -1223,7 +1235,7 @@ function copyLayerToActiveComp(sourceCompName, layerName) {
                 var offsetX = (activeComp.width / 2);
                 var offsetY = (activeComp.height / 2);
                 if (layerName !== "LOGO_NEW" || "LOGO") {
-                    copiedLayer.position.setValue([offsetX, offsetY]);
+                    copiedLayer.position.setValue([offsetX, offsetY]); checkComp
                 }
                 copiedLayer.enabled = true;
                 copiedLayer.selected = true;
@@ -1239,9 +1251,10 @@ function copyLayerToActiveComp(sourceCompName, layerName) {
     } else {
         alert("Open a composition");
     }
-
+    app.endUndoGroup();
     // Return null if the layer couldn't be copied
     return null;
+
 }
 
 // Function to create a composition and add it to the project panel
@@ -1292,11 +1305,9 @@ function createCompSet(duration, name, type) {
 
 // Function to apply a preset to the selected layer
 function applyPreset(presetPath) {
-    $.writeln("applyPreset - presetPath: " + presetPath);
     // Get the active composition
-    var comp = app.project.activeItem;
-    // Check if a composition is active
-    if (comp != null && comp instanceof CompItem) {
+    var activeComp = app.project.activeItem;
+    if (checkComp(activeComp)) {
         // Apply the preset to the active composition
         comp.applyPreset(File(presetPath));
     } else {
@@ -1305,123 +1316,11 @@ function applyPreset(presetPath) {
     }
 }
 
-// Function to apply a preset to the selected layer
-function createTextBox() {
-    //Script draws dynamic rectangle shape around text or any object
-    //Only for AE 13.2 and higher
-    //Alex Kravchenko, 2015
-
-    CompItem.prototype.dd_dynamicBbox_createBbox = function(_layer) {
-        bboxProps = {
-            "fill": {
-                "color": [0.5, 0.5, 0.5, 1]
-            },
-            "stroke": {
-                "width": 20,
-                "color": [0.3, 0.3, 0.3, 1]
-            },
-            "addSpace": 50
-        };
-
-        //shape match names:
-        var contentsName = "ADBE Root Vectors Group";
-        var vectorGroupName = "ADBE Vector Group"; //a shape group
-        var rectPathName = "ADBE Vector Shape - Rect"; //rectangle group
-        var rectPathSizeName = "ADBE Vector Rect Size"; //rectangle size
-        var strokeGroupName = "ADBE Vector Graphic - Stroke"; //stroke
-        var strokeWidthName = "ADBE Vector Stroke Width"; //stroke width
-        var strokeColorName = "ADBE Vector Stroke Color"; //stroke color
-        var fillGroupName = "ADBE Vector Graphic - Fill"; //fill
-        var fillColorName = "ADBE Vector Fill Color"; ////fill color
-
-        //effect match names:
-        var effectsName = "ADBE Effect Parade";
-        var layerControlName = "ADBE Layer Control";
-        var sliderControlName = "ADBE Slider Control";
-        var cbControlName = "ADBE Checkbox Control";
-
-        //expressions:
-        var shapeSizeExpression = "textLayer = effect(\"Target Layer\")(\"Layer\");\nvar strokes = effect(\"Accept Strokes\")(\"Checkbox\");\nvar add = effect(\"Padding\")(\"Slider\");\nbbox = textLayer.sourceRectAtTime(time,strokes);//bounding box вокруг текста\n[bbox.width*textLayer.scale[0]/100,bbox.height*textLayer.scale[1]/100]+[add,add]//ширина bbox'а плюс немного отступа по краям";
-        var textSizeExpression = "textLayer = effect(\"Target Layer\")(\"Layer\");\nvar add = effect(\"Padding\")(\"Slider\");\nbbox = textLayer.sourceRectAtTime(time,false);//bounding box вокруг текста\n[bbox.width*textLayer.scale[0]/100,bbox.height*textLayer.scale[1]/100]+[add,add]//ширина bbox'а плюс немного отступа по краям";
-
-        var shapePosExpression = "textLayer = effect(\"Target Layer\")(\"Layer\");\nvar strokes = effect(\"Accept Strokes\")(\"Checkbox\");\nbbox = textLayer.sourceRectAtTime(time,strokes);\ntextLayer.position-textLayer.anchorPoint+\n	[bbox.left*textLayer.scale[0]/100,bbox.top*textLayer.scale[1]/100]+\n	[bbox.width*textLayer.scale[0]/100,bbox.height*textLayer.scale[1]/100]/2;";
-        var textPosExpression = "textLayer = effect(\"Target Layer\")(\"Layer\");\nbbox = textLayer.sourceRectAtTime(time,false);\ntextLayer.position-textLayer.anchorPoint+\n	[bbox.left*textLayer.scale[0]/100,bbox.top*textLayer.scale[1]/100]+\n	[bbox.width*textLayer.scale[0]/100,bbox.height*textLayer.scale[1]/100]/2;";
-
-        //creating shape layer
-        var newShape = this.layers.addShape();
-        newShape.name = _layer.name + "_bbox";
-        newShape.moveAfter(_layer);
-
-        //creating all controls
-        var layerControl = newShape.property(effectsName).addProperty(layerControlName);
-        layerControl.name = "Target Layer";
-        layerControl.property(layerControlName + "-0001").setValue(_layer.index);
-        var sliderControl = newShape.property(effectsName).addProperty(sliderControlName);
-        sliderControl.name = "Padding";
-        sliderControl.property(sliderControlName + "-0001").setValue(bboxProps.addSpace);
-        if (_layer instanceof ShapeLayer) {
-            var checkboxControl = newShape.property(effectsName).addProperty(cbControlName);
-            checkboxControl.name = "Accept Strokes";
-            checkboxControl.property(cbControlName + "-0001").setValue(true);
-        }
-
-        if (_layer instanceof ShapeLayer)
-            newShape.position.expression = shapePosExpression;
-        else
-            newShape.position.expression = textPosExpression;
-        var rectGroup = newShape.property(contentsName).addProperty(rectPathName);
-        var rectSize = rectGroup.property(rectPathSizeName);
-        if (_layer instanceof ShapeLayer)
-            rectSize.expression = shapeSizeExpression;
-        else
-            rectSize.expression = textSizeExpression;
-        var fillGroup = newShape.property(contentsName).addProperty(fillGroupName);
-        fillGroup.property(fillColorName).setValue(bboxProps.fill.color);
-        var strokeGroup = newShape.property(contentsName).addProperty(strokeGroupName);
-        strokeGroup.property(strokeColorName).setValue(bboxProps.stroke.color);
-        strokeGroup.property(strokeWidthName).setValue(bboxProps.stroke.width);
-    }
-
-
-    function dd_dynamicBbox() {
-        vers = parseFloat(app.version);
-        if (vers < 13.2) {
-            alert("Update to After Effects CC2014 or later to use this script");
-            return 0;
-        }
-        var myComp = app.project.activeItem;
-        if (!myComp || !(myComp instanceof CompItem) || myComp.selectedLayers.length == 0) {
-            alert("Choose at least one layer");
-            return 0;
-        }
-
-        var arr = [] //layers array (only text and/or shape layers)
-        for (var i = 0; i < myComp.selectedLayers.length; i++)
-            if (myComp.selectedLayers[i] instanceof TextLayer || myComp.selectedLayers[i] instanceof ShapeLayer)
-                arr.push(myComp.selectedLayers[i]);
-        if (arr.length == 0) {
-            alert("Select Shape or Text layer");
-            return 0;
-        }
-        for (var i = 0; i < arr.length; i++)
-            myComp.dd_dynamicBbox_createBbox(arr[i]);
-
-    }
-
-    app.beginUndoGroup("Dynamic Bbox");
-    dd_dynamicBbox();
-    app.endUndoGroup();
-}
-
 // Function to remove expressions from specific properties of a layer (Position, Scale, Opacity, Anchor Point, Rotation)
 function removeSpecificExpressions() {
-
     try {
-
-        // Check if a composition is active
-        if (app.project.activeItem instanceof CompItem) {
-            var comp = app.project.activeItem;
-
+        var activeComp = app.project.activeItem;
+        if (checkComp(activeComp)) {
             // Check if a layer is selected
             if (comp.selectedLayers.length > 0) {
                 var selectedLayer = comp.selectedLayers[0];
@@ -1452,17 +1351,16 @@ function removeSpecificExpressions() {
         }
     } catch (error) {
         $.writeln(error);
-        // Expected output: ReferenceError: nonExistentFunction is not defined
-        // (Note: the exact output may be browser-dependent)
     }
 }
 
 // Function to add specific expressions to properties of a layer (Anchor Point, Position, Scale)
 function scaleToFillComp() {
     // Check if a composition is active
-    if (app.project.activeItem instanceof CompItem) {
+    app.beginUndoGroup("ScaleToFill");
+    var activeComp = app.project.activeItem;
+    if (checkComp(activeComp)) {
         var comp = app.project.activeItem;
-
         // Check if a layer is selected
         if (comp.selectedLayers.length > 0) {
             var selectedLayer = comp.selectedLayers[0];
@@ -1497,15 +1395,16 @@ function scaleToFillComp() {
     } else {
         alert("Please open a composition.");
     }
+    app.endUndoGroup();
 }
 
 // Function to add colorFill via script instead of preset file
 function setColorFill() {
+    app.beginUndoGroup("setColorFill");
     if (app.project.activeItem instanceof CompItem) {
         var comp = app.project.activeItem;
         var filePath = Folder.myDocuments.fsName + "/Adobe/After Effects 20" + app.buildName.substr(0, 2) + "/User Presets/mojo/__COLOR_FILL.ffx";
         var myFile = new File(filePath);
-
         // Check if a layer is selected
         if (comp.selectedLayers.length > 0) {
             if (myFile.exists) {
@@ -1530,6 +1429,7 @@ function setColorFill() {
     } else {
         alert("Please open a composition.");
     }
+    app.endUndoGroup();
 }
 
 //Open Project Folder
@@ -1568,7 +1468,7 @@ function openSubfolderInProject(subfolderName) {
 
             // Add an "Accept" button to the dialog
             var acceptButton = noFolderDialog.add("button", undefined, "YES!");
-            acceptButton.onClick = function() {
+            acceptButton.onClick = function () {
                 // Perform your desired action here
                 try {
                     subfolder.create();
@@ -1582,7 +1482,7 @@ function openSubfolderInProject(subfolderName) {
 
             // Add a "Cancel" button to the dialog
             var cancelButton = noFolderDialog.add("button", undefined, "NAH, I´m good.");
-            cancelButton.onClick = function() {
+            cancelButton.onClick = function () {
                 noFolderDialog.close();
             }
 
@@ -1647,10 +1547,8 @@ function importAndCopyFile() {
 }
 
 function findCompIndex(compName) { // name of item you're looking for
-
     var myComp = null;
     var myCompIndex = null;
-
     for (var i = 1; i <= app.project.numItems; i++) {
 
         if ((app.project.item(i) instanceof CompItem) && (app.project.item(i).name == compName)) {
@@ -1668,9 +1566,9 @@ function findCompIndex(compName) { // name of item you're looking for
     }
 }
 
-
 function changeJSONTEXT(inputText, jsonKey) {
     // Check if JSON file exists
+    app.beginUndoGroup("Change JSON Text");
     // Path to the JSON file
     var projectPath = app.project.file.path; // Get the path of the After Effects project
     var jsonFilePath = projectPath + "/(footage)/footage/json/input_template.json"; // Adjust the JSON file path
@@ -1718,6 +1616,7 @@ function changeJSONTEXT(inputText, jsonKey) {
         refreshCurrentFrame();
         //app.purge(PurgeTarget.IMAGE_CACHES);
     }
+    app.endUndoGroup();
 }
 
 
@@ -1742,6 +1641,7 @@ function rgbToHex(theColor) {
 
 
 function modifyJSONdata() {
+    app.beginUndoGroup("modify JSON");
     var compIndex = findCompIndex("__SETTINGS");
     if (compIndex) {
         // Get the colors from the color fill effect on the layer
@@ -1863,12 +1763,13 @@ function modifyJSONdata() {
             alert("debug_layer wasnt found")
         };
     }
+    app.endUndoGroup();
 }
 
 // Function to revert the JSON file
 function revertJson() {
+    app.beginUndoGroup("revert JSON");
     var myItem = getItem("input_template.json");
-
     // Check if myItem and myItem.mainSource are defined before attempting to reload
     if (myItem) {
         // JSON data to revert to
@@ -1931,53 +1832,53 @@ function revertJson() {
                     "color_dark": "#111219"
                 },
                 "gallery": [{
-                        "src": "gallery_01",
-                        "video": 1,
-                        "loop": 0,
-                        "muted": 0,
-                        "text": "Create Social Content, including Video, Image, Captions and Hashtags and shedule them in a fully automated way.",
-                        "font": "Poppins"
-                    },
-                    {
-                        "src": "gallery_02",
-                        "video": 1,
-                        "loop": 0,
-                        "muted": 0,
-                        "text": "",
-                        "font": "Poppins"
-                    },
-                    {
-                        "src": "gallery_03",
-                        "video": 1,
-                        "loop": 0,
-                        "muted": 0,
-                        "text": "",
-                        "font": "Poppins"
-                    },
-                    {
-                        "src": "gallery_04",
-                        "video": 1,
-                        "loop": 1,
-                        "muted": 0,
-                        "text": "",
-                        "font": "Poppins"
-                    },
-                    {
-                        "src": "",
-                        "video": 1,
-                        "loop": 0,
-                        "muted": 0,
-                        "text": "",
-                        "font": "Poppins"
-                    },
-                    {
-                        "src": "",
-                        "video": 0,
-                        "loop": 0,
-                        "muted": 0,
-                        "text": "",
-                        "font": "Poppins"
-                    }
+                    "src": "gallery_01",
+                    "video": 1,
+                    "loop": 0,
+                    "muted": 0,
+                    "text": "Create Social Content, including Video, Image, Captions and Hashtags and shedule them in a fully automated way.",
+                    "font": "Poppins"
+                },
+                {
+                    "src": "gallery_02",
+                    "video": 1,
+                    "loop": 0,
+                    "muted": 0,
+                    "text": "",
+                    "font": "Poppins"
+                },
+                {
+                    "src": "gallery_03",
+                    "video": 1,
+                    "loop": 0,
+                    "muted": 0,
+                    "text": "",
+                    "font": "Poppins"
+                },
+                {
+                    "src": "gallery_04",
+                    "video": 1,
+                    "loop": 1,
+                    "muted": 0,
+                    "text": "",
+                    "font": "Poppins"
+                },
+                {
+                    "src": "",
+                    "video": 1,
+                    "loop": 0,
+                    "muted": 0,
+                    "text": "",
+                    "font": "Poppins"
+                },
+                {
+                    "src": "",
+                    "video": 0,
+                    "loop": 0,
+                    "muted": 0,
+                    "text": "",
+                    "font": "Poppins"
+                }
                 ]
             }
         };
@@ -2005,6 +1906,7 @@ function revertJson() {
     } else {
         alert("JSON file doesnt exist");
     }
+    app.endUndoGroup();
 }
 
 /////////
@@ -2012,6 +1914,7 @@ function revertJson() {
 
 // Function to rename compositions in After Effects
 function renameCompositions(type, name) {
+    app.beginUndoGroup("Rename Compositions");
     var newName = type + name;
     // Custom names for the compositions
     var newNames = [newName, newName + "_square", newName + "_1920", "_" + name, "_" + name + "_square", "_" + name + "_1920"];
@@ -2030,14 +1933,17 @@ function renameCompositions(type, name) {
         } else {
             // Composition not found
             return false;
-           
+
         }
     }
+    app.endUndoGroup();
     return true;
+
 }
 
 // Function to replace compositions within a precomposition based on equal suffixes
 function replaceCompositionsBySuffix(newName) {
+    app.beginUndoGroup("Replace Comps by Suffix");
     // Replace these with the actual names of your precomposition and target compositions
     var precompName = "__SETTINGS";
     var comp1Suffix = "BPLATE";
@@ -2078,10 +1984,12 @@ function replaceCompositionsBySuffix(newName) {
 
     // Execute the "Time-Reverse Layer" command
     app.executeCommand(3695);
+    app.endUndoGroup();
 }
 
 // Function to replace a composition within a layer
 function replaceComposition(layer, suffix, newName) {
+    app.beginUndoGroup("Replace Comp");
     // Construct the new composition name based on the suffix
     var newCompName = layer.name.replace(suffix, newName);
 
@@ -2102,7 +2010,7 @@ function replaceComposition(layer, suffix, newName) {
         timeRemap.enabled = true;
         timeRemap.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
     }
-
+    app.endUndoGroup();
     return layer;
 }
 
@@ -2131,6 +2039,7 @@ function selectLayers(layers) {
 
 
 function CreateParentNull() {
+    app.beginUndoGroup("Create Parent Null");
     try {
         var comp = app.project.activeItem;
         if ((comp == null) || (!(comp instanceof CompItem))) {
@@ -2199,8 +2108,10 @@ function CreateParentNull() {
         for (var layer_index = 0; layer_index < goodLayers.length; layer_index++) {
             goodLayers[layer_index].parent = nullLayer;
         }
-    } catch (err) {alert(err.line.toString() + "\r" + err.toString());
-}
+    } catch (err) {
+        alert(err.line.toString() + "\r" + err.toString());
+    }
+    app.endUndoGroup();
 }
 
 function OnExit() {
@@ -2220,12 +2131,22 @@ function getLayerBaseType(layerObj) {
     return result;
 }
 
+function checkComp(inputComp) {
+    if ((inputComp === null) || (!(inputComp instanceof CompItem))) {
+        alert("No active composition");
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+
 
 ///
 
 addTooltipToButton(btn_createComps, "create all required compositions to start working on a new video template", 85);
 
-btn_createComps.onClick = function() {
+btn_createComps.onClick = function () {
     var compIndex = findCompIndex("__SETTINGS");
     if (compIndex) {
         var type = "comp_";
@@ -2240,47 +2161,47 @@ btn_createComps.onClick = function() {
                     // Save Project with New Name in Same Path
                     // Get the current project file
                     if (worked) {
-                    var currentProject = app.project.file;
+                        var currentProject = app.project.file;
 
-                    // Check if a project is open
-                    if (currentProject) {
-                        // Get the current project's path
-                        var projectPath = currentProject.parent.fsName;
+                        // Check if a project is open
+                        if (currentProject) {
+                            // Get the current project's path
+                            var projectPath = currentProject.parent.fsName;
 
-                        // Prompt the user for a new project namemusch
-                        var newProjectName = newName;
+                            // Prompt the user for a new project namemusch
+                            var newProjectName = newName;
 
-                        // Check if the user entered a name
-                        if (newProjectName) {
-                            // Create the new project file path
-                            var newProjectPath = projectPath + "/" + newProjectName + ".aep";
-                            var newProjectFile = new File(newProjectPath);
-                            // Save the project with the new name
-                            app.project.save(newProjectFile);
+                            // Check if the user entered a name
+                            if (newProjectName) {
+                                // Create the new project file path
+                                var newProjectPath = projectPath + "/" + newProjectName + ".aep";
+                                var newProjectFile = new File(newProjectPath);
+                                // Save the project with the new name
+                                app.project.save(newProjectFile);
 
-                            // Alert the user that the project has been saved
-                            alert("Project saved as: " + newProjectName);
-                            // Optional: Redraw the UI to reflect the changes
+                                // Alert the user that the project has been saved
+                                alert("Project saved as: " + newProjectName);
+                                // Optional: Redraw the UI to reflect the changes
+                            } else {
+                                // Alert the user that no name was entered
+                                alert("No project name entered. The project was not saved with a new name.");
+                            }
                         } else {
-                            // Alert the user that no name was entered
-                            alert("No project name entered. The project was not saved with a new name.");
+                            // Alert the user that no project is open
+                            alert("No project is currently open.");
                         }
                     } else {
-                        // Alert the user that no project is open
-                        alert("No project is currently open.");
-                    }
-                } else {
-                    alert("Invalid name! The name should only contain lowercase letters, numbers, and underscores (_) with no spaces, special characters, capital letters, or dashes.");
+                        alert("Invalid name! The name should only contain lowercase letters, numbers, and underscores (_) with no spaces, special characters, capital letters, or dashes.");
 
 
-                    if (result !== null) {
-                        askForName();
-                    } else {
-                        // User canceled the input, handle accordingly or exit
-                        alert("User canceled the input.");
+                        if (result !== null) {
+                            askForName();
+                        } else {
+                            // User canceled the input, handle accordingly or exit
+                            alert("User canceled the input.");
+                        }
                     }
-                }
-            };
+                };
             } else {
                 alert("No input provided. Please enter a valid name.");
             }
@@ -2291,10 +2212,9 @@ btn_createComps.onClick = function() {
 
 addTooltipToButton(btn_createIMGComps, "create all required compositions to start working on a new image template", 85);
 
-btn_createIMGComps.onClick = function() {
+btn_createIMGComps.onClick = function () {
     var compIndex = findCompIndex("__SETTINGS");
     if (compIndex) {
-
         var duration = 1 / 30; // Set the duration of the composition in seconds
         var type = "post_";
 
@@ -2306,43 +2226,43 @@ btn_createIMGComps.onClick = function() {
                     var newName = type + name;
                     var worked = createCompSet(duration, name, type);
                     if (worked) {
-                    replaceCompositionsBySuffix(newName);
-                    // Save Project with New Name in Same Path
-                    // Get the current project file
-                    var currentProject = app.project.file;
+                        replaceCompositionsBySuffix(newName);
+                        // Save Project with New Name in Same Path
+                        // Get the current project file
+                        var currentProject = app.project.file;
 
-                    // Check if a project is open
-                    if (currentProject) {
-                        // Get the current project's path
-                        var projectPath = currentProject.parent.fsName;
+                        // Check if a project is open
+                        if (currentProject) {
+                            // Get the current project's path
+                            var projectPath = currentProject.parent.fsName;
 
-                        // Prompt the user for a new project namemusch
-                        var newProjectName = newName;
+                            // Prompt the user for a new project namemusch
+                            var newProjectName = newName;
 
-                        // Check if the user entered a name
-                        if (newProjectName) {
-                            // change duration of settings comp
-                            var newDuration = 1 / app.project.item(compIndex).frameRate;
+                            // Check if the user entered a name
+                            if (newProjectName) {
+                                // change duration of settings comp
+                                var newDuration = 1 / app.project.item(compIndex).frameRate;
 
-                            app.project.item(compIndex).duration = newDuration;
-                            app.project.item(compIndex).workAreaDuration = newDuration;
-                            // Create the new project file path
-                            var newProjectPath = projectPath + "/" + newProjectName + ".aep";
-                            var newProjectFile = new File(newProjectPath);
-                            // Save the project with the new name
-                            app.project.save(newProjectFile);
+                                app.project.item(compIndex).duration = newDuration;
+                                app.project.item(compIndex).workAreaDuration = newDuration;
+                                // Create the new project file path
+                                var newProjectPath = projectPath + "/" + newProjectName + ".aep";
+                                var newProjectFile = new File(newProjectPath);
+                                // Save the project with the new name
+                                app.project.save(newProjectFile);
 
-                            // Alert the user that the project has been saved
-                            alert("Project saved as: " + newProjectName);
-                            // Optional: Redraw the UI to reflect the changes
+                                // Alert the user that the project has been saved
+                                alert("Project saved as: " + newProjectName);
+                                // Optional: Redraw the UI to reflect the changes
+                            } else {
+                                // Alert the user that no name was entered
+                                alert("No project name entered. The project was not saved with a new name.");
+                            }
                         } else {
-                            // Alert the user that no name was entered
-                            alert("No project name entered. The project was not saved with a new name.");
+                            // Alert the user that no project is open
+                            alert("No project is currently open.");
                         }
-                    } else {
-                        // Alert the user that no project is open
-                        alert("No project is currently open.");
-                    }
                     };
                 } else {
                     alert("Invalid name! The name should only contain lowercase letters, numbers, and underscores (_) with no spaces, special characters, capital letters, or dashes.");
@@ -2363,27 +2283,22 @@ btn_createIMGComps.onClick = function() {
     }
 };
 
-colorFill.onClick = function() {
+colorFill.onClick = function () {
     setColorFill();
 };
 
-scale2fill.onClick = function() {
+scale2fill.onClick = function () {
     scaleToFillComp();
 };
 
-btn_addElement.onClick = function() {
-    //var selectedIndex = elementsDropDown.selection.index;
-    //var result = elementsDropDown_result[selectedIndex];
-    //var sourceCompName = "_ELEMENTS";
-    //app.executeCommand(2004); // “Deselect All”
-    //copyLayerToActiveComp(sourceCompName, result);
+btn_addElement.onClick = function () {
     var compIndex = findCompIndex("_ELEMENTS");
     if (compIndex) {
         elementsDialog();
     };
 };
 
-btn_addGallery.onClick = function() {
+btn_addGallery.onClick = function () {
     var compIndex = findCompIndex("_ELEMENTS");
     if (compIndex) {
         var ratioIndex = ratio.selection.index;
@@ -2398,12 +2313,11 @@ btn_addGallery.onClick = function() {
 
 addTooltipToButton(fitView, "fit preview of active composition to fill the screen", 85);
 
-fitView.onClick = function() {
-    (function() {
+fitView.onClick = function () {
+    (function () {
         var zoom = 0.5;
         var activeComp = app.project.activeItem;
-
-        if (activeComp && activeComp instanceof CompItem) {
+        if (checkComp(activeComp)) {
             // Get the active composition's width and height
             var compWidth = activeComp.width;
             var compHeight = activeComp.height;
@@ -2431,34 +2345,34 @@ fitView.onClick = function() {
 
 addTooltipToButton(delExp, "delete all expressions of a selected layers transform-properties", 85);
 
-delExp.onClick = function() {
+delExp.onClick = function () {
     removeSpecificExpressions();
 };
 
 addTooltipToButton(openProjectInExplorer, "open Project Folder", 85);
 
-openProjectInExplorer.onClick = function() {
+openProjectInExplorer.onClick = function () {
     openProjectFolder();
 };
 
 addTooltipToButton(openFootageFolder, "open Footage Folder", 85);
 
-openFootageFolder.onClick = function() {
+openFootageFolder.onClick = function () {
     openSubfolderInProject("(footage)/Footage");
 };
 
 addTooltipToButton(openJSONFolder, "open JSON Folder", 85);
 
-openJSONFolder.onClick = function() {
+openJSONFolder.onClick = function () {
     openSubfolderInProject("(footage)/Footage/json");
 };
 
 
-btn_import.onClick = function() {
+btn_import.onClick = function () {
     importAndCopyFile();
 };
 
-btn_organize.onClick = function() {
+btn_organize.onClick = function () {
 
     if (app.project.file != null) {
         progressBarPopup();
@@ -2467,7 +2381,7 @@ btn_organize.onClick = function() {
     }
 };
 
-btn_cleanup.onClick = function() {
+btn_cleanup.onClick = function () {
     if (app.project.file != null) {
         (function buildUI(thisObj) {
             var compCleaner = thisObj instanceof Panel ? thisObj : new Window("palette", "Clean Up Project");
@@ -2535,12 +2449,12 @@ btn_cleanup.onClick = function() {
             button1.text = "Clean Up";
             button1.preferredSize.width = 200;
             button1.alignment = ["left", "center"];
-            button1.onClick = function() {
+            button1.onClick = function () {
                 compCleaner.close();
                 clean(checkbox1.value, checkbox2.value, checkbox3.value, checkbox4.value, checkbox5.value, radiobutton2.value);
             };
             compCleaner.layout.resize();
-            compCleaner.onResizing = compCleaner.onResize = function() {
+            compCleaner.onResizing = compCleaner.onResize = function () {
                 this.layout.resize();
             };
             if (compCleaner instanceof Window) {
@@ -2554,13 +2468,13 @@ btn_cleanup.onClick = function() {
 
 
 
-btn_openAndSelect.onClick = function() {
+btn_openAndSelect.onClick = function () {
     openCompInViewer("__SETTINGS", "debug_layer");
     //app.executeCommand(2163);//EffectControls
     //app.executeCommand(3734);//EffectControls
 };
 
-btn_title.onClick = function() {
+btn_title.onClick = function () {
     var myItem = getItem("input_template.json");
     if (myItem && myItem.mainSource) {
         var text = edittext1.text;
@@ -2581,7 +2495,7 @@ btn_title.onClick = function() {
     }
 };
 
-btn_subtext.onClick = function() {
+btn_subtext.onClick = function () {
     var myItem = getItem("input_template.json");
     if (myItem && myItem.mainSource) {
         var text = edittext1.text;
@@ -2602,7 +2516,7 @@ btn_subtext.onClick = function() {
     }
 };
 
-btn_source.onClick = function() {
+btn_source.onClick = function () {
     var myItem = getItem("input_template.json");
     if (myItem && myItem.mainSource) {
         var text = edittext1.text;
@@ -2623,7 +2537,7 @@ btn_source.onClick = function() {
     }
 };
 
-btn_c2a.onClick = function() {
+btn_c2a.onClick = function () {
     var myItem = getItem("input_template.json");
     if (myItem && myItem.mainSource) {
         var text = edittext1.text;
@@ -2644,7 +2558,7 @@ btn_c2a.onClick = function() {
     }
 };
 
-btn_c2alink.onClick = function() {
+btn_c2alink.onClick = function () {
     var myItem = getItem("input_template.json");
     if (myItem && myItem.mainSource) {
         var text = edittext1.text;
@@ -2666,15 +2580,15 @@ btn_c2alink.onClick = function() {
 };
 
 
-btn_debug_colors.onClick = function() {
+btn_debug_colors.onClick = function () {
     modifyJSONdata();
 };
 
-btn_revert_json.onClick = function() {
+btn_revert_json.onClick = function () {
     revertJson();
 };
 
-btn_reload_json.onClick = function() {
+btn_reload_json.onClick = function () {
     var myItem = getItem("input_template.json");
     if (myItem && myItem.mainSource) {
         myItem.mainSource.reload();
@@ -2685,25 +2599,37 @@ btn_reload_json.onClick = function() {
 };
 
 
-textLayer.onClick = function() {
-    var comp = app.project.activeItem;
-    // Check if a composition is active
-    if (comp != null && comp instanceof CompItem) {
-        app.executeCommand(2836); //TEXT
-    } else {
-        alert("No active composition.");
+textLayer.onClick = function () {
+    app.beginUndoGroup("New Text");
+    var activeComp = app.project.activeItem;
+    if (checkComp(activeComp)) {
+        sourceText = "Hey! I'm a Placeholder-Text.";
+        var textLayer = activeComp.layers.addText(sourceText);
+        var sourceText = textLayer.property("Source Text").value;
+        sourceText.fontSize = 72;
+        sourceText.font = "Verdana-Bold";
+        textLayer.property("Source Text").setValue(sourceText);
+        textLayer.adjustmentLayer = false;
+
+        var myItem = getItem("input_template.json");
+        if (myItem && myItem.mainSource) {
+            setColorFill();
+        } else {
+            var fillSolid = textLayer.property("ADBE Effect Parade").addProperty("ADBE Fill");
+            fillSolid.property("ADBE Fill-0002").setValue([1, 1, 1]);
+        }
     }
-};
-solidLayer.onClick = function() {
-    var comp = app.project.activeItem;
-    // Check if a composition is active
-    if (comp != null && comp instanceof CompItem) {
-        app.executeCommand(2038); //SOLID
-    } else {
-        alert("No active composition.");
+    else {
+        return;
     }
+    app.endUndoGroup();
 };
-shapeLayer.onClick = function() {
+
+solidLayer.onClick = function () {
+    createSolid("SOLID");
+};
+
+shapeLayer.onClick = function () {
     var comp = app.project.activeItem;
     // Check if a composition is active
     if (comp != null && comp instanceof CompItem) {
@@ -2723,85 +2649,48 @@ shapeLayer.onClick = function() {
         alert("No active composition.");
     }
 };
-adjustmentsLayer.onClick = function() {
-    var comp = app.project.activeItem;
-    // Check if a composition is active
-    if (comp != null && comp instanceof CompItem) {
-        app.executeCommand(2279); //ADJUSTMENT
-    } else {
-        alert("No active composition.");
+
+adjustmentsLayer.onClick = function () {
+    app.beginUndoGroup("New Adj.");
+    var activeComp = app.project.activeItem;
+    if (checkComp(activeComp)) {
+        if (layerName == "default") {
+            adjName = "Adjustment Layer";
+        }
+        else {
+            adjName = layerName;
+        }
+        var newSolid = activeComp.layers.addSolid([1, 1, 1], adjName, activeComp.width, activeComp.height, 1);
+        newSolid.adjustmentLayer = true;
     }
-};
-nullLayer.onClick = function() {
-    var comp = app.project.activeItem;
-    // Check if a composition is active
-    if (comp != null && comp instanceof CompItem) {
-        app.executeCommand(2767); //NULL
-    } else {
-        alert("No active composition.");
+    else {
+        return;
     }
+    app.endUndoGroup();
 };
-parent2null.onClick = function() {
+nullLayer.onClick = function () {
+    app.beginUndoGroup("New Null");
+    var activeComp = app.project.activeItem;
+    if (checkComp(activeComp)) {
+        var newNull = activeComp.layers.addNull();
+        if (layerName == "default") {
+
+        }
+        else {
+            newNull.name = layerName;
+        }
+    }
+    else {
+        return;
+    }
+    app.endUndoGroup();
+};
+
+parent2null.onClick = function () {
     app.beginUndoGroup("Create");
     CreateParentNull();
     app.endUndoGroup();
 };
-
-function GoodBoyNinjaColorPicker(startValue) {
-    if (!startValue || startValue.length != 3) {
-        startValue = [1, 1, 1]; // default value
-    }
-
-    var comp = app.project.activeItem;
-    if (!comp || !(comp instanceof CompItem)) {
-        alert("No comp is selected");
-        return null;
-    }
-    //Store the layers which are selected
-    var selectedLayers = []
-    for (var i = 1; i <= comp.numLayers; i++) {
-        if (comp.layer(i).selected) selectedLayers.push(i)
-    }
-
-    // add a temp null;
-    var newNull = comp.layers.addNull();
-    var newColorControl = newNull.property("ADBE Effect Parade").addProperty("ADBE Color Control");
-    var theColorProp = newColorControl.property("ADBE Color Control-0001");
-
-    // shy and turn eyeball off
-    var origShyCondition = comp.hideShyLayers;
-    if (origShyCondition == false) comp.hideShyLayers = true;
-    newNull.shy = true;
-    newNull.enabled = false;
-
-    // set the value given by the function arguments
-    theColorProp.setValue(startValue);
-
-    // prepare to execute
-    var editValueID = 2240
-    theColorProp.selected = true;
-    app.executeCommand(editValueID);
-
-    // harvest the result
-    var result = rgbToHex(theColorProp.value);
-
-    // remove the null
-    if (newNull) {
-        //newNull.remove();
-    }
-
-    // get shy condition back to original
-    comp.hideShyLayers = origShyCondition;
-
-    // restore Layer Selection
-    for (var i = 0; i < selectedLayers.length; i++) {
-        comp.layer(selectedLayers[i]).selected = true;
-    }
-
-    // if the user click cancel, the function will return the start value but as RGBA. In that case, return null
-    var startValueInRgba = [startValue[0], startValue[1], startValue[2], 1];
-    return (result.toString() == startValueInRgba.toString()) ? null : result;
-}
 
 // Initiates color picker, returns RGB array
 function colorPicker() {
@@ -2817,10 +2706,6 @@ function colorPicker() {
 
 addTooltipToButton(purgeAll, "purge DiscCache", 85);
 
-purgeAll.onClick = function() {
+purgeAll.onClick = function () {
     app.purge(PurgeTarget.IMAGE_CACHES);
-    //app.purge(PurgeTarget.ALL_CACHES);
-    //result = alert(GoodBoyNinjaColorPicker([1, 1, 1]));
-    //colorPicker();
-    //getThingName();
 };
