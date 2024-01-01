@@ -2704,7 +2704,7 @@ function colorPicker() {
     return [r, g, b]
 } // End colorPicker() function
 
-addTooltipToButton(purgeAll, "purge DiscCache", 85);
+addTooltipToButton(purgeAll, "purge ImageCache", 85);
 
 purgeAll.onClick = function () {
     app.purge(PurgeTarget.IMAGE_CACHES);
