@@ -100,6 +100,9 @@ function showMessage(text1, text2, settingName, valueName) {
 }
 function RectangleWizardInit() {
   try {
+
+    var myItem = getItem("input_template.json");
+
     function colorPicker(startValue) {
       var comp = activateCompViewer() ? app.project.activeItem : null;
       if ((!comp) || (!(comp instanceof CompItem))) {
@@ -417,26 +420,28 @@ function RectangleWizardInit() {
       return result;
     })();
     var palette = new Window("palette");
-    palette.text = "Rectangle Wizard";
+    palette.preferredSize.width = 340;
+    palette.text = "Shape Creator";
     palette.orientation = "column";
-    palette.alignChildren = ["center", "top"];
+    palette.alignChildren = ["fill", "fill"];
     palette.spacing = 8;
     palette.margins = 10;
     var pnlTransform = palette.add("panel", undefined, undefined, { name: "pnlTransform" });
     pnlTransform.text = "Transform";
-    pnlTransform.preferredSize.width = 120;
+    pnlTransform.preferredSize.width = 300;
+    pnlTransform.minimumSize.width = 260;
     pnlTransform.orientation = "row";
-    pnlTransform.alignChildren = ["left", "top"];
+    pnlTransform.alignChildren = ["fill", "fill"];
     pnlTransform.spacing = 6;
     pnlTransform.margins = [10, 17, 0, 10];
     var group1 = pnlTransform.add("group", undefined, { name: "group1" });
     group1.orientation = "row";
-    group1.alignChildren = ["left", "center"];
+    group1.alignChildren = ["fill", "fill"];
     group1.spacing = 10;
     group1.margins = [0, 6, 0, 0];
     var group2 = group1.add("group", undefined, { name: "group2" });
     group2.orientation = "column";
-    group2.alignChildren = ["center", "center"];
+    group2.alignChildren = ["fill", "fill"];
     group2.spacing = 10;
     group2.margins = 0;
     var statictext1 = group2.add("statictext", undefined, undefined, { name: "statictext1" });
@@ -645,24 +650,32 @@ function RectangleWizardInit() {
       updateAnchor(this, hightlight09);
       $._setAnchor = "br";
     });
+
+
+
     var pnlAppearance = palette.add("panel", undefined, undefined, { name: "pnlAppearance" });
     pnlAppearance.text = "Appearance";
-    pnlAppearance.preferredSize.width = 173;
+    pnlAppearance.preferredSize.width = 300;
+    pnlAppearance.minimumSize.width = 260;
     pnlAppearance.orientation = "column";
     pnlAppearance.alignChildren = ["left", "top"];
     pnlAppearance.spacing = 4;
     pnlAppearance.margins = [16, 18, 10, 10];
+
+
     var group4 = pnlAppearance.add("group", undefined, { name: "group4" });
     group4.orientation = "row";
     group4.alignChildren = ["left", "center"];
     group4.spacing = 0;
     group4.margins = 0;
+
     var group5 = group4.add("group", undefined, { name: "group5" });
     group5.orientation = "row";
     group5.alignChildren = ["left", "center"];
     group5.spacing = 10;
     group5.margins = [0, 4, 3, 0];
     var chkFill = group5.add("checkbox", undefined, undefined, { name: "chkFill" });
+
     var group6 = group4.add("group", undefined, { name: "group6" });
     group6.orientation = "row";
     group6.alignChildren = ["left", "center"];
@@ -673,6 +686,27 @@ function RectangleWizardInit() {
     btnColor1.preferredSize.height = 16;
     var statictext3 = group6.add("statictext", undefined, undefined, { name: "statictext3" });
     statictext3.text = "Fill";
+
+    var group40 = pnlAppearance.add("group", undefined, { name: "group40" });
+    group40.orientation = "row";
+    group40.alignChildren = ["left", "center"];
+    group40.spacing = 0;
+    group40.margins = 0;
+    var group50 = group40.add("group", undefined, { name: "group50" });
+    group50.orientation = "row";
+    group50.alignChildren = ["left", "center"];
+    group50.spacing = 10;
+    group50.margins = [0, 4, 3, 0];
+
+    var chkCustomFill = group50.add("checkbox", undefined, undefined, { name: "chkCustomFill" });
+    var group60 = group40.add("group", undefined, { name: "group60" });
+    group60.orientation = "row";
+    group60.alignChildren = ["left", "center"];
+    group60.spacing = 6;
+    group60.margins = 0;
+    var statictext30 = group60.add("statictext", undefined, undefined, { name: "statictext30" });
+    statictext30.text = "ADD JSON COLOR FILL?";
+
     var group7 = pnlAppearance.add("group", undefined, { name: "group7" });
     group7.orientation = "row";
     group7.alignChildren = ["left", "center"];
@@ -704,6 +738,7 @@ function RectangleWizardInit() {
     editStroke.text = "10";
     editStroke.preferredSize.width = 26;
     editStroke.preferredSize.height = 22;
+
     var arrowUpGroup3 = group7.add("group", undefined, { name: "arrowButtons1" });
     arrowUpGroup3.orientation = "column";
     arrowUpGroup3.alignChildren = ["left", "center"];
@@ -736,14 +771,22 @@ function RectangleWizardInit() {
     group11.margins = 0;
     var group12 = palette.add("group", undefined, { name: "group12" });
     group12.orientation = "column";
-    group12.alignChildren = ["left", "center"];
+    group12.alignChildren = ["fill", "center"];
     group12.spacing = 4;
     group12.margins = [0, 4, 0, 0];
     var chkCont = group12.add("checkbox", undefined, undefined, { name: "chkCont" });
     chkCont.text = "Add Dynamic Controller";
     var btnCreate = group12.add("button", undefined, undefined, { name: "btnCreate" });
     btnCreate.text = "Create";
-    btnCreate.preferredSize.width = 140;
+    btnCreate.preferredSize.width = 180;
+
+
+    if (!myItem || !myItem.mainSource) {
+      // Hide the ScriptUI panel
+      group40.maximumSize.height = 0;
+      group40.hide();
+    }
+
     palette.layout.layout(true);
     palette.layout.resize();
     palette.onResizing = palette.onResize = function () {
@@ -812,10 +855,19 @@ function RectangleWizardInit() {
     btnCreate.onClick = function () {
       if (chkCont.value) {
         createRectControl(parseInt(editWidth.text), parseInt(editHeight.text), chkFill.value, fillColor, chkStroke.value, strokeColor, editStroke.text);
-        setColorFill();
+        if (chkCustomFill.value) {
+          if (myItem && myItem.mainSource) {
+            setColorFill();
+          }
+        }
       }
       else {
         createRect(parseInt(editWidth.text), parseInt(editHeight.text), chkFill.value, fillColor, chkStroke.value, strokeColor, editStroke.text);
+        if (chkCustomFill.value) {
+          if (myItem && myItem.mainSource) {
+            setColorFill();
+          }
+        }
       }
     };
     btn1ColorUpdate(fillColor);
