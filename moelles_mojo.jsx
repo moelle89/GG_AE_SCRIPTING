@@ -857,7 +857,7 @@ function showCustomTooltip(text, coordinates, width, invert, multiline) {
     panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]); // RGB color [R, G, B] 
 
     var staticText = panel.add("statictext", undefined, text, { multiline: multiline });
-    if (multiline){staticText.maximumSize.width = 208;}
+    if (multiline){staticText.maximumSize.width = 232;}
     // Customize text color
     staticText.graphics.foregroundColor = staticText.graphics.newPen(staticText.graphics.PenType.SOLID_COLOR, [0.73, 0.84, 0.97, 0.85], 1);
     //staticText.graphics.foregroundColor = staticText.graphics.newPen(staticText.graphics.PenType.SOLID_COLOR, [1, 1, 1]); // RGB color [R, G, B]
@@ -2291,13 +2291,19 @@ btn_createIMGComps.onClick = function () {
     }
 };
 
+addTooltipToButton(colorFill, "add a fill effect with color-choices to selected layer", 85, false,false);
+
 colorFill.onClick = function () {
     setColorFill();
 };
 
+addTooltipToButton(scale2fill, "scale a layer to fill the composition while keeping proper ratio", 85, false, true);
+
 scale2fill.onClick = function () {
     scaleToFillComp();
 };
+
+addTooltipToButton(btn_addElement, "add pre-configurated content element", 100, false, false);
 
 btn_addElement.onClick = function () {
     var compIndex = findCompIndex("_ELEMENTS");
@@ -2305,6 +2311,8 @@ btn_addElement.onClick = function () {
         elementsDialog();
     };
 };
+
+addTooltipToButton(btn_addGallery, "add pre-configurated gallery-elment", 85, false, false);
 
 btn_addGallery.onClick = function () {
     var compIndex = findCompIndex("_ELEMENTS");
@@ -2375,6 +2383,7 @@ openJSONFolder.onClick = function () {
     openSubfolderInProject("(footage)/Footage/json");
 };
 
+addTooltipToButton(btn_import, "import files and copy them into the project's footage folder", 85, false, true);
 
 btn_import.onClick = function () {
     importAndCopyFile();
@@ -2388,6 +2397,8 @@ btn_organize.onClick = function () {
         alert("Please open a project or save the current project first.");
     }
 };
+
+addTooltipToButton(btn_cleanup, "options to remove unused files or clear cache, to optimize the project", 85, false, true);
 
 btn_cleanup.onClick = function () {
     if (app.project.file != null) {
