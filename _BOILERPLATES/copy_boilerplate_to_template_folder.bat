@@ -2,7 +2,7 @@
 setlocal
 
 REM Set the paths
-set "sourceFolder=%~dp0_BOILERPLATES"
+set "sourceFolder=%~dp0"
 set "destinationFolder=C:\data_driven_ae_template-1"
 set "fileName=___boilerplate_23.aep"
 set "fullSourcePath=%sourceFolder%\%fileName%"
