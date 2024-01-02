@@ -262,10 +262,17 @@ groupAP2.spacing = 10;
 groupAP2.margins = 3;
 
 var apText = groupAP2.add("statictext", undefined, undefined, {
-    name: "apText"
+    name: "apText", multiline: true
 });
-apText.text = "Lock Anchor Point:";
-apText.preferredSize.height = 20;
+apText.text = "change the Anchor Point of selected layer(s)";
+apText.preferredSize.height = 40;
+apText.preferredSize.width = 135;
+
+var apText2 = groupAP2.add("statictext", undefined, undefined, {
+    name: "apText2"
+});
+apText2.text = "lock Anchor Point:";
+apText2.preferredSize.height = 20;
 
 
 var w = tab_ap;
@@ -331,8 +338,9 @@ w.im = 0;
 apCheck = groupAP2.add("checkbox", undefined, undefined, {
     name: "apCheck"
 });
-apCheck.helpTip = "Check if you want to set the anchor point for elements, that change its size. Just like text layers for example.";
 apCheck.text = "set expression";
+
+addTooltipToButton(apCheck, "check if you want to set the anchor point for elements, that change its size. Just like text layers for example.", 60, false, true);
 
 // tab_fx
 // ====
@@ -529,7 +537,9 @@ editTextTxt.text = "Add a custom text and apply it to an element";
 editTextTxt.preferredSize.height = 20;
 
 var edittext1 = edit_text_wrapper.add('edittext {properties: {name: "edittext1", multiline: false, scrollable: false, borderless: false}}');
+// Set the initial placeholder text
 edittext1.preferredSize.height = 30;
+
 edittext1.alignment = ["fill", "top"];
 
 
@@ -610,13 +620,13 @@ tools_wrapper_r.alignment = ["fill", "top"];
 var statictext2 = tools_txt_wrapper.add("statictext", undefined, undefined, {
     name: "statictext2"
 });
-statictext2.text = "click edit colors first (if you dont see the effect";
+statictext2.text = "click edit colors first;"
 statictext2.preferredSize.height = 20;
 
 var statictext3 = tools_txt_wrapper.add("statictext", undefined, undefined, {
     name: "statictext3"
 });
-statictext3.text = "controls, hit F3)";
+statictext3.text = "(if you dont see the effect controls, hit F3)";
 statictext3.preferredSize.height = 20;
 
 var statictext4 = tools_txt_wrapper.add("statictext", undefined, undefined, {
@@ -634,7 +644,6 @@ var btn_openAndSelect = tools_wrapper_l.add("iconbutton", undefined, File.decode
 btn_openAndSelect.alignment = ["left", "top"];
 btn_openAndSelect.preferredSize.height = 32;
 btn_openAndSelect.preferredSize.width = 130;
-btn_openAndSelect.helpTip = "Clicking this button will bring up the __SETTINGS comp and select the layer with the color-edit effects. If you dont see the color-edit effect, click F3 on your keyboard";
 
 var applyem_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00k%00%00%00%1E%08%06%00%00%00%2BP%C3%A0~%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%03%C2%A1IDATh%C2%81%C3%AD%C2%99%C2%BFk%14A%14%C3%87%3FQc%20ls%C2%88p%206G*%11%0C%C2%9C%C2%95%C2%A4%11O%C3%94BA%C3%8C!%0A%C3%86.AQ%C2%B0%C2%BB%C3%BC%09%C2%B1%12%04%C2%8B%24%C2%ADA0%C2%A61%16%099S%C2%A5L%C3%80%1Fm%C2%BC%C3%BAlrM%10%12!%C3%8Fb%C3%9E%C2%B8%C2%93%C3%89-%C2%B7%7B%C3%AE%25.%C3%99%0F%0C%C2%BB3%C3%AF%C3%8D%C3%AC%5C%C2%BE%3Bo%C3%9EN%C3%BAD%C2%84%C2%9Clp%C3%A2%C2%A8'%C2%90%13%C2%9F%5C%C2%AC%0C%C2%91%C2%8B%C2%95!r%C2%B12D.V%C2%86%C3%88%C3%85%C3%8A%10%C2%B9X%19%C2%A2Wb%0D%00%2F%C2%80k%3D%1A%C3%BFXr%C2%AA%07c%0E%02%C2%9F%C2%80%C2%ABZ%7F%04%C2%BC%C3%AD%C3%81s%C2%8E%1D%7D)%C2%9F%60%C2%9C%06%3E%027%C2%9C%C2%B6%3D%C3%A0%1C%C3%90L%C3%B3A%5D0%0E%14%C2%80%0D%C2%A0%1E%C2%B3O%C2%91%C2%A3%C2%9F%C3%B7_%C3%92%0C%C2%83%C2%A7%C2%81%0F%C3%AC%17%0A%60%07%C3%98%C2%8D%C3%91%C2%BF%06%C2%88%C2%96%C3%A9%14%C3%A7e%C2%A9%02S%409%C2%A6%7F%11%C2%98%C3%95%C3%AB%7FA%12%C2%B1%C3%8E%00W%22lV%C2%A8%C3%9B%5E%C3%BBo%C3%A0%3E%C2%B0%15c%C3%BCq%C3%AF%C2%BE%C2%90%60n%C2%BD%C2%A0%09l%3A%C3%B5%00%23%5C%10%C3%A1%1Fx6%C3%AB%C2%9F%1Aq%C3%B7%C2%AC%C2%B3%C3%80*p%01%C2%B8%C2%8B%09u%C2%96~%C2%A2%C2%85%1A%05%16c%C2%8C_%06J%40%03hi%C2%BD%0A%C3%8C8%C3%B6)L%C3%B8*%60VaK%C3%AD%C2%93%C3%AA%C2%B3%C2%A2mu%C3%B5-%00%C3%B3%C3%80%C2%84%C2%B6%C2%BB%C3%94%C2%80%0A%26%24Nzmu%C3%A0%250%C2%84%11%C2%AB%C2%A9%C2%BF%C3%A3%1E%C2%B0%C2%AD%C2%BE%C3%8B%C3%BA%C2%9B%03%C3%AD%C3%97%04%C2%86%C2%B5%C2%BE%06%C3%BC%C3%84D%C2%98%00%C3%B8%C2%A2%C3%A3%C3%BD%3B%22%C3%92%C2%A9%0C%C2%88%C3%88w%09%C3%99%15%C2%91%3Bj%3B)%22sr%10%C3%97'N%C2%99%C3%96~%C3%93%22R%C3%93%C3%BBu%C3%87%5Eq%C3%86%C3%BE!%22%2BN%7D%5C%7D%2C%5Bj%C3%9Fr%C3%86%C3%84%C3%A9S%13%C2%91%C2%B2%C3%A3_P%C3%BB%C2%BA%C3%96%C3%8B%C3%9E%C3%9C%C2%86E%C3%A4%C2%9D%C2%88%0Ci%C2%BD%C2%A8%C3%B5%11%C3%A7~TD%02%C3%B5Y%C3%94g%04ZfE%C3%A4f%C2%82%C2%BFEd%C2%89%13%06%C3%8F%03%17%C2%9D%C2%BA%5DI%C2%AF1o%C3%B3C%C3%8F%7F%0Fx%C3%80%C3%BE%C3%95%C3%97%C2%89%C2%AA%5E%C3%AB%C2%98%C3%95%00%C3%A1j%C3%B3%C2%B9%0C%5C'%7C%5B%2B%C2%9E%7DB%C3%AD%13%C3%9E%C3%98.%1BZ%C2%AC%C2%BD%C2%A4%C3%8Fs%C3%9B-%C2%970%C2%ABc%C2%9B0%C2%AC%C2%ADi%C2%BBeI%C3%ADv%25.k%7D%5B%C3%BB%C2%A6B%C2%9C0%C3%98%C3%80%C2%8427%C3%8C%C3%B5%03%C3%8F%C3%9B%C3%B8%C3%AE%01c%C3%80B%C2%829%C3%98%C3%BD%C2%A9%C2%A5%C3%85%C2%86%C3%83%C2%92%C3%9A%26%3D%C3%BF%C2%96w%C3%B5%C3%B7%C2%B6Nv%C3%8B%0C%26%C2%91%C2%A98%3E%C3%B3m%C3%BC%02L%C2%88%1B%C3%B2%C3%9A%C2%97%C3%B5jEq%C3%A9I%06%19G%C2%AC%3DL%C3%8Cn%C2%B7%2F%C3%B9~c%C3%80%5C%C3%829%C3%98%C2%95Q%C3%80%C2%ACT%C2%97*%07%C3%85%C2%B2%C3%82Z%C3%BC%C3%BD(J%3C%C2%9Fy%C3%8C%C3%9EV%C3%B1%C3%9A%7C%C2%B61%2B%C3%A9%C2%8D%C3%93%C3%A6%0Bw(%C3%84%C3%8D%06w1%C2%82-E%C3%98%C2%BB%15%C2%AAD%18%C2%A6l%C2%B2%60%C2%8Bo%C2%B7%C2%BC%C3%87l%C3%AA5%C2%AD%C3%BBakJmSZ%C2%8F%C3%BA%C2%A6ja%C3%84)%C3%A83%C3%AA%C2%98%15%C3%AD%C3%B3%15%18a%7F%C2%A6%C3%B7%18%C2%B3%C3%9A%0E%C2%95%24'%18%C2%BB%C2%98%C2%8C%C3%88%3D%C2%9D%C2%B0%3C%23%C2%B9P%10%0A%C3%91%20%C3%9Cc%5C%5B%19%C3%B3%C3%A6%C3%BBo%C2%BC%2B%C2%84%C2%9Fi5%1C%7B%C2%83%C2%83%2B%C3%93e%C2%86%C3%B0%C2%93%C2%A1%C3%9D%C2%AA%02%C2%B3%C3%A7%2C%60%C2%BE%C2%B9l%C2%B8%C3%9B%C3%84D%C2%9A%C3%83%C3%BD%06%C3%AB%22%2B%19%14%C2%91U'%C2%9Bz%C2%92F%C2%A6%C3%93%C2%A1%C2%B8%C3%99%20%22R%C3%92%C3%A2%C3%BAX*%C2%9A%C3%A1%C3%B9Y%5D%C2%BBR%C3%95%3E%5B%12f%C2%85Q%C2%A5%C2%A8Y%5D%C3%91k%0F%12%C3%96%C2%BB.%C3%9D%C2%9C%0D%C3%BE%02n%01O%C2%81o%C3%80%C3%A7T%C3%9F%C2%9Ex%C2%B4%0BW.-%0E%C2%86G%C2%97%0A%C3%BB%C3%B7%C3%87I%C2%A2%C3%B76K%C2%93%C3%B6%C3%9B%C2%80%C2%9F%5Ct%C2%AAwM%C2%B7%07%C2%B9%3B%C3%80%C2%AB%C2%B4%26%11%C2%83N%C3%A1%0C%C3%87%C3%9EIH%7F%C2%BC%24g%C2%85GJ%C3%9A%07%C2%B99%3D%24%C3%BF%C3%A7c%C2%86%C3%88%C3%85%C3%8A%10%C2%B9X%19%22%17%2BC%C3%A4be%C2%88%5C%C2%AC%0C%C3%B1%07%C3%9B%C2%9D%5E%C2%82%C3%BB%C3%8727%00%00%00%00IEND%C2%AEB%60%C2%82";
 
@@ -645,7 +654,6 @@ var btn_debug_colors = tools_wrapper_l.add("iconbutton", undefined, File.decode(
 btn_debug_colors.alignment = ["left", "top"];
 btn_debug_colors.preferredSize.height = 32;
 btn_debug_colors.preferredSize.width = 130;
-btn_debug_colors.helpTip = "Apply the colors, defined on the color-edit effects, to be used globally within the whole project";
 
 var refresh_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%14%08%06%00%00%00%C2%97%C2%B5%C3%BD%C2%83%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01%C2%A2IDAT8%C2%8D%C2%A5%C2%94%C2%BFK%C2%95a%14%C3%87%3F%C3%97%C3%BB%03%C2%B7%26%23J%C3%87%C2%86%20P%C3%94%C2%88h%10%C2%82%C2%B6%C3%84%C2%A5%C2%A9%C2%A9!%C2%87%C2%A0%C3%95ppt%0C%C3%9A%5B%2C%08%C3%811%C2%A1%C2%A1h%C2%A8%C3%99%C2%BF%40%08Q%C2%AC)!%2C(%2F%C2%A8%C2%9F%C2%86%7B%C3%AE%C3%A5%C3%BAp%C2%9F%C3%87%C3%AB%C3%9B%C2%81%C2%87%C3%B3p%C2%9Es%C2%BE%C3%9F%C3%B7%3D%C2%BFj*%15%C2%A5%06%C3%94%C2%81%C3%A3%C2%92ScH%C2%B0%06p%1D%18%07%C2%9A%C3%80%01%C2%B0%00%2C%01%C3%B3%C3%80%C2%87l%C2%A4Z%3A%C2%93%C3%AAk%C3%B5%C2%A7y%C3%B9%C2%A3%C3%9E%C3%89a%C3%942)j%01%2F%C2%80g%C2%91%C2%8A%13%60%0B%C3%98%C2%8E%C2%94L%013%7D%C3%BE%C2%87%C3%804%C2%B03%C3%8C%1F%C2%B4%C3%94O%C3%B1uG%C3%AA%C2%AA%3A%C2%96%C3%B8%C2%BC%C2%8C%C3%B7%C3%9F%C3%A1%3B%C3%88%07u%20%C3%81%C2%AB%08%C3%BE%C2%A1%C3%8Ef~%7DB%C2%BD%C2%A9%C2%8E%24%C3%B6kj%C2%B3Dp%2B%C3%80O%C3%95%C2%B9s%C3%AA%C2%93%C2%9E%7BQ%C2%8F%C3%A5%12%C3%81Z%10%C2%AC_%10%1Cu1b%C2%BF%C2%95%08%C3%B6%C3%82%C3%A9A%05%C2%82K%C3%AAI%C3%847%C2%BA%C3%B6%C2%91%C2%A4%C3%A6%13%C2%A1%C2%B7%0B3%C2%91%C2%93C%C3%A0%7B%C3%9C%C3%AB%5DcJ%C3%90%C2%9D%C3%8AV%05%02%C3%A8%0C!%40%C2%AF%C3%B7S%C2%82%C2%AF%C2%A1oW%00%1F%07%C2%AE%C3%84%C2%BD%C2%B7%3ER%C2%82%C3%8D%C3%90%C2%8F*%10%3C%0D%C2%BD%05%C2%9C%C3%B6%C2%ACI%C2%A1%C2%AE%C2%AA%C2%BB%C3%AA%C3%BD%0B%16xFmG%C2%81%1F%C2%96%C2%BA(%3D5%C3%B5%C2%86%C3%BAX%7D%C2%92%C3%B1%C2%99%C2%B33%C2%94%C2%AA%1B%C3%A9%7B%0E%C2%B8%C2%A5nzv%C3%89%7D%C3%AE%7Bo%C2%A8w%C3%95%C2%B7v%C2%86R%C3%B5%C2%A3%3A%3A%2C%01%C3%AA%1B%C3%8F%C3%8A%C2%B1%C2%BA%1F)%3C%C3%AA%C2%B3%C3%BFUW%C3%94%C3%BA%20%C2%9C%12A%5D%7D%17%20m%C3%B5%C2%A0%0F%C3%B4%C2%97%C3%BAE%7D%C2%AE%5E.%C2%A59%C2%B7%C2%AE%C2%BB2%0A%C2%BC%C2%A7%C2%B3%C2%86%17%C2%A3%C3%AB%C2%9A%40%7B%C3%98%C3%96%3A%C2%8F%C3%A0%C2%BF%C3%A5%1F%C2%9Fe%7B%C2%AD%C2%9Dr%08d%00%00%00%00IEND%C2%AEB%60%C2%82";
 
@@ -661,7 +669,6 @@ btn_reload_json.preferredSize.height = 32;
 btn_reload_json.minimumSize.width = 32;
 btn_reload_json.preferredSize.width = 100;
 btn_reload_json.text = "REFRESH ";
-btn_reload_json.helpTip = "reload JSON, if edits wont show up";
 
 var btn_revert_json = tools_wrapper_r.add("iconbutton", undefined, File.decode(revert_imgString), {
     name: "btn_revert_json",
@@ -672,7 +679,6 @@ btn_revert_json.preferredSize.height = 32;
 btn_revert_json.minimumSize.width = 32;
 btn_revert_json.preferredSize.width = 100;
 btn_revert_json.text = "REVERT ";
-btn_revert_json.helpTip = "restore the Default JSON";
 
 // TPANEL1
 // =======
@@ -835,9 +841,10 @@ function getCurrentMousePosition(event, width) {
     return win.orientation == "column" ? [(event.screenX - event.clientX) + customWidth + cSpacing, (event.screenY - event.clientY) - buttonsSize] : [event.screenX - event.clientX, (event.screenY - event.clientY) + buttonsSize + cSpacing];
 }
 
-function showCustomTooltip(text, coordinates, width) {
+function showCustomTooltip(text, coordinates, width, invert, multiline) {
+    if (multiline) { multiline = true } else { multiline = false};
     var customWidth; var negativX;
-    if (width) { customWidth = width * 0.75; negativX = width * 1.5 } else { customWidth = buttonsSize; negativX = 0 };
+    if (width) { customWidth = width * 0.75; if (invert) { negativX = width * 3.75} else {negativX = width * 1.5} } else { customWidth = buttonsSize; negativX = 0 };
     var tooltipWin = new Window("palette", "tooltip", undefined, { borderless: true, closeButton: false, maximizeButton: false, minimizeButton: false, resizeable: false, title: "tooltip" });
     tooltipWin.margins = 0;
     tooltipWin.spacing = 0;
@@ -845,10 +852,12 @@ function showCustomTooltip(text, coordinates, width) {
     var panel = tooltipWin.add("panel", undefined, "");
     panel.margins = 6;
     panel.spacing = 0;
+    //panel.maximumSize.width = 170;
     // Customize background color
     panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]); // RGB color [R, G, B] 
 
-    var staticText = panel.add("statictext", undefined, text);
+    var staticText = panel.add("statictext", undefined, text, { multiline: multiline });
+    if (multiline){staticText.maximumSize.width = 208;}
     // Customize text color
     staticText.graphics.foregroundColor = staticText.graphics.newPen(staticText.graphics.PenType.SOLID_COLOR, [0.73, 0.84, 0.97, 0.85], 1);
     //staticText.graphics.foregroundColor = staticText.graphics.newPen(staticText.graphics.PenType.SOLID_COLOR, [1, 1, 1]); // RGB color [R, G, B]
@@ -861,10 +870,10 @@ function showCustomTooltip(text, coordinates, width) {
 }
 
 
-function addTooltipToButton(button, tooltipText, width) {
+function addTooltipToButton(button, tooltipText, width, invert, multiline) {
     button.addEventListener("mouseover", function (e) {
         var coordinates = getCurrentMousePosition(e, width);
-        tooltipWin = showCustomTooltip(tooltipText, coordinates, width);
+        tooltipWin = showCustomTooltip(tooltipText, coordinates, width, invert, multiline);
     });
 
     button.addEventListener("mouseout", function (e) {
@@ -897,7 +906,7 @@ var tooltipTextArray = [
 
 // Add tooltip functionality to each button
 for (var i = 0; i < buttonArray.length; i++) {
-    addTooltipToButton(buttonArray[i], tooltipTextArray[i]);
+    addTooltipToButton(buttonArray[i], tooltipTextArray[i],80,true);
 }
 
 ///
@@ -2143,8 +2152,7 @@ function checkComp(inputComp) {
 
 
 ///
-
-addTooltipToButton(btn_createComps, "create all required compositions to start working on a new video template", 85);
+addTooltipToButton(btn_createComps, "create all required compositions work on a new video template", 85, false, true);
 
 btn_createComps.onClick = function () {
     var compIndex = findCompIndex("__SETTINGS");
@@ -2210,7 +2218,7 @@ btn_createComps.onClick = function () {
     }
 };
 
-addTooltipToButton(btn_createIMGComps, "create all required compositions to start working on a new image template", 85);
+addTooltipToButton(btn_createIMGComps, "create all required compositions to work on a new image template", 85, false, true);
 
 btn_createIMGComps.onClick = function () {
     var compIndex = findCompIndex("__SETTINGS");
@@ -2466,13 +2474,15 @@ btn_cleanup.onClick = function () {
     }
 };
 
-
+addTooltipToButton(btn_openAndSelect, "bring up the layer-effect controls (debug_SETTINGS), to edit the colors", 85, false, true);
 
 btn_openAndSelect.onClick = function () {
     openCompInViewer("__SETTINGS", "debug_layer");
     //app.executeCommand(2163);//EffectControls
     //app.executeCommand(3734);//EffectControls
 };
+
+addTooltipToButton(btn_title, "use your text as title", 85);
 
 btn_title.onClick = function () {
     var myItem = getItem("input_template.json");
@@ -2495,6 +2505,8 @@ btn_title.onClick = function () {
     }
 };
 
+addTooltipToButton(btn_subtext, "use your text as subtext", 85);
+
 btn_subtext.onClick = function () {
     var myItem = getItem("input_template.json");
     if (myItem && myItem.mainSource) {
@@ -2515,6 +2527,8 @@ btn_subtext.onClick = function () {
         alert("JSON file doesnt exist");
     }
 };
+
+addTooltipToButton(btn_source, "use your text as source", 85);
 
 btn_source.onClick = function () {
     var myItem = getItem("input_template.json");
@@ -2537,6 +2551,8 @@ btn_source.onClick = function () {
     }
 };
 
+addTooltipToButton(btn_c2a, "use your text as call to action", 85);
+
 btn_c2a.onClick = function () {
     var myItem = getItem("input_template.json");
     if (myItem && myItem.mainSource) {
@@ -2557,6 +2573,8 @@ btn_c2a.onClick = function () {
         alert("JSON file doesnt exist");
     }
 };
+
+addTooltipToButton(btn_c2alink, "use your text as call to action link", 85);
 
 btn_c2alink.onClick = function () {
     var myItem = getItem("input_template.json");
@@ -2579,14 +2597,19 @@ btn_c2alink.onClick = function () {
     }
 };
 
+addTooltipToButton(btn_debug_colors, "apply the colors, defined on the color-edit effects, to be used globally within the whole project", 85, false, true);
 
 btn_debug_colors.onClick = function () {
     modifyJSONdata();
 };
 
+addTooltipToButton(btn_revert_json, "restore the Default JSON", 85);
+
 btn_revert_json.onClick = function () {
     revertJson();
 };
+
+addTooltipToButton(btn_reload_json, "reload JSON, if edits wont show up", 85);
 
 btn_reload_json.onClick = function () {
     var myItem = getItem("input_template.json");
