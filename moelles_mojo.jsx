@@ -25,7 +25,7 @@ function showWindow(myWindow) {
         myWindow.layout.resize();
     }
 }
-//Paste code here
+//Paste code
 // WIN
 // ===
 var win = createDockableUI(this);
