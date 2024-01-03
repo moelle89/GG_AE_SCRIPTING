@@ -54,16 +54,22 @@ if not %errorlevel% leq 7 (
     echo Folder "%aeFootageFolder%" copied to "%aeDestinationFolder%" with silent overwrite.
 )
 
-REM Set the paths for ScriptUI Panel
+@echo off
 REM Set the paths for ScriptUI Panel
 set "scriptSearchDir=%APPDATA%\Adobe\After Effects"
 set "scriptTargetFolder=Scripts\ScriptUI Panels"
 set "scriptSearchString=moelles_mojo"
 set "scriptSourceFile=moelles_mojo.jsxbin"
 set "scriptSourceFolder=_scripts"
-
+set "rootFolder=%~dp0"
 REM Assuming the script is one level above the "_BUILDS" folder
-set "buildsFolder=%~dp0_BUILDS"
+set "buildsFolder=%rootFolder%\_BUILDS"
+
+REM Check if the target folder exists, create it if needed
+if not exist "%scriptSearchDir%\%scriptTargetFolder%" (
+    echo Creating folder: %scriptTargetFolder%
+    mkdir "%scriptSearchDir%\%scriptTargetFolder%"
+)
 
 for /d %%i in ("%scriptSearchDir%\*") do (
     if exist "%%i\%scriptTargetFolder%" (
@@ -92,6 +98,5 @@ for /d %%i in ("%scriptSearchDir%\*") do (
         )
     )
 )
-
 pause
 exit /b 0
