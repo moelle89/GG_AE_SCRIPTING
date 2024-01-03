@@ -15,8 +15,7 @@
 // the first is Ignore Masks. It passes either true or false. The second two are the 
 // custom X and Y points. You can see that only the last line uses the custom points.
 apCheck.onClick = function () {
-    if (apCheck.value) {
-
+    if (apCheck.value) { 
         w.g.tg.tl.onClick = function () { app.beginUndoGroup("Move Anchor - Top Left"); setAnchorPoint(1); app.endUndoGroup(); }
         w.g.tg.tm.onClick = function () { app.beginUndoGroup("Move Anchor - Top Middle"); setAnchorPoint(2); app.endUndoGroup(); }
         w.g.tg.tr.onClick = function () { app.beginUndoGroup("Move Anchor - Top Right"); setAnchorPoint(3); app.endUndoGroup(); }
