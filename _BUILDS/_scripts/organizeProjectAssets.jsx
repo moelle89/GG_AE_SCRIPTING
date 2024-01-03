@@ -12,7 +12,7 @@ for (var t = 0; t < 3; t++) {
 if (itemType == typeOptions[t]) { 
 itemAry = new Array();
 proj = app.project;
-itemTotal = proj.numItems;
+itemTotal = proj.numItems; 
 for (var i = 1; i <= itemTotal; i++) {
 curItem = proj.item(i);
 if (curItem.typeName == itemType) { 

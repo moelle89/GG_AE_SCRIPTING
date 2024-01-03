@@ -8,7 +8,7 @@ function activateCompViewer() {
    var A = (app.activeViewer) && (app.activeViewer.type === ViewerType.VIEWER_COMPOSITION);
    if (A) {
       app.activeViewer.setActive();
-   }
+   } 
    return A;
 }
 function createResourceFile(filename, binaryString) {

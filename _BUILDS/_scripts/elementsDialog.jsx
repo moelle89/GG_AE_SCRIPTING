@@ -15,7 +15,7 @@ function elementsDialog() {
   // Copy-paste your ELEMENTS content
   var ELEMENTS = secondaryDialog.add('group', undefined, { name: 'ELEMENTS' });
   ELEMENTS.orientation = 'column';
-  ELEMENTS.alignChildren = ['fill', 'top'];
+  ELEMENTS.alignChildren = ['fill', 'top']; 
   ELEMENTS.spacing = 10;
   ELEMENTS.margins = 0;
 
