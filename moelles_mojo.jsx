@@ -785,6 +785,7 @@ try {
     #include _scripts/projectCleanup.jsx;
 
     #include _scripts/moveAnchorPoint.jsx;
+
 } catch (e) {
 }
 
