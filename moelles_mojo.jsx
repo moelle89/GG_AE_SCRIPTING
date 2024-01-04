@@ -2582,6 +2582,7 @@ addTooltipToButton(btn_openAndSelect, "bring up the layer-effect controls (debug
 
 btn_openAndSelect.onClick = function () {
     openCompInViewer("__SETTINGS", "debug_layer");
+    app.executeCommand(3734);//EffectControls
     //app.executeCommand(2163);//EffectControls
     //app.executeCommand(3734);//EffectControls
 };
