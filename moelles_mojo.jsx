@@ -368,6 +368,15 @@ groupFx.spacing = 10;
 groupFx.margins = 3;
 groupFx.alignment = ["fill", "top"];
 
+var groupFx2 = tab_fx.add("group", undefined, {
+    name: "groupFx2"
+});
+groupFx2.orientation = "row";
+groupFx2.alignChildren = ["left", "top"];
+groupFx2.spacing = 10;
+groupFx2.margins = 3;
+groupFx2.alignment = ["fill", "top"];
+
 var colorFill_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%60%00%00%00%1E%08%06%00%00%00%C3%93%C2%B0%1B%C2%89%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%03%20IDATh%C2%81%C3%AD%C2%99Oh%13A%14%C2%87%C2%BF%C2%AA%20%C2%85%C2%88%C3%A6%C2%A2E%3D%C2%B5%C2%82%20%C2%82HP%C3%B0%26%C3%92J%C3%B1%C3%A4%25%07%0B%C3%BE%C2%B9%18%C3%91%1E%C3%84%C2%8B)%C2%8A'%05%C3%A3A%C2%BCW%10%2B%C2%88%C3%9Az%C2%B7%18%C2%85%22%22%C2%B54%C2%B7%C2%82%1E%C2%B4%C2%87%C2%82%12%11%2Cb%C3%90%C2%AA%C3%A8%C3%B30o%C3%89t%C2%BB%C3%99%C3%ACd%23%0B%C3%8D~%C3%B0%C2%98a%C3%9E%C3%9B%C2%B7%C2%93%C3%B7%C3%9B%C2%99%C3%99%24%5D%22BJr%C2%ACIz%02%C2%9DN*%40%C3%82%C2%A4%02%24L*%40%C3%82%C2%A4%02%24L*%40%C3%82%C3%84%15%C3%A0%25%C3%B0%16%C3%98%C3%9E%C2%86%C2%B9t%24q%05%C3%B8%01%C3%AC%04%C2%A6%C2%81%C2%BE%C3%B8%C3%93%C3%A9%3C%C3%A2%0A%C3%B0B%C3%9Bm%C3%80%1B%60_%C3%8C%7C%1DGW%C2%8Co%C3%82%23%C3%80u%C3%A0%2F%C3%B0%1BX%0F%7C%03v%03%0Bm%C2%99%C2%9D%1BEm'%C2%80%C3%B9%C2%98%C2%B92j~j%C3%9A%0E%02%C2%8F%C2%81%1Dj%C2%93%3A%C3%B6N-2%C3%ABZ%C2%9C%C2%A0%5D%C3%BC%13%C2%98%C2%950%0Dl%05%5E%01%07%1D'%C2%92%C3%87%140g%C2%8D%C2%8D%C3%AA%7D%16%23%C3%A6(i%5B!%C2%BE%00%C2%B7%C2%80%C2%9E%C2%80%C3%B1I%60%0C%C3%98C%5D%00o%C3%AB%C3%B5%C3%9A%C3%BF.%C3%80e%C3%A0%1A%C3%B5%C3%A2%C3%9F%C3%97%C3%B1%5D%C3%80S%60%3F0Et%11%C3%B2%C3%80%C2%B8%C3%B6%C3%A7%C3%95r%40A%C3%9B%01%C2%A2%C2%8B%C3%90N%C3%860%2F%1965%C2%B5%2B%C3%AD%C2%BA%C2%89%C3%AB%19P%22%C2%B8%C3%B8%00_%C2%81%C3%83%C3%80%0C%C3%A6L%C2%98%026G%C3%8C%09f%C3%AB%C3%A8%C3%83%14%7C%40%C3%87r%18%C2%81%C2%BC%C3%BE8%20j%C2%B3%C2%96%2F%C2%88f%C3%B1e%C3%B5%17%C3%94_%C3%B4%5D_%03%C2%AA%3E%C2%ABa%C2%B6%C2%A6%C2%AB%11%3EW%24%5CV%C3%80%25%C3%AA%C2%93%C3%BC%09%0Ca%C3%9E%C2%80f1%C3%8B%C3%BE%03u%11%C2%9E%00%07%C2%80%C3%A3%C3%80%C3%8D%C2%90%C2%9CY%C2%A0W%C3%BB%C2%A3%C3%96x%058%C2%A3%C3%BEym%C3%8B%C3%9A%C2%8EbVD%01S%C3%80%01%C3%A0Y%40%C3%9Ef%C3%B1%C3%BD%1A%C3%9BH%C3%84%0C%2B%C2%B7%C2%A1j%C2%83%C3%B1%C2%96q%11%60%C3%84%C3%AAw%03G%C3%94%3C%3Ea%0AW%C2%A1%C3%BE%C3%A4%2F5%C3%89%C2%99%0B%C3%B1%C3%99%C2%82%141%C3%85%C3%B4%C2%84%C2%B1%C3%87%0B%C2%AC%14%C2%A0%C3%A0%10%7F%C2%83%C3%A5%C2%9F%C3%8D%C3%A3%C2%A4%C2%9A%C3%8D%C3%A9%C2%90%C3%B9%C2%B6%C2%84%C2%8B%00%C2%BF%C2%9A%C3%B8%C2%B7%C2%B0%5C%C2%949%C3%A0%5E%C2%93k*!%3E%C2%BB%C2%88%1E%C2%8B%01%C3%BDlH%C2%8E(%C3%B1~%C3%B1%3C%C2%82%C3%8E%C2%80*m%7C%C3%BA%C3%81%C3%AD%0C%C2%B8%C3%A8%10%3B%07%1C%C3%82%C2%88%11%C3%B6%05m%C2%91%C3%BA%1BK%C3%81%1A%C3%8Fb%C3%8E%C2%86%12%C3%B5-*%2C%C2%87%0BQ%C3%A3%C2%83%C3%8E%C2%80%C2%B6%C3%A3%22%C3%80%1D%C3%A0%5C%C2%84%C2%B8%19%C3%8C%1B%C3%90%5E%C3%A0!%C3%B0%08X%1B%12%C3%AFm5y%C3%8CyR%C3%966%C2%8B)%C3%96%C2%84%1A%C2%98%7D%C2%BB%C2%84%C3%99J%C2%BC%C3%B3(%C3%A8%09v%C2%8DO%0E%11q%C2%B5%C2%B3%C3%92%C2%98%C3%97%22%C2%B2QD%C2%BAEd%C3%81%1A%3F%C3%9F%24gQD%C3%9E%C3%BBr%C2%95E%24g%C3%85%C3%A4%7D1_%C3%B4%3A%C3%8F%C3%AF%C3%91%C3%9Fb%C2%BCm%C2%B7Ed%C2%B0%C3%81%5C%7B%C3%94%C2%8F%C3%86%0Ck%7F8%C3%A4%C2%9A%C2%86%C3%96%C2%8A%00%C2%88%C3%88)%11%C3%B9%C3%A3%2B%C2%98W%7CD%C3%A4%C2%98%C3%8F%C3%B71b%C3%9El%C2%83%C2%82%C3%98%C3%96%2B%C3%8B%C2%85if%C2%AE%C3%B1%C2%88H%C3%86%C3%81%C2%9F%C2%89xM%5B%05%40D%C2%86D%C3%A4%C2%BB%16%C3%B8%C2%B9U%C3%BC%C2%A0U%C2%B2%14%C3%A3%3E%C2%AB%C3%9A%C3%A2%C3%BC%16%04%C3%A6%C3%B7%C2%9FM%C2%98WP%C2%9B%0D%C3%80%5D%C3%A0(%C3%B0%19%C2%B8%00%3C%C2%88s%C2%A3%C3%95J%5C%01Rb%C2%92%C3%BE%23%C2%960%C2%A9%00%09%C2%93%0A%C2%900%C2%A9%00%09%C2%93%0A%C2%900%C2%A9%00%09%C3%B3%0F%C3%BA%0E3SR%C3%88%C2%BB%C3%A6%00%00%00%00IEND%C2%AEB%60%C2%82";
 
 var colorFill = groupFx.add("iconbutton", undefined, File.decode(colorFill_imgString), {
@@ -387,6 +396,16 @@ var scale2fill = groupFx.add("iconbutton", undefined, File.decode(scale2fill_img
 scale2fill.preferredSize.height = 30;
 scale2fill.preferredSize.width = 110;
 scale2fill.alignment = ["left", "top"];
+
+var addAnimbtn_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00n%00%00%00%1E%08%06%00%00%00%C3%8Dy%2B%3A%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%03%C2%88IDATh%C2%81%C3%AD%C2%9AM%C2%88%14G%14%C3%87%7F%C3%8F%C2%B8f%C2%8D%24%C2%A6%03%011%07e%C3%97%C2%AB%10X%25%60%C3%A2!dn~%40%C2%8C%1B%C3%90%C2%8B%07q%C2%BC%04C.1%10%C3%B0%26%24G!%C2%81%C2%B0x%C3%881%3A%C3%87%24%20%C2%BA%07%0F%0A%22%C2%B3%175q%C2%83%C2%A8%C2%A8%C2%B9%C3%85%C2%B8%C3%B1%20%1E%C3%8C%C3%A6%C2%9FCU9%C2%B5%C2%BD%C3%93%C2%B3L%7F%C2%B0%C3%9B%C3%9A%3Fh%C2%BA%C3%BA%C3%95%C3%ABW%C2%8F%C3%B9%C3%8F%C2%AB%C3%AA%C3%AA%19%C2%93DC%C3%BDX%C2%B5%C3%9C%094%C3%A4%C2%A3%11%C2%AE%C2%A64%C3%82%C3%95%C2%94F%C2%B8%C2%9A%C3%92%08WS%0A%09gf%00%C3%A6%C2%9AF%19%07%C2%B0%17%C3%A8%02%C3%B3%C3%80%13%C3%A0%2C%C2%B0%C3%99%C3%B75x%C2%AC%C3%A0v%C3%A0C%60%2B%C2%B0%16%C3%B7A%C3%BF%01%5C1%C2%B3%C2%BF%C3%B2%04%C2%93t%188%C3%9D%C2%A7%C3%AB!%C2%B0%0D%C2%B8%C2%973%C3%8F%17%C2%8E%C2%A2%C3%82%1D%C3%81%C2%89%C2%B6%16%18%C3%B5%C3%A75%C3%8093%3B%3FL%20I%C3%AB%C2%81%C3%BB%C3%80%1B%19.%3F%01%07%C3%B2%C2%A7%C3%BAbQt%C2%8D%C3%BB3%23%C3%A6%3EI%C2%BB%C2%86%C2%8C%C3%B5%01%C3%99%C2%A2%01%C3%AC%192%5E%C3%99%24%C3%8B%3C%C3%BE%02V%17%C2%BC%C3%BF%3C0%0B%C2%8C%01%C3%9Bq%15%17%C3%98%2F%C3%A9%C2%BA%C2%99%C3%9DO%C3%9F%24i%03%C2%B0%03%C3%98%00%5C5%C2%B3.%C2%83E%03x%C2%AD%40%C2%9Em%C2%9F%23%C3%80%14pg%C3%88%C3%BB%C2%BB%C3%80%04%C3%B0%160W%20%C2%8F%C3%92(%24%C2%9C%C2%99%C3%8D%03w%C2%81%C2%BB%C2%92%C2%BA%C3%80Q%60c%C3%A8%06%3E%06N%05%7FI%C2%A3%C3%80W%C3%80AzS%C3%AC%C2%88%C2%A4%C2%B7%C2%81kK%0Cw%C2%A3%40%C2%AA%C3%87%C3%A9%09%C2%97%C3%B8%3C%C2%87%C2%A1%03L%C2%B3BD%C2%83%C3%A2%15%C3%B7%1C3%7B%2C%C3%A9%0C%C3%B0Ed%C3%9E.i%C3%84%C3%8C%C2%9EIz%15%C3%B8%0Ex%0F'j%C3%A0%15%60%C3%84%C3%8C~%C2%93%C3%B43%C3%99S%C3%A279S%0B%C3%956%C2%83%C2%AB%C2%9AV%C2%AA%3F%C3%B1%C2%B6i%7F%C2%9E%C3%B0%C3%B6%C2%B82gX8UNz%5B%C2%88%0F%C3%B0mt%C2%9D%C3%B8%C3%BEN%C3%8E%C2%9C%C2%97FR%C3%AE%23%23%C3%9Eg%C2%92~%C2%90%C3%B4%C2%A3%C2%A43%C2%92%C3%86%C2%BD%C3%BDKIW%25%5D%C2%97tK%C3%92%03I%0F%25%5D%C2%96%C2%B4%C3%8A%C3%BB%C2%BC)iZ%0By%26%C3%A9%C3%AB%02%C2%B9%C2%9E%C3%B5q%C3%9A%C2%92%C2%BAQ%3B%C3%B4Oz%C3%9B%C2%85%C3%94%C2%B8%C2%8F%24%25%C3%9E'%C3%9C%C2%97%C3%B8%23%C3%B8%3F%C2%8A%C3%BCoG~%C2%81x%C2%9CR%C2%8F*6%C3%A03%C2%A9%C3%ABM%C2%92%C3%9E%05vG%C2%B6Y%C3%9C7s%C3%82%C3%8C%C3%9E7%C2%B3%C3%BF%00%C3%8C%C3%AC%1F3k%01%3B%C2%81c%C2%B8%C2%A7%C3%96q3%3B%C2%993%C2%971%5Cu%C3%8C%C3%A1*(T%C3%80d%1F%C3%9F%09%C3%A0S%C3%9C%C2%B6%C3%A3%0E%C2%BDJ%C3%8C%C2%A2%C2%85%C2%AB%C2%B2%C3%A0%3F%C3%A6%C3%8F%C3%A3~%C2%AC%10%C2%B3%12J%C2%9B*%23~O%5D%C2%BF%0E%7C%12%5D%C3%9F%04%0E%C2%99%C3%99%C3%93%C2%AC%00fv%09%C2%B8TB.A%C2%A0i%7F%C3%AE%C3%A0%C2%A6%C3%9C%16%C2%BD%0F%C2%9A%C2%A8%C2%AF%13%C3%B9%C2%B7%19%C3%8C%0C%C2%BD%C3%A91%C2%AC%7D%1D%1F3%C3%9C_%C2%99p%C2%A5W%C2%9C%C2%99%3D%06%C3%BE%C2%8EL%1F%01%5B%7C%5B%C3%80%C2%89A%C2%A2%C2%95L%10.%C3%81%09%C3%96%C2%A6'V%C2%BA%C3%AA%C3%A62%C3%9A%2B%C2%92**%0E%C3%9C%C2%93%C3%A6%3B%C2%BE%C2%BD)%C2%B2_6%C2%B3%C3%99%C2%8A%C3%86L%13%3Fh%C2%B4X%3C%C3%AD%C2%B5%C3%A9UL%C3%AD%C2%A8%C3%AA%25%C3%B3%C2%83%0C%C3%BB%C2%AF%15%C2%8D%C3%97%C2%8F0%C3%95M%C3%A1%C3%B6_%C3%A1%18%C3%87U%C3%94%18%C2%83%C3%97%C2%B0%15MU%C3%82-%C3%9At%03%C3%BF%02W*%1A%2FM%C3%BC%601%C2%85%13*%1Ca%0D%C2%82%C2%A5%C3%97%C2%B1%15K%C2%A1w%C2%95Yo%C3%AC%25%C2%AD%03%C2%BE%C2%A7%C3%B7%0Es%14%C2%985%C2%B3%C3%8Fs%0F%C3%A6%C3%A2%0E%C3%A3%1E%C3%B6%5DY%C3%ABU%12%C3%B5%25%7D%C3%BC%C3%92%C2%B6%22%C3%BE%C2%A5SI%C3%85%C2%99%C3%99%13%16O%C2%97%17%C2%AB%18k%00%C2%A1%C3%82%06%C3%B5%C3%B7kg%C3%99%C2%8A%C3%B8%C2%97N%C2%95%3F%C2%A4%C2%9E%C3%86%C2%BD%C2%84%C2%9E%C3%87%C2%89%C3%B6K%C2%85c%C2%BDt%14%C3%BDY%C2%A7a%C2%99h%C3%BE%C2%BAPS%1A%C3%A1jJ%23%5CMi%C2%84%C2%AB)%C2%8Dp5%C2%A5%11%C2%AE%C2%A6%C3%BC%0F%02%C2%9C%19%C3%A3%5BSW%C3%95%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+
+var addAnimbtn = groupFx2.add("iconbutton", undefined, File.decode(addAnimbtn_imgString), {
+    name: "addAnimbtn",
+    style: "button"
+});
+addAnimbtn.preferredSize.height = 30;
+addAnimbtn.preferredSize.width = 110;
+addAnimbtn.alignment = ["left", "top"];
 
 // tab_files
 // ====
@@ -1404,6 +1423,77 @@ function scaleToFillComp() {
     app.endUndoGroup();
 }
 
+// ADD IN OUT ANIM + MARKERS
+
+function addANIM() {
+    if (app.project.activeItem == null) {
+        alert("Please open a composition.");
+        return false;
+    }
+    var comp = app.project.activeItem;
+    var selectedLayers = comp.selectedLayers;
+    var numSelectedLayers = selectedLayers.length;
+    if (numSelectedLayers < 1) {
+        alert("Please select a layer.");
+        return false;
+    }
+
+    app.beginUndoGroup("My Process");
+    for (var j = 0; j < numSelectedLayers; j++) {
+        var myLayer = selectedLayers[j];
+        var inFrames = 20;
+        var outFrames = 20;
+        var interIn = "ease";
+        var interOut = "ease";
+        var markerProp = myLayer.property("Marker");
+        for (var i = markerProp.numKeys; i >= 1; i--) {
+            var marker = markerProp.keyValue(i);
+            if ((marker.comment) && (marker.comment.indexOf("Fade") === 0)) {
+                markerProp.removeKey(i);
+            }
+        }
+        var markS = "markS = 0; \n";
+        var markSdur = "markSdur = 0; \n";
+        var markE = "markE = thisLayer.outPoint; \n";
+        var markEdur = "markEdur = 0; \n";
+
+        var markerStart = new MarkerValue("ANIM IN");
+        markerStart.duration = inFrames / Math.round(comp.frameRate);
+        markerStart.time = myLayer.inPoint;
+        myLayer.property("Marker").setValueAtTime(markerStart.time, markerStart);
+        markS = "markS = marker.key(\"" + markerStart.comment + "\").time; \n";
+        markSdur = "markSdur = marker.key(\"" + markerStart.comment + "\").duration; \n";
+
+        var markerEnd = new MarkerValue("ANIM OUT");
+        markerEnd.duration = outFrames / Math.round(comp.frameRate);
+        markerEnd.time = myLayer.outPoint - markerEnd.duration;
+        myLayer.property("Marker").setValueAtTime(markerEnd.time, markerEnd);
+        markE = "markE = marker.key(\"" + markerEnd.comment + "\").time; \n";
+        markEdur = "markEdur = marker.key(\"" + markerEnd.comment + "\").duration-framesToTime(1); \n";
+
+        var intro = markS + markSdur + markE + markEdur + "outLayer = markE + markEdur; \n" + "stopT = markSdur + markS; \n" + "startT = markE; \n";
+        var lineStart = interIn + "(time, markS, markS + markSdur, 0, 100);";
+        var lineEnd = interOut + "(time, markE, markE + markEdur, 100, 0);";
+ 
+        opening = lineStart;
+        closing = lineEnd;
+
+        var theExpression = "";
+
+        theExpression = intro + "if (time < markS){ 0; } else if (time <= stopT) {" + opening + "} else if (time > stopT & time <= startT) { 100; } else if (time > startT & time <= markE + markEdur){" + closing + "} else { 0; }";
+
+        // Add Slider Control effect
+        var sliderControl = myLayer.Effects.addProperty("ADBE Slider Control");
+        sliderControl.name = "ANIM"; // You can change the name if needed
+
+        // Apply theExpression to the slider control value
+        sliderControl.property("ADBE Slider Control-0001").expression = theExpression;
+    }
+    app.endUndoGroup();
+}
+
+
+
 // Function to add colorFill via script instead of preset file
 function setColorFill() {
     app.beginUndoGroup("setColorFill");
@@ -2298,6 +2388,12 @@ addTooltipToButton(scale2fill, "scale a layer to fill the composition while keep
 
 scale2fill.onClick = function () {
     scaleToFillComp();
+};
+
+addTooltipToButton(addAnimbtn, "add IN- & OUT-Animation Rig. You can change the Markers Position and Size, to modify the animation. Use the value of the Slider-Effect on anything you want to animate", 85, false, true);
+
+addAnimbtn.onClick = function () {
+    addANIM();
 };
 
 addTooltipToButton(btn_addElement, "add pre-configurated content element", 100, false, false);
