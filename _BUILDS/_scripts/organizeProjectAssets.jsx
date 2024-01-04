@@ -43,7 +43,7 @@ myDefaults.myPlaceholderObjects[myDefaults.myPlaceholderObjects.length] = curIte
 break ;
 }
 }
-}
+} 
 return myDefaults.myPlaceholderObjects;
 }
 function grabMyFolderObjects() {

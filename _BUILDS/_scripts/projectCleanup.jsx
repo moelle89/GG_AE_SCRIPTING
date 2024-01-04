@@ -46,7 +46,7 @@ function getActiveComp() {
             comp = X;
          }
       }
-   }
+   } 
    else {
       comp = activateCompViewer() ? app.project.activeItem : null;
    }

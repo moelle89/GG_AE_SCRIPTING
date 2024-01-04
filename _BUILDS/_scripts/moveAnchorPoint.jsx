@@ -44,7 +44,7 @@ apCheck.onClick = function () {
 
     };
 };
-
+ 
 apCheck.onClick();
 
 // Function to remove expressions from specific properties of a layer (Position, Scale, Opacity, Anchor Point, Rotation)

@@ -1,7 +1,7 @@
 /*
 * RectangleWizard
 */
-function RectangleWizardffx() {
+function RectangleWizardffx() { 
   var pseudoEffectData = {
     name: "__Rectangle-Wizard", 
     matchName: "Pseudo/0.9369414961687756",

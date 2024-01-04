@@ -31,7 +31,7 @@ function elementsDialog() {
   var grp_logo_text = grp_logo_info.add("statictext", undefined, undefined, { name: "grp_logo_text" });
   grp_logo_text.text = "Use V2 for more custom-options"; 
 
-
+ 
   // GRP_LOGO
   var grp_logo = ELEMENTS.add('group', undefined, { name: 'grp_logo' });
   grp_logo.orientation = 'row';
