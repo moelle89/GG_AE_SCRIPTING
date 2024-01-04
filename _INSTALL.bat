@@ -1,0 +1,128 @@
+@echo off
+setlocal enabledelayedexpansion
+
+REM Set the paths for AE template
+set "aeSourceFolder=%~dp0_BOILERPLATES"
+set "aeDestinationFolder=C:\data_driven_ae_template-1"
+set "aeFileName=___boilerplate_23.aep"
+set "fullAeSourcePath=%aeSourceFolder%\%aeFileName%"
+set "fullAeDestinationPath=%aeDestinationFolder%\%aeFileName%"
+set "aeFootageFolder=(Footage)"
+set "fullAeFootageSource=%aeSourceFolder%\%aeFootageFolder%"
+set "fullAeFootageDestination=%aeDestinationFolder%\%aeFootageFolder%"
+
+REM Check if the AE source file exists
+if not exist "%fullAeSourcePath%" (
+    echo Source file "%aeFileName%" not found in "%aeSourceFolder%".
+    pause
+    exit /b 1
+)
+
+REM Check if the AE footage folder exists in the source directory
+if not exist "%fullAeFootageSource%" (
+    echo Source folder "%aeFootageFolder%" not found in "%aeSourceFolder%".
+    pause
+    exit /b 1
+)
+
+REM Check if the destination folder for AE exists, create it if not
+if not exist "%aeDestinationFolder%" (
+    mkdir "%aeDestinationFolder%"
+    echo Destination folder "%aeDestinationFolder%" created.
+)
+
+REM Copy the AE file with silent overwrite
+copy /y "%fullAeSourcePath%" "%fullAeDestinationPath%" >nul
+
+if errorlevel 1 (
+    echo Failed to copy "%aeFileName%" to "%aeDestinationFolder%".
+    pause
+    exit /b 1
+) else (
+    echo File "%aeFileName%" copied to "%aeDestinationFolder%" with silent overwrite.
+)
+
+REM Copy the "(Footage)" folder and its contents for AE with quiet mode using robocopy
+robocopy "%fullAeFootageSource%" "%fullAeFootageDestination%" /s /e /np /njh /njs /ndl /nc /ns /nc /ndl /np /nfl /ndl /mt:8 >nul
+
+rem Check if robocopy reported any failures for AE
+if not %errorlevel% leq 7 (
+    echo Failed to copy "%aeFootageFolder%" folder to "%aeDestinationFolder%".
+    pause
+    exit /b 1
+) else (
+    echo Folder "%aeFootageFolder%" copied to "%aeDestinationFolder%" with silent overwrite.
+)
+
+REM Set the paths for ScriptUI Panel
+set "scriptSearchDir=%APPDATA%\Adobe\After Effects"
+set "scriptTargetFolder=Scripts\ScriptUI Panels"
+set "scriptSearchString=moelles_mojo"
+set "scriptSourceFile=moelles_mojo.jsxbin"
+set "scriptSourceFolder=_scripts"
+set "rootFolder=%~dp0"
+REM Assuming the script is one level above the "_BUILDS" folder
+set "buildsFolder=%~dp0_BUILDS"
+
+set "BASE_PATH=%APPDATA%\Adobe\After Effects"
+set "FOLDER_STRUCTURE1=23.4\Scripts\ScriptUI Panels"
+set "FOLDER_STRUCTURE2=23.5\Scripts\ScriptUI Panels"
+set "FOLDER_STRUCTURE3=23.6\Scripts\ScriptUI Panels"
+set "FOLDER_STRUCTURE4=24.0\Scripts\ScriptUI Panels"
+
+mkdir "%BASE_PATH%\%FOLDER_STRUCTURE1%" 2>nul
+if not errorlevel 1 (
+    echo Created folder: %BASE_PATH%\%FOLDER_STRUCTURE1%
+)
+
+mkdir "%BASE_PATH%\%FOLDER_STRUCTURE2%" 2>nul
+if not errorlevel 1 (
+    echo Created folder: %BASE_PATH%\%FOLDER_STRUCTURE2%
+)
+
+mkdir "%BASE_PATH%\%FOLDER_STRUCTURE3%" 2>nul
+if not errorlevel 1 (
+    echo Created folder: %BASE_PATH%\%FOLDER_STRUCTURE3%
+)
+
+mkdir "%BASE_PATH%\%FOLDER_STRUCTURE4%" 2>nul
+if not errorlevel 1 (
+    echo Created folder: %BASE_PATH%\%FOLDER_STRUCTURE4%
+)
+
+REM Check if the target folder exists, create it if needed
+if not exist "%scriptSearchDir%\%scriptTargetFolder%" (
+    echo Creating folder: %scriptTargetFolder%
+    mkdir "%scriptSearchDir%\%scriptTargetFolder%"
+)
+
+for /d %%i in ("%scriptSearchDir%\*") do (
+    if exist "%%i\%scriptTargetFolder%" (
+        echo Processing files in %%i\%scriptTargetFolder%
+        
+        rem Delete files containing the search string
+        for %%f in ("%%i\%scriptTargetFolder%\*%scriptSearchString%*") do (
+            echo Deleting: %%f
+            del "%%f"
+        )
+
+        rem Copy the specified file to the Script UI Path
+        if exist "%buildsFolder%\%scriptSourceFile%" (
+            echo Copying: %scriptSourceFile% to %%i\%scriptTargetFolder%
+            copy /Y "%buildsFolder%\%scriptSourceFile%" "%%i\%scriptTargetFolder%"
+        ) else (
+            echo Warning: Source file %scriptSourceFile% not found.
+        )
+
+        rem Copy the specified folder and its contents to the Script UI Path
+        if exist "%buildsFolder%\%scriptSourceFolder%" (
+            echo Copying folder: %scriptSourceFolder% to %%i\%scriptTargetFolder%
+            xcopy /E /I /Y "%buildsFolder%\%scriptSourceFolder%" "%%i\%scriptTargetFolder%\%scriptSourceFolder%"
+        ) else (
+            echo Warning: Source folder %scriptSourceFolder% not found.
+        )
+    )
+)
+
+pause
+endlocal
