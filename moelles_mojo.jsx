@@ -631,10 +631,10 @@ var tools_wrapper_r = tools_wrapper.add("group", undefined, {
     name: "tools_wrapper_r"
 });
 tools_wrapper_r.orientation = "column";
+tools_wrapper_r.alignment = ["fill", "top"];
 tools_wrapper_r.alignChildren = ["left", "fill"];
 tools_wrapper_r.spacing = 10;
 tools_wrapper_r.margins = 0;
-tools_wrapper_r.alignment = ["fill", "top"];
 
 var statictext2 = tools_txt_wrapper.add("statictext", undefined, undefined, {
     name: "statictext2"
@@ -790,7 +790,6 @@ addObj.minimumSize.width = 54;
 addObj.spacing = 4;
 addObj.margins = 4;
 
-
 // Example buttons
 var buttonArray = [
     addObj.add("iconbutton", undefined, File.decode(textLayer_imgString), { name: "textLayer", style: "toolbutton" }),
@@ -801,12 +800,19 @@ var buttonArray = [
     addObj.add("iconbutton", undefined, File.decode(parent2null_imgString), { name: "parent2null", style: "toolbutton" })
 ];
 
+var textLayer = buttonArray[0];
+var solidLayer = buttonArray[1];
+var shapeLayer = buttonArray[2];
+var adjustmentsLayer = buttonArray[3];
+var nullLayer = buttonArray[4];
+var parent2null = buttonArray[5];
+
 /// INCLUDES
 
 try {
     #include _scripts/rectangleWizard.jsx;
 
-    #include _scripts/elementsDialog.jsx;
+    #include _scripts/elementsDiag.jsx;
 
     #include _scripts/organizeProjectAssets.jsx;
 
@@ -870,6 +876,10 @@ function getCurrentMousePosition(event, width) {
     return win.orientation == "column" ? [(event.screenX - event.clientX) + customWidth + cSpacing, (event.screenY - event.clientY) - buttonsSize] : [event.screenX - event.clientX, (event.screenY - event.clientY) + buttonsSize + cSpacing];
 }
 
+function getMousePosition(event) {
+    return win.orientation == "column" ? [(event.screenX - event.clientX) + buttonsSize + 7, (event.screenY - event.clientY) - buttonsSize] : [event.screenX - event.clientX, (event.screenY - event.clientY) + buttonsSize + 7];
+}
+
 function showCustomTooltip(text, coordinates, width, invert, multiline) {
     if (multiline) { multiline = true } else { multiline = false};
     var customWidth; var negativX;
@@ -916,13 +926,6 @@ function addTooltipToButton(button, tooltipText, width, invert, multiline) {
     });
 }
 
-var textLayer = buttonArray[0];
-var solidLayer = buttonArray[1];
-var shapeLayer = buttonArray[2];
-var adjustmentsLayer = buttonArray[3];
-var nullLayer = buttonArray[4];
-var parent2null = buttonArray[5];
-
 
 // Example tooltips
 var tooltipTextArray = [
@@ -939,24 +942,27 @@ for (var i = 0; i < buttonArray.length; i++) {
     addTooltipToButton(buttonArray[i], tooltipTextArray[i],80,true);
 }
 
-///
+/*
+function showCustomMenu(coordinates) {
+    var hoverMenuWin = new Window("palette", "hovermenutooltip", undefined, {
+        borderless: true,
+        closeButton: false,
+        maximizeButton: false,
+        minimizeButton: false,
+        resizeable: false,
+        title: "hovermenutooltip"
+    });
 
-function showCustomMenu(coordinates, width, invert) {
-    var customWidth; var negativX;
-    if (width) { customWidth = width * 0.75; if (invert) { negativX = width * 3.75 } else { negativX = width * 1.5 } } else { customWidth = buttonsSize; negativX = 0 };
-    var hoverMenuWin = new Window("palette", "hovermenutooltip", undefined, { borderless: true, closeButton: false, maximizeButton: false, minimizeButton: false, resizeable: false, title: "hovermenutooltip" });
     hoverMenuWin.margins = 0;
     hoverMenuWin.spacing = 0;
 
     var panel = hoverMenuWin.add("panel", undefined, "");
     panel.margins = 6;
     panel.spacing = 0;
-    //panel.maximumSize.width = 170;
-    // Customize background color
-    panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]); // RGB color [R, G, B] 
+    panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]);
     panel.orientation = "column";
 
-    var addMenuObj = panel.add("group", undefined, undefined);
+    var addMenuObj = panel.add("group", undefined, "");
     addMenuObj.orientation = "row";
     addMenuObj.alignChildren = ["left", "top"];
     addMenuObj.alignment = ["left", "top"];
@@ -964,7 +970,7 @@ function showCustomMenu(coordinates, width, invert) {
     addMenuObj.spacing = 4;
     addMenuObj.margins = 4;
 
-    var addMenuObj2 = panel.add("group", undefined, undefined);
+    var addMenuObj2 = panel.add("group", undefined, "");
     addMenuObj2.orientation = "row";
     addMenuObj2.alignChildren = ["left", "top"];
     addMenuObj2.alignment = ["left", "top"];
@@ -972,43 +978,118 @@ function showCustomMenu(coordinates, width, invert) {
     addMenuObj2.spacing = 4;
     addMenuObj2.margins = 4;
 
+    var purgeArray = [
         addMenuObj.add("iconbutton", undefined, File.decode(textLayer_imgString), { name: "1", style: "toolbutton" }),
         addMenuObj.add("iconbutton", undefined, File.decode(solidLayer_imgString), { name: "2", style: "toolbutton" }),
         addMenuObj.add("iconbutton", undefined, File.decode(shapeLayer_imgString), { name: "3", style: "toolbutton" }),
         addMenuObj2.add("iconbutton", undefined, File.decode(adjustmentsLayer_imgString), { name: "4", style: "toolbutton" }),
         addMenuObj2.add("iconbutton", undefined, File.decode(nullLayer_imgString), { name: "5", style: "toolbutton" }),
         addMenuObj2.add("iconbutton", undefined, File.decode(parent2null_imgString), { name: "6", style: "toolbutton" })
+    ]
 
-    // Customize text color
-    //staticText.graphics.foregroundColor = staticText.graphics.newPen(staticText.graphics.PenType.SOLID_COLOR, [1, 1, 1]); // RGB color [R, G, B]
-
-    hoverMenuWin.show();
-    hoverMenuWin.addEventListener("mouseout", function (e) {
+    hoverMenuWin.onDeactivate = function () {
+        hoverMenuWin.close();
+    };
+    hoverMenuWin.onClose = function () {
         try {
-            hoverMenuWin.close();
-        } catch (err) {
-        }
-    });
-
-    hoverMenuWin.frameLocation = win.orientation == "column" ? [coordinates[0] - negativX, coordinates[1] + customWidth] : [coordinates[0], coordinates[1]];
+            hoverMenuWin.hide();
+            delete hoverMenuWin;
+        } catch (e) { }
+    };
+    hoverMenuWin.frameLocation = hoverMenuWin.orientation == "column" ? [coordinates[0] - buttonsSize, coordinates[1] + buttonsSize] : [coordinates[0], coordinates[1]];
+    hoverMenuWin.show();
 
     return hoverMenuWin;
 }
+*/
+//////
+
+// Define the HoverMenu class
+function HoverMenu(title, buttonsData) {
+    this.title = title;
+    this.buttonsData = buttonsData;
+}
+
+HoverMenu.prototype.showMenu = function (coordinates) {
+    var hoverMenuWin = new Window("palette", this.title, undefined, {
+        borderless: true,
+        closeButton: false,
+        maximizeButton: false,
+        minimizeButton: false,
+        resizable: false,
+        title: this.title
+    });
+
+    hoverMenuWin.margins = 0;
+    hoverMenuWin.spacing = 0;
+    hoverMenuWin.alignment = ["fill", "top"];
+    hoverMenuWin.alignChildren = ["fill", "fill"];
+
+    var panel = hoverMenuWin.add("panel", undefined, "");
+    panel.margins = 6;
+    panel.spacing = 0;
+    panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]);
+    panel.orientation = "row";  // Set orientation to "row"
+    panel.alignment = ["fill", "top"];
+    panel.alignChildren = ["left", "fill"];
+
+    // Create an array to store button objects
+    var buttonsArray = [];
+
+    for (var i = 0; i < this.buttonsData.length; i++) {
+        var buttonData = this.buttonsData[i];
+        var button = panel.add("iconbutton", undefined, File.decode(buttonData.imgString), { name: buttonData.name, style: "toolbutton" });
+        buttonsArray.push(button);
+
+        // Add a new row after every 4 buttons
+        if ((i + 1) % 4 === 0) {
+            panel = hoverMenuWin.add("panel", undefined, "");
+            panel.margins = 6;
+            panel.spacing = 0;
+            panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]);
+            panel.orientation = "row";
+        }
+    }
+
+    hoverMenuWin.onDeactivate = function () {
+        hoverMenuWin.close();
+    };
+
+    hoverMenuWin.onClose = function () {
+        try {
+            hoverMenuWin.hide();
+            delete hoverMenuWin;
+        } catch (e) { }
+    };
+
+    hoverMenuWin.frameLocation = hoverMenuWin.orientation == "column" ? [coordinates[0] - buttonsSize, coordinates[1] + buttonsSize] : [coordinates[0], coordinates[1]];
+    hoverMenuWin.show();
+
+    return hoverMenuWin;
+};
 
 
-function addHoverMenuToButton(button, width, invert) {
+// Create instances of HoverMenu with different data
+var hoverMenu1 = new HoverMenu("Hover Menu 1", [
+    { imgString: textLayer_imgString, name: "1" },
+    { imgString: solidLayer_imgString, name: "2" },
+    { imgString: shapeLayer_imgString, name: "3" },
+    { imgString: textLayer_imgString, name: "4" },
+    { imgString: solidLayer_imgString, name: "5" },
+    { imgString: shapeLayer_imgString, name: "6" }
+]);
 
+var hoverMenu2 = new HoverMenu("Hover Menu 2", [
+    { imgString: adjustmentsLayer_imgString, name: "4" },
+    { imgString: nullLayer_imgString, name: "5" },
+    { imgString: parent2null_imgString, name: "6" }
+]);
+
+// Function to add hover menu to a button
+function addHoverMenuToButton(button, hoverMenu) {
     button.addEventListener("mouseover", function (e) {
-        var coordinates = getCurrentMousePosition(e, width);
-        hoverMenuWin = showCustomMenu(coordinates, width, invert);
-        /*hoverMenuWin.addEventListener("mouseout", function (e) {
-            try {
-                if (hoverMenuWin) {
-                    hoverMenuWin.close();
-                }
-            } catch (err) {
-            }
-        });*/
+        var coordinates = getMousePosition(e);
+        var hoverMenuWin = hoverMenu.showMenu(coordinates);
     });
 }
 
@@ -1739,7 +1820,7 @@ function findCompIndex(compName) { // name of item you're looking for
     if (myComp != null) {
         return i;
     } else {
-        alert("Can't find comp '" + compName + "'");
+        alert("Please open the BOILERPLATE to use this feature");
     }
 }
 
@@ -2926,9 +3007,9 @@ function colorPicker() {
     return [r, g, b]
 } // End colorPicker() function
 
-addTooltipToButton(purgeAll, "purge ImageCache", 85);
+//addTooltipToButton(purgeAll, "purge ImageCache", 85);
 
-//addHoverMenuToButton(purgeAll, 30);
+addHoverMenuToButton(purgeAll, hoverMenu1);
 
 purgeAll.onClick = function () {
     app.purge(PurgeTarget.IMAGE_CACHES);
