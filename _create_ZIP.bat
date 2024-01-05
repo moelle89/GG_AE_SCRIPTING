@@ -2,7 +2,7 @@
 setlocal enabledelayedexpansion
 
 REM Set the paths for the files and folders to include in the zip archive
-set "INSTALL_SCRIPT=_INSTALL_script_+_bplate.bat"
+set "INSTALL_SCRIPT=_INSTALL.bat"
 set "BOILERPLATES_FOLDER=_BOILERPLATES"
 set "BUILDS_FOLDER=_BUILDS"
 set "BUILDS_SCRIPTS_FOLDER=_BUILDS\_scripts"
