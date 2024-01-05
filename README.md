@@ -1,5 +1,13 @@
 # AE_SCRIPTING
 
+### Download:
+[moelles_mojo.zip](https://github.com/moelle89/GG_AE_SCRIPTING/releases/download/mojo_v0014/moelles_mojo.zip)
+
+__
+
+
+[moelles_mojo_first_time_installlation__latest.webm](https://github.com/moelle89/GG_AE_SCRIPTING/assets/10669665/613f22d5-fb95-45c9-824b-b83fd8d29632)
+
 ![01](https://github.com/moelle89/GG_AE_SCRIPTING/assets/10669665/6ca9e011-5679-45f2-a143-66b2065b7d6b)
 ![02](https://github.com/moelle89/GG_AE_SCRIPTING/assets/10669665/49631e8d-e5e5-44df-99ad-095bdbf0719a)
 ![03](https://github.com/moelle89/GG_AE_SCRIPTING/assets/10669665/792f16c3-e14e-40bd-a9b8-59ebd6be4007)
