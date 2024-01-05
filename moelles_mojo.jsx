@@ -1020,19 +1020,19 @@ HoverMenu.prototype.showMenu = function (coordinates) {
         title: this.title
     });
 
-    hoverMenuWin.margins = 0;
+    hoverMenuWin.margins = 2;
     hoverMenuWin.spacing = 0;
     hoverMenuWin.alignment = ["fill", "top"];
     hoverMenuWin.alignChildren = ["fill", "fill"];
 
-    var panel = hoverMenuWin.add("panel", undefined, "");
-    panel.margins = 6;
+    var panel = hoverMenuWin.add("group", undefined, "");
+    panel.margins = 4;
     panel.spacing = 0;
-    panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]);
     panel.orientation = "row";  // Set orientation to "row"
     panel.alignment = ["fill", "top"];
     panel.alignChildren = ["left", "fill"];
-
+    mojoUI.setBG(hoverMenuWin, [22, 1, 22] / 255);
+    mojoUI.setBG(panel, [22, 1, 22] / 255);
     // Create an array to store button objects
     var buttonsArray = [];
 
@@ -1043,14 +1043,13 @@ HoverMenu.prototype.showMenu = function (coordinates) {
 
         // Add a new row after every 4 buttons
         if ((i + 1) % 4 === 0) {
-            panel = hoverMenuWin.add("panel", undefined, "");
+            panel = hoverMenuWin.add("group", undefined, "");
             panel.margins = 6;
             panel.spacing = 0;
-            panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]);
             panel.orientation = "row";
         }
     }
-
+    
     hoverMenuWin.onDeactivate = function () {
         hoverMenuWin.close();
     };
@@ -2399,6 +2398,13 @@ function checkComp(inputComp) {
     }
 }
 
+var mojoUI = {};
+mojoUI.setFG = function (e, t) {
+    return (((void (0) !== t) && (3 <= t.length)) && (e.graphics.foregroundColor = e.graphics.newPen(e.graphics.PenType.SOLID_COLOR, t, 1)), e);
+};
+mojoUI.setBG = function (e, t) {
+    return (((void (0) !== t) && (3 <= t.length)) && (e.graphics.backgroundColor = e.graphics.newBrush(e.graphics.BrushType.SOLID_COLOR, t)), e);
+};
 
 ///
 addTooltipToButton(btn_createComps, "create all required compositions work on a new video template", 85, false, true);
