@@ -38,10 +38,9 @@ var tooltipWin = null;
 
 win.orientation = "column";
 win.alignChildren = ["fill", "top"];
-win.alignment = ["fill", "fill"];
+win.alignment = ["fill", "top"];
 win.minimumSize.width = 284;
-win.maximumSize.width = 484;
-win.spacing = 0;
+win.spacing = 5;
 win.margins = 0;
 
 // ROOT
@@ -52,7 +51,6 @@ var root = win.add("group", undefined, {
 root.orientation = "row";
 root.minimumSize.width = 284;
 root.alignChildren = ["fill", "fill"];
-//root.maximumSize.height = 215;
 root.spacing = 0;
 root.margins = 5;
 
@@ -61,14 +59,12 @@ root.margins = 5;
 var tpanel1 = root.add("tabbedpanel", undefined, undefined, {
     name: "tpanel1"
 });
-tpanel1.alignChildren = ["left", "top"];
+tpanel1.alignChildren = ["left", "fill"];
 tpanel1.margins = 0;
 tpanel1.spacing = 0;
 tpanel1.alignment = ["fill", "top"];
 tpanel1.maximumSize.width = 276;
 tpanel1.minimumSize.width = 276;
-tpanel1.preferredSize.height = 178;
-
 
 // tab_template
 // ====
@@ -102,7 +98,7 @@ var btn_createComps = group1.add("iconbutton", undefined, File.decode(vidtemp_im
 });
 btn_createComps.alignment = ["left", "top"];
 btn_createComps.minimumSize.width = 118;
-btn_createComps.preferredSize.height = 30;
+btn_createComps.preferredSize.height = 32;
 
 var imgtemp_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00l%00%00%00%1E%08%06%00%00%00%C3%89%C2%8C%C3%BB%07%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%03%C2%82IDATh%C2%81%C3%AD%C2%991h%14A%14%C2%86%C2%BF%C3%93%10%C2%9B%15%3C%C2%AB%C3%941X%C2%88Et%C2%ADL%C3%8AD%03j%C2%95%5C%10%2ClD%0B%2Bm%12%05%2B%11%12H'%0A%C3%9A%09Q!166%C2%86%C2%8Bh%111%C3%8D%C3%81%C2%89%60!%C3%A7%C2%95z%5D%04%2F%C2%88H8%C2%8B7%C3%83M%C3%A6foo%C3%B7.%C2%98%C3%85%C3%B9%60%C2%B8%C2%99%C3%99%C3%B7f%C2%86%C3%BD%C3%B7%C3%8D%C2%BC%C3%9D%C3%8B5%1A%0D%3C%C3%99a%C3%9F%C2%BF%5E%C2%80'%19%5E%C2%B0%C2%8C%C3%A1%05%C3%8B%18%5E%C2%B0%C2%8C%C3%A1%05%C3%8B%18%5E%C2%B0%C2%8C%C3%A1%05%C3%8B%18I%04%C3%8B%01%C3%8B%C3%806%C3%90%C3%A8%C2%B0l%2B%C2%9F%5C%C3%AF%C2%96%C3%BC%7F%C2%93K%C3%B0%C3%A2%7C%08%C3%98%C2%8C%C2%B1%C3%B9%09%C3%9C%03*%C3%80%14pQ%C3%B5%C3%A7%C2%81%1F%11%3Ey%20T%C3%B5%C2%AA*f%1Fj%C3%9E%C2%92%C3%91%1ETESr%C2%AC-%04%C3%86%2C%C2%9B%C2%B5%C2%98%C3%B5%C3%AFy%C3%BA%12%C3%98%C3%B6w%60s%05XR%C3%B5%15%C3%A00p%26%C3%867%04%C2%8A%C2%AA%3E%0B%C3%8C%5B%7D%1A3J%C3%A7%C2%80%C2%82%C3%91%1E%C2%A7)F%5E%C2%AD%C3%81%14K%C2%B3%09%5CC%C2%A2%1E%60%188%C3%9Bfm_%C3%95%C3%AF%C2%9166%0F%C2%80I%60%0Bx%11as%C3%99%C2%B8%3E%151%5E%0Dx%C3%92f%1E%20%C2%99%60.%3E%00%C3%87%C2%81%C2%83%C2%AA%C2%BDa%5D%C3%9F%40%04%C3%AB%05%05%C2%9A7%C3%9A%25%06%C2%88XE%C2%9A%C3%91YReP%C3%B9h1%C2%B5%C3%80e%C2%A0n%C3%B8%C3%9FE%04%C2%A8%C2%A9v%0D%C2%B8%C2%AE%C3%AA%2B%11s%C3%96%C2%81%09U_7%7C5C%C3%AAzY%C2%B5%C2%B5X%C3%A6x%010%C2%A2%C3%A6%C2%BF%131%0F%C3%90%5D%C3%92q%1B8%C2%AD%26%C3%9AV%7D%C2%93%C3%86%C3%B5~%C3%A0%7C%17%C3%A3k%C2%AA%C3%AAW%C2%8B%C2%A0o%7C%C3%95a%5B0%C3%AC%1E%03%C2%A7%C2%90%C2%88%1AWu%C3%93NS1%0A%C3%88%0D%C3%97%C3%ADz%C2%84%C2%9D%C3%AD%C2%A3%C3%BD%5C%C3%91%3Ab%C2%8D%C3%A3%1A%C2%AF%C2%8C%3C(C%C2%AAD%C2%92V%C2%B0o%C3%80%C2%82%C2%AA%7F%02%5E%C2%AA%C3%BA%02%C2%B0%C2%88%3C)%1B%C3%80%C3%89%C2%94%C3%A3%C2%9B%C3%A8%C2%ADn%C3%8C%C3%BAu%C2%9DGf%C3%A4%C3%8D%5B%C3%97J%C2%88p%C3%A3%C2%88%C2%98%C2%BD%C3%A6%3D0j%C3%B5%05Ht%C2%AD%C3%B7j%C2%92%C2%B4%5B%C3%A2%22%C3%B0%C3%87j%17%C2%90%07%C3%A0R%C2%B7%C2%8B%C2%B2%C3%90%C3%89FHsk3%C3%BBM%C3%B2F%5DG%C3%A0%1C%3B%13%18%C3%AD%C3%AB%C3%B2%C2%8Fb%009%7Bl%C3%AC-%C2%B0%C2%8E%C2%88%C2%A6%05%C3%92%5B%C3%A1V%07sL(%C3%BFJ%3B%C2%A3%C2%B4%C2%82%3D%C2%B3%C3%9AE%C2%B5%C2%A8%3E%C3%A0%1C%C2%B2%C3%88%22p%22%C3%A5%C3%B8%26U%C3%A4%C3%A6%C3%AA%C2%AC%2F%C2%A4%C2%99Mv%C2%82%C2%9D-%C2%A6!%C3%80%C2%9D(T%C3%98)%C3%98*%C2%B2-j%C3%81F%C2%90%C2%B3j%C3%80%C3%B2%1B%06%C2%9E%5B%7Dub%C3%8E%2FH'%C3%98g%C3%A0%C2%A3%C3%95%C3%B7%0B%C2%B8%0F%7C%07%C3%9E%C2%A8%C2%BE%C2%9B%C3%80%C3%9B%14%C3%A3%C2%BBXCn%C3%BC%C2%8Cj%2FG%C3%98%C2%99%22%C2%86%C2%88%C3%90%C2%B34%23%C3%8F%C3%8E%3C%3B%C2%A5B%C3%AB%16%C3%AB%C3%A25r%C2%8E%0F!%22%07%C2%88xvt%C2%96iMb%C3%9AF%C2%96%26%C2%8D%60O%23%C3%BAoY%C3%ADw%C3%80%17%C3%A0h%C2%8A9l%C3%B4%C3%B65h%C2%B5%C2%A3%C3%AC%00%1E%01%C3%93F%C3%9FL%C2%AB%C3%B9%C2%AE%C2%B0%C2%8EDV%C2%80D%5C%14%1D%09d%C2%93%26%C3%A9H%C2%B2%C3%B7%C2%BFJ1%C2%BE%0B%3B%C2%A2%C2%A2%22%C3%AC1%C3%8Dd%24D%C3%9E%C2%A3%C3%B4W%C2%97%C2%B9%1E%C2%AD%25%C2%8EU%C3%A4%3C%1AE%22%C2%AE%C2%A7%24%C2%890%C3%BDI%C3%A4!%C3%B2.%C3%B3%3B%C3%86~%3Fp%C3%81%C3%B2%C3%AD%C2%86e%24%C2%B1%C2%89%C3%BBZ1%C2%8DD%C3%93Uv%26!z%7B%5Cr9%C3%850L%C3%AB%C2%99%C2%A3%C2%B9a%C2%B5k%C3%88%C2%96W%C3%83%C2%9D%C3%8EwE%C2%92OS%07%C2%90%C3%B3k0%C3%8E%C3%90%C2%A2%0A%1C%23%5E%C3%A0%C3%9D%20DDs%7D%C2%BAr1%40%C3%AB%C2%8Bo%40k%C3%92%60R%C2%89%C3%B0%C2%B3%09%10%01%03%C3%95N%25f%12%C3%81%3C%7B%00%C3%BF%C3%B7J%C3%86%C3%B0%C2%82e%0C%2FX%C3%86%C3%B0%C2%82e%0C%2FX%C3%86%C3%B0%C2%82e%0C%2FX%C3%86%C3%B0%C2%82e%C2%8C%C2%BF%16%C3%B3%C3%91%16%C2%A6%C2%BA%5D%C2%84%00%00%00%00IEND%C2%AEB%60%C2%82";
 
@@ -113,15 +109,15 @@ var btn_createIMGComps = group1.add("iconbutton", undefined, File.decode(imgtemp
 });
 btn_createIMGComps.alignment = ["left", "top"];
 btn_createIMGComps.minimumSize.width = 118;
-btn_createIMGComps.preferredSize.height = 30;
+btn_createIMGComps.preferredSize.height = 32;
 
 // TPANEL2
 // =======
 var tpanel2 = tab_template.add("tabbedpanel", undefined, undefined, {
     name: "tpanel2"
 });
-tpanel2.alignChildren = ["fill", "fill"];
-tpanel2.alignment = ["fill", "fill"];
+tpanel2.alignChildren = ["fill", "top"];
+tpanel2.alignment = ["fill", "top"];
 tpanel2.minimumSize.width = 280;
 tpanel2.margins = 0; // 
 tpanel2.spacing = 0;
@@ -134,6 +130,7 @@ var tab2 = tpanel2.add("tab", undefined, undefined, {
 tab2.text = "ELEMENTS";
 tab2.orientation = "column";
 tab2.alignChildren = ["fill", "fill"];
+tab2.alignment = ["fill", "fill"];
 tab2.spacing = 12;
 tab2.margins = 10;
 
@@ -154,7 +151,7 @@ var btn_addElement = grouptab2.add("iconbutton", undefined, File.decode(addel_im
     name: "btn_addElement",
     style: "button"
 });
-btn_addElement.preferredSize.height = 34;
+btn_addElement.preferredSize.height = 32;
 btn_addElement.preferredSize.width = 150;
 btn_addElement.alignment = ["fill", "top"];
 
@@ -181,7 +178,7 @@ var ratio = group2.add("dropdownlist", undefined, undefined, {
     name: "dropdown2",
     items: ratio_array,
 });
-ratio.preferredSize.height = 30;
+ratio.preferredSize.height = 32;
 ratio.selection = 0;
 ratio.alignment = ["left", "fill"];
 
@@ -218,7 +215,7 @@ var gallery = group2.add("dropdownlist", undefined, undefined, {
     items: gallery_array
 });
 gallery.selection = 0;
-gallery.preferredSize.height = 30;
+gallery.preferredSize.height = 32;
 gallery.preferredSize.width = 112;
 
 var addGal_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%001%00%00%00%16%08%06%00%00%00i5t%C2%92%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01PIDATX%C2%85%C3%AD%C2%96AN%C3%830%10E_%11%5B%22%C3%81%C3%96%5C%C2%A0k%C2%A2p%C2%81%C3%ACQ%2Bu%C2%898%00p%0D.%40%C3%8F%C2%81%C3%A8%3EG%C2%A0%C3%AB%C3%B4%02YWj%0F%C2%90.%3CV%C3%81%22%C2%B1'%C2%800(_%1A9%C2%9E%3F%C2%8E%C3%BD%C3%AD%C3%B1%24%C2%93%C2%B6m%C3%B9%C3%AB8%C3%B9%C3%AD%05%7C%07F%11%C2%A9%20E%11%C2%A5X4%26%09%5E%C3%AC7i%C3%B3%C3%98%01)%C2%9E%C2%84%1A%C2%A7%03%C3%86%C3%9C%01%06%C3%98%00%2F%C3%A2%C3%8B%C2%80%07%2Fn%2F%7C%13%C3%81%C2%97%C3%80%C2%B9%C3%87%2F%C2%A4%C3%9D%02U%C3%9F%C2%82%C2%B4%C3%A9%C2%94%01%C2%AF%C3%B2%C3%9C%00%C2%B7%C3%B2l%C2%80%15%C2%B0%C2%93%C3%85%01%C2%9CI%C3%ABb%C3%BA%C3%B8%15p%C3%951%C3%A7%C2%9A%40ji%C3%93i%C2%86%15R%01S%C2%A0%C3%B0%C3%B8%0A%C2%B8%11%C2%BB%17%C3%9Fc%04%C2%9F%03%17bk1%C3%97%0F%C3%9E%0D%C2%AD%C2%88%12%C2%A8%C2%81%25vW%C3%A7%3D%C2%B15v%C3%97%C2%A7%C2%91%C3%BCV%C2%8C%C2%8E~'4%22%0A%C2%99%C2%B0%C3%82%0A%C3%98%C2%88%2FS%C2%BC%C3%A3G%C2%A0%11q-%C3%AD%1C%C2%9B%C3%83%06%2B%60%C3%96%11%C2%9Fa%C3%B3~%C2%A7%C3%A4s%14%C3%A5%15%C3%A2%C2%AB%C2%93%5Bl-%C3%A6%C3%A0%3EL%C2%AEz%5CrL%C2%B1R%C3%86-%C3%9F%C3%85%C2%87%C3%B8A%C2%88%15%C3%A1%26%7C%C3%A2c%C2%B9%C3%9BcK%C2%AE%3B%C2%A5%C2%82%C3%A3eo%C2%80gl%195%01%C3%BEK%C2%88-%C2%B1%C3%AE%C3%A8%C2%9BO8%23~%C3%A3%C3%B9%C3%BD%C3%98%10%3F%18)%C3%BEv%C2%A8%C3%B1%2F~%3BF%11%C2%A9%60%14%C2%91%0A%0E%16YQm%C2%84U%C3%BFU%00%00%00%00IEND%C2%AEB%60%C2%82";
@@ -227,7 +224,7 @@ var btn_addGallery = group2.add("iconbutton", undefined, File.decode(addGal_imgS
     name: "btn_addGallery",
     style: "button"
 });
-btn_addGallery.preferredSize.height = 30;
+btn_addGallery.preferredSize.height = 32;
 btn_addGallery.preferredSize.width = 50;
 btn_addGallery.alignment = ["left", "top"];
 
@@ -349,7 +346,7 @@ var tab_fx = tpanel2.add("tab", undefined, undefined, {
 });
 tab_fx.text = "FX";
 tab_fx.orientation = "column";
-tab_fx.alignChildren = ["fill", "fill"];
+tab_fx.alignChildren = ["fill", "top"];
 tab_fx.spacing = 12;
 tab_fx.margins = 10;
 
@@ -363,7 +360,7 @@ var groupFx = tab_fx.add("group", undefined, {
     name: "groupFx"
 });
 groupFx.orientation = "row";
-groupFx.alignChildren = ["left", "top"];
+groupFx.alignChildren = ["fill", "top"];
 groupFx.spacing = 10;
 groupFx.margins = 3;
 groupFx.alignment = ["fill", "top"];
@@ -383,8 +380,8 @@ var colorFill = groupFx.add("iconbutton", undefined, File.decode(colorFill_imgSt
     name: "colorFill",
     style: "button"
 });
-colorFill.preferredSize.height = 30;
-colorFill.preferredSize.width = 110;
+colorFill.preferredSize.height = 32;
+colorFill.preferredSize.width = 116;
 colorFill.alignment = ["left", "top"];
 
 var scale2fill_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%60%00%00%00%1E%08%06%00%00%00%C3%93%C2%B0%1B%C2%89%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%03%C2%8AIDATh%C2%81%C3%AD%C2%99%3Dh%14A%14%C3%87%7F%17%15%3F%12%C3%91%C3%ABDlL%C2%B4U%C3%A4D%C2%B0%C2%95%0B%C2%A4%C2%B3%C2%90S%2C%C3%84F%13%C3%90%C3%86%C3%8A%04D%1B%C2%9B%C2%B3%C2%B2V%0B%C2%B1%11%C2%8C6v%C3%91%1C%C2%A8h%C2%99C%C3%AC%C3%8D%C2%B5%C3%86%C2%AF%C2%9C%C3%A8%C2%A9%C2%A8%C2%89%C3%8F%C3%A2%C2%BDa%C3%A76%7B%C2%97I%C3%B6t%C3%81%C3%AC%0F%C2%86%C2%9D%C2%9Dy3%3B%C3%BB%C3%BE3of%C3%AF%0A%22BNv%C3%B4e%3D%C2%80%C2%B5N.%40%C3%86%C3%A4%02dL.%40%C3%86%C3%A4%02dL.%40%C3%86%C2%AC_%C2%A1%C3%BD%16%60%13P%C3%B0%C3%8A~%03%C2%9F%C2%81E%60%03%C3%90%C3%AF%C3%95%C3%BD%02%C2%BE%C2%A6%19%C3%A0%C3%BFN%C3%A8%0A(%00O%C2%81%0F%C3%80G%C2%BB%C2%BA4%0FT%C3%8D%C3%AE1%C3%90%C3%B4%C3%92%1B%C3%9A%C3%85%C3%8A%C2%89Q%08%C3%BC%10%C3%9B%07%C3%94%C2%81Y%C3%A0%06%C3%B0%C3%83%C2%AB%C3%BB%05%C3%9CCW%C3%81N%C3%A0(p%05%C3%98%01%7CGWD%C3%BE%C2%B5%C3%97%C2%81%C3%90%10%C2%B4%17%C3%B8%09%C2%9C%04%5Ev%C2%B1%C3%BB%06%C2%9C%03%C2%B6%01%C3%AF%C2%80%C2%AD%C2%A9F%C3%97%3B%C3%86%C3%ADz%1Fh%04%C3%98%0FX%C2%8A%C3%93%C2%B2%C3%AB%08%C3%B0%00%C3%98ci%C3%8A%C3%8A%5E%5B%0A%26T%C2%80u%C3%A8Lov%C2%B1%C3%99%0E%3C%07%C2%86%C2%80%C2%9B%C2%A8%C3%B3O%04%C3%B4%5DDC%C3%98%C2%A8W%C3%96%00%26P%C2%87%C3%B5%02%17%22%C3%AB%C2%84%09p%1D%5D%C3%81q%C2%A6%C2%80%3B%C3%80~%22%01%C2%86%C2%AC%C3%8E%5D%C3%BF%C2%8A%00Il%04%16%C3%90%C3%8Dw%3B%C3%AD%C3%8E%C2%BF%60%C3%B99%C2%96%0F%3F%C2%93%40%19%15%C2%B7nee%2B%1F%06j)%C3%86%C2%98%C2%86%3B%C3%80%C2%8BXY%C3%8B%C3%92%C3%A5%5E%3D%24%C3%8D1%C3%B4%25p%C2%97d%C3%A7%C2%83%C3%AE%17%C2%97%02%C3%BA)%C3%9B%C3%B5%1A%C3%AA%C3%B0a%C3%8B%C3%97%C2%80A%C2%AB%2B%C2%A2%C2%82%C2%88%C2%A5Y%C2%A2%C2%B0%C3%A2%C3%BA%C2%98%C2%89%C3%95%C3%BB%2B*N%09%C2%98%C3%B6%C3%ACg%C2%80J%C3%8C%C2%A6%C2%85N%20%3F%C2%B5%C3%90%C3%90t5%C3%A0%C2%BD%C2%82H%C2%B3%02%C2%B6%C2%A0%C3%8B4%C3%89%C3%B9%C2%A01%C3%B1%22pd%C2%99~%1A%C2%A8%C2%A3%C2%AB%C2%A8%23k%C2%96%26%3C%C2%9B%C3%89X%C3%9D%C2%B8%C3%997%C3%AD%C2%B9%C2%93%C2%A8H%C3%97%C3%8C~%1C%3D%2C%C3%94%C2%89V%C2%95%C2%A3%C2%88%3A%3Fn%3Fi%C3%AF%C3%A1B%C3%94%00K%C3%83%C3%90%5C%C2%87%C3%B2U%C2%93F%00%C3%90%C2%99%C3%94%C3%87R%C3%A7%03%C2%9C%01%0E%5B%C3%BD%C3%AF.%7D%1CG%C2%9DUB%C2%9D%C3%ACVD%1D%18%C2%B3%7C%C3%99%C2%B3uG%C3%9C%0A%C3%AADW%C3%AE%C3%9A%C2%B8~J%5E%C2%BD%C3%8F%C2%A8%C2%95%C3%97%C2%89%C3%82%C2%9BkS!%12%C3%A5%C2%B4%25%C2%9F%C2%B3%5D%C3%9EcU%C2%A4%15%C2%A0%1F%C3%B8%C2%84%C3%8E%C3%B6%C2%87%C3%A8%11%C3%94'%C3%A4%1B%C2%A0%0E%1C%C2%A4%C3%9Dq%15%C2%BB%C2%8E%C2%A3%C3%A2%3A%C3%9C!%C3%A0f%C2%AC%C3%9C%C3%99%269%C2%BC%13.%0Cu%22i%0F%C2%98%C2%A3%C2%87%C2%B3%1F%C3%92%C3%AD%01%C3%8F%C2%81g%C3%80%2Bt%60oW%C3%91G%C2%99(%0E7%C3%91%C3%99w%C2%9C%C3%88%C2%B9E%C2%92O%5Ee%C3%94yU%C3%94%C2%91%C3%AE%C2%943%C2%8C%C2%8A%1E%0F%3BI%C3%94%C3%8C%C2%B6%60%C3%AD%26b%C3%AD%C2%92%C3%B6%C2%80%C2%9E%C2%93f%05%C2%9C%C3%AA%C3%81%C3%B3kD%7B%C3%80%C2%B4%C3%9D%17%C2%896%C3%84%1A%C3%91%C3%91q%10%C2%8D%C3%93u%C2%A2%15%C3%A2%C3%AC%1DEt%25%C2%94%C3%AC%C2%BE%C3%82%C3%92c%C3%A7%7D%C2%A2%C3%BDf%14%15%C2%B8j%C3%BD%C2%8F%C3%B1%C2%AF%11%C2%91%C2%90tLD%C2%BE%C2%8A%C3%88%C2%81%40%7BD%C3%A4%C2%91%C2%88%7C%11%C2%91%C2%BEe%C3%ACJ%222-%C3%AD%C3%8C%C2%8BH5f3%1B%C2%B3q%C3%B5E%11%C2%99%C3%B1%C3%8Ag%C2%AD%C3%8EQ%C2%8E%C3%A5%11%C2%91J%C2%97%C3%BE%10%C2%91%5B%222%C3%92a%C2%BC%3B%C2%AC%1E%C2%B39o%C3%B9%C3%B3%5D%C3%9AtL%C2%BD%C3%B8)%22%C2%89%C3%9D%C3%A8%06%C3%B6%13%C3%98%C2%B5%C2%82%C3%B9PBgd%C2%A7%C2%8F%C2%A5%22%C3%91%C3%8C%C2%8F%C3%A3%C2%8E%C2%AC%C2%8D%0E%C3%B7I%0C%12m%C3%88%3E%03D_%C2%BDI%C3%B8%C3%B5.%C2%BF%5C%C2%9BDB%05(%00O%C2%80C%C3%80%C3%A6%C3%80%C2%BE%C3%9F%C2%A3%C3%A1%C3%A0%C3%B6J%07%C2%B5%C2%96%08%15%C3%80%C2%91%C3%B4st%12%C2%8B%C3%A8lXX%C3%A5%C2%B8%C3%96%0C%2B%15%20%C2%A7%C3%87%C3%A4%C3%BF%C2%88eL.%40%C3%86%C3%A4%02dL.%40%C3%86%C3%A4%02dL.%40%C3%86%C3%BC%01%C3%84%1C%10%C2%84'%C3%BAu%0F%00%00%00%00IEND%C2%AEB%60%C2%82";
@@ -393,8 +390,8 @@ var scale2fill = groupFx.add("iconbutton", undefined, File.decode(scale2fill_img
     name: "scale2fill",
     style: "button"
 });
-scale2fill.preferredSize.height = 30;
-scale2fill.preferredSize.width = 110;
+scale2fill.preferredSize.height = 32;
+scale2fill.preferredSize.width = 116;
 scale2fill.alignment = ["left", "top"];
 
 var addAnimbtn_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00n%00%00%00%1E%08%06%00%00%00%C3%8Dy%2B%3A%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%03%C2%88IDATh%C2%81%C3%AD%C2%9AM%C2%88%14G%14%C3%87%7F%C3%8F%C2%B8f%C2%8D%24%C2%A6%03%011%07e%C3%97%C2%AB%10X%25%60%C3%A2!dn~%40%C2%8C%1B%C3%90%C2%8B%07q%C2%BC%04C.1%10%C3%B0%26%24G!%C2%81%C2%B0x%C3%881%3A%C3%87%24%20%C2%BA%07%0F%0A%22%C2%B3%175q%C2%83%C2%A8%C2%A8%C2%B9%C3%85%C2%B8%C3%B1%20%1E%C3%8C%C3%A6%C2%9FCU9%C2%B5%C2%BD%C3%93%C2%B3L%7F%C2%B0%C3%9B%C3%9A%3Fh%C2%BA%C3%BA%C3%95%C3%ABW%C2%8F%C3%B9%C3%8F%C2%AB%C3%AA%C3%AA%19%C2%93DC%C3%BDX%C2%B5%C3%9C%094%C3%A4%C2%A3%11%C2%AE%C2%A64%C3%82%C3%95%C2%94F%C2%B8%C2%9A%C3%92%08WS%0A%09gf%00%C3%A6%C2%9AF%19%07%C2%B0%17%C3%A8%02%C3%B3%C3%80%13%C3%A0%2C%C2%B0%C3%99%C3%B75x%C2%AC%C3%A0v%C3%A0C%60%2B%C2%B0%16%C3%B7A%C3%BF%01%5C1%C2%B3%C2%BF%C3%B2%04%C2%93t%188%C3%9D%C2%A7%C3%AB!%C2%B0%0D%C2%B8%C2%973%C3%8F%17%C2%8E%C2%A2%C3%82%1D%C3%81%C2%89%C2%B6%16%18%C3%B5%C3%A75%C3%8093%3B%3FL%20I%C3%AB%C2%81%C3%BB%C3%80%1B%19.%3F%01%07%C3%B2%C2%A7%C3%BAbQt%C2%8D%C3%BB3%23%C3%A6%3EI%C2%BB%C2%86%C2%8C%C3%B5%01%C3%99%C2%A2%01%C3%AC%192%5E%C3%99%24%C3%8B%3C%C3%BE%02V%17%C2%BC%C3%BF%3C0%0B%C2%8C%01%C3%9Bq%15%17%C3%98%2F%C3%A9%C2%BA%C2%99%C3%9DO%C3%9F%24i%03%C2%B0%03%C3%98%00%5C5%C2%B3.%C2%83E%03x%C2%AD%40%C2%9Em%C2%9F%23%C3%80%14pg%C3%88%C3%BB%C2%BB%C3%80%04%C3%B0%160W%20%C2%8F%C3%92(%24%C2%9C%C2%99%C3%8D%03w%C2%81%C2%BB%C2%92%C2%BA%C3%80Q%60c%C3%A8%06%3E%06N%05%7FI%C2%A3%C3%80W%C3%80AzS%C3%AC%C2%88%C2%A4%C2%B7%C2%81kK%0Cw%C2%A3%40%C2%AA%C3%87%C3%A9%09%C2%97%C3%B8%3C%C2%87%C2%A1%03L%C2%B3BD%C2%83%C3%A2%15%C3%B7%1C3%7B%2C%C3%A9%0C%C3%B0Ed%C3%9E.i%C3%84%C3%8C%C2%9EIz%15%C3%B8%0Ex%0F'j%C3%A0%15%60%C3%84%C3%8C~%C2%93%C3%B43%C3%99S%C3%A279S%0B%C3%956%C2%83%C2%AB%C2%9AV%C2%AA%3F%C3%B1%C2%B6i%7F%C2%9E%C3%B0%C3%B6%C2%B82gX8UNz%5B%C2%88%0F%C3%B0mt%C2%9D%C3%B8%C3%BEN%C3%8E%C2%9C%C2%97FR%C3%AE%23%23%C3%9Eg%C2%92~%C2%90%C3%B4%C2%A3%C2%A43%C2%92%C3%86%C2%BD%C3%BDKIW%25%5D%C2%97tK%C3%92%03I%0F%25%5D%C2%96%C2%B4%C3%8A%C3%BB%C2%BC)iZ%0By%26%C3%A9%C3%AB%02%C2%B9%C2%9E%C3%B5q%C3%9A%C2%92%C2%BAQ%3B%C3%B4Oz%C3%9B%C2%85%C3%94%C2%B8%C2%8F%24%25%C3%9E'%C3%9C%C2%97%C3%B8%23%C3%B8%3F%C2%8A%C3%BCoG~%C2%81x%C2%9CR%C2%8F*6%C3%A03%C2%A9%C3%ABM%C2%92%C3%9E%05vG%C2%B6Y%C3%9C7s%C3%82%C3%8C%C3%9E7%C2%B3%C3%BF%00%C3%8C%C3%AC%1F3k%01%3B%C2%81c%C2%B8%C2%A7%C3%96q3%3B%C2%993%C2%971%5Cu%C3%8C%C3%A1*(T%C3%80d%1F%C3%9F%09%C3%A0S%C3%9C%C2%B6%C3%A3%0E%C2%BDJ%C3%8C%C2%A2%C2%85%C2%AB%C2%B2%C3%A0%3F%C3%A6%C3%8F%C3%A3~%C2%AC%10%C2%B3%12J%C2%9B*%23~O%5D%C2%BF%0E%7C%12%5D%C3%9F%04%0E%C2%99%C3%99%C3%93%C2%AC%00fv%09%C2%B8TB.A%C2%A0i%7F%C3%AE%C3%A0%C2%A6%C3%9C%16%C2%BD%0F%C2%9A%C2%A8%C2%AF%13%C3%B9%C2%B7%19%C3%8C%0C%C2%BD%C3%A91%C2%AC%7D%1D%1F3%C3%9C_%C2%99p%C2%A5W%C2%9C%C2%99%3D%06%C3%BE%C2%8EL%1F%01%5B%7C%5B%C3%80%C2%89A%C2%A2%C2%95L%10.%C3%81%09%C3%96%C2%A6'V%C2%BA%C3%AA%C3%A62%C3%9A%2B%C2%92**%0E%C3%9C%C2%93%C3%A6%3B%C2%BE%C2%BD)%C2%B2_6%C2%B3%C3%99%C2%8A%C3%86L%13%3Fh%C2%B4X%3C%C3%AD%C2%B5%C3%A9UL%C3%AD%C2%A8%C3%AA%25%C3%B3%C2%83%0C%C3%BB%C2%AF%15%C2%8D%C3%97%C2%8F0%C3%95M%C3%A1%C3%B6_%C3%A1%18%C3%87U%C3%94%18%C2%83%C3%97%C2%B0%15MU%C3%82-%C3%9At%03%C3%BF%02W*%1A%2FM%C3%BC%601%C2%85%13*%1Ca%0D%C2%82%C2%A5%C3%97%C2%B1%15K%C2%A1w%C2%95Yo%C3%AC%25%C2%AD%03%C2%BE%C2%A7%C3%B7%0Es%14%C2%985%C2%B3%C3%8Fs%0F%C3%A6%C3%A2%0E%C3%A3%1E%C3%B6%5DY%C3%ABU%12%C3%B5%25%7D%C3%BC%C3%92%C2%B6%22%C3%BE%C2%A5SI%C3%85%C2%99%C3%99%13%16O%C2%97%17%C2%AB%18k%00%C2%A1%C3%82%06%C3%B5%C3%B7kg%C3%99%C2%8A%C3%B8%C2%97N%C2%95%3F%C2%A4%C2%9E%C3%86%C2%BD%C2%84%C2%9E%C3%87%C2%89%C3%B6K%C2%85c%C2%BDt%14%C3%BDY%C2%A7a%C2%99h%C3%BE%C2%BAPS%1A%C3%A1jJ%23%5CMi%C2%84%C2%AB)%C2%8Dp5%C2%A5%11%C2%AE%C2%A6%C3%BC%0F%02%C2%9C%19%C3%A3%5BSW%C3%95%00%00%00%00IEND%C2%AEB%60%C2%82"; 
@@ -403,8 +400,8 @@ var addAnimbtn = groupFx2.add("iconbutton", undefined, File.decode(addAnimbtn_im
     name: "addAnimbtn",
     style: "button"
 });
-addAnimbtn.preferredSize.height = 30;
-addAnimbtn.preferredSize.width = 110;
+addAnimbtn.preferredSize.height = 32;
+addAnimbtn.preferredSize.width = 116;
 addAnimbtn.alignment = ["left", "top"];
 
 // tab_files
@@ -415,12 +412,11 @@ var tab_files = tpanel1.add("tab", undefined, undefined, {
 tab_files.text = "FILES";
 tab_files.orientation = "column";
 tab_files.alignChildren = ["fill", "top"];
-tab_files.spacing = 0;
 tab_files.margins = 0;
 
 // files_wrapper
 // ======
-var files_wrapper = tab_files.add("group", undefined, {
+var files_wrapper = tab_files.add("group", undefined, undefined, {
     name: "files_wrapper"
 });
 files_wrapper.orientation = "column";
@@ -473,7 +469,7 @@ tab_tools.text = "CONFIG JSON";
 tab_tools.orientation = "column";
 tab_tools.alignChildren = ["fill", "top"];
 tab_tools.spacing = 0;
-tab_tools.margins = [0, 0, 0, 0];
+tab_tools.margins = 0;
 
 // CONFIGPANEL
 // ===========
@@ -483,7 +479,7 @@ var configPanel = tab_tools.add("tabbedpanel", undefined, undefined, {
 configPanel.alignChildren = ["fill", "fill"];
 configPanel.alignment = ["fill", "fill"];
 configPanel.minimumSize.width = 280;
-configPanel.margins = 0; // 
+configPanel.margins = 0;
 
 // CONFIGCOLORS
 // ============
@@ -557,7 +553,7 @@ editTextTxt.preferredSize.height = 20;
 
 var edittext1 = edit_text_wrapper.add('edittext {properties: {name: "edittext1", multiline: false, scrollable: false, borderless: false}}');
 // Set the initial placeholder text
-edittext1.preferredSize.height = 30;
+edittext1.preferredSize.height = 32;
 
 edittext1.alignment = ["fill", "top"];
 
@@ -579,7 +575,7 @@ var btn_title = edit_text_group.add("iconbutton", undefined, File.decode(title_i
 });
 btn_title.alignment = ["left", "fill"];
 btn_title.preferredSize.width = 60;
-btn_title.preferredSize.height = 30;
+btn_title.preferredSize.height = 32;
 
 var subtext_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00P%00%00%00%1E%08%06%00%00%00%C2%BBC%C2%99%C2%B1%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%02wIDATh%C2%81%C3%ADX%C3%91%C2%91%C2%9B%40%0C%7D%C3%8A%C2%A4%01Z%20%25%C3%90%02W%02-%C3%90%02)%C2%81%C2%94%60%C2%97%C3%80%C2%95%C2%80K%C3%A0J%C2%B0K%20%25%C2%BC%7C%20%C2%9D%C3%85%1E%C3%B6%01k%C3%9FMf%C3%B6%C3%8D0%06%C2%A1%C3%95j%1F%C3%92%5B%C2%B0%C2%90D%C3%82~%C3%BC%C3%B8%C3%AE%04%C3%BEw%24%02%23%C2%91%08%C2%8CD%220%12%C2%89%C3%80H%24%02%23%C2%91%08%C2%8CD%220%12%3F%C2%B78%C2%8B%C3%88C''Y%00%C3%88%00%5CD%C3%A4%C3%B2%C3%90%C3%A0%11%C3%98%C3%B4qAr%C3%B5%C3%A1%C3%86%C3%94%24%3B%C2%92%C2%BD%1E%07%C2%92%C3%A5%C2%8ED%7BNh%3E%C3%B1%C2%AB%3F%C3%B3%C2%89%01%C3%89%C2%86d%C3%AD%C2%AE%C3%97s%C2%B2%C2%95%40%25%C3%AB%16%C3%AA%C2%9BY.'%C2%BE%C2%96%C3%80%C2%91O%C3%BA%C3%A6%24Yh%0E%C2%BD%C2%B3%C2%AD%3E6%C2%B50%C3%89%1C%C2%80%C2%91%C3%B4G%C2%8F%0C%40%0B%C2%A0%02%C3%90%008%C2%AA%C2%AF%C2%91%C3%B2j%C3%AD%C2%B9ds%C2%B1k%C2%8D%05%00G%11%C3%B9%C2%AB%C3%B3Uf%C3%97%C3%B1o%22rr%C3%B9T.%C3%8CID%C3%9E%C2%8C%18%00%C2%A5%C2%B7%C2%93%C3%8C%5C%C3%BE'%C2%8Dk%C3%A3s%C2%8D%C3%BF%0A%60%C2%BD%C2%9Cla%C3%9B%3D-j%C3%B5%14%C2%B6%10%C2%92%C2%A5oc%C3%A7w%C3%93%C3%A6*p%0C*y%C3%90%C3%BB%C3%A5B%C2%957z%C2%AFZ%18%C3%B7~_%7D%C2%86%20%5E%C2%AB%C3%97g%C2%92%19%C2%A7%C3%96%0DQ%C2%AE%C3%A4bw%0B%0F%C2%9Cc%C3%A4%C2%A4%C2%87%C2%B3%C3%B6%C3%B5%09%C2%AD%20%C3%B0%C2%AC%C2%84%C3%B8%05%C3%95%0B%C2%8B%2C9U%C3%9D%7B%5B%C2%93l%1D%C2%A1%06%C3%B3%C3%89%C2%9D%C2%9F%C2%97%1E%C3%BF%C3%A0%C3%8D%3Eh%C3%BC%C3%AC%C3%99%04%C3%9A%C2%A2%C3%8E%C3%BC%C2%88%C3%83N%02%7D%C3%95%C3%8CltU%C3%A8%7C%7C'%C2%B4%C2%9A%C3%8F%C2%8Ch%C3%A7%5B%079%C3%8E%C3%B4%C3%96%C2%8D%C3%BB2%0D%C3%8C1%C3%A9%C3%90%2F%C2%BD.1i_%0E%C2%A0%26y4%1Dz%222w%5E%C2%B8%C3%B3%C2%93%C3%BE%C3%A6%C3%8E%16%C3%A6%C3%B2%C3%90%C3%9C%C2%B6%C2%BEH%17%00z%00%3D%C3%89BD.%22r%C2%84n%1Cw%C3%86%C2%80du%C3%87%C3%87%13%C2%92%C3%9F%C3%B4%C2%BA%C3%82%C2%8B%C3%BCo%11y%11%C2%91%17g%C2%B7M%2B%03p%08%C3%86tj%7F%0C%C2%B6%C2%94%C2%AB%C2%B6%C2%AFi%C3%8A%C3%88%C3%AB%7B%C2%A0apq%C2%87%C3%80%C3%8F%0B~%C3%98%C3%82%C3%94s%C2%AF%C2%AFF%C2%BC%C3%9FH%C3%9A%C2%85%C2%B1%C2%83%C2%B6%C2%A1%C3%978%C3%93%C3%80%C3%96%C3%B9d%C2%BC%C3%8AN%C3%A7%C3%B2%C2%B4%16%1E%C3%B5%3C%C3%9F%C3%82%C3%89%1E%0D%2C%C2%82%C2%85%1B%3AK%5C%C3%BD%C3%82%5D%C2%B2q%C3%A3%3Eh%60%C3%A8%1B%3C%C3%A4!%C2%BC%C2%A7%C2%84tA%0Eg%C3%AAf%C3%86%C2%B9%C3%B6%C3%99%7C%C3%BEa%C2%98%C2%9F%C3%9Fh%C3%88g%C3%AF%C3%82%C3%81%C3%82%0Aj%C2%A5%C3%9C%C2%A9%C3%B0%C3%95_(%C2%9A%C3%BCb%7B%C3%A9%5C%C2%8B%C3%ADM%C2%B7%3B%C3%AF%C2%85%C2%9F%7B%0B'%C2%B2DL%C3%82z%C2%A4%7Fc%22%C2%91%08%C2%8CD%220%12%C2%89%C3%80H%24%02%23%C2%91%08%C2%8CD%220%12%C2%89%C3%80H%C3%BC%03%C2%90%15%5B%24%C2%87%C2%8EsV%00%00%00%00IEND%C2%AEB%60%C2%82";
 
@@ -588,7 +584,7 @@ var btn_subtext = edit_text_group.add("iconbutton", undefined, File.decode(subte
 });
 btn_subtext.alignment = ["left", "fill"];
 btn_subtext.preferredSize.width = 80;
-btn_subtext.preferredSize.height = 30;
+btn_subtext.preferredSize.height = 32;
 
 var source_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00P%00%00%00%1E%08%06%00%00%00%C2%BBC%C2%99%C2%B1%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%02*IDATh%C2%81%C3%AD%C2%98%C3%A1q%C3%9B0%0CF%C2%81%5E%17%C3%A0%0AZA%2B8%23h%05%7B%04u%04e%04%7B%04w%04y%04%7B%04w%04g%C2%84%C2%AF%3F%04F%C2%9FY%C2%A9q%C2%884%C2%B9%C3%9E%C3%A1%C3%9D%C3%A5%2C%C3%930%03%3E%C2%81%C2%A0%12%05%20A%3D%C3%9F%C2%BE%3A%C2%81%C3%BF%C2%9D%10%C3%A8%24%04%3A%09%C2%81NB%C2%A0%C2%93%10%C3%A8%24%04%3A%09%C2%81NB%C2%A0%C2%93%C3%AF%C2%B5_TU%01%C2%90Dd%2B%22%1B%C3%BA%C3%A8%22%22%07U%C3%BD%C3%A5M%C3%AE3%C2%A9%C3%BE%C2%8B%0C%40%C3%ADO%02p%C3%8627%00%C3%AD%C3%87.%C3%B1%C3%9FR%C3%AB%C2%A1%C2%BA%02E%C2%A4%13%C2%91%2Ci%C2%A7%C2%AA%07%C2%93v%14%C2%91F%C2%A6%C3%8A%C3%9CQ%C2%82%C2%AD%C3%9CW%C3%AAO%C2%AER%00%7D9%5E%C2%8E%C3%A5%C3%B7%C2%AA%C3%BAl%C3%97%2F%C2%AAz%C2%B0%C3%98%C3%86r%C3%8A%C2%9CT%C3%B5RHz3%C3%A6%C3%9D8*%C2%B0%C2%A7%C2%8A%1B%2C9%01%C3%90%02%C3%98p%05%16%C2%B1%C3%8C%C2%96b2%C2%9B%C2%B51z%7F%C2%B4%C3%97%C3%91%C3%86%C2%BB%C2%95%C3%B9%07%C2%9A%C2%AB%C3%83%C2%B43Jz%C2%8F%07%C2%8F%C3%80f!%C2%A1%2B%C2%80%7D!%C2%A1%C3%A1d1%09f%C2%A1%C2%A9B%200I%C3%9C%C3%9Ax%C3%8Ec%C2%8F%C2%A9%C2%B5%C3%B0%C3%BCM%113%2CHoj%3D%C3%94%C2%9B%C2%9F%C3%A5%C3%AC%C2%B1%7Cg%C3%B3%C3%A2%C3%B2b%C2%AEE%C3%A5%C2%AF%C3%89yD%20WV%5B%C3%8A%C2%A2%C3%9F%C3%9B%5B%C2%8E%1C3%C3%90g%C2%AF%C3%B3%C3%97z%C2%A8%C3%AE%C2%81%C2%98%C2%B6h%C2%92%C3%A9%C3%84%C3%9Da%C3%AEq%C2%BD%C2%8D%0F%22r%C2%A0%C2%AF%7C%C3%A4%C2%A9%C3%BCB%C3%97)_pOU%C3%95g%C3%8A%C2%95%7B%2F%1Fn'%7Bm%C2%A4%12%C3%8Fs%60'%22%C2%A3%C2%88%1C%01%24U%C2%BDX%C3%92%C2%A7%22.%2F%C2%96%2B%2B%C3%89%3A%C2%AD%C3%85t%7F%C2%89a%C3%B8%20Z%C2%AB%5E%C2%BEy%3FT%C3%B5IU%C2%9Fh%C2%BC%C3%BE%C3%A6%C3%96%C2%96%C2%AE%C2%95%7D%C3%A6%0A%60%C3%84%C3%BDcM%C3%AE5%09%C3%B3%16%1Fm%C3%AB%C3%A4%C2%B8%2B%C3%A5%C2%91%C3%87n%16%C3%87m%C2%A1%C3%9C%C3%82%7D%C2%B1%C2%86%C2%91%C3%B2%C3%A81%1F2%C2%B7%C2%85%C2%98%C2%B3%C3%85%C3%ACi%C2%BE%2F%C3%AB%C2%81%C2%9D%25%C3%8D%C3%9C0%C3%B5%C2%99D%C3%89%C2%B7%C3%B8%C3%B3%C2%99q%C3%84%C3%BDI%5D%C2%9E%C2%92%3D-%C3%BA-%C2%81%C2%89b3%C3%A7b%C3%BEDb3W%C3%8C%C2%BD%C3%BA%C3%B3%05%16%C2%8B%C3%98%C2%80%C2%9A%C3%B8J%C2%B5'%C2%8B%5B%C3%9D%C3%82%C2%B8%C3%AFW%C3%AF%C3%A2%C2%91%C3%B9%C3%97r%C2%AD%C3%B5%C2%A0K2%C2%82%C3%87%C2%89%7F%268%09%C2%81NB%C2%A0%C2%93%10%C3%A8%24%04%3A%09%C2%81NB%C2%A0%C2%93%10%C3%A8%C3%A47a-%C3%B2%24pFo%11%00%00%00%00IEND%C2%AEB%60%C2%82";
 
@@ -597,7 +593,7 @@ var btn_source = edit_text_group.add("iconbutton", undefined, File.decode(source
 });
 btn_source.alignment = ["left", "fill"];
 btn_source.preferredSize.width = 80;
-btn_source.preferredSize.height = 30;
+btn_source.preferredSize.height = 32;
 
 // EDIT_TEXT_GROUP1
 // ================
@@ -616,7 +612,7 @@ var btn_c2a = edit_text_group1.add("iconbutton", undefined, File.decode(c2a_imgS
 });
 btn_c2a.alignment = ["left", "fill"];
 btn_c2a.preferredSize.width = 60;
-btn_c2a.preferredSize.height = 30;
+btn_c2a.preferredSize.height = 32;
 
 var c2alink_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00P%00%00%00%1E%08%06%00%00%00%C2%BBC%C2%99%C2%B1%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%03%C3%85IDATh%C2%81%C3%AD%C2%99%5Bh%5DE%14%C2%86%C2%BF%C2%93%C2%A6mj%C2%92V%C2%8DI%14%2C%15%2F%C2%B4%C3%9E%11%2C%5E%C2%A0%C3%BA%C2%A0VD%C2%84%C2%AA%C2%A8xW%04%C2%9Fl%C2%8B%C2%82E%C2%AA%C3%B8%C2%A2%60%05%C2%AF%C2%A0%2F%C2%86%C2%8A%C2%B4%C2%8A%C2%8AibE%C3%91R%7C%C2%AC%C2%8Ax!%C3%95%C3%96%5E%C3%B0%C2%86%C2%82Ml%25%C3%9Eb%C3%9A%C2%A4%C3%B9%7C%C2%98%15%C2%B299%C3%A7%C2%A4%C3%A7%C3%AC%07%11%C3%B6%0F%C3%83%C3%ACY%7B%C3%8D%C2%9A%C2%B5%C3%BFYk%C3%8D%C2%9C%C2%A4%C2%A4R%C2%A0q4%C3%BD%C3%97%0E%C3%BC%C3%9FQ%10%C2%98%13%05%C2%819Q%10%C2%98%13%05%C2%819Q%10%C2%98%13%05%C2%819Q%10%C2%98%13%05%C2%819%C3%91%C3%9C%C3%A0%C2%BC%C2%85%C3%80J%60)p%7C%C3%88%06%C2%80M%C3%80%5B%19%C2%BD%0E%C3%A0A%C3%A0%12%C3%A0%04%60%1F%C3%B0%1E%C3%B0%140%C2%9A%C3%91%C2%9B%05%C3%9C%01%C2%AC%00%04%C2%B6%00%2F%03%07%C2%AB%C2%AC%7FJ%C3%98%1E(%C3%93i%07%C3%AE%07%0E%00%2F%C3%96%C3%B0%7F6p%0Bp4%C3%90%03%C2%8C%C3%94%C3%90%C2%AD%0D%C2%B5%C3%9E%C3%96%C2%A1~%C3%A2%14%C3%B6%C2%A8%C3%BB%C3%A3%C3%B9%0F%C3%B5%C3%86%C3%90%5B%C2%A0%C2%BE%14%C3%B2!%C2%B5_%1D%C2%8E%C3%B1Z%C2%B59cs%C2%91%C3%BAU%C3%86%C3%A6%C2%A0%C3%9A%5D%C3%83%C2%87%C3%A7%C3%95%0F%C3%94%C3%8E2y%C2%BB%C3%BA%C2%98%C2%BAj%C2%86ohU%C2%B7%C2%AA%C2%BB%2B%C3%98%C2%A8%C2%AB52iu%C2%86%C2%94%C3%BB%C3%94%C2%93%C3%953%C3%95wC~%20%C3%B4%16%C3%87xX%C2%BDN%C2%9D%C2%AF%3E%11%C2%B2O%C3%95y%19%C2%9B%C3%97%C2%A8c%C3%AAN%C3%B5%C2%A7%C3%90%C2%B9Mm%C2%AA%C3%A2C%C2%BF%C2%BA%C2%BD%02%C3%89%C2%A5X%C3%B7%C2%B4%18%C2%9F%11%C3%BD2%C3%B5nuy%C2%86%C3%80%5ES%20t%C2%84%C3%ACt%C3%B5%C2%82z%C3%B9h%24%C2%85WD%3F%00%C2%BC%C2%90%C2%91%C3%B7DJ%C2%B4%03'%02%C2%83%C3%80jR%C3%9An%05%C3%BE%04%C3%A6%C2%86n6e%C3%A6%03%C3%97%C2%92%C3%8A%C3%89FR%C2%AA%C2%AF%04%C2%AE%26%C2%95%C2%84%7F*%C3%B8p(Z%C3%B9_B%C2%8E%05%C2%9E%06%C3%B6%00%C2%8F%00%C3%8F%00%C2%AD%C3%80%04%C2%B0%C2%80Tn%1E%026d%C3%A6%C3%BC%06%5C%1F%C3%B3n%C2%AE%C3%B5%C3%A1%15%C3%91%40%04~%14%11%C3%92_%26%C2%9F%15%3B%C3%9B%C3%A6Tz%C2%96%C2%A2oR%1FPG%C3%95%09S%C2%9AO%C2%BE%5B%12Q%C3%BA%C2%BBz%C2%91zU%C2%8C%0Ff%22%C2%A9%C2%BC%C2%BD%C2%A9~%C2%A6v%C2%95%C3%89%C2%BB%C3%95%01uc%C3%B8%C2%B1C%C3%9D%16v%C2%BA%22%C3%A2%C3%9E%09%C3%9D%5ES%1A%C3%9F%C2%AE~%17%C3%BE5WY%C2%AFjk%C3%A4%14%C2%9E%C2%88%C2%BET%26%2F%01-%C3%80Q%C3%99%C3%BD%01%3A%C2%81%C3%B5%C2%A4%1D%1E%03%1E%05%C3%9E%C2%8Ew%25%60%19)%3A%C3%B6%C2%92%C2%8A%C3%BF%0F%C3%80%100%C2%87%14%19%C3%B5%40%60%1C8%1C%C3%A3%26%C3%A0%0B%C3%A0%C3%BB%C2%B0%C3%B9%25pj%C3%98%1E%01%16%03O%02%C3%9F%C2%92%0E%C2%AD%C3%B1%3A%C3%97k%C2%88%C3%80_%C2%A3%3F%C2%8E%C2%A9%C2%94%04%C2%B8%09%C3%B8%C2%99%C2%94%C2%BA%0BC%C2%B6%08x%1D%C2%B8%0B%C3%B8%06%C2%B8%15x%3C%C3%A3h%2BpC%3C%C2%9F%05l%06%5E%C2%8By%00w%C2%92N%C3%8CJ%C2%98%24%C3%ABHP%C3%A9%3B%C3%87H)%C3%BD%0Bp%1Ep%C3%AE%11%C3%9A%C2%9A%C3%91%C3%B0L%C3%A8%C2%8B~)%C2%89%C2%8C%C3%8B%C2%81%C3%A5%C3%80*R%04n'E%C3%91%7CR%C3%94%5DF%C2%BA%C2%B2%7CH%22%C3%B6a%60-%C3%A9%C3%AAr%12pE%C2%BC%C3%BF%C2%91%14%C3%9D-%C2%A4%C2%8D8%0C%2C%01%C3%8E%C2%AF%C3%A2G3%C2%A9%C3%9E%C3%8E%23mD%0B%C3%93kb-%C2%B4%01%3B%C2%80%2B%C2%81m%C3%80%C2%BA%C2%B0S%1F%1A%C2%A8%C2%81s%C3%94%C3%B5%C3%AA_N%C3%87%C3%97%C3%AA%C2%A5%C2%A1wv%C2%85%C3%B7Yt%C2%AA%1B%C3%A2yw%C2%A6Nu%C2%A9%C3%A7%C2%98NsM%C2%A7%7B%C2%A5SX%C3%93U%C2%A6O%C3%9D%C2%AC%C3%B6%C2%A8%17%C2%AB%7B%C3%95M%C2%A6%2B%C3%8D%C2%A0%C3%BA%C2%8A%3A7%C3%A6%C2%BD%C2%AA%C3%AE%C2%8B%C3%B1%16u%C2%97%3A%C3%9BT%7B%C3%87%C3%955%C3%B5%C3%B2%C3%91%C3%88)%7C%08%C2%B8%07x%1F%C2%B8%C2%90t%C3%A2%C3%BEM%C2%8A%C2%BA%C2%BE%C3%98UH5g%1D%C3%95%C2%A3b%14%C3%B8%C2%9C%14m%3BI5p%12C%C3%80%1A%C3%92%C2%85y%7F%C2%85%C2%B9o%C3%84%C2%BC6%C2%A6%C2%B2h%24%C3%BCx%0E%18%26%5D%C2%B0%C2%9F%05v1%C2%95%C3%AA%C2%BD%C3%A1%C3%9F8%C2%A9T%1CC*%11%1F%03%C3%B7%02%C3%9D%C2%B5%3F%7D%3AJZ%C3%BCO%24%0F%C2%8A%C3%9F%C3%829Q%10%C2%98%13%05%C2%819Q%10%C2%98%13%05%C2%819Q%10%C2%98%13%05%C2%819Q%10%C2%98%13%05%C2%819%C3%B1%2F%C2%92%C3%94%C2%94V%40!%3FY%00%00%00%00IEND%C2%AEB%60%C2%82";
 
@@ -625,7 +621,7 @@ var btn_c2alink = edit_text_group1.add("iconbutton", undefined, File.decode(c2al
 });
 btn_c2alink.alignment = ["left", "fill"];
 btn_c2alink.preferredSize.width = 80;
-btn_c2alink.preferredSize.height = 30;
+btn_c2alink.preferredSize.height = 32;
 
 var tools_wrapper_r = tools_wrapper.add("group", undefined, {
     name: "tools_wrapper_r"
@@ -686,7 +682,7 @@ var btn_reload_json = tools_wrapper_r.add("iconbutton", undefined, File.decode(r
 btn_reload_json.alignment = ["left", "top"];
 btn_reload_json.preferredSize.height = 32;
 btn_reload_json.minimumSize.width = 32;
-btn_reload_json.preferredSize.width = 100;
+btn_reload_json.preferredSize.width = 105;
 btn_reload_json.text = "REFRESH ";
 
 var btn_revert_json = tools_wrapper_r.add("iconbutton", undefined, File.decode(revert_imgString), {
@@ -696,7 +692,7 @@ var btn_revert_json = tools_wrapper_r.add("iconbutton", undefined, File.decode(r
 btn_revert_json.alignment = ["left", "top"];
 btn_revert_json.preferredSize.height = 32;
 btn_revert_json.minimumSize.width = 32;
-btn_revert_json.preferredSize.width = 100;
+btn_revert_json.preferredSize.width = 105;
 btn_revert_json.text = "REVERT ";
 
 // TPANEL1
@@ -824,7 +820,6 @@ try {
 }
 
 /// INCLUDES END
-
 
 (function () {
     if (!checkSecurityPrefSet()) {
