@@ -1,6 +1,10 @@
-﻿// HELPER PANEL FOR ADOBE AFTER EFFECTS TO WORK WITH THE GG TEMPLATE SYSTEM
+﻿
+    //================ VARIABLES ======================
+    var scriptName = 'moelles mojo';
+    var scriptVersion = '0.1';
 
-function createDockableUI(thisObj) {
+
+    function createDockableUI(thisObj) {
     var dialog =
         thisObj instanceof Panel ?
             thisObj :
@@ -14,40 +18,36 @@ function createDockableUI(thisObj) {
         this.layout.resize();
     };
     return dialog;
-}
-
-function showWindow(myWindow) {
-    if (myWindow instanceof Window) {
-        myWindow.show();
     }
-    if (myWindow instanceof Panel) {
-        myWindow.layout.layout(true);
-        myWindow.layout.resize();
+
+    function showWindow(myWindow) {
+        if (myWindow instanceof Window) {
+            myWindow.show();
+        }
+        if (myWindow instanceof Panel) {
+            myWindow.layout.layout(true);
+            myWindow.layout.resize();
+        }
     }
-}
-//Paste code
-// WIN
-// ===
-var win = createDockableUI(this);
+    //Paste code
+    // WIN
+    // ===
+    var win = createDockableUI(this);
+    var buttonsSize = 25;
+    var tooltipWin = null;
 
-var buttonsSize = 25;
-var buttonsSizeHeight = 25;
-var buttonsSizeWidth = 65;
+    win.orientation = "column";
+    win.alignChildren = ["fill", "top"];
+    win.alignment = ["fill", "top"];
+    win.minimumSize.width = 284;
+    win.spacing = 5;
+    win.margins = 0;
 
-var tooltipWin = null;
-
-win.orientation = "column";
-win.alignChildren = ["fill", "top"];
-win.alignment = ["fill", "top"];
-win.minimumSize.width = 284;
-win.spacing = 5;
-win.margins = 0;
-
-// ROOT
-// ======
-var root = win.add("group", undefined, {
-    name: "root"
-});
+    // ROOT
+    // ======
+    var root = win.add("group", undefined, {
+        name: "root"
+    });
 root.orientation = "row";
 root.minimumSize.width = 284;
 root.alignChildren = ["fill", "fill"];
@@ -394,7 +394,7 @@ scale2fill.preferredSize.height = 32;
 scale2fill.preferredSize.width = 116;
 scale2fill.alignment = ["left", "top"];
 
-var addAnimbtn_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00n%00%00%00%1E%08%06%00%00%00%C3%8Dy%2B%3A%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%03%C2%88IDATh%C2%81%C3%AD%C2%9AM%C2%88%14G%14%C3%87%7F%C3%8F%C2%B8f%C2%8D%24%C2%A6%03%011%07e%C3%97%C2%AB%10X%25%60%C3%A2!dn~%40%C2%8C%1B%C3%90%C2%8B%07q%C2%BC%04C.1%10%C3%B0%26%24G!%C2%81%C2%B0x%C3%881%3A%C3%87%24%20%C2%BA%07%0F%0A%22%C2%B3%175q%C2%83%C2%A8%C2%A8%C2%B9%C3%85%C2%B8%C3%B1%20%1E%C3%8C%C3%A6%C2%9FCU9%C2%B5%C2%BD%C3%93%C2%B3L%7F%C2%B0%C3%9B%C3%9A%3Fh%C2%BA%C3%BA%C3%95%C3%ABW%C2%8F%C3%B9%C3%8F%C2%AB%C3%AA%C3%AA%19%C2%93DC%C3%BDX%C2%B5%C3%9C%094%C3%A4%C2%A3%11%C2%AE%C2%A64%C3%82%C3%95%C2%94F%C2%B8%C2%9A%C3%92%08WS%0A%09gf%00%C3%A6%C2%9AF%19%07%C2%B0%17%C3%A8%02%C3%B3%C3%80%13%C3%A0%2C%C2%B0%C3%99%C3%B75x%C2%AC%C3%A0v%C3%A0C%60%2B%C2%B0%16%C3%B7A%C3%BF%01%5C1%C2%B3%C2%BF%C3%B2%04%C2%93t%188%C3%9D%C2%A7%C3%AB!%C2%B0%0D%C2%B8%C2%973%C3%8F%17%C2%8E%C2%A2%C3%82%1D%C3%81%C2%89%C2%B6%16%18%C3%B5%C3%A75%C3%8093%3B%3FL%20I%C3%AB%C2%81%C3%BB%C3%80%1B%19.%3F%01%07%C3%B2%C2%A7%C3%BAbQt%C2%8D%C3%BB3%23%C3%A6%3EI%C2%BB%C2%86%C2%8C%C3%B5%01%C3%99%C2%A2%01%C3%AC%192%5E%C3%99%24%C3%8B%3C%C3%BE%02V%17%C2%BC%C3%BF%3C0%0B%C2%8C%01%C3%9Bq%15%17%C3%98%2F%C3%A9%C2%BA%C2%99%C3%9DO%C3%9F%24i%03%C2%B0%03%C3%98%00%5C5%C2%B3.%C2%83E%03x%C2%AD%40%C2%9Em%C2%9F%23%C3%80%14pg%C3%88%C3%BB%C2%BB%C3%80%04%C3%B0%160W%20%C2%8F%C3%92(%24%C2%9C%C2%99%C3%8D%03w%C2%81%C2%BB%C2%92%C2%BA%C3%80Q%60c%C3%A8%06%3E%06N%05%7FI%C2%A3%C3%80W%C3%80AzS%C3%AC%C2%88%C2%A4%C2%B7%C2%81kK%0Cw%C2%A3%40%C2%AA%C3%87%C3%A9%09%C2%97%C3%B8%3C%C2%87%C2%A1%03L%C2%B3BD%C2%83%C3%A2%15%C3%B7%1C3%7B%2C%C3%A9%0C%C3%B0Ed%C3%9E.i%C3%84%C3%8C%C2%9EIz%15%C3%B8%0Ex%0F'j%C3%A0%15%60%C3%84%C3%8C~%C2%93%C3%B43%C3%99S%C3%A279S%0B%C3%956%C2%83%C2%AB%C2%9AV%C2%AA%3F%C3%B1%C2%B6i%7F%C2%9E%C3%B0%C3%B6%C2%B82gX8UNz%5B%C2%88%0F%C3%B0mt%C2%9D%C3%B8%C3%BEN%C3%8E%C2%9C%C2%97FR%C3%AE%23%23%C3%9Eg%C2%92~%C2%90%C3%B4%C2%A3%C2%A43%C2%92%C3%86%C2%BD%C3%BDKIW%25%5D%C2%97tK%C3%92%03I%0F%25%5D%C2%96%C2%B4%C3%8A%C3%BB%C2%BC)iZ%0By%26%C3%A9%C3%AB%02%C2%B9%C2%9E%C3%B5q%C3%9A%C2%92%C2%BAQ%3B%C3%B4Oz%C3%9B%C2%85%C3%94%C2%B8%C2%8F%24%25%C3%9E'%C3%9C%C2%97%C3%B8%23%C3%B8%3F%C2%8A%C3%BCoG~%C2%81x%C2%9CR%C2%8F*6%C3%A03%C2%A9%C3%ABM%C2%92%C3%9E%05vG%C2%B6Y%C3%9C7s%C3%82%C3%8C%C3%9E7%C2%B3%C3%BF%00%C3%8C%C3%AC%1F3k%01%3B%C2%81c%C2%B8%C2%A7%C3%96q3%3B%C2%993%C2%971%5Cu%C3%8C%C3%A1*(T%C3%80d%1F%C3%9F%09%C3%A0S%C3%9C%C2%B6%C3%A3%0E%C2%BDJ%C3%8C%C2%A2%C2%85%C2%AB%C2%B2%C3%A0%3F%C3%A6%C3%8F%C3%A3~%C2%AC%10%C2%B3%12J%C2%9B*%23~O%5D%C2%BF%0E%7C%12%5D%C3%9F%04%0E%C2%99%C3%99%C3%93%C2%AC%00fv%09%C2%B8TB.A%C2%A0i%7F%C3%AE%C3%A0%C2%A6%C3%9C%16%C2%BD%0F%C2%9A%C2%A8%C2%AF%13%C3%B9%C2%B7%19%C3%8C%0C%C2%BD%C3%A91%C2%AC%7D%1D%1F3%C3%9C_%C2%99p%C2%A5W%C2%9C%C2%99%3D%06%C3%BE%C2%8EL%1F%01%5B%7C%5B%C3%80%C2%89A%C2%A2%C2%95L%10.%C3%81%09%C3%96%C2%A6'V%C2%BA%C3%AA%C3%A62%C3%9A%2B%C2%92**%0E%C3%9C%C2%93%C3%A6%3B%C2%BE%C2%BD)%C2%B2_6%C2%B3%C3%99%C2%8A%C3%86L%13%3Fh%C2%B4X%3C%C3%AD%C2%B5%C3%A9UL%C3%AD%C2%A8%C3%AA%25%C3%B3%C2%83%0C%C3%BB%C2%AF%15%C2%8D%C3%97%C2%8F0%C3%95M%C3%A1%C3%B6_%C3%A1%18%C3%87U%C3%94%18%C2%83%C3%97%C2%B0%15MU%C3%82-%C3%9At%03%C3%BF%02W*%1A%2FM%C3%BC%601%C2%85%13*%1Ca%0D%C2%82%C2%A5%C3%97%C2%B1%15K%C2%A1w%C2%95Yo%C3%AC%25%C2%AD%03%C2%BE%C2%A7%C3%B7%0Es%14%C2%985%C2%B3%C3%8Fs%0F%C3%A6%C3%A2%0E%C3%A3%1E%C3%B6%5DY%C3%ABU%12%C3%B5%25%7D%C3%BC%C3%92%C2%B6%22%C3%BE%C2%A5SI%C3%85%C2%99%C3%99%13%16O%C2%97%17%C2%AB%18k%00%C2%A1%C3%82%06%C3%B5%C3%B7kg%C3%99%C2%8A%C3%B8%C2%97N%C2%95%3F%C2%A4%C2%9E%C3%86%C2%BD%C2%84%C2%9E%C3%87%C2%89%C3%B6K%C2%85c%C2%BDt%14%C3%BDY%C2%A7a%C2%99h%C3%BE%C2%BAPS%1A%C3%A1jJ%23%5CMi%C2%84%C2%AB)%C2%8Dp5%C2%A5%11%C2%AE%C2%A6%C3%BC%0F%02%C2%9C%19%C3%A3%5BSW%C3%95%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+var addAnimbtn_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00n%00%00%00%1E%08%06%00%00%00%C3%8Dy%2B%3A%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%03%C2%88IDATh%C2%81%C3%AD%C2%9AM%C2%88%14G%14%C3%87%7F%C3%8F%C2%B8f%C2%8D%24%C2%A6%03%011%07e%C3%97%C2%AB%10X%25%60%C3%A2!dn~%40%C2%8C%1B%C3%90%C2%8B%07q%C2%BC%04C.1%10%C3%B0%26%24G!%C2%81%C2%B0x%C3%881%3A%C3%87%24%20%C2%BA%07%0F%0A%22%C2%B3%175q%C2%83%C2%A8%C2%A8%C2%B9%C3%85%C2%B8%C3%B1%20%1E%C3%8C%C3%A6%C2%9FCU9%C2%B5%C2%BD%C3%93%C2%B3L%7F%C2%B0%C3%9B%C3%9A%3Fh%C2%BA%C3%BA%C3%95%C3%ABW%C2%8F%C3%B9%C3%8F%C2%AB%C3%AA%C3%AA%19%C2%93DC%C3%BDX%C2%B5%C3%9C%094%C3%A4%C2%A3%11%C2%AE%C2%A64%C3%82%C3%95%C2%94F%C2%B8%C2%9A%C3%92%08WS%0A%09gf%00%C3%A6%C2%9AF%19%07%C2%B0%17%C3%A8%02%C3%B3%C3%80%13%C3%A0%2C%C2%B0%C3%99%C3%B75x%C2%AC%C3%A0v%C3%A0C%60%2B%C2%B0%16%C3%B7A%C3%BF%01%5C1%C2%B3%C2%BF%C3%B2%04%C2%93t%188%C3%9D%C2%A7%C3%AB!%C2%B0%0D%C2%B8%C2%973%C3%8F%17%C2%8E%C2%A2%C3%82%1D%C3%81%C2%89%C2%B6%16%18%C3%B5%C3%A75%C3%8093%3B%3FL%20I%C3%AB%C2%81%C3%BB%C3%80%1B%19.%3F%01%07%C3%B2%C2%A7%C3%BAbQt%C2%8D%C3%BB3%23%C3%A6%3EI%C2%BB%C2%86%C2%8C%C3%B5%01%C3%99%C2%A2%01%C3%AC%192%5E%C3%99%24%C3%8B%3C%C3%BE%02V%17%C2%BC%C3%BF%3C0%0B%C2%8C%01%C3%9Bq%15%17%C3%98%2F%C3%A9%C2%BA%C2%99%C3%9DO%C3%9F%24i%03%C2%B0%03%C3%98%00%5C5%C2%B3.%C2%83E%03x%C2%AD%40%C2%9Em%C2%9F%23%C3%80%14pg%C3%88%C3%BB%C2%BB%C3%80%04%C3%B0%160W%20%C2%8F%C3%92(%24%C2%9C%C2%99%C3%8D%03w%C2%81%C2%BB%C2%92%C2%BA%C3%80Q%60c%C3%A8%06%3E%06N%05%7FI%C2%A3%C3%80W%C3%80AzS%C3%AC%C2%88%C2%A4%C2%B7%C2%81kK%0Cw%C2%A3%40%C2%AA%C3%87%C3%A9%09%C2%97%C3%B8%3C%C2%87%C2%A1%03L%C2%B3BD%C2%83%C3%A2%15%C3%B7%1C3%7B%2C%C3%A9%0C%C3%B0Ed%C3%9E.i%C3%84%C3%8C%C2%9EIz%15%C3%B8%0Ex%0F'j%C3%A0%15%60%C3%84%C3%8C~%C2%93%C3%B43%C3%99S%C3%A279S%0B%C3%956%C2%83%C2%AB%C2%9AV%C2%AA%3F%C3%B1%C2%B6i%7F%C2%9E%C3%B0%C3%B6%C2%B82gX8UNz%5B%C2%88%0F%C3%B0mt%C2%9D%C3%B8%C3%BEN%C3%8E%C2%9C%C2%97FR%C3%AE%23%23%C3%9Eg%C2%92~%C2%90%C3%B4%C2%A3%C2%A43%C2%92%C3%86%C2%BD%C3%BDKIW%25%5D%C2%97tK%C3%92%03I%0F%25%5D%C2%96%C2%B4%C3%8A%C3%BB%C2%BC)iZ%0By%26%C3%A9%C3%AB%02%C2%B9%C2%9E%C3%B5q%C3%9A%C2%92%C2%BAQ%3B%C3%B4Oz%C3%9B%C2%85%C3%94%C2%B8%C2%8F%24%25%C3%9E'%C3%9C%C2%97%C3%B8%23%C3%B8%3F%C2%8A%C3%BCoG~%C2%81x%C2%9CR%C2%8F*6%C3%A03%C2%A9%C3%ABM%C2%92%C3%9E%05vG%C2%B6Y%C3%9C7s%C3%82%C3%8C%C3%9E7%C2%B3%C3%BF%00%C3%8C%C3%AC%1F3k%01%3B%C2%81c%C2%B8%C2%A7%C3%96q3%3B%C2%993%C2%971%5Cu%C3%8C%C3%A1*(T%C3%80d%1F%C3%9F%09%C3%A0S%C3%9C%C2%B6%C3%A3%0E%C2%BDJ%C3%8C%C2%A2%C2%85%C2%AB%C2%B2%C3%A0%3F%C3%A6%C3%8F%C3%A3~%C2%AC%10%C2%B3%12J%C2%9B*%23~O%5D%C2%BF%0E%7C%12%5D%C3%9F%04%0E%C2%99%C3%99%C3%93%C2%AC%00fv%09%C2%B8TB.A%C2%A0i%7F%C3%AE%C3%A0%C2%A6%C3%9C%16%C2%BD%0F%C2%9A%C2%A8%C2%AF%13%C3%B9%C2%B7%19%C3%8C%0C%C2%BD%C3%A91%C2%AC%7D%1D%1F3%C3%9C_%C2%99p%C2%A5W%C2%9C%C2%99%3D%06%C3%BE%C2%8EL%1F%01%5B%7C%5B%C3%80%C2%89A%C2%A2%C2%95L%10.%C3%81%09%C3%96%C2%A6'V%C2%BA%C3%AA%C3%A62%C3%9A%2B%C2%92**%0E%C3%9C%C2%93%C3%A6%3B%C2%BE%C2%BD)%C2%B2_6%C2%B3%C3%99%C2%8A%C3%86L%13%3Fh%C2%B4X%3C%C3%AD%C2%B5%C3%A9UL%C3%AD%C2%A8%C3%AA%25%C3%B3%C2%83%0C%C3%BB%C2%AF%15%C2%8D%C3%97%C2%8F0%C3%95M%C3%A1%C3%B6_%C3%A1%18%C3%87U%C3%94%18%C2%83%C3%97%C2%B0%15MU%C3%82-%C3%9At%03%C3%BF%02W*%1A%2FM%C3%BC%601%C2%85%13*%1Ca%0D%C2%82%C2%A5%C3%97%C2%B1%15K%C2%A1w%C2%95Yo%C3%AC%25%C2%AD%03%C2%BE%C2%A7%C3%B7%0Es%14%C2%985%C2%B3%C3%8Fs%0F%C3%A6%C3%A2%0E%C3%A3%1E%C3%B6%5DY%C3%ABU%12%C3%B5%25%7D%C3%BC%C3%92%C2%B6%22%C3%BE%C2%A5SI%C3%85%C2%99%C3%99%13%16O%C2%97%17%C2%AB%18k%00%C2%A1%C3%82%06%C3%B5%C3%B7kg%C3%99%C2%8A%C3%B8%C2%97N%C2%95%3F%C2%A4%C2%9E%C3%86%C2%BD%C2%84%C2%9E%C3%87%C2%89%C3%B6K%C2%85c%C2%BDt%14%C3%BDY%C2%A7a%C2%99h%C3%BE%C2%BAPS%1A%C3%A1jJ%23%5CMi%C2%84%C2%AB)%C2%8Dp5%C2%A5%11%C2%AE%C2%A6%C3%BC%0F%02%C2%9C%19%C3%A3%5BSW%C3%95%00%00%00%00IEND%C2%AEB%60%C2%82";
 
 var addAnimbtn = groupFx2.add("iconbutton", undefined, File.decode(addAnimbtn_imgString), {
     name: "addAnimbtn",
@@ -711,7 +711,7 @@ shortcuts.spacing = 4;
 shortcuts.margins = [4, 0, 0, 0];
 shortcuts.preferredSize.height = 40;
 
-var aep_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01%C3%A9IDATH%C2%89%C2%B5%C2%95%C2%BFkTA%10%C3%87%3F%1B%C2%82%C2%90%3A%C2%90%60e~%C3%98D%C3%BC%C2%85%C3%81%40%0AO%C2%83%C2%A8X%C3%84T%22%C2%88%C2%A0%C2%A4%16!%C3%97%C2%9B%26%C2%B5A%C3%9B%C3%80qB%20%C3%98%5C%C3%84B%C3%A5%40%C2%94%C3%BB%07B%C3%B0%11%C2%B0Q4Z(iB%C3%A0%3C%08%C3%89%7D-v%C3%8E%C3%B7X%C3%9F%7Br%C2%97%C2%BB%2F%C2%BC%C2%B7%C2%BB3%C2%B3%C3%B3%C2%9D%C3%99%C2%9D%C3%9Du%C2%92%C3%A8%25%C3%BA%C2%AD%1D%06%C2%96%C2%81%C2%B3%40_%C2%9B%3E%C3%B6%C2%80%C2%B2sn%25TH%C3%B2%3FIk%C3%B2%C3%B8-%C2%A9%C3%9E%C3%86%C2%B7%C2%AF%18%C2%8F%C3%B3%08%22s%C3%9E)~X%C3%BB0%C2%8B%60%C3%8B%22%C3%AA%14W%2CHI%C2%BA%C2%97%24hw%C2%BD%C2%B3%C2%B0%0B%5C%03%3E%03eI%C2%B7Z%C2%8An%11%1Cs%C3%8E%C3%BD%04%C2%AE%03%C2%BF%C2%80%17%C2%92.B%5CEG%C3%85%1BI%C3%9B%C3%96%170%00%2C%02%C2%B3%C3%9D%22%18%C2%B4%C2%AF%05%01c%C2%90%C2%9FA%03(%01%C2%87%C3%80y%C3%A0rB%C3%B7%1E%C2%88R%C3%A6%C3%8C%C2%9A%C3%A3FL%C2%95%5DE%C2%AB%09%C2%9B%13a%C3%95%C2%A4E%24%C3%A9%C2%A9%C3%A9%C3%AB%C3%A637%C2%83%C2%8A%C2%A4%3E%C3%A0%C2%92s%C2%AE%26i%03%C2%B8%108%C2%BC%09%C3%9CI%C2%88fB'Y%04u%C2%A0%0A%C2%9C%02n%035%C3%A0eH%00%C3%9C%00%C3%AE%C3%A7%04%C2%99IPu%C3%8E5%24%C3%8D%00WMV%01%C2%96%02%C2%BB%12%C3%B0%C3%95%C3%BA%C2%A3%C3%80%C2%A3%7F%3Ce%C3%AC%C3%81%5D%C3%93%C2%AD%C3%9B%C3%B8%C2%B8%C2%8D%3Fe%C3%AD%C2%81%C2%A4%C2%93%C2%89%C3%B9%7F%C3%B7%20%C3%AD%C2%A0%C3%AD%03%C2%AF%C2%AD%C2%BF%04%C3%8C%01%3B6%5E%0F%C2%9C%C3%8EK%C3%9A%C2%94%C2%B4%09%C2%BCK%5D%C2%8B%C2%94%0C%C3%9E%C2%A6%1Az%C3%9B%C3%89d%06%C2%89%C2%AA%09%C2%91%5BE%15%C2%9B%5C%04%C2%9E%C2%98l%1B%18%016%C2%80%C3%AF%09%C3%9BW%C3%81%C3%9Ci%60*%2F%C2%83%C2%A6%C2%A4!%C2%93%7F%08%C2%A2%3Ag%C3%B2g9%C3%A7%C3%A0%C3%81%C3%BF2p%C3%80sI%07%40!%C3%90%C2%ADJ%C3%BA%C2%82%7F%C3%B5%0A%C2%92%C2%BE%C2%A5pL%C2%84%02'%C3%BF%26G%C3%808%C3%BE%C2%92%C3%AA%06%1A%C3%B8%C2%AB%C3%BBL%2B%C2%83%088%0D%1C%C3%A0%2F%C2%AA%C2%A3%C3%80%C3%A1%03%C2%8D%20%3Eh%0B%C3%A6%C2%B8%C2%93G%3FD%13%C3%B8%08%14!%5E%C2%A2%C2%9E%C3%A1%0Fh%C2%AFat%22t7%C2%A7%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+var aep_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01%C3%A9IDATH%C2%89%C2%B5%C2%95%C2%BFkTA%10%C3%87%3F%1B%C2%82%C2%90%3A%C2%90%60e~%C3%98D%C3%BC%C2%85%C3%81%40%0AO%C2%83%C2%A8X%C3%84T%22%C2%88%C2%A0%C2%A4%16!%C3%97%C2%9B%26%C2%B5A%C3%9B%C3%80qB%20%C3%98%5C%C3%84B%C3%A5%40%C2%94%C3%BB%07B%C3%B0%11%C2%B0Q4Z(iB%C3%A0%3C%08%C3%89%7D-v%C3%8E%C3%B7X%C3%9F%7Br%C2%97%C2%BB%2F%C2%BC%C2%B7%C2%BB3%C2%B3%C3%B3%C2%9D%C3%99%C2%9D%C3%9Du%C2%92%C3%A8%25%C3%BA%C2%AD%1D%06%C2%96%C2%81%C2%B3%40_%C2%9B%3E%C3%B6%C2%80%C2%B2sn%25TH%C3%B2%3FIk%C3%B2%C3%B8-%C2%A9%C3%9E%C3%86%C2%B7%C2%AF%18%C2%8F%C3%B3%08%22s%C3%9E)~X%C3%BB0%C2%8B%60%C3%8B%22%C3%AA%14W%2CHI%C2%BA%C2%97%24hw%C2%BD%C2%B3%C2%B0%0B%5C%03%3E%03eI%C2%B7Z%C2%8An%11%1Cs%C3%8E%C3%BD%04%C2%AE%03%C2%BF%C2%80%17%C2%92.B%5CEG%C3%85%1BI%C3%9B%C3%96%170%00%2C%02%C2%B3%C3%9D%22%18%C2%B4%C2%AF%05%01c%C2%90%C2%9FA%03(%01%C2%87%C3%80y%C3%A0rB%C3%B7%1E%C2%88R%C3%A6%C3%8C%C2%9A%C3%A3FL%C2%95%5DE%C2%AB%09%C2%9B%13a%C3%95%C2%A4E%24%C3%A9%C2%A9%C3%A9%C3%AB%C3%A637%C2%83%C2%8A%C2%A4%3E%C3%A0%C2%92s%C2%AE%26i%03%C2%B8%108%C2%BC%09%C3%9CI%C2%88fB'Y%04u%C2%A0%0A%C2%9C%02n%035%C3%A0eH%00%C3%9C%00%C3%AE%C3%A7%04%C2%99IPu%C3%8E5%24%C3%8D%00WMV%01%C2%96%02%C2%BB%12%C3%B0%C3%95%C3%BA%C2%A3%C3%80%C2%A3%7F%3Ce%C3%AC%C3%81%5D%C3%93%C2%AD%C3%9B%C3%B8%C2%B8%C2%8D%3Fe%C3%AD%C2%81%C2%A4%C2%93%C2%89%C3%B9%7F%C3%B7%20%C3%AD%C2%A0%C3%AD%03%C2%AF%C2%AD%C2%BF%04%C3%8C%01%3B6%5E%0F%C2%9C%C3%8EK%C3%9A%C2%94%C2%B4%09%C2%BCK%5D%C2%8B%C2%94%0C%C3%9E%C2%A6%1Az%C3%9B%C3%89d%06%C2%89%C2%AA%09%C2%91%5BE%15%C2%9B%5C%04%C2%9E%C2%98l%1B%18%016%C2%80%C3%AF%09%C3%9BW%C3%81%C3%9Ci%60*%2F%C2%83%C2%A6%C2%A4!%C2%93%7F%08%C2%A2%3Ag%C3%B2g9%C3%A7%C3%A0%C3%81%C3%BF2p%C3%80sI%07%40!%C3%90%C2%ADJ%C3%BA%C2%82%7F%C3%B5%0A%C2%92%C2%BE%C2%A5pL%C2%84%02'%C3%BF%26G%C3%808%C3%BE%C2%92%C3%AA%06%1A%C3%B8%C2%AB%C3%BBL%2B%C2%83%088%0D%1C%C3%A0%2F%C2%AA%C2%A3%C3%80%C3%A1%03%C2%8D%20%3Eh%0B%C3%A6%C2%B8%C2%93G%3FD%13%C3%B8%08%14!%5E%C2%A2%C2%9E%C3%A1%0Fh%C2%AFat%22t7%C2%A7%00%00%00%00IEND%C2%AEB%60%C2%82";
 
 
 var openBoilerplate = shortcuts.add("iconbutton", undefined, File.decode(aep_imgString), {
@@ -766,6 +766,10 @@ var purgeAll = shortcuts.add("iconbutton", undefined, File.decode(purgeAll_imgSt
 });
 purgeAll.alignment = ["center", "top"];
 
+
+    var btn_about = shortcuts.add('button', undefined, '?'); // launch about panel
+    btn_about.maximumSize.width = 32;
+
 // add Obj / RIGHT ICON SIDEBAR
 
 var textLayer_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%01aIDATH%C2%89%C3%AD%C2%96%3D%2FfQ%14%C2%85%1F%5E%C2%BC%18%C3%95%24%C2%A6T%08%22%3A%C3%85T%23%C2%98B%C2%A7%C3%91(t%C3%BE%C2%84%C3%9F%C2%81N%C2%A3%C3%B5%0BDD%C2%83I%26%C2%A3%C2%98%0C%C3%89%C3%94b%12%1F%C2%99%C2%88%10!%C2%88%C2%8FG%C3%A1%C3%9E%C3%8C%C2%9E%13%C3%AE%C3%AB%C3%AB-%24Vr%C2%92s%C3%B6%C2%BA%7B%C2%ADs%C3%B7%3E%C3%A7%C3%A6%C3%96%C2%A8T%13%C2%B5UU%07%C3%AA%C3%82%C2%BC%05%C3%B8%0AL%00%1F%C2%81%C2%9B'j%C3%95%02G%C3%80%24%C2%B0%0A%C3%BCM%0D%C2%86%C2%80q%C2%A0%C3%AFY%5B%C3%BD%C2%87%C3%A3Lw%0E%005%1F%3F%7D%3D%C2%AC%C3%A7%C2%BA%C2%B1%07%C3%8D%2F%C3%9CyDS%3E%C2%89%25*%25%0F%09%C3%BC%0E%09m%40C%C2%B6%C2%BE%04%C2%B6%C2%81%C2%93l%C3%9D%11E%C3%BF%C3%93%0A%25ZN%5Es%3Ep%5D%C3%AAf%C3%A0v%C3%94%C3%8F%C2%81%C2%9FNr%C2%BF%C3%A7%5C4%C3%B8%C2%A2N%C2%A9%07%C3%AA%C2%92%C3%9A%13%C2%B8%5E%C3%B5O%10%C3%98S%07%02%C3%9F%C2%A9.%C2%AA%C2%87%C3%AA%C2%8C%C3%9A%7F%C2%9F%01j)K%C3%BC%C2%94%C3%84%2B%19%C2%A0%C2%B6%C2%AA%C2%83jc%C2%8C%C3%87%1E%00%5C%03%2B%C3%8Fh*%C3%80%3E%C2%B0%C2%9C%06%C2%AB~%C2%93%C3%9F%0D%C3%9E%C2%8E%C3%81%09w'%2C%C3%87%0Dp%C3%BA%C2%A8%C3%8C%C3%A4%2C%C2%A7%C2%A3%5E%1DVW%C3%95%C2%8Bp%0F.%C3%95%1F%C3%AA%C2%A8Z.%C3%92%C2%A8d0%C2%AA%C2%9E%C3%B90%C3%8E%C3%95%C2%B1%22%C2%8DJ%25j%07%1A%0B%C3%B82%C3%90%5D%24P%C3%89%60%0D%C3%98*%C3%A0w%C2%81oE%02%C3%A9%C2%A7%22%C3%85%060%0B%C2%8C%00%1F%C2%80%C2%AB%2C%5E%02.%C2%80%05%C3%A0W%C2%91%40%C2%8Do%C3%BD%C2%AF%C3%A2%16%C2%99Q%0F%02%C2%B5%C3%86%C2%BE%C2%B4%00%00%00%00IEND%C2%AEB%60%C2%82";
@@ -816,18 +820,9 @@ try {
 
     #include _scripts/moveAnchorPoint.jsx;
 
-} catch (e) {
-}
+} catch (e) {}
 
 /// INCLUDES END
-
-(function () {
-    if (!checkSecurityPrefSet()) {
-        return false;
-    } else {
-        showWindow(win);
-    }
-})();
 
 function checkSecurityPrefSet() {
     if (!isSecurityPrefSet()) {
@@ -862,7 +857,203 @@ function refreshCurrentFrame() {
     }
 };
 
+var headerVec = ['iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAACXBIWXMAAAsSAAALEgHS3X78AAACQElEQVRIiWKgKWBgYAAAAAD//6ItZmBgAAAAAP//oi1mYGAAAAAA//+C4/8MDAL/GRj6/zMwvP/PwPCfTAzSCzJDAGwoAwMDAAAA//9CtgAkQa7B6LgfbCgDAwMAAAD//2KEuZ6BgeE9lcNLkJGB4QMAAAD//2KCcgxoEBkGDAwMDAAAAAD//2IhoGgDAwPDRAYGBgUGBob5WMTRDYQHDRgwMDAAAAAA//+C+QAXaGRgYLjAyMCwAEQjKbrIyMBwAE3sAYYhDAwMAAAAAP//wueDD4wMDBf+MzCsZ2BgCGRgYFiIJShBvgrAaQIDAwMAAAD//8LnA1AwgIDDfwYGByQ+8YCBgQEAAAD//8Jnwcb/EBeDUpgDIyQIUIKBkYEhkJGBgRGEGRgYJmCYwMDAAAAAAP//whVEoODZ8J+BIYEBEtb8SL4qgCn6DwkeWLCBfIkKGBgYAAAAAP//gikEBQNyZkFOMcjqDKDyDVD+fjyZzYGBgYEBAAAA///CFUQHoQashxoCwqBgAqUa5GBCTkWYgIGBAQAAAP//wuUDULkEcy0Mg9M4yHcwH2Dx4XkUHzAwMAAAAAD//8IWBx8YGBjqsYRpwn8Gho/QMAdZjg5A8YSajBkYGAAAAAD//8LlA2pgBwYGBgYAAAAA//+ibWHHwPABAAAA//8CRzKIgSsdkwkmgM1kYGAAAAAA//9CDibqVzgMDAwAAAAA//+iLWZgYAAAAAD//6ItZmBgAAAAAP//oi1mYGAAAAAA//8DACa3CZtKZeSJAAAAAElFTkSuQmCC'];
+
 ////
+
+    /** convert a #ff00ff color string to a normalized RGBA color array
+        @parem {hexString} - string - hex string
+    */
+    function hexToArray(hexString) {
+        var hexColor = hexString.replace('#', '');
+        var r = parseInt(hexColor.slice(0, 2), 16) / 255;
+        var g = parseInt(hexColor.slice(2, 4), 16) / 255;
+        var b = parseInt(hexColor.slice(4, 6), 16) / 255;
+        return [r, g, b, 1];
+    }
+
+    /** open url in browser
+        @parem {url} - string - url
+    */
+    function visitURL(url) {
+        if ($.os.indexOf("Windows") != -1) {
+            system.callSystem('cmd /c "' + Folder.commonFiles.parent.fsName + "\\Internet Explorer\\iexplore.exe" + '" ' + url);
+        } else {
+            system.callSystem('open "' + url + '"');
+        }
+    }
+
+    /**************************************************************************
+     * Text Button ************************************************************
+     **************************************************************************/
+    function txtDraw() {
+        this.graphics.drawOSControl();
+        this.graphics.rectPath(0, 0, this.size[0], this.size[1]);
+        this.graphics.fillPath(this.fillBrush);
+        if (this.text) {
+            this.graphics.drawString(
+                this.text,
+                this.textPen,
+                (this.size[0] - this.graphics.measureString(this.text, this.graphics.font, this.size[0])[0]) / 2,
+                (this.size[1] - this.graphics.measureString(this.text, this.graphics.font, this.size[0])[1]) / 1.75,
+                this.graphics.font);
+        }
+    }
+
+    /** draw an text button with a colored background - returns a button object
+        @parem {parentObj} - object - ScriptUI panel or group
+        @parem {buttonText} - string - button text
+        @parem {staticColor} - string - icon color when static
+        @parem {hoverColor} - string - icon color when hovered (optional)
+    */
+    function buttonColorText(parentObj, buttonText, staticColor, hoverColor) {
+        var btn = parentObj.add('button', undefined, '', { name: 'ok' });    // add a basic button to style
+        btn.fillBrush = btn.graphics.newBrush(btn.graphics.BrushType.SOLID_COLOR, hexToArray(staticColor));
+        btn.text = buttonText.toUpperCase();
+        btn.textPen = btn.graphics.newPen(btn.graphics.PenType.SOLID_COLOR, hexToArray('#ffffff'), 1);
+        btn.onDraw = txtDraw;
+
+        if (hoverColor) {
+            try {
+                btn.addEventListener("mouseover", function () {
+                    updateTextButtonOnHover(this, buttonText, hoverColor, "#FFFFFF");
+                });
+                btn.addEventListener("mouseout", function () {
+                    updateTextButtonOnHover(this, buttonText, staticColor, "#FFFFFF");
+                });
+            } catch (err) {
+                // fail silently
+            }
+        }
+
+        return btn;
+    }
+
+    function updateTextButtonOnHover(btn, buttonText, backgroundColor, textColor) {
+        btn.fillBrush = btn.graphics.newBrush(btn.graphics.BrushType.SOLID_COLOR, hexToArray(backgroundColor));
+        btn.text = buttonText.toUpperCase();
+        btn.textPen = btn.graphics.newPen(btn.graphics.PenType.SOLID_COLOR, hexToArray(textColor), 1);
+        btn.onDraw = txtDraw;
+        return btn;
+    }
+
+    /**************************************************************************
+     * Vector Button **********************************************************
+     **************************************************************************/
+    function vecToPoints(vecCoord) {
+        var points = [];
+        var n;
+        for (var i = 0; i < vecCoord.length; i++) {
+            var eachNum = vecCoord[i].split(/[\s,]/);
+            var coordinates = [];
+            var sets = [];
+            for (var k = 0; k < eachNum.length; k += 2) {
+                sets.push(eachNum[k] + "," + eachNum[k + 1]);
+            }
+            for (var j = 0; j < sets.length; j++) {
+                n = sets[j].split(",");
+                coordinates[j] = n;
+                coordinates[j][0] = (parseFloat(coordinates[j][0]));
+                coordinates[j][1] = (parseFloat(coordinates[j][1]));
+            }
+            points.push(coordinates);
+        }
+        return points;
+    }
+
+    function vecDraw() {
+        this.graphics.drawOSControl();
+        this.graphics.rectPath(0, 0, this.size[0], this.size[1]);
+        this.graphics.fillPath(this.graphics.newBrush(this.graphics.BrushType.SOLID_COLOR, [0, 0, 0, 0.15]));
+        try {
+            for (var i = 0; i < this.coord.length; i++) {
+                var line = this.coord[i];
+                this.graphics.newPath();
+                this.graphics.moveTo(line[0][0] + (this.size[0] / 2 - this.artSize[0] / 2), line[0][1] + (this.size[1] / 2 - this.artSize[1] / 2));
+                for (var j = 0; j < line.length; j++) {
+                    this.graphics.lineTo(line[j][0] + (this.size[0] / 2 - this.artSize[0] / 2), line[j][1] + (this.size[1] / 2 - this.artSize[1] / 2));
+                }
+                this.graphics.fillPath(this.graphics.newBrush(this.graphics.BrushType.SOLID_COLOR, hexToArray(this.iconColor)));
+            }
+        } catch (e) {
+
+        }
+    }
+
+    /** draw an colored icon button - returns a button object
+        @parem {parentObj} - object - ScriptUI panel or group
+        @parem {iconVec} - array of strings - SVG coords as string
+        @parem {size} - array - icon size
+        @parem {staticColor} - string - icon color when static
+        @parem {hoverColor} - string - icon color when hovered (optional)
+    */
+    function buttonColorVector(parentObj, iconVec, size, staticColor, hoverColor) {
+        var btn = parentObj.add("button", [0, 0, size[0], size[1], undefined]);
+        btn.coord = vecToPoints(iconVec);
+        btn.iconColor = staticColor;
+        btn.artSize = size;
+        btn.onDraw = vecDraw;
+
+        if (hoverColor) {
+            try {
+                btn.addEventListener("mouseover", function () {
+                    updateVectorButtonOnHover(this, iconVec, hoverColor, size);
+                });
+                btn.addEventListener("mouseout", function () {
+                    updateVectorButtonOnHover(this, iconVec, staticColor, size);
+                });
+            }
+            catch (err) {
+                // fail silently
+            }
+        }
+
+        return btn;
+    }
+
+    function updateVectorButtonOnHover(btn, iconVec, iconColor, size) {
+        btn.coord = vecToPoints(iconVec);
+        btn.iconColor = iconColor;
+        btn.artSize = size;
+        btn.onDraw = vecDraw;
+        return btn;
+    }
+
+
+
+btn_about.onClick = function () { // open about panel
+    var w = new Window('dialog', 'About ' + scriptName);
+    w.margins = 0;
+    w.spacing = 0;
+
+    var content = w.add('group');
+    content.alignChildren = ['fill', 'fill'];
+    content.orientation = 'column';
+    content.alignment = ['top', 'left'];
+    content.margins = 16;
+    content.spacing = 8;
+
+    var allCaches_imgString = "%C2%89PNG%0D%0A%1A%0A%00%00%00%0DIHDR%00%00%00%18%00%00%00%18%08%06%00%00%00%C3%A0w%3D%C3%B8%00%00%00%09pHYs%00%00%0B%13%00%00%0B%13%01%00%C2%9A%C2%9C%18%00%00%02%09IDATH%C2%89%C2%B5%C2%95%3D%C2%8F%C3%93%40%10%C2%86%1F%C3%87gN'%C2%93%20%3E%24%C2%A2%C3%A4%40%20(%10%C2%A2%08U*%24%1A~%01%05%C3%BF%01%C2%A1PD(%0D%7F%C2%85%C2%8A%C2%9E%C2%9E%C2%96%12A%C3%83A%C2%85%14t%C3%9C%C3%A5%C3%82q(%7C%C3%BA%C2%9C%60%C3%B0P%C3%AC%2C6%C3%8E%3Aq%C2%84n%C2%A4%C3%95%C2%BC%C2%B3%3B%C2%B3%C3%AF%C3%8C%C3%AC%C2%AE%C3%AD%C2%89%08G)%C2%B5%23%C3%9D%C2%BD%22%C3%81%1D%C3%A0%3D%C2%90%14%C3%86!%C3%B0%148%C2%B3(%C3%98%C2%AB%C3%90%C2%A2%C2%97%C3%80%15%C3%A0q!%C2%A1%0B%C3%80-%C3%A06%C3%B0%C2%A4%2Cx%C3%8D1w%0F%C2%B8%C2%94%C2%B3%2F%03%3F%C2%81%C2%83%C2%82%C3%9F%09%C3%95w%C2%81%1B%C2%8A%23%C3%A0a%C3%9E%C3%89U%C3%81%5B%C3%9D%C3%94.%7CW%5D%2F%C3%B8%C3%996m%00%C3%87%00O%7D%1B%C3%8B*%C3%A8bZ%C3%92p%C2%AC-%C2%93w%C3%85%09%17%C3%81%04%C2%B8%09%0C0%3D%C2%AF%01%C2%BFt%C3%8D%C3%93%C2%98%C3%84a%1F%02%C3%97%C2%8B%C2%9B%C2%95%C3%9D%C2%A2%C3%8F%C2%98%0A%C3%96%C2%80Xq%03X%C3%97%04%C2%AC%7D%1C%C3%B8FVmT%C2%95%60%5B%C3%B5s%C3%A0An%C3%BE%05p%3Fgo%01%3D%C3%85c%C3%A0GU%C2%82%C2%B1%C3%AA%C2%B3%C3%80%C2%87%C3%9C%7CJ%C3%96%1E%C2%80%1D%C3%8C!%C3%9B%C2%98%C2%B9%1BSF%C3%B0%11%C3%93%C2%9A%16%C3%B0%3B%C2%97%C2%99W%C2%88%C3%99U%1F0%C2%8FqN%C3%8A%08%26%C2%98%7B_%07%7C%C3%A0S%C2%89%C3%9F.%C2%B0%C2%A9xg%15%C2%82%C2%98%C2%AC5u%C2%B2%C2%96%15e%0C%C2%9CS%C2%BCR%05%00%23%C3%95%C2%A75S%C2%97L%C3%88*p%C3%BA%2C%22%C2%B0%25%C2%B7p%C2%97o%C3%AF~%0Bs%C3%B8%C3%BB%C2%AB%12%C3%98%C2%8C%C3%9A%C3%80%C2%9Ec%C3%BD%C2%8B%C3%AAS%C2%98%C2%B7P%C3%BCV-%25%C2%B0%3D%C3%9D%C3%8C%C2%91%C2%A5d%C2%AFzO%C3%A3%03L%C3%B6_W%25%C2%B0Y_%04N*%C3%9E%00%C2%9A%C2%8A%23%C3%A0%C2%9A%C3%A2%03%C3%BE%7D%1F%C2%99%C2%88H%C3%998%2F%22%C2%89T%C2%93Ge%C3%BB%C3%8CM%C3%B4z%3DF%C2%A3%C2%91%C2%B5%07%22%C3%B2JD%C3%9E%C2%88%C3%88%C2%96%C2%88%C2%BCv%C3%A0g%22r%C2%B52%01%40%C2%B3%C3%99d0%180%1C%0E%C2%99%C3%8Df5%11%C3%B1%C2%A7%C3%93%C2%A9%C2%9F%24%C2%89%C2%9F%C2%A6%C2%A9%1F%C3%87%C2%B1%2F%22v%2C%C3%AA%C3%82%C3%BC%0F%C3%87%C3%B3%C2%BC%C2%BF8%0CC%C3%9A%C3%AD6a%18%12E%11A%10%10%04%01Q%14%C3%91%C3%A9t%C3%A8%C3%B7%C3%BBt%C2%BB%C3%9D%05%C3%87X%C3%AD%C2%9F%C3%BC_%C3%B2%07h%C3%BAN%C2%AE%C2%98S%C2%96%7D%00%00%00%00IEND%C2%AEB%60%C2%82"; 
+    var btn_url = content.add("iconbutton", undefined, File.decode(allCaches_imgString), { name: "allCaches", style: "toolbutton", toggle: true }); 
+
+    btn_url.minimumSize.width = 320;
+    btn_url.minimumSize.height = 64;
+
+    var coordStringRef = '["105 16 107 15 107 16 109 14 105 5 87 5 79 13 81 17 79 20 76 18 74 23 76 24 80 21 83 20 86 16 90 17 96 19 103 20 103 11",\n "109 14 107 16 107 24 105 18 103 20 90 17 90 22 84 24 83 20 80 21 80 25 76 24 74 23 72 30 80 35 89 25 95 27 90 27 88 28 93 34 106 34 114 24"]';
+
+    content.add('statictext', [0, 0, 360, 320], 'Styling elements in ScriptUI is pretty rough. This is an effort to standardize my own toolset and reduce the amount of vomit in my mouth from staring garbage UI. 😬 \n\nExploiting the ScriptUI moveTo() method, icons may be drawn as long as they have straight lines. Curves are strictly forbidden. Paste an SVG coordinate string as an array using the format:\n\n ' + coordStringRef + ' \n\nExport an SVG and locate the raw coordinates. Single and multiple path icons are supported. Coordinate strings can be with commas (from AI) or with just spaces.\n\nFeel free to use in your own tools.\n\n' + scriptName + ' - v' + scriptVersion + '\nCreated by Adam Plouff at Battle Axe\nbattleaxe.co', { multiline: true });
+
+    var btn_close = buttonColorText(content, 'Close', '#546E7A', '#55869d');
+
+    btn_url.onClick = function () {
+        visitURL('http://battleaxe.co');
+    };
+
+    w.show();
+};
+
+
+///
 
 function getCurrentMousePosition(event, width) {
     var customWidth;
@@ -876,9 +1067,9 @@ function getMousePosition(event) {
 }
 
 function showCustomTooltip(text, coordinates, width, invert, multiline) {
-    if (multiline) { multiline = true } else { multiline = false};
+    if (multiline) { multiline = true } else { multiline = false };
     var customWidth; var negativX;
-    if (width) { customWidth = width * 0.75; if (invert) { negativX = width * 3.75} else {negativX = width * 1.5} } else { customWidth = buttonsSize; negativX = 0 };
+    if (width) { customWidth = width * 0.75; if (invert) { negativX = width * 3.75 } else { negativX = width * 1.5 } } else { customWidth = buttonsSize; negativX = 0 };
     var tooltipWin = new Window("palette", "tooltip", undefined, { borderless: true, closeButton: false, maximizeButton: false, minimizeButton: false, resizeable: false, title: "tooltip" });
     tooltipWin.margins = 0;
     tooltipWin.spacing = 0;
@@ -891,7 +1082,7 @@ function showCustomTooltip(text, coordinates, width, invert, multiline) {
     panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]); // RGB color [R, G, B] 
 
     var staticText = panel.add("statictext", undefined, text, { multiline: multiline });
-    if (multiline){staticText.maximumSize.width = 232;}
+    if (multiline) { staticText.maximumSize.width = 232; }
     // Customize text color
     staticText.graphics.foregroundColor = staticText.graphics.newPen(staticText.graphics.PenType.SOLID_COLOR, [0.73, 0.84, 0.97, 0.85], 1);
     //staticText.graphics.foregroundColor = staticText.graphics.newPen(staticText.graphics.PenType.SOLID_COLOR, [1, 1, 1]); // RGB color [R, G, B]
@@ -905,7 +1096,7 @@ function showCustomTooltip(text, coordinates, width, invert, multiline) {
 
 
 function addTooltipToButton(button, tooltipText, width, invert, multiline) {
-    
+
     button.addEventListener("mouseover", function (e) {
         var coordinates = getCurrentMousePosition(e, width);
         tooltipWin = showCustomTooltip(tooltipText, coordinates, width, invert, multiline);
@@ -934,7 +1125,7 @@ var tooltipTextArray = [
 
 // Add tooltip functionality to each button
 for (var i = 0; i < buttonArray.length; i++) {
-    addTooltipToButton(buttonArray[i], tooltipTextArray[i],80,true);
+    addTooltipToButton(buttonArray[i], tooltipTextArray[i], 80, true);
 }
 
 /*
@@ -1015,36 +1206,43 @@ HoverMenu.prototype.showMenu = function (coordinates) {
         title: this.title
     });
 
-    hoverMenuWin.margins = 2;
+    mojoUI.setBG(hoverMenuWin, [22, 1, 22] / 255);
+
+
+    hoverMenuWin.margins = 0;
     hoverMenuWin.spacing = 0;
-    hoverMenuWin.alignment = ["fill", "top"];
-    hoverMenuWin.alignChildren = ["fill", "fill"];
 
     var panel = hoverMenuWin.add("group", undefined, "");
-    panel.margins = 4;
-    panel.spacing = 0;
-    panel.orientation = "row";  // Set orientation to "row"
-    panel.alignment = ["fill", "top"];
-    panel.alignChildren = ["left", "fill"];
-    mojoUI.setBG(hoverMenuWin, [22, 1, 22] / 255);
-    mojoUI.setBG(panel, [22, 1, 22] / 255);
+    panel.orientation = "column";
+    panel.alignChildren = ["left", "center"];
+    panel.spacing = 10;
+    panel.margins = 6;
+
     // Create an array to store button objects
     var buttonsArray = [];
 
     for (var i = 0; i < this.buttonsData.length; i++) {
         var buttonData = this.buttonsData[i];
-        var button = panel.add("iconbutton", undefined, File.decode(buttonData.imgString), { name: buttonData.name, style: "toolbutton" });
-        buttonsArray.push(button);
 
-        // Add a new row after every 4 buttons
-        if ((i + 1) % 4 === 0) {
-            panel = hoverMenuWin.add("group", undefined, "");
-            panel.margins = 6;
-            panel.spacing = 0;
-            panel.orientation = "row";
-        }
+        // Create btn_grp
+        var btn_grp = panel.add("group", undefined, { name: "btn_grp" }); // Assign a unique name based on buttonData.name
+        btn_grp.orientation = "row";
+        btn_grp.alignment = ["fill", "center"];
+        btn_grp.alignChildren = ["fill", "fill"];
+        btn_grp.spacing = 0;
+        btn_grp.margins = 0;
+
+        // Create btn_icon
+        var btn_icon = btn_grp.add("iconbutton", undefined, undefined, { name: "btn_icon", style: "toolbutton" });
+        btn_icon.text = buttonData.text;
+
+        // Add a click event listener to the btn_grp using the closure
+        btn_icon.onClick = function () {
+            alert("Button Clicked! Add your custom logic here for " + buttonData.name);
+        };
+        buttonsArray.push(btn_grp);
     }
-    
+
     hoverMenuWin.onDeactivate = function () {
         hoverMenuWin.close();
     };
@@ -1062,15 +1260,11 @@ HoverMenu.prototype.showMenu = function (coordinates) {
     return hoverMenuWin;
 };
 
-
 // Create instances of HoverMenu with different data
 var hoverMenu1 = new HoverMenu("Hover Menu 1", [
-    { imgString: textLayer_imgString, name: "1" },
-    { imgString: solidLayer_imgString, name: "2" },
-    { imgString: shapeLayer_imgString, name: "3" },
-    { imgString: textLayer_imgString, name: "4" },
-    { imgString: solidLayer_imgString, name: "5" },
-    { imgString: shapeLayer_imgString, name: "6" }
+    { imgString: textLayer_imgString, text: "Placeholder textlayer", name: "textlayer" },
+    { imgString: solidLayer_imgString, text: "Placeholder solidLayer", name: "solidLayer" },
+    { imgString: shapeLayer_imgString, text: "Placeholder shapeLayer", name: "shapeLayer" }
 ]);
 
 var hoverMenu2 = new HoverMenu("Hover Menu 2", [
@@ -1081,10 +1275,15 @@ var hoverMenu2 = new HoverMenu("Hover Menu 2", [
 
 // Function to add hover menu to a button
 function addHoverMenuToButton(button, hoverMenu) {
+    var hoverMenuWin = "";
     button.addEventListener("mouseover", function (e) {
         var coordinates = getMousePosition(e);
-        var hoverMenuWin = hoverMenu.showMenu(coordinates);
+        hoverMenuWin = hoverMenu.showMenu(coordinates);
     });
+    if(hoverMenuWin){hoverMenuWin.addEventListener("mouseout", function(e){
+        hoverMenuWin.close();
+    })}
+
 }
 
 
@@ -1630,7 +1829,7 @@ function addANIM() {
         var intro = markS + markSdur + markE + markEdur + "outLayer = markE + markEdur; \n" + "stopT = markSdur + markS; \n" + "startT = markE; \n";
         var lineStart = interIn + "(time, markS, markS + markSdur, 0, 100);";
         var lineEnd = interOut + "(time, markE, markE + markEdur, 100, 0);";
- 
+
         opening = lineStart;
         closing = lineEnd;
 
@@ -2541,7 +2740,7 @@ btn_createIMGComps.onClick = function () {
     }
 };
 
-addTooltipToButton(colorFill, "add a fill effect with color-choices to selected layer", 85, false,false);
+addTooltipToButton(colorFill, "add a fill effect with color-choices to selected layer", 85, false, false);
 
 colorFill.onClick = function () {
     setColorFill();
@@ -2627,9 +2826,9 @@ openBoilerplate.onClick = function () {
     var my_file = new File("C:/data_driven_ae_template-1/___boilerplate_23.aep");
     if (my_file.exists) {
         new_project = app.open(my_file);
-    }   else {
-            alert("BOILERPLATE not found");
-        }
+    } else {
+        alert("BOILERPLATE not found");
+    }
 };
 
 addTooltipToButton(openProjectInExplorer, "open Project Folder", 85);
@@ -3011,7 +3210,16 @@ function colorPicker() {
 //addTooltipToButton(purgeAll, "purge ImageCache", 85);
 
 addHoverMenuToButton(purgeAll, hoverMenu1);
-
+/*
 purgeAll.onClick = function () {
     app.purge(PurgeTarget.IMAGE_CACHES);
 };
+*/
+
+(function () {
+    if (!checkSecurityPrefSet()) {
+        return false;
+    } else {
+        showWindow(win);
+    }
+})();
