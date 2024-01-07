@@ -1,4 +1,4 @@
-﻿(function () {
+﻿
     var scriptName = 'moelles mojo';
     var scriptVersion = '0.1';
 
@@ -36,7 +36,6 @@
     /// INCLUDES
 
     try {
-
         #include _scripts/imgStrings.jsx;
         #include _scripts/rectangleWizard.jsx;
         #include _scripts/elementsDiag.jsx;
@@ -834,6 +833,11 @@
                 this.graphics.font);
         }
     }
+    function recDraw() {
+        this.graphics.drawOSControl();
+        this.graphics.rectPath(0, 0, this.size[0], this.size[1]);
+        this.graphics.fillPath(this.fillBrush);
+    }
 
     /** draw an text button with a colored background - returns a button object
         @parem {parentObj} - object - ScriptUI panel or group
@@ -1030,7 +1034,7 @@
 
 
     function addTooltipToButton(button, tooltipText, width, invert, multiline) {
-
+        var tooltipWin = "";
         button.addEventListener("mouseover", function (e) {
             var coordinates = getCurrentMousePosition(e, width);
             tooltipWin = showCustomTooltip(tooltipText, coordinates, width, invert, multiline);
@@ -1123,17 +1127,17 @@
     }
     */
     //////
-
+    
     // Define the HoverMenu class
     function HoverMenu(title, buttonsData) {
         this.title = title;
         this.buttonsData = buttonsData;
     }
-
+    var hoverMenuWin = "";
     HoverMenu.prototype.showMenu = function (coordinates) {
-        var hoverMenuWin = new Window("palette", this.title, undefined, {
+        hoverMenuWin = new Window("palette", this.title, undefined, {
             borderless: true,
-            closeButton: false,
+            closeButton: true,
             maximizeButton: false,
             minimizeButton: false,
             resizable: false,
@@ -1141,7 +1145,6 @@
         });
 
         mojoUI.setBG(hoverMenuWin, [.085, .085, .085]);
-
 
         hoverMenuWin.margins = 0;
         hoverMenuWin.spacing = 0;
@@ -1152,7 +1155,6 @@
         panel.alignChildren = ["fill", "center"];
         panel.spacing = 4;
         panel.margins = 6;
-
         // Create an array to store button objects
         var buttonsArray = [];
 
@@ -1162,6 +1164,7 @@
             // Create btn_grp
             var btn_grp = panel.add("group", undefined, { name: "btn_grp" }); // Assign a unique name based on buttonData.name
             btn_grp.orientation = "row";
+
             btn_grp.alignment = ["fill", "center"];
             btn_grp.alignChildren = ["fill", "fill"];
 
@@ -1186,7 +1189,10 @@
             } catch (e) { }
         };
 
-        hoverMenuWin.frameLocation = hoverMenuWin.orientation == "column" ? [coordinates[0] - buttonsSize, coordinates[1] + buttonsSize] : [coordinates[0], coordinates[1]];
+        // Check if the mouse is inside the palette continuously
+
+        hoverMenuWin.frameLocation = win.orientation == "column" ? [coordinates[0], coordinates[1]] : [coordinates[0], coordinates[1] + 7];
+        mousePosGlobal = hoverMenuWin.frameLocation;
         hoverMenuWin.show();
 
         return hoverMenuWin;
@@ -1207,11 +1213,19 @@
 
     // Function to add hover menu to a button
     function addHoverMenuToButton(button, hoverMenu) {
-        var hoverMenuWin = "";
         button.addEventListener("mouseover", function (e) {
             var coordinates = getMousePosition(e);
             hoverMenuWin = hoverMenu.showMenu(coordinates);
         });
+        win.onClick = function () {
+            if (hoverMenuWin) {
+                this.close();
+                try {
+                    hoverMenuWin.hide();
+                    delete hoverMenuWin;
+                } catch (e) { }
+            }
+        }
         if (hoverMenuWin) {
             hoverMenuWin.addEventListener("mouseout", function (e) {
                 hoverMenuWin.close();
@@ -1219,7 +1233,6 @@
         }
 
     }
-
 
     function savePseudoEffect(pseudoEffectData) {
         var pseudoEffect,
@@ -3003,6 +3016,38 @@
     };
     */
 
+
+var contextMenuOpen = false;
+var mousePosGlobal = null;
+
+function closeDialogWindows() {
+    if ((hoverMenuWin) && (hoverMenuWin instanceof Window)) {
+        hoverMenuWin.close();
+    }
+    try {
+
+    } catch (e) {
+    }
+    contextMenuOpen = false;
+    return true;
+}
+win.addEventListener("focus", function () {
+    contextMenuOpen = false;
+    try {
+        if ((hoverMenuWin) && (hoverMenuWin.visible)) {
+            hoverMenuWin.show();
+        }
+    } catch (e) {
+    }
+});
+win.onClose = function () {
+    try {
+        closeDialogWindows();
+    } catch (e) {
+    }
+};
+
+
     (function () {
         if (!checkSecurityPrefSet()) {
             return false;
@@ -3010,5 +3055,3 @@
             showWindow(win);
         }
     })();
-
-})();
