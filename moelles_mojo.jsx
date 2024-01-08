@@ -1066,7 +1066,7 @@ for (var i = 0; i < buttonArray.length; i++) {
     addTooltipToButton(buttonArray[i], tooltipTextArray[i], 80, true);
 }
 //////
-
+var hoverMenuWin;
 function HoverMenu(title, buttonsData) {
     this.title = title;
     this.buttonsData = buttonsData;
@@ -1081,7 +1081,7 @@ function HoverMenu(title, buttonsData) {
     }
     // Create the menu
     this.showMenu = function (coordinates) {
-        var hoverMenuWin = new Window("palette", this.title, undefined, {
+        hoverMenuWin = new Window("palette", this.title, undefined, {
             borderless: true,
             closeButton: false,
             maximizeButton: false,
