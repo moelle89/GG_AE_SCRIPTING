@@ -28,6 +28,30 @@ function showWindow(myWindow) {
     }
 }
 
+
+var OS = $.os.indexOf("Windows") == -1 ? "macos" : "windows";
+var slash = OS == "windows" ? "\\" : "/";
+var mojoUI = {assetsFolder: File($.fileName).parent.fsName + slash};
+mojoUI.imagesFolder = mojoUI.assetsFolder + "_img";
+
+mojoUI.setFG = function (e, t) {
+    return (((void (0) !== t) && (3 <= t.length)) && (e.graphics.foregroundColor = e.graphics.newPen(e.graphics.PenType.SOLID_COLOR, t, 1)), e);
+};
+
+mojoUI.setBG = function (e, t) {
+    return (((void (0) !== t) && (3 <= t.length)) && (e.graphics.backgroundColor = e.graphics.newBrush(e.graphics.BrushType.SOLID_COLOR, t)), e);
+};
+
+mojoUI.createIcon = function (fileName) {
+    if(!fileName){fileName = "noIcon.png";};
+    var imagePath = mojoUI.imagesFolder + slash + fileName;
+    if (!File(imagePath).exists) {
+        alert("File doesn\'t exist\n" + imagePath);
+        fileName = "noIcon.png";
+    }
+    return ScriptUI.newImage(File(imagePath));
+};
+
 //Paste code
 // WIN
 // ===
@@ -723,7 +747,7 @@ var purgeAll = shortcuts.add("iconbutton", undefined, File.decode(purgeAll_imgSt
 });
 purgeAll.alignment = ["center", "top"];
 
-var btn_about = shortcuts.add('iconbutton', undefined, File.decode(help_imgString), {
+var btn_about = shortcuts.add('iconbutton', undefined, mojoUI.createIcon("icn-help.png"), {
     name: "btn_about",
     style: "toolbutton"
 });
@@ -2359,14 +2383,6 @@ function checkComp(inputComp) {
         return true;
     }
 }
-
-var mojoUI = {};
-mojoUI.setFG = function (e, t) {
-    return (((void (0) !== t) && (3 <= t.length)) && (e.graphics.foregroundColor = e.graphics.newPen(e.graphics.PenType.SOLID_COLOR, t, 1)), e);
-};
-mojoUI.setBG = function (e, t) {
-    return (((void (0) !== t) && (3 <= t.length)) && (e.graphics.backgroundColor = e.graphics.newBrush(e.graphics.BrushType.SOLID_COLOR, t)), e);
-};
 
 ///
 addTooltipToButton(btn_createComps, "create all required compositions work on a new video template", 85, false, true);

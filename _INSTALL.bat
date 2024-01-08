@@ -28,6 +28,7 @@ set "scriptTargetFolder=Scripts\ScriptUI Panels"
 set "scriptSearchString=moelles_mojo"
 set "scriptSourceFile=moelles_mojo.jsxbin"
 set "scriptSourceFolder=_scripts"
+set "imgSourceFolder=_img"
 set "rootFolder=%~dp0"
 REM Assuming the script is one level above the "_BUILDS" folder
 set "buildsFolder=%~dp0_BUILDS"
@@ -81,6 +82,11 @@ for /d %%i in ("%scriptSearchDir%\*") do (
         rem Copy the specified folder and its contents to the Script UI Path
         if exist "%buildsFolder%\%scriptSourceFolder%" (
             xcopy /E /I /Y "%buildsFolder%\%scriptSourceFolder%" "%%i\%scriptTargetFolder%\%scriptSourceFolder%"
+        )
+		
+        rem Copy the specified folder and its contents to the Script UI Path
+        if exist "%buildsFolder%\%imgSourceFolder%" (
+            xcopy /E /I /Y "%buildsFolder%\%imgSourceFolder%" "%%i\%scriptTargetFolder%\%imgSourceFolder%"
         )
     )
 )
