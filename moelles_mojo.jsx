@@ -43,8 +43,8 @@ mojoUI.setBG = function (e, t) {
 };
 
 mojoUI.createIcon = function (fileName) {
-    if(!fileName){fileName = "noIcon.png";};
-    var imagePath = mojoUI.imagesFolder + slash + fileName;
+    if(!fileName){fileName = "noIcon";};
+    var imagePath = mojoUI.imagesFolder + slash + fileName + ".png";
     if (!File(imagePath).exists) {
         alert("File doesn\'t exist\n" + imagePath);
         fileName = "noIcon.png";
@@ -124,7 +124,7 @@ group1.spacing = 10;
 group1.margins = 12;
 group1.alignment = ["fill", "top"];
 
-var btn_createComps = group1.add("iconbutton", undefined, File.decode(vidtemp_imgString), {
+var btn_createComps = group1.add("iconbutton", undefined, mojoUI.createIcon("icn_vidt"), {
     name: "btn_createComps",
     style: "button"
 });
@@ -132,7 +132,7 @@ btn_createComps.alignment = ["left", "top"];
 btn_createComps.minimumSize.width = 118;
 btn_createComps.preferredSize.height = 32;
 
-var btn_createIMGComps = group1.add("iconbutton", undefined, File.decode(imgtemp_imgString), {
+var btn_createIMGComps = group1.add("iconbutton", undefined, mojoUI.createIcon("icn_imgt"), {
     name: "btn_createIMGComps",
     style: "button"
 });
@@ -174,7 +174,7 @@ grouptab2.spacing = 10;
 grouptab2.margins = 3;
 grouptab2.alignment = ["fill", "top"];
 
-var btn_addElement = grouptab2.add("iconbutton", undefined, File.decode(addel_imgString), {
+var btn_addElement = grouptab2.add("iconbutton", undefined, mojoUI.createIcon("icn_addele"), {
     name: "btn_addElement",
     style: "button"
 });
@@ -245,7 +245,7 @@ gallery.selection = 0;
 gallery.preferredSize.height = 32;
 gallery.preferredSize.width = 112;
 
-var btn_addGallery = group2.add("iconbutton", undefined, File.decode(addGal_imgString), {
+var btn_addGallery = group2.add("iconbutton", undefined, mojoUI.createIcon("icn_add"), {
     name: "btn_addGallery",
     style: "button"
 });
@@ -399,7 +399,7 @@ groupFx2.spacing = 10;
 groupFx2.margins = 3;
 groupFx2.alignment = ["fill", "top"];
 
-var colorFill = groupFx.add("iconbutton", undefined, File.decode(colorFill_imgString), {
+var colorFill = groupFx.add("iconbutton", undefined, mojoUI.createIcon("icn_colorfill"), {
     name: "colorFill",
     style: "button"
 });
@@ -653,7 +653,7 @@ var statictext4 = tools_txt_wrapper.add("statictext", undefined, undefined, {
 statictext4.text = "";
 statictext4.preferredSize.height = 5;
 
-var btn_openAndSelect = tools_wrapper_l.add("iconbutton", undefined, File.decode(editcolors_imgString), {
+var btn_openAndSelect = tools_wrapper_l.add("iconbutton", undefined, mojoUI.createIcon("icn_editcolors"), {
     name: "btn_openAndSelect",
     style: "button"
 });
@@ -661,7 +661,7 @@ btn_openAndSelect.alignment = ["left", "top"];
 btn_openAndSelect.preferredSize.height = 32;
 btn_openAndSelect.preferredSize.width = 130;
 
-var btn_debug_colors = tools_wrapper_l.add("iconbutton", undefined, File.decode(applyem_imgString), {
+var btn_debug_colors = tools_wrapper_l.add("iconbutton", undefined, mojoUI.createIcon("icn_applyem"), {
     name: "btn_debug_colors",
     style: "button"
 });
@@ -705,13 +705,13 @@ shortcuts.spacing = 10;
 shortcuts.margins = [4, 0, 0, 0];
 shortcuts.preferredSize.height = 46;
 
-var openBoilerplate = shortcuts.add("iconbutton", undefined, File.decode(aep_imgString), {
+var openBoilerplate = shortcuts.add("iconbutton", undefined, mojoUI.createIcon("icn_aep"), {
     name: "openProjectInExplorer",
     style: "toolbutton"
 });
 openBoilerplate.alignment = ["center", "top"];
 
-var openProjectInExplorer = shortcuts.add("iconbutton", undefined, File.decode(openProjectInExplorer_imgString), {
+var openProjectInExplorer = shortcuts.add("iconbutton", undefined, mojoUI.createIcon("icn_folder"), {
     name: "openProjectInExplorer",
     style: "toolbutton"
 });
@@ -729,25 +729,25 @@ var openJSONFolder = shortcuts.add("iconbutton", undefined, File.decode(openJSON
 });
 openJSONFolder.alignment = ["center", "top"];
 */
-var fitView = shortcuts.add("iconbutton", undefined, File.decode(fitView_imgString), {
+var fitView = shortcuts.add("iconbutton", undefined, mojoUI.createIcon("icn_fit"), {
     name: "fitView",
     style: "toolbutton"
 });
 fitView.alignment = ["center", "top"];
 
-var delExp = shortcuts.add("iconbutton", undefined, File.decode(delExp_imgString), {
+var delExp = shortcuts.add("iconbutton", undefined, mojoUI.createIcon("icn_del"), {
     name: "delExp",
     style: "toolbutton"
 });
 delExp.alignment = ["center", "top"];
 
-var purgeAll = shortcuts.add("iconbutton", undefined, File.decode(purgeAll_imgString), {
+var purgeAll = shortcuts.add("iconbutton", undefined, mojoUI.createIcon("icn_bin"), {
     name: "purgeAll",
     style: "toolbutton"
 });
 purgeAll.alignment = ["center", "top"];
 
-var btn_about = shortcuts.add('iconbutton', undefined, mojoUI.createIcon("icn-help.png"), {
+var btn_about = shortcuts.add('iconbutton', undefined, mojoUI.createIcon("icn_help"), {
     name: "btn_about",
     style: "toolbutton"
 });
@@ -997,7 +997,7 @@ btn_about.onClick = function () { // open about panel
     content.alignment = ['top', 'left'];
     content.margins = 16;
     content.spacing = 8;
-    var gg_img = content.add("image", undefined, mojoUI.createIcon("about_head.png"), { name: "gg_img" });
+    var gg_img = content.add("image", undefined, mojoUI.createIcon("about_head"), { name: "gg_img" });
 
     gg_img.minimumSize.width = 320;
     gg_img.minimumSize.height = 64;
