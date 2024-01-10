@@ -1359,6 +1359,19 @@ function getItemsByName(nameString) {
     return matches;
 };
 
+function containsVariableString(string) {
+    for (var i = 1; i <= app.project.numItems; i++) {
+        if (app.project.item(i) instanceof CompItem) {
+            var itemName = app.project.item(i).name;
+            if (itemName.match(string)) {
+                return true; // If a variable string is found, return true
+            }
+        }
+    }
+    return false; // No variable string found in any project item
+}
+
+
 // Function to check if names are already used in the project
 function areNamesUsed(name1, name2, name3) {
     // Get the current project
@@ -1808,11 +1821,10 @@ function importAndCopyFile() {
     }
 }
 
-function findCompIndex(compName) { // name of item you're looking for
+function findCompIndex(compName, silent) { // name of item you're looking for
     var myComp = null;
     var myCompIndex = null;
     for (var i = 1; i <= app.project.numItems; i++) {
-
         if ((app.project.item(i) instanceof CompItem) && (app.project.item(i).name == compName)) {
 
             myComp = app.project.item(i);
@@ -1824,7 +1836,9 @@ function findCompIndex(compName) { // name of item you're looking for
     if (myComp != null) {
         return i;
     } else {
-        alert("Please open the BOILERPLATE to use this feature");
+        if (!silent) {
+            alert("Please open the BOILERPLATE to use this feature");
+        }
     }
 }
 
@@ -2171,8 +2185,43 @@ function revertJson() {
     app.endUndoGroup();
 }
 
-/////////
+// Function to replace composition name
+function findReplaceCompositionName(prefix, replaceStr) {
+    // Get the current project
+    var currentProject = app.project;
 
+    // Check if a project is open
+    if (currentProject) {
+        // Get all compositions in the project
+        var allComps = currentProject.rootFolder.items;
+
+        // Loop through each composition
+        for (var i = 1; i <= allComps.length; i++) {
+            var comp = allComps[i];
+
+            // Check if it's a composition
+            if (comp instanceof CompItem) {
+                // Check if the composition name starts with the specified prefix
+                if (comp.name.indexOf(prefix) === 0) {
+                    // Find the position of the next underscore after the prefix
+                    var underscoreIndex = comp.name.indexOf("_", prefix.length);
+
+                    // Check if an underscore is found
+                    if (underscoreIndex !== -1) {
+                        // Replace the portion of the composition name
+                        comp.name = comp.name.substring(0, prefix.length) + replaceStr + comp.name.substring(underscoreIndex);
+                    } else {
+                        // If no underscore is found, replace the portion after the prefix
+                        comp.name = comp.name.substring(0, prefix.length) + replaceStr;
+                    }
+                }
+            }
+        }
+    } else {
+        // No project is open
+        alert("No project is currently open");
+    }
+}
 
 // Function to rename compositions in After Effects
 function renameCompositions(type, name) {
@@ -2200,7 +2249,6 @@ function renameCompositions(type, name) {
     }
     app.endUndoGroup();
     return true;
-
 }
 
 // Function to replace compositions within a precomposition based on equal suffixes
@@ -2506,8 +2554,6 @@ btn_createComps.onClick = function () {
                         }
                     } else {
                         alert("Invalid name! The name should only contain lowercase letters, numbers, and underscores (_) with no spaces, special characters, capital letters, or dashes.");
-
-
                         if (result !== null) {
                             askForName();
                         } else {
@@ -2547,7 +2593,6 @@ btn_createIMGComps.onClick = function () {
                         // Save Project with New Name in Same Path
                         // Get the current project file
                         var currentProject = app.project.file;
-
                         // Check if a project is open
                         if (currentProject) {
                             // Get the current project's path
@@ -2590,8 +2635,6 @@ btn_createIMGComps.onClick = function () {
                     };
                 } else {
                     alert("Invalid name! The name should only contain lowercase letters, numbers, and underscores (_) with no spaces, special characters, capital letters, or dashes.");
-
-
                     if (result !== null) {
                         askForName();
                     } else {
@@ -2698,12 +2741,65 @@ openBoilerplate.onClick = function () {
     }
 };
 
-addTooltipToButton(changeProjectName, "", 85);
+addTooltipToButton(changeProjectName, "change the name of a template", 85);
 
 changeProjectName.onClick = function () {
+    var compIndex = findCompIndex("BPLATE", true);
+    var isVid = containsVariableString("comp_");
+    var isImg = containsVariableString("post_");
 
+    if (compIndex) {
+        alert("You need to create a Template before you can use this feature.");
+    } else {
+        var ptext = 'Please enter a name for the template\n (without spaces, special characters, capital letters, or dashes):';
+        var name = showDialogWindow(ptext);
+        if (name) {
+            var isValid = /^[a-z0-9_]+$/.test(name);
+            if (isValid) {
+                if (isVid) {
+                    findReplaceCompositionName("comp_", name);
+                    var currentProject = app.project.file;
+                    // Check if a project is open
+                    if (currentProject) {
+                        // Get the current project's path
+                        var projectPath = currentProject.parent.fsName;
+                        // Prompt the user for a new project name
+                        var newProjectName = "comp_" + name;
+                        // Create the new project file path
+                        var newProjectPath = projectPath + "/" + newProjectName + ".aep";
+                        var newProjectFile = new File(newProjectPath);
+                        // Save the project with the new name
+                        app.project.save(newProjectFile);
+                        // Alert the user that the project has been saved
+                        openCompositionByName(newProjectName);
+                        alert("Project saved as: " + newProjectName);
+                    }
+                }
+                if (isImg) {
+                    findReplaceCompositionName("post_", name);
+                    var currentProject = app.project.file;
+                    // Check if a project is open
+                    if (currentProject) {
+                        // Get the current project's path
+                        var projectPath = currentProject.parent.fsName;
+                        // Prompt the user for a new project name
+                        var newProjectName = "post_" + name;
+                        // Create the new project file path
+                        var newProjectPath = projectPath + "/" + newProjectName + ".aep";
+                        var newProjectFile = new File(newProjectPath);
+                        // Save the project with the new name
+                        app.project.save(newProjectFile);
+                        // Alert the user that the project has been saved
+                        openCompositionByName(newProjectName);
+                        alert("Project saved as: " + newProjectName);
+                    }
+                }
+            } else {
+                alert("Invalid name! The name should only contain lowercase letters, numbers, and underscores (_) with no spaces, special characters, capital letters, or dashes.");
+            }
+        }
+    }
 };
-
 //addTooltipToButton(openProjectInExplorer, "open Project Folder", 85);
 addHoverMenuToButton(openProjectInExplorer, hoverMenu_open);
 /*
