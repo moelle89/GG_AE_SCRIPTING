@@ -12,6 +12,7 @@ function createDockableUI(thisObj) {
                 resizeable: true,
                 minimizeButton: true
             });
+            
     dialog.onResizing = dialog.onResize = function () {
         this.layout.resize();
     };
@@ -27,7 +28,6 @@ function showWindow(myWindow) {
         myWindow.layout.resize();
     }
 }
-
 
 var OS = $.os.indexOf("Windows") == -1 ? "macos" : "windows";
 var slash = OS == "windows" ? "\\" : "/";
@@ -60,7 +60,6 @@ var win = createDockableUI(this);
 /// INCLUDES
 
 try {
-    #include _scripts/imgStrings.jsx;
     #include _scripts/rectangleWizard.jsx;
     #include _scripts/elementsDiag.jsx;
     #include _scripts/organizeProjectAssets.jsx;
@@ -148,7 +147,7 @@ var tpanel2 = tab_template.add("tabbedpanel", undefined, undefined, {
 tpanel2.alignChildren = ["fill", "top"];
 tpanel2.alignment = ["fill", "top"];
 tpanel2.minimumSize.width = 280;
-tpanel2.margins = 0; // 
+tpanel2.margins = 0;
 tpanel2.spacing = 0;
 
 // TAB2
@@ -407,7 +406,7 @@ colorFill.preferredSize.height = 32;
 colorFill.preferredSize.width = 116;
 colorFill.alignment = ["left", "top"];
 
-var scale2fill = groupFx.add("iconbutton", undefined, File.decode(scale2fill_imgString), {
+var scale2fill = groupFx.add("iconbutton", undefined, mojoUI.createIcon("icn_scalefill"), {
     name: "scale2fill",
     style: "button"
 });
@@ -415,7 +414,7 @@ scale2fill.preferredSize.height = 32;
 scale2fill.preferredSize.width = 116;
 scale2fill.alignment = ["left", "top"];
 
-var addAnimbtn = groupFx2.add("iconbutton", undefined, File.decode(addAnimbtn_imgString), {
+var addAnimbtn = groupFx2.add("iconbutton", undefined, mojoUI.createIcon("icn_addanim"), {
     name: "addAnimbtn",
     style: "button"
 });
@@ -444,7 +443,7 @@ files_wrapper.spacing = 20;
 files_wrapper.margins = 12;
 files_wrapper.alignment = ["fill", "top"];
 
-var btn_import = files_wrapper.add("iconbutton", undefined, File.decode(importfootage_imgString), {
+var btn_import = files_wrapper.add("iconbutton", undefined, mojoUI.createIcon("icn_importfootage"), {
     name: "btn_import",
     style: "button"
 });
@@ -457,7 +456,7 @@ var divider2 = files_wrapper.add("panel", undefined, undefined, {
 });
 divider2.alignment = "fill";
 
-var btn_organize = files_wrapper.add("iconbutton", undefined, File.decode(orgproject_imgString), {
+var btn_organize = files_wrapper.add("iconbutton", undefined, mojoUI.createIcon("icn_orgproject"), {
     name: "btn_organize",
     style: "button"
 });
@@ -465,7 +464,7 @@ btn_organize.alignment = ["left", "top"];
 btn_organize.preferredSize.height = 34;
 btn_organize.preferredSize.width = 240;
 
-var btn_cleanup = files_wrapper.add("iconbutton", undefined, File.decode(cleanup_imgString), {
+var btn_cleanup = files_wrapper.add("iconbutton", undefined, mojoUI.createIcon("icn_projectcleanup"), {
     name: "btn_cleanup",
     style: "button"
 });
@@ -581,21 +580,21 @@ edit_text_group.alignChildren = ["fill", "fill"];
 edit_text_group.spacing = 10;
 edit_text_group.margins = 0;
 
-var btn_title = edit_text_group.add("iconbutton", undefined, File.decode(title_imgString), {
+var btn_title = edit_text_group.add("iconbutton", undefined, mojoUI.createIcon("icn_title"), {
     name: "btn_title"
 });
 btn_title.alignment = ["left", "fill"];
 btn_title.preferredSize.width = 60;
 btn_title.preferredSize.height = 32;
 
-var btn_subtext = edit_text_group.add("iconbutton", undefined, File.decode(subtext_imgString), {
+var btn_subtext = edit_text_group.add("iconbutton", undefined, mojoUI.createIcon("icn_subtext"), {
     name: "btn_subtext"
 });
 btn_subtext.alignment = ["left", "fill"];
 btn_subtext.preferredSize.width = 80;
 btn_subtext.preferredSize.height = 32;
 
-var btn_source = edit_text_group.add("iconbutton", undefined, File.decode(source_imgString), {
+var btn_source = edit_text_group.add("iconbutton", undefined, mojoUI.createIcon("icn_source"), {
     name: "btn_source"
 });
 btn_source.alignment = ["left", "fill"];
@@ -612,14 +611,14 @@ edit_text_group1.alignChildren = ["fill", "fill"];
 edit_text_group1.spacing = 10;
 edit_text_group1.margins = 0;
 
-var btn_c2a = edit_text_group1.add("iconbutton", undefined, File.decode(c2a_imgString), {
+var btn_c2a = edit_text_group1.add("iconbutton", undefined, mojoUI.createIcon("icn_c2a"), {
     name: "btn_c2a"
 });
 btn_c2a.alignment = ["left", "fill"];
 btn_c2a.preferredSize.width = 60;
 btn_c2a.preferredSize.height = 32;
 
-var btn_c2alink = edit_text_group1.add("iconbutton", undefined, File.decode(c2alink_imgString), {
+var btn_c2alink = edit_text_group1.add("iconbutton", undefined, mojoUI.createIcon("icn_c2alink"), {
     name: "btn_c2alink"
 });
 btn_c2alink.alignment = ["left", "fill"];
@@ -669,7 +668,7 @@ btn_debug_colors.alignment = ["left", "top"];
 btn_debug_colors.preferredSize.height = 32;
 btn_debug_colors.preferredSize.width = 130;
 
-var btn_reload_json = tools_wrapper_r.add("iconbutton", undefined, File.decode(refresh_imgString), {
+var btn_reload_json = tools_wrapper_r.add("iconbutton", undefined, mojoUI.createIcon("icn_refresh"), {
     name: "btn_reload_json",
     style: "toolbutton"
 });
@@ -679,7 +678,7 @@ btn_reload_json.minimumSize.width = 32;
 btn_reload_json.preferredSize.width = 105;
 btn_reload_json.text = "REFRESH ";
 
-var btn_revert_json = tools_wrapper_r.add("iconbutton", undefined, File.decode(revert_imgString), {
+var btn_revert_json = tools_wrapper_r.add("iconbutton", undefined, mojoUI.createIcon("icn_revert"), {
     name: "btn_revert_json",
     style: "toolbutton"
 });
@@ -767,12 +766,12 @@ addObj.margins = 4;
 
 // Example buttons
 var buttonArray = [
-    addObj.add("iconbutton", undefined, File.decode(textLayer_imgString), { name: "textLayer", style: "toolbutton" }),
-    addObj.add("iconbutton", undefined, File.decode(solidLayer_imgString), { name: "solidLayer", style: "toolbutton" }),
-    addObj.add("iconbutton", undefined, File.decode(shapeLayer_imgString), { name: "shapeLayer", style: "toolbutton" }),
-    addObj.add("iconbutton", undefined, File.decode(adjustmentsLayer_imgString), { name: "adjustmentsLayer", style: "toolbutton" }),
-    addObj.add("iconbutton", undefined, File.decode(nullLayer_imgString), { name: "nullLayer", style: "toolbutton" }),
-    addObj.add("iconbutton", undefined, File.decode(parent2null_imgString), { name: "parent2null", style: "toolbutton" })
+    addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_textl"), { name: "textLayer", style: "toolbutton" }),
+    addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_solid"), { name: "solidLayer", style: "toolbutton" }),
+    addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_shape"), { name: "shapeLayer", style: "toolbutton" }),
+    addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_adjust"), { name: "adjustmentsLayer", style: "toolbutton" }),
+    addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_null"), { name: "nullLayer", style: "toolbutton" }),
+    addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_p2n"), { name: "parent2null", style: "toolbutton" })
 ];
 
 var textLayer = buttonArray[0];
@@ -875,7 +874,7 @@ function buttonColorText(parentObj, buttonText, staticColor, hoverColor) {
     btn.margins = 0;
     btn.fillBrush = btn.graphics.newBrush(btn.graphics.BrushType.SOLID_COLOR, hexToArray(staticColor));
     btn.text = buttonText.toUpperCase();
-    btn.textPen = btn.graphics.newPen(btn.graphics.PenType.SOLID_COLOR, hexToArray('#ffffff'), 1);
+    btn.textPen = btn.graphics.newPen(btn.graphics.PenType.SOLID_COLOR, hexToArray("#acc6e5"), 1);
     btn.onDraw = txtDraw;
 
     if (hoverColor) {
@@ -884,7 +883,7 @@ function buttonColorText(parentObj, buttonText, staticColor, hoverColor) {
                 updateTextButtonOnHover(this, buttonText, hoverColor, "#FFFFFF");
             });
             btn.addEventListener("mouseout", function () {
-                updateTextButtonOnHover(this, buttonText, staticColor, "#FFFFFF");
+                updateTextButtonOnHover(this, buttonText, staticColor, "#acc6e5");
             });
         } catch (err) {
             // fail silently
@@ -988,23 +987,34 @@ function updateVectorButtonOnHover(btn, iconVec, iconColor, size) {
 
 btn_about.onClick = function () { // open about panel
     var w = new Window('dialog', 'About ' + scriptName);
+    w.orientation = "column";
+    w.minimumSize.width = 380;
+    w.preferredSize.height = 150;
+    w.alignChildren = ["center", "top"];
+    w.alignment = ["fill", "top"];
     w.margins = 0;
-    w.spacing = 0;
-
-    var content = w.add('group');
-    content.alignChildren = ['fill', 'fill'];
-    content.orientation = 'column';
-    content.alignment = ['top', 'left'];
-    content.margins = 16;
-    content.spacing = 8;
-    var gg_img = content.add("image", undefined, mojoUI.createIcon("about_head"), { name: "gg_img" });
-
+    var gg_img = w.add("image", undefined, mojoUI.createIcon("about_head"), { name: "gg_img" });
+   // mojoUI.setBG(content, hexToArray("#ffffff"),1);
     gg_img.minimumSize.width = 320;
     gg_img.minimumSize.height = 64;
+    var content = w.add('group');
+    content.orientation = 'column';
+    content.margins = 16;
+    var ctext = content.add('statictext', [0, 0, 360, 40], 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\nAt vero eos et accusam et justo duo dolores et ea rebum. \n\n' + scriptName + ' -' + scriptVersion + '\nCreated by Manuel Moellmann, Head of Design at ITNT Group', { multiline: false });
+    ctext.textPen = ctext.graphics.newPen(content.graphics.PenType.SOLID_COLOR, hexToArray("#ffffff"), 1);
+    ctext.onDraw = txtDraw;
+    var ctext2 = content.add('statictext', [0, 0, 360, 40], 'Created by Manuel Moellmann, Head of Design at ITNT Group', { multiline: false });
+    ctext2.textPen = ctext.graphics.newPen(content.graphics.PenType.SOLID_COLOR, hexToArray("#ffffff"), 1);
+    ctext2.onDraw = txtDraw;
 
-    content.add('statictext', [0, 0, 360, 140], 'Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. \n\nAt vero eos et accusam et justo duo dolores et ea rebum.\n\n' + scriptName + ' - v' + scriptVersion + '\nCreated by Manuel Moellmann, Head of Design at ITNT Group', { multiline: true });
 
-    var btn_close = buttonColorText(content, 'Close', '#546E7A', '#55869d');
+    var btn_github = buttonColorText(content, 'Go to the source on GitHub', '#0060b1', '#028def');
+    btn_github.margins = 16;
+    btn_github.preferredSize.height = 32;
+    btn_github.onClick = function () {
+        visitURL('https://github.com/moelle89/GG_AE_SCRIPTING');
+    };
+
     gg_img.addEventListener("click", function () {
         visitURL('https://github.com/moelle89/GG_AE_SCRIPTING');
     });
@@ -2382,6 +2392,50 @@ function checkComp(inputComp) {
     }
 }
 
+function showDialogWindow(infoText) {
+    var window = new Window("dialog", "Enter Template Name");
+    window.orientation = "column";
+    window.minimumSize.width = 380;
+    window.alignChildren = ["center", "top"];
+    window.alignment = ["fill", "top"];
+    window.margins = 20;
+
+    var nameLabel = window.add("statictext", undefined, infoText, { multiline: true });
+    nameLabel.alignment = ["center", "top"];
+    nameLabel.preferredSize.width = 360;
+    nameLabel.preferredSize.height = 40;
+   
+    var nameInput = window.add("edittext", undefined, "you name it..");
+    nameInput.preferredSize.height = 40;
+    nameInput.preferredSize.width = 360;
+    nameInput.alignment = ["fill", "top"];
+    nameInput.margins = 20; 
+
+    var buttonGroup = window.add("group");
+    buttonGroup.orientation = "row";
+    buttonGroup.margins = 0;
+    buttonGroup.spacing = 20;   
+    buttonGroup.alignChildren = ["fill", "top"];
+    buttonGroup.alignment = ["fill", "top"];
+    var okButton = buttonColorText(buttonGroup, 'Create', '#0060b1', '#028def');
+    okButton.preferredSize.height = 32;
+    //var okButton = buttonGroup.add("button", undefined, "Create");
+    var cancelButton = buttonGroup.add("button", undefined, "Cancel");
+    cancelButton.preferredSize.height = 32;
+
+    okButton.onClick = function () {
+        var name = nameInput.text;
+        window.close();
+       return name;
+    };
+
+    cancelButton.onClick = function () {
+        window.close();
+        return;
+    };
+    window.show();
+}
+
 ///
 addTooltipToButton(btn_createComps, "create all required compositions work on a new video template", 85, false, true);
 
@@ -2391,7 +2445,8 @@ btn_createComps.onClick = function () {
         var type = "comp_";
 
         function askForName() {
-            var name = prompt('Please enter a name for the template\n (without spaces, special characters, capital letters, or dashes):', "you name it..");
+            var ptext = 'Please enter a name for the template\n (without spaces, special characters, capital letters, or dashes):';
+            var name = showDialogWindow(ptext);
             if (name) {
                 var isValid = /^[a-z0-9_]+$/.test(name);
                 if (isValid) {
@@ -2458,7 +2513,8 @@ btn_createIMGComps.onClick = function () {
         var type = "post_";
 
         function askForName() {
-            var name = prompt("Please enter a name for the template (without spaces, special characters, capital letters, or dashes):", "you name it..");
+            var ptext = 'Please enter a name for the template (without spaces, special characters, capital letters, or dashes):';
+            var name = showDialogWindow(ptext);
             if (name) {
                 var isValid = /^[a-z0-9_]+$/.test(name);
                 if (isValid) {
