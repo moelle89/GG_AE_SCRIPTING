@@ -1187,8 +1187,8 @@ function purge_discc() {
 
 // Create instances of HoverMenu with different data
 var hoverMenu_purge = new HoverMenu("hoverMenu_purge", [
-    { imgString: textLayer_imgString, text: "Clean local Image-Cache", name: "purge_imagec", functionName: purge_imagec },
-    { imgString: solidLayer_imgString, text: "Clean Disc-Cache", name: "purge_discc", functionName: purge_discc }
+    { imgString: "", text: "Clean local Image-Cache", name: "purge_imagec", functionName: purge_imagec },
+    { imgString: "", text: "Clean Disc-Cache", name: "purge_discc", functionName: purge_discc }
 ]);
 
 
@@ -1206,9 +1206,9 @@ function open_json() {
 
 // Create instances of HoverMenu with different data
 var hoverMenu_open = new HoverMenu("hoverMenu_open", [
-    { imgString: textLayer_imgString, text: "Open Project Folder", name: "open_prjct", functionName: open_prjct },
-    { imgString: solidLayer_imgString, text: "Open Footage Folder", name: "open_footage", functionName: open_footage },
-    { imgString: solidLayer_imgString, text: "Open JSON Folder", name: "open_json", functionName: open_json }
+    { imgString: "", text: "Open Project Folder", name: "open_prjct", functionName: open_prjct },
+    { imgString: "", text: "Open Footage Folder", name: "open_footage", functionName: open_footage },
+    { imgString: "", text: "Open JSON Folder", name: "open_json", functionName: open_json }
 ]);
 
 // Function to add hover menu to a button
