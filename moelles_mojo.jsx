@@ -710,6 +710,12 @@ var openBoilerplate = shortcuts.add("iconbutton", undefined, mojoUI.createIcon("
 });
 openBoilerplate.alignment = ["center", "top"];
 
+var changeProjectName = shortcuts.add("iconbutton", undefined, mojoUI.createIcon("icn_rename"), {
+    name: "changeProjectName",
+    style: "toolbutton"
+});
+changeProjectName.alignment = ["center", "top"];
+
 var openProjectInExplorer = shortcuts.add("iconbutton", undefined, mojoUI.createIcon("icn_folder"), {
     name: "openProjectInExplorer",
     style: "toolbutton"
@@ -1448,13 +1454,18 @@ function createComposition(width, height, duration, frameRate, name, silent) {
 
     // Create the composition
     var comp = proj.items.addComp(name, width, height, 1, duration, frameRate);
-
     // Alert to indicate successful creation, if not set to silent
     if (!silent) {
         alert("Composition " + name + " created!");
     }
     // Return the created composition
     return comp;
+}
+
+function openCompositionByName(compName) {
+    compIndex = findCompIndex(compName)
+    app.project.item(compIndex).openInViewer();
+    app.executeCommand(2004); // “Deselect All”
 }
 
 function createCompSet(duration, name, type) {
@@ -1480,7 +1491,7 @@ function createCompSet(duration, name, type) {
     } else {
         createComposition(1080, 1920, duration, 30, reelName, 1);
         createComposition(1080, 1080, duration, 30, squareName, 1);
-        createComposition(1920, 1080, duration, 30, fullHDName, 1);
+        createComposition(1920, 1080, duration, 30, fullHDName, 1)
         // Alert to indicate successful creation
         //alert("Compositions created successfully as " + reelName + ", " + squareName + " and " + fullHDName);
         return true;
@@ -2227,6 +2238,7 @@ function replaceCompositionsBySuffix(newName) {
         } else if (layerName.indexOf(comp3Suffix) !== -1) {
             // Replace comp3 and store the layer
             replacedLayers.push(replaceComposition(layer, comp3Suffix, newName));
+            
         }
     }
 
@@ -2235,6 +2247,12 @@ function replaceCompositionsBySuffix(newName) {
 
     // Execute the "Time-Reverse Layer" command
     app.executeCommand(3695);
+    app.endUndoGroup();
+
+    app.beginUndoGroup("Delete Comps by Suffix");
+    findItemByName(comp1Suffix).remove();
+    findItemByName(comp2Suffix).remove();
+    findItemByName(comp3Suffix).remove();
     app.endUndoGroup();
 }
 
@@ -2391,6 +2409,7 @@ function checkComp(inputComp) {
         return true;
     }
 }
+var compName; // Variable to store the entered text
 
 function showDialogWindow(infoText) {
     var window = new Window("dialog", "Enter Template Name");
@@ -2424,23 +2443,24 @@ function showDialogWindow(infoText) {
     cancelButton.preferredSize.height = 32;
 
     okButton.onClick = function () {
-        var name = nameInput.text;
+        compName = nameInput.text;
         window.close();
-       return name;
     };
 
     cancelButton.onClick = function () {
+        compName = "";
         window.close();
-        return;
     };
     window.show();
-}
+    
+    return compName; // Return the entered text
+};
 
 ///
 addTooltipToButton(btn_createComps, "create all required compositions work on a new video template", 85, false, true);
 
 btn_createComps.onClick = function () {
-    var compIndex = findCompIndex("__SETTINGS");
+    var compIndex = findCompIndex("BPLATE");
     if (compIndex) {
         var type = "comp_";
 
@@ -2507,8 +2527,10 @@ btn_createComps.onClick = function () {
 addTooltipToButton(btn_createIMGComps, "create all required compositions to work on a new image template", 85, false, true);
 
 btn_createIMGComps.onClick = function () {
+    var isBoiler = findCompIndex("BPLATE");
     var compIndex = findCompIndex("__SETTINGS");
-    if (compIndex) {
+    
+    if (isBoiler) {
         var duration = 1 / 30; // Set the duration of the composition in seconds
         var type = "post_";
 
@@ -2546,9 +2568,16 @@ btn_createIMGComps.onClick = function () {
                                 var newProjectFile = new File(newProjectPath);
                                 // Save the project with the new name
                                 app.project.save(newProjectFile);
-
                                 // Alert the user that the project has been saved
+                                openCompositionByName(newProjectName);
+                                createSolid("BG");
+                                openCompositionByName(newProjectName + "_square");
+                                createSolid("BG");
+                                openCompositionByName(newProjectName + "_1920");
+                                createSolid("BG");
+                                openCompositionByName("__SETTINGS");
                                 alert("Project saved as: " + newProjectName);
+
                                 // Optional: Redraw the UI to reflect the changes
                             } else {
                                 // Alert the user that no name was entered
@@ -2667,6 +2696,12 @@ openBoilerplate.onClick = function () {
     } else {
         alert("BOILERPLATE not found");
     }
+};
+
+addTooltipToButton(changeProjectName, "", 85);
+
+changeProjectName.onClick = function () {
+
 };
 
 //addTooltipToButton(openProjectInExplorer, "open Project Folder", 85);
