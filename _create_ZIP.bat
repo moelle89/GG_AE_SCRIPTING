@@ -6,6 +6,7 @@ set "INSTALL_SCRIPT=_INSTALL.bat"
 set "BOILERPLATES_FOLDER=_BOILERPLATES"
 set "BUILDS_FOLDER=_BUILDS"
 set "BUILDS_SCRIPTS_FOLDER=_BUILDS\_scripts"
+set "BUILDS_IMG_FOLDER=_BUILDS\_img"
 set "BUILDS_MOJO_FILE=_BUILDS\moelles_mojo.jsxbin"
 
 REM Set the output zip file name
@@ -19,6 +20,7 @@ REM Copy the specified files and folders to the temporary directory
 copy "%INSTALL_SCRIPT%" "%TEMP_DIR%"
 xcopy "%BOILERPLATES_FOLDER%" "%TEMP_DIR%\%BOILERPLATES_FOLDER%\" /s /e /i
 xcopy "%BUILDS_SCRIPTS_FOLDER%" "%TEMP_DIR%\%BUILDS_SCRIPTS_FOLDER%\" /s /e /i
+xcopy "%BUILDS_IMG_FOLDER%" "%TEMP_DIR%\%BUILDS_IMG_FOLDER%\" /s /e /i
 copy "%BUILDS_MOJO_FILE%" "%TEMP_DIR%\%BUILDS_FOLDER%"
 
 REM Check if the zip file already exists and delete it
