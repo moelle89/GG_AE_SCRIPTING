@@ -2937,23 +2937,22 @@ function showAlertWindow(infoText, title) {
   } else {
     title = "moelles mojo";
   }
-  var diaWin = new Window("dialog", title);
-  diaWin.orientation = "column";
-  diaWin.minimumSize.width = 380;
-    diaWin.alignChildren = ["center", "fill"];
-  diaWin.alignment = ["fill", "top"];
-  diaWin.margins = 20;
+    var diaWin = new Window("dialog", title);
+    diaWin.preferredSize.width = 280;
+    diaWin.orientation = "column";
+    diaWin.alignChildren = ["center", "center"];
+    diaWin.spacing = 20;
+    diaWin.margins = 16; 
 
-  var nameLabel = diaWin.add("statictext", undefined, infoText, {
-    multiline: true,
-  });
+    var nameLabel = diaWin.add("statictext", undefined, undefined, { name: "nameLabel", multiline: false });
+    nameLabel.text = infoText;
+    nameLabel.justify = "center";
+    nameLabel.alignment = ["fill", "center"]; 
 
-    nameLabel.alignment = ["fill", "fill"];
-  nameLabel.preferredSize.width = 360;
     var okButton = buttonColorText(diaWin, "OK", "#0060b1", "#028def");
-  okButton.preferredSize.height = 32;
+    okButton.preferredSize.height = 32;
 
-  okButton.onClick = function () {
+    okButton.onClick = function () {
     diaWin.close();
   };
 
