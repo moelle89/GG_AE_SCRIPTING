@@ -829,7 +829,7 @@ openProjectInExplorer.alignment = ["center", "top"];
 var fitView = shortcuts.add(
     "iconbutton",
     undefined,
-    mojoUI.createIcon("icn_fit"), {
+    mojoUI.createIcon("icn_screenshot"), {
         name: "fitView",
         style: "toolbutton",
     }
@@ -920,8 +920,9 @@ try {
   //@include '_scripts/organizeProjectAssets.jsx';
   //@include '_scripts/projectCleanup.jsx';
   //@include '_scripts/moveAnchorPoint.jsx';
-} catch (e) {
-  showAlertWindow("script includes are broken");
+  //@include '_scripts/saveScreenshot.jsx';
+} catch (err) {
+  showAlertWindow(err);
 }
 /// INCLUDES END
 (function () {
@@ -959,7 +960,7 @@ function isSecurityPrefSet() {
             "Pref_SCRIPTING_FILE_NETWORK_SECURITY"
         );
         return securitySetting == 1;
-    } catch (e) {
+    } catch (err) {
         return (securitySetting = 1);
     }
 }
@@ -1469,7 +1470,6 @@ function HoverMenu(title, buttonsData) {
 }
 
 // hoverMenu_purge
-
 function purge_imagec() {
     app.executeCommand(2372);
     showAlertWindow("Image-Cache cleared");
@@ -2166,8 +2166,8 @@ function importAndCopyFile() {
         if (!footageFolder.exists) {
             try {
                 footageFolder.create();
-            } catch (e) {
-                showAlertWindow("Error creating footage folder: " + e);
+            } catch (err) {
+                showAlertWindow("Error creating footage folder: " + err);
                 // If there's an error creating the folder, exit the script
                 return;
             }
@@ -2177,8 +2177,8 @@ function importAndCopyFile() {
         var copiedFilePath = footageFolder.fullName + "/" + fileToImport.name;
         try {
             fileToImport.copy(copiedFilePath);
-        } catch (e) {
-            showAlertWindow("Error copying file to footage folder: " + e);
+        } catch (err) {
+            showAlertWindow("Error copying file to footage folder: " + err);
             // If there's an error copying the file, exit the script
             return;
         }
@@ -2934,14 +2934,21 @@ function showAlertWindow(infoText, title) {
     diaWin.alignChildren = ["center", "center"];
     diaWin.spacing = 20;
     diaWin.margins = 16;
+    mojoUI.setBG(diaWin, [0.1, 0.1, 0.1]);
 
-    var nameLabel = diaWin.add("statictext", undefined, undefined, {
+    var staticText = diaWin.add("statictext", undefined, undefined, {
         name: "nameLabel",
         multiline: false,
     });
-    nameLabel.text = infoText;
-    nameLabel.justify = "center";
-    nameLabel.alignment = ["fill", "center"];
+    staticText.text = infoText;
+    staticText.justify = "center";
+    staticText.alignment = ["fill", "center"];
+
+    // Customize text color
+    staticText.graphics.foregroundColor = staticText.graphics.newPen(
+        staticText.graphics.PenType.SOLID_COLOR,
+        [0.83, 0.94, 1, 0.75], 1
+    );
 
     var okButton = buttonColorText(diaWin, "OK", "#0060b1", "#028def");
     okButton.preferredSize.height = 32;
@@ -3202,10 +3209,15 @@ btn_addGallery.onClick = function() {
 
 addTooltipToButton(
     fitView,
-    "fit preview of active composition to fill the screen",
+    "take a screenshot of the active composition",
     85
 );
 
+fitView.onClick = function() {
+    showMessage("hallo", "test")
+  //screenShot(this);
+};
+/*
 fitView.onClick = function() {
     (function() {
         var zoom = 0.5;
@@ -3235,7 +3247,7 @@ fitView.onClick = function() {
         app.activeViewer.views[0].options.zoom = zoom;
     })();
 };
-
+*/
 addTooltipToButton(
     delExp,
     "delete all expressions of a selected layers transform-properties",
@@ -3266,9 +3278,9 @@ changeProjectName.onClick = function() {
         var projectName = app.project.file.name;
         // If projectname starts with "comp_"
         if (projectName.match("comp_")) {
-            alert("project name contains comp_");
+            showAlertWindow("project name contains comp_");
             if (containsVariableString("comp_")) {
-                alert("project includes compositions using comp_");
+                showAlertWindow("project includes compositions using comp_");
 
                 var ptext =
                     "Please enter a name for the template\n (without spaces, special characters, capital letters, or dashes)";
@@ -3292,9 +3304,9 @@ changeProjectName.onClick = function() {
             }
         }
         if (projectName.match("post_")) {
-            alert("project name contains post_");
+            showAlertWindow("project name contains post_");
             if (containsVariableString("post_")) {
-                alert("project includes compositions using post_");
+                showAlertWindow("project includes compositions using post_");
                 var ptext =
                     "Please enter a name for the template\n (without spaces, special characters, capital letters, or dashes)";
                 var tempName = showDialogWindow(ptext);
@@ -3317,12 +3329,12 @@ changeProjectName.onClick = function() {
             }
         }
         if (!projectName.match("comp_") && !projectName.match("post_")) {
-            alert("No compositions using the prefix of 'comp_' or 'post_'");
+            showAlertWindow("No compositions using the prefix of 'comp_' or 'post_'");
         }
         // Display the first 5 characters of the project name
     } else {
         // No project is open
-        alert("No project open!");
+        showAlertWindow("No project open!");
     }
 };
 
@@ -3751,7 +3763,6 @@ function closeDialogWindows() {
     if (hoverMenuWin && hoverMenuWin instanceof Window) {
         hoverMenuWin.close();
     }
-    try {} catch (e) {}
     contextMenuOpen = false;
     return true;
 }
@@ -3761,10 +3772,10 @@ win.addEventListener("focus", function() {
         if (hoverMenuWin && hoverMenuWin.visible) {
             hoverMenuWin.close();
         }
-    } catch (e) {}
+    } catch(err) {}
 });
 win.onClose = function() {
     try {
         closeDialogWindows();
-    } catch (e) {}
+    } catch(err) {}
 };

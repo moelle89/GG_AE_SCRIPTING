@@ -25,95 +25,8 @@ function createResourceFile(filename, binaryString) {
     alert("Error in createResourceFile function\n" + err.toString());
   }
 }
-function showMessage(text1, text2, settingName, valueName) {
-  if (app.settings.haveSetting(settingName, valueName)) {
-    return;
-  } else {
-    try {
-      var dialog = new Window("palette");
-      dialog.text = "Warning";
-      dialog.orientation = "column";
-      dialog.alignChildren = ["center", "top"];
-      dialog.spacing = 10;
-      dialog.margins = 16;
-      var group1 = dialog.add("group", undefined, { name: "group1" });
-      group1.orientation = "row";
-      group1.alignChildren = ["left", "center"];
-      group1.spacing = 8;
-      group1.margins = 0;
-      var img03 = createResourceFile("warning.png");
-      var image2 = group1.add("image", undefined, img03, { name: "image2" });
-      var group2 = group1.add("group", undefined, { name: "group2" });
-      group2.orientation = "column";
-      group2.alignChildren = ["left", "center"];
-      group2.spacing = 5;
-      group2.margins = 0;
-      var statictext1 = group2.add("group");
-      statictext1.orientation = "column";
-      statictext1.alignChildren = ["left", "center"];
-      statictext1.spacing = 0;
-      statictext1.add("statictext", undefined, text1, { name: "statictext1" });
-      if (text2 !== "") {
-        statictext1.add("statictext", undefined, text2, {
-          name: "statictext1"
-        });
-      }
-      var group3 = dialog.add("group", undefined, { name: "group3" });
-      group3.orientation = "row";
-      group3.alignChildren = ["left", "center"];
-      group3.spacing = 10;
-      group3.margins = 0;
-      var checkbox1 = group3.add("checkbox", undefined, undefined, {
-        name: "checkbox1"
-      });
-      checkbox1.text = "Don't show this message again";
-      var group4 = dialog.add("group", undefined, { name: "group4" });
-      group4.orientation = "row";
-      group4.alignChildren = ["left", "center"];
-      group4.spacing = 10;
-      group4.margins = 0;
-      var img01 = createResourceFile("Btn-ok.png");
-      var img02 = createResourceFile("Btn-ok-hover.png");
-      var image1 = group4.add("image", undefined, img01, { name: "image1" });
-      image1.addEventListener("mouseup", function (event) {
-        if (checkbox1.value) {
-          app.settings.saveSetting(settingName, valueName, true);
-        }
-        dialog.close();
-      });
-      image1.addEventListener("mouseover", function (event) {
-        image1.icon = ScriptUI.newImage(img02);
-      });
-      image1.addEventListener("mouseout", function (event) {
-        image1.icon = ScriptUI.newImage(img01);
-      });
-      dialog.graphics.backgroundColor = dialog.graphics.newBrush(
-        dialog.graphics.BrushType.SOLID_COLOR,
-        [1, 1, 1]
-      );
-      statictext1.graphics.foregroundColor = statictext1.graphics.newPen(
-        dialog.graphics.PenType.SOLID_COLOR,
-        [0, 0, 0],
-        1
-      );
-      dialog.show();
-    } catch (err) {
-      alert(err);
-    }
-  }
-}
 function screenShot(thisObj) {
   try {
-    function savePrefMachine(_sectionName, _keyName, _value) {
-      var argt = [_sectionName, _keyName, _value];
-      if (
-        typeof PREFType !== "undefined" &&
-        typeof PREFType.PREF_Type_MACHINE_INDEPENDENT !== "undefined"
-      ) {
-        argt.push(PREFType.PREF_Type_MACHINE_INDEPENDENT);
-      }
-      return app.preferences.savePrefAsString.apply(app.preferences, argt);
-    }
     function trimFolderPath(loc) {
       var imageLoc = loc.toString();
       var macLoc = imageLoc.substring(0, imageLoc.lastIndexOf("/") + 1);
@@ -144,8 +57,8 @@ function screenShot(thisObj) {
       }
     }
     function getFolderPath() {
-      if (app.settings.haveSetting("MoPack", "screenshot_folderPath")) {
-        var path = app.settings.getSetting("MoPack", "screenshot_folderPath");
+      if (app.settings.haveSetting("MoJo", "screenshot_folderPath")) {
+        var path = app.settings.getSetting("MoJo", "screenshot_folderPath");
         if (Folder(path).exists) {
           return path;
         } else {
@@ -155,18 +68,18 @@ function screenShot(thisObj) {
     }
     function saveSettings(imagePath, fullPath) {
       app.settings.saveSetting(
-        "MoPack",
+        "MoJo",
         "screenshot_folderPath",
         trimFolderPath(imagePath).toString()
       );
       app.settings.saveSetting(
-        "MoPack",
+        "MoJo",
         "screenshot_imagePath",
         imagePath.toString()
       );
       if (fullPath != null) {
         app.settings.saveSetting(
-          "MoPack",
+          "MoJo",
           "screenshot_copyPath",
           fullPath.toString()
         );
@@ -211,7 +124,6 @@ function screenShot(thisObj) {
           PREFType.PREF_Type_MACHINE_INDEPENDENT
         );
         if (autoS == 1) {
-          savePrefMachine("Auto Save", "Enable Auto Save RQ2", 0);
           app.preferences.saveToDisk();
           app.preferences.reload();
         }
@@ -238,7 +150,6 @@ function screenShot(thisObj) {
         app.project.renderQueue.render();
         app.project.renderQueue.item(app.project.renderQueue.numItems).remove();
         if (autoS == 1) {
-          savePrefMachine("Auto Save", "Enable Auto Save RQ2", 1);
           app.preferences.saveToDisk();
           app.preferences.reload();
         }
@@ -396,17 +307,6 @@ function screenShot(thisObj) {
     });
     dropdown1.selection = 0;
     dropdown1.preferredSize.width = 137;
-    var dropdown2_array = [
-      "Full Resolution",
-      "Half Resolution",
-      "Third Resolution"
-    ];
-    var dropdown2 = panel1.add("dropdownlist", undefined, undefined, {
-      items: dropdown2_array,
-      name: "dropdown2"
-    });
-    dropdown2.selection = 0;
-    dropdown2.preferredSize.width = 137;
     var group1 = panel1.add("group", undefined, { name: "group1" });
     group1.orientation = "column";
     group1.alignChildren = ["left", "center"];
@@ -428,7 +328,6 @@ function screenShot(thisObj) {
     button1.text = "Save Images";
     button1.preferredSize.width = 137;
     dropdown1.selection = getPref("MoBar", "ss-selection", 0);
-    dropdown2.selection = getPref("MoBar", "ss-res", 0);
     checkbox1.value =
       getPref("MoBar", "ss-trans", "true") === "true" ? true : false;
     checkbox2.value =
@@ -437,9 +336,6 @@ function screenShot(thisObj) {
     palette.onResizing = palette.onResize = function () {
       this.layout.resize();
     };
-    if (mobarObj && mobarObj.coordinates) {
-      palette.frameLocation = mobarObj.coordinates;
-    }
     if (palette instanceof Window) {
       palette.show();
     }
@@ -467,7 +363,7 @@ function screenShot(thisObj) {
           );
         }
         if (theLocation != null) {
-          var fullPath = pngExport_HQ(theLocation, dropdown2.selection.index);
+          var fullPath = pngExport_HQ(theLocation, 0);
           saveSettings(theLocation, fullPath);
           if (checkbox2.value) {
             revealFile(fullPath);
@@ -530,7 +426,7 @@ function screenShot(thisObj) {
               }
               var fullPath = pngExport_HQ(
                 theLocation,
-                dropdown2.selection.index
+                0
               );
               saveSettings(theLocation, fullPath);
               pb.update(k + 1);
@@ -545,21 +441,15 @@ function screenShot(thisObj) {
           }
         } else {
           alert(
-            "Please make sure that you have some selected compositions!",
-            "MoBar"
+            "Please make sure that you have some selected compositions!"
           );
         }
       }
     };
     palette.onClose = function () {
-      setPref("ss-selection", dropdown1.selection.index);
-      setPref("ss-res", dropdown2.selection.index);
-      setPref("ss-trans", checkbox1.value);
-      setPref("ss-open", checkbox2.value);
     };
   } catch (err) {
     alert(err);
   }
 }
 var autoS = 1;
-screenShot(this);
