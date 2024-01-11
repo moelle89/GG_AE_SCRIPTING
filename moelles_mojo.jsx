@@ -77,19 +77,6 @@ mojoUI.createIcon = function(fileName) {
 // ===
 var win = createDockableUI(this);
 
-/// INCLUDES
-
-try {
-    //@include '_scripts/rectangleWizard.jsx';
-    //@include '_scripts/rectangleWizard.jsx';
-    //@include '_scripts/elementsDiag.jsx';
-    //@include '_scripts/organizeProjectAssets.jsx';
-    //@include '_scripts/projectCleanup.jsx';
-    //@include '_scripts/moveAnchorPoint.jsx';
-} catch (e) {
-    showAlertWindow("script includes are broken");
-}
-
 var buttonsSize = 25;
 var tooltipWin = null;
 
@@ -926,7 +913,24 @@ var adjustmentsLayer = buttonArray[3];
 var nullLayer = buttonArray[4];
 var parent2null = buttonArray[5];
 
+/// INCLUDES
+try {
+  //@include '_scripts/rectangleWizard.jsx';
+  //@include '_scripts/elementsDiag.jsx';
+  //@include '_scripts/organizeProjectAssets.jsx';
+  //@include '_scripts/projectCleanup.jsx';
+  //@include '_scripts/moveAnchorPoint.jsx';
+} catch (e) {
+  showAlertWindow("script includes are broken");
+}
 /// INCLUDES END
+(function () {
+    if (!checkSecurityPrefSet()) {
+        return false;
+    } else {
+        showWindow(win);
+    }
+})();
 
 function checkSecurityPrefSet() {
     if (!isSecurityPrefSet()) {
@@ -3764,10 +3768,3 @@ win.onClose = function() {
         closeDialogWindows();
     } catch (e) {}
 };
-(function() {
-    if (!checkSecurityPrefSet()) {
-        return false;
-    } else {
-        showWindow(win);
-    }
-})();
