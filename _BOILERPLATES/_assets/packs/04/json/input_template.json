@@ -1,155 +1,110 @@
 {
-   "Comp": {
-      "logo": 1,
-      "logo_bg_auto_color": 0,
-      "logo_bg_color": "#FFFFFF",
-      "darkmode": 1,
-      "intro": 0,
-      "video": 0,
-      "audio_muted": 0,
-      "audio_track": 8,
-      "text2voice": 0,
-      "fx_effects": 1,
-      "accent": {
-         "color": "#eb354b",
-         "color_dark": "#eb354b"
+  "Comp": {
+    "logo": 1,
+    "logo_bg_auto_color": 0,
+    "logo_bg_color": "#FFFFFF",
+    "darkmode": 0,
+    "intro": 0,
+    "video": 0,
+    "audio_muted": 0,
+    "audio_track": 10,
+    "text2voice": 0,
+    "fx_effects": 0,
+    "accent": {
+      "color": "#2083E6",
+      "color_dark": "#48A3FF"
+    },
+    "title": {
+      "text": "Beautiful. And made to stay that way.",
+      "color": "#222222",
+      "color_dark": "#ffffff",
+      "font": "Archivo-Bold"
+    },
+    "subtext": {
+      "text": "Smooth and seamless. The edge of design. Apple Watch Series 8 features a big, brilliant Always‑On display.",
+      "color": "#242424",
+      "color_dark": "#ffffff",
+      "font": ""
+    },
+    "call2action": {
+      "text": "Now available on apple.com",
+      "color": "#222222",
+      "color_dark": "#ffffff",
+      "cursor_color": "#48A3FF",
+      "cursor_color_dark": "#2083E6",
+      "cursor_stroke": "#ffffff",
+      "cursor_stroke_dark": "#FFFFFF",
+      "font": ""
+    },
+    "call2action_link": {
+      "text": "www.apple.com",
+      "color": "#222222",
+      "color_dark": "#ffffff",
+      "link_highlight": 0,
+      "font": ""
+    },
+    "source": {
+      "text": "apple.com",
+      "color": "#080808",
+      "color_dark": "#FFFFFF",
+      "bg_color": "#ffffff",
+      "bg_color_dark": "#48A3FF",
+      "avatar": 0,
+      "font": ""
+    },
+    "bg": {
+      "color": "#ffffff",
+      "color_dark": "#191a1b"
+    },
+    "gallery": [
+      {
+        "src": "gallery_01",
+        "video": 1,
+        "loop": 0,
+        "muted": 0,
+        "text": "Create Social Content, including Video, Image, Captions and Hashtags and shedule them in a fully automated way.",
+        "font": "Poppins"
       },
-      "region": {
-         "text": "Tennis",
-         "color": "#ffffff",
-         "color_dark": "#080808",
-         "bg_color": "#080808",
-         "bg_color_dark": "#ffffff",
-         "position": "bottom-right"
+      {
+        "src": "gallery_02",
+        "video": 1,
+        "loop": 0,
+        "muted": 0,
+        "text": "",
+        "font": "Poppins"
       },
-      "title": {
-         "text": "Discover the new Saint Laurent collection.",
-         "color": "#222222",
-         "color_dark": "#ffffff"
+      {
+        "src": "gallery_03",
+        "video": 1,
+        "loop": 0,
+        "muted": 0,
+        "text": "",
+        "font": "Poppins"
       },
-      "subtext": {
-         "text": "Shop online at the official store. Discover the collections for women and men: ready to wear, bags & accessories.",
-         "color": "#242424",
-         "color_dark": "#ffffff"
+      {
+        "src": "gallery_04",
+        "video": 1,
+        "loop": 1,
+        "muted": 0,
+        "text": "",
+        "font": "Poppins"
       },
-      "call2action": {
-         "text": "Discover all pieces at:",
-         "color": "#222222",
-         "color_dark": "#ffffff",
-         "cursor_color": "#eb354b",
-         "cursor_color_dark": "#eb354b",
-         "cursor_stroke": "#ffffff",
-         "cursor_stroke_dark": "#FFFFFF"
+      {
+        "src": "",
+        "video": 1,
+        "loop": 0,
+        "muted": 0,
+        "text": "",
+        "font": "Poppins"
       },
-      "call2action_link": {
-         "text": "www.ysl.com",
-         "color": "#222222",
-         "color_dark": "#ffffff",
-         "link_highlight": 1
-      },
-      "source": {
-         "text": "ysl.com",
-         "color": "#080808",
-         "color_dark": "#ffffff",
-         "bg_color": "#ffffff",
-         "bg_color_dark": "#eb354b",
-         "avatar": 1
-      },
-      "bg": {
-         "color": "#ffffff",
-         "color_dark": "#191a1b"
-      },
-      "gallery": [
-         {
-            "src": "gallery_01",
-            "video": 0,
-            "loop": 0,
-            "muted": 0,
-            "text": "",
-            "font": "Poppins"
-         },
-         {
-            "src": "gallery_02",
-            "video": 1,
-            "loop": 0,
-            "muted": 0,
-            "text": "",
-            "font": "Poppins"
-         },
-         {
-            "src": "gallery_03",
-            "video": 0,
-            "loop": 0,
-            "muted": 0,
-            "text": "",
-            "font": "Poppins"
-         },
-         {
-            "src": "",
-            "video": 1,
-            "loop": 1,
-            "muted": 0,
-            "text": "",
-            "font": "Poppins"
-         },
-         {
-            "src": "",
-            "video": 0,
-            "loop": 0,
-            "muted": 0,
-            "text": "",
-            "font": "Poppins"
-         },
-         {
-            "src": "",
-            "video": 1,
-            "loop": 0,
-            "muted": 0,
-            "text": "",
-            "font": "Poppins"
-         }
-      ],
-      "slides": [
-         {
-            "from": "0",
-            "to": "5",
-            "elements": [
-               {
-                  "x": "left",
-                  "y": "bottom",
-                  "text": "",
-                  "font": "Arial",
-                  "font-size": "15px"
-               },
-               {
-                  "x": "left",
-                  "y": "bottom",
-                  "text": "",
-                  "font": "Arial",
-                  "font-size": "15px"
-               }
-            ]
-         },
-         {
-            "from": "0",
-            "to": "5",
-            "elements": [
-               {
-                  "x": "left",
-                  "y": "bottom",
-                  "text": "",
-                  "font": "Arial",
-                  "font-size": "15px"
-               },
-               {
-                  "x": "left",
-                  "y": "bottom",
-                  "text": "",
-                  "font": "Arial",
-                  "font-size": "15px"
-               }
-            ]
-         }
-      ]
-   }
+      {
+        "src": "",
+        "video": 0,
+        "loop": 0,
+        "muted": 0,
+        "text": "",
+        "font": "Poppins"
+      }
+    ]
+  }
 }
