@@ -3758,11 +3758,22 @@ parent2null.onClick = function() {
 };
 
 btn_demos.onClick = function() {
+    // Check if there is an open project
+    if (app.project && app.project.file !== null) {
+        // Extract the project name from the file path, assuming a standard naming scheme
+        var projectName = app.project.file.name;    
     if (projectName.match("comp_") || projectName.match("post_") || projectName.match("___boilerplate")) {
+        openCompositionByName("TEXT_el");
+        app.purge(PurgeTarget.IMAGE_CACHES);
         var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_replace_demo_content.bat";
         var result = system.callSystem(batScriptPath);
+        app.purge(PurgeTarget.IMAGE_CACHES);
+        openCompInViewer("__SETTINGS", "SETTINGS");
+        refreshCurrentFrame();
     } else {
-        showAlertWindow("Please open a template");
+        showAlertWindow("Please open the BOILERPLATE or a template");
+    }} else {
+        showAlertWindow("Please open a project");
     }
 };
 
