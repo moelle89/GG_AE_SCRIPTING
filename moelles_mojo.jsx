@@ -572,6 +572,30 @@ configText.alignChildren = ["left", "top"];
 configText.spacing = 10;
 configText.margins = 12;
 
+// CONFIGDEMOPACKS
+// ===============
+var configDemos = configPanel.add("tab", undefined, undefined, {
+    name: "configDemos",
+});
+configDemos.text = "DEMO PACKS";
+configDemos.preferredSize.height = 34;
+configDemos.orientation = "column";
+configDemos.alignChildren = ["left", "top"];
+configDemos.spacing = 10;
+configDemos.margins = 12;
+
+var btn_demos = configDemos.add(
+    "iconbutton",
+    undefined,
+    mojoUI.createIcon("icn_demopacks"), {
+        name: "btn_import",
+        style: "button",
+    }
+);
+btn_demos.alignment = ["left", "top"];
+btn_demos.preferredSize.height = 34;
+btn_demos.preferredSize.width = 240;
+
 // tools_wrapper
 // ======
 var tools_txt_wrapper = configColors.add("group", undefined, {
@@ -3731,6 +3755,15 @@ parent2null.onClick = function() {
     app.beginUndoGroup("Create");
     CreateParentNull();
     app.endUndoGroup();
+};
+
+btn_demos.onClick = function() {
+    if (projectName.match("comp_") || projectName.match("post_") || projectName.match("___boilerplate")) {
+        var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_replace_demo_content.bat";
+        var result = system.callSystem(batScriptPath);
+    } else {
+        showAlertWindow("Please open a template");
+    }
 };
 
 // Initiates color picker, returns RGB array

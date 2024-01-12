@@ -8,8 +8,11 @@ set "aeFileName=___boilerplate_23.aep"
 set "fullAeSourcePath=%aeSourceFolder%\%aeFileName%"
 set "fullAeDestinationPath=%aeDestinationFolder%\%aeFileName%"
 set "aeFootageFolder=(Footage)"
+set "aeAssetsFolder=_assets"
 set "fullAeFootageSource=%aeSourceFolder%\%aeFootageFolder%"
 set "fullAeFootageDestination=%aeDestinationFolder%\%aeFootageFolder%"
+set "fullAeAssetsSource=%aeSourceFolder%\%aeAssetsFolder%"
+set "fullAeAssetsDestination=%aeDestinationFolder%\%aeAssetsFolder%"
 
 REM Check if the destination folder for AE exists, create it if not
 if not exist "%aeDestinationFolder%" (
@@ -21,6 +24,7 @@ copy /y "%fullAeSourcePath%" "%fullAeDestinationPath%" >nul
 
 REM Copy the "(Footage)" folder and its contents for AE with quiet mode using robocopy
 robocopy "%fullAeFootageSource%" "%fullAeFootageDestination%" /s /e /np /njh /njs /ndl /nc /ns /nc /ndl /np /nfl /ndl /mt:8 >nul
+robocopy "%fullAeAssetsSource%" "%fullAeAssetsDestination%" /s /e /np /njh /njs /ndl /nc /ns /nc /ndl /np /nfl /ndl /mt:8 >nul
 
 REM Set the paths for ScriptUI Panel
 set "scriptSearchDir=%APPDATA%\Adobe\After Effects"

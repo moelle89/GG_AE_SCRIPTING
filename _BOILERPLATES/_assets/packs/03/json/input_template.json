@@ -1,0 +1,155 @@
+{
+   "Comp": {
+      "logo": 1,
+      "logo_bg_auto_color": 0,
+      "logo_bg_color": "#ffffff",
+      "darkmode": 1,
+      "intro": 0,
+      "video": 1,
+      "audio_muted": 0,
+      "audio_track": 30,
+      "text2voice": 0,
+      "fx_effects": 1,
+      "accent": {
+         "color": "#FFB547",
+         "color_dark": "#FFB547"
+      },
+      "region": {
+         "text": "Tennis",
+         "color": "#ffffff",
+         "color_dark": "#080808",
+         "bg_color": "#080808",
+         "bg_color_dark": "#ffffff",
+         "position": "bottom-right"
+      },
+      "title": {
+         "text": "Discover the featured creations of the collection.",
+         "color": "#222222",
+         "color_dark": "#ffffff"
+      },
+      "subtext": {
+         "text": "The latest Spring-Summer 2023 collection on the CHANEL official website.",
+         "color": "#242424",
+         "color_dark": "#ffffff"
+      },
+      "call2action": {
+         "text": "Now available:",
+         "color": "#222222",
+         "color_dark": "#ffffff",
+         "cursor_color": "#FFB547",
+         "cursor_color_dark": "#FFB547",
+         "cursor_stroke": "#ffffff",
+         "cursor_stroke_dark": "#FFFFFF"
+      },
+      "call2action_link": {
+         "text": "www.chanel.com",
+         "color": "#222222",
+         "color_dark": "#ffffff",
+         "link_highlight": 1
+      },
+      "source": {
+         "text": "chanel.com",
+         "color": "#080808",
+         "color_dark": "#ffffff",
+         "bg_color": "#ffffff",
+         "bg_color_dark": "#191a1b",
+         "avatar": 1
+      },
+      "bg": {
+         "color": "#ffffff",
+         "color_dark": "#191a1b"
+      },
+      "gallery": [
+         {
+            "src": "gallery_01",
+            "video": 1,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "gallery_02",
+            "video": 1,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "gallery_03",
+            "video": 1,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "gallery_04",
+            "video": 1,
+            "loop": 1,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "",
+            "video": 0,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "",
+            "video": 1,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         }
+      ],
+      "slides": [
+         {
+            "from": "0",
+            "to": "5",
+            "elements": [
+               {
+                  "x": "left",
+                  "y": "bottom",
+                  "text": "",
+                  "font": "Arial",
+                  "font-size": "15px"
+               },
+               {
+                  "x": "left",
+                  "y": "bottom",
+                  "text": "",
+                  "font": "Arial",
+                  "font-size": "15px"
+               }
+            ]
+         },
+         {
+            "from": "0",
+            "to": "5",
+            "elements": [
+               {
+                  "x": "left",
+                  "y": "bottom",
+                  "text": "",
+                  "font": "Arial",
+                  "font-size": "15px"
+               },
+               {
+                  "x": "left",
+                  "y": "bottom",
+                  "text": "",
+                  "font": "Arial",
+                  "font-size": "15px"
+               }
+            ]
+         }
+      ]
+   }
+}
