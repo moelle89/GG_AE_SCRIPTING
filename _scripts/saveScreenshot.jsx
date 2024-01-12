@@ -22,7 +22,7 @@ function createResourceFile(filename, binaryString) {
     var myFile = new File(newPath + "img/" + filename);
     return myFile;
   } catch (err) {
-    alert("Error in createResourceFile function\n" + err.toString());
+    showAlertWindow("Error in createResourceFile function\n" + err.toString());
   }
 }
 function screenShot(thisObj) {
@@ -116,7 +116,7 @@ function screenShot(thisObj) {
       }
       var RQbackup = storeRenderQueue();
       if (RQbackup[RQbackup.length - 1] == "rendering") {
-        alert(RQerr);
+        showAlertWindow(RQerr);
       } else {
         var autoS = app.preferences.getPrefAsLong(
           "Auto Save",
@@ -220,7 +220,7 @@ function screenShot(thisObj) {
         filePath = filePath.fsName;
       }
       if (typeof filePath !== "string") {
-        alert("Invalid path!");
+        showAlertWindow("Invalid path!");
         return;
       }
       var command =
@@ -285,7 +285,8 @@ function screenShot(thisObj) {
       var loc = getLocation();
       var num = Math.round(comp.time * comp.frameRate);
       loc = loc + comp.name + "-" + pad(num, 4) + ".png";
-      pngExport_HQ(loc, 0);
+      var fullPath = pngExport_HQ(loc, 0);
+      revealFile(fullPath);
       return;
     }
     var palette = new Window("palette");
@@ -343,7 +344,7 @@ function screenShot(thisObj) {
       if (dropdown1.selection.index == 0) {
         var comp = activateCompViewer() ? app.project.activeItem : null;
         if (!comp || !(comp instanceof CompItem || comp == null)) {
-          alert("Please make sure that you have an active composition!");
+          showAlertWindow("Please make sure that you have an active composition!");
           return;
         }
         comp = app.project.activeItem;
@@ -440,7 +441,7 @@ function screenShot(thisObj) {
             }
           }
         } else {
-          alert(
+          showAlertWindow(
             "Please make sure that you have some selected compositions!"
           );
         }
@@ -449,7 +450,7 @@ function screenShot(thisObj) {
     palette.onClose = function () {
     };
   } catch (err) {
-    alert(err);
+    showAlertWindow(err);
   }
 }
 var autoS = 1;

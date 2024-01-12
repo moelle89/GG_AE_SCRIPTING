@@ -3214,8 +3214,7 @@ addTooltipToButton(
 );
 
 fitView.onClick = function() {
-    showMessage("hallo", "test")
-  //screenShot(this);
+  screenShot(this);
 };
 /*
 fitView.onClick = function() {

@@ -15,7 +15,7 @@ function elementsDialog() {
   // Copy-paste your ELEMENTS content
   var ELEMENTS = secondaryDialog.add('group', undefined, { name: 'ELEMENTS' });
   ELEMENTS.orientation = 'column';
-  ELEMENTS.alignChildren = ['fill', 'top'];
+  ELEMENTS.alignChildren = ['fill', 'top']; 
   ELEMENTS.spacing = 10;
   ELEMENTS.margins = 0;
 
@@ -29,8 +29,8 @@ function elementsDialog() {
   grp_logo_info.alignment = ["fill", "center"];
 
   var grp_logo_text = grp_logo_info.add("statictext", undefined, undefined, { name: "grp_logo_text" });
-  grp_logo_text.text = "Use V2 for more custom-options";
-
+  grp_logo_text.text = "Use V2 for more custom-options"; 
+ 
 
   // GRP_LOGO
   var grp_logo = ELEMENTS.add('group', undefined, { name: 'grp_logo' });
@@ -78,10 +78,10 @@ function elementsDialog() {
   grp_text_info.alignment = ["fill", "center"];
 
   var grp_text_textr = grp_text_info.add("statictext", undefined, undefined, { name: "grp_text_textr" });
-  grp_text_textr.text = "Add a variable text-element";
+  grp_text_textr.text = "Add a variable text-element"; 
 
   // GRP_TEXTELEMENT
-  var grp_textelement = ELEMENTS.add('group', undefined, { name: 'grp_textelement' });
+  var grp_textelement = ELEMENTS.add('group', undefined, { name: 'grp_textelement'});
   grp_textelement.orientation = 'row';
   grp_textelement.alignChildren = ['left', 'top'];
   grp_textelement.spacing = 10;
@@ -128,7 +128,7 @@ function elementsDialog() {
   grp_media_info.alignment = ["fill", "center"];
 
   var grp_media_text = grp_media_info.add("statictext", undefined, undefined, { name: "grp_media_text" });
-  grp_media_text.text = "Media element prepared for all formats";
+  grp_media_text.text = "Media element prepared for all formats"; 
 
   // GRP_MEDIA
   var grp_media = ELEMENTS.add('group', undefined, { name: 'grp_media' });

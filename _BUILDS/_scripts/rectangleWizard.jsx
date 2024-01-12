@@ -28,76 +28,10 @@ function createResourceFile(filename, binaryString) {
     var myFile = new File(newPath + "img/" + filename);
     return myFile;
   } catch (err) {
-    alert("Error in createResourceFile function\n" + err.toString());
+    showAlertWindow("Error in createResourceFile function\n" + err.toString());
   }
 }
-function showMessage(text1, text2, settingName, valueName) {
-  if (app.settings.haveSetting(settingName, valueName)) {
-    return;
-  }
-  else {
-    try {
-      var dialog = new Window("palette");
-      dialog.text = "Warning";
-      dialog.orientation = "column";
-      dialog.alignChildren = ["center", "top"];
-      dialog.spacing = 10;
-      dialog.margins = 16;
-      var group1 = dialog.add("group", undefined, { name: "group1" });
-      group1.orientation = "row";
-      group1.alignChildren = ["left", "center"];
-      group1.spacing = 8;
-      group1.margins = 0;
-      var img03 = createResourceFile("warning.png");
-      var image2 = group1.add("image", undefined, img03, { name: "image2" });
-      var group2 = group1.add("group", undefined, { name: "group2" });
-      group2.orientation = "column";
-      group2.alignChildren = ["left", "center"];
-      group2.spacing = 5;
-      group2.margins = 0;
-      var statictext1 = group2.add("group");
-      statictext1.orientation = "column";
-      statictext1.alignChildren = ["left", "center"];
-      statictext1.spacing = 0;
-      statictext1.add("statictext", undefined, text1, { name: "statictext1" });
-      if (text2 !== "") {
-        statictext1.add("statictext", undefined, text2, { name: "statictext1" });
-      }
-      var group3 = dialog.add("group", undefined, { name: "group3" });
-      group3.orientation = "row";
-      group3.alignChildren = ["left", "center"];
-      group3.spacing = 10;
-      group3.margins = 0;
-      var checkbox1 = group3.add("checkbox", undefined, undefined, { name: "checkbox1" });
-      checkbox1.text = "Don\'t show this message again";
-      var group4 = dialog.add("group", undefined, { name: "group4" });
-      group4.orientation = "row";
-      group4.alignChildren = ["left", "center"];
-      group4.spacing = 10;
-      group4.margins = 0;
-      var img01 = createResourceFile("Btn-ok.png");
-      var img02 = createResourceFile("Btn-ok-hover.png");
-      var image1 = group4.add("image", undefined, img01, { name: "image1" });
-      image1.addEventListener("mouseup", function (event) {
-        if (checkbox1.value) {
-          app.settings.saveSetting(settingName, valueName, true);
-        }
-        dialog.close();
-      });
-      image1.addEventListener("mouseover", function (event) {
-        image1.icon = ScriptUI.newImage(img02);
-      });
-      image1.addEventListener("mouseout", function (event) {
-        image1.icon = ScriptUI.newImage(img01);
-      });
-      dialog.graphics.backgroundColor = dialog.graphics.newBrush(dialog.graphics.BrushType.SOLID_COLOR, [1, 1, 1]);
-      statictext1.graphics.foregroundColor = statictext1.graphics.newPen(dialog.graphics.PenType.SOLID_COLOR, [0, 0, 0], 1);
-      dialog.show();
-    } catch (err) {
-      alert(err);
-    }
-  }
-}
+
 function RectangleWizardInit() {
   try {
 
@@ -106,7 +40,7 @@ function RectangleWizardInit() {
     function colorPicker(startValue) {
       var comp = activateCompViewer() ? app.project.activeItem : null;
       if ((!comp) || (!(comp instanceof CompItem))) {
-        alert("You need to select an active composition to change the color.");
+        showAlertWindow("You need to select an active composition to change the color.");
         return startValue;
       }
       var newNull = comp.layers.addShape();
@@ -127,7 +61,7 @@ function RectangleWizardInit() {
     function createRectControl(w, h, f, fc, s, sc, sw) {
       var comp = activateCompViewer() ? app.project.activeItem : null;
       if ((!comp) || (!(comp instanceof CompItem))) {
-        showMessage("Please make sure that you have an active composition selected.", "", "moelle mojo", "selectComp");
+        showAlertWindow("Please make sure that you have an active composition selected.");
         return;
       }
       app.beginUndoGroup("Rect Wizard");
@@ -204,7 +138,7 @@ function RectangleWizardInit() {
     function createRect(w, h, f, fc, s, sc, sw) {
       var comp = activateCompViewer() ? app.project.activeItem : null;
       if ((!comp) || (!(comp instanceof CompItem))) {
-        showMessage("Please make sure that you have an active composition selected.", "", "moelles mojo", "selectComp");
+        showAlertWindow("Please make sure that you have an active composition selected.");
         return;
       }
       app.beginUndoGroup("Rectangle Wizard");
@@ -246,7 +180,8 @@ function RectangleWizardInit() {
       }
     }
     function getLocation() {
-      var location = Folder.myDocuments.fsName + "/Adobe/After Effects 20" + app.buildName.substr(0, 2) + "/mojo/_img";
+      var appDataFolder = Folder.userData + "/Adobe/After Effects/" + app.buildName.substr(0, 2) + "/Scripts/ScriptUI Panels/_img";
+      var location = appDataFolder.fsName;
       return location;
     }
     function createResourceFile(filename, binaryString) {
@@ -264,7 +199,7 @@ function RectangleWizardInit() {
         }
         return myFile;
       } catch (err) {
-        alert("Error in createResourceFile function\n" + err.toString());
+        showAlertWindow("Error in createResourceFile function\n" + err.toString());
       }
     }
     function updateValue(v, d) {
@@ -298,7 +233,7 @@ function RectangleWizardInit() {
     function getCompSize() {
       var comp = activateCompViewer() ? app.project.activeItem : null;
       if ((!comp) || (!(comp instanceof CompItem))) {
-        showMessage("Please make sure that you have an active composition selected.", "", "moelle mojo", "selectComp");
+        showAlertWindow("Please make sure that you have an active composition selected.");
         return;
       }
       editWidth.text = comp.width;
@@ -874,7 +809,7 @@ function RectangleWizardInit() {
     btn2ColorUpdate(strokeColor);
     palette.show();
   } catch (err) {
-    alert("Error at line # " + err.line.toString() + "\r" + err.toString());
+    showAlertWindow("Error at line # " + err.line.toString() + "\r" + err.toString());
   }
 };
 /*
