@@ -3006,7 +3006,7 @@ btn_createComps.onClick = function() {
                     "Please enter a name for the template\n (without spaces, special characters, capital letters, or dashes):";
                 var tempName = showDialogWindow(ptext);
                 if (tempName) {
-                    var newName = type + name;
+                    var newName = type + tempName;
                     var worked = renameCompositions(type, tempName);
                     // Save Project with New Name in Same Path
                     // Get the current project file
