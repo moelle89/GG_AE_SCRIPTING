@@ -42,8 +42,8 @@ if ((curItem instanceof FootageItem) && (curItem.name == "Placeholder")) {
 myDefaults.myPlaceholderObjects[myDefaults.myPlaceholderObjects.length] = curItem;
 break ;
 }
-}
 } 
+}
 return myDefaults.myPlaceholderObjects;
 }
 function grabMyFolderObjects() {
