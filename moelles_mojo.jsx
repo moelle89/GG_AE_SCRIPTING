@@ -1015,13 +1015,27 @@ function hexToArray(hexString) {
 */
 function visitURL(url) {
     if ($.os.indexOf("Windows") != -1) {
-        system.callSystem(
-            'cmd /c "' +
-            Folder.commonFiles.parent.fsName +
-            "\\Internet Explorer\\iexplore.exe" +
-            '" ' +
-            url
-        );
+        try {
+            // Try opening the URL with Google Chrome
+            system.callSystem('cmd /c "' +
+                                'start chrome ' +   // Use 'start chrome' to open the URL with Google Chrome
+                                url +
+                                '"');
+        } catch (chromeError) {
+            try {
+                // If Chrome fails, attempt to open with Internet Explorer
+                system.callSystem(
+                    'cmd /c "' +
+                    Folder.commonFiles.parent.fsName +
+                    "\\Internet Explorer\\iexplore.exe" +
+                    '" ' +
+                    url
+                );
+            } catch (ieError) {
+                // Handle any errors that may occur
+                alert('Error: Unable to open the URL in either Chrome or Internet Explorer.');
+            }
+        }
     } else {
         system.callSystem('open "' + url + '"');
     }
@@ -1207,12 +1221,12 @@ function updateVectorButtonOnHover(btn, iconVec, iconColor, size) {
     return btn;
 }
 
-btn_about.onClick = function() {
+btn_about.onClick = function(e) {
     // open about panel
     var w = new Window("dialog", "About " + scriptName);
     w.orientation = "column";
     w.minimumSize.width = 380;
-    w.preferredSize.height = 150;
+    w.preferredSize.height = 140;
     w.alignChildren = ["center", "top"];
     w.alignment = ["fill", "top"];
     w.margins = 0;
@@ -1227,12 +1241,8 @@ btn_about.onClick = function() {
     content.margins = 16;
     var ctext = content.add(
         "statictext",
-        [0, 0, 360, 40],
-        "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.\nAt vero eos et accusam et justo duo dolores et ea rebum. \n\n" +
-        scriptName +
-        " -" +
-        scriptVersion +
-        "\nCreated by Manuel Moellmann, Head of Design at ITNT Group", {
+        [0, 0, 360, 50],
+        "moelles mojo is a little helper to make the creation of templates for \nthe GetGenius template system more efficient and less pain in the ass ;-)", {
             multiline: false,
         }
     );
@@ -1258,7 +1268,7 @@ btn_about.onClick = function() {
 
     var btn_github = buttonColorText(
         content,
-        "Go to the source on GitHub",
+        "visit github for instructions and new releases",
         "#0060b1",
         "#028def"
     );
@@ -1271,7 +1281,6 @@ btn_about.onClick = function() {
     gg_img.addEventListener("click", function() {
         visitURL("https://github.com/moelle89/GG_AE_SCRIPTING");
     });
-
     w.show();
 };
 
