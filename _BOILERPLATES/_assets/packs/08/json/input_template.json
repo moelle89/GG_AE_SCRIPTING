@@ -3,7 +3,7 @@
     "logo": 1,
     "logo_bg_auto_color": 0,
     "logo_bg_color": "#FFFFFF",
-    "darkmode": 0,
+    "darkmode": 1,
     "intro": 0,
     "video": 0,
     "audio_muted": 0,
@@ -11,50 +11,50 @@
     "text2voice": 0,
     "fx_effects": 0,
     "accent": {
-      "color": "#2083E6",
-      "color_dark": "#48A3FF"
+      "color": "#d30f2f",
+      "color_dark": "#E9193C"
     },
     "title": {
-      "text": "Beautiful. And made to stay that way.",
+      "text": "FIVE GUYS",
       "color": "#222222",
       "color_dark": "#ffffff",
       "font": "Archivo-Bold"
     },
     "subtext": {
-      "text": "Smooth and seamless. The edge of design. Apple Watch Series 8 features a big, brilliant Always‑On display.",
+      "text": "Handcrafted BURGERS & FRIES since 1986",
       "color": "#242424",
       "color_dark": "#ffffff",
       "font": ""
     },
     "call2action": {
-      "text": "Now available on apple.com",
+      "text": "Now available:",
       "color": "#222222",
       "color_dark": "#ffffff",
-      "cursor_color": "#48A3FF",
-      "cursor_color_dark": "#2083E6",
+      "cursor_color": "#d30f2f",
+      "cursor_color_dark": "#d30f2f",
       "cursor_stroke": "#ffffff",
       "cursor_stroke_dark": "#FFFFFF",
       "font": ""
     },
     "call2action_link": {
-      "text": "www.apple.com",
+      "text": "www.fiveguys.com",
       "color": "#222222",
       "color_dark": "#ffffff",
       "link_highlight": 0,
       "font": ""
     },
     "source": {
-      "text": "apple.com",
+      "text": "fiveguys.com",
       "color": "#080808",
       "color_dark": "#FFFFFF",
       "bg_color": "#ffffff",
-      "bg_color_dark": "#48A3FF",
+      "bg_color_dark": "#d30f2f",
       "avatar": 0,
       "font": ""
     },
     "bg": {
       "color": "#ffffff",
-      "color_dark": "#191a1b"
+      "color_dark": "#2B0F0F"
     },
     "gallery": [
       {
