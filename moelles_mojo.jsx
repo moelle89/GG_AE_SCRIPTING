@@ -3811,7 +3811,7 @@ btn_demos.onClick = function() {
             var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_replace_demo_content.bat";
             var result = system.callSystem(batScriptPath);
 
-            var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img_footage.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg"];
+            var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img_footage.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png"];
             openSubfolderInProject("(footage)/Footage/jpg");
             openCompositionByName("__SETTINGS");
             //openCompInViewer("__SETTINGS", "SETTINGS");
