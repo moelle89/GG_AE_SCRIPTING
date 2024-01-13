@@ -3812,7 +3812,9 @@ btn_demos.onClick = function() {
             var result = system.callSystem(batScriptPath);
 
             var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img_footage.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg"];
-
+            openSubfolderInProject("(footage)/Footage/jpg");
+            openCompositionByName("__SETTINGS");
+            //openCompInViewer("__SETTINGS", "SETTINGS");
             for (var i = 0; i < reloadAssets.length; i++) {
                 var currentItem = getItem(reloadAssets[i]);
                     if (currentItem) {
@@ -3822,8 +3824,6 @@ btn_demos.onClick = function() {
                         alert("Item not found: " + reloadAssets[i]);
                     }
             };
-            openCompositionByName("__SETTINGS");
-            //openCompInViewer("__SETTINGS", "SETTINGS");
             refreshCurrentFrame();
          } else {
         showAlertWindow("Please open the BOILERPLATE or a template");
