@@ -2307,6 +2307,27 @@ function openCompInViewer(compName, layerName) {
     app.project.activeItem.layer(layerName).selected = true;
 }
 
+// Function to get or create a folder with a given name
+function getOrCreateFolder(folderName) {
+  var project = app.project;
+  var folder = null;
+
+  // Check if the folder already exists
+  for (var i = 1; i <= project.rootFolder.items.length; i++) {
+    if (project.rootFolder.items[i] instanceof FolderItem && project.rootFolder.items[i].name === folderName) {
+      folder = project.rootFolder.items[i];
+      break;
+    }
+  }
+
+  // If the folder doesn't exist, create it
+  if (!folder) {
+    folder = project.rootFolder.items.addFolder(folderName);
+  }
+
+  return folder;
+}
+
 // Function to convert RGB to Hex
 function rgbToHex(theColor) {
     r = Math.round(theColor[0] * 255).toString(16);
@@ -3760,13 +3781,20 @@ parent2null.onClick = function() {
 btn_demos.onClick = function() {
     // Check if there is an open project
     if (app.project && app.project.file !== null) {
-        var activeComp = app.project.activeItem;
-        if (activeComp === null || !(activeComp instanceof CompItem)) {
-            activeComp.openInViewer();
-            app.executeCommand(4); //
+        var bufferComp = findComp("bufferComp");
+        if(!bufferComp){
+            bufferComp = createComposition(5, 5, 1, 1, "bufferComp", 1);
         }
-            // Extract the project name from the file path, assuming a standard naming scheme
-            var projectName = app.project.file.name;    
+        // Get or create the folder named "___misc"
+        var targetFolderName = "___misc";
+        var targetFolder = getOrCreateFolder(targetFolderName);
+
+        // Move the composition into the folder
+        bufferComp.parentFolder = targetFolder;
+
+        openCompositionByName("bufferComp");
+        // Extract the project name from the file path, assuming a standard naming scheme
+        var projectName = app.project.file.name;    
         if (projectName.match("comp_") || projectName.match("post_") || projectName.match("___boilerplate")) {
             app.executeCommand(3985); // CancelCachingWorkAreainBackground
             app.executeCommand(2372); // Purge ImageCaches
@@ -3782,10 +3810,11 @@ btn_demos.onClick = function() {
                         currentItem.mainSource.reload();
                     } else {
                         // Handle the case where the item doesn't exist (optional)
-                        alert("Item not found: " + videoFiles[i]);
+                        alert("Item not found: " + reloadAssets[i]);
                     }
-            }
-            openCompInViewer("__SETTINGS", "SETTINGS");
+            };
+            openCompositionByName("__SETTINGS");
+            //openCompInViewer("__SETTINGS", "SETTINGS");
             refreshCurrentFrame();
          } else {
         showAlertWindow("Please open the BOILERPLATE or a template");
