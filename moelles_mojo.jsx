@@ -3760,17 +3760,34 @@ parent2null.onClick = function() {
 btn_demos.onClick = function() {
     // Check if there is an open project
     if (app.project && app.project.file !== null) {
-        // Extract the project name from the file path, assuming a standard naming scheme
-        var projectName = app.project.file.name;    
-    if (projectName.match("comp_") || projectName.match("post_") || projectName.match("___boilerplate")) {
-        openCompositionByName("TEXT_el");
-        app.purge(PurgeTarget.IMAGE_CACHES);
-        var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_replace_demo_content.bat";
-        var result = system.callSystem(batScriptPath);
-        app.purge(PurgeTarget.IMAGE_CACHES);
-        openCompInViewer("__SETTINGS", "SETTINGS");
-        refreshCurrentFrame();
-    } else {
+        var activeComp = app.project.activeItem;
+        if (activeComp === null || !(activeComp instanceof CompItem)) {
+            activeComp.openInViewer();
+            app.executeCommand(4); //
+        }
+            // Extract the project name from the file path, assuming a standard naming scheme
+            var projectName = app.project.file.name;    
+        if (projectName.match("comp_") || projectName.match("post_") || projectName.match("___boilerplate")) {
+            app.executeCommand(3985); // CancelCachingWorkAreainBackground
+            app.executeCommand(2372); // Purge ImageCaches
+            //app.purge(PurgeTarget.IMAGE_CACHES);
+            var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_replace_demo_content.bat";
+            var result = system.callSystem(batScriptPath);
+
+            var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img_footage.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg"];
+
+            for (var i = 0; i < reloadAssets.length; i++) {
+                var currentItem = getItem(reloadAssets[i]);
+                    if (currentItem) {
+                        currentItem.mainSource.reload();
+                    } else {
+                        // Handle the case where the item doesn't exist (optional)
+                        alert("Item not found: " + videoFiles[i]);
+                    }
+            }
+            openCompInViewer("__SETTINGS", "SETTINGS");
+            refreshCurrentFrame();
+         } else {
         showAlertWindow("Please open the BOILERPLATE or a template");
     }} else {
         showAlertWindow("Please open a project");
