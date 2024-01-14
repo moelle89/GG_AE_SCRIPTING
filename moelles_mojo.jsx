@@ -592,16 +592,32 @@ var demoGrp1 = configDemos.add("group", undefined, {name: "demoGrp1"});
     demoGrp1.spacing = 10; 
     demoGrp1.margins = 0;
 
-var demo1 = buttonColorText(demoGrp1, "01", "#503a07", "#A1750F");
+var demo1grp = demoGrp1.add("group", undefined, {
+    name: "demo1grp",
+});
+
+var demo1 = buttonColorText(demo1grp, "01", "#503a07", "#A1750F");
 demo1.preferredSize.width = 55;
 
-var demo2 = buttonColorText(demoGrp1, "02", "#104173", "#2083e6");
+var demo2grp = demoGrp1.add("group", undefined, {
+    name: "demo2grp",
+});
+
+var demo2 = buttonColorText(demo2grp, "02", "#104173", "#2083e6");
 demo2.preferredSize.width = 55;
 
-var demo3 = buttonColorText(demoGrp1, "03", "#513269", "#A364D2");
+var demo3grp = demoGrp1.add("group", undefined, {
+    name: "demo3grp",
+});
+
+var demo3 = buttonColorText(demo3grp, "03", "#513269", "#A364D2");
 demo3.preferredSize.width = 55;
 
-var demo4 = buttonColorText(demoGrp1, "04", "#7f291a", "#e0462c");
+var demo4grp = demoGrp1.add("group", undefined, {
+    name: "demo4grp",
+});
+
+var demo4 = buttonColorText(demo4grp, "04", "#7f291a", "#e0462c");
 demo4.preferredSize.width = 55;
 
 // DEMOGRP2
@@ -612,13 +628,32 @@ var demoGrp2 = configDemos.add("group", undefined, {name: "demoGrp2"});
     demoGrp2.spacing = 10; 
     demoGrp2.margins = 0; 
 
-var demo5 = buttonColorText(demoGrp2, "05", "#755b06", "#EBB70D");
+var demo5grp = demoGrp2.add("group", undefined, {
+    name: "demo5grp",
+});
+
+var demo5 = buttonColorText(demo5grp, "05", "#755b06", "#EBB70D");
 demo5.preferredSize.width = 55;
-var demo6 = buttonColorText(demoGrp2, "06", "#204200", "#418400");
+
+var demo6grp = demoGrp2.add("group", undefined, {
+    name: "demo6grp",
+});
+
+var demo6 = buttonColorText(demo6grp, "06", "#204200", "#418400");
 demo6.preferredSize.width = 55;
-var demo7 = buttonColorText(demoGrp2, "07", "#5b2e1c", "#b65c38");
+
+var demo7grp = demoGrp2.add("group", undefined, {
+    name: "demo7grp",
+});
+
+var demo7 = buttonColorText(demo7grp, "07", "#5b2e1c", "#b65c38");
 demo7.preferredSize.width = 55;
-var demo8 = buttonColorText(demoGrp2, "08", "#690717", "#d30f2f");
+
+var demo8grp = demoGrp2.add("group", undefined, {
+    name: "demo8grp",
+});
+
+var demo8 = buttonColorText(demo8grp, "08", "#690717", "#d30f2f");
 demo8.preferredSize.width = 55;
 
 
@@ -1095,7 +1130,10 @@ function txtDraw() {
     try {
         this.graphics.drawOSControl();
         this.graphics.rectPath(0, 0, this.size[0], this.size[1]);
-        this.graphics.fillPath(this.fillBrush);
+        if (this.fillBrush)
+            {
+                this.graphics.fillPath(this.fillBrush);
+            }
     } catch (err) {
         // fail silently
     }
@@ -1118,7 +1156,7 @@ function txtDraw() {
                 )[1]) /
             1.75,
             this.graphics.font
-        );
+            );
     }
 }
 /** draw an text button with a colored background - returns a button object
@@ -1129,7 +1167,7 @@ function txtDraw() {
 */
 function buttonColorText(parentObj, buttonText, staticColor, hoverColor) {
     var btn = parentObj.add("button", undefined, "", {
-        name: "ok",
+        name: "ok"
     }); // add a basic button to style
     btn.spacing = 0;
     btn.margins = 0;
@@ -1277,7 +1315,7 @@ btn_about.onClick = function(e) {
     w.alignChildren = ["center", "top"];
     w.alignment = ["fill", "top"];
     w.margins = 0;
-    var gg_img = w.add("image", undefined, mojoUI.createIcon("demo01"), {name: ""})
+    var gg_img = w.add("image", undefined, mojoUI.createIcon("about_head"), {name: ""})
     // mojoUI.setBG(content, hexToArray("#ffffff"),1);
     gg_img.minimumSize.width = 320;
     gg_img.minimumSize.height = 64;
@@ -1291,6 +1329,7 @@ btn_about.onClick = function(e) {
             multiline: false,
         }
     );
+
     ctext.textPen = ctext.graphics.newPen(
         content.graphics.PenType.SOLID_COLOR,
         hexToArray("#ffffff"),
@@ -1304,6 +1343,7 @@ btn_about.onClick = function(e) {
             multiline: false,
         }
     );
+
     ctext2.textPen = ctext.graphics.newPen(
         content.graphics.PenType.SOLID_COLOR,
         hexToArray("#ffffff"),
@@ -1398,7 +1438,7 @@ function showCustomTooltip(text, coordinates, width, invert, multiline, isIMG) {
     //panel.maximumSize.width = 170;
     // Customize background color
     //panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]); // RGB color [R, G, B]
-    if (typeof text === "string") {
+    if ((typeof text === "string") && !isIMG) {
         var staticText = panel.add("statictext", undefined, text, {
             multiline: multiline,
         });
@@ -1435,6 +1475,28 @@ function showCustomTooltip(text, coordinates, width, invert, multiline, isIMG) {
 function addTooltipToButton(button, tooltipText, width, invert, multiline, isIMG) {
     var tooltipWin = "";
     button.addEventListener("mouseover", function(e) {
+        var coordinates = getCurrentMousePosition(e, width);
+        tooltipWin = showCustomTooltip(
+            tooltipText,
+            coordinates,
+            width,
+            invert,
+            multiline,
+            isIMG
+        );
+    });
+
+    button.addEventListener("mouseout", function(e) {
+        try {
+            if (tooltipWin) {
+                tooltipWin.close();
+            }
+        } catch (err) {}
+    });
+}
+function addTooltipToButtonTest(button, tooltipText, width, invert, multiline, isIMG) {
+    var tooltipWin = "";
+    button.addEventListener("click", function(e) {
         var coordinates = getCurrentMousePosition(e, width);
         tooltipWin = showCustomTooltip(
             tooltipText,
@@ -3848,7 +3910,7 @@ parent2null.onClick = function() {
     app.endUndoGroup();
 }
 
-btn_demos.onClick = function() {
+function changeDemoContent(demoPack) {
     // Check if there is an open project
     if (app.project && app.project.file !== null) {
         var bufferComp = findComp("bufferComp");
@@ -3869,7 +3931,7 @@ btn_demos.onClick = function() {
             app.executeCommand(3985); // CancelCachingWorkAreainBackground
             app.executeCommand(2372); // Purge ImageCaches
             //app.purge(PurgeTarget.IMAGE_CACHES);
-            var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_replace_demo_content.bat";
+            var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo" + demoPack + ".bat";
             var result = system.callSystem(batScriptPath);
 
             var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img_footage.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png"];
@@ -3916,14 +3978,41 @@ purgeAll.onClick = function () {
 */
 
 ///demo hover
-addTooltipToButton(demo1, "demo01", 85, false, false, true);
-addTooltipToButton(demo2, "demo02", 85, false, false, true);
-addTooltipToButton(demo3, "demo03", 85, true, false, true);
-addTooltipToButton(demo4, "demo04", 85, true, false, true);
-addTooltipToButton(demo5, "demo05", 85, false, false, true);
-addTooltipToButton(demo6, "demo06", 85, false, false, true);
-addTooltipToButton(demo7, "demo07", 85, true, false, true);
-addTooltipToButton(demo8, "demo08", 85, true, false, true);
+addTooltipToButton(demo1grp, "demo01", 85, false, false, true);
+addTooltipToButton(demo2grp, "demo02", 85, false, false, true);
+addTooltipToButton(demo3grp, "demo03", 85, true, false, true);
+addTooltipToButton(demo4grp, "demo04", 85, true, false, true);
+addTooltipToButton(demo5grp, "demo05", 85, false, false, true);
+addTooltipToButton(demo6grp, "demo06", 85, false, false, true);
+addTooltipToButton(demo7grp, "demo07", 85, true, false, true);
+addTooltipToButton(demo8grp, "demo08", 85, true, false, true);
+addTooltipToButton(btn_demos, "demo08", 85, false, false, true);
+
+demo1.onClick = function() {
+    changeDemoContent("1")
+}
+demo2.onClick = function() {
+    changeDemoContent("2")
+}
+demo3.onClick = function() {
+    changeDemoContent("3")
+}
+demo4.onClick = function() {
+    changeDemoContent("4")
+}
+demo5.onClick = function() {
+    changeDemoContent("5")
+}
+demo6.onClick = function() {
+    changeDemoContent("6")
+}
+demo7.onClick = function() {
+    changeDemoContent("7")
+}
+demo8.onClick = function() {
+    changeDemoContent("8")
+}
+
 
 var mousePosGlobal = null;
 
