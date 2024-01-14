@@ -584,6 +584,52 @@ configDemos.alignChildren = ["left", "top"];
 configDemos.spacing = 10;
 configDemos.margins = 12;
 
+// DEMOGRP1
+// ========
+var demoGrp1 = configDemos.add("group", undefined, {name: "demoGrp1"}); 
+    demoGrp1.orientation = "row"; 
+    demoGrp1.alignChildren = ["left","top"]; 
+    demoGrp1.spacing = 10; 
+    demoGrp1.margins = 0;
+
+var demo1 = buttonColorText(demoGrp1, "01", "#503a07", "#A1750F");
+demo1.preferredSize.width = 55;
+
+var demo2 = buttonColorText(demoGrp1, "02", "#104173", "#2083e6");
+demo2.preferredSize.width = 55;
+
+var demo3 = buttonColorText(demoGrp1, "03", "#513269", "#A364D2");
+demo3.preferredSize.width = 55;
+
+var demo4 = buttonColorText(demoGrp1, "04", "#7f291a", "#e0462c");
+demo4.preferredSize.width = 55;
+
+// DEMOGRP2
+// ========
+var demoGrp2 = configDemos.add("group", undefined, {name: "demoGrp2"}); 
+    demoGrp2.orientation = "row"; 
+    demoGrp2.alignChildren = ["left","top"]; 
+    demoGrp2.spacing = 10; 
+    demoGrp2.margins = 0; 
+
+var demo5 = buttonColorText(demoGrp2, "05", "#755b06", "#EBB70D");
+demo5.preferredSize.width = 55;
+var demo6 = buttonColorText(demoGrp2, "06", "#204200", "#418400");
+demo6.preferredSize.width = 55;
+var demo7 = buttonColorText(demoGrp2, "07", "#5b2e1c", "#b65c38");
+demo7.preferredSize.width = 55;
+var demo8 = buttonColorText(demoGrp2, "08", "#690717", "#d30f2f");
+demo8.preferredSize.width = 55;
+
+// DEMOGRP3
+// ========
+var demoGrp3 = configDemos.add("group", undefined, {name: "demoGrp3"}); 
+    demoGrp3.orientation = "row"; 
+    demoGrp3.alignChildren = ["left","top"]; 
+    demoGrp3.spacing = 10; 
+    demoGrp3.margins = 0; 
+
+
 var btn_demos = configDemos.add(
     "iconbutton",
     undefined,
@@ -1093,7 +1139,7 @@ function buttonColorText(parentObj, buttonText, staticColor, hoverColor) {
     btn.text = buttonText.toUpperCase();
     btn.textPen = btn.graphics.newPen(
         btn.graphics.PenType.SOLID_COLOR,
-        hexToArray("#acc6e5"),
+        hexToArray("#D6E9FF"),
         1
     );
     btn.onDraw = txtDraw;
@@ -1104,7 +1150,7 @@ function buttonColorText(parentObj, buttonText, staticColor, hoverColor) {
                 updateTextButtonOnHover(this, buttonText, hoverColor, "#FFFFFF");
             });
             btn.addEventListener("mouseout", function() {
-                updateTextButtonOnHover(this, buttonText, staticColor, "#acc6e5");
+                updateTextButtonOnHover(this, buttonText, staticColor, "#D6E9FF");
             });
         } catch (err) {
             // fail silently
@@ -1353,19 +1399,23 @@ function showCustomTooltip(text, coordinates, width, invert, multiline) {
     //panel.maximumSize.width = 170;
     // Customize background color
     //panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]); // RGB color [R, G, B]
-
-    var staticText = panel.add("statictext", undefined, text, {
-        multiline: multiline,
-    });
-    if (multiline) {
-        staticText.maximumSize.width = 232;
-    }
-    // Customize text color
-    staticText.graphics.foregroundColor = staticText.graphics.newPen(
-        staticText.graphics.PenType.SOLID_COLOR,
-        [0.73, 0.84, 0.97, 0.85],
-        1
-    );
+    if (typeof text === "string") {
+        var staticText = panel.add("statictext", undefined, text, {
+            multiline: multiline,
+        });
+        if (multiline) {
+            staticText.maximumSize.width = 232;
+        }
+        // Customize text color
+        staticText.graphics.foregroundColor = staticText.graphics.newPen(
+            staticText.graphics.PenType.SOLID_COLOR,
+            [0.73, 0.84, 0.97, 0.85],
+            1
+        );
+    };
+    if (!(typeof text === "string")) {
+        panel.add("image", undefined, text, {me: "tImg" });
+    };
     //staticText.graphics.foregroundColor = staticText.graphics.newPen(staticText.graphics.PenType.SOLID_COLOR, [1, 1, 1]); // RGB color [R, G, B]
 
     tooltipWin.show();
@@ -1415,6 +1465,7 @@ for (var i = 0; i < buttonArray.length; i++) {
     addTooltipToButton(buttonArray[i], tooltipTextArray[i], 80, true);
 }
 //////
+
 var hoverMenuWin;
 
 function HoverMenu(title, buttonsData) {
@@ -3262,13 +3313,18 @@ btn_addGallery.onClick = function() {
 };
 
 addTooltipToButton(
+        // Check if there is an open project
     fitView,
     "take a screenshot of the active composition",
     85
 );
 
 fitView.onClick = function() {
-  screenShot(this);
+      if (app.project && app.project.file !== null) {
+          screenShot(this);
+      } else {
+        showAlertWindow("Please open a project");
+    }
 };
 /*
 fitView.onClick = function() {
@@ -3786,6 +3842,15 @@ parent2null.onClick = function() {
     CreateParentNull();
     app.endUndoGroup();
 };
+
+addTooltipToButton(demo1, mojoUI.createIcon("demo01"), 85, false, false);
+addTooltipToButton(demo2, mojoUI.createIcon("demo02"), 85, false, false);
+addTooltipToButton(demo3, mojoUI.createIcon("demo03"), 85, true, false);
+addTooltipToButton(demo4, mojoUI.createIcon("demo04"), 85, true, false);
+addTooltipToButton(demo5, mojoUI.createIcon("demo05"), 85, false, false);
+addTooltipToButton(demo6, mojoUI.createIcon("demo06"), 85, false, false);
+addTooltipToButton(demo7, mojoUI.createIcon("demo07"), 85, true, false);
+addTooltipToButton(demo8, mojoUI.createIcon("demo08"), 85, true, false);
 
 btn_demos.onClick = function() {
     // Check if there is an open project

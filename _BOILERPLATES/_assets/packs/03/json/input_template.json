@@ -11,8 +11,8 @@
     "text2voice": 0,
     "fx_effects": 0,
     "accent": {
-      "color": "#B28E3B",
-      "color_dark": "#B28E3B"
+      "color": "#A364D2",
+      "color_dark": "#A364D2"
     },
     "title": {
       "text": "Discover the featured creations of the collection.",
@@ -30,8 +30,8 @@
       "text": "Now available:",
       "color": "#080808",
       "color_dark": "#FFFFFF",
-      "cursor_color": "#FFB547",
-      "cursor_color_dark": "#FFB547",
+      "cursor_color": "#A364D2",
+      "cursor_color_dark": "#A364D2",
       "cursor_stroke": "#000000",
       "cursor_stroke_dark": "#FFFFFF",
       "font": ""
@@ -47,7 +47,7 @@
       "text": "chanel.com",
       "color": "#080808",
       "color_dark": "#FFFFFF",
-      "bg_color": "#B28E3B",
+      "bg_color": "#A364D2",
       "bg_color_dark": "#191a1b",
       "avatar": 0,
       "font": ""

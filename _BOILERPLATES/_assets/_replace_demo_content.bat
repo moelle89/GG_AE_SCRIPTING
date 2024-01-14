@@ -16,7 +16,4 @@ set /a "randNum=(%RANDOM% %% folderCount) + 1"
 REM copy the content of the randomly picked folder to
 REM robocopy "!folder[%randNum%]!" C:\data_driven_ae_template-1\(Footage)\Footage /COPYALL /E /IS /IT
 xcopy "!folder[%randNum%]!" C:\data_driven_ae_template-1\(Footage)\Footage /E /I /H /C /K /Y
-
-
-::cmd /k 
 exit

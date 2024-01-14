@@ -11,8 +11,8 @@
     "text2voice": 0,
     "fx_effects": 0,
     "accent": {
-      "color": "#eb354b",
-      "color_dark": "#eb354b"
+      "color": "#e0462c",
+      "color_dark": "#e0462c"
     },
     "title": {
       "text": "Discover the new Saint Laurent collection.",
@@ -30,8 +30,8 @@
       "text": "Discover all pieces at:",
       "color": "#222222",
       "color_dark": "#ffffff",
-      "cursor_color": "#eb354b",
-      "cursor_color_dark": "#eb354b",
+      "cursor_color": "#e0462c",
+      "cursor_color_dark": "#e0462c",
       "cursor_stroke": "#ffffff",
       "cursor_stroke_dark": "#FFFFFF",
       "font": ""
@@ -48,7 +48,7 @@
       "color": "#080808",
       "color_dark": "#FFFFFF",
       "bg_color": "#ffffff",
-      "bg_color_dark": "#eb354b",
+      "bg_color_dark": "#e0462c",
       "avatar": 0,
       "font": ""
     },
