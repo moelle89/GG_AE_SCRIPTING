@@ -584,6 +584,12 @@ configDemos.alignChildren = ["left", "top"];
 configDemos.spacing = 10;
 configDemos.margins = 12;
 
+var demoInfoTxt = configDemos.add("statictext", undefined, undefined, {
+    name: "demoInfoTxt",
+});
+demoInfoTxt.text = "Test your theme with different configurations";
+demoInfoTxt.preferredSize.height = 20;
+
 // DEMOGRP1
 // ========
 var demoGrp1 = configDemos.add("group", undefined, {name: "demoGrp1"}); 
@@ -1421,7 +1427,7 @@ function showCustomTooltip(text, coordinates, width, invert, multiline, isIMG) {
         customWidth = buttonsSize;
         negativX = 0;
     }
-    var tooltipWin = new Window("palette", "tooltip", undefined, {
+    tooltipWin = new Window("palette", "tooltip", undefined, {
         borderless: true,
         closeButton: false,
         maximizeButton: false,
@@ -1473,30 +1479,7 @@ function showCustomTooltip(text, coordinates, width, invert, multiline, isIMG) {
 }
 
 function addTooltipToButton(button, tooltipText, width, invert, multiline, isIMG) {
-    var tooltipWin = "";
     button.addEventListener("mouseover", function(e) {
-        var coordinates = getCurrentMousePosition(e, width);
-        tooltipWin = showCustomTooltip(
-            tooltipText,
-            coordinates,
-            width,
-            invert,
-            multiline,
-            isIMG
-        );
-    });
-
-    button.addEventListener("mouseout", function(e) {
-        try {
-            if (tooltipWin) {
-                tooltipWin.close();
-            }
-        } catch (err) {}
-    });
-}
-function addTooltipToButtonTest(button, tooltipText, width, invert, multiline, isIMG) {
-    var tooltipWin = "";
-    button.addEventListener("click", function(e) {
         var coordinates = getCurrentMousePosition(e, width);
         tooltipWin = showCustomTooltip(
             tooltipText,
@@ -2749,23 +2732,19 @@ function revertJson() {
 function findReplaceCompositionName(prefix, replaceStr) {
     // Get the current project
     var currentProject = app.project;
-
     // Check if a project is open
     if (currentProject) {
         // Get all compositions in the project
         var allComps = currentProject.rootFolder.items;
-
         // Loop through each composition
         for (var i = 1; i <= allComps.length; i++) {
             var comp = allComps[i];
-
             // Check if it's a composition
             if (comp instanceof CompItem) {
                 // Check if the composition name starts with the specified prefix
                 if (comp.name.indexOf(prefix) === 0) {
                     // Find the position of the next underscore after the prefix
                     var underscoreIndex = comp.name.indexOf("_", prefix.length);
-
                     // Check if an underscore is found
                     if (underscoreIndex !== -1) {
                         // Replace the portion of the composition name
@@ -3978,15 +3957,14 @@ purgeAll.onClick = function () {
 */
 
 ///demo hover
-addTooltipToButton(demo1grp, "demo01", 85, false, false, true);
-addTooltipToButton(demo2grp, "demo02", 85, false, false, true);
-addTooltipToButton(demo3grp, "demo03", 85, true, false, true);
-addTooltipToButton(demo4grp, "demo04", 85, true, false, true);
-addTooltipToButton(demo5grp, "demo05", 85, false, false, true);
-addTooltipToButton(demo6grp, "demo06", 85, false, false, true);
-addTooltipToButton(demo7grp, "demo07", 85, true, false, true);
-addTooltipToButton(demo8grp, "demo08", 85, true, false, true);
-addTooltipToButton(btn_demos, "demo08", 85, false, false, true);
+addTooltipToButton(demo1grp, "demo01", 90, false, false, true);
+addTooltipToButton(demo2grp, "demo02", 90, false, false, true);
+addTooltipToButton(demo3grp, "demo03", 90, true, false, true);
+addTooltipToButton(demo4grp, "demo04", 90, true, false, true);
+addTooltipToButton(demo5grp, "demo05", 90, false, false, true);
+addTooltipToButton(demo6grp, "demo06", 90, false, false, true);
+addTooltipToButton(demo7grp, "demo07", 90, true, false, true);
+addTooltipToButton(demo8grp, "demo08", 90, true, false, true);
 
 demo1.onClick = function() {
     changeDemoContent("1")
@@ -4040,3 +4018,17 @@ win.onClose = function() {
         closeDialogWindows();
     } catch(err) {}
 };
+win.addEventListener("onMouseMove", function() {
+    var mousePos = win.globalToLocal(e.x, e.y);
+    var panelBounds = win.bounds;
+    if (
+    mousePos.x < 0 ||
+    mousePos.x > panelBounds.width ||
+    mousePos.y < 0 ||
+    mousePos.y > panelBounds.height
+    ) {
+        if (tooltipWin && tooltipWin.visible) {
+            tooltipWin.close();
+        }
+    }
+});
