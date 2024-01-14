@@ -7,7 +7,7 @@
     "intro": 0,
     "video": 1,
     "audio_muted": 0,
-    "audio_track": 10,
+    "audio_track": 11,
     "text2voice": 0,
     "fx_effects": 0,
     "accent": {
@@ -15,13 +15,13 @@
       "color_dark": "#76ba00"
     },
     "title": {
-      "text": "Beautiful. And made to stay that way.",
+      "text": "50 Foods That Are Super Healthy",
       "color": "#222222",
       "color_dark": "#ffffff",
       "font": "Archivo-Bold"
     },
     "subtext": {
-      "text": "Smooth and seamless. The edge of design. Apple Watch Series 8 features a big, brilliant Always‑On display.",
+      "text": "Fruits and berries are among the world's most popular health foods.",
       "color": "#242424",
       "color_dark": "#ffffff",
       "font": ""
@@ -57,54 +57,54 @@
       "color_dark": "#2B5700"
     },
     "gallery": [
-      {
-        "src": "gallery_01",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "Create Social Content, including Video, Image, Captions and Hashtags and shedule them in a fully automated way.",
-        "font": "Poppins"
-      },
-      {
-        "src": "gallery_02",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "gallery_03",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "gallery_04",
-        "video": 1,
-        "loop": 1,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "",
-        "video": 0,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      }
+         {
+            "src": "gallery_01",
+            "video": 1,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "gallery_02",
+            "video": 1,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "gallery_03",
+            "video": 1,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "gallery_04",
+            "video": 1,
+            "loop": 1,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "",
+            "video": 0,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "",
+            "video": 1,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         }
     ]
   }
 }

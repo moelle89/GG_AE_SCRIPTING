@@ -96,6 +96,4 @@ for /d %%i in ("%scriptSearchDir%\*") do (
 )
 
 rd /s /q "%delfolder%"
-
-pause
 endlocal

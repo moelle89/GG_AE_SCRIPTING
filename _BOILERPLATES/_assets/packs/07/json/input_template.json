@@ -3,7 +3,7 @@
     "logo": 1,
     "logo_bg_auto_color": 0,
     "logo_bg_color": "#FFFFFF",
-    "darkmode": 0,
+    "darkmode": 1,
     "intro": 0,
     "video": 0,
     "audio_muted": 0,
@@ -11,100 +11,100 @@
     "text2voice": 0,
     "fx_effects": 0,
     "accent": {
-      "color": "#B28E3B",
-      "color_dark": "#B28E3B"
+      "color": "#b65c38",
+      "color_dark": "#CF6E48"
     },
     "title": {
-      "text": "Introducing the revolutionary social media AI-tool",
-      "color": "#080808",
+      "text": "Find your perfect watch!",
+      "color": "#222222",
       "color_dark": "#ffffff",
       "font": "Archivo-Bold"
     },
     "subtext": {
-      "text": "It has never been easier to generate content for blogs and social media.",
+      "text": "Check out our shop to find the perfect watch for you.",
       "color": "#242424",
       "color_dark": "#ffffff",
       "font": ""
     },
     "call2action": {
-      "text": "Visit now:",
-      "color": "#080808",
+      "text": "Now available:",
+      "color": "#222222",
       "color_dark": "#FFFFFF",
-      "cursor_color": "#B28E3B",
-      "cursor_color_dark": "#B28E3B",
-      "cursor_stroke": "#000000",
+      "cursor_color": "#b65c38",
+      "cursor_color_dark": "#b65c38",
+      "cursor_stroke": "#FFFFFF",
       "cursor_stroke_dark": "#FFFFFF",
       "font": ""
     },
     "call2action_link": {
-      "text": "GetGenius.AI",
-      "color": "#080808",
+      "text": "www.london-watches.com",
+      "color": "#222222",
       "color_dark": "#FFFFFF",
       "link_highlight": 0,
       "font": ""
     },
     "source": {
-      "text": "GetGenius.AI",
-      "color": "#FFFFFF",
+      "text": "london-watches.com",
+      "color": "#080808",
       "color_dark": "#FFFFFF",
-      "bg_color": "#B28E3B",
-      "bg_color_dark": "#B28E3B",
+      "bg_color": "#ffffff",
+      "bg_color_dark": "#b65c38",
       "avatar": 0,
       "font": ""
     },
     "bg": {
       "color": "#ffffff",
-      "color_dark": "#111219"
+      "color_dark": "#3B231A"
     },
-    "gallery": [
-      {
-        "src": "gallery_01",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "Create Social Content, including Video, Image, Captions and Hashtags and shedule them in a fully automated way.",
-        "font": "Poppins"
-      },
-      {
-        "src": "gallery_02",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "gallery_03",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "gallery_04",
-        "video": 1,
-        "loop": 1,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "",
-        "video": 0,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      }
-    ]
+      "gallery": [
+         {
+            "src": "gallery_01",
+            "video": 0,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "gallery_02",
+            "video": 0,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "gallery_03",
+            "video": 0,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "gallery_04",
+            "video": 0,
+            "loop": 1,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "",
+            "video": 0,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "",
+            "video": 1,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         }
+      ]
   }
 }

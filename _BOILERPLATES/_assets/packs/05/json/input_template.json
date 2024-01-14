@@ -7,48 +7,48 @@
     "intro": 0,
     "video": 0,
     "audio_muted": 0,
-    "audio_track": 10,
+    "audio_track": 20,
     "text2voice": 0,
     "fx_effects": 0,
     "accent": {
-      "color": "#2083E6",
-      "color_dark": "#48A3FF"
+      "color": "#EBB70D",
+      "color_dark": "#EBB70D"
     },
     "title": {
-      "text": "Beautiful. And made to stay that way.",
+      "text": "Discover the new Prada collection.",
       "color": "#222222",
       "color_dark": "#ffffff",
       "font": "Archivo-Bold"
     },
     "subtext": {
-      "text": "Smooth and seamless. The edge of design. Apple Watch Series 8 features a big, brilliant Always‑On display.",
+      "text": "Shop online at the official store. Discover the collections for women and men: ready to wear, bags & accessories.",
       "color": "#242424",
       "color_dark": "#ffffff",
       "font": ""
     },
     "call2action": {
-      "text": "Now available on apple.com",
+      "text": "Out Now! The new Prada collection:",
       "color": "#222222",
       "color_dark": "#ffffff",
-      "cursor_color": "#48A3FF",
-      "cursor_color_dark": "#2083E6",
+      "cursor_color": "#EBB70D",
+      "cursor_color_dark": "#EBB70D",
       "cursor_stroke": "#ffffff",
       "cursor_stroke_dark": "#FFFFFF",
       "font": ""
     },
     "call2action_link": {
-      "text": "www.apple.com",
+      "text": "www.prada.com",
       "color": "#222222",
       "color_dark": "#ffffff",
       "link_highlight": 0,
       "font": ""
     },
     "source": {
-      "text": "apple.com",
+      "text": "pradale.com",
       "color": "#080808",
       "color_dark": "#FFFFFF",
       "bg_color": "#ffffff",
-      "bg_color_dark": "#48A3FF",
+      "bg_color_dark": "#EBB70D",
       "avatar": 0,
       "font": ""
     },
@@ -56,55 +56,55 @@
       "color": "#ffffff",
       "color_dark": "#191a1b"
     },
-    "gallery": [
-      {
-        "src": "gallery_01",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "Create Social Content, including Video, Image, Captions and Hashtags and shedule them in a fully automated way.",
-        "font": "Poppins"
-      },
-      {
-        "src": "gallery_02",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "gallery_03",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "gallery_04",
-        "video": 1,
-        "loop": 1,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "",
-        "video": 0,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      }
-    ]
+      "gallery": [
+         {
+            "src": "gallery_01",
+            "video": 0,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "gallery_02",
+            "video": 1,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "gallery_03",
+            "video": 0,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "",
+            "video": 1,
+            "loop": 1,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "",
+            "video": 0,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "",
+            "video": 1,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         }
+      ]
   }
 }

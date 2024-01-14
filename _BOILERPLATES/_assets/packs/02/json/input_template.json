@@ -5,7 +5,7 @@
     "logo_bg_color": "#FFFFFF",
     "darkmode": 0,
     "intro": 0,
-    "video": 0,
+    "video": 1,
     "audio_muted": 0,
     "audio_track": 10,
     "text2voice": 0,
@@ -56,55 +56,55 @@
       "color": "#ffffff",
       "color_dark": "#191a1b"
     },
-    "gallery": [
-      {
-        "src": "gallery_01",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "Create Social Content, including Video, Image, Captions and Hashtags and shedule them in a fully automated way.",
-        "font": "Poppins"
-      },
-      {
-        "src": "gallery_02",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "gallery_03",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "gallery_04",
-        "video": 1,
-        "loop": 1,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "",
-        "video": 1,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      },
-      {
-        "src": "",
-        "video": 0,
-        "loop": 0,
-        "muted": 0,
-        "text": "",
-        "font": "Poppins"
-      }
-    ]
+      "gallery": [
+         {
+            "src": "gallery_01",
+            "video": 0,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "gallery_02",
+            "video": 1,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "gallery_03",
+            "video": 1,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "gallery_04",
+            "video": 1,
+            "loop": 1,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "",
+            "video": 0,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         },
+         {
+            "src": "",
+            "video": 1,
+            "loop": 0,
+            "muted": 0,
+            "text": "",
+            "font": "Poppins"
+         }
+      ]
   }
 }
