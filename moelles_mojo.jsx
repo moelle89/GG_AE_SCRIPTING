@@ -137,7 +137,7 @@ var btn_createComps = group1.add(
     undefined,
     mojoUI.createIcon("icn_vidt"), {
         name: "btn_createComps",
-        style: "button",
+        style: "button"
     }
 );
 btn_createComps.alignment = ["left", "top"];
@@ -149,7 +149,7 @@ var btn_createIMGComps = group1.add(
     undefined,
     mojoUI.createIcon("icn_imgt"), {
         name: "btn_createIMGComps",
-        style: "button",
+        style: "button"
     }
 );
 btn_createIMGComps.alignment = ["left", "top"];
@@ -195,7 +195,7 @@ var btn_addElement = grouptab2.add(
     undefined,
     mojoUI.createIcon("icn_addele"), {
         name: "btn_addElement",
-        style: "button",
+        style: "button"
     }
 );
 btn_addElement.preferredSize.height = 32;
@@ -270,7 +270,7 @@ var btn_addGallery = group2.add(
     undefined,
     mojoUI.createIcon("icn_add"), {
         name: "btn_addGallery",
-        style: "button",
+        style: "button"
     }
 );
 btn_addGallery.preferredSize.height = 32;
@@ -434,7 +434,7 @@ var colorFill = groupFx.add(
     undefined,
     mojoUI.createIcon("icn_colorfill"), {
         name: "colorFill",
-        style: "button",
+        style: "button"
     }
 );
 colorFill.preferredSize.height = 32;
@@ -446,7 +446,7 @@ var scale2fill = groupFx.add(
     undefined,
     mojoUI.createIcon("icn_scalefill"), {
         name: "scale2fill",
-        style: "button",
+        style: "button"
     }
 );
 scale2fill.preferredSize.height = 32;
@@ -458,7 +458,7 @@ var addAnimbtn = groupFx2.add(
     undefined,
     mojoUI.createIcon("icn_addanim"), {
         name: "addAnimbtn",
-        style: "button",
+        style: "button"
     }
 );
 addAnimbtn.preferredSize.height = 32;
@@ -491,7 +491,7 @@ var btn_import = files_wrapper.add(
     undefined,
     mojoUI.createIcon("icn_importfootage"), {
         name: "btn_import",
-        style: "button",
+        style: "button"
     }
 );
 btn_import.alignment = ["left", "top"];
@@ -508,7 +508,7 @@ var btn_organize = files_wrapper.add(
     undefined,
     mojoUI.createIcon("icn_orgproject"), {
         name: "btn_organize",
-        style: "button",
+        style: "button"
     }
 );
 btn_organize.alignment = ["left", "top"];
@@ -520,7 +520,7 @@ var btn_cleanup = files_wrapper.add(
     undefined,
     mojoUI.createIcon("icn_projectcleanup"), {
         name: "btn_cleanup",
-        style: "button",
+        style: "button"
     }
 );
 btn_cleanup.alignment = ["left", "top"];
@@ -621,6 +621,7 @@ demo7.preferredSize.width = 55;
 var demo8 = buttonColorText(demoGrp2, "08", "#690717", "#d30f2f");
 demo8.preferredSize.width = 55;
 
+
 // DEMOGRP3
 // ========
 var demoGrp3 = configDemos.add("group", undefined, {name: "demoGrp3"}); 
@@ -635,7 +636,7 @@ var btn_demos = configDemos.add(
     undefined,
     mojoUI.createIcon("icn_demopacks"), {
         name: "btn_import",
-        style: "button",
+        style: "button"
     }
 );
 btn_demos.alignment = ["left", "top"];
@@ -710,7 +711,7 @@ var btn_title = edit_text_group.add(
     "iconbutton",
     undefined,
     mojoUI.createIcon("icn_title"), {
-        name: "btn_title",
+        name: "btn_title"
     }
 );
 btn_title.alignment = ["left", "fill"];
@@ -721,7 +722,7 @@ var btn_subtext = edit_text_group.add(
     "iconbutton",
     undefined,
     mojoUI.createIcon("icn_subtext"), {
-        name: "btn_subtext",
+        name: "btn_subtext"
     }
 );
 btn_subtext.alignment = ["left", "fill"];
@@ -732,7 +733,7 @@ var btn_source = edit_text_group.add(
     "iconbutton",
     undefined,
     mojoUI.createIcon("icn_source"), {
-        name: "btn_source",
+        name: "btn_source"
     }
 );
 btn_source.alignment = ["left", "fill"];
@@ -753,7 +754,7 @@ var btn_c2a = edit_text_group1.add(
     "iconbutton",
     undefined,
     mojoUI.createIcon("icn_c2a"), {
-        name: "btn_c2a",
+        name: "btn_c2a"
     }
 );
 btn_c2a.alignment = ["left", "fill"];
@@ -764,7 +765,7 @@ var btn_c2alink = edit_text_group1.add(
     "iconbutton",
     undefined,
     mojoUI.createIcon("icn_c2alink"), {
-        name: "btn_c2alink",
+        name: "btn_c2alink"
     }
 );
 btn_c2alink.alignment = ["left", "fill"];
@@ -803,7 +804,7 @@ var btn_openAndSelect = tools_wrapper_l.add(
     undefined,
     mojoUI.createIcon("icn_editcolors"), {
         name: "btn_openAndSelect",
-        style: "button",
+        style: "button"
     }
 );
 btn_openAndSelect.alignment = ["left", "top"];
@@ -815,7 +816,7 @@ var btn_debug_colors = tools_wrapper_l.add(
     undefined,
     mojoUI.createIcon("icn_applyem"), {
         name: "btn_debug_colors",
-        style: "button",
+        style: "button"
     }
 );
 btn_debug_colors.alignment = ["left", "top"];
@@ -827,7 +828,7 @@ var btn_reload_json = tools_wrapper_r.add(
     undefined,
     mojoUI.createIcon("icn_refresh"), {
         name: "btn_reload_json",
-        style: "toolbutton",
+        style: "toolbutton"
     }
 );
 btn_reload_json.alignment = ["left", "top"];
@@ -841,7 +842,7 @@ var btn_revert_json = tools_wrapper_r.add(
     undefined,
     mojoUI.createIcon("icn_revert"), {
         name: "btn_revert_json",
-        style: "toolbutton",
+        style: "toolbutton"
     }
 );
 btn_revert_json.alignment = ["left", "top"];
@@ -857,7 +858,7 @@ tpanel1.selection = tab_template;
 // shortcuts
 // ======
 var shortcuts = win.add("group", undefined, {
-    name: "shortcuts",
+    name: "shortcuts"
 });
 shortcuts.orientation = "row";
 shortcuts.alignChildren = ["left", "top"];
@@ -871,7 +872,7 @@ var openBoilerplate = shortcuts.add(
     undefined,
     mojoUI.createIcon("icn_aep"), {
         name: "openProjectInExplorer",
-        style: "toolbutton",
+        style: "toolbutton"
     }
 );
 openBoilerplate.alignment = ["center", "top"];
@@ -881,7 +882,7 @@ var changeProjectName = shortcuts.add(
     undefined,
     mojoUI.createIcon("icn_rename"), {
         name: "changeProjectName",
-        style: "toolbutton",
+        style: "toolbutton"
     }
 );
 changeProjectName.alignment = ["center", "top"];
@@ -891,7 +892,7 @@ var openProjectInExplorer = shortcuts.add(
     undefined,
     mojoUI.createIcon("icn_folder"), {
         name: "openProjectInExplorer",
-        style: "toolbutton",
+        style: "toolbutton"
     }
 );
 openProjectInExplorer.alignment = ["center", "top"];
@@ -901,7 +902,7 @@ var fitView = shortcuts.add(
     undefined,
     mojoUI.createIcon("icn_screenshot"), {
         name: "fitView",
-        style: "toolbutton",
+        style: "toolbutton"
     }
 );
 fitView.alignment = ["center", "top"];
@@ -911,7 +912,7 @@ var delExp = shortcuts.add(
     undefined,
     mojoUI.createIcon("icn_del"), {
         name: "delExp",
-        style: "toolbutton",
+        style: "toolbutton"
     }
 );
 delExp.alignment = ["center", "top"];
@@ -921,7 +922,7 @@ var purgeAll = shortcuts.add(
     undefined,
     mojoUI.createIcon("icn_bin"), {
         name: "purgeAll",
-        style: "toolbutton",
+        style: "toolbutton"
     }
 );
 purgeAll.alignment = ["center", "top"];
@@ -931,7 +932,7 @@ var btn_about = shortcuts.add(
     undefined,
     mojoUI.createIcon("icn_help"), {
         name: "btn_about",
-        style: "toolbutton",
+        style: "toolbutton"
     }
 );
 btn_about.alignment = ["center", "top"];
@@ -939,7 +940,7 @@ btn_about.alignment = ["center", "top"];
 // add Obj / RIGHT ICON SIDEBAR
 // ======
 var addObj = root.add("group", undefined, {
-    name: "addObj",
+    name: "addObj"
 });
 addObj.orientation = "column";
 addObj.alignChildren = ["left", "top"];
@@ -952,27 +953,27 @@ addObj.margins = 4;
 var buttonArray = [
     addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_textl"), {
         name: "textLayer",
-        style: "toolbutton",
+        style: "toolbutton"
     }),
     addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_solid"), {
         name: "solidLayer",
-        style: "toolbutton",
+        style: "toolbutton"
     }),
     addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_shape"), {
         name: "shapeLayer",
-        style: "toolbutton",
+        style: "toolbutton"
     }),
     addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_adjust"), {
         name: "adjustmentsLayer",
-        style: "toolbutton",
+        style: "toolbutton"
     }),
     addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_null"), {
         name: "nullLayer",
-        style: "toolbutton",
+        style: "toolbutton"
     }),
     addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_p2n"), {
         name: "parent2null",
-        style: "toolbutton",
+        style: "toolbutton"
     }),
 ];
 
@@ -1276,9 +1277,7 @@ btn_about.onClick = function(e) {
     w.alignChildren = ["center", "top"];
     w.alignment = ["fill", "top"];
     w.margins = 0;
-    var gg_img = w.add("image", undefined, mojoUI.createIcon("about_head"), {
-        name: "gg_img",
-    });
+    var gg_img = w.add("image", undefined, mojoUI.createIcon("demo01"), {name: ""})
     // mojoUI.setBG(content, hexToArray("#ffffff"),1);
     gg_img.minimumSize.width = 320;
     gg_img.minimumSize.height = 64;
@@ -1363,7 +1362,7 @@ function getMousePosition(event) {
         ];
 }
 
-function showCustomTooltip(text, coordinates, width, invert, multiline) {
+function showCustomTooltip(text, coordinates, width, invert, multiline, isIMG) {
     if (multiline) {
         multiline = true;
     } else {
@@ -1413,8 +1412,13 @@ function showCustomTooltip(text, coordinates, width, invert, multiline) {
             1
         );
     };
-    if (!(typeof text === "string")) {
-        panel.add("image", undefined, text, {me: "tImg" });
+    if (isIMG) {
+        var pIMG = mojoUI.createIcon(text);
+        panel.add("iconbutton", undefined, pIMG, {
+        name: "name",
+        style: "toolbutton"
+    })
+        //var hoverImg = panel.add("image", undefined, text, {name: ""});
     };
     //staticText.graphics.foregroundColor = staticText.graphics.newPen(staticText.graphics.PenType.SOLID_COLOR, [1, 1, 1]); // RGB color [R, G, B]
 
@@ -1428,7 +1432,7 @@ function showCustomTooltip(text, coordinates, width, invert, multiline) {
     return tooltipWin;
 }
 
-function addTooltipToButton(button, tooltipText, width, invert, multiline) {
+function addTooltipToButton(button, tooltipText, width, invert, multiline, isIMG) {
     var tooltipWin = "";
     button.addEventListener("mouseover", function(e) {
         var coordinates = getCurrentMousePosition(e, width);
@@ -1437,7 +1441,8 @@ function addTooltipToButton(button, tooltipText, width, invert, multiline) {
             coordinates,
             width,
             invert,
-            multiline
+            multiline,
+            isIMG
         );
     });
 
@@ -3841,16 +3846,7 @@ parent2null.onClick = function() {
     app.beginUndoGroup("Create");
     CreateParentNull();
     app.endUndoGroup();
-};
-
-addTooltipToButton(demo1, mojoUI.createIcon("demo01"), 85, false, false);
-addTooltipToButton(demo2, mojoUI.createIcon("demo02"), 85, false, false);
-addTooltipToButton(demo3, mojoUI.createIcon("demo03"), 85, true, false);
-addTooltipToButton(demo4, mojoUI.createIcon("demo04"), 85, true, false);
-addTooltipToButton(demo5, mojoUI.createIcon("demo05"), 85, false, false);
-addTooltipToButton(demo6, mojoUI.createIcon("demo06"), 85, false, false);
-addTooltipToButton(demo7, mojoUI.createIcon("demo07"), 85, true, false);
-addTooltipToButton(demo8, mojoUI.createIcon("demo08"), 85, true, false);
+}
 
 btn_demos.onClick = function() {
     // Check if there is an open project
@@ -3919,21 +3915,34 @@ purgeAll.onClick = function () {
 };
 */
 
-var contextMenuOpen = false;
+///demo hover
+addTooltipToButton(demo1, "demo01", 85, false, false, true);
+addTooltipToButton(demo2, "demo02", 85, false, false, true);
+addTooltipToButton(demo3, "demo03", 85, true, false, true);
+addTooltipToButton(demo4, "demo04", 85, true, false, true);
+addTooltipToButton(demo5, "demo05", 85, false, false, true);
+addTooltipToButton(demo6, "demo06", 85, false, false, true);
+addTooltipToButton(demo7, "demo07", 85, true, false, true);
+addTooltipToButton(demo8, "demo08", 85, true, false, true);
+
 var mousePosGlobal = null;
 
 function closeDialogWindows() {
     if (hoverMenuWin && hoverMenuWin instanceof Window) {
         hoverMenuWin.close();
     }
-    contextMenuOpen = false;
+    if (tooltipWin && tooltipWin instanceof Window) {
+        tooltipWin.close();
+    }
     return true;
 }
 win.addEventListener("focus", function() {
-    contextMenuOpen = false;
     try {
         if (hoverMenuWin && hoverMenuWin.visible) {
             hoverMenuWin.close();
+        }
+        if (tooltipWin && tooltipWin.visible) {
+            tooltipWin.close();
         }
     } catch(err) {}
 });
