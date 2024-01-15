@@ -1439,8 +1439,6 @@ function showCustomTooltip(text, coordinates, width, invert, multiline, isIMG) {
     tooltipWin.spacing = 5;
     mojoUI.setBG(tooltipWin, [0.06, 0.06, 0.06]);
     var panel = tooltipWin.add("group", undefined, "");
-    panel.spacing = 4;
-    panel.margins = 6;
     //panel.maximumSize.width = 170;
     // Customize background color
     //panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]); // RGB color [R, G, B]
@@ -1451,6 +1449,8 @@ function showCustomTooltip(text, coordinates, width, invert, multiline, isIMG) {
         if (multiline) {
             staticText.maximumSize.width = 232;
         }
+        panel.spacing = 4;
+        panel.margins = 6;
         // Customize text color
         staticText.graphics.foregroundColor = staticText.graphics.newPen(
             staticText.graphics.PenType.SOLID_COLOR,
@@ -1459,6 +1459,8 @@ function showCustomTooltip(text, coordinates, width, invert, multiline, isIMG) {
         );
     };
     if (isIMG) {
+        panel.spacing = 0;
+        panel.margins = 0;
         var pIMG = mojoUI.createIcon(text);
         panel.add("iconbutton", undefined, pIMG, {
         name: "name",
@@ -3913,7 +3915,7 @@ function changeDemoContent(demoPack) {
             var result = system.callSystem(batScriptPath);
 
             var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img_footage.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png", "input_template.json"];
-            openSubfolderInProject("(footage)/Footage/jpg");
+            //openSubfolderInProject("(footage)/Footage/jpg");
             openCompositionByName("__SETTINGS");
             //openCompInViewer("__SETTINGS", "SETTINGS");
             for (var i = 0; i < reloadAssets.length; i++) {
