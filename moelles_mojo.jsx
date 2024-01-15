@@ -1,5 +1,5 @@
 ﻿var scriptName = "moelles mojo";
-var scriptVersion = "V0017";
+var scriptVersion = "V0018";
 
 function createDockableUI(thisObj) {
     var dialog =
@@ -587,7 +587,7 @@ configDemos.margins = 12;
 var demoInfoTxt = configDemos.add("statictext", undefined, undefined, {
     name: "demoInfoTxt",
 });
-demoInfoTxt.text = "Test your theme with different configurations";
+demoInfoTxt.text = "different configurations to test your templae";
 demoInfoTxt.preferredSize.height = 20;
 
 // DEMOGRP1
