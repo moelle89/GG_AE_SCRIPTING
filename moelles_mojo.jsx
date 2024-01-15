@@ -1079,7 +1079,7 @@ function isSecurityPrefSet() {
 
 function refreshCurrentFrame() {
     var comp = app.project.activeItem;
-    if (comp !== null && comp instanceof CompItem) {
+    if (comp !== null && (comp instanceof CompItem)) {
         comp.motionBlur = !comp.motionBlur;
         comp.motionBlur = !comp.motionBlur;
     }
@@ -1165,6 +1165,38 @@ function txtDraw() {
             );
     }
 }
+function txtDrawLeft() {
+    try {
+        this.graphics.drawOSControl();
+        this.graphics.rectPath(0, 0, this.size[0], this.size[1]);
+        if (this.fillBrush)
+            {
+                this.graphics.fillPath(this.fillBrush);
+            }
+    } catch (err) {
+        // fail silently
+    }
+    if (this.text) {
+        this.graphics.drawString(
+            this.text,
+            this.textPen,
+            (this.size[0] -
+                this.graphics.measureString(
+                    this.text,
+                    this.graphics.font,
+                    this.size[0]
+                )[0])/8,
+            (this.size[1] -
+                this.graphics.measureString(
+                    this.text,
+                    this.graphics.font,
+                    this.size[0]
+                )[1]) /
+            1.75,
+            this.graphics.font
+            );
+    }
+}
 /** draw an text button with a colored background - returns a button object
     @parem {parentObj} - object - ScriptUI panel or group
     @parem {buttonText} - string - button text
@@ -1187,7 +1219,8 @@ function buttonColorText(parentObj, buttonText, staticColor, hoverColor) {
         hexToArray("#D6E9FF"),
         1
     );
-    btn.onDraw = txtDraw;
+    btn.graphics.font = ScriptUI.newFont("Arial", "Bold", 11);
+    btn.onDraw = txtDrawLeft;
 
     if (hoverColor) {
         try {
@@ -1216,7 +1249,8 @@ function updateTextButtonOnHover(btn, buttonText, backgroundColor, textColor) {
         hexToArray(textColor),
         1
     );
-    btn.onDraw = txtDraw;
+    btn.graphics.font = ScriptUI.newFont("Arial", "Bold", 11);
+    btn.onDraw = txtDrawLeft;
     return btn;
 }
 
@@ -1318,56 +1352,58 @@ btn_about.onClick = function(e) {
     w.orientation = "column";
     w.minimumSize.width = 380;
     w.preferredSize.height = 140;
-    w.alignChildren = ["center", "top"];
+    w.alignChildren = ["fill", "top"];
     w.alignment = ["fill", "top"];
     w.margins = 0;
     var gg_img = w.add("image", undefined, mojoUI.createIcon("about_head"), {name: ""})
     // mojoUI.setBG(content, hexToArray("#ffffff"),1);
-    gg_img.minimumSize.width = 320;
+    gg_img.minimumSize.width = 400;
     gg_img.minimumSize.height = 64;
     var content = w.add("group");
     content.orientation = "column";
-    content.margins = 16;
+    content.margins = 10;
+    content.minimumSize.width = 500;
+    content.alignChildren = ["fill", "top"];
+    content.alignment = ["fill", "top"];
+     var fontSize1 = 15; // Adjust the font size for ctext
+
     var ctext = content.add(
         "statictext",
-        [0, 0, 360, 50],
-        "moelles mojo is a little helper to make the creation of templates for \nthe GetGenius template system more efficient and less pain in the ass ;-)", {
+        [0, 0, 500, 80],
+        "moelles mojo is a little helper to make the creation of templates for the \nGetGenius template system more efficient and less pain in the ass ;-)", {
             multiline: false,
         }
     );
+    ctext.alignment = ["fill", "top"];
+    ctext.preferredSize.width = 500;
+    ctext.preferredSize.height = 50;
 
     ctext.textPen = ctext.graphics.newPen(
         content.graphics.PenType.SOLID_COLOR,
         hexToArray("#ffffff"),
         1
     );
-    ctext.onDraw = txtDraw;
+    ctext.graphics.font = ScriptUI.newFont("Arial", "Bold", fontSize1); // Change the font size
+    ctext.onDraw = txtDrawLeft;
+
     var ctext2 = content.add(
         "statictext",
-        [0, 0, 360, 40],
+        [140, 0, 500, 90],
         "Created by Manuel Moellmann, Head of Design at ITNT Group", {
-            multiline: false,
+            multiline: true,
         }
     );
+    ctext2.alignment = ["fill", "top"];
+    ctext2.preferredSize.width = 500;
+    ctext2.preferredSize.height = 40;
 
     ctext2.textPen = ctext.graphics.newPen(
         content.graphics.PenType.SOLID_COLOR,
         hexToArray("#ffffff"),
         1
     );
-    ctext2.onDraw = txtDraw;
-
-    var btn_github = buttonColorText(
-        content,
-        "visit github for instructions and new releases",
-        "#0060b1",
-        "#028def"
-    );
-    btn_github.margins = 16;
-    btn_github.preferredSize.height = 32;
-    btn_github.onClick = function() {
-        visitURL("https://github.com/moelle89/GG_AE_SCRIPTING");
-    };
+    ctext2.graphics.font = ScriptUI.newFont("Arial", "Regular", 13); // Change the font size
+    ctext2.onDraw = txtDrawLeft;
 
     gg_img.addEventListener("click", function() {
         visitURL("https://github.com/moelle89/GG_AE_SCRIPTING");
@@ -1945,6 +1981,7 @@ function createComposition(width, height, duration, frameRate, name, silent) {
 function openCompositionByName(compName) {
     compIndex = findCompIndex(compName);
     app.project.item(compIndex).openInViewer();
+    app.activeViewer.setActive();
     app.executeCommand(2004); // “Deselect All”
 }
 
@@ -2406,8 +2443,45 @@ function changeJSONTEXT(inputText, jsonKey) {
         file.close();
         var myItem = getItem("input_template.json");
         myItem.mainSource.reload();
+        if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
+            // Move the playhead by one frame
+            app.project.activeItem.time += 2* app.project.activeItem.frameDuration;
+        }
+        app.purge(PurgeTarget.IMAGE_CACHES);
         refreshCurrentFrame();
-        //app.purge(PurgeTarget.IMAGE_CACHES);
+		var res = [1,1];
+        var rft = app.project.activeItem.resolutionFactor;
+        // 1
+		if((rft != "2,2") && (rft != "3,3")  && (rft != "4,4")){
+			//rf = [2,2];
+            var res = [3,3];
+		}
+        // 2
+		if((rft != "1,1") && (rft != "2,2")  && (rft != "3,3")){
+			//rf = [1,1];
+            var res = [4,4];
+		}
+        // 4
+		if((rft != "2,2") && (rft != "3,3")  && (rft != "1,1")){
+			//rf = [3,3];
+            var res = [2,2];
+		}
+        // 3
+		if((rft != "2,2") && (rft != "4,4")  && (rft != "1,1")){
+			//rf = [4,4];
+            var res = [1,1];
+		}
+
+        app.activeViewer.setActive();
+		app.project.activeItem.resolutionFactor = res;
+        if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
+            // Move the playhead by two frame backwards
+            app.project.activeItem.time -= 2 * app.project.activeItem.frameDuration;
+        }
+        //alert(app.project.activeItem.resolutionFactor);
+        app.purge(PurgeTarget.IMAGE_CACHES);
+        refreshCurrentFrame();
+        //app.project.activeItem.resolutionFactor = userResoultionFacter;
     }
     app.endUndoGroup();
 }
@@ -2416,6 +2490,7 @@ function openCompInViewer(compName, layerName) {
     compIndex = findCompIndex(compName);
     app.project.item(compIndex).openInViewer();
     app.executeCommand(2004); // “Deselect All”
+    app.activeViewer.setActive();
     app.project.activeItem.layer(layerName).selected = true;
 }
 
@@ -3373,37 +3448,6 @@ fitView.onClick = function() {
         showAlertWindow("Please open a project");
     }
 };
-/*
-fitView.onClick = function() {
-    (function() {
-        var zoom = 0.5;
-        var activeComp = app.project.activeItem;
-        if (checkComp(activeComp)) {
-            // Get the active composition's width and height
-            var compWidth = activeComp.width;
-            var compHeight = activeComp.height;
-
-            // Check the aspect ratio
-            if (compWidth > compHeight) {
-                // If width is bigger than height, use valueA for zoom
-                zoom = 0.6; // Change this value to your desired zoom value for width > height
-                $.writeln("zoom set to " + zoom);
-            } else if (compHeight > compWidth) {
-                // If height is bigger than width, use valueB for zoom
-                zoom = 0.35; // Change this value to your desired zoom value for height > width
-                $.writeln("zoom set to " + zoom);
-            } else {
-                // If width and height are equal (square), use valueC for zoom
-                zoom = 0.5; // Change this value to your desired zoom value for square compositions
-                $.writeln("zoom set to " + zoom);
-            }
-        }
-
-        // Set the zoom value
-        app.activeViewer.views[0].options.zoom = zoom;
-    })();
-};
-*/
 addTooltipToButton(
     delExp,
     "delete all expressions of a selected layers transform-properties",
@@ -3704,7 +3748,7 @@ btn_source.onClick = function() {
             }
         }
         // Execute changeJSONTEXT function with the provided text
-        changeJSONTEXT(text, "source");
+        changeJSONTEXT(text, "source"); 
     } else {
         showAlertWindow("JSON file doesnt exist");
     }
@@ -3903,7 +3947,7 @@ function changeDemoContent(demoPack) {
 
         // Move the composition into the folder
         bufferComp.parentFolder = targetFolder;
-
+        var activeItemT = app.project.activeItem;
         openCompositionByName("bufferComp");
         // Extract the project name from the file path, assuming a standard naming scheme
         var projectName = app.project.file.name;    
@@ -3916,8 +3960,20 @@ function changeDemoContent(demoPack) {
 
             var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img_footage.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png", "input_template.json"];
             //openSubfolderInProject("(footage)/Footage/jpg");
-            openCompositionByName("__SETTINGS");
             //openCompInViewer("__SETTINGS", "SETTINGS");
+        if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
+            // Move the playhead by one frame
+            app.project.activeItem.time += app.project.activeItem.frameDuration;
+        }
+            openCompositionByName(activeItemT.name);
+            refreshCurrentFrame();
+            app.purge(PurgeTarget.IMAGE_CACHES);
+            refreshCurrentFrame();
+            var res = [1,1];
+            var rft = app.project.activeItem.resolutionFactor;
+            //alert(app.project.activeItem.resolutionFactor);
+            app.purge(PurgeTarget.IMAGE_CACHES);
+            refreshCurrentFrame();
             for (var i = 0; i < reloadAssets.length; i++) {
                 var currentItem = getItem(reloadAssets[i]);
                     if (currentItem) {
@@ -3927,7 +3983,39 @@ function changeDemoContent(demoPack) {
                         alert("Item not found: " + reloadAssets[i]);
                     }
             };
-            refreshCurrentFrame();
+            app.activeViewer.setActive();
+            app.project.activeItem.resolutionFactor = res;
+            if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
+                // Move the playhead by two frame backwards
+                app.project.activeItem.time -= 2 * app.project.activeItem.frameDuration;
+            }
+            // 1
+            if((rft != "2,2") && (rft != "3,3")  && (rft != "4,4")){
+                //rf = [2,2];
+                var res = [3,3];
+            }
+            // 2
+            if((rft != "1,1") && (rft != "2,2")  && (rft != "3,3")){
+                //rf = [1,1];
+                var res = [4,4];
+            }
+            // 4
+            if((rft != "2,2") && (rft != "3,3")  && (rft != "1,1")){
+                //rf = [3,3];
+                var res = [2,2];
+            }
+            // 3
+            if((rft != "2,2") && (rft != "4,4")  && (rft != "1,1")){
+                //rf = [4,4];
+                var res = [1,1];
+            }
+
+            app.activeViewer.setActive();
+            app.project.activeItem.resolutionFactor = res;
+            if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
+                // Move the playhead by two frame backwards
+                app.project.activeItem.time += 2* app.project.activeItem.frameDuration;
+            }
          } else {
         showAlertWindow("Please open the BOILERPLATE or a template");
     }} else {
