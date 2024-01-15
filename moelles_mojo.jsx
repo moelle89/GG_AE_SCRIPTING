@@ -2743,8 +2743,8 @@ function findReplaceCompositionName(prefix, replaceStr) {
             if (comp instanceof CompItem) {
                 // Check if the composition name starts with the specified prefix
                 if (comp.name.indexOf(prefix) === 0) {
-                    // Find the position of the next underscore after the prefix
-                    var underscoreIndex = comp.name.indexOf("_", prefix.length);
+                    // Find the position of the last underscore after the prefix
+                    var underscoreIndex = comp.name.lastIndexOf("_");
                     // Check if an underscore is found
                     if (underscoreIndex !== -1) {
                         // Replace the portion of the composition name
@@ -2764,7 +2764,6 @@ function findReplaceCompositionName(prefix, replaceStr) {
         showAlertWindow("No project is currently open");
     }
 }
-
 // Function to rename compositions in After Effects
 function renameCompositions(type, name) {
     app.beginUndoGroup("Rename Compositions");
@@ -3913,7 +3912,7 @@ function changeDemoContent(demoPack) {
             var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo" + demoPack + ".bat";
             var result = system.callSystem(batScriptPath);
 
-            var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img_footage.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png"];
+            var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img_footage.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png", "input_template.json"];
             openSubfolderInProject("(footage)/Footage/jpg");
             openCompositionByName("__SETTINGS");
             //openCompInViewer("__SETTINGS", "SETTINGS");
@@ -3989,6 +3988,9 @@ demo7.onClick = function() {
 }
 demo8.onClick = function() {
     changeDemoContent("8")
+}
+btn_demos.onClick = function() {
+    changeDemoContent("1")
 }
 
 

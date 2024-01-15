@@ -15,19 +15,19 @@
       "color_dark": "#e0462c"
     },
     "title": {
-      "text": "Discover the new Saint Laurent collection.",
+      "text": "Discover the new Product from Hello Fresh!",
       "color": "#222222",
       "color_dark": "#ffffff",
       "font": "Archivo-Bold"
     },
     "subtext": {
-      "text": "Shop online at the official store. Discover the collections for women and men: ready to wear, bags & accessories.",
+      "text": "Eating fresh made easy! We take care about everything.",
       "color": "#242424",
       "color_dark": "#ffffff",
       "font": ""
     },
     "call2action": {
-      "text": "Discover all pieces at:",
+      "text": "Find out more:",
       "color": "#222222",
       "color_dark": "#ffffff",
       "cursor_color": "#e0462c",
@@ -37,14 +37,14 @@
       "font": ""
     },
     "call2action_link": {
-      "text": "www.ysl.com",
+      "text": "www.hello-fresh.com",
       "color": "#222222",
       "color_dark": "#ffffff",
       "link_highlight": 0,
       "font": ""
     },
     "source": {
-      "text": "ysl.com",
+      "text": "hello-fresh.com",
       "color": "#080808",
       "color_dark": "#FFFFFF",
       "bg_color": "#ffffff",
@@ -67,7 +67,7 @@
          },
          {
             "src": "gallery_02",
-            "video": 1,
+            "video": 0,
             "loop": 0,
             "muted": 0,
             "text": "",
@@ -82,8 +82,8 @@
             "font": "Poppins"
          },
          {
-            "src": "",
-            "video": 1,
+            "src": "gallery_04",
+            "video": 0,
             "loop": 1,
             "muted": 0,
             "text": "",
@@ -99,7 +99,7 @@
          },
          {
             "src": "",
-            "video": 1,
+            "video": 0,
             "loop": 0,
             "muted": 0,
             "text": "",
