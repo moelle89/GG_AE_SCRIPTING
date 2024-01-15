@@ -2353,7 +2353,7 @@ function findCompIndex(compName, silent) {
         return i;
     } else {
         if (!silent) {
-            showAlertWindow("Please open the BOILERPLATE to use this feature");
+            showAlertWindow("The specific composition was not found");
         }
     }
 }
@@ -2745,8 +2745,8 @@ function findReplaceCompositionName(prefix, replaceStr) {
             if (comp instanceof CompItem) {
                 // Check if the composition name starts with the specified prefix
                 if (comp.name.indexOf(prefix) === 0) {
-                    // Find the position of the last underscore after the prefix
-                    var underscoreIndex = comp.name.lastIndexOf("_");
+                    // Find the position of the next underscore after the prefix
+                    var underscoreIndex = comp.name.indexOf("_", prefix.length);
                     // Check if an underscore is found
                     if (underscoreIndex !== -1) {
                         // Replace the portion of the composition name
