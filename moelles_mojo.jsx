@@ -1676,6 +1676,21 @@ var hoverMenu_purge = new HoverMenu("hoverMenu_purge", [{
     },
 ]);
 
+// Create instances of HoverMenu with different data
+var hoverMenu_screenShot = new HoverMenu("hoverMenu_screenShot", [{
+        imgString: "",
+        text: "Screenshot of active Comp",
+        name: "saveFrameAsPNG",
+        functionName: saveFrameAsPNG,
+    },
+    {
+        imgString: "",
+        text: "Screenshot of selected Comps",
+        name: "saveSelectedCompsAsPNG",
+        functionName: saveSelectedCompsAsPNG,
+    },
+]);
+
 // hoverMenu_open
 
 function open_prjct() {
@@ -3442,16 +3457,15 @@ btn_addGallery.onClick = function() {
     }
 };
 
-addTooltipToButton(
-        // Check if there is an open project
-    fitView,
-    "take a screenshot of the active composition",
-    85
-);
-
 function saveFrameAsPNG(){
-	var activeComp = app.project.activeItem;
+    var selectedComps = app.project.selection;
     var res = [1,1];
+    if (selectedComps.length === 0) {
+        showAlertWindow("Please select one or more compositions.");
+        return;
+    }
+    	var activeComp = app.project.activeItem;
+
 	if(app.project.activeItem.resolutionFactor != "1,1"){
 		res = app.project.activeItem.resolutionFactor;
 		app.project.activeItem.resolutionFactor = [1,1];
@@ -3472,7 +3486,7 @@ function saveFrameAsPNG(){
 	var formattedTime = ("0" + currentDate.getHours()).slice(-2) +
 		("0" + currentDate.getMinutes()).slice(-2) +
 		("0" + currentDate.getSeconds()).slice(-2);
-	var filename = "Snapshot_" + formattedDate + "_" + formattedTime + ".png";
+	var filename = activeComp.name + "_" + formattedDate + "_" + formattedTime + ".png";
 
 	var theLocation = File(baseLocation + "_screenshots/" + filename);
 		if(theLocation!=null){
@@ -3486,7 +3500,57 @@ function saveFrameAsPNG(){
 		}
 }
 
+function saveSelectedCompsAsPNG() {
+    var selectedComps = app.project.selection;
+    var res = [1, 1];
 
+    if (selectedComps.length === 0) {
+        showAlertWindow("Please select one or more compositions.");
+        return;
+    }
+
+    for (var i = 0; i < selectedComps.length; i++) {
+        var currentComp = selectedComps[i];
+
+        if (currentComp instanceof CompItem) {
+            if (currentComp.resolutionFactor.toString() !== "1,1") {
+                res = currentComp.resolutionFactor;
+                currentComp.resolutionFactor = [1, 1];
+            }
+
+            var baseLocation = "~/Documents/";
+            var screenshotsFolder = new Folder(baseLocation + "_screenshots/");
+
+            if (!screenshotsFolder.exists) {
+                screenshotsFolder.create();
+            }
+
+            var currentDate = new Date();
+            var formattedDate = currentDate.getFullYear() +
+                ("0" + (currentDate.getMonth() + 1)).slice(-2) +
+                ("0" + currentDate.getDate()).slice(-2);
+            var formattedTime = ("0" + currentDate.getHours()).slice(-2) +
+                ("0" + currentDate.getMinutes()).slice(-2) +
+                ("0" + currentDate.getSeconds()).slice(-2);
+
+            var filename = currentComp.name + "_" + formattedDate + "_" + formattedTime + ".png";
+            var theLocation = File(baseLocation + "_screenshots/" + filename);
+
+            if (theLocation != null) {
+                theLocation = decodeURIComponent(theLocation);
+                currentComp.saveFrameToPng(currentComp.time, File(theLocation));
+                var finalpath = theLocation.substring(0, theLocation.lastIndexOf('/') + 1);
+                var openFolder = new Folder(finalpath);
+                openFolder.execute();
+                currentComp.resolutionFactor = res;
+            }
+        } else {
+            showAlertWindow("Please select only compositions.");
+        }
+    }
+}
+addHoverMenuToButton(fitView, hoverMenu_screenShot);
+/*
 fitView.onClick = function() {
       if (app.project && app.project.file !== null) {
           //screenShot(this);
@@ -3495,6 +3559,7 @@ fitView.onClick = function() {
         showAlertWindow("Please open a project");
     }
 };
+*/
 addTooltipToButton(
     delExp,
     "delete all expressions of a selected layers transform-properties",

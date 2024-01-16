@@ -5,15 +5,37 @@
  */
 
 function activateCompViewer() {
-  var activeViewer = app.activeViewer;
-  if (activeViewer && activeViewer.type === ViewerType.VIEWER_COMPOSITION) {
-    activeViewer.setActive();
-    return true;
+  var A =
+    app.activeViewer && app.activeViewer.type === ViewerType.VIEWER_COMPOSITION;
+  if (A) {
+    app.activeViewer.setActive();
   }
-  return false;
+  return A;
+}
+function createResourceFile(filename, binaryString) {
+  try {
+    path = File($.fileName).path.split("/");
+    newPath = "/";
+    for (var i = 1, len = path.length; i < len - 2; i++) {
+      newPath = newPath + path[i] + "/";
+    }
+    var myFile = new File(newPath + "img/" + filename);
+    return myFile;
+  } catch (err) {
+    showAlertWindow("Error in createResourceFile function\n" + err.toString());
+  }
 }
 function screenShot(thisObj) {
   try {
+    function trimFolderPath(loc) {
+      var imageLoc = loc.toString();
+      var macLoc = imageLoc.substring(0, imageLoc.lastIndexOf("/") + 1);
+      if (macLoc.length < 1) {
+        return imageLoc.substring(0, imageLoc.lastIndexOf("\\") + 1);
+      } else {
+        return macLoc;
+      }
+    }
     function storeRenderQueue() {
       var checkeds = [];
       for (var p = 1; p <= app.project.renderQueue.numItems; p++) {
@@ -44,13 +66,54 @@ function screenShot(thisObj) {
         }
       }
     }
+    function saveSettings(imagePath, fullPath) {
+      app.settings.saveSetting(
+        "MoJo",
+        "screenshot_folderPath",
+        trimFolderPath(imagePath).toString()
+      );
+      app.settings.saveSetting(
+        "MoJo",
+        "screenshot_imagePath",
+        imagePath.toString()
+      );
+      if (fullPath != null) {
+        app.settings.saveSetting(
+          "MoJo",
+          "screenshot_copyPath",
+          fullPath.toString()
+        );
+      }
+    }
+    function setPref(pref, value) {
+      app.settings.saveSetting("MoBar", pref, value);
+    }
+    function getPref(section, key, d) {
+      if (app.settings.haveSetting(section, key)) {
+        return app.settings.getSetting(section, key);
+      } else {
+        return d;
+      }
+    }
     function pngExport_HQ(theLocation, res) {
       var RQerr =
         "Render Queue is rendering item, please wait for it complete or stop it.";
       app.project.renderQueue.showWindow(false);
       theLocation = decodeURIComponent(theLocation);
       oldRes = app.project.activeItem.resolutionFactor;
-      app.project.activeItem.resolutionFactor = [1, 1];
+      switch (res) {
+        case 0:
+          app.project.activeItem.resolutionFactor = [1, 1];
+          break;
+        case 1:
+          app.project.activeItem.resolutionFactor = [2, 2];
+          break;
+        case 2:
+          app.project.activeItem.resolutionFactor = [3, 3];
+          break;
+        default:
+          break;
+      }
       var RQbackup = storeRenderQueue();
       if (RQbackup[RQbackup.length - 1] == "rendering") {
         showAlertWindow(RQerr);
@@ -169,7 +232,48 @@ function screenShot(thisObj) {
       return s.substr(s.length - size);
     }
     function getLocation() {
-      return "~/Desktop/";
+      var op = $.os;
+      var match = op.indexOf("Windows");
+      if (match != -1) {
+        var location = "~/Desktop/";
+      } else {
+        var location = "~/Desktop/";
+      }
+      return location;
+    }
+    function setBG(myComp, status) {
+      var num = myComp.numLayers;
+      if (status) {
+        var compBG = myComp.bgColor;
+        var myShapeLayer = myComp.layers.addShape();
+        myShapeLayer.selected = true;
+        myShapeLayer.property("Position").setValue([0, 0]);
+        myShapeLayer.name = "temp_bg";
+        myShapeLayer.position.setValue([myComp.width / 2, myComp.height / 2]);
+        try {
+          myShapeLayer.moveAfter(myComp.layer(num + 1));
+        } catch (error) {}
+        var myRectSize = [myComp.width, myComp.height];
+        var myShapeLayerContents = myShapeLayer.property(
+          "ADBE Root Vectors Group"
+        );
+        var myShapeGroup =
+          myShapeLayerContents.addProperty("ADBE Vector Group");
+        myShapeGroup.name = "Rectangle 1";
+        var myRect = myShapeGroup
+          .property("ADBE Vectors Group")
+          .addProperty("ADBE Vector Shape - Rect");
+        myRect.property("ADBE Vector Rect Size").setValue(myRectSize);
+        var myShapeFill = myShapeGroup
+          .property("ADBE Vectors Group")
+          .addProperty("ADBE Vector Graphic - Fill");
+        myShapeFill.property("ADBE Vector Fill Color").setValue(compBG);
+      } else {
+        var layer = myComp.layer(num);
+        if (layer.name == "temp_bg") {
+          layer.remove();
+        }
+      }
     }
     var ctrlKey = ScriptUI.environment.keyboardState.ctrlKey;
     var metaKey = ScriptUI.environment.keyboardState.metaKey;
@@ -209,6 +313,11 @@ function screenShot(thisObj) {
     group1.alignChildren = ["left", "center"];
     group1.spacing = 6;
     group1.margins = [2, 0, 0, 0];
+    var checkbox1 = group1.add("checkbox", undefined, undefined, {
+      name: "checkbox1"
+    });
+    checkbox1.text = "Transparent image";
+    checkbox1.value = true;
     var checkbox2 = group1.add("checkbox", undefined, undefined, {
       name: "checkbox2"
     });
@@ -219,8 +328,11 @@ function screenShot(thisObj) {
     });
     button1.text = "Save Images";
     button1.preferredSize.width = 137;
-    dropdown1.selection = 0;
-    checkbox2.value = true ;
+    dropdown1.selection = getPref("MoBar", "ss-selection", 0);
+    checkbox1.value =
+      getPref("MoBar", "ss-trans", "true") === "true" ? true : false;
+    checkbox2.value =
+      getPref("MoBar", "ss-open", "true") === "true" ? true : false;
     palette.layout.resize();
     palette.onResizing = palette.onResize = function () {
       this.layout.resize();
@@ -237,6 +349,9 @@ function screenShot(thisObj) {
         }
         comp = app.project.activeItem;
         comp.openInViewer();
+        if (!checkbox1.value) {
+          setBG(comp, true);
+        }
         folderPath = getFolderPath();
         if (folderPath != null) {
           var theLocation = new File(
@@ -250,10 +365,14 @@ function screenShot(thisObj) {
         }
         if (theLocation != null) {
           var fullPath = pngExport_HQ(theLocation, 0);
+          saveSettings(theLocation, fullPath);
           if (checkbox2.value) {
             revealFile(fullPath);
           }
           palette.close();
+        }
+        if (!checkbox1.value) {
+          setBG(comp, false);
         }
       } else {
         var mySelectedItems = [];
@@ -286,6 +405,9 @@ function screenShot(thisObj) {
             for (var k = 0; k < mySelectedItems.length; k++) {
               var mySelection = mySelectedItems[k];
               mySelection.openInViewer();
+              if (!checkbox1.value) {
+                setBG(mySelection, true);
+              }
               if (k > 0) {
                 theLocation = decodeURIComponent(theLocation);
                 var newLoc =
@@ -307,7 +429,11 @@ function screenShot(thisObj) {
                 theLocation,
                 0
               );
+              saveSettings(theLocation, fullPath);
               pb.update(k + 1);
+              if (!checkbox1.value) {
+                setBG(mySelection, false);
+              }
             }
             pb.end();
             if (checkbox2.value) {
