@@ -3458,14 +3458,13 @@ btn_addGallery.onClick = function() {
 };
 
 function saveFrameAsPNG(){
-    var selectedComps = app.project.selection;
+    var activeComp = app.project.activeItem;
     var res = [1,1];
-    if (selectedComps.length === 0) {
+    if (!activeComp) {
         showAlertWindow("Please select one or more compositions.");
         return;
     }
-    	var activeComp = app.project.activeItem;
-
+    
 	if(app.project.activeItem.resolutionFactor != "1,1"){
 		res = app.project.activeItem.resolutionFactor;
 		app.project.activeItem.resolutionFactor = [1,1];
