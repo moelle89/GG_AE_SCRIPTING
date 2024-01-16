@@ -588,7 +588,7 @@ configDemos.margins = 12;
 var demoInfoTxt = configDemos.add("statictext", undefined, undefined, {
     name: "demoInfoTxt",
 });
-demoInfoTxt.text = "different configurations to test your templae";
+demoInfoTxt.text = "different configurations to test your template";
 demoInfoTxt.preferredSize.height = 20;
 
 // DEMOGRP1
@@ -1048,14 +1048,10 @@ try {
 function checkSecurityPrefSet() {
     if (!isSecurityPrefSet()) {
         if (parseFloat(app.version) >= 16.1) {
-            showAlertWindow(
-                "This script requires access to write files.\nOpen After Effects 'Preferences' -> 'Scripting and Expressions' and make sure 'Allow Scripts to Write Files and Access Network' is checked."
-            );
+            prefDialog();
             app.executeCommand(3131);
         } else {
-            showAlertWindow(
-                "This script requires access to write files.\nGo to the 'General' panel of the application 'Preferences' and make sure 'Allow Scripts to Write Files and Access Network' is checked."
-            );
+            prefDialog();
             app.executeCommand(2359);
         }
         if (!isSecurityPrefSet()) {
@@ -1219,7 +1215,7 @@ function buttonColorText(parentObj, buttonText, staticColor, hoverColor, leftAli
         hexToArray("#D6E9FF"),
         1
     );
-    var fontSize = 11;
+    var fontSize = 10;
     if(textSize){fontSize = textSize};
     btn.graphics.font = ScriptUI.newFont("Arial", "Bold", fontSize);
     if(leftAlign){btn.onDraw = txtDrawLeft;}
@@ -1352,6 +1348,49 @@ function updateVectorButtonOnHover(btn, iconVec, iconColor, size) {
     return btn;
 }
 
+
+function prefDialog() {
+    var dialog = new Window("dialog"); 
+    dialog.text = "moelles mojo needs write access to work"; 
+    dialog.orientation = "column"; 
+    dialog.alignChildren = ["center","top"]; 
+    dialog.spacing = 10; 
+    dialog.margins = 6; 
+    mojoUI.setBG(dialog, [0.1, 0.1, 0.1]);
+
+    var image1 = dialog.add("image", undefined, mojoUI.createIcon("pref_info"), {name: "pref_info"}); 
+
+    var prefInfoGrp = dialog.add("group", undefined, {name: "prefInfoGrp"}); 
+        prefInfoGrp.orientation = "column"; 
+        prefInfoGrp.alignChildren = ["center","center"]; 
+        prefInfoGrp.spacing = 14; 
+        prefInfoGrp.margins = 12; 
+        prefInfoGrp.alignment = ["fill","top"]; 
+
+    var statictext1 = prefInfoGrp.add("group", undefined , {name: "statictext1"}); 
+        statictext1.getText = function() { var t=[]; for ( var n=0; n<statictext1.children.length; n++ ) { var text = statictext1.children[n].text || ''; if ( text === '' ) text = ' '; t.push( text ); } return t.join('\n'); }; 
+        statictext1.preferredSize.width = 580; 
+        statictext1.orientation = "column"; 
+        statictext1.alignChildren = ["center","center"]; 
+        statictext1.spacing = 0; 
+
+        statictext1.add("statictext", undefined, "This script requires access to write files. Open After Effects 'Preferences' -> 'Scripting and"); 
+        statictext1.add("statictext", undefined, "Expressions' and make sure 'Allow Scripts to Write Files and Access Network' is checked."); 
+
+        // Customize text color
+        statictext1.graphics.foregroundColor = statictext1.graphics.newPen(
+        statictext1.graphics.PenType.SOLID_COLOR,[0.83, 0.94, 1, 0.75], 1);
+        
+    var okButton = buttonColorText(prefInfoGrp, "OK, OPEN SETTINGS   ", "#0060b1", "#028def", false, 11);
+    okButton.preferredSize.height = 32;
+    okButton.onClick = function() {
+        dialog.close();
+    };
+
+dialog.show();
+}
+
+
 btn_about.onClick = function(e) {
     // open about panel
     var w = new Window("dialog", "About " + scriptName);
@@ -1409,7 +1448,7 @@ btn_about.onClick = function(e) {
         hexToArray("#ffffff"),
         1
     );
-    ctext2.graphics.font = ScriptUI.newFont("Arial", "Regular", 13); // Change the font size
+    ctext2.graphics.font = ScriptUI.newFont("Arial", "Regular", 11); // Change the font size
     ctext2.onDraw = txtDrawLeft;
 
     gg_img.addEventListener("click", function() {
@@ -3207,7 +3246,7 @@ function showAlertWindow(infoText, title, icon) {
     } else {
         var staticText = diaWin.add("statictext", undefined, undefined, {
         name: "nameLabel",
-        multiline: false });
+        multiline: true });
         staticText.text = infoText;
         staticText.justify = "center";
         staticText.alignment = ["fill", "center"];

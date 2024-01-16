@@ -36,7 +36,7 @@ set "imgSourceFolder=_img"
 set "rootFolder=%~dp0"
 REM Assuming the script is one level above the "_BUILDS" folder
 set "buildsFolder=%~dp0_BUILDS"
-set "delfolder=%APPDATA%\Adobe\After Effects\Scripts
+set "delfolder=%APPDATA%\Adobe\After Effects\Scripts"
 
 set "BASE_PATH=%APPDATA%\Adobe\After Effects"
 set "FOLDER_STRUCTURE1=22.6.5\Scripts\ScriptUI Panels"
