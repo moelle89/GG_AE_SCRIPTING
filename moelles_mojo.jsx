@@ -1033,7 +1033,6 @@ try {
   //@include '_scripts/organizeProjectAssets.jsx';
   //@include '_scripts/projectCleanup.jsx';
   //@include '_scripts/moveAnchorPoint.jsx';
-  //@include '_scripts/saveScreenshot.jsx';
 } catch (err) {
   showAlertWindow(err);
 }
@@ -1486,7 +1485,7 @@ function showCustomTooltip(text, coordinates, width, invert, multiline, isIMG) {
     //panel.maximumSize.width = 170;
     // Customize background color
     //panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]); // RGB color [R, G, B]
-    if ((typeof text === "string") && !isIMG) {
+    if ((typeof text === "string") && (!isIMG)) {
         var staticText = panel.add("statictext", undefined, text, {
             multiline: multiline,
         });
@@ -3172,7 +3171,7 @@ function showDialogWindow(infoText) {
     return compName; // Return the entered text
 }
 
-function showAlertWindow(infoText, title) {
+function showAlertWindow(infoText, title, icon) {
     if (title) {
         title = title;
     } else {
@@ -3186,19 +3185,39 @@ function showAlertWindow(infoText, title) {
     diaWin.margins = 16;
     mojoUI.setBG(diaWin, [0.1, 0.1, 0.1]);
 
-    var staticText = diaWin.add("statictext", undefined, undefined, {
-        name: "nameLabel",
-        multiline: false,
-    });
-    staticText.text = infoText;
-    staticText.justify = "center";
-    staticText.alignment = ["fill", "center"];
+    if(icon){
+    var dlgGrp = diaWin.add("group", undefined, {name: "dlgGrp"}); 
+        dlgGrp.orientation = "row"; 
+        dlgGrp.alignChildren = ["left","center"]; 
+        dlgGrp.spacing = 30; 
+        dlgGrp.margins = 0; 
 
-    // Customize text color
-    staticText.graphics.foregroundColor = staticText.graphics.newPen(
-        staticText.graphics.PenType.SOLID_COLOR,
-        [0.83, 0.94, 1, 0.75], 1
-    );
+        var dlgImg = dlgGrp.add("image", undefined, mojoUI.createIcon(icon), {name: "dlgImg"}); 
+        var staticText = dlgGrp.add("statictext", undefined, undefined, {
+            name: "nameLabel",
+            multiline: false,
+        });
+        staticText.text = infoText;
+        staticText.justify = "center";
+        staticText.alignment = ["fill", "center"];
+
+        // Customize text color
+        staticText.graphics.foregroundColor = staticText.graphics.newPen(
+            staticText.graphics.PenType.SOLID_COLOR,
+            [0.83, 0.94, 1, 0.75], 1
+        );
+    } else {
+        var staticText = diaWin.add("statictext", undefined, undefined, {
+        name: "nameLabel",
+        multiline: false });
+        staticText.text = infoText;
+        staticText.justify = "center";
+        staticText.alignment = ["fill", "center"];
+
+        // Customize text color
+        staticText.graphics.foregroundColor = staticText.graphics.newPen(
+        staticText.graphics.PenType.SOLID_COLOR,[0.83, 0.94, 1, 0.75], 1);
+    }
 
     var okButton = buttonColorText(diaWin, "OK", "#0060b1", "#028def", false, 13);
     okButton.preferredSize.height = 32;
@@ -3460,94 +3479,98 @@ btn_addGallery.onClick = function() {
 function saveFrameAsPNG(){
     var activeComp = app.project.activeItem;
     var res = [1,1];
-    if (!activeComp) {
-        showAlertWindow("Please select one or more compositions.");
-        return;
-    }
-    
-	if(app.project.activeItem.resolutionFactor != "1,1"){
-		res = app.project.activeItem.resolutionFactor;
-		app.project.activeItem.resolutionFactor = [1,1];
-	}
-	// Set the location here
-	var baseLocation = "~/Documents/";
-    // Create _screenshots folder if it doesn't exist
-    var screenshotsFolder = new Folder(baseLocation + "_screenshots/");
-    if (!screenshotsFolder.exists) {
-        screenshotsFolder.create();
-    }
+    if (checkComp(activeComp)) {
+        if(app.project.activeItem.resolutionFactor != "1,1"){
+            res = app.project.activeItem.resolutionFactor;
+            app.project.activeItem.resolutionFactor = [1,1];
+        }
+        // Set the location here
+        var baseLocation = "~/Documents/";
+        // Create _screenshots folder if it doesn't exist
+        var screenshotsFolder = new Folder(baseLocation + "_screenshots/");
+        if (!screenshotsFolder.exists) {
+            screenshotsFolder.create();
+        }
 
-	// Generate a filename based on date and time
-	var currentDate = new Date();
-	var formattedDate = currentDate.getFullYear() +
-		("0" + (currentDate.getMonth() + 1)).slice(-2) +
-		("0" + currentDate.getDate()).slice(-2);
-	var formattedTime = ("0" + currentDate.getHours()).slice(-2) +
-		("0" + currentDate.getMinutes()).slice(-2) +
-		("0" + currentDate.getSeconds()).slice(-2);
-	var filename = activeComp.name + "_" + formattedDate + "_" + formattedTime + ".png";
+        // Generate a filename based on date and time
+        var currentDate = new Date();
+        var formattedDate = currentDate.getFullYear() +
+            ("0" + (currentDate.getMonth() + 1)).slice(-2) +
+            ("0" + currentDate.getDate()).slice(-2);
+        var formattedTime = ("0" + currentDate.getHours()).slice(-2) +
+            ("0" + currentDate.getMinutes()).slice(-2) +
+            ("0" + currentDate.getSeconds()).slice(-2);
+        var filename = activeComp.name + "_" + formattedDate + "_" + formattedTime + ".png";
 
-	var theLocation = File(baseLocation + "_screenshots/" + filename);
-		if(theLocation!=null){
-			//show the correct charactar in the path
-			theLocation = decodeURIComponent(theLocation);
-			activeComp.saveFrameToPng(activeComp.time, File(theLocation));
-				var finalpath = theLocation.substring(0,theLocation.lastIndexOf('/')+1);
-				var openFolder = new Folder(finalpath);
-				openFolder.execute();
-                app.project.activeItem.resolutionFactor = res;
-		}
+        var theLocation = File(baseLocation + "_screenshots/" + filename);
+            if(theLocation!=null){
+                //show the correct charactar in the path
+                theLocation = decodeURIComponent(theLocation);
+                activeComp.saveFrameToPng(activeComp.time, File(theLocation));
+                    var finalpath = theLocation.substring(0,theLocation.lastIndexOf('/')+1);
+                    var openFolder = new Folder(finalpath);
+                    openFolder.execute();
+                    app.project.activeItem.resolutionFactor = res;
+                    showAlertWindow(finalpath, "Screenshot saved! Find it there:", "icn_screenshot");
+            }
+    }
 }
 
 function saveSelectedCompsAsPNG() {
     var selectedComps = app.project.selection;
+    var activeComp = app.project.activeItem;
     var res = [1, 1];
-
     if (selectedComps.length === 0) {
         showAlertWindow("Please select one or more compositions.");
         return;
     }
-
-    for (var i = 0; i < selectedComps.length; i++) {
-        var currentComp = selectedComps[i];
-
-        if (currentComp instanceof CompItem) {
-            if (currentComp.resolutionFactor.toString() !== "1,1") {
-                res = currentComp.resolutionFactor;
-                currentComp.resolutionFactor = [1, 1];
-            }
-
-            var baseLocation = "~/Documents/";
-            var screenshotsFolder = new Folder(baseLocation + "_screenshots/");
-
-            if (!screenshotsFolder.exists) {
-                screenshotsFolder.create();
-            }
-
-            var currentDate = new Date();
-            var formattedDate = currentDate.getFullYear() +
-                ("0" + (currentDate.getMonth() + 1)).slice(-2) +
-                ("0" + currentDate.getDate()).slice(-2);
-            var formattedTime = ("0" + currentDate.getHours()).slice(-2) +
-                ("0" + currentDate.getMinutes()).slice(-2) +
-                ("0" + currentDate.getSeconds()).slice(-2);
-
-            var filename = currentComp.name + "_" + formattedDate + "_" + formattedTime + ".png";
-            var theLocation = File(baseLocation + "_screenshots/" + filename);
-
-            if (theLocation != null) {
-                theLocation = decodeURIComponent(theLocation);
-                currentComp.saveFrameToPng(currentComp.time, File(theLocation));
-                var finalpath = theLocation.substring(0, theLocation.lastIndexOf('/') + 1);
-                var openFolder = new Folder(finalpath);
-                openFolder.execute();
-                currentComp.resolutionFactor = res;
-            }
-        } else {
-            showAlertWindow("Please select only compositions.");
+    if (checkComp(activeComp)) {
+        if (app.project.activeItem.resolutionFactor != "1,1") {
+            res = app.project.activeItem.resolutionFactor;
+            app.project.activeItem.resolutionFactor = [1, 1];
         }
+
+        // Set the location here
+        var baseLocation = "~/Documents/";
+        // Create _screenshots folder if it doesn't exist
+        var screenshotsFolder = new Folder(baseLocation + "_screenshots/");
+        if (!screenshotsFolder.exists) {
+            screenshotsFolder.create();
+        }
+        for (var i = 1; i <= app.project.numItems; i++) {
+          if (
+            app.project.item(i).selected &&
+            app.project.item(i) instanceof CompItem
+          ) {
+                currentComp = app.project.item(i);
+                // Generate a filename based on date and time
+                var currentDate = new Date();
+                var formattedDate = currentDate.getFullYear() +
+                    ("0" + (currentDate.getMonth() + 1)).slice(-2) +
+                    ("0" + currentDate.getDate()).slice(-2);
+                var formattedTime = ("0" + currentDate.getHours()).slice(-2) +
+                    ("0" + currentDate.getMinutes()).slice(-2) +
+                    ("0" + currentDate.getSeconds()).slice(-2);
+                var filename = currentComp.name + "_" + formattedDate + "_" + formattedTime + ".png";
+
+                var theLocation = File(baseLocation + "_screenshots/" + filename);
+                if (theLocation != null) {
+                    // Show the correct character in the path
+                    theLocation = decodeURIComponent(theLocation);
+                    currentComp.saveFrameToPng(activeComp.time, File(theLocation));
+                    var finalpath = theLocation.substring(0, theLocation.lastIndexOf('/') + 1);
+                    var openFolder = new Folder(finalpath);
+                }
+            }
+        }
+
+        showAlertWindow(finalpath, "Screenshots saved at:", "icn_screenshot");
+        openFolder.execute();
+
+        app.project.activeItem.resolutionFactor = res;
     }
 }
+
 addHoverMenuToButton(fitView, hoverMenu_screenShot);
 /*
 fitView.onClick = function() {
