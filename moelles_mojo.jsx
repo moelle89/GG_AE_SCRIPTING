@@ -1034,7 +1034,7 @@ try {
   //@include '_scripts/projectCleanup.jsx';
   //@include '_scripts/moveAnchorPoint.jsx';
 } catch (err) {
-  showAlertWindow(err);
+  showAlertWindow(err.toString());
 }
 /// INCLUDES END
 (function () {
@@ -1390,7 +1390,7 @@ btn_about.onClick = function(e) {
         hexToArray("#ffffff"),
         1
     );
-    ctext.graphics.font = ScriptUI.newFont("Arial", "Bold", fontSize1); // Change the font size
+    ctext.graphics.font = ScriptUI.newFont("Arial", "Regular", fontSize1); // Change the font size
     ctext.onDraw = txtDrawLeft;
 
     var ctext2 = content.add(
@@ -1541,7 +1541,7 @@ function addTooltipToButton(button, tooltipText, width, invert, multiline, isIMG
             if (tooltipWin) {
                 tooltipWin.close();
             }
-        } catch (err) {}
+        } catch (err) {showAlertWindow(err.toString())}
     });
 }
 
@@ -2132,8 +2132,6 @@ function scaleToFillComp() {
         } else {
             showAlertWindow("Please select a layer.");
         }
-    } else {
-        showAlertWindow("Please open a composition.");
     }
     app.endUndoGroup();
 }
@@ -2363,7 +2361,7 @@ function importAndCopyFile() {
             try {
                 footageFolder.create();
             } catch (err) {
-                showAlertWindow("Error creating footage folder: " + err);
+                showAlertWindow("Error creating footage folder: " + err.toString());
                 // If there's an error creating the folder, exit the script
                 return;
             }
@@ -2374,7 +2372,7 @@ function importAndCopyFile() {
         try {
             fileToImport.copy(copiedFilePath);
         } catch (err) {
-            showAlertWindow("Error copying file to footage folder: " + err);
+            showAlertWindow("Error copying file to footage folder: " + err.toString());
             // If there's an error copying the file, exit the script
             return;
         }
@@ -3109,7 +3107,7 @@ function getLayerBaseType(layerObj) {
 
 function checkComp(inputComp) {
     if (inputComp === null || !(inputComp instanceof CompItem)) {
-        showAlertWindow("No active composition");
+        showAlertWindow("Please open a composition");
         return false;
     } else {
         return true;
@@ -3477,9 +3475,11 @@ btn_addGallery.onClick = function() {
 };
 
 function saveFrameAsPNG(){
-    var activeComp = app.project.activeItem;
     var res = [1,1];
-    if (checkComp(activeComp)) {
+    // Check if a composition is active
+    if (app.project.activeItem instanceof CompItem) {
+        var activeComp = app.project.activeItem; 
+        app.activeViewer.setActive();   
         if(app.project.activeItem.resolutionFactor != "1,1"){
             res = app.project.activeItem.resolutionFactor;
             app.project.activeItem.resolutionFactor = [1,1];
@@ -3509,22 +3509,25 @@ function saveFrameAsPNG(){
                 activeComp.saveFrameToPng(activeComp.time, File(theLocation));
                     var finalpath = theLocation.substring(0,theLocation.lastIndexOf('/')+1);
                     var openFolder = new Folder(finalpath);
+                    showAlertWindow(finalpath, "Screenshot saved! Find it there:", "icn_screenshot");
                     openFolder.execute();
                     app.project.activeItem.resolutionFactor = res;
-                    showAlertWindow(finalpath, "Screenshot saved! Find it there:", "icn_screenshot");
             }
+    } else {
+        showAlertWindow("Please open a composition.");
     }
 }
 
 function saveSelectedCompsAsPNG() {
     var selectedComps = app.project.selection;
-    var activeComp = app.project.activeItem;
     var res = [1, 1];
+    if (app.project.activeItem instanceof CompItem) {
+        var activeComp = app.project.activeItem;
+        app.activeViewer.setActive();        
     if (selectedComps.length === 0) {
         showAlertWindow("Please select one or more compositions.");
         return;
     }
-    if (checkComp(activeComp)) {
         if (app.project.activeItem.resolutionFactor != "1,1") {
             res = app.project.activeItem.resolutionFactor;
             app.project.activeItem.resolutionFactor = [1, 1];
@@ -3568,6 +3571,8 @@ function saveSelectedCompsAsPNG() {
         openFolder.execute();
 
         app.project.activeItem.resolutionFactor = res;
+    } else {
+        showAlertWindow("Please open a composition.");
     }
 }
 

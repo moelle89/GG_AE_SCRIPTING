@@ -87,8 +87,6 @@ function removeApEx() {
     }
 }
 
-
-
 function setAnchorPoint(option) {
     // Check if a composition is active
     if (app.project.activeItem instanceof CompItem) {
@@ -134,10 +132,10 @@ function setAnchorPoint(option) {
                 }
             }
         } else {
-            alert("Please select a layer.");
+            showAlertWindow("Please select a layer.");
         }
     } else {
-        alert("Please open a composition.");
+        showAlertWindow("Please open a composition.");
     }
 }
 
@@ -169,7 +167,7 @@ function moveAnchor(row, col, ignoreMasks) {
                     // if the only layer selected is a camera layer, alert the user
                     // otherwise just skip over it
                     if (theLayers.length == 1) {
-                        alert("Move Anchor Point will not change the anchor point of a camera");
+                        showAlertWindow("Move Anchor Point will not change the anchor point of a camera");
                     }
                     // continue tells the script to skip the rest of the loop
                     // and move on to the next iteration
@@ -402,10 +400,10 @@ function moveAnchor(row, col, ignoreMasks) {
                 theLayer.property("Position").setValue(anchorpoint);
             }
         } else {
-            alert("Please select a layer.");
+            showAlertWindow("Please select a layer.");
             return;
         }
     } else {
-        alert("Please open a composition.");
+        showAlertWindow("Please open a composition.");
     }
 }

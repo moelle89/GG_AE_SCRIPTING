@@ -21,7 +21,7 @@ function createResourceFile(filename, binaryString) {
       var myFile = new File(newPath + "img/" + filename);
       return myFile;
    } catch (err) {
-      alert("Error in createResourceFile function\n" + err.toString());
+      showAlertWindow("Error in createResourceFile function\n" + err.toString());
    }
 }
 
@@ -155,13 +155,13 @@ function clean(a, b, c, d, e, f, g) {
          msg = msg + "Cleared: Disk cache \r";
       }
       if (msg != "") {
-         alert(msg);
+         showAlertWindow(msg);
       }
       else {
-         alert("Nothing found to clean up!");
+         showAlertWindow("Nothing found to clean up!");
       }
    } catch (err) {
-      alert("Error at line # " + err.line.toString() + "\r" + err.toString());
+      showAlertWindow("Error at line # " + err.line.toString() + "\r" + err.toString());
    }
 }
 var disabledEx = 0;
