@@ -5,7 +5,7 @@
     "logo_bg_color": "#FFFFFF",
     "darkmode": 1,
     "intro": 0,
-    "video": 1,
+    "video": 0,
     "audio_muted": 0,
     "audio_track": 11,
     "text2voice": 0,

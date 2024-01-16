@@ -1,6 +1,4 @@
 @echo off
-
-REM pick a folder
 setlocal EnableDelayedExpansion
 set "specificFolder=C:\data_driven_ae_template-1\_assets\packs\05"
 

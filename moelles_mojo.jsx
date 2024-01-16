@@ -32,6 +32,7 @@ var OS = $.os.indexOf("Windows") == -1 ? "macos" : "windows";
 var slash = OS == "windows" ? "\\" : "/";
 var mojoUI = {
     assetsFolder: File($.fileName).parent.fsName + slash,
+    backgroundColor: hexToArray("#1e1e20")
 };
 mojoUI.imagesFolder = mojoUI.assetsFolder + "_img";
 
@@ -1203,7 +1204,7 @@ function txtDrawLeft() {
     @parem {staticColor} - string - icon color when static
     @parem {hoverColor} - string - icon color when hovered (optional)
 */
-function buttonColorText(parentObj, buttonText, staticColor, hoverColor) {
+function buttonColorText(parentObj, buttonText, staticColor, hoverColor, leftAlign, textSize) {
     var btn = parentObj.add("button", undefined, "", {
         name: "ok"
     }); // add a basic button to style
@@ -1219,16 +1220,19 @@ function buttonColorText(parentObj, buttonText, staticColor, hoverColor) {
         hexToArray("#D6E9FF"),
         1
     );
-    btn.graphics.font = ScriptUI.newFont("Arial", "Bold", 11);
-    btn.onDraw = txtDrawLeft;
+    var fontSize = 11;
+    if(textSize){fontSize = textSize};
+    btn.graphics.font = ScriptUI.newFont("Arial", "Bold", fontSize);
+    if(leftAlign){btn.onDraw = txtDrawLeft;}
+    else{btn.onDraw = txtDraw;}
 
     if (hoverColor) {
         try {
             btn.addEventListener("mouseover", function() {
-                updateTextButtonOnHover(this, buttonText, hoverColor, "#FFFFFF");
+                updateTextButtonOnHover(this, buttonText, hoverColor, "#FFFFFF", leftAlign);
             });
             btn.addEventListener("mouseout", function() {
-                updateTextButtonOnHover(this, buttonText, staticColor, "#D6E9FF");
+                updateTextButtonOnHover(this, buttonText, staticColor, "#D6E9FF", leftAlign);
             });
         } catch (err) {
             // fail silently
@@ -1238,7 +1242,7 @@ function buttonColorText(parentObj, buttonText, staticColor, hoverColor) {
     return btn;
 }
 
-function updateTextButtonOnHover(btn, buttonText, backgroundColor, textColor) {
+function updateTextButtonOnHover(btn, buttonText, backgroundColor, textColor, leftAlign, textSize) {
     btn.fillBrush = btn.graphics.newBrush(
         btn.graphics.BrushType.SOLID_COLOR,
         hexToArray(backgroundColor)
@@ -1249,8 +1253,11 @@ function updateTextButtonOnHover(btn, buttonText, backgroundColor, textColor) {
         hexToArray(textColor),
         1
     );
-    btn.graphics.font = ScriptUI.newFont("Arial", "Bold", 11);
-    btn.onDraw = txtDrawLeft;
+    var fontSize = 11;
+    if(textSize){fontSize = textSize};
+    btn.graphics.font = ScriptUI.newFont("Arial", "Bold", fontSize);
+    if(leftAlign){btn.onDraw = txtDrawLeft;}
+    else{btn.onDraw = txtDraw;}
     return btn;
 }
 
@@ -1356,7 +1363,8 @@ btn_about.onClick = function(e) {
     w.alignment = ["fill", "top"];
     w.margins = 0;
     var gg_img = w.add("image", undefined, mojoUI.createIcon("about_head"), {name: ""})
-    // mojoUI.setBG(content, hexToArray("#ffffff"),1);
+    mojoUI.setBG(w, mojoUI.backgroundColor);
+
     gg_img.minimumSize.width = 400;
     gg_img.minimumSize.height = 64;
     var content = w.add("group");
@@ -1609,7 +1617,8 @@ function HoverMenu(title, buttonsData) {
                 btn_grp,
                 buttonData.text,
                 "#161616",
-                "#010101"
+                "#010101",
+                true
             );
 
             // Add a click event listener to the btn_grp using the closure
@@ -2449,29 +2458,28 @@ function changeJSONTEXT(inputText, jsonKey) {
         }
         app.purge(PurgeTarget.IMAGE_CACHES);
         refreshCurrentFrame();
-		var res = [1,1];
+		var res = app.project.activeItem.resolutionFactor;
         var rft = app.project.activeItem.resolutionFactor;
-        // 1
-		if((rft != "2,2") && (rft != "3,3")  && (rft != "4,4")){
-			//rf = [2,2];
-            var res = [3,3];
-		}
-        // 2
-		if((rft != "1,1") && (rft != "2,2")  && (rft != "3,3")){
-			//rf = [1,1];
-            var res = [4,4];
-		}
-        // 4
-		if((rft != "2,2") && (rft != "3,3")  && (rft != "1,1")){
-			//rf = [3,3];
-            var res = [2,2];
-		}
-        // 3
-		if((rft != "2,2") && (rft != "4,4")  && (rft != "1,1")){
-			//rf = [4,4];
-            var res = [1,1];
-		}
-
+            // 1
+            if((rft != "2,2") && (rft != "3,3")  && (rft != "4,4")){
+                //rf = [2,2];
+                var res = [2,2];
+            }
+            // 2
+            if((rft != "1,1") && (rft != "4,4")  && (rft != "3,3")){
+                //rf = [1,1];
+                var res = [1,1];
+            }
+            // 4
+            if((rft != "2,2") && (rft != "3,3")  && (rft != "1,1")){
+                //rf = [3,3];
+                var res = [3,3];
+            }
+            // 3
+            if((rft != "2,2") && (rft != "4,4")  && (rft != "1,1")){
+                //rf = [4,4];
+                var res = [4,4];
+            }
         app.activeViewer.setActive();
 		app.project.activeItem.resolutionFactor = res;
         if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
@@ -3177,7 +3185,7 @@ function showAlertWindow(infoText, title) {
         [0.83, 0.94, 1, 0.75], 1
     );
 
-    var okButton = buttonColorText(diaWin, "OK", "#0060b1", "#028def");
+    var okButton = buttonColorText(diaWin, "OK", "#0060b1", "#028def", false, 13);
     okButton.preferredSize.height = 32;
 
     okButton.onClick = function() {
@@ -3441,9 +3449,48 @@ addTooltipToButton(
     85
 );
 
+function saveFrameAsPNG(){
+	var activeComp = app.project.activeItem;
+    var res = [1,1];
+	if(app.project.activeItem.resolutionFactor != "1,1"){
+		res = app.project.activeItem.resolutionFactor;
+		app.project.activeItem.resolutionFactor = [1,1];
+	}
+	// Set the location here
+	var baseLocation = "~/Documents/";
+    // Create _screenshots folder if it doesn't exist
+    var screenshotsFolder = new Folder(baseLocation + "_screenshots/");
+    if (!screenshotsFolder.exists) {
+        screenshotsFolder.create();
+    }
+
+	// Generate a filename based on date and time
+	var currentDate = new Date();
+	var formattedDate = currentDate.getFullYear() +
+		("0" + (currentDate.getMonth() + 1)).slice(-2) +
+		("0" + currentDate.getDate()).slice(-2);
+	var formattedTime = ("0" + currentDate.getHours()).slice(-2) +
+		("0" + currentDate.getMinutes()).slice(-2) +
+		("0" + currentDate.getSeconds()).slice(-2);
+	var filename = "Snapshot_" + formattedDate + "_" + formattedTime + ".png";
+
+	var theLocation = File(baseLocation + "_screenshots/" + filename);
+		if(theLocation!=null){
+			//show the correct charactar in the path
+			theLocation = decodeURIComponent(theLocation);
+			activeComp.saveFrameToPng(activeComp.time, File(theLocation));
+				var finalpath = theLocation.substring(0,theLocation.lastIndexOf('/')+1);
+				var openFolder = new Folder(finalpath);
+				openFolder.execute();
+                app.project.activeItem.resolutionFactor = res;
+		}
+}
+
+
 fitView.onClick = function() {
       if (app.project && app.project.file !== null) {
-          screenShot(this);
+          //screenShot(this);
+          saveFrameAsPNG();
       } else {
         showAlertWindow("Please open a project");
     }
@@ -3451,14 +3498,14 @@ fitView.onClick = function() {
 addTooltipToButton(
     delExp,
     "delete all expressions of a selected layers transform-properties",
-    85
+    85, false, true
 );
 
 delExp.onClick = function() {
     removeSpecificExpressions();
 };
 
-addTooltipToButton(openBoilerplate, "open BOILERPLATE.aep", 85);
+addTooltipToButton(openBoilerplate, "OPEN BOILERPLATE.aep", 85);
 
 openBoilerplate.onClick = function() {
     var my_file = new File("C:/data_driven_ae_template-1/___boilerplate_23.aep");
@@ -3957,7 +4004,7 @@ function changeDemoContent(demoPack) {
             //app.purge(PurgeTarget.IMAGE_CACHES);
             var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo" + demoPack + ".bat";
             var result = system.callSystem(batScriptPath);
-
+            openCompositionByName(activeItemT.name);
             var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img_footage.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png", "input_template.json"];
             //openSubfolderInProject("(footage)/Footage/jpg");
             //openCompInViewer("__SETTINGS", "SETTINGS");
@@ -3965,11 +4012,7 @@ function changeDemoContent(demoPack) {
             // Move the playhead by one frame
             app.project.activeItem.time += app.project.activeItem.frameDuration;
         }
-            openCompositionByName(activeItemT.name);
-            refreshCurrentFrame();
-            app.purge(PurgeTarget.IMAGE_CACHES);
-            refreshCurrentFrame();
-            var res = [1,1];
+            var res = app.project.activeItem.resolutionFactor;
             var rft = app.project.activeItem.resolutionFactor;
             //alert(app.project.activeItem.resolutionFactor);
             app.purge(PurgeTarget.IMAGE_CACHES);
@@ -3992,22 +4035,22 @@ function changeDemoContent(demoPack) {
             // 1
             if((rft != "2,2") && (rft != "3,3")  && (rft != "4,4")){
                 //rf = [2,2];
-                var res = [3,3];
+                var res = [2,2];
             }
             // 2
-            if((rft != "1,1") && (rft != "2,2")  && (rft != "3,3")){
+            if((rft != "1,1") && (rft != "4,4")  && (rft != "3,3")){
                 //rf = [1,1];
-                var res = [4,4];
+                var res = [1,1];
             }
             // 4
             if((rft != "2,2") && (rft != "3,3")  && (rft != "1,1")){
                 //rf = [3,3];
-                var res = [2,2];
+                var res = [3,3];
             }
             // 3
             if((rft != "2,2") && (rft != "4,4")  && (rft != "1,1")){
                 //rf = [4,4];
-                var res = [1,1];
+                var res = [4,4];
             }
 
             app.activeViewer.setActive();
