@@ -1028,6 +1028,7 @@ var parent2null = buttonArray[5];
 
 /// INCLUDES
 try {
+  //@include '_scripts/json2.js';
   //@include '_scripts/rectangleWizard.jsx';
   //@include '_scripts/elementsDiag.jsx';
   //@include '_scripts/organizeProjectAssets.jsx';
