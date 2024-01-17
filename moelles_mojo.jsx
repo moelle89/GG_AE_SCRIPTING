@@ -2845,35 +2845,41 @@ function revertJson() {
     app.endUndoGroup();
 }
 
-// Function to replace composition name
+// Function to replace composition name and add suffix based on resolution
 function findReplaceCompositionName(prefix, replaceStr) {
     // Get the current project
     var currentProject = app.project;
+ 
     // Check if a project is open
     if (currentProject) {
-        // Get all compositions in the project
-        var allComps = currentProject.rootFolder.items;
-        // Loop through each composition
-        for (var i = 1; i <= allComps.length; i++) {
-            var comp = allComps[i];
+        // Array to store compositions to be renamed
+        var compositionsToRename = [];
+ 
+        // First iteration: Collect compositions that match the prefix
+        for (var i = 1; i <= app.project.numItems; i++) {
+            var comp = app.project.item(i);
+ 
             // Check if it's a composition
             if (comp instanceof CompItem) {
                 // Check if the composition name starts with the specified prefix
                 if (comp.name.indexOf(prefix) === 0) {
-                    // Find the position of the next underscore after the prefix
-                    var underscoreIndex = comp.name.indexOf("_", prefix.length);
-                    // Check if an underscore is found
-                    if (underscoreIndex !== -1) {
-                        // Replace the portion of the composition name
-                        comp.name =
-                            comp.name.substring(0, prefix.length) +
-                            replaceStr +
-                            comp.name.substring(underscoreIndex);
-                    } else {
-                        // If no underscore is found, replace the portion after the prefix
-                        comp.name = comp.name.substring(0, prefix.length) + replaceStr;
-                    }
+                    compositionsToRename.push(comp);
                 }
+            }
+        }
+ 
+        // Second iteration: Rename compositions in the array based on resolution
+        for (var j = 0; j < compositionsToRename.length; j++) {
+            var comp = compositionsToRename[j];
+            var width = comp.width;
+            var height = comp.height;
+ 
+            if (width == 1080 && height == 1080) {
+                comp.name = prefix + replaceStr + "_square";
+            } else if (width == 1920 && height == 1080) {
+                comp.name = prefix + replaceStr + "_1920";
+            } else if (width == 1080 && height == 1920) {
+                comp.name = prefix + replaceStr;
             }
         }
     } else {
@@ -3294,7 +3300,7 @@ btn_createComps.onClick = function() {
                                 app.project.save(newProjectFile);
 
                                 // Alert the user that the project has been saved
-                                showAlertWindow("Project saved as: " + newProjectName);
+                                showAlertWindow("Project saved as: " + newProjectName + ".aep");
                                 // Optional: Redraw the UI to reflect the changes
                             } else {
                                 // Alert the user that no name was entered
@@ -3387,7 +3393,7 @@ btn_createIMGComps.onClick = function() {
                                 openCompositionByName(newProjectName + "_1920");
                                 createSolid("BG");
                                 openCompositionByName("__SETTINGS");
-                                showAlertWindow("Project saved as: " + newProjectName);
+                                showAlertWindow("Project saved as: " + newProjectName + ".aep");
 
                                 // Optional: Redraw the UI to reflect the changes
                             } else {
@@ -3637,10 +3643,7 @@ changeProjectName.onClick = function() {
         var projectName = app.project.file.name;
         // If projectname starts with "comp_"
         if (projectName.match("comp_")) {
-            showAlertWindow("project name contains comp_");
             if (containsVariableString("comp_")) {
-                showAlertWindow("project includes compositions using comp_");
-
                 var ptext =
                     "Please enter a name for the template\n (without spaces, special characters, capital letters, or dashes)";
                 var tempName = showDialogWindow(ptext);
@@ -3658,14 +3661,12 @@ changeProjectName.onClick = function() {
                     app.project.save(newProjectFile);
                     // Alert the user that the project has been saved
                     openCompositionByName(newProjectName);
-                    showAlertWindow("Project saved as: " + newProjectName);
+                    showAlertWindow("Project saved as: " + newProjectName + ".aep");
                 }
             }
         }
         if (projectName.match("post_")) {
-            showAlertWindow("project name contains post_");
             if (containsVariableString("post_")) {
-                showAlertWindow("project includes compositions using post_");
                 var ptext =
                     "Please enter a name for the template\n (without spaces, special characters, capital letters, or dashes)";
                 var tempName = showDialogWindow(ptext);
@@ -3683,7 +3684,7 @@ changeProjectName.onClick = function() {
                     app.project.save(newProjectFile);
                     // Alert the user that the project has been saved
                     openCompositionByName(newProjectName);
-                    showAlertWindow("Project saved as: " + newProjectName);
+                    showAlertWindow("Project saved as: " + newProjectName + ".aep");
                 }
             }
         }
