@@ -11,8 +11,8 @@
     "text2voice": 0,
     "fx_effects": 0,
     "accent": {
-      "color": "#008f76",
-      "color_dark": "#00BA9B"
+      "color": "#00a950",
+      "color_dark": "#76ba00"
     },
     "title": {
       "text": "50 Foods That Are Super Healthy",
@@ -30,8 +30,8 @@
        "text": "Now available:",
        "color": "#222222",
        "color_dark": "#ffffff",
-       "cursor_color": "#00BA9B",
-       "cursor_color_dark": "#008f76",
+       "cursor_color": "#76ba00",
+       "cursor_color_dark": "#00a950",
        "cursor_stroke": "#ffffff",
        "cursor_stroke_dark": "#FFFFFF",
        "font": ""
@@ -48,7 +48,7 @@
       "color": "#080808",
       "color_dark": "#FFFFFF",
       "bg_color": "#ffffff",
-      "bg_color_dark": "#008f76",
+      "bg_color_dark": "#00a950",
       "avatar": 0,
       "font": ""
     },

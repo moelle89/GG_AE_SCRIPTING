@@ -646,7 +646,7 @@ var demo6grp = demoGrp2.add("group", undefined, {
     name: "demo6grp",
 });
 
-var demo6 = buttonColorText(demo6grp, "06", "#204200", "#418400");
+var demo6 = buttonColorText(demo6grp, "06", "#00422b", "#00a950");
 demo6.preferredSize.width = 55;
 
 var demo7grp = demoGrp2.add("group", undefined, {
@@ -1148,8 +1148,7 @@ function txtDraw() {
                     this.text,
                     this.graphics.font,
                     this.size[0]
-                )[0]) /
-            2,
+                )[0]) / 2,
             (this.size[1] -
                 this.graphics.measureString(
                     this.text,
@@ -1215,7 +1214,7 @@ function buttonColorText(parentObj, buttonText, staticColor, hoverColor, leftAli
         hexToArray("#D6E9FF"),
         1
     );
-    var fontSize = 10;
+    var fontSize = 11;
     if(textSize){fontSize = textSize};
     btn.graphics.font = ScriptUI.newFont("Arial", "Bold", fontSize);
     if(leftAlign){btn.onDraw = txtDrawLeft;}
@@ -1393,70 +1392,51 @@ dialog.show();
 
 btn_about.onClick = function(e) {
     // open about panel
-    var w = new Window("dialog", "About " + scriptName);
-    w.orientation = "column";
-    w.minimumSize.width = 380;
-    w.preferredSize.height = 140;
-    w.alignChildren = ["fill", "top"];
-    w.alignment = ["fill", "top"];
-    w.margins = 0;
-    var gg_img = w.add("image", undefined, mojoUI.createIcon("about_head"), {name: ""})
-    mojoUI.setBG(w, mojoUI.backgroundColor);
+    var dialog = new Window("dialog", "About " + scriptName);
+    dialog.orientation = "column"; 
+    dialog.alignChildren = ["center","top"]; 
+    dialog.spacing = 19; 
+    dialog.margins = 0; 
+    mojoUI.setBG(dialog, mojoUI.backgroundColor);
 
-    gg_img.minimumSize.width = 400;
-    gg_img.minimumSize.height = 64;
-    var content = w.add("group");
-    content.orientation = "column";
-    content.margins = 10;
-    content.minimumSize.width = 500;
-    content.alignChildren = ["fill", "top"];
-    content.alignment = ["fill", "top"];
-     var fontSize1 = 15; // Adjust the font size for ctext
+   var gg_img = dialog.add("image", undefined, mojoUI.createIcon("about_head"), {name: ""}); 
 
-    var ctext = content.add(
-        "statictext",
-        [0, 0, 500, 80],
-        "moelles mojo is a little helper to make the creation of templates for the \nGetGenius template system more efficient and less pain in the ass ;-)", {
-            multiline: false,
-        }
-    );
-    ctext.alignment = ["fill", "top"];
-    ctext.preferredSize.width = 500;
-    ctext.preferredSize.height = 50;
+    var statictext1 = dialog.add("group", undefined , {name: "statictext1"}); 
+        statictext1.getText = function() { var t=[]; for ( var n=0; n<statictext1.children.length; n++ ) { var text = statictext1.children[n].text || ''; if ( text === '' ) text = ' '; t.push( text ); } return t.join('\n'); }; 
+        statictext1.preferredSize.width = 530; 
+        statictext1.orientation = "column"; 
+        statictext1.alignChildren = ["center","center"]; 
+        statictext1.spacing = 0; 
 
-    ctext.textPen = ctext.graphics.newPen(
-        content.graphics.PenType.SOLID_COLOR,
-        hexToArray("#ffffff"),
-        1
-    );
-    ctext.graphics.font = ScriptUI.newFont("Arial", "Regular", fontSize1); // Change the font size
-    ctext.onDraw = txtDrawLeft;
+        statictext1.add("statictext", undefined, "moelles mojo is a little helper to make the creation and debugging of templates for"); 
+        statictext1.add("statictext", undefined, "the GetGenius Creatives System, more efficient and less pain in the a**."); 
 
-    var ctext2 = content.add(
-        "statictext",
-        [140, 0, 500, 90],
-        "Created by Manuel Moellmann, Head of Design at ITNT Group", {
-            multiline: true,
-        }
-    );
-    ctext2.alignment = ["fill", "top"];
-    ctext2.preferredSize.width = 500;
-    ctext2.preferredSize.height = 40;
+        // Customize text color
+        statictext1.graphics.foregroundColor = statictext1.graphics.newPen(statictext1.graphics.PenType.SOLID_COLOR,[0.97, 0.97, 1, 0.95], 1);
 
-    ctext2.textPen = ctext.graphics.newPen(
-        content.graphics.PenType.SOLID_COLOR,
-        hexToArray("#ffffff"),
-        1
-    );
-    ctext2.graphics.font = ScriptUI.newFont("Arial", "Regular", 11); // Change the font size
-    ctext2.onDraw = txtDrawLeft;
+    var statictext2 = dialog.add("statictext", undefined, undefined, {name: "statictext2"}); 
+        statictext2.text = "Created by Manuel Moellmann, Head of Design at ITNT Group"; 
+        statictext2.preferredSize.width = 508; 
+        statictext2.justify = "center";
 
-    gg_img.addEventListener("click", function() {
-        visitURL("https://github.com/moelle89/GG_AE_SCRIPTING");
-    });
-    w.show();
-};
+        statictext2.graphics.foregroundColor = statictext2.graphics.newPen(statictext2.graphics.PenType.SOLID_COLOR,[0.83, 0.94, 1, 0.75], 1);
 
+    var prefInfoGrp = dialog.add("group", undefined, {name: "prefInfoGrp"}); 
+        prefInfoGrp.orientation = "column"; 
+        prefInfoGrp.alignChildren = ["center","center"]; 
+        prefInfoGrp.spacing = 0; 
+        prefInfoGrp.margins = 20; 
+        prefInfoGrp.alignment = ["fill","top"]; 
+        
+    var okButton = buttonColorText(prefInfoGrp, " CLICK TO CHECK FOR UPDATES       ", "#0060b1", "#028def", false, 11);
+    okButton.preferredSize.height = 30;
+    okButton.onClick = function() {
+        visitURL("https://github.com/moelle89/GG_AE_SCRIPTING/releases");
+        dialog.close();
+    };
+    gg_img.addEventListener("click", function() {visitURL("https://github.com/moelle89/GG_AE_SCRIPTING/releases")});
+    dialog.show();
+}
 ///
 
 function getCurrentMousePosition(event, width) {
@@ -2347,8 +2327,8 @@ function openSubfolderInProject(subfolderName) {
                 // Perform your desired action here
                 try {
                     subfolder.create();
-                } catch (e) {
-                    showAlertWindow("Error creating footage folder: " + e);
+                } catch (err) {
+                    showAlertWindow("Error creating footage folder: " + err.toString());
                     // If there's an error creating the folder, exit the script
                     return;
                 }
@@ -3246,7 +3226,7 @@ function showAlertWindow(infoText, title, icon) {
     } else {
         var staticText = diaWin.add("statictext", undefined, undefined, {
         name: "nameLabel",
-        multiline: true });
+        multiline: false });
         staticText.text = infoText;
         staticText.justify = "center";
         staticText.alignment = ["fill", "center"];
