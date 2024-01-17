@@ -3610,7 +3610,6 @@ function saveSelectedCompsAsPNG() {
 
         app.project.activeItem.resolutionFactor = res;
 }
-
 addHoverMenuToButton(fitView, hoverMenu_screenShot);
 /*
 fitView.onClick = function() {
