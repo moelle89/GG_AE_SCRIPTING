@@ -3547,13 +3547,25 @@ function saveFrameAsPNG(){
 function saveSelectedCompsAsPNG() {
     var selectedComps = app.project.selection;
     var res = [1, 1];
-    if (app.project.activeItem instanceof CompItem) {
-        var activeComp = app.project.activeItem;
-        app.activeViewer.setActive();        
-    if (selectedComps.length === 0) {
-        showAlertWindow("Please select one or more compositions.");
-        return;
-    }
+    var activeComp;
+        // Check if there is an active composition
+            if (app.project.activeItem instanceof CompItem) {
+                activeComp = app.project.activeItem;
+                app.activeViewer.setActive();
+            } else if (selectedComps.length > 0 && selectedComps[0] instanceof CompItem) {
+                // If no active composition, select the first composition from the array
+                activeComp = selectedComps[0];
+                openCompositionByName(activeComp.name);
+            } else {
+                showAlertWindow("Please open a composition or select one or more compositions.");
+                return;
+            }
+
+        if (selectedComps.length === 0) {
+            showAlertWindow("Please select one or more compositions.");
+            return;
+        }
+
         if (app.project.activeItem.resolutionFactor != "1,1") {
             res = app.project.activeItem.resolutionFactor;
             app.project.activeItem.resolutionFactor = [1, 1];
@@ -3597,9 +3609,6 @@ function saveSelectedCompsAsPNG() {
         openFolder.execute();
 
         app.project.activeItem.resolutionFactor = res;
-    } else {
-        showAlertWindow("Please open a composition.");
-    }
 }
 
 addHoverMenuToButton(fitView, hoverMenu_screenShot);
@@ -3644,6 +3653,7 @@ changeProjectName.onClick = function() {
         // If projectname starts with "comp_"
         if (projectName.match("comp_")) {
             if (containsVariableString("comp_")) {
+
                 var ptext =
                     "Please enter a name for the template\n (without spaces, special characters, capital letters, or dashes)";
                 var tempName = showDialogWindow(ptext);
