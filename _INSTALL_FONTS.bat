@@ -1,16 +1,12 @@
 @echo off
-setlocal enabledelayedexpansion
+set "fontFolder=%~dp0_FONTS"
 
-set "script_dir=%~dp0"
-set "fonts_dir=%script_dir%_FONTS"
+echo Installing fonts from %fontFolder%...
 
-echo Installing fonts from %fonts_dir%...
-
-for %%F in ("%fonts_dir%\*.ttf" "%fonts_dir%\*.otf" "%fonts_dir%\*.fon") do (
-    echo Installing %%~nxF...
-    start "" /w fontview /install "%%F"
+for %%i in (%fontFolder%\*.ttf %fontFolder%\*.otf) do (
+    echo Installing: %%i
+    copy "%%i" "%userprofile%\AppData\Local\Microsoft\Windows\Fonts"
 )
 
-echo All fonts installed successfully.
-cmd /k 
-endlocal
+echo Fonts installed successfully.
+pause
