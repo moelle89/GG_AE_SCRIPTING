@@ -1,10 +1,6 @@
 ﻿var scriptName = "moelles mojo";
 var scriptVersion = "V0018";
 
-var scriptFile = new File($.fileName);
-$.evalFile("_scripts/json2.js"); // Include json2.js for JSON parsing
-
-
 function createDockableUI(thisObj) {
     var dialog =
         thisObj instanceof Panel ?
@@ -1032,6 +1028,7 @@ var parent2null = buttonArray[5];
 
 /// INCLUDES
 try {
+  //@include '_scripts/json2.js';
   //@include '_scripts/rectangleWizard.jsx';
   //@include '_scripts/elementsDiag.jsx';
   //@include '_scripts/organizeProjectAssets.jsx';
@@ -4131,6 +4128,7 @@ function changeDemoContent(demoPack) {
         // Extract the project name from the file path, assuming a standard naming scheme
         var projectName = app.project.file.name;    
         if (projectName.match("comp_") || projectName.match("post_") || projectName.match("___boilerplate")) {
+
             app.executeCommand(3985); // CancelCachingWorkAreainBackground
             app.executeCommand(2372); // Purge ImageCaches
             //app.purge(PurgeTarget.IMAGE_CACHES);
