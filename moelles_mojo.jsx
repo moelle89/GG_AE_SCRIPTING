@@ -1,6 +1,10 @@
 ﻿var scriptName = "moelles mojo";
 var scriptVersion = "V0018";
 
+var scriptFile = new File($.fileName);
+$.evalFile("_scripts/json2.js"); // Include json2.js for JSON parsing
+
+
 function createDockableUI(thisObj) {
     var dialog =
         thisObj instanceof Panel ?
@@ -1028,7 +1032,6 @@ var parent2null = buttonArray[5];
 
 /// INCLUDES
 try {
-  //@include '_scripts/json2.js';
   //@include '_scripts/rectangleWizard.jsx';
   //@include '_scripts/elementsDiag.jsx';
   //@include '_scripts/organizeProjectAssets.jsx';
@@ -3157,7 +3160,10 @@ function showDialogWindow(infoText) {
     nameLabel.alignment = ["center", "top"];
     nameLabel.preferredSize.width = 360;
     nameLabel.preferredSize.height = 40;
-    var nameInput = swindow.add("edittext", undefined, "you name it..");
+
+    mojoUI.setFG(nameLabel, [0.83, 0.94, 1, 0.75]);
+
+    var nameInput = swindow.add("edittext", undefined, undefined);
     nameInput.preferredSize.height = 40;
     nameInput.preferredSize.width = 360;
     nameInput.alignment = ["fill", "top"];
@@ -3201,8 +3207,11 @@ function showAlertWindow(infoText, title, icon) {
     } else {
         title = "moelles mojo";
     }
+    var multilineB, pWidth;
+    if(infoText.length >= 140){multilineB = true} else {multilineB = false};
+    if(multilineB){pWidth = 320} else {280};
     var diaWin = new Window("dialog", title);
-    diaWin.preferredSize.width = 280;
+    diaWin.preferredSize.width = pWidth;
     diaWin.orientation = "column";
     diaWin.alignChildren = ["center", "center"];
     diaWin.spacing = 20;
@@ -3219,28 +3228,24 @@ function showAlertWindow(infoText, title, icon) {
         var dlgImg = dlgGrp.add("image", undefined, mojoUI.createIcon(icon), {name: "dlgImg"}); 
         var staticText = dlgGrp.add("statictext", undefined, undefined, {
             name: "nameLabel",
-            multiline: false,
+            multiline: multilineB,
         });
         staticText.text = infoText;
         staticText.justify = "center";
         staticText.alignment = ["fill", "center"];
 
         // Customize text color
-        staticText.graphics.foregroundColor = staticText.graphics.newPen(
-            staticText.graphics.PenType.SOLID_COLOR,
-            [0.83, 0.94, 1, 0.75], 1
-        );
+        mojoUI.setFG(staticText, [0.83, 0.94, 1, 0.75]);
     } else {
         var staticText = diaWin.add("statictext", undefined, undefined, {
         name: "nameLabel",
-        multiline: false });
+        multiline: multilineB });
         staticText.text = infoText;
         staticText.justify = "center";
         staticText.alignment = ["fill", "center"];
 
         // Customize text color
-        staticText.graphics.foregroundColor = staticText.graphics.newPen(
-        staticText.graphics.PenType.SOLID_COLOR,[0.83, 0.94, 1, 0.75], 1);
+        mojoUI.setFG(staticText, [0.83, 0.94, 1, 0.75]);
     }
 
     var okButton = buttonColorText(diaWin, "OK", "#0060b1", "#028def", false, 13);
@@ -3407,7 +3412,7 @@ btn_createIMGComps.onClick = function() {
                             showAlertWindow("No project is currently open.");
                         }
                     }
-                } else {
+                 else {
                     showAlertWindow(
                         "Invalid name! The name should only contain lowercase letters, numbers, and underscores (_) with no spaces, special characters, capital letters, or dashes."
                     );
@@ -3419,6 +3424,7 @@ btn_createIMGComps.onClick = function() {
                     }
                 }
             }
+        }
             var result = askForName();
         } else {
             showAlertWindow("Please open the BOILERPLATE to use this feature");
@@ -3634,12 +3640,16 @@ delExp.onClick = function() {
 addTooltipToButton(openBoilerplate, "OPEN BOILERPLATE.aep", 85);
 
 openBoilerplate.onClick = function() {
-    var my_file = new File("C:/data_driven_ae_template-1/___boilerplate_23.aep");
-    if (my_file.exists) {
-        new_project = app.open(my_file);
-    } else {
-        showAlertWindow("BOILERPLATE not found");
-    }
+    if (app.project && app.project.file !== null && app.project.file.name === "___boilerplate_23.aep") {
+            showAlertWindow("BOILERPLATE already open");
+        } else {
+            var my_file = new File("C:/data_driven_ae_template-1/___boilerplate_23.aep");
+            if (my_file.exists) {
+                var new_project = app.open(my_file);
+            } else {
+                showAlertWindow("BOILERPLATE not found");
+            }
+        }
 };
 
 addTooltipToButton(changeProjectName, "change the name of a template", 85);
