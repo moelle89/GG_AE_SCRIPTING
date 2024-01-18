@@ -2029,6 +2029,12 @@ function openCompositionByName(compName) {
     app.executeCommand(2004); // “Deselect All”
 }
 
+function openComposition(item) {
+    item.openInViewer();
+    app.activeViewer.setActive();
+    app.executeCommand(2004); // “Deselect All”
+}
+
 function createCompSet(duration, name, type) {
     // Call the function with the specified parameters
     var reelName = type + name;
@@ -2078,7 +2084,7 @@ function removeSpecificExpressions() {
     try {
         var activeComp = app.project.activeItem;
         if (checkComp(activeComp)) {
-            // Check if a layer is selected
+            var comp = app.project.activeItem;
             if (comp.selectedLayers.length > 0) {
                 var selectedLayer = comp.selectedLayers[0];
 
@@ -4164,6 +4170,56 @@ parent2null.onClick = function() {
     app.endUndoGroup();
 }
 
+function activateCompViewer(){
+
+    // setActive is supposed (guide) to return a Boolean, but in practice it returns nothing, therefore this doesnt work:
+
+    // return app.activeViewer && app.activeViewer.type===ViewerType.VIEWER_COMPOSITION && app.activeViewer.setActive();
+
+   
+
+    var A = (app.activeViewer && app.activeViewer.type===ViewerType.VIEWER_COMPOSITION);
+
+    if (A) app.activeViewer.setActive();
+
+    return A;
+
+    };
+
+function getActiveComp(){
+    var comp;                                // the returned quantity
+    var X = app.project.activeItem;    // the initial activeItem
+    var selComp = app.project.selection.length ===1 && app.project.selection[0].typeName === "Composition" ? app.project.selection[0] : null; // the unique selected comp, or null
+    var temp;
+    if (X instanceof CompItem){
+        if (selComp === null){
+            comp = X;
+            }
+        else if (selComp !== X){
+            comp = null; // ambiguity : the timeline panel is active, X is the front comp, but another comp is selected
+            }
+        else{
+            // X and selComp coincide
+            X.selected = false;
+            temp = app.project.activeItem;
+            X.selected = true;
+            if (temp === null){
+                // the project panel is active and the active item was initially a selected comp
+                // if that comp is already opened in a viewer and is the front comp, return the comp, else : ambiguity
+                comp = (activateCompViewer() && app.project.activeItem === X) ? X : null;
+                }
+            else{
+                // deselecting the comp didnt change the activeItem : the timeline panel is active, and the active item was the front comp, that happened to be also selected.
+                comp = X;
+                };
+            };
+        }
+    else{
+        comp = activateCompViewer() ? app.project.activeItem : null;
+        };
+    return comp;
+    };
+
 function changeDemoContent(demoPack) {
     // Check if there is an open project
     if (app.project && app.project.file !== null) {
@@ -4177,7 +4233,10 @@ function changeDemoContent(demoPack) {
 
         // Move the composition into the folder
         bufferComp.parentFolder = targetFolder;
-        var activeItemT = app.project.activeItem;
+        var activeItemT = getActiveComp();
+        if ((!activeItemT) || (activeItemT.name == "bufferComp")) {
+        activeItemT = findComp("__SETTINGS");
+        }
         openCompositionByName("bufferComp");
         // Extract the project name from the file path, assuming a standard naming scheme
         var projectName = app.project.file.name;    
@@ -4188,18 +4247,17 @@ function changeDemoContent(demoPack) {
             //app.purge(PurgeTarget.IMAGE_CACHES);
             var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo" + demoPack + ".bat";
             var result = system.callSystem(batScriptPath);
-            openCompositionByName(activeItemT.name);
             var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img_footage.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png", "input_template.json"];
-            //openSubfolderInProject("(footage)/Footage/jpg");
-            //openCompInViewer("__SETTINGS", "SETTINGS");
+            if (app.project.activeItem.selectedLayers.length = 0){
+                activeItemT.selected = true;
+            }
+            openCompositionByName(activeItemT.name);
         if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
             // Move the playhead by one frame
             app.project.activeItem.time += app.project.activeItem.frameDuration;
         }
             var res = app.project.activeItem.resolutionFactor;
             var rft = app.project.activeItem.resolutionFactor;
-            //alert(app.project.activeItem.resolutionFactor);
-            app.purge(PurgeTarget.IMAGE_CACHES);
             refreshCurrentFrame();
             for (var i = 0; i < reloadAssets.length; i++) {
                 var currentItem = getItem(reloadAssets[i]);
