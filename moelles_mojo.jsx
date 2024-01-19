@@ -2828,6 +2828,14 @@ function checkComp(inputComp) {
         return true;
     }
 }
+function checkProject() {
+    if (app.project && app.project.file === null) {
+        showAlertWindow("Please open a project or save the current project first.");
+        return false;
+    } else {
+        return true;
+    }
+}
 var compName; // Variable to store the entered text
 function showDialogWindow(infoText) {
     var title = "moelles mojo";
@@ -2885,7 +2893,7 @@ function showAlertWindow(infoText, title, icon) {
         title = "moelles mojo";
     }
     var multilineB, pWidth;
-    if (infoText.length >= 140) { multilineB = true } else { multilineB = false };
+    if (infoText.length >= 120) { multilineB = true } else { multilineB = false };
     if (multilineB) { pWidth = 320 } else { 280 };
     var diaWin = new Window("dialog", title);
     diaWin.preferredSize.width = pWidth;
@@ -3128,9 +3136,11 @@ addTooltipToButton(
     false
 );
 btn_addElement.onClick = function () {
-    var compIndex = findCompIndex("_ELEMENTS");
-    if (compIndex) {
-        elementsDialog();
+    if (checkProject()){
+        var compIndex = findCompIndex("_ELEMENTS");
+        if (compIndex) {
+            elementsDialog();
+        }
     }
 };
 addTooltipToButton(
@@ -3141,15 +3151,17 @@ addTooltipToButton(
     false
 );
 btn_addGallery.onClick = function () {
-    var compIndex = findCompIndex("_ELEMENTS");
-    if (compIndex) {
-        var ratioIndex = ratio.selection.index;
-        var ratioresult = ratio_result[ratioIndex];
-        var ratioAdd = ratio_resultIndexAdd[ratioIndex];
-        var selectedIndex = gallery.selection.index + ratioAdd;
-        var result = gallery_result[selectedIndex];
-        app.executeCommand(2004); // “Deselect All”
-        copyLayerToActiveComp(ratioresult, result);
+    if (checkProject()) {
+        var compIndex = findCompIndex("_ELEMENTS");
+        if (compIndex) {
+            var ratioIndex = ratio.selection.index;
+            var ratioresult = ratio_result[ratioIndex];
+            var ratioAdd = ratio_resultIndexAdd[ratioIndex];
+            var selectedIndex = gallery.selection.index + ratioAdd;
+            var result = gallery_result[selectedIndex];
+            app.executeCommand(2004); // “Deselect All”
+            copyLayerToActiveComp(ratioresult, result);
+        }
     }
 };
 function saveFrameAsPNG() {
@@ -3399,7 +3411,9 @@ addTooltipToButton(
     true
 );
 btn_import.onClick = function () {
-    importAndCopyFile();
+    if (checkProject()) {
+        importAndCopyFile();
+    }
 };
 btn_organize.onClick = function () {
     if (app.project.file != null) {
