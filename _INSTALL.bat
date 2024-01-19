@@ -14,6 +14,19 @@ set "fullAeFootageDestination=%aeDestinationFolder%\%aeFootageFolder%"
 set "fullAeAssetsSource=%aeSourceFolder%\%aeAssetsFolder%"
 set "fullAeAssetsDestination=%aeDestinationFolder%\%aeAssetsFolder%"
 
+set "presetPath23=%USERPROFILE%\Documents\Adobe\After Effects 2023\User Presets\mojo"
+set "presetPath24=%USERPROFILE%\Documents\Adobe\After Effects 2024\User Presets\mojo"
+
+if exist "%presetPath23%" (
+    rmdir /s /q "%presetPath23%"
+    echo Preset Folder 23 removed successfully.
+)
+
+if exist "%presetPath24%" (
+    rmdir /s /q "%presetPath24%"
+    echo Preset Folder 24 removed successfully.
+)
+
 REM Check if the destination folder for AE exists, create it if not
 if not exist "%aeDestinationFolder%" (
     mkdir "%aeDestinationFolder%"
