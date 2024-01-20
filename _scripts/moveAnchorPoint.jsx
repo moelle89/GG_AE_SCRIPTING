@@ -1,6 +1,6 @@
 ﻿// Move Anchor Point Version 2.0
 // An After Effects Script by Jesse Toula
-// BatchFrame.com 2013 
+// BatchFrame.com 2013
 
 // I would like to thank Oplique  for helping me to test and improve this script
 
@@ -8,14 +8,14 @@
 // modified by Manuel Moellmann
 
 // set up button clicks. Each button calls the moveAnchor
-// function that uses simple coordinates to represent the 
+// function that uses simple coordinates to represent the
 // different anchor point positions. 0 = top or left, 1 = middle
 // 2 = bottom or right
 // In version 2, Three new arguments were added to the moveAnchor function
-// the first is Ignore Masks. It passes either true or false. The second two are the 
+// the first is Ignore Masks. It passes either true or false. The second two are the
 // custom X and Y points. You can see that only the last line uses the custom points.
 apCheck.onClick = function () {
-    if (apCheck.value) { 
+    if (apCheck.value) {
         w.g.tg.tl.onClick = function () { app.beginUndoGroup("Move Anchor - Top Left"); setAnchorPoint(1); app.endUndoGroup(); }
         w.g.tg.tm.onClick = function () { app.beginUndoGroup("Move Anchor - Top Middle"); setAnchorPoint(2); app.endUndoGroup(); }
         w.g.tg.tr.onClick = function () { app.beginUndoGroup("Move Anchor - Top Right"); setAnchorPoint(3); app.endUndoGroup(); }
@@ -35,7 +35,7 @@ apCheck.onClick = function () {
         w.g.tg.tr.onClick = function () { app.beginUndoGroup("Move Anchor - Top Right"); moveAnchor(2, 0, 0); app.endUndoGroup(); }
 
         w.g.mg.tl.onClick = function () { app.beginUndoGroup("Move Anchor - Middle Left"); moveAnchor(0, 1, 0); app.endUndoGroup(); }
-        w.g.mg.tm.onClick = function () { app.beginUndoGroup("Move Anchor - Middle Middle"); moveAnchor(1, 1, 0); app.endUndoGroup(); }
+        w.g.mg.tm.onClick = function () {app.beginUndoGroup("Move Anchor - Middle Middle"); moveAnchor(1, 1, 0);app.endUndoGroup(); }
         w.g.mg.tr.onClick = function () { app.beginUndoGroup("Move Anchor - Middle Right"); moveAnchor(2, 1, 0); app.endUndoGroup(); }
 
         w.g.bg.tl.onClick = function () { app.beginUndoGroup("Move Anchor - Bottom Left"); moveAnchor(0, 2, 0); app.endUndoGroup(); }
@@ -44,7 +44,7 @@ apCheck.onClick = function () {
 
     };
 };
- 
+
 apCheck.onClick();
 
 // Function to remove expressions from specific properties of a layer (Position, Scale, Opacity, Anchor Point, Rotation)
@@ -176,7 +176,7 @@ function moveAnchor(row, col, ignoreMasks) {
 
 
                 // set a vairable to alert whether or not there are masks.
-                // By default we will assume no masks, then change it to 
+                // By default we will assume no masks, then change it to
                 // false if we find any
                 var noMasks = true;
 
@@ -232,8 +232,8 @@ function moveAnchor(row, col, ignoreMasks) {
                     }
 
                     // if the layer is a text or shape layer, the anchor point's origin
-                    // is not at the top left corner. Correct for this by moving the x 
-                    // and y points to the top left. 
+                    // is not at the top left corner. Correct for this by moving the x
+                    // and y points to the top left.
                     // .sourceRectAtTime() allows you to get the actual sie of the layer
                     // for instance, a text layers width is equal to the width of the
                     // composition, even if the text is not that long. Using
@@ -245,7 +245,7 @@ function moveAnchor(row, col, ignoreMasks) {
 
                 } else {
                     // if the layer has masks applied, we must find the new dimensions of the layer first
-                    // there is not a simple way to do this. We must find the highest and lowest X and Y coordinates for 
+                    // there is not a simple way to do this. We must find the highest and lowest X and Y coordinates for
                     // each mask applied to the layer, then work based off those dimensions.
 
                     // vars to hold vert arrays
@@ -337,7 +337,7 @@ function moveAnchor(row, col, ignoreMasks) {
                         posEx = true;
                     }
 
-                    // in order to maintain the proper positions, I found it was best to 
+                    // in order to maintain the proper positions, I found it was best to
                     // move the layer relative to itself, not the world. In order to do this,
                     // we must parent the layer to a duplicate of itself.
                     var dupLayer = theLayer.duplicate();
@@ -359,7 +359,7 @@ function moveAnchor(row, col, ignoreMasks) {
                     // change the anchor point of the current layer
                     theLayer.anchorPoint.setValue([x, y]);
 
-                    // this is inside the anchor point if statement because if the 
+                    // this is inside the anchor point if statement because if the
                     // anchor point has keyframes, I am not going to change
                     // the position of the layer
 
@@ -397,7 +397,7 @@ function moveAnchor(row, col, ignoreMasks) {
                 }
                 var anchorpoint = theLayer.anchorPoint.value;
                 // Set the anchor point to the position
-                theLayer.property("Position").setValue(anchorpoint);
+                //theLayer.property("Position").setValue(anchorpoint);
             }
         } else {
             showAlertWindow("Please select a layer.");

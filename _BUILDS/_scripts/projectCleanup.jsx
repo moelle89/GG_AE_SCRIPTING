@@ -8,23 +8,9 @@ function activateCompViewer() {
    var A = (app.activeViewer) && (app.activeViewer.type === ViewerType.VIEWER_COMPOSITION);
    if (A) {
       app.activeViewer.setActive();
-   } 
+   }
    return A;
 }
-function createResourceFile(filename, binaryString) {
-   try {
-      path = File($.fileName).path.split("/");
-      newPath = "/";
-      for (var i = 1, len = path.length; i < (len - 2); i++) {
-         newPath = newPath + path[i] + "/";
-      }
-      var myFile = new File(newPath + "img/" + filename);
-      return myFile;
-   } catch (err) {
-      showAlertWindow("Error in createResourceFile function\n" + err.toString());
-   }
-}
-
 function getActiveComp() {
    var X = app.project.activeItem;
    var selComp = (app.project.selection.length === 1) && (app.project.selection[0].typeName === "Composition") ? app.project.selection[0] : null;
@@ -46,7 +32,7 @@ function getActiveComp() {
             comp = X;
          }
       }
-   } 
+   }
    else {
       comp = activateCompViewer() ? app.project.activeItem : null;
    }

@@ -12,19 +12,6 @@ function activateCompViewer() {
   }
   return A;
 }
-function createResourceFile(filename, binaryString) {
-  try {
-    path = File($.fileName).path.split("/");
-    newPath = "/";
-    for (var i = 1, len = path.length; i < len - 2; i++) {
-      newPath = newPath + path[i] + "/";
-    }
-    var myFile = new File(newPath + "img/" + filename);
-    return myFile;
-  } catch (err) {
-    showAlertWindow("Error in createResourceFile function\n" + err.toString());
-  }
-}
 function screenShot(thisObj) {
   try {
     function trimFolderPath(loc) {

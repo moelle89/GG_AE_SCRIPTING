@@ -1746,7 +1746,7 @@ function createSolid(layerName) {
             var fillSolid = newSolid
                 .property("ADBE Effect Parade")
                 .addProperty("ADBE Fill");
-            fillSolid.property("ADBE Fill-0002").setValue([0, 0, 0]);
+            fillSolid.property("ADBE Fill-0002").setValue(hexToArray("#305CC0"));
         }
     } else {
         return;

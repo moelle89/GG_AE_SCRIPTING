@@ -65,6 +65,19 @@ set "FOLDER_STRUCTURE10=24.0\Scripts\ScriptUI Panels"
 set "FOLDER_STRUCTURE11=24.1\Scripts\ScriptUI Panels"
 set "FOLDER_STRUCTURE12=24.2\Scripts\ScriptUI Panels"
 
+rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE1%\_scripts"
+rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE2%\_scripts"
+rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE3%\_scripts"
+rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE4%\_scripts"
+rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE5%\_scripts"
+rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE6%\_scripts"
+rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE7%\_scripts"
+rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE8%\_scripts"
+rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE9%\_scripts"
+rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE10%\_scripts"
+rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE11%\_scripts"
+rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE12%\_scripts"
+
 mkdir "%BASE_PATH%\%FOLDER_STRUCTURE1%" 2>nul
 mkdir "%BASE_PATH%\%FOLDER_STRUCTURE2%" 2>nul
 mkdir "%BASE_PATH%\%FOLDER_STRUCTURE3%" 2>nul
