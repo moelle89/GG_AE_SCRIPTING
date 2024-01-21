@@ -5,7 +5,7 @@
 */
 
 
-   function activateCompViewer() {
+   function activateCompViewer2() {
       var A = (app.activeViewer) && (app.activeViewer.type === ViewerType.VIEWER_COMPOSITION);
       if (A) {
          app.activeViewer.setActive();
@@ -15,22 +15,23 @@
 function bendIt() {
       try {
          app.beginUndoGroup("Bender");
-         var comp = activateCompViewer() ? app.project.activeItem : null;
+         var comp = activateCompViewer2() ? app.project.activeItem : null;
          if ((!comp) || (!(comp instanceof CompItem))) {
-            alert("Please make sure that you have an active composition selected.");
+            showAlertWindow("Please make sure that you have an active composition selected.");
             return;
          }
-         var scriptFolderPath = File($.fileName).parent.absoluteURI;
+         var scriptFolderPath = File($.fileName).parent.absoluteURI + "/_scripts";
          var script = "bend.ffx";
          var preset = new File(scriptFolderPath + "/" + script);
          if (!preset.exists) {
-            alert("Please make sure the \"Bend.ffx\" file is located in the same folder with the script file!");
+            showAlertWindow(scriptFolderPath + "/" + script);
+            showAlertWindow("make sure the 'bend.ffx' file is located in the same folder with the script file!");
             return;
          }
          var layers = comp.selectedLayers;
          var numLayers = layers.length;
          if (numLayers < 1) {
-            alert("Please select at least one layer");
+            showAlertWindow("Please select at least one layer");
             return;
          }
          for (var i = 0; i < layers.length; i++) {

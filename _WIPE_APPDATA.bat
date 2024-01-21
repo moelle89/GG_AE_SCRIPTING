@@ -54,3 +54,4 @@ del /q "%BASE_PATH%\%FOLDER_STRUCTURE10%\moelles_mojo.jsxbin"
 del /q "%BASE_PATH%\%FOLDER_STRUCTURE11%\moelles_mojo.jsxbin"
 del /q "%BASE_PATH%\%FOLDER_STRUCTURE12%\moelles_mojo.jsxbin"
 endlocal
+pause
