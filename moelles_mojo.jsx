@@ -421,6 +421,19 @@ var addAnimbtn = groupFx2.add(
 addAnimbtn.preferredSize.height = 32;
 addAnimbtn.preferredSize.width = 116;
 addAnimbtn.alignment = ["left", "top"];
+
+var bendbtn = groupFx2.add(
+    "iconbutton",
+    undefined,
+    mojoUI.createIcon("icn_bendbtn"), {
+        name: "bendbtn",
+    style: "button"
+}
+);
+bendbtn.preferredSize.height = 32;
+bendbtn.preferredSize.width = 116;
+bendbtn.alignment = ["left", "top"];
+
 // tab_files
 // ====
 var tab_files = tpanel1.add("tab", undefined, undefined, {
@@ -877,9 +890,9 @@ var addObj = root.add("group", undefined, {
 addObj.orientation = "column";
 addObj.alignChildren = ["left", "top"];
 addObj.alignment = ["left", "top"];
-addObj.minimumSize.width = 54;
-addObj.spacing = 4;
-addObj.margins = 4;
+addObj.minimumSize.width = 24;
+addObj.spacing = 3;
+addObj.margins = 3;
 // Example buttons
 var buttonArray = [
     addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_textl"), {
@@ -905,7 +918,7 @@ var buttonArray = [
     addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_p2n"), {
         name: "parent2null",
         style: "toolbutton"
-    }),
+    })
 ];
 var textLayer = buttonArray[0];
 var solidLayer = buttonArray[1];
@@ -916,6 +929,7 @@ var parent2null = buttonArray[5];
 /// INCLUDES
 try {
     //@include '_scripts/rectangleWizard.jsx';
+    //@include '_scripts/bend.jsx';
     //@include '_scripts/elementsDiag.jsx';
     //@include '_scripts/organizeProjectAssets.jsx';
     //@include '_scripts/projectCleanup.jsx';
@@ -1278,7 +1292,7 @@ btn_about.onClick = function (e) {
     prefInfoGrp.spacing = 0;
     prefInfoGrp.margins = 20;
     prefInfoGrp.alignment = ["fill", "top"];
-    var okButton = buttonColorText(prefInfoGrp, " CLICK TO CHECK FOR UPDATES       ", "#0060b1", "#028def", false, 11);
+    var okButton = buttonColorText(prefInfoGrp, "  CHECK FOR UPDATES     ", "#0060b1", "#028def", false, 11);
     okButton.preferredSize.height = 30;
     okButton.onClick = function () {
         visitURL("https://github.com/moelle89/GG_AE_SCRIPTING/releases");
@@ -2895,7 +2909,7 @@ function showAlertWindow(infoText, title, icon, multiL) {
     var multilineB, pWidth;
     if (infoText.length >= 120) { multilineB = true } else { multilineB = false };
     if (multiL){multiline = true };
-    if (multilineB) { pWidth = 320 } else { 280 };
+    if (multilineB) { pWidth = 320 } else { pWidth = 230 };
     var diaWin = new Window("dialog", title);
     diaWin.preferredSize.width = pWidth;
     diaWin.orientation = "column";
@@ -3128,6 +3142,10 @@ addTooltipToButton(
 );
 addAnimbtn.onClick = function () {
     addANIM();
+};
+
+bendbtn.onClick = function () {
+    bendIt();
 };
 addTooltipToButton(
     btn_addElement,
