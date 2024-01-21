@@ -2886,7 +2886,7 @@ function showDialogWindow(infoText) {
     swindow.show();
     return compName; // Return the entered text
 }
-function showAlertWindow(infoText, title, icon) {
+function showAlertWindow(infoText, title, icon, multiL) {
     if (title) {
         title = title;
     } else {
@@ -2894,6 +2894,7 @@ function showAlertWindow(infoText, title, icon) {
     }
     var multilineB, pWidth;
     if (infoText.length >= 120) { multilineB = true } else { multilineB = false };
+    if (multiL){multiline = true };
     if (multilineB) { pWidth = 320 } else { 280 };
     var diaWin = new Window("dialog", title);
     diaWin.preferredSize.width = pWidth;

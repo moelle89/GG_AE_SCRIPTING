@@ -28,7 +28,7 @@ function createResourceFile(filename, binaryString) {
     var myFile = new File(newPath + "img/" + filename);
     return myFile;
   } catch (err) {
-    showAlertWindow("Error in createResourceFile function\n" + err.toString());
+    showAlertWindow("Error in createResourceFile function\n" + err.toString(), null, null, true);
   }
 }
 
@@ -180,8 +180,14 @@ function RectangleWizardInit() {
       }
     }
     function getLocation() {
-      var appDataFolder = Folder.userData + "/Adobe/After Effects/" + app.buildName.substr(0, 2) + "/Scripts/ScriptUI Panels/_img";
-      var location = appDataFolder.fsName;
+      var op = $.os;
+      var match = op.indexOf("Windows");
+      if (match != -1) {
+        var location = mojoUI.imagesFolder;
+      }
+      else {
+        var location = mojoUI.imagesFolder;
+      }
       return location;
     }
     function createResourceFile(filename, binaryString) {
@@ -199,7 +205,7 @@ function RectangleWizardInit() {
         }
         return myFile;
       } catch (err) {
-        showAlertWindow("Error in createResourceFile function\n" + err.toString());
+        showAlertWindow("Error in createResourceFile function\n" + err.toString(),null,null,true);
       }
     }
     function updateValue(v, d) {
@@ -355,16 +361,17 @@ function RectangleWizardInit() {
       return result;
     })();
     var palette = new Window("palette");
-    palette.preferredSize.width = 340;
+    palette.preferredSize.width = 380;
     palette.text = "Shape Creator";
     palette.orientation = "column";
     palette.alignChildren = ["fill", "fill"];
-    palette.spacing = 8;
-    palette.margins = 10;
+    palette.spacing = 28;
+    mojoUI.setBG(palette, [0.14, 0.14, 0.14]);
+    palette.margins = 20;
     var pnlTransform = palette.add("panel", undefined, undefined, { name: "pnlTransform" });
     pnlTransform.text = "Transform";
-    pnlTransform.preferredSize.width = 300;
-    pnlTransform.minimumSize.width = 260;
+    pnlTransform.preferredSize.width = 340;
+    pnlTransform.minimumSize.width = 280;
     pnlTransform.orientation = "row";
     pnlTransform.alignChildren = ["fill", "fill"];
     pnlTransform.spacing = 6;
