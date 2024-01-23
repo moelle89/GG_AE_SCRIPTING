@@ -428,7 +428,7 @@ var bendbtn = groupFx2.add(
     "iconbutton",
     undefined,
     mojoUI.createIcon("icn_bendbtn"), {
-        name: "bendbtn",
+    name: "bendbtn",
     style: "button"
 }
 );
@@ -2915,7 +2915,7 @@ function showAlertWindow(infoText, title, icon, multiL) {
     }
     var multilineB, pWidth;
     if (infoText.length >= 120) { multilineB = true } else { multilineB = false };
-    if (multiL){multiline = true };
+    if (multiL) { multiline = true };
     if (multilineB) { pWidth = 320 } else { pWidth = 230 };
     var diaWin = new Window("dialog", title);
     diaWin.preferredSize.width = pWidth;
@@ -3162,7 +3162,7 @@ addTooltipToButton(
     false
 );
 btn_addElement.onClick = function () {
-    if (checkProject()){
+    if (checkProject()) {
         var compIndex = findCompIndex("_ELEMENTS");
         if (compIndex) {
             elementsDialog();
@@ -3951,17 +3951,17 @@ function changeDemoContent(demoPack) {
             }
             for (var i = 0; i < reloadAssets.length; i++) {
                 var currentItem = getItem(reloadAssets[i]);
-                if (currentItem) {
-                    currentItem.mainSource.reload();
-                    updateProgressBar(i, reloadAssets.length); // Update progress bar
-                } else {
-                    // Handle the case where the item doesn't exist (optional)
-                    alert("Item not found: " + reloadAssets[i]);
-                }
+                try {
+                    if (currentItem) {
+                        currentItem.mainSource.reload();
+                        updateProgressBar(i, reloadAssets.length); // Update progress bar
+                    }
+                } catch (err) { $.writeln("Item not found: " + reloadAssets[i]); }
             }
             openCompositionByName(activeItemT.name);
             if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
                 // Move the playhead by one frame
+                var isPost = app.project.activeItem.time;
                 app.project.activeItem.time += app.project.activeItem.frameDuration;
             }
             var res = app.project.activeItem.resolutionFactor;
@@ -3997,8 +3997,8 @@ function changeDemoContent(demoPack) {
             app.project.activeItem.resolutionFactor = res;
             if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
                 // Move the playhead by two frame backwards
-                app.project.activeItem.ti
-                me -= Math.round(2 * app.project.activeItem.frameDuration);
+                app.project.activeItem.time -= Math.round(2 * app.project.activeItem.frameDuration);
+                if (isPost == 0) { app.project.activeItem.time = 0 };
             };
             $.sleep(100);
             pb.end();
