@@ -3937,9 +3937,14 @@ function changeDemoContent(demoPack) {
         if (projectName.match("comp_") || projectName.match("post_") || projectName.match("___boilerplate")) {
             app.executeCommand(3985); // CancelCachingWorkAreainBackground
             app.executeCommand(2372); // Purge ImageCaches
-            //app.purge(PurgeTarget.IMAGE_CACHES);
+            //batch
             var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo" + demoPack + ".bat";
             var result = system.callSystem(batScriptPath);
+            //powershell
+            //var powershellScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo" + demoPack + ".ps1";
+            //var command = 'powershell.exe -ExecutionPolicy Bypass -File "' + powershellScriptPath + '"';
+            //var result = system.callSystem(command);
+            $.sleep(150);
             var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img_footage.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png", "input_template.json"];
             if (app.project.activeItem.selectedLayers.length = 0) {
                 activeItemT.selected = true;
