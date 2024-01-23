@@ -15,7 +15,7 @@ function elementsDialog() {
   // Copy-paste your ELEMENTS content
   var ELEMENTS = secondaryDialog.add('group', undefined, { name: 'ELEMENTS' });
   ELEMENTS.orientation = 'column';
-  ELEMENTS.alignChildren = ['fill', 'top']; 
+  ELEMENTS.alignChildren = ['fill', 'top'];
   ELEMENTS.spacing = 10;
   ELEMENTS.margins = 0;
 
@@ -29,8 +29,9 @@ function elementsDialog() {
   grp_logo_info.alignment = ["fill", "center"];
 
   var grp_logo_text = grp_logo_info.add("statictext", undefined, undefined, { name: "grp_logo_text" });
-  grp_logo_text.text = "Use V2 for more custom-options"; 
- 
+  grp_logo_text.text = "Use V2 for more custom-options";
+  mojoUI.setFG(grp_logo_text, [0.83, 0.94, 1, 0.75]);
+
 
   // GRP_LOGO
   var grp_logo = ELEMENTS.add('group', undefined, { name: 'grp_logo' });
@@ -78,7 +79,8 @@ function elementsDialog() {
   grp_text_info.alignment = ["fill", "center"];
 
   var grp_text_textr = grp_text_info.add("statictext", undefined, undefined, { name: "grp_text_textr" });
-  grp_text_textr.text = "Add a variable text-element"; 
+  grp_text_textr.text = "Add a variable text-element";
+  mojoUI.setFG(grp_text_textr, [0.83, 0.94, 1, 0.75]);
 
   // GRP_TEXTELEMENT
   var grp_textelement = ELEMENTS.add('group', undefined, { name: 'grp_textelement'});
@@ -128,7 +130,8 @@ function elementsDialog() {
   grp_media_info.alignment = ["fill", "center"];
 
   var grp_media_text = grp_media_info.add("statictext", undefined, undefined, { name: "grp_media_text" });
-  grp_media_text.text = "Media element prepared for all formats"; 
+  grp_media_text.text = "Media element prepared for all formats";
+  mojoUI.setFG(grp_media_text, [0.83, 0.94, 1, 0.75]);
 
   // GRP_MEDIA
   var grp_media = ELEMENTS.add('group', undefined, { name: 'grp_media' });
@@ -141,6 +144,7 @@ function elementsDialog() {
   var grp_media_infot = ELEMENTS.add("statictext", undefined, undefined, { name: "grp_media_infot", multiline: true });
   grp_media_infot.preferredSize.height = 140;
   grp_media_infot.text = "the Media element is a container, that includes the main media-file of a template. It can be either a single image or a video. Basically it is showing the primary media content of a template. Use the media file always at first. If you want to include more optional media-files, go ahead and use Gallery elements - But only, after already using the media element in your composition! You dont need to pick the ratio based on the actual ratio of your composition. The ratio of the media element is more relying on the actual space thats reserved for the media inside of a composition. if it should be used in a square area, use the square variant etc.";
+  mojoUI.setFG(grp_media_infot, [0.83, 0.94, 1, 0.6]);
 
   var Btn_MEDIA = grp_media.add('iconbutton', undefined, mojoUI.createIcon("icn_media_reel"), { name: 'Btn_MEDIA', style: "button" });
   Btn_MEDIA.preferredSize.height = customHeight;
