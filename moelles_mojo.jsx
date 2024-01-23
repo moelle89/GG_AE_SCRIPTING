@@ -3848,6 +3848,70 @@ function getActiveComp() {
     };
     return comp;
 };
+
+
+function ProgressBar(min, max, current) {
+    function updateGraphics() {
+        if (!_isVisible) {
+            return;
+        }
+        _window.update();
+    }
+
+    this.testInfos = "Importing Demo-Content, please wait...";
+    this.constructor = function (min, max, current) {
+        _this = this;
+        _isVisible = false;
+        _real = { current: current, max: max, min: min };
+        _cursor = { current: 0, max: 100, min: 0 };
+        _cursor.max = _real.max - _real.min + 1;
+        _window = new Window("palette", "Loading", undefined, {
+            borderless: "not quite true",
+            resizable: false,
+        });
+        _window.preferredSize = [580, 140];
+        _progressBar = _window.add(
+            "progressbar",
+            undefined,
+            _cursor.min,
+            _cursor.max
+        );
+        _progressBar.preferredSize.width = 550;
+        _progressBar.show();
+        _infos = _window.add("statictext", undefined, "Loading, please wait", {
+            justify: "center",
+        });
+        _infos.preferredSize = [550, 24];
+        this.update(current);
+        return this;
+    };
+
+    this.start = function () {
+        _isVisible = true;
+        this.update(_real.current);
+        _startTime = new Date().getTime();
+        _window.show();
+    };
+
+    this.update = function (step) {
+        _real.current = step;
+        _cursor.current = _real.current + .5 - _real.min;
+        var infos = this.testInfos
+            .replace(":current", _cursor.current)
+            .replace(":max", _cursor.max);
+        _progressBar.value = _cursor.current;
+        _infos.text = infos;
+        updateGraphics();
+    };
+
+    this.end = function () {
+        _window.hide();
+    };
+
+    return this.constructor(min, max, current);
+}
+
+
 function changeDemoContent(demoPack) {
     // Check if there is an open project
     if (app.project && app.project.file !== null) {
@@ -3864,7 +3928,10 @@ function changeDemoContent(demoPack) {
         if ((!activeItemT) || (activeItemT.name == "bufferComp")) {
             activeItemT = findComp("__SETTINGS");
         }
+        var pb = new ProgressBar(1, 10, 1);
+        pb.start();
         openCompositionByName("bufferComp");
+        $.sleep(300);
         // Extract the project name from the file path, assuming a standard naming scheme
         var projectName = app.project.file.name;
         if (projectName.match("comp_") || projectName.match("post_") || projectName.match("___boilerplate")) {
@@ -3877,6 +3944,21 @@ function changeDemoContent(demoPack) {
             if (app.project.activeItem.selectedLayers.length = 0) {
                 activeItemT.selected = true;
             }
+            function updateProgressBar(currentIndex, totalItems) {
+                var progress = (currentIndex / totalItems) * 100;
+                $.sleep(50);
+                pb.update(progress);
+            }
+            for (var i = 0; i < reloadAssets.length; i++) {
+                var currentItem = getItem(reloadAssets[i]);
+                if (currentItem) {
+                    currentItem.mainSource.reload();
+                    updateProgressBar(i, reloadAssets.length); // Update progress bar
+                } else {
+                    // Handle the case where the item doesn't exist (optional)
+                    alert("Item not found: " + reloadAssets[i]);
+                }
+            }
             openCompositionByName(activeItemT.name);
             if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
                 // Move the playhead by one frame
@@ -3885,20 +3967,11 @@ function changeDemoContent(demoPack) {
             var res = app.project.activeItem.resolutionFactor;
             var rft = app.project.activeItem.resolutionFactor;
             refreshCurrentFrame();
-            for (var i = 0; i < reloadAssets.length; i++) {
-                var currentItem = getItem(reloadAssets[i]);
-                if (currentItem) {
-                    currentItem.mainSource.reload();
-                } else {
-                    // Handle the case where the item doesn't exist (optional)
-                    alert("Item not found: " + reloadAssets[i]);
-                }
-            };
             app.activeViewer.setActive();
             app.project.activeItem.resolutionFactor = res;
             if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
                 // Move the playhead by two frame backwards
-                app.project.activeItem.time -= 2 * app.project.activeItem.frameDuration;
+                app.project.activeItem.time += Math.round(2 * app.project.activeItem.frameDuration);
             }
             // 1
             if ((rft != "2,2") && (rft != "3,3") && (rft != "4,4")) {
@@ -3924,8 +3997,11 @@ function changeDemoContent(demoPack) {
             app.project.activeItem.resolutionFactor = res;
             if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
                 // Move the playhead by two frame backwards
-                app.project.activeItem.time += 2 * app.project.activeItem.frameDuration;
-            }
+                app.project.activeItem.ti
+                me -= Math.round(2 * app.project.activeItem.frameDuration);
+            };
+            $.sleep(100);
+            pb.end();
         } else {
             showAlertWindow("Please open the BOILERPLATE or a template");
         }
