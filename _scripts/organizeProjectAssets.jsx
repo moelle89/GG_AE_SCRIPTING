@@ -9,13 +9,13 @@ stats = winObj;
 stats.text = "Retrieving Project Items...";
 var typeOptions = new Array("Composition", "Folder", "Footage");
 for (var t = 0; t < 3; t++) {
-if (itemType == typeOptions[t]) { 
+if (itemType == typeOptions[t]) {
 itemAry = new Array();
 proj = app.project;
-itemTotal = proj.numItems; 
+itemTotal = proj.numItems;
 for (var i = 1; i <= itemTotal; i++) {
 curItem = proj.item(i);
-if (curItem.typeName == itemType) { 
+if (curItem.typeName == itemType) {
 itemAry[itemAry.length] = curItem;
 }
 }
@@ -38,11 +38,11 @@ var ni = app.project.numItems;
 for (var n = 1; n <= ni; n++) {
 curItem = app.project.item(n);
 for (var i = 0; i < 4; i++) {
-if ((curItem instanceof FootageItem) && (curItem.name == "Placeholder")) { 
+if ((curItem instanceof FootageItem) && (curItem.name == "Placeholder")) {
 myDefaults.myPlaceholderObjects[myDefaults.myPlaceholderObjects.length] = curItem;
 break ;
 }
-} 
+}
 }
 return myDefaults.myPlaceholderObjects;
 }
@@ -51,7 +51,7 @@ var ni = app.project.numItems;
 for (var n = 1; n <= ni; n++) {
 curItem = app.project.item(n);
 for (var i = 0; i < 4; i++) {
-if ((curItem instanceof FolderItem) && (curItem.name == myDefaults.myFolders[i])) { 
+if ((curItem instanceof FolderItem) && (curItem.name == myDefaults.myFolders[i])) {
 myDefaults.myFoldersObjects[myDefaults.myFoldersObjects.length] = curItem;
 break ;
 }
@@ -61,7 +61,7 @@ break ;
 function grabSpecificExtType(itemType, extName, stillVideo, winObj) {
 function grabExt(itemName) {
 var n = itemName.split(".");
-if (n.length > 1) { 
+if (n.length > 1) {
 return n[n.length - 1].toString().toLowerCase();
 }
 else {
@@ -75,11 +75,11 @@ pi = proj.numItems;
 for (var i = 1; i <= pi; i++) {
 curItem = proj.item(i);
 stats.text = "Grabbing all " + itemType.toString() + "...";
-if (eval("curItem instanceof " + itemType)) { 
+if (eval("curItem instanceof " + itemType)) {
 ext = grabExt(curItem.name);
 userExt = extName.toString().toLowerCase();
-if (ext == userExt) { 
-if ((curItem.duration > 1) && (stillVideo == "Video")) { 
+if (ext == userExt) {
+if ((curItem.duration > 1) && (stillVideo == "Video")) {
 tmp[tmp.length] = curItem;
 }
 else if ((curItem.duration == 0) && (stillVideo == "Still")) {
@@ -91,7 +91,7 @@ tmp[tmp.length] = curItem;
 }
 }
 }
-if (tmp.length >= 1) { 
+if (tmp.length >= 1) {
 return tmp;
 }
 else {
@@ -106,8 +106,8 @@ ph = false;
 for (var i = 1; i <= ni; i++) {
 curItem = proj.item(i);
 var n = curItem.name.split(".");
-if (curItem instanceof FootageItem) { 
-if (n.length > 1) { 
+if (curItem instanceof FootageItem) {
+if (n.length > 1) {
 tmp[tmp.length] = n[n.length - 1].toString().toLowerCase();
 }
 }
@@ -120,7 +120,7 @@ var arySorted = aryInput.sort();
 var aryLength = arySorted.length;
 var results = new Array();
 for (var i = 0; i < aryLength; i++) {
-if (arySorted[i] != arySorted[i + 1]) { 
+if (arySorted[i] != arySorted[i + 1]) {
 results[results.length] = arySorted[i];
 }
 }
@@ -133,8 +133,8 @@ itemTotal = proj.numItems;
 statObj.text = "Retrieving all solids...";
 for (var i = 1; i <= itemTotal; i++) {
 curItem = proj.item(i);
-if (curItem.duration == 0) { 
-if (curItem.mainSource.color) { 
+if (curItem.duration == 0) {
+if (curItem.mainSource.color) {
 itemAry[itemAry.length] = curItem;
 }
 }
@@ -148,8 +148,8 @@ itemTotal = proj.numItems;
 statObj.text = "Retrieving all precomps...";
 for (var i = 1; i <= itemTotal; i++) {
 curItem = proj.item(i);
-if (curItem instanceof CompItem) { 
-if (curItem.usedIn.length > 0) { 
+if (curItem instanceof CompItem) {
+if (curItem.usedIn.length > 0) {
 itemAry[itemAry.length] = curItem;
 }
 }
@@ -192,7 +192,7 @@ fFolder = app.project.items.addFolder(myDefaults.myFolders[1]);
 tmpFolder = app.project.items.addFolder(myDefaults.myFolders[2]);
 sFolder = app.project.items.addFolder(myDefaults.myFolders[3]);
 pcFolder = app.project.items.addFolder(myDefaults.myFolders[4]);
-if (placeHoldersLength > 0) { 
+if (placeHoldersLength > 0) {
 phFolder = app.project.items.addFolder("Placeholder");
 phFolder.parentFolder = fFolder;
 }
@@ -210,12 +210,28 @@ pwpWin.progBar.maxvalue += grabItems.length;
 moveToFolder(grabItems, pf, pwpWin);
 pf.parentFolder = fFolder;
 }
-if (placeHoldersLength > 0) { 
+if (placeHoldersLength > 0) {
 moveToFolder(placeHolders, phFolder, pwpWin);
 }
 moveToFolder(solids, sFolder, pwpWin);
 s.text = "Removing empty folders...";
 tmpFolder.remove();
+    var __SETTINGS = findComp("__SETTINGS");
+    var comp_reel = findComp(app.project.name);
+    var comp_square = findComp(app.project.name + "_square")
+    var comp_1920 = findComp(app.project.name + "_1920")
+    var BPLATE_reel = findComp("BPLATE");
+    var BPLATE_square = findComp("BPLATE_square")
+    var BPLATE_1920 = findComp("BPLATE_1920")
+
+    if (__SETTINGS) {__SETTINGS.parentFolder = app.project.rootFolder;}
+    if (comp_reel) {comp_reel.parentFolder = app.project.rootFolder;}
+    if (comp_square) {comp_square.parentFolder = app.project.rootFolder;}
+    if (comp_1920) {comp_1920.parentFolder = app.project.rootFolder;}
+    if (BPLATE_reel) {BPLATE_reel.parentFolder = app.project.rootFolder;}
+    if (BPLATE_square) {BPLATE_square.parentFolder = app.project.rootFolder;}
+    if (BPLATE_1920) {BPLATE_1920.parentFolder = app.project.rootFolder;}
+
 app.endUndoGroup();
 pwpWin.progBar.value = pwpWin.progBar.maxvalue;
 s.text = "All done!";

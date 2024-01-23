@@ -287,11 +287,13 @@ var apText = groupAP2.add("statictext", undefined, undefined, {
 apText.text = "change the Anchor Point of selected layer(s)";
 apText.preferredSize.height = 40;
 apText.preferredSize.width = 135;
+mojoUI.setFG(apText, [1, 1, 1, 0.65]);
 var apText2 = groupAP2.add("statictext", undefined, undefined, {
     name: "apText2",
 });
 apText2.text = "lock Anchor Point:";
 apText2.preferredSize.height = 20;
+mojoUI.setFG(apText2, [1, 1, 1, 0.65]);
 var w = tab_ap;
 // create a group
 w.g = groupAP;
@@ -547,6 +549,7 @@ var demoInfoTxt = configDemos.add("statictext", undefined, undefined, {
 });
 demoInfoTxt.text = "different configurations to test your template";
 demoInfoTxt.preferredSize.height = 20;
+mojoUI.setFG(demoInfoTxt, [1, 1, 1, 0.65]);
 // DEMOGRP1
 // ========
 var demoGrp1 = configDemos.add("group", undefined, { name: "demoGrp1" });
@@ -660,6 +663,7 @@ var editTextTxt = edit_text_wrapper.add("statictext", undefined, undefined, {
 });
 editTextTxt.text = "Add a custom text and apply it to an element";
 editTextTxt.preferredSize.height = 20;
+mojoUI.setFG(editTextTxt, [1, 1, 1, 0.65]);
 var edittext1 = edit_text_wrapper.add(
     'edittext {properties: {name: "edittext1", multiline: false, scrollable: false, borderless: false}}'
 );
@@ -747,11 +751,13 @@ var statictext2 = tools_txt_wrapper.add("statictext", undefined, undefined, {
 });
 statictext2.text = "click edit colors first;";
 statictext2.preferredSize.height = 20;
+mojoUI.setFG(statictext2, [1, 1, 1, 0.65]);
 var statictext3 = tools_txt_wrapper.add("statictext", undefined, undefined, {
     name: "statictext3",
 });
 statictext3.text = "(if you dont see the effect controls, hit F3)";
 statictext3.preferredSize.height = 20;
+mojoUI.setFG(statictext3, [1, 1, 1, 0.65]);
 var statictext4 = tools_txt_wrapper.add("statictext", undefined, undefined, {
     name: "statictext4",
 });
@@ -1104,7 +1110,7 @@ function buttonColorText(parentObj, buttonText, staticColor, hoverColor, leftAli
     btn.text = buttonText.toUpperCase();
     btn.textPen = btn.graphics.newPen(
         btn.graphics.PenType.SOLID_COLOR,
-        hexToArray("#D6E9FF"),
+        hexToArray("#93989F"),
         1
     );
     var fontSize = 11;
@@ -1118,7 +1124,7 @@ function buttonColorText(parentObj, buttonText, staticColor, hoverColor, leftAli
                 updateTextButtonOnHover(this, buttonText, hoverColor, "#FFFFFF", leftAlign);
             });
             btn.addEventListener("mouseout", function () {
-                updateTextButtonOnHover(this, buttonText, staticColor, "#D6E9FF", leftAlign);
+                updateTextButtonOnHover(this, buttonText, staticColor, "#93989F", leftAlign);
             });
         } catch (err) {
             // fail silently
@@ -3690,6 +3696,7 @@ btn_reload_json.onClick = function () {
         showAlertWindow("JSON file doesnt exist");
     }
 };
+/*
 textLayer.onClick = function () {
     app.beginUndoGroup("New Text");
     var activeComp = app.project.activeItem;
@@ -3713,6 +3720,23 @@ textLayer.onClick = function () {
             fillSolid.property("ADBE Fill-0002").setValue([1, 1, 1]);
         }
     } else {
+        return;
+    }
+    app.endUndoGroup();
+};
+*/
+textLayer.onClick = function () {
+    app.beginUndoGroup("New Text");
+
+    if (app.project.activeItem instanceof CompItem) {
+        var activeComp = app.project.activeItem;
+        app.activeViewer.setActive();
+        var result = "text_sel";
+        var sourceCompName = "_ELEMENTS";
+        app.executeCommand(2004); // “Deselect All”
+        copyLayerToActiveComp(sourceCompName, result);
+    } else {
+        showAlertWindow("Please open a composition");
         return;
     }
     app.endUndoGroup();
