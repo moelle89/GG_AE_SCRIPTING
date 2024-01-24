@@ -1,7 +1,7 @@
 # AE_SCRIPTING
 
 ### Download:
-[moelles_mojo.zip]([https://github.com/moelle89/GG_AE_SCRIPTING/releases/download/mojo_v0014/moelles_mojo.zip](https://github.com/moelle89/GG_AE_SCRIPTING/releases))
+[moelles_mojo.zip](https://github.com/moelle89/GG_AE_SCRIPTING/releases)
 
 __
 
