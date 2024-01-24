@@ -3869,19 +3869,27 @@ function ProgressBar(min, max, current) {
             borderless: "not quite true",
             resizable: false,
         });
-        _window.preferredSize = [580, 140];
-        _progressBar = _window.add(
+        _window.preferredSize = [540, 140];
+
+        var progressGrp = _window.add("group", undefined, { name: "progressGrp" });
+        progressGrp.orientation = "column";
+        progressGrp.alignChildren = ["center", "top"];
+        progressGrp.spacing = 10;
+        progressGrp.margins = 24;
+        progressGrp.alignment = ["fill", "top"];
+
+        _progressBar = progressGrp.add(
             "progressbar",
             undefined,
             _cursor.min,
             _cursor.max
         );
-        _progressBar.preferredSize.width = 550;
+        _progressBar.preferredSize.width = 520;
         _progressBar.show();
-        _infos = _window.add("statictext", undefined, "Loading, please wait", {
+        _infos = progressGrp.add("statictext", undefined, "Loading, please wait", {
             justify: "center",
         });
-        _infos.preferredSize = [550, 24];
+        _infos.preferredSize = [520, 24];
         this.update(current);
         return this;
     };
@@ -3895,7 +3903,7 @@ function ProgressBar(min, max, current) {
 
     this.update = function (step) {
         _real.current = step;
-        _cursor.current = _real.current + .5 - _real.min;
+        _cursor.current = _real.current + 1 - _real.min;
         var infos = this.testInfos
             .replace(":current", _cursor.current)
             .replace(":max", _cursor.max);
