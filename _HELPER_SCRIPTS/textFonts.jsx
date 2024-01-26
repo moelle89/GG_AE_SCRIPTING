@@ -1,11 +1,39 @@
-// powershell file location
-var pathToPs1File = "~/Desktop/GETFONTS/getFonts.ps1"
-// execute powershell file
-var fonts = system.callSystem("Powershell.exe -ExecutionPolicy Bypass " + pathToPs1File)
+// Specify the folder path
+var folderPath = "C:\\Users\\Administrator\\Desktop\\GETFONTS\\_fonts";
+
+// Create an array to store file names
+var fileNames = [];
+
+// Check if the folder exists
+var folder = new Folder(folderPath);
+if (folder.exists) {
+    // Get all files in the folder
+    var files = folder.getFiles();
+
+    // Loop through the files and add their names (without extensions and underscores) to the array
+    for (var i = 0; i < files.length; i++) {
+        var fileName = files[i].name;
+
+        // Remove the extension
+        var lastDotIndex = fileName.lastIndexOf(".");
+        var fileNameWithoutExtension = lastDotIndex !== -1 ? fileName.substring(0, lastDotIndex) : fileName;
+
+        // Remove underscores
+        var fileNameWithoutUnderscores = fileNameWithoutExtension.replace(/_/g, "");
+
+        fileNames.push(fileNameWithoutUnderscores);
+    }
+
+    // Log the array to the JavaScript Console
+    $.writeln("Files in the folder: " + fileNames.join(", "));
+} else {
+    // Log a message if the folder does not exist
+    $.writeln("Folder does not exist: " + folderPath);
+}
 
 // Give the powershell script some time (3 seconds in this case) to write all the font names
 // it may need more time if you have 1000s of fonts, adjust as needed
-$.sleep(3000)
+$.sleep(1000)
 
 // function to parse through the fonts pulled from the text file
 // will return array of font names for ScriptUI
@@ -37,7 +65,7 @@ function main() {
     var fontList = fontFile.read();
     fontFile.close();
 
-    var allFonts = getAllFonts(fontList);
+    var allFonts = fileNames;
 
     //////////////////////////////////////////////////////////////////////////
     //
@@ -85,8 +113,8 @@ function main() {
 
     if (myResult == 2) {
         // on cancel, alert the user and exit the script
-        alert("Operation Canceled!");
-        exit(0);
+        options.close();
+        return;
     }
 
     options.close();
@@ -95,5 +123,3 @@ function main() {
 
 // store the returned value for later as pickedFont
 var pickedFont = main();
-
-alert(pickedFont);
