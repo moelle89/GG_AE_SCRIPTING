@@ -4090,31 +4090,31 @@ addTooltipToButton(demo6grp, "demo06", 90, false, false, true);
 addTooltipToButton(demo7grp, "demo07", 90, true, false, true);
 addTooltipToButton(demo8grp, "demo08", 90, true, false, true);
 demo1.onClick = function () {
-    changeDemoContent("1")
+        changeDemoContent("1");
 }
 demo2.onClick = function () {
-    changeDemoContent("2")
+        changeDemoContent("2");
 }
 demo3.onClick = function () {
-    changeDemoContent("3")
+        changeDemoContent("3");
 }
 demo4.onClick = function () {
-    changeDemoContent("4")
+        changeDemoContent("4");
 }
 demo5.onClick = function () {
-    changeDemoContent("5")
+        changeDemoContent("5");
 }
 demo6.onClick = function () {
-    changeDemoContent("6")
+        changeDemoContent("6");
 }
 demo7.onClick = function () {
-    changeDemoContent("7")
+        changeDemoContent("7");
 }
 demo8.onClick = function () {
-    changeDemoContent("8")
+        changeDemoContent("8");
 }
 btn_demos.onClick = function () {
-    changeDemoContent("1")
+        changeDemoContent("1");
 }
 var mousePosGlobal = null;
 function closeDialogWindows() {
