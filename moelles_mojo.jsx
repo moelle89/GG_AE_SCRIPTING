@@ -822,9 +822,9 @@ var shortcuts = win.add("group", undefined, {
 shortcuts.orientation = "row";
 shortcuts.alignChildren = ["left", "top"];
 shortcuts.alignment = ["left", "top"];
-shortcuts.spacing = 10;
-shortcuts.margins = [4, 0, 0, 0];
-shortcuts.preferredSize.height = 46;
+shortcuts.spacing = 4;
+shortcuts.margins = [2, 0, 0, 0];
+shortcuts.preferredSize.height = 40;
 var openBoilerplate = shortcuts.add(
     "iconbutton",
     undefined,
@@ -879,6 +879,15 @@ var purgeAll = shortcuts.add(
 }
 );
 purgeAll.alignment = ["center", "top"];
+var btn_renderQ = shortcuts.add(
+    "iconbutton",
+    undefined,
+    mojoUI.createIcon("icn_renderq"), {
+    name: "btn_renderQ",
+    style: "toolbutton"
+}
+);
+btn_renderQ.alignment = ["center", "top"];
 var btn_about = shortcuts.add(
     "iconbutton",
     undefined,
@@ -896,9 +905,9 @@ var addObj = root.add("group", undefined, {
 addObj.orientation = "column";
 addObj.alignChildren = ["left", "top"];
 addObj.alignment = ["left", "top"];
-addObj.minimumSize.width = 24;
-addObj.spacing = 3;
-addObj.margins = 3;
+addObj.minimumSize.width = 16;
+addObj.spacing = 1;
+addObj.margins = 1;
 // Example buttons
 var buttonArray = [
     addObj.add("iconbutton", undefined, mojoUI.createIcon("icn_textl"), {
@@ -1043,21 +1052,9 @@ function txtDraw() {
         this.graphics.drawString(
             this.text,
             this.textPen,
-            (this.size[0] -
-                this.graphics.measureString(
-                    this.text,
-                    this.graphics.font,
-                    this.size[0]
-                )[0]) / 2,
-            (this.size[1] -
-                this.graphics.measureString(
-                    this.text,
-                    this.graphics.font,
-                    this.size[0]
-                )[1]) /
-            1.75,
-            this.graphics.font
-        );
+            (this.size[0] - this.graphics.measureString(this.text, this.graphics.font, this.size[0])[0]) / 2,
+            (this.size[1] - this.graphics.measureString(this.text, this.graphics.font, this.size[0])[1]) / 1.75,
+            this.graphics.font);
     }
 }
 function txtDrawLeft() {
@@ -1071,22 +1068,17 @@ function txtDrawLeft() {
         // fail silently
     }
     if (this.text) {
+        var extraWidth = 30; // Additional space to add to the width
+        var offsetX = 10; // Offset to move the text to the right
+
+        var textWidth = this.graphics.measureString(this.text, this.graphics.font, this.size[0])[0];
+        var xPosition = (this.size[0] - textWidth - extraWidth) / 2 + offsetX;
+
         this.graphics.drawString(
             this.text,
             this.textPen,
-            (this.size[0] -
-                this.graphics.measureString(
-                    this.text,
-                    this.graphics.font,
-                    this.size[0]
-                )[0]) / 8,
-            (this.size[1] -
-                this.graphics.measureString(
-                    this.text,
-                    this.graphics.font,
-                    this.size[0]
-                )[1]) /
-            1.75,
+            xPosition,
+            (this.size[1] - this.graphics.measureString(this.text, this.graphics.font, this.size[0])[1]) / 1.75,
             this.graphics.font
         );
     }
@@ -1367,11 +1359,8 @@ function showCustomTooltip(text, coordinates, width, invert, multiline, isIMG) {
     });
     tooltipWin.margins = 5;
     tooltipWin.spacing = 5;
-    mojoUI.setBG(tooltipWin, [0.06, 0.06, 0.06]);
+    mojoUI.setBG(tooltipWin, [0.05, 0.05, 0.05]);
     var panel = tooltipWin.add("group", undefined, "");
-    //panel.maximumSize.width = 170;
-    // Customize background color
-    //panel.graphics.backgroundColor = panel.graphics.newBrush(panel.graphics.BrushType.SOLID_COLOR, [0.05, 0.05, 0.05]); // RGB color [R, G, B]
     if ((typeof text === "string") && (!isIMG)) {
         var staticText = panel.add("statictext", undefined, text, {
             multiline: multiline,
@@ -1384,7 +1373,7 @@ function showCustomTooltip(text, coordinates, width, invert, multiline, isIMG) {
         // Customize text color
         staticText.graphics.foregroundColor = staticText.graphics.newPen(
             staticText.graphics.PenType.SOLID_COLOR,
-            [0.73, 0.84, 0.97, 0.85],
+            [0.78, 0.78, 0.78, 1],
             1
         );
     };
@@ -1462,14 +1451,14 @@ function HoverMenu(title, buttonsData) {
             resizable: false,
             title: this.title,
         });
-        mojoUI.setBG(hoverMenuWin, [0.085, 0.085, 0.085]);
+        mojoUI.setBG(hoverMenuWin, [0.095, 0.095, 0.095]);
         hoverMenuWin.margins = 0;
         hoverMenuWin.spacing = 0;
         var panel = hoverMenuWin.add("group", undefined, "");
         panel.orientation = "column";
-        panel.alignment = ["fill", "center"];
+        panel.alignment = ["left", "fill"];
         panel.alignChildren = ["fill", "center"];
-        panel.spacing = 4;
+        panel.spacing = 2;
         panel.margins = 6;
         // Create an array to store button objects
         var buttonsArray = [];
@@ -1481,13 +1470,13 @@ function HoverMenu(title, buttonsData) {
             }); // Assign a unique name based on buttonData.name
             btn_grp.orientation = "row";
             btn_grp.alignment = ["fill", "center"];
-            btn_grp.alignChildren = ["fill", "fill"];
+            btn_grp.alignChildren = ["left", "fill"];
             // Create btn_icon
             var btn_icon = buttonColorText(
                 btn_grp,
                 buttonData.text,
-                "#161616",
-                "#010101",
+                "#191919",
+                "#000000",
                 true
             );
             // Add a click event listener to the btn_grp using the closure
@@ -1507,7 +1496,7 @@ function HoverMenu(title, buttonsData) {
         hoverMenuWin.frameLocation =
             win.orientation == "column" ?
                 [coordinates[0], coordinates[1]] :
-                [coordinates[0], coordinates[1] + 7];
+                [coordinates[0], coordinates[1] + 10];
         mousePosGlobal = hoverMenuWin.frameLocation;
         hoverMenuWin.show();
         return hoverMenuWin;
@@ -1545,7 +1534,7 @@ var hoverMenu_screenShot = new HoverMenu("hoverMenu_screenShot", [{
 },
 {
     imgString: "",
-    text: "Screenshot of selected Comps",
+    text: "Screenshot of sel. Comps",
     name: "saveSelectedCompsAsPNG",
     functionName: saveSelectedCompsAsPNG
 }
@@ -1578,6 +1567,55 @@ var hoverMenu_open = new HoverMenu("hoverMenu_open", [{
     text: "Open JSON Folder",
     name: "open_json",
     functionName: open_json
+}
+]);
+var renderQQQ = false;
+function openRenderQueuePanel() {
+    app.project.renderQueue.showWindow(true);
+    if(renderQQQ){
+        app.project.renderQueue.showWindow(false);
+        renderQQQ = false;
+        if (hoverMenuWin) {
+            hoverMenuWin.close();
+            try {
+                hoverMenuWin.hide();
+                delete hoverMenuWin;
+            } catch (e) { }
+        }
+        return
+    }
+    renderQQQ = true;
+}
+function add_renderq() {
+    app.executeCommand(3984);
+}
+function clean_renderQ() {
+    // Get the current Render Queue
+    var renderQueue = app.project.renderQueue;
+
+    // Remove all items from the Render Queue
+    while (renderQueue.numItems > 0) {
+        renderQueue.item(1).remove();
+    }
+}
+// Create instances of HoverMenu with different data
+var hoverMenu_renderqueue = new HoverMenu("hoverMenu_renderqueue", [{
+    imgString: "",
+    text: "Open Render-Queue",
+    name: "openrenderq",
+    functionName: openRenderQueuePanel
+},
+{
+    imgString: "",
+    text: "Add to Render-Queue",
+    name: "add_to_renderq",
+    functionName: add_renderq
+},
+{
+    imgString: "",
+    text: "Clear Render-Queue",
+    name: "clean_renderQ",
+    functionName: clean_renderQ
 }
 ]);
 // Function to add hover menu to a button
@@ -3429,6 +3467,7 @@ changeProjectName.onClick = function () {
 };
 //addTooltipToButton(openProjectInExplorer, "open Project Folder", 85);
 addHoverMenuToButton(openProjectInExplorer, hoverMenu_open);
+addHoverMenuToButton(btn_renderQ, hoverMenu_renderqueue);
 addTooltipToButton(
     btn_import,
     "import files and copy them into the project's footage folder",
