@@ -32,33 +32,10 @@ if (folder.exists) {
 }
 $.sleep(1000)
 
-// function to parse through the fonts pulled from the text file
-// will return an array of font names for ScriptUI
-function getAllFonts(fontsFromFile) {
-    fontsFromFile = fontsFromFile.split("\n");
-    var fontListForScriptUI = []
-    for (i = 0; i < fontsFromFile.length; i++) {
-        if (!fontsFromFile[i]) {
-            continue;
-        } else {
-            fontListForScriptUI.push(fontsFromFile[i])
-        }
-    }
-    return fontListForScriptUI;
-}
-
 // After Effects Script to create a drop-down menu with entries from an array
 function main() {
     //suppress error dialogs
     app.beginSuppressDialogs()
-    var scriptVersion = 1.0;
-
-    var fontFile = File("~/Desktop/fonts.txt");
-
-    fontFile.open("e")
-    var fontList = fontFile.read();
-    fontFile.close();
-
     var allFonts = fileNames;
 
     //////////////////////////////////////////////////////////////////////////
@@ -67,9 +44,8 @@ function main() {
     //
     //////////////////////////////////////////////////////////////////////////
 
-    var options = new Window('dialog', 'Test Script ' + scriptVersion);
+    var options = new Window('dialog', 'Test Script ');
     options.alignChildren = ['fill', 'top'];
-    options.graphics.font = ScriptUI.newFont("Segoe UI", "Regular", 14);
 
     if (app.version == "13.0.1") { // if it's CS6, font color is dark, otherwise font color is light
         options.graphics.foregroundColor = options.graphics.newPen(options.graphics.PenType.SOLID_COLOR, [0.2, 0.2, 0.2], 1);
@@ -102,7 +78,7 @@ function main() {
     var okButton = btns.add('button', undefined, 'OK', { name: 'ok' });
     var canButton = btns.add('button', undefined, 'Cancel', { name: 'cancel' });
     var myResult = options.show();
-
+    app.endSuppressDialogs(false);
     if (myResult == 2) {
         // on cancel, alert the user and exit the script
         options.close();
@@ -115,3 +91,4 @@ function main() {
 
 // store the returned value for later as pickedFont
 var pickedFont = main();
+alert(pickedFont)

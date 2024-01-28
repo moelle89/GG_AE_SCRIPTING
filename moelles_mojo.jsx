@@ -1089,7 +1089,7 @@ function txtDrawLeft() {
     @parem {staticColor} - string - icon color when static
     @parem {hoverColor} - string - icon color when hovered (optional)
 */
-function buttonColorText(parentObj, buttonText, staticColor, hoverColor, leftAlign, textSize) {
+function buttonColorText(parentObj, buttonText, staticColor, hoverColor, leftAlign, textSize, whitetxt) {
     var btn = parentObj.add("button", undefined, "", {
         name: "ok"
     }); // add a basic button to style
@@ -1099,10 +1099,13 @@ function buttonColorText(parentObj, buttonText, staticColor, hoverColor, leftAli
         btn.graphics.BrushType.SOLID_COLOR,
         hexToArray(staticColor)
     );
+    var textC = "#93989F";
+    if (whitetxt) { textC = "#E1E1E1" }
+
     btn.text = buttonText.toUpperCase();
     btn.textPen = btn.graphics.newPen(
         btn.graphics.PenType.SOLID_COLOR,
-        hexToArray("#93989F"),
+        hexToArray(textC),
         1
     );
     var fontSize = 11;
@@ -1116,7 +1119,7 @@ function buttonColorText(parentObj, buttonText, staticColor, hoverColor, leftAli
                 updateTextButtonOnHover(this, buttonText, hoverColor, "#FFFFFF", leftAlign);
             });
             btn.addEventListener("mouseout", function () {
-                updateTextButtonOnHover(this, buttonText, staticColor, "#93989F", leftAlign);
+                updateTextButtonOnHover(this, buttonText, staticColor, textC, leftAlign);
             });
         } catch (err) {
             // fail silently
@@ -1291,7 +1294,7 @@ btn_about.onClick = function (e) {
     prefInfoGrp.spacing = 0;
     prefInfoGrp.margins = 20;
     prefInfoGrp.alignment = ["fill", "top"];
-    var okButton = buttonColorText(prefInfoGrp, "  CHECK FOR UPDATES     ", "#0060b1", "#028def", false, 11);
+    var okButton = buttonColorText(prefInfoGrp, "  CHECK FOR UPDATES     ", "#0060b1", "#028def", false, 11, true);
     okButton.preferredSize.height = 30;
     okButton.onClick = function () {
         visitURL("https://github.com/moelle89/GG_AE_SCRIPTING/releases");
@@ -1572,7 +1575,7 @@ var hoverMenu_open = new HoverMenu("hoverMenu_open", [{
 var renderQQQ = false;
 function openRenderQueuePanel() {
     app.project.renderQueue.showWindow(true);
-    if(renderQQQ){
+    if (renderQQQ) {
         app.project.renderQueue.showWindow(false);
         renderQQQ = false;
         if (hoverMenuWin) {
@@ -3735,48 +3738,45 @@ btn_reload_json.onClick = function () {
         showAlertWindow("JSON file doesnt exist");
     }
 };
-/*
 textLayer.onClick = function () {
     app.beginUndoGroup("New Text");
-    var activeComp = app.project.activeItem;
-    if (checkComp(activeComp)) {
-        sourceText = "Hey! I'm a Placeholder-Text.";
-        var textLayer = activeComp.layers.addText(sourceText);
-        var sourceText = textLayer.property("Source Text").value;
-        sourceText.fontSize = 72;
-        sourceText.font = "Verdana-Bold";
-        textLayer.property("Source Text").setValue(sourceText);
-        textLayer.adjustmentLayer = false;
-        moveAnchor(1, 1, 0);
-        app.executeCommand(3819); // CenterInView
-        var myItem = getItem("input_template.json");
-        if (myItem && myItem.mainSource) {
-            setColorFill();
+    var compIndex = findCompIndex("_ELEMENTS", true);
+    if (compIndex) {
+        if (app.project.activeItem instanceof CompItem) {
+            var activeComp = app.project.activeItem;
+            app.activeViewer.setActive();
+            var result = "text_sel";
+            var sourceCompName = "_ELEMENTS";
+            app.executeCommand(2004); // “Deselect All”
+            copyLayerToActiveComp(sourceCompName, result);
         } else {
-            var fillSolid = textLayer
-                .property("ADBE Effect Parade")
-                .addProperty("ADBE Fill");
-            fillSolid.property("ADBE Fill-0002").setValue([1, 1, 1]);
+            showAlertWindow("Please open a composition");
+            return;
         }
     } else {
-        return;
-    }
-    app.endUndoGroup();
-};
-*/
-textLayer.onClick = function () {
-    app.beginUndoGroup("New Text");
-
-    if (app.project.activeItem instanceof CompItem) {
         var activeComp = app.project.activeItem;
-        app.activeViewer.setActive();
-        var result = "text_sel";
-        var sourceCompName = "_ELEMENTS";
-        app.executeCommand(2004); // “Deselect All”
-        copyLayerToActiveComp(sourceCompName, result);
-    } else {
-        showAlertWindow("Please open a composition");
-        return;
+        if (checkComp(activeComp)) {
+            sourceText = "Hey! I'm a Placeholder-Text.";
+            var textLayer = activeComp.layers.addText(sourceText);
+            var sourceText = textLayer.property("Source Text").value;
+            sourceText.fontSize = 72;
+            sourceText.font = "Verdana-Bold";
+            textLayer.property("Source Text").setValue(sourceText);
+            textLayer.adjustmentLayer = false;
+            moveAnchor(1, 1, 0);
+            app.executeCommand(3819); // CenterInView
+            var myItem = getItem("input_template.json");
+            if (myItem && myItem.mainSource) {
+                setColorFill();
+            } else {
+                var fillSolid = textLayer
+                    .property("ADBE Effect Parade")
+                    .addProperty("ADBE Fill");
+                fillSolid.property("ADBE Fill-0002").setValue([1, 1, 1]);
+            }
+        } else {
+            return;
+        }
     }
     app.endUndoGroup();
 };
@@ -4090,31 +4090,31 @@ addTooltipToButton(demo6grp, "demo06", 90, false, false, true);
 addTooltipToButton(demo7grp, "demo07", 90, true, false, true);
 addTooltipToButton(demo8grp, "demo08", 90, true, false, true);
 demo1.onClick = function () {
-        changeDemoContent("1");
+    changeDemoContent("1");
 }
 demo2.onClick = function () {
-        changeDemoContent("2");
+    changeDemoContent("2");
 }
 demo3.onClick = function () {
-        changeDemoContent("3");
+    changeDemoContent("3");
 }
 demo4.onClick = function () {
-        changeDemoContent("4");
+    changeDemoContent("4");
 }
 demo5.onClick = function () {
-        changeDemoContent("5");
+    changeDemoContent("5");
 }
 demo6.onClick = function () {
-        changeDemoContent("6");
+    changeDemoContent("6");
 }
 demo7.onClick = function () {
-        changeDemoContent("7");
+    changeDemoContent("7");
 }
 demo8.onClick = function () {
-        changeDemoContent("8");
+    changeDemoContent("8");
 }
 btn_demos.onClick = function () {
-        changeDemoContent("1");
+    changeDemoContent("1");
 }
 var mousePosGlobal = null;
 function closeDialogWindows() {
