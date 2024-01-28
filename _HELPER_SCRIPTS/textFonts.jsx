@@ -30,32 +30,26 @@ if (folder.exists) {
     // Log a message if the folder does not exist
     $.writeln("Folder does not exist: " + folderPath);
 }
-
-// Give the powershell script some time (3 seconds in this case) to write all the font names
-// it may need more time if you have 1000s of fonts, adjust as needed
 $.sleep(1000)
 
 // function to parse through the fonts pulled from the text file
-// will return array of font names for ScriptUI
+// will return an array of font names for ScriptUI
 function getAllFonts(fontsFromFile) {
-
     fontsFromFile = fontsFromFile.split("\n");
     var fontListForScriptUI = []
     for (i = 0; i < fontsFromFile.length; i++) {
         if (!fontsFromFile[i]) {
             continue;
-        }
-        else {
+        } else {
             fontListForScriptUI.push(fontsFromFile[i])
         }
     }
     return fontListForScriptUI;
 }
 
-// Script UI will return the *name* of the font chosen.
+// After Effects Script to create a drop-down menu with entries from an array
 function main() {
-
-    //surpress error dialogs
+    //suppress error dialogs
     app.beginSuppressDialogs()
     var scriptVersion = 1.0;
 
@@ -74,14 +68,13 @@ function main() {
     //////////////////////////////////////////////////////////////////////////
 
     var options = new Window('dialog', 'Test Script ' + scriptVersion);
-        options.alignChildren = ['fill', 'top'];
-        options.graphics.font = ScriptUI.newFont ("Segoe UI", "Regular", 14);
+    options.alignChildren = ['fill', 'top'];
+    options.graphics.font = ScriptUI.newFont("Segoe UI", "Regular", 14);
 
-    if (app.version == "13.0.1") { // if its CS6, font color is dark, otherwise font color is light
-        options.graphics.foregroundColor = options.graphics.newPen (options.graphics.PenType.SOLID_COLOR, [0.2, 0.2, 0.2], 1);
-    }
-    else {
-        options.graphics.foregroundColor = options.graphics.newPen (options.graphics.PenType.SOLID_COLOR, [1,1,1,], 1);
+    if (app.version == "13.0.1") { // if it's CS6, font color is dark, otherwise font color is light
+        options.graphics.foregroundColor = options.graphics.newPen(options.graphics.PenType.SOLID_COLOR, [0.2, 0.2, 0.2], 1);
+    } else {
+        options.graphics.foregroundColor = options.graphics.newPen(options.graphics.PenType.SOLID_COLOR, [1, 1, 1,], 1);
     }
 
     //////////////////////////////////////////////////////////////////////////
@@ -89,26 +82,25 @@ function main() {
     //////////////////////////////////////////////////////////////////////////
 
     var groupOptions = options.add('panel', undefined, 'Font Picker');
-        groupOptions.orientation = 'column';
-        groupOptions.alignChildren = 'left';
-        groupOptions.margins = 30;
-        groupOptions.indent = 30;
-        groupOptions.graphics.font = ScriptUI.newFont ("Segoe UI", "Regular", 14);
+    groupOptions.orientation = 'column';
+    groupOptions.alignChildren = 'left';
+    groupOptions.margins = 30;
+    groupOptions.indent = 30;
+    groupOptions.graphics.font = ScriptUI.newFont("Segoe UI", "Regular", 14);
 
-        groupOptions.add('statictext', undefined, 'System Fonts:');
+    groupOptions.add('statictext', undefined, 'System Fonts:');
 
-    var fontList = groupOptions.add('dropdownlist', undefined, allFonts);
-        fontList.preferredSize.width = 300;
+    var fontListDropdown = groupOptions.add('dropdownlist', undefined, allFonts);
+    fontListDropdown.preferredSize.width = 300;
 
     //////////////////////////////////////////////////////////////////////////
     // OK & Cancel Buttons
     //////////////////////////////////////////////////////////////////////////
 
     var btns = options.add('group {alignment: "right" }');
-        btns.orientation = 'row';
+    btns.orientation = 'row';
     var okButton = btns.add('button', undefined, 'OK', { name: 'ok' });
     var canButton = btns.add('button', undefined, 'Cancel', { name: 'cancel' });
-
     var myResult = options.show();
 
     if (myResult == 2) {
@@ -118,7 +110,7 @@ function main() {
     }
 
     options.close();
-    return fontList.selection.text
+    return fontListDropdown.selection.text;
 }
 
 // store the returned value for later as pickedFont
