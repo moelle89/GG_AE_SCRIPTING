@@ -1,5 +1,4 @@
 ﻿var scriptName = "moelles mojo";
-var scriptVersion = "V0018";
 "object" != typeof JSON && (JSON = {}), function () { "use strict"; var rx_one = /^[\],:{}\s]*$/, rx_two = /\\(?:["\\\/bfnrt]|u[0-9a-fA-F]{4})/g, rx_three = /"[^"\\\n\r]*"|true|false|null|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?/g, rx_four = /(?:^|:|,)(?:\s*\[)+/g, rx_escapable = /[\\"\u0000-\u001f\u007f-\u009f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g, rx_dangerous = /[\u0000\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g, gap, indent, meta, rep; function f(t) { return t < 10 ? "0" + t : t } function this_value() { return this.valueOf() } function quote(t) { return rx_escapable.lastIndex = 0, rx_escapable.test(t) ? '"' + t.replace(rx_escapable, (function (t) { var e = meta[t]; return "string" == typeof e ? e : "\\u" + ("0000" + t.charCodeAt(0).toString(16)).slice(-4) })) + '"' : '"' + t + '"' } function str(t, e) { var r, n, o, u, f, a = gap, i = e[t]; switch (i && "object" == typeof i && "function" == typeof i.toJSON && (i = i.toJSON(t)), "function" == typeof rep && (i = rep.call(e, t, i)), typeof i) { case "string": return quote(i); case "number": return isFinite(i) ? String(i) : "null"; case "boolean": case "null": return String(i); case "object": if (!i) return "null"; if (gap += indent, f = [], "[object Array]" === Object.prototype.toString.apply(i)) { for (u = i.length, r = 0; r < u; r += 1)f[r] = str(r, i) || "null"; return o = 0 === f.length ? "[]" : gap ? "[\n" + gap + f.join(",\n" + gap) + "\n" + a + "]" : "[" + f.join(",") + "]", gap = a, o } if (rep && "object" == typeof rep) for (u = rep.length, r = 0; r < u; r += 1)"string" == typeof rep[r] && (o = str(n = rep[r], i)) && f.push(quote(n) + (gap ? ": " : ":") + o); else for (n in i) Object.prototype.hasOwnProperty.call(i, n) && (o = str(n, i)) && f.push(quote(n) + (gap ? ": " : ":") + o); return o = 0 === f.length ? "{}" : gap ? "{\n" + gap + f.join(",\n" + gap) + "\n" + a + "}" : "{" + f.join(",") + "}", gap = a, o } } "function" != typeof Date.prototype.toJSON && (Date.prototype.toJSON = function () { return isFinite(this.valueOf()) ? this.getUTCFullYear() + "-" + f(this.getUTCMonth() + 1) + "-" + f(this.getUTCDate()) + "T" + f(this.getUTCHours()) + ":" + f(this.getUTCMinutes()) + ":" + f(this.getUTCSeconds()) + "Z" : null }, Boolean.prototype.toJSON = this_value, Number.prototype.toJSON = this_value, String.prototype.toJSON = this_value), "function" != typeof JSON.stringify && (meta = { "\b": "\\b", "\t": "\\t", "\n": "\\n", "\f": "\\f", "\r": "\\r", '"': '\\"', "\\": "\\\\" }, JSON.stringify = function (t, e, r) { var n; if (gap = "", indent = "", "number" == typeof r) for (n = 0; n < r; n += 1)indent += " "; else "string" == typeof r && (indent = r); if (rep = e, e && "function" != typeof e && ("object" != typeof e || "number" != typeof e.length)) throw new Error("JSON.stringify"); return str("", { "": t }) }), "function" != typeof JSON.parse && (JSON.parse = function (text, reviver) { var j; function walk(t, e) { var r, n, o = t[e]; if (o && "object" == typeof o) for (r in o) Object.prototype.hasOwnProperty.call(o, r) && (void 0 !== (n = walk(o, r)) ? o[r] = n : delete o[r]); return reviver.call(t, e, o) } if (text = String(text), rx_dangerous.lastIndex = 0, rx_dangerous.test(text) && (text = text.replace(rx_dangerous, (function (t) { return "\\u" + ("0000" + t.charCodeAt(0).toString(16)).slice(-4) }))), rx_one.test(text.replace(rx_two, "@").replace(rx_three, "]").replace(rx_four, ""))) return j = eval("(" + text + ")"), "function" == typeof reviver ? walk({ "": j }, "") : j; throw new SyntaxError("JSON.parse") }) }();
 function createDockableUI(thisObj) {
     var dialog =
@@ -346,6 +345,7 @@ w.g.bg.tm = w.g.bg.add("iconbutton", [24, 0, 48, 24], bmi, {
 w.g.bg.tr = w.g.bg.add("iconbutton", [48, 0, 72, 24], bri, {
     style: "toolbutton",
 });
+
 // this is the ignore masks checkbox
 w.im = 0;
 apCheck = groupAP2.add("checkbox", undefined, undefined, {
@@ -1057,6 +1057,7 @@ function txtDraw() {
             this.graphics.font);
     }
 }
+
 function txtDrawLeft() {
     try {
         this.graphics.drawOSControl();
@@ -1231,6 +1232,7 @@ function updateVectorButtonOnHover(btn, iconVec, iconColor, size) {
     btn.onDraw = vecDraw;
     return btn;
 }
+
 function prefDialog() {
     var dialog = new Window("dialog");
     dialog.text = "moelles mojo needs write access to work";
@@ -1294,8 +1296,16 @@ btn_about.onClick = function (e) {
     prefInfoGrp.spacing = 0;
     prefInfoGrp.margins = 20;
     prefInfoGrp.alignment = ["fill", "top"];
-    var okButton = buttonColorText(prefInfoGrp, "  CHECK FOR UPDATES     ", "#0060b1", "#028def", false, 11, true);
+    var okButton = buttonColorText(prefInfoGrp, "CHECK FOR UPDATES", "#0060b1", "#028def", true, 11, true);
     okButton.preferredSize.height = 30;
+
+    gg_img.addEventListener("mouseover", function () {
+        gg_img.image = mojoUI.createIcon("about_head_hov");
+    });
+    gg_img.addEventListener("mouseout", function () {
+        gg_img.image = mojoUI.createIcon("about_head");
+    });
+
     okButton.onClick = function () {
         visitURL("https://github.com/moelle89/GG_AE_SCRIPTING/releases");
         dialog.close();
@@ -1856,6 +1866,41 @@ function copyLayerToActiveComp(sourceCompName, layerName) {
     app.endUndoGroup();
     // Return null if the layer couldn't be copied
     return null;
+}
+
+// Function to copy an item from the Project Panel to the active composition by name
+function copyItemToComposition(itemName) {
+    // Get the active composition
+    var activeComp = app.project.activeItem;
+
+    // Check if there is an active composition
+    if (activeComp) {
+        // Search for the item in the Project Panel by name
+        var projectItem = null;
+        for (var i = 1; i <= app.project.numItems; i++) {
+            if (app.project.item(i).name === itemName) {
+                projectItem = app.project.item(i);
+                break;
+            }
+        }
+
+        // Check if the item was found
+        if (projectItem) {
+            // Duplicate the item to the active composition
+            var duplicateItem = projectItem.duplicate();
+
+            // Add the duplicated item to the active composition
+            var layer = activeComp.layers.add(duplicateItem);
+
+            // Center the layer in the composition
+            layer.property("Anchor Point").setValue([activeComp.width / 2, activeComp.height / 2]);
+            layer.property("Position").setValue([activeComp.width / 2, activeComp.height / 2]);
+        } else {
+            alert("Item not found in the Project Panel.");
+        }
+    } else {
+        alert("No active composition found.");
+    }
 }
 // Function to create a composition and add it to the project panel
 function createComposition(width, height, duration, frameRate, name, silent) {
@@ -2908,7 +2953,7 @@ function showDialogWindow(infoText) {
     swindow.alignment = ["fill", "top"];
     swindow.margins = 20;
     var nameLabel = swindow.add("statictext", undefined, infoText, {
-        multiline: true,
+        multiline: true
     });
     nameLabel.alignment = ["center", "top"];
     nameLabel.preferredSize.width = 360;
@@ -2925,7 +2970,7 @@ function showDialogWindow(infoText) {
     buttonGroup.spacing = 20;
     buttonGroup.alignChildren = ["fill", "top"];
     buttonGroup.alignment = ["fill", "top"];
-    var okButton = buttonColorText(buttonGroup, "Create", "#0060b1", "#028def");
+    var okButton = buttonColorText(buttonGroup, "Create", "#0060b1", "#028def", false, 11, true);
     okButton.preferredSize.height = 32;
     //var okButton = buttonGroup.add("button", undefined, "Create");
     var cancelButton = buttonGroup.add("button", undefined, "Cancel");
@@ -2992,7 +3037,7 @@ function showAlertWindow(infoText, title, icon, multiL) {
         // Customize text color
         mojoUI.setFG(staticText, [0.83, 0.94, 1, 0.75]);
     }
-    var okButton = buttonColorText(diaWin, "OK", "#0060b1", "#028def", false, 13);
+    var okButton = buttonColorText(diaWin, "OK", "#0060b1", "#028def", false, 11, true);
     okButton.preferredSize.height = 32;
     okButton.onClick = function () {
         diaWin.close();
@@ -3126,7 +3171,9 @@ btn_createIMGComps.onClick = function () {
                                 createSolid("BG");
                                 openCompositionByName(newProjectName + "_1920");
                                 createSolid("BG");
+                                app.executeCommand(2004); // “Deselect All”
                                 openCompositionByName("__SETTINGS");
+                                app.executeCommand(2004); // “Deselect All”
                                 showAlertWindow("Project saved as: " + newProjectName + ".aep");
                                 // Optional: Redraw the UI to reflect the changes
                             } else {
@@ -3195,6 +3242,13 @@ addAnimbtn.onClick = function () {
 bendbtn.onClick = function () {
     bendIt();
 };
+addTooltipToButton(
+    bendbtn,
+    "create a bend-effect-rig to draw text along a circular shape",
+    85,
+    false,
+    true
+);
 addTooltipToButton(
     btn_addElement,
     "add pre-configurated content element",
