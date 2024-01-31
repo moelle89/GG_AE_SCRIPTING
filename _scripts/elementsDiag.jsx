@@ -47,7 +47,7 @@ function elementsDialog() {
   Btn_LOGO.onClick = function () {
     var result = "LOGO";
     var sourceCompName = "_ELEMENTS";
-    app.executeCommand(2004); // “Deselect All”
+    deselectAll(); // “Deselect All”
     copyLayerToActiveComp(sourceCompName, result);
     secondaryDialog.close();
   };
@@ -58,7 +58,7 @@ function elementsDialog() {
   Btn_LOGOV2.onClick = function () {
     var result = "LOGO_NEW";
     var sourceCompName = "_ELEMENTS";
-    app.executeCommand(2004); // “Deselect All”
+    deselectAll(); // “Deselect All”
     copyLayerToActiveComp(sourceCompName, result);
     secondaryDialog.close();
   };
@@ -96,7 +96,7 @@ function elementsDialog() {
   Btn_TextElement.onClick = function () {
     var result = "TEXT_el";
     var sourceCompName = "_ELEMENTS";
-    app.executeCommand(2004); // “Deselect All”
+    deselectAll(); // “Deselect All”
     copyLayerToActiveComp(sourceCompName, result);
     secondaryDialog.close();
   };
@@ -107,8 +107,14 @@ function elementsDialog() {
   Btn_SelTextElement.onClick = function () {
     var result = "text_sel";
     var sourceCompName = "_ELEMENTS";
-    app.executeCommand(2004); // “Deselect All”
+    deselectAll(); // “Deselect All”
     copyLayerToActiveComp(sourceCompName, result);
+    var result1 = "input_template.json";
+    deselectAll(); // “Deselect All”
+    copyHiddenLayerToActiveComp(sourceCompName, result1);
+    var result2 = "fontlib.jsx";
+    deselectAll(); // “Deselect All”
+    copyHiddenLayerToActiveComp(sourceCompName, result2);
     secondaryDialog.close();
   };
 
@@ -152,7 +158,7 @@ function elementsDialog() {
   Btn_MEDIA.onClick = function () {
     var result = "_MEDIA";
     var sourceCompName = "_ELEMENTS";
-    app.executeCommand(2004); // “Deselect All”
+    deselectAll(); // “Deselect All”
     copyLayerToActiveComp(sourceCompName, result);
     secondaryDialog.close();
   };
@@ -163,7 +169,7 @@ function elementsDialog() {
   Btn_MEDIASQR.onClick = function () {
     var result = "_MEDIA_SQUARE";
     var sourceCompName = "_ELEMENTS";
-    app.executeCommand(2004); // “Deselect All”
+    deselectAll(); // “Deselect All”
     copyLayerToActiveComp(sourceCompName, result);
     secondaryDialog.close();
   };
@@ -174,7 +180,7 @@ function elementsDialog() {
   Btn_MEDIA1920.onClick = function () {
     var result = "_MEDIA_1920";
     var sourceCompName = "_ELEMENTS";
-    app.executeCommand(2004); // “Deselect All”
+    deselectAll(); // “Deselect All”
     copyLayerToActiveComp(sourceCompName, result);
     secondaryDialog.close();
   };

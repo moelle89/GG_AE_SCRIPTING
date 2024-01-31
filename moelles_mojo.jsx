@@ -942,6 +942,16 @@ var adjustmentsLayer = buttonArray[3];
 var nullLayer = buttonArray[4];
 var parent2null = buttonArray[5];
 
+
+function deselectAll() {
+    var activeComp = app.project.activeItem;
+    if (activeComp && activeComp instanceof CompItem) {
+        var selectedLayers = activeComp.selectedLayers;
+        for (var i = 0; i < selectedLayers.length; i++) {
+            selectedLayers[i].selected = false;
+        }
+    }
+}
 /// INCLUDES
 try {
     //@include '_scripts/rectangleWizard.jsx';
@@ -1005,6 +1015,7 @@ function hexToArray(hexString) {
     var b = parseInt(hexColor.slice(4, 6), 16) / 255;
     return [r, g, b, 1];
 }
+
 /** open url in browser
     @parem {url} - string - url
 */
@@ -1841,12 +1852,15 @@ function copyLayerToActiveComp(sourceCompName, layerName) {
                 app.beginUndoGroup("Copy Layer to Comp");
                 // Duplicate the layer to the active composition
                 sourceComp.layer(layerName).copyToComp(activeComp);
-                app.executeCommand(2004); // “Deselect All”
                 var copiedLayer = activeComp.layer(layerName);
                 var offsetX = activeComp.width / 2;
                 var offsetY = activeComp.height / 2;
                 if (layerName !== "LOGO_NEW" || "LOGO") {
                     copiedLayer.position.setValue([offsetX, offsetY]);
+                }
+                var selectedLayers = activeComp.selectedLayers;
+                for (var i = 0; i < selectedLayers.length; i++) {
+                    selectedLayers[i].selected = false;
                 }
                 copiedLayer.enabled = true;
                 copiedLayer.selected = true;
@@ -1863,8 +1877,44 @@ function copyLayerToActiveComp(sourceCompName, layerName) {
     } else {
         showAlertWindow("Open a composition");
     }
-    // Return null if the layer couldn't be copied
-    return null;
+}
+
+// Function to copy a layer from a source composition to the active composition
+function copyHiddenLayerToActiveComp(sourceCompName, layerName) {
+    // Get the active composition
+    var activeComp = app.project.activeItem;
+    if (checkComp(activeComp)) {
+        // Get the source composition by name
+        var sourceComp = findComp(sourceCompName);
+        // Check if the source composition exists
+        if (sourceComp !== null && sourceComp instanceof CompItem) {
+            // Get the layer by name from the source composition
+            var sourceLayer = sourceComp.layer(layerName);
+            // Check if the layer exists
+            if (sourceLayer !== null) {
+                app.beginUndoGroup("Copy Layer to Comp");
+                // Duplicate the layer to the active composition
+                sourceComp.layer(layerName).copyToComp(activeComp);
+                var copiedLayer = activeComp.layer(layerName);
+                // Move the copied layer to the bottom
+                copiedLayer.moveAfter(activeComp.layer(activeComp.numLayers));
+                var selectedLayers = activeComp.selectedLayers;
+                for (var i = 0; i < selectedLayers.length; i++) {
+                    selectedLayers[i].selected = false;
+                }
+                app.endUndoGroup();
+                // Alert to notify that the layer has been copied
+                //alert("Layer copied to active composition!");
+                // Return the duplicated layer
+            } else {
+                showAlertWindow("Layer not found in the source composition.");
+            }
+        } else {
+            showAlertWindow("Source composition not found.");
+        }
+    } else {
+        showAlertWindow("Open a composition");
+    }
 }
 
 // Function to copy an item from the Project Panel to the active composition by name
@@ -1918,12 +1968,12 @@ function openCompositionByName(compName) {
     compIndex = findCompIndex(compName);
     app.project.item(compIndex).openInViewer();
     app.activeViewer.setActive();
-    app.executeCommand(2004); // “Deselect All”
+    deselectAll(); // “Deselect All”
 }
 function openComposition(item) {
     item.openInViewer();
     app.activeViewer.setActive();
-    app.executeCommand(2004); // “Deselect All”
+    deselectAll(); // “Deselect All”
 }
 function createCompSet(duration, name, type) {
     // Call the function with the specified parameters
@@ -2376,7 +2426,7 @@ function changeJSONTEXT(inputText, jsonKey) {
 function openCompInViewer(compName, layerName) {
     compIndex = findCompIndex(compName);
     app.project.item(compIndex).openInViewer();
-    app.executeCommand(2004); // “Deselect All”
+    deselectAll(); // “Deselect All”
     app.activeViewer.setActive();
     app.project.activeItem.layer(layerName).selected = true;
 }
@@ -3170,7 +3220,7 @@ btn_createIMGComps.onClick = function () {
                                 createSolid("BG");
                                 openCompositionByName(newProjectName + "_1920");
                                 createSolid("BG");
-                                app.executeCommand(2004); // “Deselect All”
+                                deselectAll(); // “Deselect All”
                                 openCompositionByName("__SETTINGS");
                                 showAlertWindow("Project saved as: " + newProjectName + ".aep");
                                 // Optional: Redraw the UI to reflect the changes
@@ -3278,7 +3328,7 @@ btn_addGallery.onClick = function () {
             var ratioAdd = ratio_resultIndexAdd[ratioIndex];
             var selectedIndex = gallery.selection.index + ratioAdd;
             var result = gallery_result[selectedIndex];
-            app.executeCommand(2004); // “Deselect All”
+            deselectAll(); // “Deselect All”
             copyLayerToActiveComp(ratioresult, result);
         }
     }
@@ -3799,7 +3849,7 @@ textLayer.onClick = function () {
             app.activeViewer.setActive();
             var result = "text_sel";
             var sourceCompName = "_ELEMENTS";
-            app.executeCommand(2004); // “Deselect All”
+            deselectAll(); // “Deselect All”
             copyLayerToActiveComp(sourceCompName, result);
         } else {
             showAlertWindow("Please open a composition");
