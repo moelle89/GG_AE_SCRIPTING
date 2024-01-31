@@ -902,6 +902,7 @@ btn_about.alignment = ["center", "top"];
 var addObj = root.add("group", undefined, {
     name: "addObj"
 });
+
 addObj.orientation = "column";
 addObj.alignChildren = ["left", "top"];
 addObj.alignment = ["left", "top"];
@@ -941,7 +942,6 @@ var shapeLayer = buttonArray[2];
 var adjustmentsLayer = buttonArray[3];
 var nullLayer = buttonArray[4];
 var parent2null = buttonArray[5];
-
 
 function deselectAll() {
     var activeComp = app.project.activeItem;
@@ -3216,13 +3216,16 @@ btn_createIMGComps.onClick = function () {
                                 // Alert the user that the project has been saved
                                 openCompositionByName(newProjectName);
                                 createSolid("BG");
+                                deselectAll(); // “Deselect All”
                                 openCompositionByName(newProjectName + "_square");
                                 createSolid("BG");
+                                deselectAll(); // “Deselect All”
                                 openCompositionByName(newProjectName + "_1920");
                                 createSolid("BG");
                                 deselectAll(); // “Deselect All”
                                 openCompositionByName("__SETTINGS");
                                 showAlertWindow("Project saved as: " + newProjectName + ".aep");
+                                app.project.activeItem.layer("SETTINGS").selected = true;
                                 // Optional: Redraw the UI to reflect the changes
                             } else {
                                 // Alert the user that no name was entered
