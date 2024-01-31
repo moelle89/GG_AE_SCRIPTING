@@ -1827,7 +1827,6 @@ function createSolid(layerName) {
 }
 // Function to copy a layer from a source composition to the active composition
 function copyLayerToActiveComp(sourceCompName, layerName) {
-    app.beginUndoGroup("Copy Layer to Comp");
     // Get the active composition
     var activeComp = app.project.activeItem;
     if (checkComp(activeComp)) {
@@ -1839,6 +1838,7 @@ function copyLayerToActiveComp(sourceCompName, layerName) {
             var sourceLayer = sourceComp.layer(layerName);
             // Check if the layer exists
             if (sourceLayer !== null) {
+                app.beginUndoGroup("Copy Layer to Comp");
                 // Duplicate the layer to the active composition
                 sourceComp.layer(layerName).copyToComp(activeComp);
                 app.executeCommand(2004); // “Deselect All”
@@ -1847,10 +1847,10 @@ function copyLayerToActiveComp(sourceCompName, layerName) {
                 var offsetY = activeComp.height / 2;
                 if (layerName !== "LOGO_NEW" || "LOGO") {
                     copiedLayer.position.setValue([offsetX, offsetY]);
-                    checkComp;
                 }
                 copiedLayer.enabled = true;
                 copiedLayer.selected = true;
+                app.endUndoGroup();
                 // Alert to notify that the layer has been copied
                 //alert("Layer copied to active composition!");
                 // Return the duplicated layer
@@ -1863,7 +1863,6 @@ function copyLayerToActiveComp(sourceCompName, layerName) {
     } else {
         showAlertWindow("Open a composition");
     }
-    app.endUndoGroup();
     // Return null if the layer couldn't be copied
     return null;
 }
@@ -2409,7 +2408,6 @@ function rgbToHex(theColor) {
     return "#" + r + g + b;
 }
 function modifyJSONdata() {
-    app.beginUndoGroup("modify JSON");
     var compIndex = findCompIndex("__SETTINGS");
     if (compIndex) {
         // Get the colors from the color fill effect on the layer
@@ -2513,6 +2511,7 @@ function modifyJSONdata() {
                 existingJson.Comp.source.color = rgbToHex(source_color);
                 existingJson.Comp.source.color_dark = rgbToHex(source_color);
                 // Write updated JSON back to the file
+                app.beginUndoGroup("modify JSON");
                 var jsonString = JSON.stringify(existingJson, null, 2);
                 file.open("w");
                 file.write(jsonString);
@@ -2522,16 +2521,15 @@ function modifyJSONdata() {
                 openCompInViewer("__SETTINGS", "SETTINGS");
                 refreshCurrentFrame();
                 showAlertWindow("JSON DATA UPDATED!");
+                app.endUndoGroup();
             }
         } else {
             showAlertWindow("debug_layer not found");
         }
     }
-    app.endUndoGroup();
 }
 // Function to revert the JSON file
 function revertJson() {
-    app.beginUndoGroup("revert JSON");
     var myItem = getItem("input_template.json");
     // Check if myItem and myItem.mainSource are defined before attempting to reload
     if (myItem) {
@@ -2645,6 +2643,7 @@ function revertJson() {
                 ],
             },
         };
+        app.beginUndoGroup("revert JSON");
         // Path to the JSON file
         var projectPath = app.project.file.path; // Get the path of the After Effects project
         var jsonFilePath =
@@ -2664,11 +2663,11 @@ function revertJson() {
             openCompInViewer("__SETTINGS", "SETTINGS");
             refreshCurrentFrame();
             showAlertWindow("JSON file reverted to default!");
+            app.endUndoGroup();
         }
     } else {
         showAlertWindow("JSON file doesnt exist");
     }
-    app.endUndoGroup();
 }
 // Function to replace composition name and add suffix based on resolution
 function findReplaceCompositionName(prefix, replaceStr) {
@@ -3173,7 +3172,6 @@ btn_createIMGComps.onClick = function () {
                                 createSolid("BG");
                                 app.executeCommand(2004); // “Deselect All”
                                 openCompositionByName("__SETTINGS");
-                                app.executeCommand(2004); // “Deselect All”
                                 showAlertWindow("Project saved as: " + newProjectName + ".aep");
                                 // Optional: Redraw the UI to reflect the changes
                             } else {
