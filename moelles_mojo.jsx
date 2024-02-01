@@ -2476,6 +2476,7 @@ function modifyJSONdata() {
             var cursor_color = layer("cursor_color").value;
             var c2a_link_color = layer("c2a_link_color").value;
             var source_color = layer("source_color").value;
+            var source_bg_color = layer("source_bg").value;
             var oneVideo = layer("1.VIDEO").value;
             var oneLoop = layer("1.LOOP").value;
             var oneMuted = layer("1.MUTED").value;
@@ -2560,6 +2561,8 @@ function modifyJSONdata() {
                     rgbToHex(c2a_link_color);
                 existingJson.Comp.source.color = rgbToHex(source_color);
                 existingJson.Comp.source.color_dark = rgbToHex(source_color);
+                existingJson.Comp.source.bg_color = rgbToHex(source_bg_color);
+                existingJson.Comp.source.bg_color_dark = rgbToHex(source_bg_color);
                 // Write updated JSON back to the file
                 app.beginUndoGroup("modify JSON");
                 var jsonString = JSON.stringify(existingJson, null, 2);
