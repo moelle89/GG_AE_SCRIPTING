@@ -23,8 +23,8 @@ try {
    };
 
    // Get text and its length based on the selected option
-   const { text, font } = components[option];
-   let txtL = text.length;
+   const {text, font} = components[option];
+   var txtL = text.length;
 
    // Limit the length of the string
    const maxLength = 300;
@@ -75,10 +75,10 @@ try {
    const lineL = Math.round(lineCharV + txtL * lineChars);
 
    // Split text into lines
-   let finStr = "";
+   var finStr = "";
    text.split("\r").forEach((line) => {
-      let outStr = "";
-      let newLine = "";
+      var outStr = "";
+      var newLine = "";
       line.split(" ").forEach((word) => {
          const newLineWithWord = newLine + (newLine ? " " : "") + word;
          if (newLineWithWord.length > lineL) {

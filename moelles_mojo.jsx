@@ -1807,7 +1807,6 @@ function areNamesUsed(name1, name2, name3) {
 }
 // Create Solid Layer
 function createSolid(layerName) {
-    app.beginUndoGroup("New Solid");
     var activeComp = app.project.activeItem;
     if (checkComp(activeComp)) {
         if (layerName == "default") {
@@ -1834,7 +1833,6 @@ function createSolid(layerName) {
     } else {
         return;
     }
-    app.endUndoGroup();
 }
 // Function to copy a layer from a source composition to the active composition
 function copyLayerToActiveComp(sourceCompName, layerName) {
@@ -1893,19 +1891,31 @@ function copyHiddenLayerToActiveComp(sourceCompName, layerName) {
             // Check if the layer exists
             if (sourceLayer !== null) {
                 app.beginUndoGroup("Copy Layer to Comp");
-                // Duplicate the layer to the active composition
-                sourceComp.layer(layerName).copyToComp(activeComp);
-                var copiedLayer = activeComp.layer(layerName);
-                // Move the copied layer to the bottom
-                copiedLayer.moveAfter(activeComp.layer(activeComp.numLayers));
-                var selectedLayers = activeComp.selectedLayers;
-                for (var i = 0; i < selectedLayers.length; i++) {
-                    selectedLayers[i].selected = false;
+
+                // Check if the layer already exists in the composition
+                var existingLayer = null;
+                for (var i = 1; i <= activeComp.numLayers; i++) {
+                    if (activeComp.layer(i).name === layerName) {
+                        existingLayer = activeComp.layer(i);
+                        break;
+                    }
+                }
+
+                if (!existingLayer) {
+                    // If the layer doesn't exist, then copy it
+                    sourceComp.layer(layerName).copyToComp(activeComp);
+                    var copiedLayer = activeComp.layer(layerName);
+                    // Move the copied layer to the bottom
+                    copiedLayer.moveAfter(activeComp.layer(activeComp.numLayers));
+                    var selectedLayers = activeComp.selectedLayers;
+                    for (var i = 0; i < selectedLayers.length; i++) {
+                        selectedLayers[i].selected = false;
+                    }
+                    // Alert to notify that the layer has been copied
+                    //alert("Layer copied to active composition!");
                 }
                 app.endUndoGroup();
-                // Alert to notify that the layer has been copied
-                //alert("Layer copied to active composition!");
-                // Return the duplicated layer
+                // Return the duplicated layer or handle accordingly
             } else {
                 showAlertWindow("Layer not found in the source composition.");
             }
@@ -2058,7 +2068,6 @@ function removeSpecificExpressions() {
 // Function to add specific expressions to properties of a layer (Anchor Point, Position, Scale)
 function scaleToFillComp() {
     // Check if a composition is active
-    app.beginUndoGroup("ScaleToFill");
     var activeComp = app.project.activeItem;
     if (checkComp(activeComp)) {
         var comp = app.project.activeItem;
@@ -2087,7 +2096,6 @@ function scaleToFillComp() {
             showAlertWindow("Please select a layer.");
         }
     }
-    app.endUndoGroup();
 }
 // ADD IN OUT ANIM + MARKERS
 function addANIM() {
@@ -2102,7 +2110,6 @@ function addANIM() {
         showAlertWindow("Please select a layer.");
         return false;
     }
-    app.beginUndoGroup("My Process");
     for (var j = 0; j < numSelectedLayers; j++) {
         var myLayer = selectedLayers[j];
         var inFrames = 20;
@@ -2163,11 +2170,9 @@ function addANIM() {
         sliderControl.property("ADBE Slider Control-0001").expression =
             theExpression;
     }
-    app.endUndoGroup();
 }
 // Function to add colorFill via script instead of preset file
 function setColorFill() {
-    app.beginUndoGroup("setColorFill");
     if (app.project.activeItem instanceof CompItem) {
         var comp = app.project.activeItem;
         var filePath =
@@ -2199,7 +2204,6 @@ function setColorFill() {
     } else {
         showAlertWindow("Please open a composition.");
     }
-    app.endUndoGroup();
 }
 //Open Project Folder
 function openProjectFolder() {
@@ -2338,7 +2342,6 @@ function findCompIndex(compName, silent) {
 }
 function changeJSONTEXT(inputText, jsonKey) {
     // Check if JSON file exists
-    app.beginUndoGroup("Change JSON Text");
     // Path to the JSON file
     var projectPath = app.project.file.path; // Get the path of the After Effects project
     var jsonFilePath =
@@ -2421,7 +2424,6 @@ function changeJSONTEXT(inputText, jsonKey) {
         refreshCurrentFrame();
         //app.project.activeItem.resolutionFactor = userResoultionFacter;
     }
-    app.endUndoGroup();
 }
 function openCompInViewer(compName, layerName) {
     compIndex = findCompIndex(compName);
@@ -2564,7 +2566,6 @@ function modifyJSONdata() {
                 existingJson.Comp.source.bg_color = rgbToHex(source_bg_color);
                 existingJson.Comp.source.bg_color_dark = rgbToHex(source_bg_color);
                 // Write updated JSON back to the file
-                app.beginUndoGroup("modify JSON");
                 var jsonString = JSON.stringify(existingJson, null, 2);
                 file.open("w");
                 file.write(jsonString);
@@ -2574,7 +2575,6 @@ function modifyJSONdata() {
                 openCompInViewer("__SETTINGS", "SETTINGS");
                 refreshCurrentFrame();
                 showAlertWindow("JSON DATA UPDATED!");
-                app.endUndoGroup();
             }
         } else {
             showAlertWindow("debug_layer not found");
@@ -2761,7 +2761,6 @@ function findReplaceCompositionName(prefix, replaceStr) {
 }
 // Function to rename compositions in After Effects
 function renameCompositions(type, name) {
-    app.beginUndoGroup("Rename Compositions");
     var newName = type + name;
     // Custom names for the compositions
     var newNames = [
@@ -2794,12 +2793,10 @@ function renameCompositions(type, name) {
             return false;
         }
     }
-    app.endUndoGroup();
     return true;
 }
 // Function to replace compositions within a precomposition based on equal suffixes
 function replaceCompositionsBySuffix(newName) {
-    app.beginUndoGroup("Replace Comps by Suffix");
     // Replace these with the actual names of your precomposition and target compositions
     var precompName = "__SETTINGS";
     var comp1Suffix = "BPLATE";
@@ -2833,16 +2830,12 @@ function replaceCompositionsBySuffix(newName) {
     selectLayers(replacedLayers);
     // Execute the "Time-Reverse Layer" command
     app.executeCommand(3695);
-    app.endUndoGroup();
-    app.beginUndoGroup("Delete Comps by Suffix");
     findItemByName(comp1Suffix).remove();
     findItemByName(comp2Suffix).remove();
     findItemByName(comp3Suffix).remove();
-    app.endUndoGroup();
 }
 // Function to replace a composition within a layer
 function replaceComposition(layer, suffix, newName) {
-    app.beginUndoGroup("Replace Comp");
     // Construct the new composition name based on the suffix
     var newCompName = layer.name.replace(suffix, newName);
     // Find the replacement composition
@@ -2859,7 +2852,6 @@ function replaceComposition(layer, suffix, newName) {
         timeRemap.enabled = true;
         timeRemap.setInterpolationTypeAtKey(1, KeyframeInterpolationType.HOLD);
     }
-    app.endUndoGroup();
     return layer;
 }
 // Function to find an item by name
@@ -2873,16 +2865,13 @@ function findItemByName(name) {
 }
 // Function to select layers in the timeline
 function selectLayers(layers) {
-    app.beginUndoGroup("Select Layers");
     for (var i = 0; i < layers.length; i++) {
         layers[i].selected = true;
     }
-    app.endUndoGroup();
 }
 //////////////
 /// PARENT 2 NULL
 function CreateParentNull() {
-    app.beginUndoGroup("Create Parent Null");
     try {
         var comp = app.project.activeItem;
         if (comp == null || !(comp instanceof CompItem)) {
@@ -2956,7 +2945,6 @@ function CreateParentNull() {
     } catch (err) {
         showAlertWindow(err.line.toString() + "\r" + err.toString());
     }
-    app.endUndoGroup();
 }
 function OnExit() {
     return;
@@ -3194,7 +3182,9 @@ btn_createIMGComps.onClick = function () {
                     var newName = type + tempName;
                     var worked = createCompSet(duration, tempName, type);
                     if (worked) {
+                        app.beginUndoGroup("Replace Comps by Suffix");
                         replaceCompositionsBySuffix(newName);
+                        app.endUndoGroup();
                         // Save Project with New Name in Same Path
                         // Get the current project file
                         var currentProject = app.project.file;
@@ -3270,7 +3260,9 @@ addTooltipToButton(
     false
 );
 colorFill.onClick = function () {
+    app.beginUndoGroup("setColorFill");
     setColorFill();
+    app.endUndoGroup();
 };
 addTooltipToButton(
     scale2fill,
@@ -3280,7 +3272,9 @@ addTooltipToButton(
     true
 );
 scale2fill.onClick = function () {
+    app.beginUndoGroup("ScaleToFill");
     scaleToFillComp();
+    app.endUndoGroup();
 };
 addTooltipToButton(
     addAnimbtn,
@@ -3290,7 +3284,9 @@ addTooltipToButton(
     true
 );
 addAnimbtn.onClick = function () {
+    app.beginUndoGroup("My Process");
     addANIM();
+    app.endUndoGroup();
 };
 
 bendbtn.onClick = function () {
@@ -3504,7 +3500,7 @@ delExp.onClick = function () {
 addTooltipToButton(openBoilerplate, "OPEN BOILERPLATE.aep", 85);
 openBoilerplate.onClick = function () {
     if (app.project && app.project.file !== null && app.project.file.name === "___boilerplate_23.aep") {
-        showAlertWindow("BOILERPLATE already open");
+        showAlertWindow("BOILERPLATE is already open");
     } else {
         var my_file = new File("C:/data_driven_ae_template-1/___boilerplate_23.aep");
         if (my_file.exists) {
@@ -3729,7 +3725,9 @@ btn_title.onClick = function () {
             }
         }
         // Execute changeJSONTEXT function with the provided text
+        app.beginUndoGroup("Change JSON Text");
         changeJSONTEXT(text, "title");
+        app.endUndoGroup();
     } else {
         showAlertWindow("JSON file doesnt exist");
     }
@@ -3751,7 +3749,9 @@ btn_subtext.onClick = function () {
             }
         }
         // Execute changeJSONTEXT function with the provided text
+        app.beginUndoGroup("Change JSON Text");
         changeJSONTEXT(text, "subtext");
+        app.endUndoGroup();
     } else {
         showAlertWindow("JSON file doesnt exist");
     }
@@ -3773,7 +3773,9 @@ btn_source.onClick = function () {
             }
         }
         // Execute changeJSONTEXT function with the provided text
+        app.beginUndoGroup("Change JSON Text");
         changeJSONTEXT(text, "source");
+        app.endUndoGroup();
     } else {
         showAlertWindow("JSON file doesnt exist");
     }
@@ -3795,7 +3797,9 @@ btn_c2a.onClick = function () {
             }
         }
         // Execute changeJSONTEXT function with the provided text
+        app.beginUndoGroup("Change JSON Text");
         changeJSONTEXT(text, "call2action");
+        app.endUndoGroup();
     } else {
         showAlertWindow("JSON file doesnt exist");
     }
@@ -3817,7 +3821,9 @@ btn_c2alink.onClick = function () {
             }
         }
         // Execute changeJSONTEXT function with the provided text
+        app.beginUndoGroup("Change JSON Text");
         changeJSONTEXT(text, "call2action_link");
+        app.endUndoGroup();
     } else {
         showAlertWindow("JSON file doesnt exist");
     }
@@ -3830,7 +3836,9 @@ addTooltipToButton(
     true
 );
 btn_debug_colors.onClick = function () {
+    app.beginUndoGroup("modify JSON");
     modifyJSONdata();
+    app.endUndoGroup();
 };
 addTooltipToButton(btn_revert_json, "restore the Default JSON", 85);
 btn_revert_json.onClick = function () {
@@ -3889,7 +3897,9 @@ textLayer.onClick = function () {
     app.endUndoGroup();
 };
 solidLayer.onClick = function () {
+    app.beginUndoGroup("New Solid");
     createSolid("SOLID");
+    app.endUndoGroup();
 };
 shapeLayer.onClick = function () {
     var comp = app.project.activeItem;
@@ -3916,7 +3926,6 @@ shapeLayer.onClick = function () {
     }
 };
 adjustmentsLayer.onClick = function () {
-    app.beginUndoGroup("New Adj.");
     var activeComp = app.project.activeItem;
     if (checkComp(activeComp)) {
         if (layerName == "default") {
@@ -3924,6 +3933,7 @@ adjustmentsLayer.onClick = function () {
         } else {
             adjName = layerName;
         }
+        app.beginUndoGroup("New Adj.");
         var newSolid = activeComp.layers.addSolid(
             [1, 1, 1],
             adjName,
@@ -3932,23 +3942,23 @@ adjustmentsLayer.onClick = function () {
             1
         );
         newSolid.adjustmentLayer = true;
+        app.endUndoGroup();
     } else {
         return;
     }
-    app.endUndoGroup();
 };
 nullLayer.onClick = function () {
-    app.beginUndoGroup("New Null");
     var activeComp = app.project.activeItem;
     if (checkComp(activeComp)) {
+        app.beginUndoGroup("New Null");
         var newNull = activeComp.layers.addNull();
         if (layerName == "default") { } else {
             newNull.name = layerName;
         }
+        app.endUndoGroup();
     } else {
         return;
     }
-    app.endUndoGroup();
 };
 parent2null.onClick = function () {
     app.beginUndoGroup("Create");
