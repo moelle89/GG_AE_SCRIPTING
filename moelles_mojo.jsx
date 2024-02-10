@@ -2759,7 +2759,7 @@ function renameRevertJSON() {
             $.sleep(100);
             file = new File(jsonTempFilePath);
             file.rename(tempFileName, originalFileName);
-            $.sleep(100);
+            $.sleep(200);
             var myItem = getItem(originalFileName);
             myItem.mainSource.reload();
             refreshCurrentFrame();
