@@ -48,7 +48,7 @@ xcopy "%BUILDS_FONTS_FOLDER%" "%TEMP_DIR%\%BUILDS_FONTS_FOLDER%\" /s /e /i
 xcopy "%BUILDS_IMG_FOLDER%" "%TEMP_DIR%\%BUILDS_IMG_FOLDER%\" /s /e /i
 copy "%BUILDS_MOJO_FILE%" "%TEMP_DIR%\%BUILDS_FOLDER%"
 
-echo Ccreating Zip, please wait.
+echo Creating Zip, please wait.
 
 REM Check if the zip file already exists and delete it
 if exist "%OUTPUT_ZIP%" del "%OUTPUT_ZIP%"

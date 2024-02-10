@@ -2256,7 +2256,7 @@ function openSubfolderInProject(subfolderName) {
             var cancelButton = noFolderDialog.add(
                 "button",
                 undefined,
-                "NAH, I´m good."
+                "NAH, I'm good."
             );
             cancelButton.onClick = function () {
                 noFolderDialog.close();
@@ -2696,27 +2696,104 @@ function revertJson() {
                 ],
             },
         };
-        app.beginUndoGroup("revert JSON");
         // Path to the JSON file
         var projectPath = app.project.file.path; // Get the path of the After Effects project
         var jsonFilePath =
             projectPath + "/(footage)/footage/json/input_template.json"; // Adjust the JSON file path
+        var jsonTempFilePath =
+            projectPath + "/(footage)/footage/json/temp_input_template.json"; // Adjust the JSON file path
         // Write the JSON data to the file
         var jsonString = JSON.stringify(jsonData, null, 2);
         var file = new File(jsonFilePath);
+        var originalFileName = "input_template.json";
+        var tempFileName = "temp_input_template.json";
+
         if (!file.exists) {
             showAlertWindow("JSON file does not exist at path: " + jsonFilePath);
         } else {
+            // Rename the file to a temporary name
+            file.rename(originalFileName, tempFileName);
             file.open("w");
             file.write(jsonString);
             file.close();
-            var myItem = getItem("input_template.json");
+
+            // Reload the main source
+            var myItem = getItem(originalFileName);
             myItem.mainSource.reload();
+            // Schedule the rename back to original name after the current operation
+            $.sleep(100);
+            file = new File(jsonTempFilePath);
+            file.rename(tempFileName, originalFileName);
             //app.purge(PurgeTarget.IMAGE_CACHES);
             openCompInViewer("__SETTINGS", "SETTINGS");
             refreshCurrentFrame();
             showAlertWindow("JSON file reverted to default!");
-            app.endUndoGroup();
+        }
+    } else {
+        showAlertWindow("JSON file doesnt exist");
+    }
+}
+// Function to rename the json twice to make after effects notice the file-changes
+function renameRevertJSON() {
+    var myItem = getItem("input_template.json");
+    // Check if myItem and myItem.mainSource are defined before attempting to reload
+    if (myItem) {
+        // Path to the JSON file
+        var projectPath = app.project.file.path; // Get the path of the After Effects project
+        var jsonFilePath =
+            projectPath + "/(footage)/footage/json/input_template.json"; // Adjust the JSON file path
+        var jsonTempFilePath =
+            projectPath + "/(footage)/footage/json/temp_input_template.json"; // Adjust the JSON file path
+        // Write the JSON data to the file
+        var file = new File(jsonFilePath);
+        var originalFileName = "input_template.json";
+        var tempFileName = "temp_input_template.json";
+
+        if (!file.exists) {
+            showAlertWindow("JSON file does not exist at path: " + jsonFilePath);
+        } else {
+            // Rename the file to a temporary name
+            file.rename(originalFileName, tempFileName);
+            // Reload the main source
+            // Schedule the rename back to original name after the current operation
+            $.sleep(100);
+            file = new File(jsonTempFilePath);
+            file.rename(tempFileName, originalFileName);
+            $.sleep(100);
+            var myItem = getItem(originalFileName);
+            myItem.mainSource.reload();
+            refreshCurrentFrame();
+        }
+    } else {
+        showAlertWindow("JSON file doesnt exist");
+    }
+}
+
+// Function to rename a file twice to make after effects notice the file-changes
+function renameRevertFile() {
+    var myItem = getItem("gallery_01_img.jpg");
+    // Check if myItem and myItem.mainSource are defined before attempting to reload
+    if (myItem) {
+        // Path to the JSON file
+        var projectPath = app.project.file.path; // Get the path of the After Effects project
+        var jsonFilePath =
+            projectPath + "/(footage)/footage/jpg/gallery_01_img.jpg"; // Adjust the JSON file path
+        var jsonTempFilePath =
+            projectPath + "/(footage)/footage/jpg/temp_gallery_01_img.jpg"; // Adjust the JSON file path
+        // Write the JSON data to the file
+        var file = new File(jsonFilePath);
+        var originalFileName = "gallery_01_img.jpg";
+        var tempFileName = "temp_gallery_01_img.jpg";
+
+        if (!file.exists) {
+            showAlertWindow("JSON file does not exist at path: " + jsonFilePath);
+        } else {
+            // Rename the file to a temporary name
+            file.rename(originalFileName, tempFileName);
+            // Reload the main source
+            //file.rename(tempFileName, originalFileName);
+            refreshCurrentFrame();
+            alert("done")
         }
     } else {
         showAlertWindow("JSON file doesnt exist");
@@ -3842,7 +3919,9 @@ btn_debug_colors.onClick = function () {
 };
 addTooltipToButton(btn_revert_json, "restore the Default JSON", 85);
 btn_revert_json.onClick = function () {
+    app.beginUndoGroup("revert JSON");
     revertJson();
+    app.endUndoGroup();
 };
 addTooltipToButton(btn_reload_json, "reload JSON, if edits wont show up", 85);
 btn_reload_json.onClick = function () {
@@ -4105,12 +4184,8 @@ function changeDemoContent(demoPack) {
             //batch
             var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo" + demoPack + ".bat";
             var result = system.callSystem(batScriptPath);
-            //powershell
-            //var powershellScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo" + demoPack + ".ps1";
-            //var command = 'powershell.exe -ExecutionPolicy Bypass -File "' + powershellScriptPath + '"';
-            //var result = system.callSystem(command);
             $.sleep(150);
-            var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img_footage.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png", "input_template.json"];
+            var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png", "input_template.json"];
             if (app.project.activeItem.selectedLayers.length = 0) {
                 activeItemT.selected = true;
             }
@@ -4128,6 +4203,7 @@ function changeDemoContent(demoPack) {
                     }
                 } catch (err) { $.writeln("Item not found: " + reloadAssets[i]); }
             }
+            renameRevertJSON();
             openCompositionByName(activeItemT.name);
             if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
                 // Move the playhead by one frame
