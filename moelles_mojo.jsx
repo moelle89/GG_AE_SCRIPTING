@@ -2756,11 +2756,14 @@ function renameRevertJSON() {
             file.rename(originalFileName, tempFileName);
             // Reload the main source
             // Schedule the rename back to original name after the current operation
+            var myItem = getItem(originalFileName);
+            myItem.mainSource.reload();
             $.sleep(100);
+            myItem.mainSource.reload();
             file = new File(jsonTempFilePath);
             file.rename(tempFileName, originalFileName);
+            myItem.mainSource.reload();
             $.sleep(200);
-            var myItem = getItem(originalFileName);
             myItem.mainSource.reload();
             refreshCurrentFrame();
         }
@@ -4185,6 +4188,7 @@ function changeDemoContent(demoPack) {
             var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo" + demoPack + ".bat";
             var result = system.callSystem(batScriptPath);
             $.sleep(150);
+            renameRevertJSON();
             var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png", "input_template.json"];
             if (app.project.activeItem.selectedLayers.length = 0) {
                 activeItemT.selected = true;
