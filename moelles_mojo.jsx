@@ -2426,7 +2426,7 @@ function changeJSONTEXT(inputText, jsonKey) {
     }
 }
 function openCompInViewer(compName, layerName) {
-    compIndex = findCompIndex(compName);
+    var compIndex = findCompIndex(compName);
     app.project.item(compIndex).openInViewer();
     deselectAll(); // “Deselect All”
     app.activeViewer.setActive();
@@ -2751,7 +2751,7 @@ function renameRevertJSON() {
         } else {
             // Rename the file to a temporary name
             file.rename(tempFileName);
-            $.sleep(1000);
+            $.sleep(1200);
             file.rename(originalFileName);
             $.sleep(300);
             refreshCurrentFrame();
@@ -4204,7 +4204,6 @@ function changeDemoContent(demoPack) {
             }
             var res = app.project.activeItem.resolutionFactor;
             var rft = app.project.activeItem.resolutionFactor;
-            refreshCurrentFrame();
             app.activeViewer.setActive();
             app.project.activeItem.resolutionFactor = res;
             if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
