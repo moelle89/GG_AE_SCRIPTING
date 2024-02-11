@@ -4034,8 +4034,7 @@ nullLayer.onClick = function () {
 };
 parent2null.onClick = function () {
     app.beginUndoGroup("Create");
-    //CreateParentNull();
-    renameRevertJSON();
+    CreateParentNull();
     app.endUndoGroup();
 }
 function activateCompViewer() {
