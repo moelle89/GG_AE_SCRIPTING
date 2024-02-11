@@ -2740,10 +2740,7 @@ function renameRevertJSON() {
     if (myItem) {
         // Path to the JSON file
         var projectPath = app.project.file.path; // Get the path of the After Effects project
-        var jsonFilePath =
-            projectPath + "/(footage)/footage/json/input_template.json"; // Adjust the JSON file path
-        var jsonTempFilePath =
-            projectPath + "/(footage)/footage/json/temp_input_template.json"; // Adjust the JSON file path
+        var jsonFilePath = projectPath + "/(footage)/footage/json/input_template.json"; // Adjust the JSON file path
         // Write the JSON data to the file
         var file = new File(jsonFilePath);
         var originalFileName = "input_template.json";
@@ -2753,19 +2750,12 @@ function renameRevertJSON() {
             showAlertWindow("JSON file does not exist at path: " + jsonFilePath);
         } else {
             // Rename the file to a temporary name
-            file.rename(originalFileName, tempFileName);
-            // Reload the main source
-            // Schedule the rename back to original name after the current operation
-            var myItem = getItem(originalFileName);
-            myItem.mainSource.reload();
-            $.sleep(100);
-            myItem.mainSource.reload();
-            file = new File(jsonTempFilePath);
-            file.rename(tempFileName, originalFileName);
-            myItem.mainSource.reload();
-            $.sleep(200);
-            myItem.mainSource.reload();
+            file.rename(tempFileName);
+            $.sleep(1000);
+            file.rename(originalFileName);
+            $.sleep(300);
             refreshCurrentFrame();
+            myItem.mainSource.reload();
         }
     } else {
         showAlertWindow("JSON file doesnt exist");
@@ -4044,7 +4034,8 @@ nullLayer.onClick = function () {
 };
 parent2null.onClick = function () {
     app.beginUndoGroup("Create");
-    CreateParentNull();
+    //CreateParentNull();
+    renameRevertJSON();
     app.endUndoGroup();
 }
 function activateCompViewer() {
@@ -4188,7 +4179,6 @@ function changeDemoContent(demoPack) {
             var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo" + demoPack + ".bat";
             var result = system.callSystem(batScriptPath);
             $.sleep(150);
-            renameRevertJSON();
             var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png", "input_template.json"];
             if (app.project.activeItem.selectedLayers.length = 0) {
                 activeItemT.selected = true;
@@ -4207,7 +4197,6 @@ function changeDemoContent(demoPack) {
                     }
                 } catch (err) { $.writeln("Item not found: " + reloadAssets[i]); }
             }
-            renameRevertJSON();
             openCompositionByName(activeItemT.name);
             if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
                 // Move the playhead by one frame
@@ -4252,6 +4241,8 @@ function changeDemoContent(demoPack) {
             };
             $.sleep(100);
             pb.end();
+            $.sleep(100);
+            renameRevertJSON();
         } else {
             showAlertWindow("Please open the BOILERPLATE or a template");
         }
