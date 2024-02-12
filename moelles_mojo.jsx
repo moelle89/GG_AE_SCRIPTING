@@ -2784,37 +2784,52 @@ function renameRevertJSON() {
         showAlertWindow("JSON file doesnt exist");
     }
 }
-
-// Function to rename a file twice to make after effects notice the file-changes
-function renameRevertFile() {
-    var myItem = getItem("gallery_01_img.jpg");
+// Function to rename the json twice to make after effects notice the file-changes
+function pushJSON() {
+    var myItem = getItem("input_template.json");
     // Check if myItem and myItem.mainSource are defined before attempting to reload
     if (myItem) {
-        // Path to the JSON file
         var projectPath = app.project.file.path; // Get the path of the After Effects project
         var jsonFilePath =
-            projectPath + "/(footage)/footage/jpg/gallery_01_img.jpg"; // Adjust the JSON file path
-        var jsonTempFilePath =
-            projectPath + "/(footage)/footage/jpg/temp_gallery_01_img.jpg"; // Adjust the JSON file path
-        // Write the JSON data to the file
-        var file = new File(jsonFilePath);
-        var originalFileName = "gallery_01_img.jpg";
-        var tempFileName = "temp_gallery_01_img.jpg";
-
-        if (!file.exists) {
+            projectPath + "/(footage)/footage/json/input_template.json"; // Adjust the JSON file path
+        var jsonFile = new File(jsonFilePath);
+        if (!jsonFile.exists) {
             showAlertWindow("JSON file does not exist at path: " + jsonFilePath);
         } else {
-            // Rename the file to a temporary name
-            file.rename(originalFileName, tempFileName);
-            // Reload the main source
-            //file.rename(tempFileName, originalFileName);
-            refreshCurrentFrame();
-            alert("done")
+            // Read existing JSON file
+            var existingJson = {};
+            var file = new File(jsonFilePath);
+            if (file.exists) {
+                file.open("r");
+                var existingJsonString = file.read();
+                file.close();
+                try {
+                    existingJson = JSON.parse(existingJsonString);
+                } catch (e) {
+                    showAlertWindow("Error parsing existing JSON file: " + e.toString());
+                }
+            }
+            varBackup = existingJson.Comp.title.text;
+            existingJson.Comp.title.text = "";
+            // Write updated JSON back to the file
+            var jsonString = JSON.stringify(existingJson, null, 2);
+            file.open("w");
+            file.write(jsonString);
+            file.close();
+
+            existingJson.Comp.title.text = varBackup;
+            // Write updated JSON back to the file
+            var jsonString = JSON.stringify(existingJson, null, 2);
+            file.open("w");
+            file.write(jsonString);
+            file.close();
+            refreshJSON();
         }
     } else {
         showAlertWindow("JSON file doesnt exist");
     }
 }
+
 // Function to replace composition name and add suffix based on resolution
 function findReplaceCompositionName(prefix, replaceStr) {
     // Get the current project
@@ -4267,7 +4282,8 @@ function changeDemoContent(demoPack) {
             $.sleep(100);
             pb.end();
             $.sleep(100);
-            renameRevertJSON();
+            //renameRevertJSON();
+            pushJSON();
         } else {
             showAlertWindow("Please open the BOILERPLATE or a template");
         }
