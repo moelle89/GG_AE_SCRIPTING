@@ -2383,8 +2383,7 @@ function changeJSONTEXT(inputText, jsonKey) {
         file.open("w");
         file.write(jsonString);
         file.close();
-        var myItem = getItem("input_template.json");
-        myItem.mainSource.reload();
+        refreshJSON();
         if (app.project.activeItem && app.project.activeItem instanceof CompItem) {
             // Move the playhead by one frame
             app.project.activeItem.time += 2 * app.project.activeItem.frameDuration;
@@ -2571,7 +2570,16 @@ function modifyJSONdata() {
                 file.write(jsonString);
                 file.close();
                 var myItem = getItem("input_template.json");
-                myItem.mainSource.reload();
+                // Reload the main source
+                var originalFileName = "input_template.json";
+                var tempFileName = "temp_input_template.json";
+                file.rename(tempFileName);
+                $.sleep(100);
+                file.rename(originalFileName);
+                file.open("r");
+                file.close();
+                $.sleep(300);
+                refreshJSON();
                 openCompInViewer("__SETTINGS", "SETTINGS");
                 refreshCurrentFrame();
                 showAlertWindow("JSON DATA UPDATED!");
@@ -2712,18 +2720,17 @@ function revertJson() {
             showAlertWindow("JSON file does not exist at path: " + jsonFilePath);
         } else {
             // Rename the file to a temporary name
-            file.rename(originalFileName, tempFileName);
             file.open("w");
             file.write(jsonString);
             file.close();
-
             // Reload the main source
-            var myItem = getItem(originalFileName);
-            myItem.mainSource.reload();
-            // Schedule the rename back to original name after the current operation
+            file.rename(tempFileName);
             $.sleep(100);
-            file = new File(jsonTempFilePath);
-            file.rename(tempFileName, originalFileName);
+            file.rename(originalFileName);
+            file.open("r");
+            file.close();
+            $.sleep(300);
+            refreshJSON();
             //app.purge(PurgeTarget.IMAGE_CACHES);
             openCompInViewer("__SETTINGS", "SETTINGS");
             refreshCurrentFrame();
@@ -2753,9 +2760,11 @@ function renameRevertJSON() {
             file.rename(tempFileName);
             $.sleep(1200);
             file.rename(originalFileName);
+            file.open("r");
+            file.close();
             $.sleep(300);
+            refreshJSON();
             refreshCurrentFrame();
-            myItem.mainSource.reload();
         }
     } else {
         showAlertWindow("JSON file doesnt exist");
@@ -2937,6 +2946,16 @@ function findItemByName(name) {
 function selectLayers(layers) {
     for (var i = 0; i < layers.length; i++) {
         layers[i].selected = true;
+    }
+}
+
+function refreshJSON() {
+    var myItem = getItem("input_template.json");
+    if (myItem && myItem.mainSource) {
+        myItem.mainSource.reload();
+        app.purge(PurgeTarget.IMAGE_CACHES);
+    } else {
+        showAlertWindow("JSON file doesnt exist");
     }
 }
 //////////////
@@ -3918,13 +3937,7 @@ btn_revert_json.onClick = function () {
 };
 addTooltipToButton(btn_reload_json, "reload JSON, if edits wont show up", 85);
 btn_reload_json.onClick = function () {
-    var myItem = getItem("input_template.json");
-    if (myItem && myItem.mainSource) {
-        myItem.mainSource.reload();
-        app.purge(PurgeTarget.IMAGE_CACHES);
-    } else {
-        showAlertWindow("JSON file doesnt exist");
-    }
+    refreshJSON();
 };
 textLayer.onClick = function () {
     app.beginUndoGroup("New Text");
