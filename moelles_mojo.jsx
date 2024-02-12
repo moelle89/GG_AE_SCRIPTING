@@ -952,6 +952,20 @@ function deselectAll() {
         }
     }
 }
+
+function delay(prmSec) {
+    prmSec *= 1000;
+    var eDate = null;
+    var eMsec = 0;
+    var sDate = new Date();
+    var sMsec = sDate.getTime();
+    do {
+        eDate = new Date();
+        eMsec = eDate.getTime();
+    }
+    while ((eMsec - sMsec) < prmSec);
+}
+
 /// INCLUDES
 try {
     //@include '_scripts/rectangleWizard.jsx';
@@ -2569,7 +2583,6 @@ function modifyJSONdata() {
                 file.open("w");
                 file.write(jsonString);
                 file.close();
-                var myItem = getItem("input_template.json");
                 // Reload the main source
                 var originalFileName = "input_template.json";
                 var tempFileName = "temp_input_template.json";
@@ -2758,7 +2771,8 @@ function renameRevertJSON() {
         } else {
             // Rename the file to a temporary name
             file.rename(tempFileName);
-            $.sleep(1200);
+            delay(1.2);
+            //$.sleep(1200);
             file.rename(originalFileName);
             file.open("r");
             file.close();
