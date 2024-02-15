@@ -4042,15 +4042,10 @@ shapeLayer.onClick = function () {
 adjustmentsLayer.onClick = function () {
     var activeComp = app.project.activeItem;
     if (checkComp(activeComp)) {
-        if (layerName == "default") {
-            adjName = "Adjustment Layer";
-        } else {
-            adjName = layerName;
-        }
         app.beginUndoGroup("New Adj.");
         var newSolid = activeComp.layers.addSolid(
             [1, 1, 1],
-            adjName,
+            "adjustmentLayer",
             activeComp.width,
             activeComp.height,
             1
@@ -4066,9 +4061,6 @@ nullLayer.onClick = function () {
     if (checkComp(activeComp)) {
         app.beginUndoGroup("New Null");
         var newNull = activeComp.layers.addNull();
-        if (layerName == "default") { } else {
-            newNull.name = layerName;
-        }
         app.endUndoGroup();
     } else {
         return;
