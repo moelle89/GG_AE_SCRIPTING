@@ -2981,8 +2981,8 @@ function selectLayers(layers) {
 function refreshJSON() {
     var myItem = getItem("input_template.json");
     if (myItem && myItem.mainSource) {
-        myItem.mainSource.reload();
         app.purge(PurgeTarget.IMAGE_CACHES);
+        myItem.mainSource.reload();
     } else {
         showAlertWindow("JSON file doesnt exist");
     }
@@ -4206,19 +4206,18 @@ function changeDemoContent(demoPack) {
         // Extract the project name from the file path, assuming a standard naming scheme
         var projectName = app.project.file.name;
         if (projectName.match("comp_") || projectName.match("post_") || projectName.match("___boilerplate")) {
-            app.executeCommand(3985); // CancelCachingWorkAreainBackground
             app.executeCommand(2372); // Purge ImageCaches
             //batch
             var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo" + demoPack + ".bat";
             var result = system.callSystem(batScriptPath);
-            $.sleep(150);
+            $.sleep(100);
             var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png", "input_template.json"];
             if (app.project.activeItem.selectedLayers.length = 0) {
                 activeItemT.selected = true;
             }
             function updateProgressBar(currentIndex, totalItems) {
                 var progress = (currentIndex / totalItems) * 100;
-                $.sleep(50);
+                $.sleep(30);
                 pb.update(progress);
             }
             for (var i = 0; i < reloadAssets.length; i++) {
@@ -4273,7 +4272,6 @@ function changeDemoContent(demoPack) {
             };
             $.sleep(100);
             pb.end();
-            $.sleep(100);
             //renameRevertJSON();
             pushJSON();
         } else {
