@@ -34,14 +34,14 @@
       "cursor_color_dark": "#d30f2f",
       "cursor_stroke": "#ffffff",
       "cursor_stroke_dark": "#FFFFFF",
-      "font": ""
+      "font": "ChunkFive-Regular"
     },
     "call2action_link": {
       "text": "www.fiveguys.com",
       "color": "#222222",
       "color_dark": "#ffffff",
       "link_highlight": 0,
-      "font": ""
+      "font": "ChunkFive-Regular"
     },
     "source": {
       "text": "fiveguys.com",
@@ -84,7 +84,7 @@
          {
             "src": "gallery_04",
             "video": 0,
-            "loop": 1,
+            "loop": 0,
             "muted": 0,
             "text": "",
             "font": "Poppins"
@@ -99,7 +99,7 @@
          },
          {
             "src": "",
-            "video": 1,
+            "video": 0,
             "loop": 0,
             "muted": 0,
             "text": "",

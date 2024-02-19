@@ -34,14 +34,14 @@
       "cursor_color_dark": "#e0462c",
       "cursor_stroke": "#ffffff",
       "cursor_stroke_dark": "#FFFFFF",
-      "font": ""
+      "font": "SCHABO-Condensed"
     },
     "call2action_link": {
       "text": "www.hello-fresh.com",
       "color": "#222222",
       "color_dark": "#ffffff",
       "link_highlight": 0,
-      "font": ""
+      "font": "SCHABO-Condensed"
     },
     "source": {
       "text": "hello-fresh.com",
@@ -84,7 +84,7 @@
          {
             "src": "gallery_04",
             "video": 0,
-            "loop": 1,
+            "loop": 0,
             "muted": 0,
             "text": "",
             "font": "Poppins"

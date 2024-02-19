@@ -84,7 +84,7 @@
          {
             "src": "gallery_04",
             "video": 0,
-            "loop": 1,
+            "loop": 0,
             "muted": 0,
             "text": "",
             "font": "Poppins"
@@ -99,7 +99,7 @@
          },
          {
             "src": "",
-            "video": 1,
+            "video": 0,
             "loop": 0,
             "muted": 0,
             "text": "",
