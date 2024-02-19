@@ -30,4 +30,8 @@ for /l %%i in (1, 1, 5) do (
     )
 )
 
+echo render- and output-modules updated.
+echo this window will close after 5 seconds.
 endlocal
+timeout /t 5 >nul
+exit
