@@ -2,7 +2,7 @@
 setlocal EnableDelayedExpansion
 
 set "Folder=%~dp0"
-set "RenderedFolder=%scriptPath%\_rendered"
+set "RenderedFolder=%Folder%\_rendered"
 
 if not exist "%RenderedFolder%" mkdir "%RenderedFolder%"
 
