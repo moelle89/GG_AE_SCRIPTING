@@ -4202,7 +4202,7 @@ function changeDemoContent(demoPack) {
         var pb = new ProgressBar(1, 10, 1);
         pb.start();
         openCompositionByName("bufferComp");
-        $.sleep(300);
+        $.sleep(200);
         // Extract the project name from the file path, assuming a standard naming scheme
         var projectName = app.project.file.name;
         if (projectName.match("comp_") || projectName.match("post_") || projectName.match("___boilerplate")) {
@@ -4217,7 +4217,7 @@ function changeDemoContent(demoPack) {
             }
             function updateProgressBar(currentIndex, totalItems) {
                 var progress = (currentIndex / totalItems) * 100;
-                $.sleep(30);
+                $.sleep(20);
                 pb.update(progress);
             }
             for (var i = 0; i < reloadAssets.length; i++) {
@@ -4270,7 +4270,7 @@ function changeDemoContent(demoPack) {
                 app.project.activeItem.time -= Math.round(2 * app.project.activeItem.frameDuration);
                 if (isPost == 0) { app.project.activeItem.time = 0 };
             };
-            $.sleep(100);
+            $.sleep(50);
             pb.end();
             //renameRevertJSON();
             pushJSON();
