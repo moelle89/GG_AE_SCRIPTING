@@ -4,6 +4,8 @@ setlocal enabledelayedexpansion
 REM Set the paths for AE template
 set "aeSourceFolder=%~dp0_BOILERPLATES"
 set "aeDestinationFolder=C:\data_driven_ae_template-1"
+set "footagePath=C:\data_driven_ae_template-1\(Footage)\Footage"
+set "assetsPath=C:\data_driven_ae_template-1\_assets"
 set "aeFileName=___boilerplate_23.aep"
 set "fullAeSourcePath=%aeSourceFolder%\%aeFileName%"
 set "fullAeDestinationPath=%aeDestinationFolder%\%aeFileName%"
@@ -27,11 +29,14 @@ if exist "%presetPath24%" (
     echo Preset Folder 24 removed successfully.
 )
 
+REM DELETE OLD FOOTAGES AND ASSETS
+ rd /s /q "%footagePath%"
+ rd /s /q "%assetsPath%"
+
 REM Check if the destination folder for AE exists, create it if not
 if not exist "%aeDestinationFolder%" (
     mkdir "%aeDestinationFolder%"
 )
-
 REM Copy the AE file with silent overwrite
 copy /y "%fullAeSourcePath%" "%fullAeDestinationPath%" >nul
 
@@ -120,6 +125,5 @@ for /d %%i in ("%scriptSearchDir%\*") do (
         )
     )
 )
-
 rd /s /q "%delfolder%"
 endlocal
