@@ -147,11 +147,6 @@ function elementsDialog() {
   grp_media.margins = 4;
   grp_media.alignment = ['fill', 'center'];
 
-  var grp_media_infot = ELEMENTS.add("statictext", undefined, undefined, { name: "grp_media_infot", multiline: true });
-  grp_media_infot.preferredSize.height = 140;
-  grp_media_infot.text = "the Media element is a container, that includes the main media-file of a template. It can be either a single image or a video. Basically it is showing the primary media content of a template. Use the media file always at first. If you want to include more optional media-files, go ahead and use Gallery elements - But only, after already using the media element in your composition! You dont need to pick the ratio based on the actual ratio of your composition. The ratio of the media element is more relying on the actual space thats reserved for the media inside of a composition. if it should be used in a square area, use the square variant etc.";
-  mojoUI.setFG(grp_media_infot, [0.83, 0.94, 1, 0.6]);
-
   var Btn_MEDIA = grp_media.add('iconbutton', undefined, mojoUI.createIcon("icn_media_reel"), { name: 'Btn_MEDIA', style: "button" });
   Btn_MEDIA.preferredSize.height = customHeight;
   Btn_MEDIA.preferredSize.width = customWidth;
@@ -184,6 +179,119 @@ function elementsDialog() {
     copyLayerToActiveComp(sourceCompName, result);
     secondaryDialog.close();
   };
+
+  var dividerGallery = ELEMENTS.add("panel", undefined, undefined, {
+    name: "dividerGallery"
+  });
+  dividerGallery.alignment = "fill";
+
+  // GRP_MEDIA_INFO
+  // ==============
+  var grp_gal_info = ELEMENTS.add("group", undefined, { name: "grp_gal_info" });
+  grp_gal_info.orientation = "row";
+  grp_gal_info.alignChildren = ["left", "center"];
+  grp_gal_info.spacing = 10;
+  grp_gal_info.margins = 4;
+  grp_gal_info.alignment = ["fill", "center"];
+
+  var grp_gal_text = grp_gal_info.add("statictext", undefined, undefined, { name: "grp_gal_text" });
+  grp_gal_text.text = "Gallery element prepared for all formats";
+  mojoUI.setFG(grp_gal_text, [0.83, 0.94, 1, 0.75]);
+
+
+  // GROUP2
+  // ======
+
+  var group2 = ELEMENTS.add("group", undefined, {
+    name: "group2",
+  });
+  group2.orientation = "row";
+  group2.alignChildren = ["fill", "fill"];
+  group2.spacing = 10;
+  group2.margins = 3;
+  group2.alignment = ["fill", "top"];
+  var ratio_result = ["_GALLERY", "_GALLERY_SQUARE", "_GALLERY_1920"];
+  var ratio_resultIndexAdd = [0, 6, 12];
+  var ratio_array = ["  9:16", "  1:1", "  16:9"];
+  var ratio = group2.add("dropdownlist", undefined, undefined, {
+    name: "dropdown2",
+    items: ratio_array,
+  });
+  ratio.preferredSize.height = 36;
+  ratio.preferredSize.width = 95;
+  ratio.selection = 0;
+  ratio.alignment = ["left", "fill"];
+  var gallery_result = [
+    "gallery_img_01",
+    "gallery_img_02",
+    "gallery_img_03",
+    "gallery_img_04",
+    "gallery_img_05",
+    "gallery_img_06",
+    "gallery_img_square_01",
+    "gallery_img_square_02",
+    "gallery_img_square_03",
+    "gallery_img_square_04",
+    "gallery_img_square_05",
+    "gallery_img_square_06",
+    "gallery_img_1920_01",
+    "gallery_img_1920_02",
+    "gallery_img_1920_03",
+    "gallery_img_1920_04",
+    "gallery_img_1920_05",
+    "gallery_img_1920_06",
+  ];
+  var gallery_array = [
+    "  GALLERY_01",
+    "  GALLERY_02",
+    "  GALLERY_03",
+    "  GALLERY_04",
+    "  GALLERY_05",
+    "  GALLERY_06",
+  ];
+  var gallery = group2.add("dropdownlist", undefined, undefined, {
+    name: "gallery",
+    items: gallery_array,
+  });
+  gallery.selection = 0;
+  gallery.preferredSize.height = 36;
+  gallery.preferredSize.width = 95;
+  var btn_addGallery = group2.add(
+    "iconbutton",
+    undefined,
+    mojoUI.createIcon("icn_add"), {
+    name: "btn_addGallery",
+    style: "button"
+  }
+  );
+  btn_addGallery.preferredSize.width = 50;
+
+  addTooltipToButton(
+    btn_addGallery,
+    "add pre-configurated gallery-elment",
+    100,
+    false,
+    false
+  );
+  btn_addGallery.onClick = function () {
+    if (checkProject()) {
+      var compIndex = findCompIndex("_ELEMENTS");
+      if (compIndex) {
+        var ratioIndex = ratio.selection.index;
+        var ratioresult = ratio_result[ratioIndex];
+        var ratioAdd = ratio_resultIndexAdd[ratioIndex];
+        var selectedIndex = gallery.selection.index + ratioAdd;
+        var result = gallery_result[selectedIndex];
+        deselectAll(); // “Deselect All”
+        copyLayerToActiveComp(ratioresult, result);
+      }
+    }
+  };
+
+  var grp_media_infot = ELEMENTS.add("statictext", undefined, undefined, { name: "grp_media_infot", multiline: true });
+  grp_media_infot.preferredSize.height = 140;
+  grp_media_infot.text = "the Media element is a container, that includes the main media-file of a template. It can be either a single image or a video. Basically it is showing the primary media content of a template. Use the media file always at first. If you want to include more optional media-files, go ahead and use Gallery elements - But only, after already using the media element in your composition! You dont need to pick the ratio based on the actual ratio of your composition. The ratio of the media element is more relying on the actual space thats reserved for the media inside of a composition. if it should be used in a square area, use the square variant etc.";
+  mojoUI.setFG(grp_media_infot, [0.83, 0.94, 1, 0.6]);
 
   secondaryDialog.onClose = function () {
     try {

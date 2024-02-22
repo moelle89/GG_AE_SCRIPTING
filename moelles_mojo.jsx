@@ -196,62 +196,19 @@ group2.alignChildren = ["fill", "fill"];
 group2.spacing = 10;
 group2.margins = 3;
 group2.alignment = ["fill", "top"];
-var ratio_result = ["_GALLERY", "_GALLERY_SQUARE", "_GALLERY_1920"];
-var ratio_resultIndexAdd = [0, 6, 12];
-var ratio_array = ["9:16", "1:1", "16:9"];
-var ratio = group2.add("dropdownlist", undefined, undefined, {
-    name: "dropdown2",
-    items: ratio_array,
-});
-ratio.preferredSize.height = 32;
-ratio.selection = 0;
-ratio.alignment = ["left", "fill"];
-var gallery_result = [
-    "gallery_img_01",
-    "gallery_img_02",
-    "gallery_img_03",
-    "gallery_img_04",
-    "gallery_img_05",
-    "gallery_img_06",
-    "gallery_img_square_01",
-    "gallery_img_square_02",
-    "gallery_img_square_03",
-    "gallery_img_square_04",
-    "gallery_img_square_05",
-    "gallery_img_square_06",
-    "gallery_img_1920_01",
-    "gallery_img_1920_02",
-    "gallery_img_1920_03",
-    "gallery_img_1920_04",
-    "gallery_img_1920_05",
-    "gallery_img_1920_06",
-];
-var gallery_array = [
-    "GALLERY_01",
-    "GALLERY_02",
-    "GALLERY_03",
-    "GALLERY_04",
-    "GALLERY_05",
-    "GALLERY_06",
-];
-var gallery = group2.add("dropdownlist", undefined, undefined, {
-    name: "gallery",
-    items: gallery_array,
-});
-gallery.selection = 0;
-gallery.preferredSize.height = 32;
-gallery.preferredSize.width = 112;
-var btn_addGallery = group2.add(
+
+var colorFillQ = group2.add(
     "iconbutton",
     undefined,
-    mojoUI.createIcon("icn_add"), {
-    name: "btn_addGallery",
+    mojoUI.createIcon("icn_colorfill_q"), {
+        name: "colorFillQ",
     style: "button"
 }
 );
-btn_addGallery.preferredSize.height = 32;
-btn_addGallery.preferredSize.width = 50;
-btn_addGallery.alignment = ["left", "top"];
+colorFillQ.preferredSize.height = 34;
+colorFillQ.preferredSize.width = 34;
+colorFillQ.alignment = ["left", "top"];
+
 // tab_AP
 // ====
 var tab_ap = tpanel2.add("tab", undefined, undefined, {
@@ -259,8 +216,8 @@ var tab_ap = tpanel2.add("tab", undefined, undefined, {
 });
 tab_ap.text = "ANCHOR POINT";
 tab_ap.orientation = "row";
-tab_ap.spacing = 12;
-tab_ap.margins = 10;
+tab_ap.spacing = 10;
+tab_ap.margins = 8;
 // groupAP
 // ======
 var groupAP = tab_ap.add("group", undefined, {
@@ -3377,7 +3334,19 @@ addTooltipToButton(
     false,
     false
 );
+addTooltipToButton(
+    colorFillQ,
+    "add a fill effect with color-choices to selected layer",
+    85,
+    false,
+    false
+);
 colorFill.onClick = function () {
+    app.beginUndoGroup("setColorFill");
+    setColorFill();
+    app.endUndoGroup();
+};
+colorFillQ.onClick = function () {
     app.beginUndoGroup("setColorFill");
     setColorFill();
     app.endUndoGroup();
@@ -3429,27 +3398,6 @@ btn_addElement.onClick = function () {
         var compIndex = findCompIndex("_ELEMENTS");
         if (compIndex) {
             elementsDialog();
-        }
-    }
-};
-addTooltipToButton(
-    btn_addGallery,
-    "add pre-configurated gallery-elment",
-    85,
-    false,
-    false
-);
-btn_addGallery.onClick = function () {
-    if (checkProject()) {
-        var compIndex = findCompIndex("_ELEMENTS");
-        if (compIndex) {
-            var ratioIndex = ratio.selection.index;
-            var ratioresult = ratio_result[ratioIndex];
-            var ratioAdd = ratio_resultIndexAdd[ratioIndex];
-            var selectedIndex = gallery.selection.index + ratioAdd;
-            var result = gallery_result[selectedIndex];
-            deselectAll(); // “Deselect All”
-            copyLayerToActiveComp(ratioresult, result);
         }
     }
 };
