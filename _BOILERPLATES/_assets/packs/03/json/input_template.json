@@ -7,7 +7,7 @@
     "intro": 0,
     "video": 0,
     "audio_muted": 0,
-    "audio_track": 30,
+    "audio_track": 6,
     "text2voice": 0,
     "fx_effects": 0,
     "accent": {
@@ -15,13 +15,13 @@
       "color_dark": "#A364D2"
     },
     "title": {
-      "text": "Discover the featured creations of the collection.",
+      "text": "Nike x Dior: The Ultimate Fusion of Athletic Style and High Fashion.",
       "color": "#080808",
       "color_dark": "#ffffff",
       "font": "Archivo-Bold"
     },
     "subtext": {
-      "text": "The latest Spring-Summer 2023 collection on the CHANEL official website.",
+      "text": "Power, Performance, and Prestige Meet in a Groundbreaking Collaboration between Nike and Dior.",
       "color": "#242424",
       "color_dark": "#ffffff",
       "font": ""
@@ -37,14 +37,14 @@
       "font": ""
     },
     "call2action_link": {
-      "text": "www.chanel.com",
+      "text": "www.nike.com",
       "color": "#080808",
       "color_dark": "#FFFFFF",
       "link_highlight": 0,
       "font": ""
     },
     "source": {
-      "text": "chanel.com",
+      "text": "nike.com",
       "color": "#080808",
       "color_dark": "#FFFFFF",
       "bg_color": "#A364D2",
@@ -62,7 +62,7 @@
             "video": 0,
             "loop": 0,
             "muted": 0,
-            "text": "",
+            "text": "Elevated Athleticism: Redefining Sportswear with Dior's Signature Flair and Nike's Cutting-Edge Innovation.",
             "font": "Poppins"
          },
          {
@@ -70,7 +70,7 @@
             "video": 0,
             "loop": 0,
             "muted": 0,
-            "text": "",
+            "text": "Luxurious Sportswear Reinvented: Uniting Nike's Technical Excellence with Dior's Opulent Aesthetic.",
             "font": "Poppins"
          },
          {
@@ -78,7 +78,7 @@
             "video": 0,
             "loop": 0,
             "muted": 0,
-            "text": "",
+            "text": "Fashion Forward Fitness: Empowering Athletes with Unparalleled Style from Nike and Dior.",
             "font": "Poppins"
          },
          {
@@ -86,23 +86,23 @@
             "video": 0,
             "loop": 1,
             "muted": 0,
-            "text": "",
+            "text": "A Fusion of Functionality and Haute Couture: Nike x Dior Pushes Boundaries in Activewear Fashion.",
             "font": "Poppins"
          },
          {
-            "src": "",
+            "src": "gallery_05",
             "video": 0,
             "loop": 0,
             "muted": 0,
-            "text": "",
+            "text": "Runway-Ready Performance: Unleashing the Perfect Blend of Nike's Athletic Prowess and Dior's Runway Glamour.",
             "font": "Poppins"
          },
          {
-            "src": "",
+            "src": "gallery_06",
             "video": 0,
             "loop": 0,
             "muted": 0,
-            "text": "",
+            "text": "Iconic Collaboration: Nike and Dior Join Forces to Create a Fashion Phenomenon for the Modern, Discerning Athlete.",
             "font": "Poppins"
          }
       ]

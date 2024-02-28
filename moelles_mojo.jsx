@@ -194,7 +194,7 @@ var group2 = tab2.add("group", undefined, {
 group2.orientation = "row";
 group2.alignChildren = ["fill", "fill"];
 group2.spacing = 10;
-group2.margins = 3;
+group2.margins = 1;
 group2.alignment = ["fill", "top"];
 
 var colorFillQ = group2.add(
@@ -208,6 +208,54 @@ var colorFillQ = group2.add(
 colorFillQ.preferredSize.height = 34;
 colorFillQ.preferredSize.width = 34;
 colorFillQ.alignment = ["left", "top"];
+
+var settingsQ = group2.add(
+    "iconbutton",
+    undefined,
+    mojoUI.createIcon("icn_settings_q"), {
+        name: "settingsQ",
+    style: "button"
+}
+);
+settingsQ.preferredSize.height = 34;
+settingsQ.preferredSize.width = 34;
+settingsQ.alignment = ["left", "top"];
+
+var reelQ = group2.add(
+    "iconbutton",
+    undefined,
+    mojoUI.createIcon("icn_reel_q"), {
+        name: "reelQ",
+    style: "button"
+}
+);
+reelQ.preferredSize.height = 34;
+reelQ.preferredSize.width = 46;
+reelQ.alignment = ["left", "top"];
+
+var sqrQ = group2.add(
+    "iconbutton",
+    undefined,
+    mojoUI.createIcon("icn_sqr_q"), {
+        name: "sqrQ",
+    style: "button"
+}
+);
+sqrQ.preferredSize.height = 34;
+sqrQ.preferredSize.width = 46;
+sqrQ.alignment = ["left", "top"];
+
+var fullHDQ = group2.add(
+    "iconbutton",
+    undefined,
+    mojoUI.createIcon("icn_1920_q"), {
+        name: "fullHDQ",
+    style: "button"
+}
+);
+fullHDQ.preferredSize.height = 34;
+fullHDQ.preferredSize.width = 46;
+fullHDQ.alignment = ["left", "top"];
 
 // tab_AP
 // ====
@@ -1946,8 +1994,26 @@ function createComposition(width, height, duration, frameRate, name, silent) {
     return comp;
 }
 function openCompositionByName(compName) {
-    compIndex = findCompIndex(compName);
+    var compIndex = findCompIndex(compName);
     app.project.item(compIndex).openInViewer();
+    app.activeViewer.setActive();
+    deselectAll(); // “Deselect All”
+}
+function openCompLayer(compName, index) {
+    var compIndex = findCompIndex(compName);
+    var compLayer = app.project.item(compIndex).layer(index).name;
+    var compL = findCompIndex(compLayer);
+    app.project.item(compL).openInViewer();
+    app.activeViewer.setActive();
+    deselectAll(); // “Deselect All”
+}
+function openTemplComp(compName, index) {
+    var compIndex = findCompIndex(compName);
+    var compLayer = app.project.item(compIndex).layer(index).name;
+    var compL = findCompIndex(compLayer);
+    var tempComp = app.project.item(compL).layer(5).name;
+    var tempCompIndex = findCompIndex(tempComp);
+    app.project.item(tempCompIndex).openInViewer();
     app.activeViewer.setActive();
     deselectAll(); // “Deselect All”
 }
@@ -2944,6 +3010,22 @@ function refreshJSON() {
         showAlertWindow("JSON file doesnt exist");
     }
 }
+
+function setMagnification(divideBy) {
+    if (!divideBy){divideBy = 2};
+    var magnificationValue = 1;
+
+    magnificationValue /= divideBy;
+    app.activeViewer.views[0].options.zoom = magnificationValue;
+}
+
+function resetCompTimeline() {
+    app.beginUndoGroup("Reset Composition Work Area");
+    var comp = app.project.activeItem;
+    comp.workAreaStart = 0;
+    comp.workAreaDuration = comp.duration;
+    app.endUndoGroup();
+}
 //////////////
 /// PARENT 2 NULL
 function CreateParentNull() {
@@ -3341,6 +3423,34 @@ addTooltipToButton(
     false,
     false
 );
+addTooltipToButton(
+    settingsQ,
+    "open settings comp",
+    85,
+    false,
+    false
+);
+addTooltipToButton(
+    reelQ,
+    "open reel comp",
+    85,
+    false,
+    false
+);
+addTooltipToButton(
+    sqrQ,
+    "open square comp",
+    85,
+    false,
+    false
+);
+addTooltipToButton(
+    fullHDQ,
+    "open 1920 comp",
+    85,
+    false,
+    false
+);
 colorFill.onClick = function () {
     app.beginUndoGroup("setColorFill");
     setColorFill();
@@ -3350,6 +3460,22 @@ colorFillQ.onClick = function () {
     app.beginUndoGroup("setColorFill");
     setColorFill();
     app.endUndoGroup();
+};
+settingsQ.onClick = function () {
+    openCompInViewer("__SETTINGS", "SETTINGS");
+    setMagnification(1.5);
+};
+reelQ.onClick = function () {
+    openTemplComp("__SETTINGS", 5);
+    setMagnification(3);
+};
+sqrQ.onClick = function () {
+    openTemplComp("__SETTINGS", 6);
+    setMagnification();
+};
+fullHDQ.onClick = function () {
+    openTemplComp("__SETTINGS", 7);
+    setMagnification();
 };
 addTooltipToButton(
     scale2fill,
@@ -3565,10 +3691,10 @@ delExp.onClick = function () {
 };
 addTooltipToButton(openBoilerplate, "OPEN BOILERPLATE.aep", 85);
 openBoilerplate.onClick = function () {
-    if (app.project && app.project.file !== null && app.project.file.name === "___boilerplate_23.aep") {
+    if (app.project && app.project.file !== null && app.project.file.name === "___boilerplate_24.aep") {
         showAlertWindow("BOILERPLATE is already open");
     } else {
-        var my_file = new File("C:/data_driven_ae_template-1/___boilerplate_23.aep");
+        var my_file = new File("C:/data_driven_ae_template-1/___boilerplate_24.aep");
         if (my_file.exists) {
             var new_project = app.open(my_file);
         } else {
@@ -4226,7 +4352,7 @@ function changeDemoContent(demoPack) {
             showAlertWindow("Please open the BOILERPLATE or a template");
         }
     } else {
-        showAlertWindow("Please open a project");
+        showAlertWindow("Please open a project or save the current project first.");
     }
 };
 // Initiates color picker, returns RGB array

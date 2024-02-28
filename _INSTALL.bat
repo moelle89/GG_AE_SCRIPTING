@@ -6,7 +6,7 @@ set "aeSourceFolder=%~dp0_BOILERPLATES"
 set "aeDestinationFolder=C:\data_driven_ae_template-1"
 set "footagePath=C:\data_driven_ae_template-1\(Footage)\Footage"
 set "assetsPath=C:\data_driven_ae_template-1\_assets"
-set "aeFileName=___boilerplate_23.aep"
+set "aeFileName=___boilerplate_24.aep"
 set "fullAeSourcePath=%aeSourceFolder%\%aeFileName%"
 set "fullAeDestinationPath=%aeDestinationFolder%\%aeFileName%"
 set "aeFootageFolder=(Footage)"
@@ -103,7 +103,7 @@ if not exist "%scriptSearchDir%\%scriptTargetFolder%" (
 
 for /d %%i in ("%scriptSearchDir%\*") do (
     if exist "%%i\%scriptTargetFolder%" (
-        
+
         rem Delete files containing the search string
         for %%f in ("%%i\%scriptTargetFolder%\*%scriptSearchString%*") do (
             del "%%f"
@@ -118,7 +118,7 @@ for /d %%i in ("%scriptSearchDir%\*") do (
         if exist "%buildsFolder%\%scriptSourceFolder%" (
             xcopy /E /I /Y "%buildsFolder%\%scriptSourceFolder%" "%%i\%scriptTargetFolder%\%scriptSourceFolder%"
         )
-		
+
         rem Copy the specified folder and its contents to the Script UI Path
         if exist "%buildsFolder%\%imgSourceFolder%" (
             xcopy /E /I /Y "%buildsFolder%\%imgSourceFolder%" "%%i\%scriptTargetFolder%\%imgSourceFolder%"
