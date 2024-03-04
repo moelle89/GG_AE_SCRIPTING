@@ -2,7 +2,7 @@
   "Comp": {
     "logo": 1,
     "logo_bg_auto_color": 0,
-    "logo_bg_color": "#FFFFFF",
+    "logo_bg_color": "#ffffff",
     "darkmode": 0,
     "intro": 0,
     "video": 0,
@@ -11,44 +11,44 @@
     "text2voice": 0,
     "fx_effects": 0,
     "accent": {
-      "color": "#EBB70D",
-      "color_dark": "#EBB70D"
+      "color": "#dba800",
+      "color_dark": "#dba800"
     },
     "title": {
-      "text": "Discover the new Prada collection.",
+      "text": "Avengers Unleashed: The Final Battle Against Darkness Looms",
       "color": "#222222",
       "color_dark": "#ffffff",
-      "font": "PlayfairDisplay-Bold"
+      "font": "BebasNeue-Regular"
     },
     "subtext": {
-      "text": "Shop online at the official store. Discover the collections for women and men: ready to wear, bags & accessories.",
+      "text": "The Avengers Unleashed: Earth's Mightiest Heroes Confront an Ancient Evil in a Battle for Humanity's Future.",
       "color": "#242424",
       "color_dark": "#ffffff",
       "font": ""
     },
     "call2action": {
-      "text": "Out Now! The new Prada collection:",
+      "text": "Release Soon",
       "color": "#222222",
       "color_dark": "#ffffff",
-      "cursor_color": "#EBB70D",
-      "cursor_color_dark": "#EBB70D",
+      "cursor_color": "#dba800",
+      "cursor_color_dark": "#dba800",
       "cursor_stroke": "#ffffff",
       "cursor_stroke_dark": "#FFFFFF",
-      "font": "PlayfairDisplay-Bold"
+      "font": "BebasNeue-Regular"
     },
     "call2action_link": {
-      "text": "www.prada.com",
+      "text": "www.disneyplus.com",
       "color": "#222222",
       "color_dark": "#ffffff",
       "link_highlight": 0,
-      "font": "PlayfairDisplay-Bold"
+      "font": "BebasNeue-Regular"
     },
     "source": {
-      "text": "pradale.com",
+      "text": "disneyplus.com",
       "color": "#080808",
       "color_dark": "#FFFFFF",
       "bg_color": "#ffffff",
-      "bg_color_dark": "#EBB70D",
+      "bg_color_dark": "#dba800",
       "avatar": 0,
       "font": ""
     },
@@ -62,7 +62,7 @@
             "video": 0,
             "loop": 0,
             "muted": 0,
-            "text": "",
+            "text": "Avengers Unleashed: Earth's Mightiest Heroes Rise to Face an Unprecedented Evil.",
             "font": "Poppins"
          },
          {
@@ -70,7 +70,7 @@
             "video": 0,
             "loop": 0,
             "muted": 0,
-            "text": "",
+            "text": "The Final Showdown Approaches: Avengers Assemble to Defeat the Forces of Darkness.",
             "font": "Poppins"
          },
          {
@@ -78,7 +78,7 @@
             "video": 0,
             "loop": 0,
             "muted": 0,
-            "text": "",
+            "text": "Unleashing Superhero Power: The Avengers Gear Up for an Epic Battle Against an Ancient Threat.",
             "font": "Poppins"
          },
          {
@@ -86,7 +86,7 @@
             "video": 0,
             "loop": 0,
             "muted": 0,
-            "text": "",
+            "text": "Avengers: United in a Desperate Fight Against an Immortal Evil.",
             "font": "Poppins"
          },
          {
@@ -94,7 +94,7 @@
             "video": 0,
             "loop": 0,
             "muted": 0,
-            "text": "",
+            "text": "The Ultimate Battle: Earth's Mightiest Heroes Prepare to Save the World from an Ancient Menace.",
             "font": "Poppins"
          },
          {
@@ -102,7 +102,7 @@
             "video": 0,
             "loop": 0,
             "muted": 0,
-            "text": "",
+            "text": "Avengers Unleashed: Heroes Unite to Protect Humanity in a Battle Against Unfathomable Darkness.",
             "font": "Poppins"
          }
       ]
