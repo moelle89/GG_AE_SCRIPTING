@@ -866,15 +866,15 @@ var fitView = shortcuts.add(
 }
 );
 fitView.alignment = ["center", "top"];
-var delExp = shortcuts.add(
+var customExp = shortcuts.add(
     "iconbutton",
     undefined,
     mojoUI.createIcon("icn_del"), {
-    name: "delExp",
+    name: "customExp",
     style: "toolbutton"
 }
 );
-delExp.alignment = ["center", "top"];
+customExp.alignment = ["center", "top"];
 var purgeAll = shortcuts.add(
     "iconbutton",
     undefined,
@@ -1580,6 +1580,19 @@ var hoverMenu_screenShot = new HoverMenu("hoverMenu_screenShot", [{
     text: "Screenshot of sel. Comps",
     name: "saveSelectedCompsAsPNG",
     functionName: saveSelectedCompsAsPNG
+}
+]);
+var hoverMenu_customExp = new HoverMenu("hoverMenu_customExp", [{
+    imgString: "",
+    text: "Remove transform expressions",
+    name: "removeSpecificExpressions",
+    functionName: removeSpecificExpressions
+},
+{
+    imgString: "",
+    text: "if darkmode ...",
+    name: "addExpressionToSelectedProperty",
+    functionName: addExpressionToSelectedProperty
 }
 ]);
 // hoverMenu_open
@@ -2994,6 +3007,27 @@ function findItemByName(name) {
     }
     return null;
 }
+
+// add expression to selected property
+function addExpressionToSelectedProperty() {
+    var selectedProperty = app.project.activeItem.selectedProperties[0];
+
+    if (!selectedProperty) {
+        alert("Please select a property before running this script.");
+        return;
+    }
+    selectedProperty.expression = "myData = footage(\"input_template.json\").sourceData;\ndarkmode = myData.Comp.darkmode;\n\n// if darkmode is enabled, do ... else do ...\n//darkmode == 1 ? VALUE : VALUE;\n\n//if(darkmode){ VALUE } else{ VALUE };";
+
+    try {
+        selectedProperty.setValue(selectedProperty.expression);
+    } catch (error) {
+        alert("Failed to add expression.\n\nError: " + error);
+    }
+}
+
+
+
+
 // Function to select layers in the timeline
 function selectLayers(layers) {
     for (var i = 0; i < layers.length; i++) {
@@ -3681,14 +3715,8 @@ fitView.onClick = function() {
     }
 };
 */
-addTooltipToButton(
-    delExp,
-    "delete all expressions of a selected layers transform-properties",
-    85, false, true
-);
-delExp.onClick = function () {
-    removeSpecificExpressions();
-};
+addHoverMenuToButton(customExp, hoverMenu_customExp);
+
 addTooltipToButton(openBoilerplate, "OPEN BOILERPLATE.aep", 85);
 openBoilerplate.onClick = function () {
     if (app.project && app.project.file !== null && app.project.file.name === "___boilerplate_24.aep") {
