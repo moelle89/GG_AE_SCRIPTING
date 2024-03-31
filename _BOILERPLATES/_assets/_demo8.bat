@@ -1,14 +1,15 @@
 @echo off
 setlocal EnableDelayedExpansion
+
+REM Set the specific folder path
 set "specificFolder=C:\data_driven_ae_template-1\_assets\packs\08"
-set "footageFolder=C:\data_driven_ae_template-1\(Footage)\Footage"
 
 REM Check if the files to copy exist in the Footage folder
-if exist "%footageFolder%\" (
+if exist "%~1" (
 
     REM Delete existing files in Footage folder that also exist in specificFolder
     for %%F in ("%specificFolder%\*.*") do (
-        set "file=%footageFolder%\%%~nxF"
+        set "file=%~1\%%~nxF"
         if exist "!file!" del "!file!"
     )
 
@@ -16,7 +17,7 @@ if exist "%footageFolder%\" (
     timeout /t 1 /nobreak >nul
 
     REM Copy the content of the specific folder to the Footage folder
-    xcopy "%specificFolder%" "%footageFolder%" /E /I /H /C /K /Y
+    xcopy "%specificFolder%" "%~1" /E /I /H /C /K /Y
 ) else (
     echo "Footage folder does not exist."
 )

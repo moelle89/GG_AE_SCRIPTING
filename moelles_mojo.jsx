@@ -4284,10 +4284,23 @@ function ProgressBar(min, max, current) {
     return this.constructor(min, max, current);
 }
 
+function convertPath(path) {
+    // Replace "/c/" with "C:\\"
+    return path.replace(/\/c\//g, "C:\\");
+}
+
 
 function changeDemoContent(demoPack) {
+    var prjPath = app.project.file;
     // Check if there is an open project
     if (app.project && app.project.file !== null) {
+        var footageFolder = new Folder(prjPath.fsName).path;
+        if ($.os.substr(0, 7).toLowerCase() == "windows") {
+            footageFolder = footageFolder + "\\(Footage)\\Footage";
+        } else {
+            footageFolder = footageFolder + "/Footage)/Footage";
+        }
+        var finalPath = convertPath(footageFolder)
         var bufferComp = findComp("bufferComp");
         if (!bufferComp) {
             bufferComp = createComposition(5, 5, 1, 1, "bufferComp", 1);
@@ -4311,7 +4324,7 @@ function changeDemoContent(demoPack) {
             app.executeCommand(2372); // Purge ImageCaches
             //batch
             var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo" + demoPack + ".bat";
-            var result = system.callSystem(batScriptPath);
+            var result = system.callSystem(batScriptPath + " \"" + finalPath + "\"");
             $.sleep(100);
             var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png", "input_template.json"];
             if (app.project.activeItem.selectedLayers.length = 0) {
