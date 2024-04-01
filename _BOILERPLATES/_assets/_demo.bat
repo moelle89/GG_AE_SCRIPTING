@@ -2,7 +2,7 @@
 setlocal EnableDelayedExpansion
 
 REM Set the specific folder path
-set "specificFolder=C:\data_driven_ae_template-1\_assets\packs\05"
+set "specificFolder=C:\data_driven_ae_template-1\_assets\packs\%~2"
 
 REM Check if the files to copy exist in the Footage folder
 if exist "%~1" (

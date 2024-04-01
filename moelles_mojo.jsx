@@ -4298,7 +4298,7 @@ function changeDemoContent(demoPack) {
         if ($.os.substr(0, 7).toLowerCase() == "windows") {
             footageFolder = footageFolder + "\\(Footage)\\Footage";
         } else {
-            footageFolder = footageFolder + "/Footage)/Footage";
+            footageFolder = footageFolder + "/(Footage)/Footage";
         }
         var finalPath = convertPath(footageFolder)
         var bufferComp = findComp("bufferComp");
@@ -4323,8 +4323,8 @@ function changeDemoContent(demoPack) {
         if (projectName.match("comp_") || projectName.match("post_") || projectName.match("___boilerplate")) {
             app.executeCommand(2372); // Purge ImageCaches
             //batch
-            var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo" + demoPack + ".bat";
-            var result = system.callSystem(batScriptPath + " \"" + finalPath + "\"");
+            var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo.bat";
+            var result = system.callSystem(batScriptPath + " \"" + finalPath + "\" \"" + demoPack + "\"");
             $.sleep(100);
             var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png", "input_template.json"];
             if (app.project.activeItem.selectedLayers.length = 0) {
@@ -4425,31 +4425,31 @@ addTooltipToButton(demo6grp, "demo06", 90, false, false, true);
 addTooltipToButton(demo7grp, "demo07", 90, true, false, true);
 addTooltipToButton(demo8grp, "demo08", 90, true, false, true);
 demo1.onClick = function () {
-    changeDemoContent("1");
+    changeDemoContent("01");
 }
 demo2.onClick = function () {
-    changeDemoContent("2");
+    changeDemoContent("02");
 }
 demo3.onClick = function () {
-    changeDemoContent("3");
+    changeDemoContent("03");
 }
 demo4.onClick = function () {
-    changeDemoContent("4");
+    changeDemoContent("04");
 }
 demo5.onClick = function () {
-    changeDemoContent("5");
+    changeDemoContent("05");
 }
 demo6.onClick = function () {
-    changeDemoContent("6");
+    changeDemoContent("06");
 }
 demo7.onClick = function () {
-    changeDemoContent("7");
+    changeDemoContent("07");
 }
 demo8.onClick = function () {
-    changeDemoContent("8");
+    changeDemoContent("08");
 }
 btn_demos.onClick = function () {
-    changeDemoContent("1");
+    changeDemoContent("01");
 }
 var mousePosGlobal = null;
 function closeDialogWindows() {
