@@ -4285,21 +4285,15 @@ function ProgressBar(min, max, current) {
 }
 
 function convertPath(path) {
-    // Replace "/c/" with "C:\\"
-    return path.replace(/\/c\//g, "C:\\");
+    // Replace "/<drive_letter>/" with "<drive_letter>:\\"
+    return path.replace(/\/([a-zA-Z])\//g, "$1:\\");
 }
-
 
 function changeDemoContent(demoPack) {
     var prjPath = app.project.file;
     // Check if there is an open project
     if (app.project && app.project.file !== null) {
         var footageFolder = new Folder(prjPath.fsName).path;
-        if ($.os.substr(0, 7).toLowerCase() == "windows") {
-            footageFolder = footageFolder + "\\(Footage)\\Footage";
-        } else {
-            footageFolder = footageFolder + "/(Footage)/Footage";
-        }
         var finalPath = convertPath(footageFolder)
         var bufferComp = findComp("bufferComp");
         if (!bufferComp) {
