@@ -3,6 +3,7 @@ setlocal EnableDelayedExpansion
 
 set "scriptPath=%~dp0"
 set "Folder=%scriptPath%"
+set ffmpeg = "C:\ffmpeg\bin\ffmpeg.exe"
 
 for %%i in (comp_*.aep) do (
     set "inputFile=%%i"
@@ -30,7 +31,7 @@ for %%i in (comp_*.aep) do (
 		)
 		echo !name!
 		
-		"C:\ffmpeg\bin\ffmpeg.exe" -i "!inputFile1!" -y "%Folder%\!name!.webp"
+		ffmpeg -i "!inputFile1!" -y "%Folder%\!name!.webp"
 		 del "!inputFile1!"
 	)
 	REM webm conversion
@@ -38,7 +39,7 @@ for %%i in (comp_*.aep) do (
 		set "inputFile2=%%i"
 		for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 		echo !name!
-		"C:\ffmpeg\bin\ffmpeg.exe" -i "!inputFile2!" -y -c:v libvpx-vp9 -crf 28 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
+		ffmpeg -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 26 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 		 del "!inputFile2!"
 	)
 	
