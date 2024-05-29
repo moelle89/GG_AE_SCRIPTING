@@ -65,11 +65,12 @@ set "FOLDER_STRUCTURE5=23.3\Scripts\ScriptUI Panels"
 set "FOLDER_STRUCTURE6=23.4\Scripts\ScriptUI Panels"
 set "FOLDER_STRUCTURE7=23.5\Scripts\ScriptUI Panels"
 set "FOLDER_STRUCTURE8=23.6\Scripts\ScriptUI Panels"
-set "FOLDER_STRUCTURE9=23.6.2\Scripts\ScriptUI Panels"
+set "FOLDER_STRUCTURE9=23.6.6\Scripts\ScriptUI Panels"
 set "FOLDER_STRUCTURE10=24.0\Scripts\ScriptUI Panels"
 set "FOLDER_STRUCTURE11=24.1\Scripts\ScriptUI Panels"
 set "FOLDER_STRUCTURE12=24.2\Scripts\ScriptUI Panels"
 set "FOLDER_STRUCTURE13=24.3\Scripts\ScriptUI Panels"
+set "FOLDER_STRUCTURE14=24.4\Scripts\ScriptUI Panels"
 
 
 rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE1%\_scripts"
@@ -85,6 +86,7 @@ rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE10%\_scripts"
 rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE11%\_scripts"
 rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE12%\_scripts"
 rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE13%\_scripts"
+rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE14%\_scripts"
 
 mkdir "%BASE_PATH%\%FOLDER_STRUCTURE1%" 2>nul
 mkdir "%BASE_PATH%\%FOLDER_STRUCTURE2%" 2>nul
@@ -99,6 +101,7 @@ mkdir "%BASE_PATH%\%FOLDER_STRUCTURE10%" 2>nul
 mkdir "%BASE_PATH%\%FOLDER_STRUCTURE11%" 2>nul
 mkdir "%BASE_PATH%\%FOLDER_STRUCTURE12%" 2>nul
 mkdir "%BASE_PATH%\%FOLDER_STRUCTURE13%" 2>nul
+mkdir "%BASE_PATH%\%FOLDER_STRUCTURE14%" 2>nul
 
 REM Check if the target folder exists, create it if needed
 if not exist "%scriptSearchDir%\%scriptTargetFolder%" (
