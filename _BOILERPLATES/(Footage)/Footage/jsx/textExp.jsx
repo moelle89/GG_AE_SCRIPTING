@@ -1,5 +1,4 @@
    try {
-      // Get source data from input template
       const myData = footage("input_template.json").sourceData;
 
       // Get the selected option from the TEXT_LINK effect
