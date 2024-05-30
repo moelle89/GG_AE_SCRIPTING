@@ -3,7 +3,7 @@ cls
 
 set "scriptPath=%~dp0"
 set "Folder=%scriptPath%"
-set "aeDestinationFolder=C:\data_driven_ae_template-1"
+set "aeDestinationFolder=C:\data_driven_ae_template-1\_assets\packs\01"
 set "aeFootageFolder=(Footage)"
 set "aeFootageFolderPath=%Folder%\%aeFootageFolder%"
 set "fullAeFootageDestination=%aeDestinationFolder%\%aeFootageFolder%"
