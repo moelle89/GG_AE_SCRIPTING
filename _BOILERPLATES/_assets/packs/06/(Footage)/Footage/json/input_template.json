@@ -18,7 +18,7 @@
       "text": "Lightning-Fast Finish: Daring Maneuver Secures Dramatic Win for Rising Racing Star",
       "color": "#222222",
       "color_dark": "#ffffff",
-      "font": "RobotoSlab-Bold"
+      "font": ""
     },
     "subtext": {
       "text": "Meteoric Rise of Racing Phenom: Rookie Sensation Pulls Off Stunning Upset, Leaving Veteran Drivers in the Dust.",
@@ -34,14 +34,14 @@
        "cursor_color_dark": "#00a950",
        "cursor_stroke": "#ffffff",
        "cursor_stroke_dark": "#FFFFFF",
-       "font": "RobotoSlab-Bold"
+       "font": ""
     },
     "call2action_link": {
       "text": "www.redcar.com",
       "color": "#222222",
       "color_dark": "#ffffff",
       "link_highlight": 0,
-      "font": "RobotoSlab-Bold"
+      "font": ""
     },
     "source": {
       "text": "redcar.com",
@@ -82,7 +82,7 @@
             "font": "Poppins"
          },
          {
-            "src": "",
+            "src": "gallery_04",
             "video": 0,
             "loop": 0,
             "muted": 0,
