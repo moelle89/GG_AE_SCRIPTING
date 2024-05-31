@@ -18,7 +18,7 @@
       "text": "FIVE GUYS",
       "color": "#222222",
       "color_dark": "#ffffff",
-      "font": "ChunkFive-Regular"
+      "font": ""
     },
     "subtext": {
       "text": "Handcrafted BURGERS & FRIES since 1986",
@@ -34,14 +34,14 @@
       "cursor_color_dark": "#d30f2f",
       "cursor_stroke": "#ffffff",
       "cursor_stroke_dark": "#FFFFFF",
-      "font": "ChunkFive-Regular"
+      "font": ""
     },
     "call2action_link": {
       "text": "www.fiveguys.com",
       "color": "#222222",
       "color_dark": "#ffffff",
       "link_highlight": 0,
-      "font": "ChunkFive-Regular"
+      "font": ""
     },
     "source": {
       "text": "fiveguys.com",
