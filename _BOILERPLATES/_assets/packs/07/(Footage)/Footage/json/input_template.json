@@ -11,17 +11,17 @@
     "text2voice": 0,
     "fx_effects": 0,
     "accent": {
-      "color": "#b65c38",
-      "color_dark": "#CF6E48"
+      "color": "#007af0",
+      "color_dark": "#007af0"
     },
     "title": {
-      "text": "Find your perfect watch!",
+      "text": "Balencibunny - Balenciaga's modern take on the classic Playboy Bunny aesthetic",
       "color": "#222222",
       "color_dark": "#ffffff",
-      "font": "Archivo-Bold"
+      "font": ""
     },
     "subtext": {
-      "text": "Check out our shop to find the perfect watch for you.",
+      "text": "Luxurious fabrics, bold silhouettes, and a touch of retro glamour come together in this provocative yet refined collection. Embracing the duality of power and sensuality.",
       "color": "#242424",
       "color_dark": "#ffffff",
       "font": ""
@@ -30,31 +30,31 @@
       "text": "Now available:",
       "color": "#222222",
       "color_dark": "#FFFFFF",
-      "cursor_color": "#b65c38",
-      "cursor_color_dark": "#b65c38",
+      "cursor_color": "#007af0",
+      "cursor_color_dark": "#007af0",
       "cursor_stroke": "#FFFFFF",
       "cursor_stroke_dark": "#FFFFFF",
       "font": ""
     },
     "call2action_link": {
-      "text": "www.london-watches.com",
+      "text": "www.balenciaga.com",
       "color": "#222222",
       "color_dark": "#FFFFFF",
       "link_highlight": 0,
       "font": ""
     },
     "source": {
-      "text": "london-watches.com",
+      "text": "balenciaga.com",
       "color": "#080808",
       "color_dark": "#FFFFFF",
       "bg_color": "#ffffff",
-      "bg_color_dark": "#b65c38",
+      "bg_color_dark": "#007af0",
       "avatar": 0,
       "font": ""
     },
     "bg": {
       "color": "#ffffff",
-      "color_dark": "#3B231A"
+      "color_dark": "#0f1826"
     },
       "gallery": [
          {
