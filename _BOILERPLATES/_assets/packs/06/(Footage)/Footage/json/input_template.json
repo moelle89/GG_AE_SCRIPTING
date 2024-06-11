@@ -11,8 +11,8 @@
     "text2voice": 0,
     "fx_effects": 0,
     "accent": {
-      "color": "#00a950",
-      "color_dark": "#76ba00"
+      "color": "#e1a600",
+      "color_dark": "#e1a600"
     },
     "title": {
       "text": "Lightning-Fast Finish: Daring Maneuver Secures Dramatic Win for Rising Racing Star",
@@ -31,7 +31,7 @@
        "color": "#222222",
        "color_dark": "#ffffff",
        "cursor_color": "#76ba00",
-       "cursor_color_dark": "#00a950",
+       "cursor_color_dark": "#e1a600",
        "cursor_stroke": "#ffffff",
        "cursor_stroke_dark": "#FFFFFF",
        "font": ""
@@ -48,13 +48,13 @@
       "color": "#080808",
       "color_dark": "#FFFFFF",
       "bg_color": "#ffffff",
-      "bg_color_dark": "#00a950",
+      "bg_color_dark": "#e1a600",
       "avatar": 0,
       "font": ""
     },
     "bg": {
       "color": "#ffffff",
-      "color_dark": "#002A16"
+      "color_dark": "#1d2128"
     },
     "gallery": [
          {
@@ -90,7 +90,7 @@
             "font": "Poppins"
          },
          {
-            "src": "",
+            "src": "gallery_05",
             "video": 0,
             "loop": 0,
             "muted": 0,
@@ -98,7 +98,7 @@
             "font": "Poppins"
          },
          {
-            "src": "",
+            "src": "gallery_06",
             "video": 0,
             "loop": 0,
             "muted": 0,

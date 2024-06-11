@@ -24,7 +24,7 @@ set ffmpeg = "C:\ffmpeg\bin\ffmpeg.exe"
 		set "inputFile2=%%i"
 		for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 		echo !name!
-	   ffmpeg -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 26 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
+	   ffmpeg -i "!inputFile2!" -y -c:v libvpx-vp9 -crf 44 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 	   REM ffmpeg -i "!inputFile2!" -c:v libvpx-vp9 -b:v 2M -c:a libvorbis "%Folder%\!name!.webm"
 	)
 
