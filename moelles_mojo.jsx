@@ -1593,6 +1593,12 @@ var hoverMenu_customExp = new HoverMenu("hoverMenu_customExp", [{
     text: "if darkmode ...",
     name: "addExpressionToSelectedProperty",
     functionName: addExpressionToSelectedProperty
+},
+{
+    imgString: "",
+    text: "Get AE font name",
+    name: "getAEfontName",
+    functionName: getAEfontName
 }
 ]);
 // hoverMenu_open
@@ -3022,6 +3028,27 @@ function addExpressionToSelectedProperty() {
         selectedProperty.setValue(selectedProperty.expression);
     } catch (error) {
         alert("Failed to add expression.\n\nError: " + error);
+    }
+}
+
+function getAEfontName() {
+    if (app.project && app.project.activeItem && app.project.activeItem instanceof CompItem) {
+        var comp = app.project.activeItem;
+
+        // Ensure you have a text layer selected
+        if (comp.selectedLayers.length > 0 && comp.selectedLayers[0] instanceof TextLayer) {
+            var textLayer = comp.selectedLayers[0];
+            var textProp = textLayer.property("Source Text");
+            var textDocument = textProp.value;
+
+            // Get the font name
+            var fontName = textDocument.font;
+            alert("The font used in the selected text layer is: " + fontName);
+        } else {
+            alert("Please select a text layer.");
+        }
+    } else {
+        alert("Please open a project and select a composition.");
     }
 }
 
