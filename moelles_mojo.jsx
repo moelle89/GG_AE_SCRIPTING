@@ -1599,6 +1599,12 @@ var hoverMenu_customExp = new HoverMenu("hoverMenu_customExp", [{
     text: "Get AE font name",
     name: "getAEfontName",
     functionName: getAEfontName
+},
+{
+    imgString: "",
+    text: "Delete unused Null-layers",
+    name: "deleteUnusedNullLayers",
+    functionName: deleteUnusedNullLayers
 }
 ]);
 // hoverMenu_open
@@ -3052,7 +3058,40 @@ function getAEfontName() {
     }
 }
 
+// Function to check if a layer is used as a parent by any other layer in the composition
+function isLayerUsedAsParent(comp, layer) {
+    for (var i = 1; i <= comp.numLayers; i++) {
+        var currentLayer = comp.layer(i);
+        if (currentLayer.parent == layer) {
+            return true;
+        }
+    }
+    return false;
+}
 
+// Main function to check for unused null layers and delete them
+function deleteUnusedNullLayers() {
+    var activeComp = app.project.activeItem;
+
+    if (!(activeComp && activeComp instanceof CompItem)) {
+        alert("Please select a composition.");
+        return;
+    }
+
+    // Begin undo group
+    app.beginUndoGroup("Delete Unused Null Layers");
+
+    // Loop through layers in reverse to safely delete layers
+    for (var i = activeComp.numLayers; i >= 1; i--) {
+        var layer = activeComp.layer(i);
+        if (layer.nullLayer && !isLayerUsedAsParent(activeComp, layer)) {
+            layer.remove();
+        }
+    }
+
+    // End undo group
+    app.endUndoGroup();
+}
 
 
 // Function to select layers in the timeline
