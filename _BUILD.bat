@@ -24,7 +24,6 @@ echo Copy completed.
 
 REM Set the paths for the files and folders to include in the zip archive
 set "INSTALL_SCRIPT=_INSTALL.bat"
-set "INSTALLTTS_SCRIPT=_INSTALL_FONTS.bat"
 set "BOILERPLATES_FOLDER=_BOILERPLATES"
 set "BUILDS_FOLDER=_BUILDS"
 set "BUILDS_SCRIPTS_FOLDER=_BUILDS\_scripts"
@@ -41,7 +40,6 @@ mkdir "%TEMP_DIR%" 2>nul
 
 REM Copy the specified files and folders to the temporary directory
 copy "%INSTALL_SCRIPT%" "%TEMP_DIR%"
-copy "%INSTALLTTS_SCRIPT%" "%TEMP_DIR%"
 xcopy "%BOILERPLATES_FOLDER%" "%TEMP_DIR%\%BOILERPLATES_FOLDER%\" /s /e /i
 xcopy "%BUILDS_SCRIPTS_FOLDER%" "%TEMP_DIR%\%BUILDS_SCRIPTS_FOLDER%\" /s /e /i
 xcopy "%BUILDS_FONTS_FOLDER%" "%TEMP_DIR%\%BUILDS_FONTS_FOLDER%\" /s /e /i
