@@ -597,7 +597,7 @@ demo5.preferredSize.width = 55;
 var demo6grp = demoGrp2.add("group", undefined, {
     name: "demo6grp",
 });
-var demo6 = buttonColorText(demo6grp, "06", "#269826", "#32cd32");
+var demo6 = buttonColorText(demo6grp, "06", "#269826", "#29b129");
 demo6.preferredSize.width = 55;
 var demo7grp = demoGrp2.add("group", undefined, {
     name: "demo7grp",
