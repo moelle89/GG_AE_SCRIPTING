@@ -44,7 +44,7 @@ if "%choice%"=="1" (
 	if not exist "%aeFootageFolderPath%" (
 		mkdir "%aeFootageFolderPath%"
 	)
-	xcopy "%fullAeFootageDestination%" "%aeFootageFolderPath%" /E /I /H /C /K /Y
+	xcopy /E /I /Y "%fullAeFootageDestination%" "%aeFootageFolderPath%"
 
 	echo.
 	echo Footage folder imported.
@@ -77,17 +77,12 @@ if "%choice%"=="1" (
 		echo !comp_aep!
 		echo !compName!
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
-		timeout /t 1 /nobreak >nul
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_square" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
-		timeout /t 1 /nobreak >nul
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_1920" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
-		timeout /t 1 /nobreak >nul
+
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!" -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_h264_default" -output "%Folder%\[compName].[fileExtension]"
-		timeout /t 1 /nobreak >nul
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_square" -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_h264_default" -output "%Folder%\[compName].[fileExtension]"
-		timeout /t 1 /nobreak >nul
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_1920" -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_h264_default" -output "%Folder%\[compName].[fileExtension]"
-		timeout /t 1 /nobreak >nul
 
 		REM webp conversion
 		for %%i in (%Folder%\*.jpg) do (
@@ -100,9 +95,8 @@ if "%choice%"=="1" (
 				REM Strip the last two characters
 			)
 			echo !name!
-			timeout /t 1 /nobreak >nul
+
 			"%ffmpeg%" -i "!inputFile1!" -y "%Folder%\!name!.webp"
-			timeout /t 1 /nobreak >nul
 			 del "!inputFile1!"
 		)
 		REM webm conversion
@@ -110,9 +104,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			timeout /t 1 /nobreak >nul
-			"%ffmpeg%" -i "!inputFile2!"  -y -c:v libvpx-vp9 -crf 44 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
-			timeout /t 1 /nobreak >nul
+			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 34 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 			 del "!inputFile2!"
 		)
 
@@ -140,11 +132,8 @@ if "%choice%"=="1" (
 		echo !post_aep!
 		echo !compName!
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
-		timeout /t 1 /nobreak >nul
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_square" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
-		timeout /t 1 /nobreak >nul
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_1920" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
-		timeout /t 1 /nobreak >nul
 
 		REM webp conversion
 		for %%i in (%Folder%\*.jpg) do (
@@ -157,9 +146,8 @@ if "%choice%"=="1" (
 				REM Strip the last two characters
 			)
 			echo !name!
-			timeout /t 1 /nobreak >nul
+
 			"%ffmpeg%" -i "!inputFile1!" -y "%Folder%\!name!.webp"
-			timeout /t 1 /nobreak >nul
 			 del "!inputFile1!"
 		)
 		REM webm conversion
@@ -167,9 +155,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			timeout /t 1 /nobreak >nul
 			"%ffmpeg%" -i "!inputFile2!" -y -c:v libvpx-vp9 -crf 28 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
-			timeout /t 1 /nobreak >nul
 			 del "!inputFile2!"
 		)
 
@@ -198,9 +184,9 @@ if "%choice%"=="1" (
 		echo !comp_aep!
 		echo !compName!
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
-		timeout /t 1 /nobreak >nul
+
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!" -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_h264_default" -output "%Folder%\[compName].[fileExtension]"
-		timeout /t 1 /nobreak >nul
+
 		REM webp conversion
 		for %%i in (%Folder%\*.jpg) do (
 			set "inputFile1=%%i"
@@ -212,9 +198,8 @@ if "%choice%"=="1" (
 				REM Strip the last two characters
 			)
 			echo !name!
-			timeout /t 1 /nobreak >nul
+
 			"%ffmpeg%" -i "!inputFile1!" -y "%Folder%\!name!.webp"
-			timeout /t 1 /nobreak >nul
 			 del "!inputFile1!"
 		)
 		REM webm conversion
@@ -222,9 +207,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			timeout /t 1 /nobreak >nul
-			"%ffmpeg%" -i "!inputFile2!"  -y -c:v libvpx-vp9 -crf 44 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
-			timeout /t 1 /nobreak >nul
+			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 34 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 			 del "!inputFile2!"
 		)
 	)
@@ -246,9 +229,9 @@ if "%choice%"=="1" (
 		echo !comp_aep!
 		echo !compName!
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_square" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
-		timeout /t 1 /nobreak >nul
+
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_square" -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_h264_default" -output "%Folder%\[compName].[fileExtension]"
-		timeout /t 1 /nobreak >nul
+
 		REM webp conversion
 		for %%i in (%Folder%\*.jpg) do (
 			set "inputFile1=%%i"
@@ -260,9 +243,8 @@ if "%choice%"=="1" (
 				REM Strip the last two characters
 			)
 			echo !name!
-			timeout /t 1 /nobreak >nul
+
 			"%ffmpeg%" -i "!inputFile1!" -y "%Folder%\!name!.webp"
-			timeout /t 1 /nobreak >nul
 			 del "!inputFile1!"
 		)
 		REM webm conversion
@@ -270,8 +252,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			"%ffmpeg%" -i "!inputFile2!"  -y -c:v libvpx-vp9 -crf 44 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
-			timeout /t 1 /nobreak >nul
+			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 34 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 			 del "!inputFile2!"
 		)
 	)
@@ -293,9 +274,9 @@ if "%choice%"=="1" (
 		echo !comp_aep!
 		echo !compName!
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_1920" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
-		timeout /t 1 /nobreak >nul
+
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_1920" -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_h264_default" -output "%Folder%\[compName].[fileExtension]"
-		timeout /t 1 /nobreak >nul
+
 		REM webp conversion
 		for %%i in (%Folder%\*.jpg) do (
 			set "inputFile1=%%i"
@@ -307,9 +288,8 @@ if "%choice%"=="1" (
 				REM Strip the last two characters
 			)
 			echo !name!
-			timeout /t 1 /nobreak >nul
+
 			"%ffmpeg%" -i "!inputFile1!" -y "%Folder%\!name!.webp"
-			timeout /t 1 /nobreak >nul
 			 del "!inputFile1!"
 		)
 		REM webm conversion
@@ -317,9 +297,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			timeout /t 1 /nobreak >nul
-			"%ffmpeg%" -i "!inputFile2!"  -y -c:v libvpx-vp9 -crf 44 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
-			timeout /t 1 /nobreak >nul
+			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 34 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 			 del "!inputFile2!"
 		)
 	)
@@ -341,9 +319,9 @@ if "%choice%"=="1" (
 		echo !comp_aep!
 		echo !compName!
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
-		timeout /t 1 /nobreak >nul
+
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!" -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_h264_default" -output "%Folder%\[compName].[fileExtension]"
-		timeout /t 1 /nobreak >nul
+
 		REM webp conversion
 		for %%i in (%Folder%\*.jpg) do (
 			set "inputFile1=%%i"
@@ -357,7 +335,6 @@ if "%choice%"=="1" (
 			echo !name!
 
 			"%ffmpeg%" -i "!inputFile1!" -y "%Folder%\!name!.webp"
-			timeout /t 1 /nobreak >nul
 			 del "!inputFile1!"
 		)
 		REM webm conversion
@@ -365,8 +342,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			"%ffmpeg%" -i "!inputFile2!"  -y -c:v libvpx-vp9 -crf 44 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
-			timeout /t 1 /nobreak >nul
+			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 34 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 			 del "!inputFile2!"
 		)
 	)
@@ -388,9 +364,9 @@ if "%choice%"=="1" (
 		echo !comp_aep!
 		echo !compName!
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_square" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
-		timeout /t 1 /nobreak >nul
+
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_square" -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_h264_default" -output "%Folder%\[compName].[fileExtension]"
-		timeout /t 1 /nobreak >nul
+
 		REM webp conversion
 		for %%i in (%Folder%\*.jpg) do (
 			set "inputFile1=%%i"
@@ -404,7 +380,6 @@ if "%choice%"=="1" (
 			echo !name!
 
 			"%ffmpeg%" -i "!inputFile1!" -y "%Folder%\!name!.webp"
-			timeout /t 1 /nobreak >nul
 			 del "!inputFile1!"
 		)
 		REM webm conversion
@@ -412,8 +387,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			"%ffmpeg%" -i "!inputFile2!"  -y -c:v libvpx-vp9 -crf 44 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
-			timeout /t 1 /nobreak >nul
+			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 34 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 			 del "!inputFile2!"
 		)
 	)
@@ -435,9 +409,9 @@ if "%choice%"=="1" (
 		echo !comp_aep!
 		echo !compName!
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_1920" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
-		timeout /t 1 /nobreak >nul
+
 		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_1920" -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_h264_default" -output "%Folder%\[compName].[fileExtension]"
-		timeout /t 1 /nobreak >nul
+
 		REM webp conversion
 		for %%i in (%Folder%\*.jpg) do (
 			set "inputFile1=%%i"
@@ -451,7 +425,6 @@ if "%choice%"=="1" (
 			echo !name!
 
 			"%ffmpeg%" -i "!inputFile1!" -y "%Folder%\!name!.webp"
-			timeout /t 1 /nobreak >nul
 			 del "!inputFile1!"
 		)
 		REM webm conversion
@@ -459,8 +432,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			"%ffmpeg%" -i "!inputFile2!"  -y -c:v libvpx-vp9 -crf 44 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
-			timeout /t 1 /nobreak >nul
+			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 34 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 			 del "!inputFile2!"
 		)
 	)
