@@ -232,10 +232,19 @@ tmpFolder.remove();
     if (BPLATE_square) {BPLATE_square.parentFolder = app.project.rootFolder;}
     if (BPLATE_1920) {BPLATE_1920.parentFolder = app.project.rootFolder;}
 
+    // Set parentFolder for selected compositions
+    var selectedItems = app.project.selection;
+    for (var i = 0; i < selectedItems.length; i++) {
+        if (selectedItems[i] instanceof CompItem) {
+            selectedItems[i].parentFolder = app.project.rootFolder;
+        }
+    }
+
 app.endUndoGroup();
 pwpWin.progBar.value = pwpWin.progBar.maxvalue;
 s.text = "All done!";
 pwpWin.close();
+pwpWin.remove();
 }
 
   var myDefaults = new Object();
