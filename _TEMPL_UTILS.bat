@@ -104,7 +104,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 34 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
+			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 42  -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 			 del "!inputFile2!"
 		)
 
@@ -207,7 +207,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 34 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
+			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 42  -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 			 del "!inputFile2!"
 		)
 	)
@@ -252,7 +252,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 34 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
+			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 42  -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 			 del "!inputFile2!"
 		)
 	)
@@ -297,7 +297,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 34 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
+			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 42  -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 			 del "!inputFile2!"
 		)
 	)
@@ -342,7 +342,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 34 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
+			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 42  -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 			 del "!inputFile2!"
 		)
 	)
@@ -387,7 +387,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 34 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
+			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 42  -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 			 del "!inputFile2!"
 		)
 	)
@@ -432,7 +432,7 @@ if "%choice%"=="1" (
 			set "inputFile2=%%i"
 			for /f "delims=." %%a in ("%%~ni") do set "name=%%a"
 			echo !name!
-			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 34 -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
+			"%ffmpeg%" -i "!inputFile2!" -c:v libvpx-vp9 -quality good -speed 14 -crf 42  -b:v 0 -b:a 128k -c:a libopus "%Folder%\!name!.webm"
 			 del "!inputFile2!"
 		)
 	)

@@ -241,9 +241,8 @@ tmpFolder.remove();
     }
 
 app.endUndoGroup();
-pwpWin.progBar.value = pwpWin.progBar.maxvalue;
-s.text = "All done!";
 pwpWin.close();
+pwpWin.hide();
 }
 
   var myDefaults = new Object();

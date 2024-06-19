@@ -4380,7 +4380,7 @@ function changeDemoContent(demoPack) {
         $.sleep(200);
         // Extract the project name from the file path, assuming a standard naming scheme
         var projectName = app.project.file.name;
-        if (projectName.match("comp_") || projectName.match("post_") || projectName.match("___boilerplate")) {
+        if (finalPath) {
             app.executeCommand(2372); // Purge ImageCaches
             //batch
             var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo.bat";
