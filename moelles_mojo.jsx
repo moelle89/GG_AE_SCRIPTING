@@ -2498,6 +2498,46 @@ function changeJSONTEXT(inputText, jsonKey) {
         //app.project.activeItem.resolutionFactor = userResoultionFacter;
     }
 }
+
+function progressBarView() {
+    var dialog = new Window("window", "In Progress...", undefined, {
+        borderless: false,
+        closeButton: false,
+        maximizeButton: false,
+        minimizeButton: false,
+        resizeable: false,
+        title: "In Progress",
+    });
+    dialog.orientation = "column";
+    dialog.alignChildren = ["center", "top"];
+    dialog.spacing = 19;
+    dialog.margins = 0;
+    mojoUI.setBG(dialog, mojoUI.backgroundColor);
+    // Add a progress bar to the window
+    var progressBar = dialog.add("progressbar", undefined, 0, 100);
+    progressBar.preferredSize.width = 100;
+
+    // Function to update the progress bar
+    function updateProgressBar(currentIndex, totalItems) {
+        var progress = (currentIndex / totalItems) * 100;
+        progressBar.value = progress;
+    }
+
+    // Display the window
+    dialog.show();
+
+    // Simulate progress updates
+    var totalItems = 100;  // Total number of steps for the progress bar
+    for (var i = 0; i <= totalItems; i++) {
+        updateProgressBar(i, totalItems);
+        $.sleep(8);  // Delay to simulate time taken for each step (50 milliseconds)
+    }
+    // Close the window after progress is complete
+    dialog.close();
+}
+
+
+
 function openCompInViewer(compName, layerName) {
     var compIndex = findCompIndex(compName);
     app.project.item(compIndex).openInViewer();
@@ -3197,90 +3237,64 @@ function copyAndOverwriteFootageFolder(path, isPack) {
 function copyFootageFolder() {
     // Execute the function
     app.beginUndoGroup("Copy and Overwrite (Footage) Folder");
-    var pb = new ProgressBar(1, 10, 1);
-    pb.start();
     copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\(Footage)",false);
-    $.sleep(2000);
-    pb.end();
+    progressBarView();
     app.endUndoGroup();
 }
 
 // Copy asset pack 03
 function copyPack01() {
     app.beginUndoGroup("Copy asset pack 01");
-    var pb = new ProgressBar(1, 10, 1);
-    pb.start();
     copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\01\\(Footage)", true);
-    $.sleep(2000);
-    pb.end();
+    progressBarView();
     app.endUndoGroup();
 }
 // Copy asset pack 02
 function copyPack02() {
-    app.beginUndoGroup("Copy asset pack 02");
-    var pb = new ProgressBar(1, 10, 1);
-    pb.start();
     copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\02\\(Footage)", true);
-    $.sleep(2000);
-    pb.end();
+    progressBarView();
     app.endUndoGroup();
 }
 // Copy asset pack 03
 function copyPack03() {
     app.beginUndoGroup("Copy asset pack 03");
-    var pb = new ProgressBar(1, 10, 1);
-    pb.start();
     copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\03\\(Footage)", true);
-    $.sleep(2000);
-    pb.end();
+    progressBarView();
     app.endUndoGroup();
 }
 // Copy asset pack 04
 function copyPack04() {
     app.beginUndoGroup("Copy asset pack 04");
-    var pb = new ProgressBar(1, 10, 1);
-    pb.start();
     copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\04\\(Footage)", true);
-    $.sleep(2000);
-    pb.end();
+    progressBarView();
     app.endUndoGroup();
 }
 // Copy asset pack 05
 function copyPack05() {
     app.beginUndoGroup("Copy asset pack 05");
-    var pb = new ProgressBar(1, 10, 1);
-    pb.start();
     copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\05\\(Footage)", true);
-    $.sleep(2000);
-    pb.end();
+    progressBarView();
     app.endUndoGroup();
 }
 // Copy asset pack 06
 function copyPack06() {
     app.beginUndoGroup("Copy asset pack 06");
-    var pb = new ProgressBar(1, 10, 1);
-    pb.start();
     copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\06\\(Footage)", true);
-    $.sleep(2000);
-    pb.end();
+    progressBarView();
     app.endUndoGroup();
 }
 // Copy asset pack 07
 function copyPack07() {
     app.beginUndoGroup("Copy asset pack 07");
-    var pb = new ProgressBar(1, 10, 1);
-    pb.start();
     copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\07\\(Footage)", true);
+    progressBarView();
     app.endUndoGroup();
 }
 // Copy asset pack 08
 function copyPack08() {
     app.beginUndoGroup("Copy asset pack 08");
-    var pb = new ProgressBar(1, 10, 1);
-    pb.start();
     copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\08\\(Footage)", true);
-    $.sleep(2000);
-    pb.end();
+    progressBarView();
     app.endUndoGroup();
 }
 
