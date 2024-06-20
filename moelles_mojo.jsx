@@ -4621,7 +4621,7 @@ addTooltipToButton(demo6grp, "demo06", 90, false, false, true);
 addTooltipToButton(demo7grp, "demo07", 90, true, false, true);
 addTooltipToButton(demo8grp, "demo08", 90, true, false, true);
 demo1.onClick = function () {
-    copyPack01();
+    copyFootageFolder();
     //changeDemoContent("01");
 }
 demo2.onClick = function () {
@@ -4646,7 +4646,7 @@ demo8.onClick = function () {
     changeDemoContent("08");
 }
 btn_demos.onClick = function () {
-    copyPack01();
+    copyFootageFolder();
     //changeDemoContent("01");
 }
 var mousePosGlobal = null;
