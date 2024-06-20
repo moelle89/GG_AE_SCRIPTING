@@ -597,12 +597,12 @@ demo5.preferredSize.width = 55;
 var demo6grp = demoGrp2.add("group", undefined, {
     name: "demo6grp",
 });
-var demo6 = buttonColorText(demo6grp, "06", "#269826", "#29b129");
+var demo6 = buttonColorText(demo6grp, "06", "#107810", "#29b129");
 demo6.preferredSize.width = 55;
 var demo7grp = demoGrp2.add("group", undefined, {
     name: "demo7grp",
 });
-var demo7 = buttonColorText(demo7grp, "07", "#5b2e1c", "#b65c38");
+var demo7 = buttonColorText(demo7grp, "07", "#00509e", "#007af0");
 demo7.preferredSize.width = 55;
 var demo8grp = demoGrp2.add("group", undefined, {
     name: "demo8grp",
@@ -1605,6 +1605,18 @@ var hoverMenu_customExp = new HoverMenu("hoverMenu_customExp", [{
     text: "Delete unused Null-layers",
     name: "deleteUnusedNullLayers",
     functionName: deleteUnusedNullLayers
+},
+{
+    imgString: "",
+    text: "Copy footage folder to project",
+    name: "copyFootageFolder",
+    functionName: copyFootageFolder
+},
+{
+    imgString: "",
+    text: "Copy asset pack 03",
+    name: "copyPack03",
+    functionName: copyPack03
 }
 ]);
 // hoverMenu_open
@@ -2834,6 +2846,7 @@ function renameRevertJSON() {
 }
 // Function to rename the json twice to make after effects notice the file-changes
 function pushJSON() {
+    try {
     var myItem = getItem("input_template.json");
     // Check if myItem and myItem.mainSource are defined before attempting to reload
     if (myItem) {
@@ -2873,9 +2886,8 @@ function pushJSON() {
             file.close();
             refreshJSON();
         }
-    } else {
-        showAlertWindow("JSON file doesnt exist");
-    }
+        }
+    } catch (err) { }
 }
 
 // Function to replace composition name and add suffix based on resolution
@@ -3093,6 +3105,108 @@ function deleteUnusedNullLayers() {
     app.endUndoGroup();
 }
 
+
+function copyAndOverwriteFootageFolder(path, isPack) {
+    var project = app.project;
+    var _path = "";
+    if (!project.file) {
+        alert("Please save your project first.");
+        return;
+    }
+
+    // Get the project's root folder path
+    var projectPath = project.file.fsName;
+    var projectRootFolder = new Folder(projectPath).parent;
+
+    // Define the path to check
+    var targetPath = "C:\\data_driven_ae_template-1\\";
+    var defaultFootagePath = "C:\\data_driven_ae_template-1\\(Footage)";
+    if (isPack) { _path = path } else { _path = defaultFootagePath };
+    // Check if the project's root folder path matches the target path
+    if (projectRootFolder.fsName.toLowerCase() === targetPath.toLowerCase() && !isPack) {
+        // Check if the (Footage) folder already exists in the project's root folder
+        var existingFootageFolder = new Folder(projectRootFolder.fsName + "/(Footage)");
+
+        if (existingFootageFolder.exists) {
+            alert("The (Footage) folder already exists in the project's root folder.");
+            return;
+        }
+    }
+    // Define the source folder path
+    //var sourceFolderPath = "C:\\data_driven_ae_template-1\\(Footage)";
+    var sourceFolder = new Folder(_path);
+
+    if (!sourceFolder.exists) {
+        alert("Source folder does not exist: " + sourceFolderPath);
+        return;
+    }
+
+    // Define the destination folder path inside the project's root folder
+    var destinationFolderPath = projectRootFolder.fsName + "/(Footage)";
+    var destinationFolder = new Folder(destinationFolderPath);
+
+    // Function to delete a folder and its contents recursively
+    var deleteFolderRecursive = function (folder) {
+        var files = folder.getFiles();
+        for (var i = 0; i < files.length; i++) {
+            var item = files[i];
+            if (item instanceof Folder) {
+                deleteFolderRecursive(item);
+            } else {
+                item.remove();
+            }
+        }
+        folder.remove();
+    };
+
+    // Overwrite the existing folder if it exists
+    if (destinationFolder.exists) {
+        deleteFolderRecursive(destinationFolder);
+    }
+
+    // Function to copy files and folders recursively
+    var copyFolderRecursive = function (srcFolder, destFolder) {
+        if (!destFolder.exists) {
+            destFolder.create();
+        }
+
+        var files = srcFolder.getFiles();
+        for (var i = 0; i < files.length; i++) {
+            var item = files[i];
+            if (item instanceof Folder) {
+                var newFolder = new Folder(destFolder.fsName + "/" + item.name);
+                copyFolderRecursive(item, newFolder);
+            } else {
+                item.copy(destFolder.fsName + "/" + item.name);
+            }
+        }
+    };
+
+    // Start copying
+    copyFolderRecursive(sourceFolder, destinationFolder);
+    //alert("Folder copied successfully to: " + destinationFolderPath);
+};
+
+// Copy footage folder to projects root location
+function copyFootageFolder() {
+    // Execute the function
+    app.beginUndoGroup("Copy and Overwrite (Footage) Folder");
+    copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\(Footage)",false);
+    app.endUndoGroup();
+}
+
+// Copy asset pack 03
+function copyPack01() {
+    app.beginUndoGroup("Copy asset pack 03");
+    copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\01\\(Footage)", true);
+    app.endUndoGroup();
+}
+// Copy asset pack 03
+function copyPack03() {
+    app.beginUndoGroup("Copy asset pack 03");
+    copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\03\\(Footage)", true);
+    app.endUndoGroup();
+}
 
 // Function to select layers in the timeline
 function selectLayers(layers) {
@@ -4355,12 +4469,34 @@ function convertPath(path) {
     return path.replace(/\/([a-zA-Z])\//g, "$1:\\");
 }
 
+
+function convertProjectPath() {
+    var project = app.project;
+
+    if (project) {
+        var projectFile = project.file.parent;
+
+        if (projectFile) {
+            var projectPath = projectFile.fsName;
+            var batFormattedPath = projectPath.replace(/\\/g, '\\\\').replace(/:/, ':\\');
+            //alert("Formatted Path for BAT script:\n" + batFormattedPath);
+            // Optionally, copy the formatted path to clipboard
+            return batFormattedPath;
+        } else {
+            alert("No project file found. Please save your project first.");
+        }
+    } else {
+        alert("No project is currently open.");
+    }
+}
+
 function changeDemoContent(demoPack) {
     var prjPath = app.project.file;
     // Check if there is an open project
     if (app.project && app.project.file !== null) {
         var footageFolder = new Folder(prjPath.fsName).path;
-        var finalPath = convertPath(footageFolder)
+        //var finalPath = convertPath(footageFolder)
+        var finalPath = convertProjectPath();
         var bufferComp = findComp("bufferComp");
         if (!bufferComp) {
             bufferComp = createComposition(5, 5, 1, 1, "bufferComp", 1);
@@ -4485,7 +4621,8 @@ addTooltipToButton(demo6grp, "demo06", 90, false, false, true);
 addTooltipToButton(demo7grp, "demo07", 90, true, false, true);
 addTooltipToButton(demo8grp, "demo08", 90, true, false, true);
 demo1.onClick = function () {
-    changeDemoContent("01");
+    copyPack01();
+    //changeDemoContent("01");
 }
 demo2.onClick = function () {
     changeDemoContent("02");
@@ -4509,7 +4646,8 @@ demo8.onClick = function () {
     changeDemoContent("08");
 }
 btn_demos.onClick = function () {
-    changeDemoContent("01");
+    copyPack01();
+    //changeDemoContent("01");
 }
 var mousePosGlobal = null;
 function closeDialogWindows() {
