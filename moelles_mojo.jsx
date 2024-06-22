@@ -1605,18 +1605,6 @@ var hoverMenu_customExp = new HoverMenu("hoverMenu_customExp", [{
     text: "Delete unused Null-layers",
     name: "deleteUnusedNullLayers",
     functionName: deleteUnusedNullLayers
-},
-{
-    imgString: "",
-    text: "Copy footage folder to project",
-    name: "copyFootageFolder",
-    functionName: copyFootageFolder
-},
-{
-    imgString: "",
-    text: "Copy asset pack 03",
-    name: "copyPack03",
-    functionName: copyPack03
 }
 ]);
 // hoverMenu_open
@@ -2498,85 +2486,6 @@ function changeJSONTEXT(inputText, jsonKey) {
         //app.project.activeItem.resolutionFactor = userResoultionFacter;
     }
 }
-
-///
-
-function showDarkProgressBar() {
-    // Function to apply dark theme to a UI element
-
-    // Create a window
-    var myWindow = new Window("palette", "Progress Bar Example");
-    mojoUI.setBG(myWindow, mojoUI.backgroundColor);
-    // Apply dark theme to the window
-
-    // Add a static text label
-    var label = myWindow.add("statictext", undefined, "Processing...");
-    mojoUI.setFG(label, [0.83, 0.94, 1, 0.75]);
-
-    // Add a progress bar to the window
-    var progressBar = myWindow.add("progressbar", undefined, 0, 100);
-    progressBar.preferredSize.width = 300;
-
-    // Function to update the progress bar
-    function updateProgressBar(currentIndex, totalItems) {
-        var progress = (currentIndex / totalItems) * 100;
-        progressBar.value = progress;
-    }
-
-    // Display the window
-    myWindow.show();
-
-    // Simulate progress updates
-    var totalItems = 100;  // Total number of steps for the progress bar
-    for (var i = 0; i <= totalItems; i++) {
-        updateProgressBar(i, totalItems);
-        $.sleep(50);  // Delay to simulate time taken for each step (50 milliseconds)
-    }
-
-    // Close the window after progress is complete
-    myWindow.close();
-}
-
-///
-
-function progressBarView() {
-    var dialog = new Window("window", "In Progress...", undefined, {
-        borderless: false,
-        closeButton: false,
-        maximizeButton: false,
-        minimizeButton: false,
-        resizeable: false,
-        title: "In Progress",
-    });
-    dialog.orientation = "column";
-    dialog.alignChildren = ["center", "top"];
-    dialog.spacing = 19;
-    dialog.margins = 0;
-    mojoUI.setBG(dialog, mojoUI.backgroundColor);
-    // Add a progress bar to the window
-    var progressBar = dialog.add("progressbar", undefined, 0, 100);
-    progressBar.preferredSize.width = 100;
-
-    // Function to update the progress bar
-    function updateProgressBar(currentIndex, totalItems) {
-        var progress = (currentIndex / totalItems) * 100;
-        progressBar.value = progress;
-    }
-
-    // Display the window
-    dialog.show();
-
-    // Simulate progress updates
-    var totalItems = 100;  // Total number of steps for the progress bar
-    for (var i = 0; i <= totalItems; i++) {
-        updateProgressBar(i, totalItems);
-        $.sleep(8);  // Delay to simulate time taken for each step (50 milliseconds)
-    }
-    // Close the window after progress is complete
-    dialog.close();
-}
-
-
 
 function openCompInViewer(compName, layerName) {
     var compIndex = findCompIndex(compName);
@@ -4592,7 +4501,7 @@ function ProgressBar(min, max, current) {
             borderless: "not quite true",
             resizable: false,
         });
-        _window.preferredSize = [420, 140];
+        _window.preferredSize = [380, 140];
 
         var progressGrp = _window.add("group", undefined, { name: "progressGrp" });
         progressGrp.orientation = "column";
@@ -4607,12 +4516,12 @@ function ProgressBar(min, max, current) {
             _cursor.min,
             _cursor.max
         );
-        _progressBar.preferredSize.width = 380;
+        _progressBar.preferredSize.width = 360;
         _progressBar.show();
         _infos = progressGrp.add("statictext", undefined, "Loading, please wait", {
             justify: "center",
         });
-        _infos.preferredSize = [520, 24];
+        _infos.preferredSize = [360, 24];
         this.update(current);
         return this;
     };
@@ -4673,7 +4582,6 @@ function changeDemoContent(path, isPack) {
     var prjPath = app.project.file;
     // Check if there is an open project
     if (app.project && app.project.file !== null) {
-        var footageFolder = new Folder(prjPath.fsName).path;
         //var finalPath = convertPath(footageFolder)
         var finalPath = convertProjectPath();
         var bufferComp = findComp("bufferComp");
@@ -4696,7 +4604,6 @@ function changeDemoContent(path, isPack) {
         openCompositionByName("bufferComp");
         $.sleep(200);
         // Extract the project name from the file path, assuming a standard naming scheme
-        var projectName = app.project.file.name;
         if (finalPath) {
             app.executeCommand(2372); // Purge ImageCaches
             //batch
