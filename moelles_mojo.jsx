@@ -2499,6 +2499,46 @@ function changeJSONTEXT(inputText, jsonKey) {
     }
 }
 
+///
+
+function showDarkProgressBar() {
+    // Function to apply dark theme to a UI element
+
+    // Create a window
+    var myWindow = new Window("palette", "Progress Bar Example");
+    mojoUI.setBG(myWindow, mojoUI.backgroundColor);
+    // Apply dark theme to the window
+
+    // Add a static text label
+    var label = myWindow.add("statictext", undefined, "Processing...");
+    mojoUI.setFG(label, [0.83, 0.94, 1, 0.75]);
+
+    // Add a progress bar to the window
+    var progressBar = myWindow.add("progressbar", undefined, 0, 100);
+    progressBar.preferredSize.width = 300;
+
+    // Function to update the progress bar
+    function updateProgressBar(currentIndex, totalItems) {
+        var progress = (currentIndex / totalItems) * 100;
+        progressBar.value = progress;
+    }
+
+    // Display the window
+    myWindow.show();
+
+    // Simulate progress updates
+    var totalItems = 100;  // Total number of steps for the progress bar
+    for (var i = 0; i <= totalItems; i++) {
+        updateProgressBar(i, totalItems);
+        $.sleep(50);  // Delay to simulate time taken for each step (50 milliseconds)
+    }
+
+    // Close the window after progress is complete
+    myWindow.close();
+}
+
+///
+
 function progressBarView() {
     var dialog = new Window("window", "In Progress...", undefined, {
         borderless: false,
@@ -3237,64 +3277,57 @@ function copyAndOverwriteFootageFolder(path, isPack) {
 function copyFootageFolder() {
     // Execute the function
     app.beginUndoGroup("Copy and Overwrite (Footage) Folder");
-    copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\(Footage)",false);
-    progressBarView();
+    changeDemoContent("C:\\data_driven_ae_template-1\\(Footage)",false);
     app.endUndoGroup();
 }
 
 // Copy asset pack 03
 function copyPack01() {
     app.beginUndoGroup("Copy asset pack 01");
-    copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\01\\(Footage)", true);
-    progressBarView();
+    changeDemoContent("C:\\data_driven_ae_template-1\\_assets\\packs\\01\\(Footage)", true);
     app.endUndoGroup();
 }
 // Copy asset pack 02
 function copyPack02() {
-    copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\02\\(Footage)", true);
-    progressBarView();
+    app.beginUndoGroup("Copy asset pack 02");
+    changeDemoContent("C:\\data_driven_ae_template-1\\_assets\\packs\\02\\(Footage)", true);
     app.endUndoGroup();
 }
 // Copy asset pack 03
 function copyPack03() {
     app.beginUndoGroup("Copy asset pack 03");
-    copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\03\\(Footage)", true);
-    progressBarView();
+    changeDemoContent("C:\\data_driven_ae_template-1\\_assets\\packs\\03\\(Footage)", true);
     app.endUndoGroup();
 }
 // Copy asset pack 04
 function copyPack04() {
     app.beginUndoGroup("Copy asset pack 04");
-    copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\04\\(Footage)", true);
-    progressBarView();
+    changeDemoContent("C:\\data_driven_ae_template-1\\_assets\\packs\\04\\(Footage)", true);
     app.endUndoGroup();
 }
 // Copy asset pack 05
 function copyPack05() {
     app.beginUndoGroup("Copy asset pack 05");
-    copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\05\\(Footage)", true);
-    progressBarView();
+    changeDemoContent("C:\\data_driven_ae_template-1\\_assets\\packs\\05\\(Footage)", true);
     app.endUndoGroup();
 }
 // Copy asset pack 06
 function copyPack06() {
     app.beginUndoGroup("Copy asset pack 06");
-    copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\06\\(Footage)", true);
-    progressBarView();
+    changeDemoContent("C:\\data_driven_ae_template-1\\_assets\\packs\\06\\(Footage)", true);
     app.endUndoGroup();
 }
 // Copy asset pack 07
 function copyPack07() {
     app.beginUndoGroup("Copy asset pack 07");
-    copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\07\\(Footage)", true);
-    progressBarView();
+    changeDemoContent("C:\\data_driven_ae_template-1\\_assets\\packs\\07\\(Footage)", true);
     app.endUndoGroup();
 }
 // Copy asset pack 08
 function copyPack08() {
     app.beginUndoGroup("Copy asset pack 08");
     copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\08\\(Footage)", true);
-    progressBarView();
+    //changeDemoContent();
     app.endUndoGroup();
 }
 
@@ -4635,7 +4668,8 @@ function convertProjectPath() {
     }
 }
 
-function changeDemoContent(demoPack) {
+//
+function changeDemoContent(path, isPack) {
     var prjPath = app.project.file;
     // Check if there is an open project
     if (app.project && app.project.file !== null) {
@@ -4653,7 +4687,9 @@ function changeDemoContent(demoPack) {
         bufferComp.parentFolder = targetFolder;
         var activeItemT = getActiveComp();
         if ((!activeItemT) || (activeItemT.name == "bufferComp")) {
-            activeItemT = findComp("__SETTINGS");
+            try {
+                activeItemT = findComp("__SETTINGS");
+            } catch (err) { };
         }
         var pb = new ProgressBar(1, 10, 1);
         pb.start();
@@ -4664,8 +4700,9 @@ function changeDemoContent(demoPack) {
         if (finalPath) {
             app.executeCommand(2372); // Purge ImageCaches
             //batch
-            var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo.bat";
-            var result = system.callSystem(batScriptPath + " \"" + finalPath + "\" \"" + demoPack + "\"");
+            copyAndOverwriteFootageFolder(path, isPack);
+            //var batScriptPath = "C:\\data_driven_ae_template-1\\_assets\\_demo.bat";
+            //var result = system.callSystem(batScriptPath + " \"" + finalPath + "\" \"" + demoPack + "\"");
             $.sleep(100);
             var reloadAssets = ["input_vid.mp4", "gallery_01_vid.mp4", "gallery_02_vid.mp4", "gallery_03_vid.mp4", "gallery_04_vid.mp4", "gallery_05_vid.mp4", "gallery_06_vid.mp4", "input_img.jpg", "gallery_01_img.jpg", "gallery_02_img.jpg", "gallery_03_img.jpg", "gallery_04_img.jpg", "gallery_05_img.jpg", "gallery_06_img.jpg", "logo_01.png", "input_template.json"];
             if (app.project.activeItem.selectedLayers.length = 0) {
@@ -4766,40 +4803,31 @@ addTooltipToButton(demo6grp, "demo06", 90, false, false, true);
 addTooltipToButton(demo7grp, "demo07", 90, true, false, true);
 addTooltipToButton(demo8grp, "demo08", 90, true, false, true);
 demo1.onClick = function () {
-    copyFootageFolder();
-    //changeDemoContent("01");
+    copyPack01();
 }
 demo2.onClick = function () {
     copyPack02();
-    //changeDemoContent("02");
 }
 demo3.onClick = function () {
     copyPack03();
-    //changeDemoContent("03");
 }
 demo4.onClick = function () {
     copyPack04();
-    //changeDemoContent("04");
 }
 demo5.onClick = function () {
     copyPack05();
-    //changeDemoContent("05");
 }
 demo6.onClick = function () {
     copyPack06();
-    //changeDemoContent("06");
 }
 demo7.onClick = function () {
     copyPack07();
-    //changeDemoContent("07");
 }
 demo8.onClick = function () {
     copyPack08();
-    //changeDemoContent("08");
 }
 btn_demos.onClick = function () {
     copyFootageFolder();
-    //changeDemoContent("01");
 }
 var mousePosGlobal = null;
 function closeDialogWindows() {
