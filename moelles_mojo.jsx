@@ -3277,7 +3277,7 @@ function copyAndOverwriteFootageFolder(path, isPack) {
 function copyFootageFolder() {
     // Execute the function
     app.beginUndoGroup("Copy and Overwrite (Footage) Folder");
-    changeDemoContent("C:\\data_driven_ae_template-1\\(Footage)",false);
+    changeDemoContent("C:\\data_driven_ae_template-1\\_assets\\packs\\01\\(Footage)", true);
     app.endUndoGroup();
 }
 
