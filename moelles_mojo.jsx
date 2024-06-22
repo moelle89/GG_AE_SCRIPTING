@@ -4592,7 +4592,7 @@ function ProgressBar(min, max, current) {
             borderless: "not quite true",
             resizable: false,
         });
-        _window.preferredSize = [540, 140];
+        _window.preferredSize = [420, 140];
 
         var progressGrp = _window.add("group", undefined, { name: "progressGrp" });
         progressGrp.orientation = "column";
@@ -4607,7 +4607,7 @@ function ProgressBar(min, max, current) {
             _cursor.min,
             _cursor.max
         );
-        _progressBar.preferredSize.width = 520;
+        _progressBar.preferredSize.width = 380;
         _progressBar.show();
         _infos = progressGrp.add("statictext", undefined, "Loading, please wait", {
             justify: "center",
