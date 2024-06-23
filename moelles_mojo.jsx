@@ -1878,6 +1878,23 @@ function createSolid(layerName) {
         return;
     }
 }
+
+function findLayerByName(comp, layerName) {
+    if (!comp || !(comp instanceof CompItem)) {
+        alert("Invalid composition.");
+        return null;
+    }
+
+    for (var i = 1; i <= comp.numLayers; i++) {
+        if (comp.layer(i).name === layerName) {
+            return comp.layer(i);
+        }
+    }
+
+    return null;
+}
+
+
 // Function to copy a layer from a source composition to the active composition
 function copyLayerToActiveComp(sourceCompName, layerName) {
     // Get the active composition
@@ -3093,7 +3110,7 @@ function deleteUnusedNullLayers() {
     // End undo group
     app.endUndoGroup();
 }
-
+////
 
 function copyAndOverwriteFootageFolder(path, isPack) {
     var project = app.project;
