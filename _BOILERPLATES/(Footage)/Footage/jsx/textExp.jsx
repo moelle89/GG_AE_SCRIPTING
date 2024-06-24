@@ -16,7 +16,7 @@
       const fallbackFont = {
          1: "Archivo-ExtraBold",
          2: "Archivo-Medium",
-         4: "Archivo-SemiBold",
+         4: "Archivo-Medium",
          5: "Archivo-ExtraBold",
          7: "Archivo-Bold",
       };
