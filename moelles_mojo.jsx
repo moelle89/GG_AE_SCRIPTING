@@ -1605,6 +1605,12 @@ var hoverMenu_customExp = new HoverMenu("hoverMenu_customExp", [{
     text: "Delete unused Null-layers",
     name: "deleteUnusedNullLayers",
     functionName: deleteUnusedNullLayers
+},
+{
+    imgString: "",
+    text: "Replace elements Comp with elements_new",
+    name: "updateElementsComp",
+    functionName: updateElementsComp
 }
 ]);
 // hoverMenu_open
@@ -3109,6 +3115,119 @@ function deleteUnusedNullLayers() {
 
     // End undo group
     app.endUndoGroup();
+}
+////
+// Main function to check for unused null layers and delete them
+
+function replaceCompRecursive(compNameToReplace, compNameToReplaceWith, sourceCompName) {
+    var project = app.project; // Reference to the project
+    var compToReplace = null;
+    var compToReplaceWith = null;
+    var sourceComp = null;
+
+    // Find the compositions by name
+    for (var i = 1; i <= project.numItems; i++) {
+        var item = project.item(i);
+        if (item instanceof CompItem) {
+            if (item.name === compNameToReplace) {
+                compToReplace = item;
+            } else if (item.name === compNameToReplaceWith) {
+                compToReplaceWith = item;
+            } else if (item.name === sourceCompName) {
+                sourceComp = item;
+            }
+        }
+    }
+
+    // Ensure all compositions were found
+    if (compToReplace === null) {
+        alert("Composition '" + compNameToReplace + "' not found.");
+        return;
+    }
+    if (compToReplaceWith === null) {
+        alert("Composition '" + compNameToReplaceWith + "' not found.");
+        return;
+    }
+    if (sourceComp === null) {
+        alert("Source Composition '" + sourceCompName + "' not found.");
+        return;
+    }
+
+    // Find the specific instance of compToReplaceWith within sourceComp
+    var sourceLayer = null;
+    for (var j = 1; j <= sourceComp.numLayers; j++) {
+        var layer = sourceComp.layer(j);
+        if (layer.source !== null && layer.source === compToReplaceWith) {
+            sourceLayer = layer;
+            break;
+        }
+    }
+
+    if (sourceLayer === null) {
+        alert("Layer with source '" + compNameToReplaceWith + "' not found in '" + sourceCompName + "'.");
+        return;
+    }
+
+    // Function to copy properties from one layer to another
+    function copyProperties(sourceLayer, targetLayer) {
+        var propertiesToCopy = [
+            // Transform properties
+            "ADBE Transform Group",
+
+            // Layer effects
+            "ADBE Effect Parade"
+        ];
+
+        for (var i = 0; i < propertiesToCopy.length; i++) {
+            var group = sourceLayer.property(propertiesToCopy[i]);
+            if (group) {
+                for (var j = 1; j <= group.numProperties; j++) {
+                    var prop = group.property(j);
+                    if (prop.canSetExpression) {
+                        targetLayer.property(propertiesToCopy[i]).property(j).expression = prop.expression;
+                    } else {
+                        targetLayer.property(propertiesToCopy[i]).property(j).setValue(prop.value);
+                    }
+                }
+            }
+        }
+    }
+
+    // Function to replace and copy properties in a comp
+    function replaceAndCopyInComp(comp) {
+        for (var j = 1; j <= comp.numLayers; j++) {
+            var layer = comp.layer(j);
+            if (layer.source !== null && layer.source === compToReplace) {
+                layer.replaceSource(compToReplaceWith, true);
+                copyProperties(sourceLayer, layer);
+            }
+        }
+    }
+
+    // Iterate through all compositions and replace the target comp
+    app.beginUndoGroup("Replace Composition and Copy Properties");
+    for (var i = 1; i <= project.numItems; i++) {
+        var item = project.item(i);
+        if (item instanceof CompItem) {
+            replaceAndCopyInComp(item);
+        }
+    }
+    app.endUndoGroup();
+}
+
+function updateElementsComp() {
+    //replaceCompRecursive("LOGO_NEW", "_LOGO_NEW");
+    replaceCompRecursive("LOGO_NEW", "_LOGO_NEW", "_ELEMENTS_NEW");
+    //replaceNestedComp("_ELEMENTS", "LOGO", "_ELEMENTS_NEW", "LOGO");
+    //replaceNestedComp("_ELEMENTS", "TEXT_el", "_ELEMENTS_NEW", "TEXT_el");
+    //replaceNestedComp("_ELEMENTS", "_TEXT", "_ELEMENTS_NEW", "_TEXT");
+    //replaceNestedComp("_ELEMENTS", "_GALLERY", "_ELEMENTS_NEW", "_GALLERY");
+    //replaceNestedComp("_ELEMENTS", "_GALLERY_SQUARE", "_ELEMENTS_NEW", "_GALLERY_SQUARE");
+    //replaceNestedComp("_ELEMENTS", "_GALLERY_1920", "_ELEMENTS_NEW", "_GALLERY_1920");
+    //replaceNestedComp("_ELEMENTS", "_MEDIA", "_ELEMENTS_NEW", "_MEDIA");
+    //replaceNestedComp("_ELEMENTS", "_MEDIA_1920", "_ELEMENTS_NEW", "_MEDIA_1920");
+    //replaceNestedComp("_ELEMENTS", "_MEDIA_SQUARE", "_ELEMENTS_NEW", "_MEDIA_SQUARE");
+
 }
 ////
 
