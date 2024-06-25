@@ -1608,7 +1608,7 @@ var hoverMenu_customExp = new HoverMenu("hoverMenu_customExp", [{
 },
 {
     imgString: "",
-    text: "Replace elements Comp with elements_new",
+    text: "Update elements using elements_new",
     name: "updateElementsComp",
     functionName: updateElementsComp
 }
@@ -3117,13 +3117,13 @@ function deleteUnusedNullLayers() {
     app.endUndoGroup();
 }
 ////
-// Main function to check for unused null layers and delete them
-
-function replaceCompRecursive(compNameToReplace, compNameToReplaceWith, sourceCompName) {
+// Function to replace all instances of a specific composition with another one
+function replaceCompRecursive(compNameToReplace, updateSourceCompName, newCompName) {
     var project = app.project; // Reference to the project
     var compToReplace = null;
-    var compToReplaceWith = null;
-    var sourceComp = null;
+    var updateSourceComp = null;
+    var newComp = null;
+    var compToReplaceParentFolder = null;
 
     // Find the compositions by name
     for (var i = 1; i <= project.numItems; i++) {
@@ -3131,103 +3131,118 @@ function replaceCompRecursive(compNameToReplace, compNameToReplaceWith, sourceCo
         if (item instanceof CompItem) {
             if (item.name === compNameToReplace) {
                 compToReplace = item;
-            } else if (item.name === compNameToReplaceWith) {
-                compToReplaceWith = item;
-            } else if (item.name === sourceCompName) {
-                sourceComp = item;
+                compToReplaceParentFolder = item.parentFolder;
+            } else if (item.name === updateSourceCompName) {
+                updateSourceComp = item;
             }
         }
     }
 
-    // Ensure all compositions were found
+    // Ensure the compositions were found
     if (compToReplace === null) {
-        alert("Composition '" + compNameToReplace + "' not found.");
+        showAlertWindow("Composition '" + compNameToReplace + "' not found.");
         return;
     }
-    if (compToReplaceWith === null) {
-        alert("Composition '" + compNameToReplaceWith + "' not found.");
-        return;
-    }
-    if (sourceComp === null) {
-        alert("Source Composition '" + sourceCompName + "' not found.");
+    if (updateSourceComp === null) {
+        showAlertWindow("Update source composition '" + updateSourceCompName + "' not found.");
         return;
     }
 
-    // Find the specific instance of compToReplaceWith within sourceComp
-    var sourceLayer = null;
-    for (var j = 1; j <= sourceComp.numLayers; j++) {
-        var layer = sourceComp.layer(j);
-        if (layer.source !== null && layer.source === compToReplaceWith) {
-            sourceLayer = layer;
+    // Find the new composition within the update source composition
+    for (var j = 1; j <= updateSourceComp.numLayers; j++) {
+        var layer = updateSourceComp.layer(j);
+        if (layer.source !== null && layer.source instanceof CompItem && layer.source.name === newCompName) {
+            newComp = layer.source;
             break;
         }
     }
 
-    if (sourceLayer === null) {
-        alert("Layer with source '" + compNameToReplaceWith + "' not found in '" + sourceCompName + "'.");
+    if (newComp === null) {
+        showAlertWindow("New composition '" + newCompName + "' not found inside '" + updateSourceCompName + "'.");
         return;
     }
 
-    // Function to copy properties from one layer to another
-    function copyProperties(sourceLayer, targetLayer) {
-        var propertiesToCopy = [
-            // Transform properties
-            "ADBE Transform Group",
+    // Move newComp and its nested comps to the same parent folder as compToReplace
+    function moveCompAndNested(composition, targetFolder) {
+        composition.parentFolder = targetFolder;
+        for (var k = 1; k <= composition.numLayers; k++) {
+            var nestedLayer = composition.layer(k);
+            if (nestedLayer.source !== null && nestedLayer.source instanceof CompItem) {
+                moveCompAndNested(nestedLayer.source, targetFolder);
+            }
+        }
+    }
 
-            // Layer effects
-            "ADBE Effect Parade"
-        ];
+    moveCompAndNested(newComp, compToReplaceParentFolder);
 
-        for (var i = 0; i < propertiesToCopy.length; i++) {
-            var group = sourceLayer.property(propertiesToCopy[i]);
-            if (group) {
-                for (var j = 1; j <= group.numProperties; j++) {
-                    var prop = group.property(j);
-                    if (prop.canSetExpression) {
-                        targetLayer.property(propertiesToCopy[i]).property(j).expression = prop.expression;
-                    } else {
-                        targetLayer.property(propertiesToCopy[i]).property(j).setValue(prop.value);
-                    }
+    // Copy layer effects and essential properties from the new composition's layer
+    function copyLayerProperties(sourceLayer, targetLayer) {
+        // Copy effects
+        for (var i = 1; i <= sourceLayer.property("ADBE Effect Parade").numProperties; i++) {
+            var effect = sourceLayer.property("ADBE Effect Parade").property(i);
+            var newEffect = targetLayer.property("ADBE Effect Parade").addProperty(effect.matchName);
+            newEffect.name = effect.name;
+            // Copy properties of the effect
+            for (var j = 1; j <= effect.numProperties; j++) {
+                var property = effect.property(j);
+                if (property.canSetExpression) {
+                    newEffect.property(j).expression = property.expression;
+                } else {
+                    newEffect.property(j).setValue(property.value);
+                }
+            }
+        }
+
+        // Copy essential properties
+        if (sourceLayer.essentialProperty != undefined && sourceLayer.essentialProperty != null) {
+            for (var i = 1; i <= sourceLayer.essentialProperty.numProperties; i++) {
+                var essentialProp = sourceLayer.essentialProperty.property(i);
+                if (essentialProp.canSetExpression) {
+                    targetLayer.essentialProperty.property(i).expression = essentialProp.expression;
+                } else {
+                    targetLayer.essentialProperty.property(i).setValue(essentialProp.value);
                 }
             }
         }
     }
 
-    // Function to replace and copy properties in a comp
-    function replaceAndCopyInComp(comp) {
+    // Replace function and apply properties
+    function replaceInComp(comp) {
         for (var j = 1; j <= comp.numLayers; j++) {
             var layer = comp.layer(j);
             if (layer.source !== null && layer.source === compToReplace) {
-                layer.replaceSource(compToReplaceWith, true);
-                copyProperties(sourceLayer, layer);
+                layer.replaceSource(newComp, true);
+                // Apply layer effects and essential properties
+                copyLayerProperties(newComp.layer(1), layer);
             }
         }
     }
 
     // Iterate through all compositions and replace the target comp
-    app.beginUndoGroup("Replace Composition and Copy Properties");
+    app.beginUndoGroup("Replace Composition");
     for (var i = 1; i <= project.numItems; i++) {
         var item = project.item(i);
         if (item instanceof CompItem) {
-            replaceAndCopyInComp(item);
+            replaceInComp(item);
         }
     }
     app.endUndoGroup();
+    showAlertWindow("Composition '" + compNameToReplace + "' has been updated");
 }
 
 function updateElementsComp() {
-    //replaceCompRecursive("LOGO_NEW", "_LOGO_NEW");
-    replaceCompRecursive("LOGO_NEW", "_LOGO_NEW", "_ELEMENTS_NEW");
-    //replaceNestedComp("_ELEMENTS", "LOGO", "_ELEMENTS_NEW", "LOGO");
-    //replaceNestedComp("_ELEMENTS", "TEXT_el", "_ELEMENTS_NEW", "TEXT_el");
-    //replaceNestedComp("_ELEMENTS", "_TEXT", "_ELEMENTS_NEW", "_TEXT");
-    //replaceNestedComp("_ELEMENTS", "_GALLERY", "_ELEMENTS_NEW", "_GALLERY");
-    //replaceNestedComp("_ELEMENTS", "_GALLERY_SQUARE", "_ELEMENTS_NEW", "_GALLERY_SQUARE");
-    //replaceNestedComp("_ELEMENTS", "_GALLERY_1920", "_ELEMENTS_NEW", "_GALLERY_1920");
-    //replaceNestedComp("_ELEMENTS", "_MEDIA", "_ELEMENTS_NEW", "_MEDIA");
-    //replaceNestedComp("_ELEMENTS", "_MEDIA_1920", "_ELEMENTS_NEW", "_MEDIA_1920");
-    //replaceNestedComp("_ELEMENTS", "_MEDIA_SQUARE", "_ELEMENTS_NEW", "_MEDIA_SQUARE");
 
+    // Example usage: replace "Comp1" with "Comp1" inside "UpdateSource"
+    replaceCompRecursive("LOGO_NEW", "_ELEMENTS_NEW", "LOGO_NEW");
+    replaceCompRecursive("LOGO", "_ELEMENTS_NEW", "LOGO");
+    replaceCompRecursive("TEXT_el", "_ELEMENTS_NEW", "TEXT_el");
+    replaceCompRecursive("_TEXT", "_ELEMENTS_NEW", "_TEXT");
+    replaceCompRecursive("_GALLERY", "_ELEMENTS_NEW", "_GALLERY");
+    replaceCompRecursive("_GALLERY_SQUARE", "_ELEMENTS_NEW", "_GALLERY_SQUARE");
+    replaceCompRecursive("_GALLERY_1920", "_ELEMENTS_NEW", "_GALLERY_1920");
+    replaceCompRecursive("_MEDIA", "_ELEMENTS_NEW", "_MEDIA");
+    replaceCompRecursive("_MEDIA_SQUARE", "_ELEMENTS_NEW", "_MEDIA_SQUARE");
+    replaceCompRecursive("_MEDIA_1920", "_ELEMENTS_NEW", "_MEDIA_1920");
 }
 ////
 
