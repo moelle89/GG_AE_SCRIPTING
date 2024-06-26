@@ -1611,6 +1611,18 @@ var hoverMenu_customExp = new HoverMenu("hoverMenu_customExp", [{
     text: "Update elements using elements_new",
     name: "updateElementsComp",
     functionName: updateElementsComp
+},
+{
+    imgString: "",
+    text: "Collect layers and sequence them",
+    name: "collectAndSequence",
+    functionName: collectAndSequence
+},
+{
+    imgString: "",
+    text: "Reduce Project and Organize",
+    name: "reduceAndOrganize",
+    functionName: reduceAndOrganize
 }
 ]);
 // hoverMenu_open
@@ -3643,6 +3655,83 @@ function copyPack08() {
     app.endUndoGroup();
 }
 
+///
+function collectAndSequence() {
+    // Main function to encapsulate the script
+    function main() {
+        // Prompt user for the search string and new comp name
+        var searchString = showPromptWindow("Enter the string to search for in composition names:", "");
+        var newCompName = showPromptWindow("Enter the name for the new composition:", "New Compilation Comp");
+
+        if (searchString === null || newCompName === null) {
+            // User canceled the prompt
+            return;
+        }
+
+        // Get the active project
+        var proj = app.project;
+        if (!proj) {
+            showAlertWindow("No active project found.");
+            return;
+        }
+
+        // Collect all compositions that include the search string
+        var matchedComps = [];
+        for (var i = 1; i <= proj.numItems; i++) {
+            var item = proj.item(i);
+            if (item instanceof CompItem && item.name.indexOf(searchString) !== -1) {
+                matchedComps.push(item);
+            }
+        }
+
+        if (matchedComps.length === 0) {
+            showAlertWindow("No compositions found with the given string.");
+            return;
+        }
+
+        // Create the new composition
+        var newCompDuration = 0;
+        for (var j = 0; j < matchedComps.length; j++) {
+            newCompDuration += matchedComps[j].duration;
+        }
+
+        var newComp = proj.items.addComp(newCompName, matchedComps[0].width, matchedComps[0].height, matchedComps[0].pixelAspect, newCompDuration, matchedComps[0].frameRate);
+
+        // Add each matched composition as a layer in the new composition in reverse order
+        for (var k = matchedComps.length - 1; k >= 0; k--) {
+            var comp = matchedComps[k];
+            newComp.layers.add(comp);
+        }
+
+        // Sequence the layers in the correct timeline order
+        var currentTime = 0;
+        for (var l = 1; l <= newComp.numLayers; l++) {
+            var layer = newComp.layer(l);
+            layer.startTime = currentTime;
+            currentTime += layer.source.duration;
+        }
+
+        showAlertWindow("New composition created and sequenced successfully!");
+    }
+
+    // Run the main function in a context that ensures undo can be undone
+    app.beginUndoGroup("Create and Sequence Comp from Matching Comps");
+    main();
+    app.endUndoGroup();
+}
+
+function reduceAndOrganize() {
+    var selectedComps = app.project.selection;
+    var rootComp = selectedComps[0].name;
+    if(!rootComp){
+        showAlertWindow("Please select a Composition");
+        return;
+    }
+    reduceProjectBasedOnMainComp(rootComp);
+    progressBarPopup();
+    app.project.consolidateFootage();
+}
+
 // Function to select layers in the timeline
 function selectLayers(layers) {
     for (var i = 0; i < layers.length; i++) {
@@ -3839,6 +3928,57 @@ function showDialogWindow(infoText) {
     swindow.show();
     return compName; // Return the entered text
 }
+
+//
+function showPromptWindow(infoText) {
+    var title = "moelles mojo";
+    var swindow = new Window("dialog", title);
+    swindow.orientation = "column";
+    swindow.minimumSize.width = 380;
+    swindow.alignChildren = ["center", "top"];
+    swindow.alignment = ["fill", "top"];
+    swindow.margins = 20;
+    var nameLabel = swindow.add("statictext", undefined, infoText, {
+        multiline: true
+    });
+    nameLabel.alignment = ["center", "top"];
+    nameLabel.preferredSize.width = 360;
+    nameLabel.preferredSize.height = 40;
+    mojoUI.setFG(nameLabel, [0.83, 0.94, 1, 0.75]);
+    var nameInput = swindow.add("edittext", undefined, undefined);
+    nameInput.preferredSize.height = 40;
+    nameInput.preferredSize.width = 360;
+    nameInput.alignment = ["fill", "top"];
+    nameInput.margins = 20;
+    var buttonGroup = swindow.add("group");
+    buttonGroup.orientation = "row";
+    buttonGroup.margins = 0;
+    buttonGroup.spacing = 20;
+    buttonGroup.alignChildren = ["fill", "top"];
+    buttonGroup.alignment = ["fill", "top"];
+    var okButton = buttonColorText(buttonGroup, "Create", "#0060b1", "#028def", false, 11, true);
+    okButton.preferredSize.height = 32;
+    //var okButton = buttonGroup.add("button", undefined, "Create");
+    var cancelButton = buttonGroup.add("button", undefined, "Cancel");
+    cancelButton.preferredSize.height = 32;
+    okButton.onClick = function () {
+        if (nameInput.text != "") {
+            swindow.close();
+        } else {
+            showAlertWindow(
+                "Please Enter a Name"
+            );
+        }
+    };
+    cancelButton.onClick = function () {
+        swindow.close();
+    };
+    swindow.show();
+    return nameInput.text; // Return the entered text
+}
+
+//
+
 function showAlertWindow(infoText, title, icon, multiL) {
     if (title) {
         title = title;
