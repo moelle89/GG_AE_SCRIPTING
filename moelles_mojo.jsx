@@ -1900,7 +1900,6 @@ function findLayerByName(comp, layerName) {
     return null;
 }
 
-
 // Function to copy a layer from a source composition to the active composition
 function copyLayerToActiveComp(sourceCompName, layerName) {
     // Get the active composition
@@ -1942,6 +1941,168 @@ function copyLayerToActiveComp(sourceCompName, layerName) {
     } else {
         showAlertWindow("Open a composition");
     }
+}
+
+// Delete a nested composition by name from a parent composition
+
+function deleteNestedComp(compName, nestedCompName) {
+    // Get the active project
+    var project = app.project;
+
+    // Check if a project is open
+    if (project === null) {
+        showAlertWindow("No project is currently open.");
+        return;
+    }
+
+    // Get the main composition by name
+    var mainComp = null;
+    for (var i = 1; i <= project.items.length; i++) {
+        if (project.items[i] instanceof CompItem && project.items[i].name === compName) {
+            mainComp = project.items[i];
+            break;
+        }
+    }
+
+    // Check if the main composition exists
+    if (mainComp === null) {
+        showAlertWindow("The composition named \"" + compName + "\" was not found.");
+        return;
+    }
+
+    // Begin an undo group to allow undoing the operation
+    app.beginUndoGroup("Delete Nested Composition");
+
+    // Loop through all layers in the main composition
+    var layers = mainComp.layers;
+    for (var j = layers.length; j >= 1; j--) {
+        var layer = layers[j];
+
+        // Check if the layer is a composition layer
+        if (layer instanceof AVLayer && layer.source instanceof CompItem && layer.source.name === nestedCompName) {
+            // Remove the layer
+            layer.remove();
+        }
+    }
+
+    // End the undo group
+    app.endUndoGroup();
+}
+
+//
+
+// Remove a composition by name from the project
+
+function removeCompByName(compName) {
+    // Get the active project
+    var project = app.project;
+
+    // Check if a project is open
+    if (project === null) {
+        showAlertWindow("No project is currently open.");
+        return;
+    }
+
+    // Find the composition by name
+    var compToRemove = null;
+    for (var i = 1; i <= project.items.length; i++) {
+        if (project.items[i] instanceof CompItem && project.items[i].name === compName) {
+            compToRemove = project.items[i];
+            break;
+        }
+    }
+
+    // Check if the composition exists
+    if (compToRemove === null) {
+        showAlertWindow("The composition named \"" + compName + "\" was not found.");
+        return;
+    }
+
+    // Begin an undo group to allow undoing the operation
+    app.beginUndoGroup("Remove Composition");
+
+    // Remove the composition from the project
+    compToRemove.remove();
+
+    // End the undo group
+    app.endUndoGroup();
+}
+
+
+
+// Reduce the project based on a main composition
+
+function reduceProjectBasedOnMainComp(compName) {
+    // Get the active project
+    var project = app.project;
+
+    // Check if a project is open
+    if (project === null) {
+        alert("No project is currently open.");
+        return;
+    }
+
+    // Find the composition by name
+    var mainComp = null;
+    for (var i = 1; i <= project.items.length; i++) {
+        if (project.items[i] instanceof CompItem && project.items[i].name === compName) {
+            mainComp = project.items[i];
+            break;
+        }
+    }
+
+    // Check if the composition exists
+    if (mainComp === null) {
+        showAlertWindow("The composition named \"" + compName + "\" was not found.");
+        return;
+    }
+
+    // Begin an undo group to allow undoing the operation
+    app.beginUndoGroup("Reduce Project");
+
+    // Reduce the project based on the main composition
+    project.reduceProject([mainComp]);
+
+    // End the undo group
+    app.endUndoGroup();
+}
+
+// Function to copy a layer from a source composition to the active composition
+function copyLayerToComp(sourceCompName, layerName, targetCompName) {
+        // Get the source composition by name
+        var sourceComp = findComp(sourceCompName);
+        var targetComp = findComp(targetCompName);
+        // Check if the source composition exists
+        if (sourceComp !== null && sourceComp instanceof CompItem) {
+            // Get the layer by name from the source composition
+            var sourceLayer = sourceComp.layer(layerName);
+            // Check if the layer exists
+            if (sourceLayer !== null) {
+                app.beginUndoGroup("Copy Layer to Comp");
+                // Duplicate the layer to the active composition
+                sourceComp.layer(layerName).copyToComp(targetComp);
+                var copiedLayer = targetComp.layer(layerName);
+                var offsetX = targetComp.width / 2;
+                var offsetY = targetComp.height / 2;
+                if (layerName !== "LOGO_NEW" || "LOGO") {
+                    copiedLayer.position.setValue([offsetX, offsetY]);
+                }
+                var selectedLayers = targetComp.selectedLayers;
+                for (var i = 0; i < selectedLayers.length; i++) {
+                    selectedLayers[i].selected = false;
+                }
+                copiedLayer.enabled = true;
+                copiedLayer.selected = true;
+                app.endUndoGroup();
+                // Alert to notify that the layer has been copied
+                //alert("Layer copied to active composition!");
+                // Return the duplicated layer
+            } else {
+                showAlertWindow("Layer not found in the source composition.");
+            }
+        } else {
+            showAlertWindow("Source composition not found.");
+        }
 }
 
 // Function to copy a layer from a source composition to the active composition
@@ -2985,7 +3146,7 @@ function replaceCompositionsBySuffix(newName) {
     // Find the precomposition
     var precomp = findItemByName(precompName);
     if (!precomp) {
-        aleshowAlertWindow("Precomposition not found: " + precompName);
+        showAlertWindow("Precomposition not found: " + precompName);
         return;
     }
     // Store the layers with replaced compositions
@@ -3227,11 +3388,96 @@ function replaceCompRecursive(compNameToReplace, updateSourceCompName, newCompNa
         }
     }
     app.endUndoGroup();
-    showAlertWindow("Composition '" + compNameToReplace + "' has been updated");
 }
 
-function updateElementsComp() {
+//
+// Check if a layer (footage) exists in a composition by name and copy it if it doesn't exist, placing it at the bottom of all layers
 
+function checkAndCopyLayerToComp(layerName, compName) {
+    // Get the active project
+    var project = app.project;
+
+    // Check if a project is open
+    if (project === null) {
+        showAlertWindow("No project is currently open.");
+        return;
+    }
+
+    // Find the composition by name
+    var targetComp = null;
+    for (var i = 1; i <= project.items.length; i++) {
+        if (project.items[i] instanceof CompItem && project.items[i].name === compName) {
+            targetComp = project.items[i];
+            break;
+        }
+    }
+
+    // Check if the composition exists
+    if (targetComp === null) {
+        alert("The composition named \"" + compName + "\" was not found.");
+        return;
+    }
+
+    // Check if the layer exists in the target composition
+    var layerExists = false;
+    for (var j = 1; j <= targetComp.layers.length; j++) {
+        if (targetComp.layers[j].name === layerName) {
+            layerExists = true;
+            break;
+        }
+    }
+
+    // If the layer does not exist, find the footage item and copy it to the target composition
+    if (!layerExists) {
+        var footageItem = null;
+        for (var k = 1; k <= project.items.length; k++) {
+            if (project.items[k] instanceof FootageItem && project.items[k].name === layerName) {
+                footageItem = project.items[k];
+                break;
+            }
+        }
+
+        // Check if the footage item exists
+        if (footageItem === null) {
+            showAlertWindow("The footage item named \"" + layerName + "\" was not found.");
+            return;
+        }
+
+        // Begin an undo group to allow undoing the operation
+        app.beginUndoGroup("Copy Footage to Composition");
+
+        // Add the footage item as a layer to the target composition
+        var newLayer = targetComp.layers.add(footageItem);
+
+        // Move the new layer to the bottom of all layers
+        newLayer.moveToEnd();
+
+        // End the undo group
+        app.endUndoGroup();
+
+    } else {
+        // Alert the user that the layer already exists
+        showAlertWindow("The layer named \"" + layerName + "\" already exists in the composition \"" + compName + "\".");
+    }
+}
+
+//
+
+function updateElementsComp() {
+    var elementsNew = findComp("_ELEMENTS_NEW");
+    var settingsComp = findComp("__SETTINGS");
+    if (!elementsNew) {
+        showAlertWindow("Composition not found: _ELEMENTS_NEW");
+        return;
+    }
+    if (!settingsComp) {
+        showAlertWindow("Composition not found: __SETTINGS");
+        return;
+    }
+    deselectAll(); // “Deselect All”
+    openCompositionByName("__SETTINGS");
+    $.sleep(200);
+    checkAndCopyLayerToComp("textExp.jsx", "__SETTINGS");
     // Example usage: replace "Comp1" with "Comp1" inside "UpdateSource"
     replaceCompRecursive("LOGO_NEW", "_ELEMENTS_NEW", "LOGO_NEW");
     replaceCompRecursive("LOGO", "_ELEMENTS_NEW", "LOGO");
@@ -3243,6 +3489,12 @@ function updateElementsComp() {
     replaceCompRecursive("_MEDIA", "_ELEMENTS_NEW", "_MEDIA");
     replaceCompRecursive("_MEDIA_SQUARE", "_ELEMENTS_NEW", "_MEDIA_SQUARE");
     replaceCompRecursive("_MEDIA_1920", "_ELEMENTS_NEW", "_MEDIA_1920");
+    deleteNestedComp("_ELEMENTS", "LOGO_NEW");
+    copyLayerToComp("_ELEMENTS_NEW", "LOGO_NEW", "_ELEMENTS");
+    removeCompByName("_ELEMENTS_NEW");
+    reduceProjectBasedOnMainComp("__SETTINGS");
+    progressBarPopup();
+    app.project.consolidateFootage();
 }
 ////
 
@@ -3386,7 +3638,7 @@ function copyPack07() {
 // Copy asset pack 08
 function copyPack08() {
     app.beginUndoGroup("Copy asset pack 08");
-    copyAndOverwriteFootageFolder("C:\\data_driven_ae_template-1\\_assets\\packs\\08\\(Footage)", true);
+    changeDemoContent("C:\\data_driven_ae_template-1\\_assets\\packs\\08\\(Footage)", true);
     //changeDemoContent();
     app.endUndoGroup();
 }
