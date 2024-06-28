@@ -201,7 +201,7 @@ var colorFillQ = group2.add(
     "iconbutton",
     undefined,
     mojoUI.createIcon("icn_colorfill_q"), {
-        name: "colorFillQ",
+    name: "colorFillQ",
     style: "button"
 }
 );
@@ -213,7 +213,7 @@ var settingsQ = group2.add(
     "iconbutton",
     undefined,
     mojoUI.createIcon("icn_settings_q"), {
-        name: "settingsQ",
+    name: "settingsQ",
     style: "button"
 }
 );
@@ -225,7 +225,7 @@ var reelQ = group2.add(
     "iconbutton",
     undefined,
     mojoUI.createIcon("icn_reel_q"), {
-        name: "reelQ",
+    name: "reelQ",
     style: "button"
 }
 );
@@ -237,7 +237,7 @@ var sqrQ = group2.add(
     "iconbutton",
     undefined,
     mojoUI.createIcon("icn_sqr_q"), {
-        name: "sqrQ",
+    name: "sqrQ",
     style: "button"
 }
 );
@@ -249,7 +249,7 @@ var fullHDQ = group2.add(
     "iconbutton",
     undefined,
     mojoUI.createIcon("icn_1920_q"), {
-        name: "fullHDQ",
+    name: "fullHDQ",
     style: "button"
 }
 );
@@ -2081,40 +2081,40 @@ function reduceProjectBasedOnMainComp(compName) {
 
 // Function to copy a layer from a source composition to the active composition
 function copyLayerToComp(sourceCompName, layerName, targetCompName) {
-        // Get the source composition by name
-        var sourceComp = findComp(sourceCompName);
-        var targetComp = findComp(targetCompName);
-        // Check if the source composition exists
-        if (sourceComp !== null && sourceComp instanceof CompItem) {
-            // Get the layer by name from the source composition
-            var sourceLayer = sourceComp.layer(layerName);
-            // Check if the layer exists
-            if (sourceLayer !== null) {
-                app.beginUndoGroup("Copy Layer to Comp");
-                // Duplicate the layer to the active composition
-                sourceComp.layer(layerName).copyToComp(targetComp);
-                var copiedLayer = targetComp.layer(layerName);
-                var offsetX = targetComp.width / 2;
-                var offsetY = targetComp.height / 2;
-                if (layerName !== "LOGO_NEW" || "LOGO") {
-                    copiedLayer.position.setValue([offsetX, offsetY]);
-                }
-                var selectedLayers = targetComp.selectedLayers;
-                for (var i = 0; i < selectedLayers.length; i++) {
-                    selectedLayers[i].selected = false;
-                }
-                copiedLayer.enabled = true;
-                copiedLayer.selected = true;
-                app.endUndoGroup();
-                // Alert to notify that the layer has been copied
-                //alert("Layer copied to active composition!");
-                // Return the duplicated layer
-            } else {
-                showAlertWindow("Layer not found in the source composition.");
+    // Get the source composition by name
+    var sourceComp = findComp(sourceCompName);
+    var targetComp = findComp(targetCompName);
+    // Check if the source composition exists
+    if (sourceComp !== null && sourceComp instanceof CompItem) {
+        // Get the layer by name from the source composition
+        var sourceLayer = sourceComp.layer(layerName);
+        // Check if the layer exists
+        if (sourceLayer !== null) {
+            app.beginUndoGroup("Copy Layer to Comp");
+            // Duplicate the layer to the active composition
+            sourceComp.layer(layerName).copyToComp(targetComp);
+            var copiedLayer = targetComp.layer(layerName);
+            var offsetX = targetComp.width / 2;
+            var offsetY = targetComp.height / 2;
+            if (layerName !== "LOGO_NEW" || "LOGO") {
+                copiedLayer.position.setValue([offsetX, offsetY]);
             }
+            var selectedLayers = targetComp.selectedLayers;
+            for (var i = 0; i < selectedLayers.length; i++) {
+                selectedLayers[i].selected = false;
+            }
+            copiedLayer.enabled = true;
+            copiedLayer.selected = true;
+            app.endUndoGroup();
+            // Alert to notify that the layer has been copied
+            //alert("Layer copied to active composition!");
+            // Return the duplicated layer
         } else {
-            showAlertWindow("Source composition not found.");
+            showAlertWindow("Layer not found in the source composition.");
         }
+    } else {
+        showAlertWindow("Source composition not found.");
+    }
 }
 
 // Function to copy a layer from a source composition to the active composition
@@ -3032,45 +3032,45 @@ function renameRevertJSON() {
 // Function to rename the json twice to make after effects notice the file-changes
 function pushJSON() {
     try {
-    var myItem = getItem("input_template.json");
-    // Check if myItem and myItem.mainSource are defined before attempting to reload
-    if (myItem) {
-        var projectPath = app.project.file.path; // Get the path of the After Effects project
-        var jsonFilePath =
-            projectPath + "/(footage)/footage/json/input_template.json"; // Adjust the JSON file path
-        var jsonFile = new File(jsonFilePath);
-        if (!jsonFile.exists) {
-            showAlertWindow("JSON file does not exist at path: " + jsonFilePath);
-        } else {
-            // Read existing JSON file
-            var existingJson = {};
-            var file = new File(jsonFilePath);
-            if (file.exists) {
-                file.open("r");
-                var existingJsonString = file.read();
-                file.close();
-                try {
-                    existingJson = JSON.parse(existingJsonString);
-                } catch (e) {
-                    showAlertWindow("Error parsing existing JSON file: " + e.toString());
+        var myItem = getItem("input_template.json");
+        // Check if myItem and myItem.mainSource are defined before attempting to reload
+        if (myItem) {
+            var projectPath = app.project.file.path; // Get the path of the After Effects project
+            var jsonFilePath =
+                projectPath + "/(footage)/footage/json/input_template.json"; // Adjust the JSON file path
+            var jsonFile = new File(jsonFilePath);
+            if (!jsonFile.exists) {
+                showAlertWindow("JSON file does not exist at path: " + jsonFilePath);
+            } else {
+                // Read existing JSON file
+                var existingJson = {};
+                var file = new File(jsonFilePath);
+                if (file.exists) {
+                    file.open("r");
+                    var existingJsonString = file.read();
+                    file.close();
+                    try {
+                        existingJson = JSON.parse(existingJsonString);
+                    } catch (e) {
+                        showAlertWindow("Error parsing existing JSON file: " + e.toString());
+                    }
                 }
-            }
-            varBackup = existingJson.Comp.title.text;
-            existingJson.Comp.title.text = "";
-            // Write updated JSON back to the file
-            var jsonString = JSON.stringify(existingJson, null, 2);
-            file.open("w");
-            file.write(jsonString);
-            file.close();
+                varBackup = existingJson.Comp.title.text;
+                existingJson.Comp.title.text = "";
+                // Write updated JSON back to the file
+                var jsonString = JSON.stringify(existingJson, null, 2);
+                file.open("w");
+                file.write(jsonString);
+                file.close();
 
-            existingJson.Comp.title.text = varBackup;
-            // Write updated JSON back to the file
-            var jsonString = JSON.stringify(existingJson, null, 2);
-            file.open("w");
-            file.write(jsonString);
-            file.close();
-            refreshJSON();
-        }
+                existingJson.Comp.title.text = varBackup;
+                // Write updated JSON back to the file
+                var jsonString = JSON.stringify(existingJson, null, 2);
+                file.open("w");
+                file.write(jsonString);
+                file.close();
+                refreshJSON();
+            }
         }
     } catch (err) { }
 }
@@ -3723,7 +3723,7 @@ function collectAndSequence() {
 function reduceAndOrganize() {
     var selectedComps = app.project.selection;
     var rootComp = selectedComps[0].name;
-    if(!rootComp){
+    if (!rootComp) {
         showAlertWindow("Please select a Composition");
         return;
     }
@@ -3750,7 +3750,7 @@ function refreshJSON() {
 }
 
 function setMagnification(divideBy) {
-    if (!divideBy){divideBy = 2};
+    if (!divideBy) { divideBy = 2 };
     var magnificationValue = 1;
 
     magnificationValue /= divideBy;
