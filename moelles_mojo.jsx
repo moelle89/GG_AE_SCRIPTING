@@ -1623,6 +1623,12 @@ var hoverMenu_customExp = new HoverMenu("hoverMenu_customExp", [{
     text: "Reduce Project and Organize",
     name: "reduceAndOrganize",
     functionName: reduceAndOrganize
+},
+{
+    imgString: "",
+    text: "Unlock all layers in project",
+    name: "unlockAllLockedLayers",
+    functionName: unlockAllLockedLayers
 }
 ]);
 // hoverMenu_open
@@ -3730,6 +3736,42 @@ function reduceAndOrganize() {
     reduceProjectBasedOnMainComp(rootComp);
     progressBarPopup();
     app.project.consolidateFootage();
+}
+
+function unlockLayers(comp) {
+    for (var i = 1; i <= comp.numLayers; i++) {
+        var layer = comp.layer(i);
+        if (layer.locked) {
+            layer.locked = false;
+        }
+    }
+}
+
+// Main function to iterate through all compositions in the project
+function unlockAllLockedLayers() {
+    var project = app.project;
+    if (!project) {
+        showAlertWindow("No project is open.");
+        return;
+    }
+
+    var comps = [];
+
+    // Collect all compositions in the project
+    for (var i = 1; i <= project.numItems; i++) {
+        var item = project.item(i);
+        if (item instanceof CompItem) {
+            comps.push(item);
+        }
+    }
+
+    // Unlock all locked layers in each composition
+    app.beginUndoGroup("Unlock All Layers");
+    for (var j = 0; j < comps.length; j++) {
+        unlockLayers(comps[j]);
+    }
+    showAlertWindow("All layers have been unlocked");
+    app.endUndoGroup();
 }
 
 // Function to select layers in the timeline
