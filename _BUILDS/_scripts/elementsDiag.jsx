@@ -112,9 +112,12 @@ function elementsDialog() {
     var result1 = "input_template.json";
     deselectAll(); // “Deselect All”
     copyHiddenLayerToActiveComp(sourceCompName, result1);
-    var result2 = "fontlib.jsx";
+    var result2 = "textExp.jsx";
     deselectAll(); // “Deselect All”
     copyHiddenLayerToActiveComp(sourceCompName, result2);
+    var result3 = "fontlib.jsx";
+    deselectAll(); // “Deselect All”
+    copyHiddenLayerToActiveComp(sourceCompName, result3);
     secondaryDialog.close();
   };
 

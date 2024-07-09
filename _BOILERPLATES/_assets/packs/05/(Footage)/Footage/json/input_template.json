@@ -18,7 +18,7 @@
       "text": "Avengers Unleashed: The Final Battle Against Darkness Looms",
       "color": "#222222",
       "color_dark": "#ffffff",
-      "font": "BebasNeue-Regular"
+      "font": ""
     },
     "subtext": {
       "text": "The Avengers Unleashed: Earth's Mightiest Heroes Confront an Ancient Evil in a Battle for Humanity's Future.",
@@ -34,14 +34,14 @@
       "cursor_color_dark": "#dba800",
       "cursor_stroke": "#ffffff",
       "cursor_stroke_dark": "#FFFFFF",
-      "font": "BebasNeue-Regular"
+      "font": ""
     },
     "call2action_link": {
       "text": "www.disneyplus.com",
       "color": "#222222",
       "color_dark": "#ffffff",
       "link_highlight": 0,
-      "font": "BebasNeue-Regular"
+      "font": ""
     },
     "source": {
       "text": "disneyplus.com",
