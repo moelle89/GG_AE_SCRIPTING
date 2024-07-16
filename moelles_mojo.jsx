@@ -3354,37 +3354,6 @@ function replaceCompRecursive(compNameToReplace, updateSourceCompName, newCompNa
 
     moveCompAndNested(newComp, compToReplaceParentFolder);
 
-    // Copy layer effects and essential properties from the new composition's layer
-    function copyLayerProperties(sourceLayer, targetLayer) {
-        // Copy effects
-        for (var i = 1; i <= sourceLayer.property("ADBE Effect Parade").numProperties; i++) {
-            var effect = sourceLayer.property("ADBE Effect Parade").property(i);
-            var newEffect = targetLayer.property("ADBE Effect Parade").addProperty(effect.matchName);
-            newEffect.name = effect.name;
-            // Copy properties of the effect
-            for (var j = 1; j <= effect.numProperties; j++) {
-                var property = effect.property(j);
-                if (property.canSetExpression) {
-                    newEffect.property(j).expression = property.expression;
-                } else {
-                    newEffect.property(j).setValue(property.value);
-                }
-            }
-        }
-
-        // Copy essential properties
-        if (sourceLayer.essentialProperty != undefined && sourceLayer.essentialProperty != null) {
-            for (var i = 1; i <= sourceLayer.essentialProperty.numProperties; i++) {
-                var essentialProp = sourceLayer.essentialProperty.property(i);
-                if (essentialProp.canSetExpression) {
-                    targetLayer.essentialProperty.property(i).expression = essentialProp.expression;
-                } else {
-                    targetLayer.essentialProperty.property(i).setValue(essentialProp.value);
-                }
-            }
-        }
-    }
-
     // Replace function and apply properties
     function replaceInComp(comp) {
         for (var j = 1; j <= comp.numLayers; j++) {
@@ -3392,7 +3361,7 @@ function replaceCompRecursive(compNameToReplace, updateSourceCompName, newCompNa
             if (layer.source !== null && layer.source === compToReplace) {
                 layer.replaceSource(newComp, true);
                 // Apply layer effects and essential properties
-                copyLayerProperties(newComp.layer(1), layer);
+                //copyLayerProperties(newComp.layer(1), layer);
             }
         }
     }
@@ -3509,10 +3478,13 @@ function updateElementsComp() {
     replaceCompRecursive("_MEDIA_1920", "_ELEMENTS_NEW", "_MEDIA_1920");
     deleteNestedComp("_ELEMENTS", "LOGO_NEW");
     copyLayerToComp("_ELEMENTS_NEW", "LOGO_NEW", "_ELEMENTS");
+    deleteNestedComp("_ELEMENTS", "TEXT_el");
+    copyLayerToComp("_ELEMENTS_NEW", "TEXT_el", "_ELEMENTS");
     removeCompByName("_ELEMENTS_NEW");
     reduceProjectBasedOnMainComp("__SETTINGS");
     progressBarPopup();
     app.project.consolidateFootage();
+    showAlertWindow("DONE!");
 }
 ////
 
