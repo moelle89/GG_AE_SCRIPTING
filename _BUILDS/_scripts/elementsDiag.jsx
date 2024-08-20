@@ -29,7 +29,7 @@ function elementsDialog() {
   grp_logo_info.alignment = ["fill", "center"];
 
   var grp_logo_text = grp_logo_info.add("statictext", undefined, undefined, { name: "grp_logo_text" });
-  grp_logo_text.text = "Use V2 for more custom-options";
+  grp_logo_text.text = "Logo module with custom-options";
   mojoUI.setFG(grp_logo_text, [0.83, 0.94, 1, 0.75]);
 
 
@@ -41,6 +41,7 @@ function elementsDialog() {
   grp_logo.margins = 4;
   grp_logo.alignment = ['fill', 'center'];
 
+  /*
   var Btn_LOGO = grp_logo.add('iconbutton', undefined, mojoUI.createIcon("icn_logo_el"), { name: 'Btn_LOGO', style: "button" });
   Btn_LOGO.preferredSize.height = customHeight;
   Btn_LOGO.preferredSize.width = customWidth;
@@ -51,12 +52,13 @@ function elementsDialog() {
     copyLayerToActiveComp(sourceCompName, result);
     secondaryDialog.close();
   };
+*/
 
   var Btn_LOGOV2 = grp_logo.add('iconbutton', undefined, mojoUI.createIcon("icn_logo_el2"), { name: 'Btn_LOGOV2', style: "button" });
   Btn_LOGOV2.preferredSize.height = customHeight;
   Btn_LOGOV2.preferredSize.width = customWidth;
   Btn_LOGOV2.onClick = function () {
-    var result = "LOGO_NEW";
+    var result = "LOGO_NEW_K";
     var sourceCompName = "_ELEMENTS";
     deselectAll(); // “Deselect All”
     copyLayerToActiveComp(sourceCompName, result);
