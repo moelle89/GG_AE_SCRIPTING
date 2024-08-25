@@ -516,6 +516,23 @@ configPanel.alignChildren = ["fill", "fill"];
 configPanel.alignment = ["fill", "fill"];
 configPanel.minimumSize.width = 280;
 configPanel.margins = 0;
+// CONFIGDEMOPACKS
+// ===============
+var configDemos = configPanel.add("tab", undefined, undefined, {
+    name: "configDemos",
+});
+configDemos.text = "DEMO PACKS";
+configDemos.preferredSize.height = 34;
+configDemos.orientation = "column";
+configDemos.alignChildren = ["left", "top"];
+configDemos.spacing = 10;
+configDemos.margins = 12;
+var demoInfoTxt = configDemos.add("statictext", undefined, undefined, {
+    name: "demoInfoTxt",
+});
+demoInfoTxt.text = "different configurations to test your template";
+demoInfoTxt.preferredSize.height = 20;
+mojoUI.setFG(demoInfoTxt, [1, 1, 1, 0.65]);
 // CONFIGCOLORS
 // ============
 var configColors = configPanel.add("tab", undefined, undefined, {
@@ -538,23 +555,7 @@ configText.orientation = "column";
 configText.alignChildren = ["left", "top"];
 configText.spacing = 10;
 configText.margins = 12;
-// CONFIGDEMOPACKS
-// ===============
-var configDemos = configPanel.add("tab", undefined, undefined, {
-    name: "configDemos",
-});
-configDemos.text = "DEMO PACKS";
-configDemos.preferredSize.height = 34;
-configDemos.orientation = "column";
-configDemos.alignChildren = ["left", "top"];
-configDemos.spacing = 10;
-configDemos.margins = 12;
-var demoInfoTxt = configDemos.add("statictext", undefined, undefined, {
-    name: "demoInfoTxt",
-});
-demoInfoTxt.text = "different configurations to test your template";
-demoInfoTxt.preferredSize.height = 20;
-mojoUI.setFG(demoInfoTxt, [1, 1, 1, 0.65]);
+
 // DEMOGRP1
 // ========
 var demoGrp1 = configDemos.add("group", undefined, { name: "demoGrp1" });

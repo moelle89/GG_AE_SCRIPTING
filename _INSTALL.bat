@@ -78,7 +78,6 @@ set "FOLDER_STRUCTURE18=24.7\Scripts\ScriptUI Panels"
 set "FOLDER_STRUCTURE19=24.8\Scripts\ScriptUI Panels"
 set "FOLDER_STRUCTURE20=24.9\Scripts\ScriptUI Panels"
 
-
 rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE1%\_scripts"
 rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE2%\_scripts"
 rd /s /q "%BASE_PATH%\%FOLDER_STRUCTURE3%\_scripts"
@@ -151,4 +150,58 @@ for /d %%i in ("%scriptSearchDir%\*") do (
     )
 )
 rd /s /q "%delfolder%"
+
+setlocal
+
+:: Define the target directory
+set "target_dir=C:\ffmpeg"
+
+:: Check if the target directory already exists
+if exist "%target_dir%" (
+    echo FFmpeg is already installed at %target_dir%.
+    echo Aborting download process.
+    pause
+	explorer "C:\data_driven_ae_template-1"
+    exit /b 0
+)
+
+:: Define the URL and temporary paths
+set "ffmpeg_url=https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip"
+set "zip_path=%TEMP%\ffmpeg.zip"
+set "extract_path=%TEMP%\ffmpeg"
+
+:: Download FFmpeg using curl
+echo Downloading FFmpeg...
+curl -L -o "%zip_path%" "%ffmpeg_url%"
+if %ERRORLEVEL% neq 0 (
+    echo Failed to download FFmpeg. Exiting...
+    exit /b 1
+)
+
+:: Extract the downloaded zip file (requires PowerShell for this)
+echo Extracting FFmpeg...
+powershell -command "Expand-Archive -Force -Path '%zip_path%' -DestinationPath '%extract_path%'"
+if %ERRORLEVEL% neq 0 (
+    echo Failed to extract FFmpeg. Exiting...
+    exit /b 1
+)
+
+:: Move the extracted FFmpeg folder to C:\
+echo Moving FFmpeg to C:\
+move /Y "%extract_path%\ffmpeg-*" "%target_dir%"
+if %ERRORLEVEL% neq 0 (
+    echo Failed to move FFmpeg. Exiting...
+    exit /b 1
+)
+
+:: Clean up the temp files
+echo Cleaning up...
+del /Q "%zip_path%"
+rmdir /S /Q "%extract_path%"
+
+echo FFmpeg installation completed at %target_dir%.
+pause
+
+
+explorer "C:\data_driven_ae_template-1"
 endlocal
