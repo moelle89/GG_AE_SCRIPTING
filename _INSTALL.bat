@@ -1,8 +1,18 @@
 @echo off
 setlocal enabledelayedexpansion
 
+echo.
+echo.
+echo INSTALL SCRIPT: MOELLES MOJO / GG TEMPLATE ADDON FOR ADOBE AFTER EFFECTS
+echo.
+echo.
+echo FIRST STEP: INSTALL MOJO SCRIPT
+timeout /t 3 > nul
+
+
 REM Set the paths for AE template
 set "aeSourceFolder=%~dp0_BOILERPLATES"
+set "fontSourceFolder=%~dp0_FONTS"
 set "aeDestinationFolder=C:\data_driven_ae_template-1"
 set "footagePath=C:\data_driven_ae_template-1\(Footage)\Footage"
 set "assetsPath=C:\data_driven_ae_template-1\_assets"
@@ -150,6 +160,28 @@ for /d %%i in ("%scriptSearchDir%\*") do (
     )
 )
 rd /s /q "%delfolder%"
+:: FONT INSTALL
+echo.
+echo.
+echo AE script INSTALLATION COMPLETE.
+echo.
+echo.
+echo NEXT STEP: INSTALLING FONTS
+timeout /t 3 > nul
+:: Change the directory to the location of your font files
+cd "%fontSourceFolder%"
+
+:: Loop through each TTF file and install it
+for %%f in (*.ttf) do (
+    reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "%%~nf (TrueType)" /d "%%f" /f
+)
+echo.
+echo.
+echo FONT INSTALLATION COMPLETE.
+echo.
+echo.
+echo NEXT STEP: DOWNLOAD AND INSTALL FFMPEG
+timeout /t 3 > nul
 
 setlocal
 
@@ -158,9 +190,14 @@ set "target_dir=C:\ffmpeg"
 
 :: Check if the target directory already exists
 if exist "%target_dir%" (
+    echo.
     echo FFmpeg is already installed at %target_dir%.
+    echo.
     echo Aborting download process.
-    pause
+    echo.
+    echo.
+    echo FINAL STEP: OPEN TEMPLATE LOCATION
+    timeout /t 5 > nul
 	explorer "C:\data_driven_ae_template-1"
     exit /b 0
 )
@@ -199,9 +236,13 @@ echo Cleaning up...
 del /Q "%zip_path%"
 rmdir /S /Q "%extract_path%"
 
-echo FFmpeg installation completed at %target_dir%.
-pause
-
+echo.
+echo.
+echo FFMPEG INSTALLATION COMPLETE.
+echo.
+echo.
+echo FINAL STEP: OPEN TEMPLATE LOCATION
+timeout /t 5 > nul
 
 explorer "C:\data_driven_ae_template-1"
 endlocal
