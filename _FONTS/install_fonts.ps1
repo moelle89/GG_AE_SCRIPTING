@@ -29,5 +29,3 @@ Get-ChildItem -Path $Source -Include '*.ttf','*.ttc','*.otf' -Recurse | ForEach 
         Remove-Item $Font -Force
     }
 }
-
-

@@ -41,7 +41,7 @@ echo FIRST STEP: INSTALL MOJO SCRIPT
 timeout /t 3 > nul
 
 
-REM Set the paths for AE template
+:: Set the paths for AE template
 set "aeSourceFolder=%~dp0_BOILERPLATES"
 set "fontSourceFolder=%~dp0_FONTS"
 set "aeDestinationFolder=C:\data_driven_ae_template-1"
@@ -72,24 +72,30 @@ if exist "%presetPath24%" (
     echo Preset Folder 24 removed successfully.
 )
 
-REM DELETE OLD FOOTAGES AND ASSETS
+:: DELETE OLD FOOTAGES AND ASSETS
  rd /s /q "%footagePath%"
  rd /s /q "%assetsPath%"
 
-REM Check if the destination folder for AE exists, create it if not
+:: DELETE OLD FONTS
+if exist "%fullFontsDestination%" (
+    rmdir /s /q "%fullFontsDestination%"
+	timeout /t 2 > nul
+)
+
+:: Check if the destination folder for AE exists, create it if not
 if not exist "%aeDestinationFolder%" (
     mkdir "%aeDestinationFolder%"
 )
-REM Copy the AE file with silent overwrite
+:: Copy the AE file with silent overwrite
 copy /y "%fullAeSourcePath%" "%fullAeDestinationPath%" >nul
 
-REM Copy the "(Footage)" folder and its contents for AE with quiet mode using robocopy
+:: Copy the "(Footage)" folder and its contents for AE with quiet mode using robocopy
 robocopy "%fullAeFootageSource%" "%fullAeFootageDestination%" /s /e /np /njh /njs /ndl /nc /ns /nc /ndl /np /nfl /ndl /mt:8 >nul
 robocopy "%fullAeAssetsSource%" "%fullAeAssetsDestination%" /s /e /np /njh /njs /ndl /nc /ns /nc /ndl /np /nfl /ndl /mt:8 >nul
-REM Copy the "_FONTS" folder and its contents for AE with quiet mode using robocopy
+:: Copy the "_FONTS" folder and its contents for AE with quiet mode using robocopy
 robocopy "%fullFontsSource%" "%fullFontsDestination%" /s /e /np /njh /njs /ndl /nc /ns /nc /ndl /np /nfl /ndl /mt:8 >nul
 
-REM Set the paths for ScriptUI Panel
+:: Set the paths for ScriptUI Panel
 set "scriptSearchDir=%APPDATA%\Adobe\After Effects"
 set "scriptTargetFolder=Scripts\ScriptUI Panels"
 set "scriptSearchString=moelles_mojo"
@@ -97,7 +103,7 @@ set "scriptSourceFile=moelles_mojo.jsxbin"
 set "scriptSourceFolder=_scripts"
 set "imgSourceFolder=_img"
 set "rootFolder=%~dp0"
-REM Assuming the script is one level above the "_BUILDS" folder
+:: Assuming the script is one level above the "_BUILDS" folder
 set "buildsFolder=%~dp0_BUILDS"
 set "delfolder=%APPDATA%\Adobe\After Effects\Scripts"
 
@@ -165,7 +171,7 @@ mkdir "%BASE_PATH%\%FOLDER_STRUCTURE18%" 2>nul
 mkdir "%BASE_PATH%\%FOLDER_STRUCTURE19%" 2>nul
 mkdir "%BASE_PATH%\%FOLDER_STRUCTURE20%" 2>nul
 
-REM Check if the target folder exists, create it if needed
+:: Check if the target folder exists, create it if needed
 if not exist "%scriptSearchDir%\%scriptTargetFolder%" (
     mkdir "%scriptSearchDir%\%scriptTargetFolder%"
 )
@@ -173,22 +179,22 @@ if not exist "%scriptSearchDir%\%scriptTargetFolder%" (
 for /d %%i in ("%scriptSearchDir%\*") do (
     if exist "%%i\%scriptTargetFolder%" (
 
-        rem Delete files containing the search string
+        :: Delete files containing the search string
         for %%f in ("%%i\%scriptTargetFolder%\*%scriptSearchString%*") do (
             del "%%f"
         )
 
-        rem Copy the specified file to the Script UI Path
+        :: Copy the specified file to the Script UI Path
         if exist "%buildsFolder%\%scriptSourceFile%" (
             copy /Y "%buildsFolder%\%scriptSourceFile%" "%%i\%scriptTargetFolder%"
         )
 
-        rem Copy the specified folder and its contents to the Script UI Path
+        :: Copy the specified folder and its contents to the Script UI Path
         if exist "%buildsFolder%\%scriptSourceFolder%" (
             xcopy /E /I /Y "%buildsFolder%\%scriptSourceFolder%" "%%i\%scriptTargetFolder%\%scriptSourceFolder%"
         )
 
-        rem Copy the specified folder and its contents to the Script UI Path
+        :: Copy the specified folder and its contents to the Script UI Path
         if exist "%buildsFolder%\%imgSourceFolder%" (
             xcopy /E /I /Y "%buildsFolder%\%imgSourceFolder%" "%%i\%scriptTargetFolder%\%imgSourceFolder%"
         )
