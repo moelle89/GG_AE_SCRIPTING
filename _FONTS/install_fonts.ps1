@@ -1,12 +1,5 @@
-# Run this as a Computer Startup script to allow installing fonts from C:\InstallFont\
-# Based on http://www.edugeek.net/forums/windows-7/123187-installation-fonts-without-admin-rights-2.html
-# Run this as a Computer Startup Script in Group Policy
-
-# Full details on my website - https://mediarealm.com.au/articles/windows-font-install-no-password-powershell/
-# Set $SourceDir to the directory of the script (equivalent to %~dp0)
 $SourceDir   = "C:\data_driven_ae_template-1\_FONTS"
 $Source      = "C:\data_driven_ae_template-1\_FONTS\*"
-$Destination = (New-Object -ComObject Shell.Application).Namespace(0x14)
 $TempFolder  = "C:\Windows\Temp\Fonts"
 
 # Create the source directory if it doesn't already exist
@@ -14,18 +7,33 @@ New-Item -ItemType Directory -Force -Path $SourceDir
 
 New-Item $TempFolder -Type Directory -Force | Out-Null
 
-Get-ChildItem -Path $Source -Include '*.ttf','*.ttc','*.otf' -Recurse | ForEach {
-    If (-not(Test-Path "C:\Windows\Fonts\$($_.Name)")) {
+# Get all the font files
+$FontFiles = Get-ChildItem -Path $Source -Include '*.ttf','*.ttc','*.otf' -Recurse
 
-        $Font = "$TempFolder\$($_.Name)"
+# Check if any new fonts need to be installed
+$NewFonts = $FontFiles | Where-Object { -not(Test-Path "C:\Windows\Fonts\$($_.Name)") }
 
-        # Copy font to local temporary folder
-        Copy-Item $($_.FullName) -Destination $TempFolder
-
-        # Install font
-        $Destination.CopyHere($Font,0x10)
-
-        # Delete temporary copy of font
-        Remove-Item $Font -Force
+if ($NewFonts.Count -gt 0) {
+    # Copy all new fonts to the temporary folder
+    $NewFonts | ForEach-Object {
+        Copy-Item $_.FullName -Destination $TempFolder
     }
+
+    # Load the required .NET assemblies
+    [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing") | Out-Null
+    [System.Reflection.Assembly]::LoadWithPartialName("System.Drawing.Text") | Out-Null
+
+    # Install the fonts in batches
+    $FontCollection = New-Object System.Drawing.Text.PrivateFontCollection
+    Get-ChildItem -Path $TempFolder | ForEach-Object {
+        $FontCollection.AddFontFile($_.FullName)
+    }
+
+    # Register the fonts with the system
+    $FontCollection.Families | ForEach-Object {
+        [System.Drawing.FontFamily]$_.Name
+    }
+
+    # Clean up the temporary folder
+    Get-ChildItem -Path $TempFolder | Remove-Item -Force
 }
