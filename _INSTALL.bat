@@ -2,32 +2,32 @@
 setlocal enabledelayedexpansion
 
 :::
-:::                                                                                          
-:::                                   @@@@@@@%                                     
-:::                                =@@*      @@@  .@@@@@@@=                        
-:::                        *@@@@- @@           %@@@.      @@@                      
-:::                     @@@@.  +@@@:   .       @@           @@-                    
-:::                   +@@          @@@@@@@@@  @@             @@                    
-:::                  =@=            #@     -@@@   -*%*:       @                    
-:::                  *@              @+      @@@@@@%#%@@@@   @@@@@@@.              
-:::                 @@@@@@@@@@@-     @*       @=         *@@@:     =@@=            
-:::              @@@#         *@@@  *@        #@           =#        :@.           
-:::             @@.             :@@@@         @@        @@@@@@@@@@@@  +@           
-:::            @@                 %#         @@.      @@@          @@@@@           
-:::           @@             :@@@@@@@@-     @@      %@@              @@+           
-:::           @@           .@@.       @@@@@@@@@@%  -@@                #@*          
-:::           @@          @@:           @@@.    @@@@@                  @@          
-:::           @@          @#           @@         .@@                  @@          
-:::           .@@        +@           @@           %@                  @@          
-:::             @@       .@+          @@          :@@.                :@@          
-:::              @@@*     =@           @        @@@ @@:              .@@           
-:::                .@@@@@@@@@@        @@@#     #@    @@@            @@@            
-:::                          #@@@@@@@@@  @@@@@@@#      @@@@-    *@@@@              
-:::                                         :+:@@         @@@@@@@%                 
-:::                                             @@#     @@*                        
-:::                                               @@@@@@@                                 
-:::                                                                                          
-:::                                                                                          
+:::
+:::                                   @@@@@@@%
+:::                                =@@*      @@@  .@@@@@@@=
+:::                        *@@@@- @@           %@@@.      @@@
+:::                     @@@@.  +@@@:   .       @@           @@-
+:::                   +@@          @@@@@@@@@  @@             @@
+:::                  =@=            #@     -@@@   -*%*:       @
+:::                  *@              @+      @@@@@@%#%@@@@   @@@@@@@.
+:::                 @@@@@@@@@@@-     @*       @=         *@@@:     =@@=
+:::              @@@#         *@@@  *@        #@           =#        :@.
+:::             @@.             :@@@@         @@        @@@@@@@@@@@@  +@
+:::            @@                 %#         @@.      @@@          @@@@@
+:::           @@             :@@@@@@@@-     @@      %@@              @@+
+:::           @@           .@@.       @@@@@@@@@@%  -@@                #@*
+:::           @@          @@:           @@@.    @@@@@                  @@
+:::           @@          @#           @@         .@@                  @@
+:::           .@@        +@           @@           %@                  @@
+:::             @@       .@+          @@          :@@.                :@@
+:::              @@@*     =@           @        @@@ @@:              .@@
+:::                .@@@@@@@@@@        @@@#     #@    @@@            @@@
+:::                          #@@@@@@@@@  @@@@@@@#      @@@@-    *@@@@
+:::                                         :+:@@         @@@@@@@%
+:::                                             @@#     @@*
+:::                                               @@@@@@@
+:::
+:::
 for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
 
 echo.
@@ -54,6 +54,8 @@ set "fullAeFootageSource=%aeSourceFolder%\%aeFootageFolder%"
 set "fullAeFootageDestination=%aeDestinationFolder%\%aeFootageFolder%"
 set "fullAeAssetsSource=%aeSourceFolder%\%aeAssetsFolder%"
 set "fullAeAssetsDestination=%aeDestinationFolder%\%aeAssetsFolder%"
+set "fullFontsSource=%fontSourceFolder%"
+set "fullFontsDestination=%aeDestinationFolder%\_FONTS"
 
 set "presetPath23=%USERPROFILE%\Documents\Adobe\After Effects 2023\User Presets\mojo"
 set "presetPath24=%USERPROFILE%\Documents\Adobe\After Effects 2024\User Presets\mojo"
@@ -82,6 +84,8 @@ copy /y "%fullAeSourcePath%" "%fullAeDestinationPath%" >nul
 REM Copy the "(Footage)" folder and its contents for AE with quiet mode using robocopy
 robocopy "%fullAeFootageSource%" "%fullAeFootageDestination%" /s /e /np /njh /njs /ndl /nc /ns /nc /ndl /np /nfl /ndl /mt:8 >nul
 robocopy "%fullAeAssetsSource%" "%fullAeAssetsDestination%" /s /e /np /njh /njs /ndl /nc /ns /nc /ndl /np /nfl /ndl /mt:8 >nul
+REM Copy the "_FONTS" folder and its contents for AE with quiet mode using robocopy
+robocopy "%fullFontsSource%" "%fullFontsDestination%" /s /e /np /njh /njs /ndl /nc /ns /nc /ndl /np /nfl /ndl /mt:8 >nul
 
 REM Set the paths for ScriptUI Panel
 set "scriptSearchDir=%APPDATA%\Adobe\After Effects"
@@ -199,9 +203,7 @@ echo NEXT STEP: INSTALLING FONTS
 timeout /t 3 > nul
 
 @echo off
-set ScriptDir=%fontSourceFolder%
-PowerShell -NoProfile -ExecutionPolicy Bypass -File "%ScriptDir%\install_fonts.ps1" -ArgumentList "%ScriptDir%"
-echo.
+PowerShell -NoProfile -ExecutionPolicy Bypass -File "%fullFontsDestination%\install_fonts.ps1"
 echo.
 echo FONT INSTALLATION COMPLETE.
 echo.
