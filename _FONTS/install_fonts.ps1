@@ -4,8 +4,8 @@
 
 # Full details on my website - https://mediarealm.com.au/articles/windows-font-install-no-password-powershell/
 # Set $SourceDir to the directory of the script (equivalent to %~dp0)
-$SourceDir   = $PSScriptRoot
-$Source      = "$PSScriptRoot\*"
+$SourceDir   = "C:\data_driven_ae_template-1\_FONTS"
+$Source      = "C:\data_driven_ae_template-1\_FONTS\*"
 $Destination = (New-Object -ComObject Shell.Application).Namespace(0x14)
 $TempFolder  = "C:\Windows\Temp\Fonts"
 

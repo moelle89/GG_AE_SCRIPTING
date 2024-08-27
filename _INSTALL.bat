@@ -1,6 +1,13 @@
 @echo off
 setlocal enabledelayedexpansion
 
+for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
+
+echo.
+echo.
+echo INSTALL SCRIPT: MOELLES MOJO / GG TEMPLATE ADDON FOR ADOBE AFTER EFFECTS
+echo.
+echo.
 :::
 :::
 :::                                   @@@@@@@%
@@ -28,11 +35,6 @@ setlocal enabledelayedexpansion
 :::                                               @@@@@@@
 :::
 :::
-for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
-
-echo.
-echo.
-echo INSTALL SCRIPT: MOELLES MOJO / GG TEMPLATE ADDON FOR ADOBE AFTER EFFECTS
 echo.
 echo.
 echo FIRST STEP: INSTALL MOJO SCRIPT
