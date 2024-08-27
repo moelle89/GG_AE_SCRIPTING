@@ -168,13 +168,23 @@ echo.
 echo.
 echo NEXT STEP: INSTALLING FONTS
 timeout /t 3 > nul
-:: Change the directory to the location of your font files
-cd "%fontSourceFolder%"
 
-:: Loop through each TTF file and install it
-for %%f in (*.ttf) do (
-    reg.exe add "HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Fonts" /v "%%~nf (TrueType)" /d "%%f" /f
-)
+   setlocal
+
+   REM Path to the local AppData Fonts folder
+   set "fonts_folder=%LocalAppData%\Microsoft\Windows\Fonts"
+
+   REM Create the Fonts folder if it doesn't exist
+   if not exist "%fonts_folder%" (
+       mkdir "%fonts_folder%"
+   )
+
+   REM Copy each TTF file to the local Fonts folder
+   for %%f in ("%fontSourceFolder%\*.ttf") do (
+       echo Installing %%f
+       copy "%%f" "%fonts_folder%"
+       reg add "HKCU\Software\Microsoft\Windows NT\CurrentVersion\Fonts" /v "%%~nf (TrueType)" /t REG_SZ /d "%%f" /f
+   )
 echo.
 echo.
 echo FONT INSTALLATION COMPLETE.
