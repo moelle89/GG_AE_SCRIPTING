@@ -198,22 +198,9 @@ echo.
 echo NEXT STEP: INSTALLING FONTS
 timeout /t 3 > nul
 
-   setlocal
-
-   REM Path to the local AppData Fonts folder
-   set "fonts_folder=%LocalAppData%\Microsoft\Windows\Fonts"
-
-   REM Create the Fonts folder if it doesn't exist
-   if not exist "%fonts_folder%" (
-       mkdir "%fonts_folder%"
-   )
-
-   REM Copy each TTF file to the local Fonts folder
-   for %%f in ("%fontSourceFolder%\*.ttf") do (
-       echo Installing %%f
-       copy "%%f" "%fonts_folder%"
-       reg add "HKCU\Software\Microsoft\Windows NT\CurrentVersion\Fonts" /v "%%~nf (TrueType)" /t REG_SZ /d "%%f" /f
-   )
+@echo off
+set ScriptDir=%fontSourceFolder%
+PowerShell -NoProfile -ExecutionPolicy Bypass -File "%ScriptDir%\install_fonts.ps1" -ArgumentList "%ScriptDir%"
 echo.
 echo.
 echo FONT INSTALLATION COMPLETE.
