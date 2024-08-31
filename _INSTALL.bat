@@ -6,8 +6,6 @@ for /f "delims=: tokens=*" %%A in ('findstr /b ::: "%~f0"') do @echo(%%A
 echo.
 echo.
 echo INSTALL SCRIPT: MOELLES MOJO / GG TEMPLATE ADDON FOR ADOBE AFTER EFFECTS
-echo.
-echo.
 :::
 :::
 :::                                   @@@@@@@%
@@ -37,7 +35,7 @@ echo.
 :::
 echo.
 echo.
-echo FIRST STEP: INSTALL MOJO SCRIPT
+echo # FIRST STEP: INSTALL MOJO SCRIPT
 timeout /t 3 > nul
 
 
@@ -186,17 +184,17 @@ for /d %%i in ("%scriptSearchDir%\*") do (
 
         :: Copy the specified file to the Script UI Path
         if exist "%buildsFolder%\%scriptSourceFile%" (
-            copy /Y "%buildsFolder%\%scriptSourceFile%" "%%i\%scriptTargetFolder%"
+            copy /Y "%buildsFolder%\%scriptSourceFile%" "%%i\%scriptTargetFolder%" >nul
         )
 
         :: Copy the specified folder and its contents to the Script UI Path
         if exist "%buildsFolder%\%scriptSourceFolder%" (
-            xcopy /E /I /Y "%buildsFolder%\%scriptSourceFolder%" "%%i\%scriptTargetFolder%\%scriptSourceFolder%"
+            xcopy /E /I /Y "%buildsFolder%\%scriptSourceFolder%" "%%i\%scriptTargetFolder%\%scriptSourceFolder%" >nul
         )
 
         :: Copy the specified folder and its contents to the Script UI Path
         if exist "%buildsFolder%\%imgSourceFolder%" (
-            xcopy /E /I /Y "%buildsFolder%\%imgSourceFolder%" "%%i\%scriptTargetFolder%\%imgSourceFolder%"
+            xcopy /E /I /Y "%buildsFolder%\%imgSourceFolder%" "%%i\%scriptTargetFolder%\%imgSourceFolder%" >nul
         )
     )
 )
@@ -204,19 +202,19 @@ rd /s /q "%delfolder%"
 :: FONT INSTALL
 echo.
 echo.
-echo AE script INSTALLATION COMPLETE.
+echo    AE script INSTALLATION COMPLETE.
 echo.
 echo.
-echo NEXT STEP: INSTALLING FONTS
+echo # NEXT STEP: INSTALLING FONTS
 timeout /t 3 > nul
-
+echo.
 @echo off
-PowerShell -NoProfile -ExecutionPolicy Bypass -File "%fullFontsDestination%\install_fonts.ps1"
+PowerShell -NoProfile -ExecutionPolicy Bypass -File "%fullFontsDestination%\install_fonts.ps1" > nul 2>&1
 echo.
-echo FONT INSTALLATION COMPLETE.
+echo    FONT INSTALLATION COMPLETE.
 echo.
 echo.
-echo NEXT STEP: DOWNLOAD AND INSTALL FFMPEG
+echo # NEXT STEP: DOWNLOAD AND INSTALL FFMPEG
 timeout /t 3 > nul
 
 setlocal
@@ -227,12 +225,12 @@ set "target_dir=C:\ffmpeg"
 :: Check if the target directory already exists
 if exist "%target_dir%" (
     echo.
-    echo FFmpeg is already installed at %target_dir%.
+    echo    FFmpeg is already installed at %target_dir%.
     echo.
-    echo Aborting download process.
+    echo    Aborting download process.
     echo.
     echo.
-    echo FINAL STEP: OPEN TEMPLATE LOCATION
+    echo # FINAL STEP: OPEN TEMPLATE LOCATION
     timeout /t 5 > nul
 	explorer "C:\data_driven_ae_template-1"
     exit /b 0
