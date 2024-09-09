@@ -12,7 +12,7 @@ foreach ($Font in $FontList) {
 
 Write-Host 'Installing font -' $Font.BaseName
 
-Copy-Item $Font "C:\Windows\Fonts"
+Copy-Item $Font "%systemroot%\fonts"
 
 #register font for all users
 

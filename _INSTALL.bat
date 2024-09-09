@@ -209,14 +209,14 @@ echo # NEXT STEP: INSTALLING FONTS
 timeout /t 3 > nul
 echo.
 @echo off
-PowerShell -NoProfile -ExecutionPolicy Bypass -File "%fullFontsDestination%\install_fonts.ps1" > nul 2>&1
+::PowerShell -NoProfile -File "%fullFontsDestination%\install_fonts.ps1" -Debug
+cscript "F:\_GIT\GG_AE_SCRIPTING\_FONTS\InstallFont.vbs"
 echo.
 echo    FONT INSTALLATION COMPLETE.
 echo.
 echo.
 echo # NEXT STEP: DOWNLOAD AND INSTALL FFMPEG
 timeout /t 3 > nul
-
 setlocal
 
 :: Define the target directory
@@ -231,8 +231,14 @@ if exist "%target_dir%" (
     echo.
     echo.
     echo # FINAL STEP: OPEN TEMPLATE LOCATION
-    timeout /t 5 > nul
-	explorer "C:\data_driven_ae_template-1"
+    echo Press any key within 5 seconds to open the folder...
+    timeout /t 5 /nobreak > nul
+    if errorlevel 1 (
+        echo Opening folder...
+        explorer "C:\data_driven_ae_template-1"
+    ) else (
+        echo No key pressed, exiting.
+    )
     exit /b 0
 )
 
@@ -275,8 +281,14 @@ echo.
 echo FFMPEG INSTALLATION COMPLETE.
 echo.
 echo.
-echo FINAL STEP: OPEN TEMPLATE LOCATION
-timeout /t 5 > nul
-
-explorer "C:\data_driven_ae_template-1"
+echo # FINAL STEP: OPEN TEMPLATE LOCATION
+echo Press any key within 5 seconds to open the folder...
+timeout /t 5 /nobreak > nul
+if errorlevel 1 (
+    echo Opening folder...
+    explorer "C:\data_driven_ae_template-1"
+) else (
+    echo No key pressed, exiting.
+)
+exit /b 0
 endlocal
