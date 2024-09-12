@@ -26,6 +26,7 @@ set "modules_STRUCTURE20=%~dp0\25.7"
 set "modules_STRUCTURE21=%~dp0\25.8"
 set "modules_STRUCTURE22=%~dp0\25.9"
 set "modules_STRUCTURE23=%~dp0\26.0"
+set "modules_STRUCTURE24=%~dp0\24.6.2"
 
 REM Assuming the script is one level above the "_BUILDS" folder
 set "BASE_PATH=%APPDATA%\Adobe\After Effects"
@@ -52,9 +53,10 @@ set "FOLDER_STRUCTURE20=25.7"
 set "FOLDER_STRUCTURE21=25.8"
 set "FOLDER_STRUCTURE22=25.9"
 set "FOLDER_STRUCTURE23=26.0"
+set "FOLDER_STRUCTURE24=24.6.2"
 
 REM Check if target folders exist and copy content if they do
-for /l %%i in (1, 1, 23) do (
+for /l %%i in (1, 1, 24) do (
     set "SOURCE=!modules_STRUCTURE%%i!"
     set "TARGET=!BASE_PATH!\!FOLDER_STRUCTURE%%i!"
 

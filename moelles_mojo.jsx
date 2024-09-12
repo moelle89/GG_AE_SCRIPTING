@@ -1609,6 +1609,12 @@ var hoverMenu_customExp = new HoverMenu("hoverMenu_customExp", [{
 },
 {
     imgString: "",
+    text: "export elements as elements_new",
+    name: "exportElementsComp",
+    functionName: exportElementsComp
+},
+{
+    imgString: "",
     text: "Update elements using elements_new",
     name: "updateElementsComp",
     functionName: updateElementsComp
@@ -3487,6 +3493,53 @@ function updateElementsComp() {
     app.project.consolidateFootage();
     showAlertWindow("DONE!");
 }
+////
+
+function exportElementsComp() {
+    // Start the script
+    app.beginUndoGroup("Rename and Reduce Project");
+
+    // Check if there's an active project
+    var project = app.project;
+    if (!project) {
+        alert("No active project found.");
+        app.endUndoGroup();
+        return;
+    }
+
+    // Find the composition named "_ELEMENTS"
+    var comp = null;
+    for (var i = 1; i <= project.numItems; i++) {
+        var item = project.item(i);
+        if (item instanceof CompItem && item.name === "_ELEMENTS") {
+            comp = item;
+            break;
+        }
+    }
+
+    if (!comp) {
+        alert("Composition '_ELEMENTS' not found in the project.");
+        app.endUndoGroup();
+        return;
+    }
+
+    // Rename the composition to "_ELEMENTS_NEW"
+    comp.name = "_ELEMENTS_NEW";
+
+    // Reduce the project based on "_ELEMENTS_NEW"
+    project.reduceProject(comp);
+
+    // Define a fixed file name
+    var saveFilePath = new File(app.project.file.parent.absoluteURI + "/_ELEMENTS_NEW.aep");
+
+    // Save the project as "_ELEMENTS_NEW.aep"
+    project.save(saveFilePath);
+
+    alert("Project successfully reduced and saved as '_ELEMENTS_NEW.aep'.");
+
+    app.endUndoGroup();
+}
+
 ////
 
 function copyAndOverwriteFootageFolder(path, isPack) {
