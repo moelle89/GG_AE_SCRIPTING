@@ -1603,6 +1603,12 @@ var hoverMenu_customExp = new HoverMenu("hoverMenu_customExp", [{
 },
 {
     imgString: "",
+    text: "Duplicate Composition with Suffix",
+    name: "DuplicateCompositionWithSuffix",
+    functionName: DuplicateCompositionWithSuffix
+},
+{
+    imgString: "",
     text: "Delete unused Null-layers",
     name: "deleteUnusedNullLayers",
     functionName: deleteUnusedNullLayers
@@ -3266,6 +3272,75 @@ function getAEfontName() {
     } else {
         alert("Please open a project and select a composition.");
     }
+}
+
+// After Effects Script to Duplicate a Composition and Add a Suffix
+
+function DuplicateCompositionWithSuffix() {
+    // Begin Undo Group for clean undo/redo functionality
+    app.beginUndoGroup("Duplicate Selected Composition with Suffix");
+
+    // Get the currently active project
+    var proj = app.project;
+
+    if (proj && proj.activeItem) {
+        // Get the active composition or selected item
+        var activeComp = proj.activeItem;
+
+        // Initialize variable to hold the composition to duplicate
+        var compToDuplicate = null;
+
+        // Check if the active item is a CompItem (composition)
+        if (activeComp instanceof CompItem) {
+            // Check if any layer is selected within the composition
+            if (activeComp.selectedLayers.length > 0) {
+                // Get the first selected layer
+                var selectedLayer = activeComp.selectedLayers[0];
+
+                // Check if the selected layer is a precomp (AVLayer with a source that is a CompItem)
+                if (selectedLayer instanceof AVLayer && selectedLayer.source instanceof CompItem) {
+                    // Set the precomp as the composition to duplicate
+                    compToDuplicate = selectedLayer.source;
+                }
+            } else {
+                // If no layer is selected, check if the active item itself is selected in the project panel
+                if (proj.selection.length > 0 && proj.selection[0] instanceof CompItem) {
+                    compToDuplicate = proj.selection[0];
+                }
+            }
+        }
+
+        // If a composition is selected (either a precomp or project panel comp)
+        if (compToDuplicate) {
+            // Prompt the user for a suffix
+            var suffix = showDialogWindow("Enter a suffix for the duplicate composition:", "_copy");
+
+            if (suffix !== null) { // Check if the user didn't cancel the input
+                // Create the new composition name with suffix
+                var newCompName = compToDuplicate.name + suffix;
+
+                // Duplicate the selected composition
+                var duplicatedComp = compToDuplicate.duplicate();
+
+                // Set the new name with the suffix
+                duplicatedComp.name = newCompName;
+
+                // Optionally, select the new duplicated comp in the project panel
+                app.project.selection = [duplicatedComp];
+
+                showAlertWindow("Composition duplicated successfully with the suffix: " + suffix);
+            } else {
+                showAlertWindow("Operation canceled by user.");
+            }
+        } else {
+            showAlertWindow("Please select a composition in the project panel or a precomp inside the active composition.");
+        }
+    } else {
+        showAlertWindow("Please open a project and select a composition.");
+    }
+
+    // End Undo Group
+    app.endUndoGroup();
 }
 
 // Function to check if a layer is used as a parent by any other layer in the composition
