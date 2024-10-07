@@ -17,8 +17,8 @@ echo.
 echo 1. Import (Footage) Folder
 echo 2. Delete (Footage) Folder
 echo.
-echo 3. Export previews of comp_*.aeps
-echo 4. Export previews of post_*.aeps
+echo 3. Export previews of comp_*.aeps + collecting into folder
+echo 4. Export previews of post_*.aeps + collecting into folder
 echo.
 echo # Only export:
 echo.
@@ -32,7 +32,9 @@ echo 8. REEL previews of post_*.aeps
 echo 9. SQUARE previews of post_*.aeps
 echo 10. 1920 previews of post_*.aeps
 echo.
-echo 11. Exit
+echo 11. Export previews of all post_*.aeps.
+echo.
+echo 12. Exit
 echo.
 set /p choice=Choose your option:
 
@@ -443,11 +445,47 @@ if "%choice%"=="1" (
 	goto menu
 
 ) else if "%choice%"=="11" (
-    echo Exiting script...
-    exit /b
-) else (
-    echo Invalid choice. Please try again.
-    goto menu
-)
+	echo.
+	echo Export previews of all post_*.aep files inside of this folder.
+	echo.
+    rem Add your actions for Option 2 here
+	for %%i in (post_*.aep) do (
+		set "inputFile=%%i"
+		set "post_aep=%%i"
+		for /f "delims=." %%a in ("%%~ni") do set "compName=%%a"
+		echo !post_aep!
+		echo !compName!
+		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
+		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_square" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
+		"%aerender%" -project "%Folder%\!inputFile!" -comp "!compName!_1920" -s 0 -e 0 -v ERRORS -mp -RStemplate "getgenius_default" -OMtemplate "getgenius_jpg_default" -output "%Folder%\[compName]_[#].jpg"
 
+		REM webp conversion
+		for %%i in (%Folder%\*.jpg) do (
+			set "inputFile1=%%i"
+			echo Processing JPG: !inputFile1!
+
+			for /f "delims=." %%a in ("%%~ni") do (
+				set "name=%%a"
+				set "name=!name:~0,-2!"
+				REM Strip the last two characters
+			)
+			echo !name!
+
+			"%ffmpeg%" -i "!inputFile1!" -y "%Folder%\!name!.webp"
+			 del "!inputFile1!"
+		)
+	)
+
+	echo.
+	echo Conversion complete.
+	echo.
+	echo.
+	goto menu
+) 
+else (
+ else if "%choice%"=="12" (
+        echo Exiting script...
+        exit /b
+    )
+)
 cmd /k

@@ -3241,7 +3241,7 @@ function addExpressionToSelectedProperty() {
     var selectedProperty = app.project.activeItem.selectedProperties[0];
 
     if (!selectedProperty) {
-        alert("Please select a property before running this script.");
+        showAlertWindow("Please select a property before running this script.");
         return;
     }
     selectedProperty.expression = "myData = footage(\"input_template.json\").sourceData;\ndarkmode = myData.Comp.darkmode;\n\n// if darkmode is enabled, do ... else do ...\n//darkmode == 1 ? VALUE : VALUE;\n\n//if(darkmode){ VALUE } else{ VALUE };";
@@ -3249,7 +3249,7 @@ function addExpressionToSelectedProperty() {
     try {
         selectedProperty.setValue(selectedProperty.expression);
     } catch (error) {
-        alert("Failed to add expression.\n\nError: " + error);
+        showAlertWindow("Failed to add expression.\n\nError: " + error);
     }
 }
 
@@ -3265,12 +3265,12 @@ function getAEfontName() {
 
             // Get the font name
             var fontName = textDocument.font;
-            alert("The font used in the selected text layer is: " + fontName);
+            showAlertWindow("The font used in the selected text layer is: " + fontName);
         } else {
-            alert("Please select a text layer.");
+            showAlertWindow("Please select a text layer.");
         }
     } else {
-        alert("Please open a project and select a composition.");
+        showAlertWindow("Please open a project and select a composition.");
     }
 }
 
@@ -3325,8 +3325,13 @@ function DuplicateCompositionWithSuffix() {
                 // Set the new name with the suffix
                 duplicatedComp.name = newCompName;
 
-                // Optionally, select the new duplicated comp in the project panel
-                app.project.selection = [duplicatedComp];
+                // Ensure the duplicated comp is selected in the project panel
+                for (var i = 1; i <= proj.numItems; i++) {
+                    if (proj.item(i) === duplicatedComp) {
+                        proj.selection = [duplicatedComp]; // Select the duplicated composition in the project panel
+                        break;
+                    }
+                }
 
                 showAlertWindow("Composition duplicated successfully with the suffix: " + suffix);
             } else {
@@ -3500,7 +3505,7 @@ function checkAndCopyLayerToComp(layerName, compName) {
     if (!layerExists) {
         var footageItem = null;
         for (var k = 1; k <= project.items.length; k++) {
-            if (project.items[k] instanceof FootageItem && project.items[k].name === layerName) {
+            if ((project.items[k] instanceof FootageItem || project.items[k] instanceof CompItem) && project.items[k].name === layerName) {
                 footageItem = project.items[k];
                 break;
             }
@@ -3560,6 +3565,8 @@ function updateElementsComp() {
     replaceCompRecursive("_MEDIA_1920", "_ELEMENTS_NEW", "_MEDIA_1920");
     deleteNestedComp("_ELEMENTS", "LOGO_NEW");
     copyLayerToComp("_ELEMENTS_NEW", "LOGO_NEW", "_ELEMENTS");
+    deleteNestedComp("_ELEMENTS", "LOGO_NEW_K");
+    copyLayerToComp("_ELEMENTS_NEW", "LOGO_NEW_K", "_ELEMENTS");
     deleteNestedComp("_ELEMENTS", "TEXT_el");
     copyLayerToComp("_ELEMENTS_NEW", "TEXT_el", "_ELEMENTS");
     removeCompByName("_ELEMENTS_NEW");

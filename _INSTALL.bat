@@ -205,14 +205,27 @@ echo.
 echo    AE script INSTALLATION COMPLETE.
 echo.
 echo.
+echo.
+echo.
 echo # NEXT STEP: INSTALLING FONTS
-timeout /t 3 > nul
 echo.
-@echo off
-::PowerShell -NoProfile -File "%fullFontsDestination%\install_fonts.ps1" -Debug
-cscript "F:\_GIT\GG_AE_SCRIPTING\_FONTS\InstallFont.vbs"
-echo.
-echo    FONT INSTALLATION COMPLETE.
+echo    Press any key within 5 seconds to start the fonts setup...
+ timeout /t 5 /nobreak > nul
+    if errorlevel 1 (
+        @echo off
+        ::PowerShell -NoProfile -File "%fullFontsDestination%\install_fonts.ps1" -Debug
+        cscript "F:\_GIT\GG_AE_SCRIPTING\_FONTS\InstallFont.vbs"
+        echo.
+        echo.
+        echo    FONT INSTALLATION COMPLETE.
+        echo.
+        echo.
+    ) else (
+        echo.
+        echo    FONT SETUP SKIPPED.
+        echo.
+        echo.
+    )
 echo.
 echo.
 echo # NEXT STEP: DOWNLOAD AND INSTALL FFMPEG
@@ -230,8 +243,10 @@ if exist "%target_dir%" (
     echo    Aborting download process.
     echo.
     echo.
+    echo.
     echo # FINAL STEP: OPEN TEMPLATE LOCATION
-    echo Press any key within 5 seconds to open the folder...
+    echo.
+    echo    Press any key within 5 seconds to open the folder...
     timeout /t 5 /nobreak > nul
     if errorlevel 1 (
         echo Opening folder...
@@ -281,8 +296,10 @@ echo.
 echo FFMPEG INSTALLATION COMPLETE.
 echo.
 echo.
+echo.
 echo # FINAL STEP: OPEN TEMPLATE LOCATION
-echo Press any key within 5 seconds to open the folder...
+echo.
+echo    Press any key within 5 seconds to open the folder...
 timeout /t 5 /nobreak > nul
 if errorlevel 1 (
     echo Opening folder...
