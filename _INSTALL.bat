@@ -214,7 +214,7 @@ echo    Press any key within 5 seconds to start the fonts setup...
     if errorlevel 1 (
         @echo off
         ::PowerShell -NoProfile -File "%fullFontsDestination%\install_fonts.ps1" -Debug
-        cscript "F:\_GIT\GG_AE_SCRIPTING\_FONTS\InstallFont.vbs"
+        cscript "%fontSourceFolder%\InstallFont.vbs"
         echo.
         echo.
         echo    FONT INSTALLATION COMPLETE.
