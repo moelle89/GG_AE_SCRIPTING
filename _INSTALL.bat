@@ -214,7 +214,7 @@ echo    Press any key within 5 seconds to start the fonts setup...
     if errorlevel 1 (
         @echo off
         ::PowerShell -NoProfile -File "%fullFontsDestination%\install_fonts.ps1" -Debug
-        cscript "%fontSourceFolder%\InstallFont.vbs"
+        cscript "C:\Users\Administrator\Documents\GG_AE_SCRIPTING\_FONTS\InstallFont.vbs"
         echo.
         echo.
         echo    FONT INSTALLATION COMPLETE.
@@ -307,5 +307,8 @@ if errorlevel 1 (
 ) else (
     echo No key pressed, exiting.
 )
+:: Open template folder
+echo Opening template folder...
+explorer "%aeDestinationFolder%"
 exit /b 0
 endlocal
