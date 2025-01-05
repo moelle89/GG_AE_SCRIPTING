@@ -1,4 +1,22 @@
 try {
+   // Configuration object for better maintainability
+   var CONFIG = {
+      MAX_TEXT_LENGTH: 300,
+      RATIO_THRESHOLDS: [
+         { ratio: 10, multiplier: 8 },
+         { ratio: 7, multiplier: 3 },
+         { ratio: 4, multiplier: 1.8 },
+         { ratio: 3, multiplier: 1.1 },
+         { ratio: 2, multiplier: 1 },
+         { ratio: 1, multiplier: 0.8 }
+      ],
+      LINE_CHARS: {
+         SHORT_TEXT_THRESHOLD: 25,
+         SHORT_TEXT_MULTIPLIER: 15,
+         NORMAL_TEXT_MULTIPLIER: 18
+      }
+   };
+
    // Get source data from input template
    const myData = footage("input_template.json").sourceData;
 
@@ -22,57 +40,58 @@ try {
       7: "Archivo-Bold",
    };
 
+   // Calculate dimensions and ratio
+   function calculateDimensions(textLinkEffect) {
+      var scaleToComp = textLinkEffect("AUTO-SCALE");
+      var compW = thisComp.width;
+      var compH = thisComp.height;
+      var tWidth = scaleToComp != 1 ? textLinkEffect("WIDTH") : compW;
+      var tHeight = scaleToComp != 1 ? textLinkEffect("HEIGHT") : compH;
+
+      return {
+         width: tWidth,
+         height: tHeight,
+         minDimension: Math.min(tWidth, tHeight),
+         ratio: Math.round(Math.max(tWidth, tHeight) / Math.min(tWidth, tHeight))
+      };
+   }
+
+   // Calculate multiplier based on ratio
+   function calculateMultiplier(ratio, textLinkEffect) {
+      if (textLinkEffect("CUSTOM MULTIPL.") == 1) {
+         return textLinkEffect("Multipl.");
+      }
+
+      // Loop through thresholds array
+      for (var i = 0; i < CONFIG.RATIO_THRESHOLDS.length; i++) {
+         if (ratio >= CONFIG.RATIO_THRESHOLDS[i].ratio) {
+            return CONFIG.RATIO_THRESHOLDS[i].multiplier;
+         }
+      }
+      return CONFIG.RATIO_THRESHOLDS[CONFIG.RATIO_THRESHOLDS.length - 1].multiplier;
+   }
+
    // Get text and its length based on the selected option
-   const {text, font} = components[option];
-   var txtL = text.length;
+   let { text, font } = components[option];
+   let txtL = text.length;
 
    // Limit the length of the string
-   const maxLength = 300;
-   if (txtL > maxLength) {
-      const truncatedText = text.substr(0, maxLength).replace(/ \S*$/, "") + " ...";
-      txtL = truncatedText.length;
-      text = truncatedText;
+   if (txtL > CONFIG.MAX_TEXT_LENGTH) {
+      text = text.substr(0, CONFIG.MAX_TEXT_LENGTH).replace(/ \S*$/, "") + " ...";
+      txtL = text.length;
    }
 
    // Get TEXT_LINK effect values
    const textLinkEffect = effect("TEXT_LINK");
-   const customMultipl = textLinkEffect("CUSTOM MULTIPL.");
-   const scaleToComp = textLinkEffect("AUTO-SCALE");
+   var dimensions = calculateDimensions(textLinkEffect);
+   var multiplier = calculateMultiplier(dimensions.ratio, textLinkEffect);
 
-   // Get composition dimensions
-   const compW = thisComp.width;
-   const compH = thisComp.height;
-   const tWidth = scaleToComp != 1 ? textLinkEffect("WIDTH") : compW;
-   const tHeight = scaleToComp != 1 ? textLinkEffect("HEIGHT") : compH;
-   const x = Math.min(tWidth, tHeight);
-   const ratio = Math.round(Math.max(tWidth, tHeight) / Math.min(tWidth, tHeight));
-
-   if (customMultipl == 1) {
-      multipl = textLinkEffect("Multipl.");
-   } else {
-      multipl = ratio >= 4 ? 1.8 : 1.7;
-      if (ratio <= 3) {
-         multipl = 1.10;
-      }
-      if (ratio <= 2) {
-         multipl = 1;
-      }
-      if (ratio <= 1) {
-         multipl = 0.8;
-      }
-      if (ratio >= 7) {
-         multipl = 3;
-      }
-      if (ratio >= 10) {
-         multipl = 8;
-      }
-   }
-
-   // Calculate line length and vertical spacing
-   const lineChars = -0.00014 * x + 0.15;
-   const lineCharV = txtL <= 25 ? 15 * multipl : 18 * multipl;
-
-   const lineL = Math.round(lineCharV + txtL * lineChars);
+   // Calculate line parameters
+   var lineChars = -0.00014 * dimensions.minDimension + 0.15;
+   var baseMultiplier = text.length <= CONFIG.LINE_CHARS.SHORT_TEXT_THRESHOLD
+      ? CONFIG.LINE_CHARS.SHORT_TEXT_MULTIPLIER
+      : CONFIG.LINE_CHARS.NORMAL_TEXT_MULTIPLIER;
+   var lineLength = Math.round(baseMultiplier * multiplier + text.length * lineChars);
 
    // Split text into lines
    var finStr = "";
@@ -81,7 +100,7 @@ try {
       var newLine = "";
       line.split(" ").forEach((word) => {
          const newLineWithWord = newLine + (newLine ? " " : "") + word;
-         if (newLineWithWord.length > lineL) {
+         if (newLineWithWord.length > lineLength) {
             if (outStr !== "") outStr += "\r";
             outStr += newLine;
             newLine = word;
@@ -96,18 +115,19 @@ try {
       finStr += outStr + "\r";
    });
 
-   // Check if there is text available for options 1 and 2
-   finStr = components[option] !== "" ? finStr : "No text available";
+   // Check if there is text available for the selected option
+   finStr = finStr.trim() !== "" ? finStr : "No text available";
 
    // Get the font name based on the component and use fallback if needed
    const cFont = font || fallbackFont[option];
    const bFont = fallbackFont[option];
 
    // Import function with supported fonts and check font availability
-   const { checkFontAvailability } =
-      footage("fontlib.jsx").sourceData.getFunctions();
+   const { checkFontAvailability } = footage("fontlib.jsx").sourceData.getFunctions();
    const finalTypo = checkFontAvailability(cFont) ? cFont : bFont;
 
    // Set the font and text for the layer
    style.setFont(finalTypo).setText(finStr);
-} catch (err) { }
+} catch (err) {
+   // Handle errors (optional)
+}
