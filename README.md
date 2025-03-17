@@ -1,3 +1,89 @@
+# GG AE Scripting - Adobe After Effects Template System
+
+A powerful Adobe After Effects scripting system designed to streamline the creation and management of data-driven video and image templates. This tool provides a comprehensive set of features for template creation, management, and automation in After Effects.
+
+## Features
+
+### Template Management
+- **Video Template Setup**: Automatically creates all required compositions for video advertisements with custom naming
+- **Image Template Setup**: Sets up compositions for image advertisements with custom naming
+- **Boilerplate System**: Includes a pre-configured template system for consistent project structure
+
+### Content Management
+- **Elements**: Add pre-configured content objects that work with JSON data binding
+- **Gallery**: Add gallery objects with JSON data integration
+- **FX**: Apply presets and actions with JSON key bindings
+- **Scale to Fill**: Automatically scale layers to fit composition while maintaining aspect ratio
+
+### File Management
+- **Organized Import System**: Automatically organizes imported files into appropriate footage folders based on file extensions
+- **Project Structure**: Maintains a clean and organized project structure with dedicated folders for:
+  - Footage
+  - Assets
+  - Fonts
+  - Scripts
+  - Builds
+
+### Utility Features
+- **JSON Integration**: Full support for JSON data binding and management
+- **Hotkeys**: Quick access to common functions:
+  - Scale active composition to preview area
+  - Wipe expression-based values
+  - Open project/footage/JSON folders
+  - Various other productivity shortcuts
+
+## Installation
+
+1. Download the latest release from the [releases page](https://github.com/moelle89/GG_AE_SCRIPTING/releases)
+2. Run the `_INSTALL.bat` script
+3. The script will:
+   - Install the Mojo script
+   - Set up the template system
+   - Configure necessary folders and presets
+   - Install required fonts
+
+## Project Structure
+
+```
+GG_AE_SCRIPTING/
+├── _BOILERPLATES/     # Template files
+├── _FONTS/           # Required fonts
+├── _HELPER_SCRIPTS/  # Additional utility scripts
+├── _HTML/           # HTML resources
+├── _img/            # UI images
+├── _OM_RM/          # Output management
+├── _pseudoEffects/  # Custom effects
+├── _scripts/        # Core scripts
+├── _TUT/            # Tutorial materials
+├── moelles_mojo.jsx # Main script file
+└── _INSTALL.bat     # Installation script
+```
+
+## Usage
+
+1. Open Adobe After Effects
+2. Load the boilerplate template
+3. Use the Mojo panel to:
+   - Create new templates
+   - Manage content
+   - Apply effects
+   - Import and organize files
+   - Handle JSON data
+
+## Requirements
+
+- Adobe After Effects 2023 or 2024
+- Windows OS
+- Administrator privileges for installation
+
+## Support
+
+For issues, feature requests, or questions, please visit the [GitHub repository](https://github.com/moelle89/GG_AE_SCRIPTING).
+
+## License
+
+This project is proprietary software. All rights reserved.
+
 # AE_SCRIPTING
 
 ### Download:
@@ -17,11 +103,11 @@ The majority of this panels features only work with the boilerplate.aep
 
 # TEMPLATE
 
-### Video-Templ. 
+### Video-Templ.
 
 Setup all required compositions for a Video-Ad using a custom name.
 
-### Image-Templ. 
+### Image-Templ.
 
 Setup all required compositions for an Image-Ad using a custom name.
 

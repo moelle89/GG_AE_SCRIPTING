@@ -1642,6 +1642,18 @@ var hoverMenu_customExp = new HoverMenu("hoverMenu_customExp", [{
     text: "Unlock all layers in project",
     name: "unlockAllLockedLayers",
     functionName: unlockAllLockedLayers
+},
+{
+    imgString: "",
+    text: "Scale selected comps to 1080x1920",
+    name: "scaleCompsToReel",
+    functionName: scaleCompsToReel
+},
+{
+    imgString: "",
+    text: "Scale active comps to 1080x1920",
+    name: "scaleToReel",
+    functionName: scaleToReel
 }
 ]);
 // hoverMenu_open
@@ -3854,6 +3866,109 @@ function unlockLayers(comp) {
         }
     }
 }
+
+
+// Scale Selected Compositions to 1080x1920
+function scaleCompsToReel() {
+    app.beginUndoGroup("Scale Selected Comp Resolutions to 1080x1920");
+
+    var activeComp = app.project.activeItem;
+
+    // Ensure there is an active composition
+    if (!(activeComp instanceof CompItem)) {
+        alert("Please select a composition to run the script.");
+        return;
+    }
+
+    // Get selected layers
+    var selectedLayers = activeComp.selectedLayers;
+
+    if (selectedLayers.length === 0) {
+        alert("Please select one or more precomposition layers in the active composition.");
+        return;
+    }
+
+    var targetWidth = 1080;
+    var targetHeight = 1920;
+
+    for (var i = 0; i < selectedLayers.length; i++) {
+        var layer = selectedLayers[i];
+
+        // Ensure the layer is a precomposition
+        if (layer.source instanceof CompItem) {
+            var sourceComp = layer.source;
+
+            // Get original dimensions
+            var sourceWidth = sourceComp.width;
+            var sourceHeight = sourceComp.height;
+
+            // Calculate scaling factor
+            var scaleWidth = targetWidth / sourceWidth;
+            var scaleHeight = targetHeight / sourceHeight;
+
+            // Choose the smaller scaling factor to maintain aspect ratio
+            var scaleFactor = Math.min(scaleWidth, scaleHeight);
+
+            // Calculate new dimensions
+            var newWidth = Math.round(sourceWidth * scaleFactor);
+            var newHeight = Math.round(sourceHeight * scaleFactor);
+
+            // Update the composition's resolution
+            sourceComp.width = targetWidth;
+            sourceComp.height = targetHeight;
+
+            // Log the changes
+            $.writeln("Resized " + sourceComp.name + " to " + newWidth + "x" + newHeight);
+        } else {
+            $.writeln("Skipped layer: " + layer.name + " (not a precomp)");
+        }
+    }
+
+    app.endUndoGroup();
+};
+
+// Scale Selected Compositions to 1080x1920
+function scaleToReel() {
+    app.beginUndoGroup("Scale Active Comp to 1080x1920");
+
+    var activeComp = app.project.activeItem;
+
+    if (!(activeComp instanceof CompItem)) {
+        alert("Please select a composition to scale.");
+        return;
+    }
+
+    var targetWidth = 1080;
+    var targetHeight = 1920;
+
+    // Get original dimensions of the active composition
+    var sourceWidth = activeComp.width;
+    var sourceHeight = activeComp.height;
+
+    // Calculate scaling factor
+    var scaleWidth = targetWidth / sourceWidth;
+    var scaleHeight = targetHeight / sourceHeight;
+
+    // Choose the smaller scaling factor to maintain aspect ratio
+    //var scaleFactor = Math.min(scaleWidth, scaleHeight);
+    var scaleFactor = 1;
+    // Calculate new dimensions
+    var newWidth = Math.round(sourceWidth * scaleFactor);
+    var newHeight = Math.round(sourceHeight * scaleFactor);
+
+    // Resize the composition
+    activeComp.width = targetWidth;
+    activeComp.height = targetHeight;
+
+    // If the composition doesn't match the target exactly, center it
+    if (newWidth !== targetWidth || newHeight !== targetHeight) {
+        alert("The composition's dimensions have been resized to maintain the aspect ratio.\n" +
+            "You may need to adjust elements for alignment.");
+    }
+
+    app.endUndoGroup();
+};
+
 
 // Main function to iterate through all compositions in the project
 function unlockAllLockedLayers() {
